@@ -1,0 +1,22 @@
+year,quarter,dram_utilization_pct,dram_industry_capex_bn,dram_price_trend,cycle_phase,source
+2017,Q1,95,3.5,rising,boom,TrendForce
+2017,Q3,97,4.0,rising,boom,TrendForce
+2018,Q1,98,4.5,peak,boom,TrendForce: near-full utilization
+2018,Q3,93,4.0,falling,correction,Demand slowing
+2019,Q1,85,2.5,falling,bust,TrendForce: inventory glut
+2019,Q3,78,2.0,trough,bust,Samsung cuts capex 30%
+2020,Q1,82,2.5,rising,recovery,WFH demand surge
+2020,Q3,88,3.0,rising,recovery,
+2021,Q1,92,3.5,rising,boom,Server + consumer demand
+2021,Q3,95,4.5,peak,boom,Samsung announces $17B Texas fab
+2022,Q1,90,4.0,falling,correction,Demand weakening
+2022,Q3,80,3.0,falling,bust,Samsung/SK cut production
+2023,Q1,72,2.0,trough,bust,TrendForce: DRAM prices -50% YoY
+2023,Q3,78,2.5,rising,recovery,AI demand begins HBM surge
+2024,Q1,85,4.0,rising,recovery,HBM demand absorbing capacity
+2024,Q3,92,6.0,rising,boom,All three DRAM makers expanding
+2025,Q1,95,8.0,rising,boom,SEMI: $200B+ global fab equipment 2025
+2025,Q3,97,10.0,peak_projected,boom,Stargate + hyperscaler demand; SEMI record equipment spend
+2026,Q1,92,8.0,plateau,correction_projected,New fabs coming online; demand growth moderating
+2027,Q1,82,5.0,falling_projected,bust_projected,Historical pattern: overcapacity 2-3yr after peak investment
+2028,Q1,75,3.0,trough_projected,bust_projected,Fabs pivot to consumer LPDDR6/stacked DRAM — accelerates edge inference

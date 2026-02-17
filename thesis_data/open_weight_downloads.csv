@@ -1,0 +1,11 @@
+date,family,cumulative_downloads_M,derivatives_pct_new_models
+2024-06,llama,150,25
+2024-06,qwen,80,15
+2024-06,mistral,60,12
+2024-12,llama,400,20
+2024-12,qwen,450,35
+2024-12,mistral,100,8
+2024-12,deepseek,50,5
+2025-01,qwen,700,40
+2025-01,llama,500,15
+2025-01,deepseek,150,10

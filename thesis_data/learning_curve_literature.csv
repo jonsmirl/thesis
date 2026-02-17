@@ -1,0 +1,27 @@
+industry,product,alpha,alpha_se,n_observations,period,source,method,notes
+Semiconductor,"DRAM (7 generations, IV)",0.3200,0.0500,,1974-1992,Irwin & Klenow (1994) JPE 102(6),IV (firm-level panel),Learning rate ~20%. IV corrects simultaneous equations bias. Canonical cite.
+Semiconductor,Microprocessors/SoC (firm-node),0.0500,,,2004-2015,Goldberg et al. (2024) NBER WP 32651,"Structural model, proprietary",Learning rate ~3.4% at firm-technology node. Much lower than industry lore.
+Semiconductor,Microprocessors/SoC (w/ within-firm),0.0700,,,2004-2015,Goldberg et al. (2024) NBER WP 32651,"Structural model, proprietary",Learning rate ~4.7% allowing within-firm spillovers across nodes.
+Semiconductor,Microprocessors/SoC (w/ cross-border),0.1200,,,2004-2015,Goldberg et al. (2024) NBER WP 32651,"Structural model, proprietary",Learning rate ~8% with cross-country spillovers. Spillovers via fabless clients.
+Semiconductor,"DRAM (aggregate, OLS)",0.7700,0.0400,41.0000,1984-2024,"This paper, pooled OLS",OLS (aggregate annual),"INFLATED by: (a) simultaneous equations bias, (b) measurement error in early cumulative production. Chow tests reject stability at all breakpoints (F=4.2-41.1). Not used as baseline."
+Semiconductor,DRAM (early subsample),0.3800,,12.0000,1984-1995,"This paper, subsample OLS",OLS (subsample),Plausible — close to Irwin & Klenow IV estimate.
+Semiconductor,DRAM (late subsample),0.3100,,14.0000,2011-2024,"This paper, subsample OLS",OLS (subsample),Plausible — consistent with mature industry.
+Semiconductor,DRAM (middle subsample),0.8500,,15.0000,1996-2010,"This paper, subsample OLS",OLS (subsample),Implausibly high — likely driven by measurement error in cumulative production estimates.
+Semiconductor,NAND Flash,0.2400,0.0500,20.0000,2003-2023,Micron/Samsung earnings analysis,OLS (aggregate),
+Semiconductor,HBM (stacked memory),0.2300,0.0600,6.0000,2015-2024,TrendForce HBM tracker,OLS (product-level),
+Semiconductor,Intel microprocessors,0.2400,0.0400,15.0000,1974-1989,Flamm (1993) Mismanaged Trade,OLS,
+Semiconductor,Solar PV cells,0.2300,0.0200,45.0000,1976-2023,IRENA Renewable Cost Database,OLS (aggregate),
+Meta,87 technologies (breakpoints),,,87.0000,Various,Carlino et al. (2025) Joule,Piecewise regression,66% of technologies show structural breaks in learning rates. Past learning rates not good predictors of future rates.
+Aerospace,Aircraft assembly (Wright),0.2000,,,1936,Wright (1936) J. Aero. Sci.,OLS,Original learning curve paper.
+Aerospace,B-29 assembly,0.2400,,,1943-1945,Rapping (1965) RES,OLS,
+Aerospace,Airbus A380,0.1800,,,2005-2015,Airbus annual reports analysis,OLS,
+Automotive,Ford Model T,0.1400,,,1909-1926,Argote & Epple (1990),OLS,
+Automotive,Toyota hybrid (Prius),0.1700,,,1997-2015,Gallagher & Muehlegger (2011),OLS,
+Energy,Wind turbines (onshore),0.1200,0.0300,30.0000,1990-2020,IRENA,OLS,
+Energy,Lithium-ion batteries,0.2100,0.0300,25.0000,1995-2023,BloombergNEF battery survey,OLS,
+Energy,Electrolyzers (green H2),0.1800,0.0500,10.0000,2010-2023,IRENA Green Hydrogen report,OLS,
+Financial,ATM deployment per unit,0.1500,,,1970-1990,Haynes & Thompson (2000),OLS,
+Financial,Credit card processing cost,0.1600,,,1975-2000,Evans & Schmalensee (2005),OLS,
+Financial,Mobile money (M-Pesa),0.1900,,,2007-2020,FSD Kenya annual reports,OLS,
+Internet,Web hosting cost per GB,0.2800,0.0400,20.0000,1998-2020,Cloudflare blog + AWS pricing,OLS,
+Internet,Cloud compute (AWS EC2),0.2500,0.0300,15.0000,2006-2023,AWS pricing archive analysis,OLS,

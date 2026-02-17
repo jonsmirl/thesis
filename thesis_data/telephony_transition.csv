@@ -1,0 +1,19 @@
+year,att_capex_bn_nominal,digital_line_pct,cost_per_digital_line_usd,pbx_market_share_pct,voip_subscribers_M,stage,source
+1965,3.2,0.1,50000,0,0.0,centralized_investment,FCC: ESS No. 1 deployment begins
+1970,4.5,2.0,25000,0,0.0,centralized_investment,Bell Labs R&D peak; digital switching R&D
+1975,7.8,8.0,12000,5,0.0,centralized_investment,FCC: 4ESS toll switch rollout
+1978,10.2,15.0,8000,10,0.0,centralized_investment,FCC: 5ESS local switch development begins
+1980,12.5,22.0,5500,15,0.0,learning_curve,Digital switching costs falling rapidly
+1982,11.8,30.0,3800,20,0.0,learning_curve,AT&T breakup announced; component costs declining
+1984,10.5,40.0,2500,30,0.0,learning_curve,Divestiture complete; RBOCs inherit network
+1986,9.8,52.0,1800,40,0.0,component_migration,Digital PBX costs cross threshold
+1988,11.0,65.0,1200,50,0.0,component_migration,Nortel/Lucent PBX market exploding
+1990,12.5,78.0,800,60,0.0,crossing,*** Hardware crossing: digital PBX cost-competitive ***
+1992,11.2,87.0,550,65,0.0,crossing,PBX dominates enterprise voice
+1995,10.0,95.0,350,70,0.0,post_crossing,Centralized switch market shrinking
+1997,8.5,98.0,250,72,0.5,coordination_layer,VoIP technically possible; SIP standardized 1999
+2000,9.0,99.5,150,73,5.0,coordination_layer,Vonage launches; broadband enables consumer VoIP
+2003,7.5,99.8,100,70,20.0,R0_crossing,*** R₀ > 1: VoIP self-sustaining adoption ***
+2005,6.8,99.9,75,65,50.0,distributed_dominance,Skype 100M users; enterprise VoIP growing
+2008,5.5,100.0,50,55,150.0,distributed_dominance,Traditional telephony revenue declining 5%/yr
+2010,4.2,100.0,35,45,300.0,distributed_dominance,VoIP majority of new enterprise installations

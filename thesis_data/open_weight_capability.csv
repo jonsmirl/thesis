@@ -1,0 +1,10 @@
+date,event,frontier_gap_estimate,cost_ratio_vs_frontier
+2023-07,Llama 2 70B release,~GPT-3.5 level,0.1
+2023-12,Mistral 7B/Mixtral 8x7B,"Near GPT-3.5, 7B size",0.05
+2024-04,Llama 3 70B release,~GPT-4 early on some tasks,0.08
+2024-06,Qwen2 72B release,Competitive with Claude 3 Sonnet,0.07
+2024-09,Qwen2.5 72B release,Strong multi-benchmark results,0.06
+2024-12,DeepSeek V3 release,Approaching GPT-4o on benchmarks,0.05
+2025-01,DeepSeek R1 release,Matched o1 on reasoning benchmarks,0.03
+2025-02,Qwen 700M+ cumulative downloads,Most-downloaded family on HF,
+2025-06,Kimi K2.5 (Moonshot),Approaching Claude Opus,0.14

@@ -1,0 +1,38 @@
+{
+  "report_title": "Impact Assessment of TDS on Indian VDA Market",
+  "author": "Dr. Vikash Gautam",
+  "publication": "Esya Centre Special Issue No. 210, November 2023",
+  "url": "https://www.esyacentre.org/documents/2023/11/9/impact-assessment-of-tax-deducted-at-source-on-the-indian-virtual-digital-asset-market",
+  "key_findings": {
+    "users_migrated_offshore": "3-5 million",
+    "offshore_volume_jul22_jul23_inr_lakh_crore": 3.5,
+    "offshore_volume_jul22_jul23_usd_bn": 42,
+    "offshore_share_of_total_indian_volume": 0.9,
+    "tds_collected_total_inr_crore": 258,
+    "tds_collected_domestic_exchanges_inr_crore": 250,
+    "tds_collected_offshore_inr_crore": 7,
+    "estimated_lost_tds_revenue_inr_crore": 3493,
+    "domestic_decline_weekly_active_users_pct": "44-74%",
+    "domestic_decline_downloads_pct": "44-74%",
+    "domestic_decline_web_traffic_pct": "44-74%",
+    "p2p_traders_surveyed": 13000,
+    "exchanges_surveyed": 7
+  },
+  "update_2024": {
+    "title": "Taxes and Takedowns (Gautam & Sharma 2024)",
+    "period": "December 2023 - October 2024",
+    "domestic_volume_decline_since_apr2022": "nearly two-thirds",
+    "offshore_volume_growth_post_url_blocking": "57% increase in web traffic to blocked exchanges",
+    "domestic_growth_post_url_blocking": "21% increase only",
+    "recommendation": "Reduce TDS to 0.01% (comparable to securities/commodities STT/CTT)"
+  },
+  "update_2025": {
+    "source": "KoinX / ainvest.com Feb 2026",
+    "offshore_volume_fy25_inr_crore": 51252,
+    "offshore_volume_fy25_usd_bn": 6.1,
+    "offshore_share_fy25": 0.72,
+    "total_tax_collected_2022_2025_inr_crore": 437.43,
+    "investor_survey_unfair_pct": 0.66,
+    "investor_reduced_participation_pct": 0.59
+  }
+}

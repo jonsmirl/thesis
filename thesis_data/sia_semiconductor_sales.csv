@@ -1,0 +1,27 @@
+year,total_semi_revenue_bn,memory_revenue_bn,dram_revenue_bn_est,dram_pct_of_total,source,cumulative_dram_revenue_bn
+2000,204,31,24,11.8,WSTS/SIA,24
+2001,139,13,10,7.2,Dot-com bust,34
+2002,141,14,11,7.8,,45
+2003,166,17,13,7.8,,58
+2004,213,26,20,9.4,,78
+2005,228,27,21,9.2,,99
+2006,248,32,24,9.7,,123
+2007,256,31,23,9.0,,146
+2008,249,24,17,6.8,DRAM price crash,163
+2009,226,22,16,7.1,Financial crisis,179
+2010,298,42,32,10.7,Recovery,211
+2011,300,37,28,9.3,,239
+2012,292,30,22,7.5,,261
+2013,306,35,27,8.8,,288
+2014,336,42,33,9.8,,321
+2015,335,38,30,9.0,,351
+2016,339,40,30,8.8,,381
+2017,412,70,55,13.3,Supercycle: DRAM shortage,436
+2018,469,85,65,13.9,Peak: DRAM 14% of all semis,501
+2019,412,55,40,9.7,Downturn,541
+2020,440,57,42,9.5,COVID mixed,583
+2021,556,80,60,10.8,Server + consumer boom,643
+2022,574,70,48,8.4,Memory downturn begins,691
+2023,527,50,32,6.1,DRAM oversupply crash,723
+2024,611,95,70,11.5,AI/HBM recovery; SIA record year,793
+2025,700,130,95,13.6,"Projected: SEMI/SIA consensus, HBM demand",888

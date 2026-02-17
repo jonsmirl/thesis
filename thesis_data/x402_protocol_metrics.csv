@@ -1,0 +1,10 @@
+month,cumulative_txns_millions,active_facilitators,weekly_volume_usd_millions,notes
+2024-06,50,2,5,x402 initial deployment
+2024-07,80,2,8,Early adoption
+2024-08,120,3,15,Third facilitator joins
+2024-09,180,3,25,Steady growth
+2024-10,250,4,40,Coinbase integration announced
+2024-11,350,4,60,*** Coinbase MPC wallet launch ***
+2024-12,600,4,200,"*** 4,300% spike post-catalyst ***"
+2025-01,650,5,150,Post-spike stabilization (higher plateau)
+2025-02,700,5,160,Cloudflare native integration

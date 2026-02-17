@@ -1,0 +1,131 @@
+============================================================
+DAMPING CANCELLATION TEST — Theorem E.3
+Complementary Heterogeneity (Smirl 2026)
+============================================================
+  Using compiled BCL panel (16 countries)
+  → Run download_full_bcl() first for 180+ country panel
+BCL: 64 obs, 16 countries
+IMF FDI: 128 obs, 16 countries
+Fraser: 72 obs, 9 countries
+Merged panel: 48 obs
+
+  -- Regulatory changes --
+  capital_stringency_idx: mean=+0.88, tightened=41, loosened=0, unchanged=7
+  activity_restrictions_idx: mean=+0.08, tightened=8, loosened=4, unchanged=36
+  supervisory_power_idx: mean=+0.73, tightened=35, loosened=0, unchanged=13
+  entry_barriers_idx: mean=+0.10, tightened=6, loosened=1, unchanged=41
+  Basel III treated: ['CN', 'DE', 'GB', 'ID', 'IN', 'JP', 'RU', 'SG', 'TR', 'US', 'ZA']
+
+  -- Local projection: IRF by regulatory dimension --
+
+  --- Capital Stringency ---
+    h      beta        SE         t         p     N
+    0    0.0000    0.0000       nan       nan    48 
+    1        --        --        --        --     0
+    2        --        --        --        --     0
+    3    0.0109    0.0048     2.286    0.0222    48 **
+    4        --        --        --        --     0
+    5    0.0068    0.0090     0.765    0.4444    16 
+    6        --        --        --        --     0
+    7    0.0215    0.0187     1.148    0.2511    16 
+    8    0.0077    0.0117     0.652    0.5143    16 
+  Significant at: [3]
+  -> CONSISTENT with damping cancellation (transient, dies by h=3)
+
+  --- Activity Restrictions ---
+    h      beta        SE         t         p     N
+    0    0.0000    0.0000       nan       nan    48 
+    1        --        --        --        --     0
+    2        --        --        --        --     0
+    3    0.0128    0.0051     2.509    0.0121    48 **
+    4        --        --        --        --     0
+    5    0.0038    0.0069     0.550    0.5827    16 
+    6        --        --        --        --     0
+    7   -0.0222    0.0108    -2.052    0.0402    16 **
+    8   -0.0062    0.0123    -0.502    0.6158    16 
+  Significant at: [3, 7]
+  -> POSSIBLY INCONSISTENT (significant to h=7)
+     CAVEAT: N=16 at h=7 — confidence bands very wide.
+     With only 16 countries, these long-horizon estimates are unreliable.
+     Full BCL survey (180 countries, free: worldbank.org/en/research/brief/BRSS)
+     would resolve whether this persistence is real or sampling noise.
+
+  --- Supervisory Power ---
+    h      beta        SE         t         p     N
+    0    0.0000    0.0000       nan       nan    48 
+    1        --        --        --        --     0
+    2        --        --        --        --     0
+    3   -0.0039    0.0096    -0.407    0.6842    48 
+    4        --        --        --        --     0
+    5   -0.0076    0.0168    -0.452    0.6516    16 
+    6        --        --        --        --     0
+    7   -0.0335    0.0119    -2.807    0.0050    16 ***
+    8   -0.0217    0.0240    -0.905    0.3653    16 
+  Significant at: [7]
+  -> POSSIBLY INCONSISTENT (significant to h=7)
+     CAVEAT: N=16 at h=7 — confidence bands very wide.
+     With only 16 countries, these long-horizon estimates are unreliable.
+     Full BCL survey (180 countries, free: worldbank.org/en/research/brief/BRSS)
+     would resolve whether this persistence is real or sampling noise.
+
+  --- Overall Restrictiveness ---
+    h      beta        SE         t         p     N
+    0    0.0000    0.0000       nan       nan    48 
+    1        --        --        --        --     0
+    2        --        --        --        --     0
+    3    0.0038    0.0024     1.596    0.1105    48 
+    4        --        --        --        --     0
+    5    0.0001    0.0029     0.042    0.9662    16 
+    6        --        --        --        --     0
+    7   -0.0079    0.0048    -1.650    0.0989    16 *
+    8   -0.0049    0.0049    -1.002    0.3164    16 
+  Significant at: [7]
+  -> POSSIBLY INCONSISTENT (significant to h=7)
+     CAVEAT: N=16 at h=7 — confidence bands very wide.
+     With only 16 countries, these long-horizon estimates are unreliable.
+     Full BCL survey (180 countries, free: worldbank.org/en/research/brief/BRSS)
+     would resolve whether this persistence is real or sampling noise.
+
+  -- Basel III Difference-in-Differences --
+  DID panel: 128 obs, 16 countries, 11 treated
+  FDI = a + b1*Treated + b2*Post + b3*(Treated x Post)
+         const    0.3892  SE=0.0428  p=0.0000 ***
+       treated    0.2117  SE=0.0525  p=0.0001 ***
+          post    0.0221  SE=0.0733  p=0.7625 
+           did    0.0242  SE=0.0870  p=0.7806 
+  R2=0.1899, N=128
+  -> NOT significant (b3=0.0242, p=0.7806) — consistent with damping cancellation
+     Caveat: may lack power with N=128
+
+  -- Layer comparison at h=5: does the layer matter? --
+  Theory: c_n*sigma_n independent of n -> layers have equal persistence
+  Capital (Layer 4)                  : b5=-0.0061 (p=0.5531) N=15
+  Activity (Layer 3)                 : b5=-0.0013 (p=0.5252) N=5
+  Supervision (Layer 2)              : b5=-0.0122 (p=0.1587) N=12
+
+  Cross-layer beta spread: 0.0109
+  -> Possible divergence, but low power (small N per layer)
+
+  -- Generating IRF figure --
+  Saved: thesis_data/figure_damping_cancellation_irf.png
+
+============================================================
+SUMMARY
+============================================================
+Damping cancellation predicts:
+  - beta_h significant at h=1-2, insignificant by h=4-6
+  - beta_h at h=5 roughly equal across regulatory layers
+
+IMPORTANT CAVEAT:
+  Panel is small (16 countries x 4 waves = 64 obs).
+  Activity restrictions and supervisory power may show significance
+  at longer horizons (h=7), but with only N=16 at those horizons,
+  confidence bands are very wide and point estimates unreliable.
+  Downloading the full BCL survey (180 countries, free) from
+  worldbank.org/en/research/brief/BRSS would resolve this ambiguity.
+
+WHAT WOULD MOVE THIS FROM 'SUPPORTIVE' TO 'CONVINCING':
+  The full BCL panel (180 countries, free download). This expands
+  N from 16 to 180+ at long horizons, shrinking the confidence bands
+  that currently make the h=7 results ambiguous. Free download from:
+  worldbank.org/en/research/brief/BRSS

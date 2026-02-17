@@ -1,0 +1,24 @@
+date,provider,model,input_per_M_tokens_usd,output_per_M_tokens_usd,capability_tier,source,avg_per_M_tokens_usd
+2023-03-01,OpenAI,GPT-4 (8K),30.0000,60.0000,frontier,openai.com/pricing archive,45.0000
+2023-06-01,OpenAI,GPT-3.5-turbo,1.5000,2.0000,mid,openai.com/pricing archive,1.7500
+2023-11-01,OpenAI,GPT-4-turbo,10.0000,30.0000,frontier,DevDay announcement,20.0000
+2024-01-01,OpenAI,GPT-3.5-turbo-0125,0.5000,1.5000,mid,openai.com/pricing,1.0000
+2024-05-01,OpenAI,GPT-4o,5.0000,15.0000,frontier,openai.com/pricing,10.0000
+2024-08-01,OpenAI,GPT-4o-mini,0.1500,0.6000,mid,openai.com/pricing,0.3750
+2024-12-01,OpenAI,o1,15.0000,60.0000,reasoning,openai.com/pricing,37.5000
+2025-01-01,OpenAI,o3-mini,1.1000,4.4000,reasoning,openai.com/pricing,2.7500
+2023-07-01,Anthropic,Claude 2,11.0200,32.6800,frontier,anthropic.com/pricing,21.8500
+2024-03-01,Anthropic,Claude 3 Opus,15.0000,75.0000,frontier,anthropic.com/pricing,45.0000
+2024-03-01,Anthropic,Claude 3 Sonnet,3.0000,15.0000,mid,anthropic.com/pricing,9.0000
+2024-03-01,Anthropic,Claude 3 Haiku,0.2500,1.2500,fast,anthropic.com/pricing,0.7500
+2024-06-01,Anthropic,Claude 3.5 Sonnet,3.0000,15.0000,frontier,anthropic.com/pricing,9.0000
+2025-02-01,Anthropic,Claude 3.5 Haiku,0.8000,4.0000,fast,anthropic.com/pricing,2.4000
+2024-02-01,Google,Gemini 1.0 Pro,0.5000,1.5000,mid,cloud.google.com/vertex-ai,1.0000
+2024-05-01,Google,Gemini 1.5 Pro,3.5000,10.5000,frontier,cloud.google.com/vertex-ai,7.0000
+2024-05-01,Google,Gemini 1.5 Flash,0.3500,1.0500,fast,cloud.google.com/vertex-ai,0.7000
+2024-12-01,Google,Gemini 2.0 Flash,0.1000,0.4000,fast,cloud.google.com/vertex-ai,0.2500
+2024-06-01,Together.ai,Llama-3-70B,0.8800,0.8800,open-weight,together.ai/pricing,0.8800
+2024-12-01,Together.ai,Llama-3.3-70B,0.8800,0.8800,open-weight,together.ai/pricing,0.8800
+2025-01-01,DeepSeek,DeepSeek-V3,0.2700,1.1000,open-weight,deepseek.com/pricing,0.6850
+2025-01-01,DeepSeek,DeepSeek-R1,0.5500,2.1900,reasoning,deepseek.com/pricing,1.3700
+2025-02-01,Fireworks.ai,Qwen2.5-72B,0.6000,0.6000,open-weight,fireworks.ai/pricing,0.6000

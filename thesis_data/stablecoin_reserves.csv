@@ -1,0 +1,24 @@
+date,stablecoin,market_cap_bn,us_treasury_pct,treasury_holdings_bn,source
+2021-03-31,USDT,40.8,2.9,1.2,Tether Mar 2021 attestation
+2021-06-30,USDT,62.7,3.6,2.3,Tether Jun 2021
+2021-12-31,USDT,78.4,10.0,7.8,Tether Dec 2021
+2022-06-30,USDT,66.2,28.5,18.9,Tether Jun 2022: shift to Treasuries
+2022-12-31,USDT,66.2,48.0,31.8,Tether Dec 2022: major T-bill rotation
+2023-06-30,USDT,83.2,55.8,46.4,Tether Jun 2023
+2023-09-30,USDT,83.2,72.6,60.4,Tether Sep 2023
+2023-12-31,USDT,91.7,76.5,70.1,Tether Dec 2023
+2024-06-30,USDT,112.5,82.0,92.3,Tether Jun 2024
+2024-12-31,USDT,137.0,83.0,113.7,Tether Dec 2024
+2021-12-31,USDC,42.1,25.0,10.5,Circle Dec 2021
+2022-12-31,USDC,44.6,40.0,17.8,Circle Dec 2022
+2023-06-30,USDC,27.5,80.0,22.0,Circle Jun 2023: post-SVB
+2023-12-31,USDC,24.6,85.0,20.9,Circle Dec 2023
+2024-06-30,USDC,33.0,85.0,28.1,Circle Jun 2024
+2024-12-31,USDC,43.5,87.0,37.8,Circle Dec 2024
+2020-12-31,TOTAL,28.7,,,DefiLlama
+2021-12-31,TOTAL,150.0,,,DefiLlama
+2022-12-31,TOTAL,137.0,,,DefiLlama
+2023-12-31,TOTAL,137.0,,,DefiLlama
+2024-06-30,TOTAL,162.0,,,DefiLlama
+2024-12-31,TOTAL,210.0,,,DefiLlama: ATH
+2025-01-31,TOTAL,220.0,,,DefiLlama est.

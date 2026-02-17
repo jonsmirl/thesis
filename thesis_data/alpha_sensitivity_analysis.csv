@@ -1,0 +1,11 @@
+alpha,label,learning_rate_pct,doublings_to_threshold,cumulative_eb_needed,t_star_years_from_2024,t_star_calendar_year,is_baseline,is_recommended_range
+0.0500,Goldberg et al. (2024) firm-node,3.4064,71.6993,12268031975831840934068224.0000,222.7182,2246.7182,False,False
+0.1000,Low estimate,6.6967,35.8496,198135565516799.3750,111.3591,2135.3591,False,False
+0.1200,Goldberg et al. (2024) w/ spillovers,7.9812,29.8747,3150119497269.9990,92.7993,2116.7993,False,True
+0.1500,Conservative,9.8750,23.8998,50083147975.9709,74.2394,2098.2394,False,True
+0.2000,Irwin & Klenow (1994) canonical,12.9449,17.9248,796262400.0000,55.6796,2079.6796,False,True
+0.2500,Upper I&K range,15.9104,14.3399,66355200.0000,44.5436,2068.5436,False,True
+0.3200,I&K point estimate,19.8930,11.2030,7543820.9534,34.7997,2058.7997,True,True
+0.4000,High / BCG-style,24.2142,8.9624,1596258.0243,27.8398,2051.8398,False,False
+0.5100,Aggressive (30% learning rate),29.7778,7.0293,418014.7796,21.8351,2045.8351,False,False
+0.7700,"Our pooled OLS (biased, not recommended)",41.3583,4.6558,80664.8005,14.4622,2038.4622,False,False

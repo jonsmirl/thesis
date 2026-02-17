@@ -1,0 +1,35 @@
+\begin{table}[htbp]
+\centering
+\caption{Dependent Variable: Chainalysis Crypto Adoption Score}
+\begin{tabular}{lcccc}
+\hline\hline
+ & (1) Bivariate & (2) Controls & (3) Full & (4) Decomposed \\
+\hline
+Constant & 0.894*** & 1.151*** & 0.071 & 0.957*** \\
+ & (0.018) & (0.220) & (0.385) & (0.239) \\[3pt]
+fiat\_quality\_index & -0.028 & -0.055 & 0.056 &  \\
+ & (0.044) & (0.066) & (0.059) &  \\[3pt]
+ln\_gdp\_pc &  & -0.028 & 0.004 & -0.012 \\
+ &  & (0.026) & (0.022) & (0.026) \\[3pt]
+internet\_users\_pct &  & 0.000 & 0.001 & 0.001 \\
+ &  & (0.001) & (0.001) & (0.001) \\[3pt]
+reg\_status &  &  & 0.050*** &  \\
+ &  &  & (0.016) &  \\[3pt]
+ln\_remittances &  &  & 0.030*** &  \\
+ &  &  & (0.011) &  \\[3pt]
+inflation\_severity\_norm &  &  &  & -0.022 \\
+ &  &  &  & (0.036) \\[3pt]
+financial\_exclusion\_norm &  &  &  & 0.063 \\
+ &  &  &  & (0.057) \\[3pt]
+institutional\_weakness\_norm &  &  &  & 0.001 \\
+ &  &  &  & (0.034) \\[3pt]
+fx\_volatility\_norm &  &  &  & -0.044 \\
+ &  &  &  & (0.034) \\[3pt]
+\hline
+Observations & 64 & 64 & 64 & 64 \\
+R$^2$ & 0.004 & 0.027 & 0.169 & 0.073 \\
+Adj. R$^2$ & -0.012 & -0.022 & 0.098 & -0.024 \\
+\hline\hline
+\multicolumn{5}{l}{\footnotesize Robust (HC1) standard errors in parentheses. * p<0.1, ** p<0.05, *** p<0.01} \\
+\end{tabular}
+\end{table}

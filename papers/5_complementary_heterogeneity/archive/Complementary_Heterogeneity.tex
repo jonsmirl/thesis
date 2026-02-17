@@ -1,0 +1,1040 @@
+\documentclass[12pt,letterpaper]{article}
+
+% Page layout
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+
+% Math
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+
+% Tables
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{graphicx}
+
+% Typography
+\usepackage[T1]{fontenc}
+\usepackage[expansion=false]{microtype}
+\usepackage{enumitem}
+
+% References
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+% Theorem environments
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% Custom commands
+\newcommand{\pderiv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\Rz}{R_0^{\text{mesh}}}
+\newcommand{\Rsettle}{R_0^{\text{settle}}}
+\newcommand{\Rdollar}{R_0^{\text{dollar}}}
+\newcommand{\Ceff}{C_{\text{eff}}}
+\newcommand{\Cmesh}{C_{\text{mesh}}}
+\newcommand{\Ccent}{C_{\text{cent}}}
+\newcommand{\phieff}{\varphi_{\text{eff}}}
+\newcommand{\alphaeff}{\alpha_{\text{eff}}}
+\newcommand{\alphacrit}{\alpha_{\text{crit}}}
+\newcommand{\Nauto}{N_{\text{auto}}}
+\newcommand{\Cmax}{C_{\text{max}}}
+\newcommand{\ddt}{\frac{d}{dt}}
+\newcommand{\bbar}{\bar{b}}
+\newcommand{\pibar}{\bar{\pi}}
+\newcommand{\pilow}{\underline{\pi}}
+\newcommand{\Scrit}{S_{\text{crit}}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\Corr}{Corr}
+
+% Projectors
+\newcommand{\Pperp}{P_{\!\perp}}
+\newcommand{\Ppar}{P_{\!\parallel}}
+
+% Section formatting
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\titleformat{\subsubsection}{\normalsize\itshape}{\thesubsubsection}{0.5em}{}
+
+\begin{document}
+
+% -------------------------------------------------------------------
+% TITLE PAGE
+% -------------------------------------------------------------------
+\begin{titlepage}
+\centering
+\vspace*{2cm}
+{\LARGE\bfseries COMPLEMENTARY HETEROGENEITY\par}
+\vspace{0.8cm}
+{\large\itshape A Generating Function Theory of\\Self-Organizing Agent Economies\par}
+\vspace{1.5cm}
+{\large Connor Smirl\par}
+\vspace{0.3cm}
+{Department of Economics, Tufts University\par}
+\vspace{0.3cm}
+{February 2026\par}
+\vspace{0.5cm}
+{\scshape Working Paper\par}
+\vspace{1cm}
+\begin{abstract}
+\noindent Autonomous AI agents are entering capital markets. This paper provides a formal theory of the dynamics that result when the marginal market participant is a machine. The central mathematical object is the CES free energy $\Phi = -\log F$, where $F$ is the constant-elasticity-of-substitution aggregate of heterogeneous agent capabilities. The convexity of $\Phi$ governs the system at every scale.
+
+Within each level, strong convexity of $\Phi$ on isoquants implies the \emph{CES Triple Role}: complementary heterogeneous agents are simultaneously productive (superadditivity), informationally robust (correlation resistance), and competitively healthy (strategic independence). A single curvature parameter $K = (1-\rho)(J-1)/J$ controls all three properties.
+
+The same convexity forces the network architecture. The CES geometry requires aggregate coupling through $F_n$ (component-level information is filtered out by a $(2-\rho)$ low-pass filter), directed feed-forward structure (bidirectional coupling cannot bifurcate), and nearest-neighbor topology (long-range coupling equilibrates on the slow manifold). The model's structure is derived, not assumed.
+
+Between levels, the multi-level free energy $\Phi_{\text{total}}$ loses positive-definiteness at a master reproduction number $\rho(\mathbf{K}) = 1$, the spectral radius of a next-generation matrix. The system can be globally super-threshold while locally sub-threshold. Across timescales, fast variables minimize a graph-theoretic Lyapunov function $V = \sum c_n D_{\text{KL}}(x_n \| x_n^*)$ that inherits $\Phi$'s eigenstructure, creating a hierarchical ceiling: each scale's growth is bounded by the scale above, and the long-run rate equals the slowest-adapting layer.
+
+Applied to four scales---hardware learning curves, mesh formation, autocatalytic capability growth, and settlement feedback---the theory predicts two stable equilibria. In the high-mesh equilibrium, monetary policy tools degrade, real-time market discipline constrains fiscal policy, and a synthetic gold standard emerges endogenously. Nine falsifiable predictions with specific timing and quantitative thresholds are derived.
+
+\end{abstract}
+
+\vspace{0.5cm}
+\noindent\textbf{Keywords:} CES aggregation, free energy, generating function, autonomous agents, mesh equilibrium, autocatalytic growth, settlement infrastructure, monetary policy, next-generation matrix, hierarchical dynamics
+
+\vspace{0.3cm}
+\noindent\textbf{JEL:} C62, D85, E44, E52, F33, L14, O33, O41
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+% ===================================================================
+% SECTION 1: INTRODUCTION
+% ===================================================================
+\section{Introduction}\label{sec:intro}
+
+Autonomous AI agents are entering capital markets. No formal theory describes the dynamics of an economy where the marginal market participant is a machine. This paper provides one.
+
+The central mathematical object is the \emph{CES free energy}
+\begin{equation}\label{eq:Phi_def}
+\Phi(\mathbf{x}) = -\sum_{n=1}^{N} \log F_n(\mathbf{x}_n),
+\end{equation}
+where $F_n(\mathbf{x}_n) = \bigl(\frac{1}{J}\sum_{j=1}^{J} x_{nj}^{\,\rho}\bigr)^{1/\rho}$ is the CES aggregate of heterogeneous agent capabilities at level $n$, with substitution parameter $\rho < 1$ and $J \geq 2$ components. The convexity of $\Phi$ governs the system at every scale: within each level (the CES Triple Role, Theorem~\ref{thm:triple_role}), between levels (the activation threshold, Theorem~\ref{thm:master_R0}), and across timescales (the hierarchical ceiling, Theorem~\ref{thm:ceiling}). One function, three theorems.
+
+The same convexity forces the network architecture. The CES geometry requires aggregate coupling---component-level information is filtered out by a $(2-\rho)$ low-pass filter. It requires directed feed-forward structure---bidirectional coupling yields an unconditionally stable Jacobian that cannot support the bifurcation at $\rho(\mathbf{K}) = 1$. And it requires nearest-neighbor topology---long-range coupling equilibrates on the slow manifold, reducing to modified exogenous inputs. The network architecture is derived, not assumed (Theorem~\ref{thm:port_topology}).
+
+The system operates at four scales: hardware (semiconductor learning curves), network (mesh formation), capability (autocatalytic training), and finance (settlement feedback). Each scale has an activation threshold determined by the CES curvature. A master reproduction number---the spectral radius of a next-generation matrix built from cross-scale coupling---governs activation of the full system. The system can be globally super-threshold while locally sub-threshold: the cycle of mutual amplification compensates for individually insufficient layers.
+
+Each scale's growth is bounded by the scale above, formalized as a slow manifold. The binding constraint shifts over time. The long-run growth rate is determined by the slowest-adapting layer---the frontier training rate. This is the hierarchical ceiling: Baumol's cost disease and the Triffin squeeze are the same mathematical structure at adjacent scales.
+
+The coupled system admits two stable equilibria---a low-mesh state and a high-mesh state. In the high-mesh state, monetary policy tools degrade through the systematic elimination of the frictions they exploit: information processing delay (forward guidance), arbitrage speed (quantitative easing), and captive savings (financial repression). Real-time market discipline constrains fiscal policy, and a ``synthetic gold standard'' emerges endogenously from the model rather than being imposed by institutional design.
+
+The paper proceeds as follows. Section~\ref{sec:CES_free_energy} establishes $\Phi$ as the generating object. Section~\ref{sec:triple_role} proves the CES Triple Role theorem. Section~\ref{sec:port_topology} derives the network architecture from CES geometry. Sections~\ref{sec:mesh}--\ref{sec:settlement} develop the four-scale application: mesh equilibrium, autocatalytic growth, and settlement feedback. Section~\ref{sec:master_R0} proves the master reproduction number theorem and the Eigenstructure Bridge connecting $\Phi$ to the Lyapunov function. Section~\ref{sec:ceiling} establishes the hierarchical ceiling. Section~\ref{sec:empirical} presents calibration and nine falsifiable predictions. Section~\ref{sec:limitations} states limitations. Section~\ref{sec:conclusion} concludes.
+
+
+% ===================================================================
+% SECTION 2: THE CES FREE ENERGY
+% ===================================================================
+\section{The CES Free Energy}\label{sec:CES_free_energy}
+
+This section establishes the generating object $\Phi = -\log F$ before the three theorems are proved. The reader encounters the mathematical core first; everything that follows is a consequence of this object's convexity.
+
+\subsection{Definition}\label{subsec:CES_def}
+
+Let $\mathbf{x}_n = (x_{n1}, \ldots, x_{nJ}) \in \mathbb{R}^J_+$ denote the state of level $n$ in a hierarchy of $N$ levels. The \emph{CES aggregate} at level $n$ is
+\begin{equation}\label{eq:CES}
+F_n(\mathbf{x}_n) = \left(\frac{1}{J}\sum_{j=1}^{J} x_{nj}^{\,\rho}\right)^{1/\rho}, \qquad \rho < 1,\; \rho \neq 0,\; J \geq 2.
+\end{equation}
+The elasticity of substitution is $\sigma = 1/(1-\rho)$. Components are \emph{complements} when $\rho < 0$ ($\sigma < 1$) and \emph{weak complements} when $0 < \rho < 1$ ($\sigma > 1$ but finite). The limits $\rho \to 1$ and $\rho \to -\infty$ yield perfect substitutes (linear) and perfect complements (Leontief), respectively.
+
+\begin{definition}[CES Free Energy]
+The \emph{CES free energy} of the $N$-level system is
+\begin{equation}\label{eq:Phi_total}
+\Phi(\mathbf{x}) = -\sum_{n=1}^{N} \log F_n(\mathbf{x}_n).
+\end{equation}
+This is the paper's central object. It is \emph{not} the system's potential---the system has no potential (Section~\ref{subsec:bridge_preview}). It \emph{is} the system's geometry: it determines the curvature structure, eigenspace decomposition, and spectral properties that control all results.
+\end{definition}
+
+\begin{definition}[Curvature Parameter]
+The \emph{curvature parameter} of the CES aggregate is
+\begin{equation}\label{eq:K_def}
+K = K(\rho, J) = (1 - \rho)\,\frac{J-1}{J}.
+\end{equation}
+This single number controls every subsequent result. $K > 0$ for all $\rho < 1$, $J \geq 2$. $K$ is increasing in $|\rho|$ (when $\rho < 0$) and in $J$. Throughout the paper, we rewrite $(1-\rho)$ as $KJ/(J-1)$ wherever it appears.
+\end{definition}
+
+\subsection{The Hessian of $\Phi$}\label{subsec:Hessian}
+
+At the symmetric point $\bar{\mathbf{x}}_n = (\bar{x}, \ldots, \bar{x})$ with $F_n(\bar{\mathbf{x}}_n) = c = \bar{x}$, the gradient and Hessian of $F_n$ are:
+\begin{equation}\label{eq:grad_F}
+\nabla F_n\big|_{\bar{\mathbf{x}}} = \frac{1}{J}\mathbf{1}, \qquad
+\|\nabla F_n\| = \frac{1}{\sqrt{J}},
+\end{equation}
+\begin{equation}\label{eq:Hess_F}
+H_{F_n}\big|_{\bar{\mathbf{x}}} = \frac{(1-\rho)}{J^2 c}\bigl[\mathbf{1}\mathbf{1}^T - J\,I\bigr] = \frac{K}{J(J-1)c}\bigl[\mathbf{1}\mathbf{1}^T - J\,I\bigr].
+\end{equation}
+
+Computing $\nabla^2\Phi_n = -\nabla^2(\log F_n) = F_n^{-2}\nabla F_n\nabla F_n^T - F_n^{-1}H_{F_n}$:
+\begin{equation}\label{eq:Hess_Phi}
+\nabla^2 \Phi_n\big|_{\bar{\mathbf{x}}} = \frac{1}{J^2 c^2}\Bigl[\frac{KJ}{J-1}\,J\,I + \Bigl(1 - \frac{KJ}{J-1}\Bigr)\mathbf{1}\mathbf{1}^T\Bigr] = \frac{1}{Jc^2}\Bigl[\frac{KJ}{J-1}\,\Pperp + \frac{1}{J}\,\Ppar\Bigr],
+\end{equation}
+where $\Pperp = I - \frac{1}{J}\mathbf{1}\mathbf{1}^T$ projects onto \emph{diversity modes} (directions perpendicular to $\mathbf{1}$) and $\Ppar = \frac{1}{J}\mathbf{1}\mathbf{1}^T$ projects onto the \emph{radial mode} (direction proportional to $\mathbf{1}$). The eigenvalues are:
+\begin{equation}\label{eq:Phi_eigenvalues}
+\lambda_{\text{div}}(\nabla^2\Phi_n) = \frac{(1-\rho)}{Jc^2} = \frac{K}{(J-1)c^2}\cdot\frac{J-1}{J}\cdot\frac{J}{1} = \frac{K}{Jc^2}\cdot\frac{J}{J-1},
+\end{equation}
+with multiplicity $J-1$ (diversity subspace), and
+\begin{equation}\label{eq:Phi_radial}
+\lambda_{\text{rad}}(\nabla^2\Phi_n) = \frac{1}{Jc^2},
+\end{equation}
+with multiplicity 1 (radial direction). The \emph{anisotropy ratio} is
+\begin{equation}\label{eq:anisotropy}
+\frac{\lambda_{\text{div}}}{\lambda_{\text{rad}}} = (1-\rho) = \frac{KJ}{J-1}.
+\end{equation}
+This ratio controls the relative stiffness of diversity versus aggregate perturbations. For $\rho < 1$ ($K > 0$), the free energy is \emph{more} curved in diversity directions than in the radial direction: $\Phi$ penalizes asymmetric allocations more severely than aggregate changes.
+
+
+\subsection{The $(2-\rho)$ Low-Pass Filter}\label{subsec:low_pass}
+
+The CES curvature controls not only the static geometry of $\Phi$ but also the dynamic filtering of perturbations. Consider the linearized within-level dynamics at equilibrium:
+\begin{equation}\label{eq:within_dynamics}
+\varepsilon_n \dot{x}_{nj} = T_n \cdot \pderiv{F_n}{x_{nj}} - \sigma_n x_{nj},
+\end{equation}
+where $T_n$ is the total input to level $n$ and $\sigma_n$ is the damping rate. At the symmetric equilibrium $T_n = \sigma_n J c$, the Jacobian is
+\begin{equation}\label{eq:Df}
+Df_n = \frac{\sigma_n}{\varepsilon_n}\left[\frac{KJ}{J-1}\cdot\frac{1}{J}\mathbf{1}\mathbf{1}^T - \Bigl(1 + \frac{KJ}{J-1}\Bigr)I\right],
+\end{equation}
+with eigenvalues:
+\begin{equation}\label{eq:Df_eigenvalues}
+\lambda_{\text{agg}} = -\frac{\sigma_n}{\varepsilon_n}, \qquad
+\lambda_{\text{div}} = -\frac{\sigma_n}{\varepsilon_n}\Bigl(1 + \frac{KJ}{J-1}\Bigr) = -\frac{\sigma_n(2-\rho)}{\varepsilon_n}.
+\end{equation}
+
+Diversity modes decay faster than the aggregate mode by a factor of
+\begin{equation}\label{eq:filter_ratio}
+(2-\rho) = 1 + \frac{KJ}{J-1} > 1 \qquad \text{for all } \rho < 1.
+\end{equation}
+This is the \emph{$(2-\rho)$ low-pass filter}: for a general port input $u \in \mathbb{R}^J$ decomposed as $u = u^{\parallel} + u^{\perp}$, the steady-state response satisfies
+\begin{equation}\label{eq:filter}
+\frac{|\delta x^{\perp}_{\text{ss}}|}{|\delta x^{\parallel}_{\text{ss}}|} = \frac{|u^{\perp}|}{|u^{\parallel}|\cdot(2-\rho)}.
+\end{equation}
+The suppression factor $1/(2-\rho)$ ranges from $1/2$ (at $\rho = 0$, Cobb-Douglas) to $0$ (as $\rho \to -\infty$, Leontief). The CES curvature strips out component-level information, leaving only the aggregate $F_n$.
+
+\begin{remark}
+The factor $(2-\rho)$ appears in the \emph{Jacobian of the dynamics} $Df_n$, not in the \emph{Hessian of the free energy} $\nabla^2\Phi_n$. The Hessian has anisotropy ratio $(1-\rho)$; the Jacobian has anisotropy ratio $(2-\rho) = 1 + (1-\rho)$, where the additional 1 comes from the damping term $-\sigma_n I$. Both objects are valid and serve different purposes: $\nabla^2\Phi$ governs the geometry; $Df$ governs convergence rates.
+\end{remark}
+
+
+\subsection{The Sufficient Statistic Result}\label{subsec:sufficient_statistic}
+
+The low-pass filter is a linearized statement. The following nonlinear result is decisive.
+
+\begin{proposition}[Sufficient Statistic]\label{prop:sufficient_statistic}
+At any equilibrium of the CES-coupled system with $\rho \neq 2$, $x_{nj} = \bar{x}_n$ for all $j$ at every level $n$. Therefore $F_n$ is a sufficient statistic for level $n$'s state on the equilibrium manifold.
+\end{proposition}
+
+\begin{proof}
+At equilibrium, $T_n \cdot \partial F_n/\partial x_{nj} = \sigma_n x_{nj}$ for all $j$. The CES marginal product is $\partial F_n/\partial x_{nj} = F_n^{1-\rho} x_{nj}^{\rho-1}/J$, so the equilibrium condition becomes
+\begin{equation}\label{eq:equil_condition}
+\frac{T_n}{J}\,x_{nj}^{\rho-1}\,F_n^{1-\rho} = \sigma_n\,x_{nj}.
+\end{equation}
+Rearranging: $x_{nj}^{\rho-2} = \sigma_n J / (T_n F_n^{1-\rho})$. The right-hand side is \emph{independent of $j$}. For $\rho \neq 2$, the function $t \mapsto t^{\rho-2}$ is injective on $\mathbb{R}_+$, so $x_{nj} = \bar{x}_n$ for all $j$.
+\end{proof}
+
+This result has a sharp geometric interpretation: the CES curvature creates a unique minimum of $\Phi_n$ restricted to the equilibrium conditions. Any coupling through individual $x_{nj}$ is projected onto $F_n$---the CES curvature strips out component-level information not merely in the linearized dynamics (the $(2-\rho)$ filter) but at the full nonlinear level.
+
+
+\subsection{The Lyapunov Function and the Eigenstructure Bridge}\label{subsec:bridge_preview}
+
+The system~\eqref{eq:within_dynamics} is \emph{not} a gradient flow of $\Phi$. The Jacobian $Df$ is lower-triangular (reflecting the feed-forward hierarchy), which is a topological obstruction to gradient structure: the antisymmetric part of $Df$ is nonzero, and the GENERIC degeneracy condition $L\nabla\Phi = 0$ fails (the feed-forward coupling does not conserve free energy). No coordinate transformation can remedy this---the lower-triangular block structure of $Df$ is preserved under smooth changes of variables.
+
+However, a graph-theoretic Lyapunov function exists. Following Li, Shuai, and van den Driessche (2010), the function
+\begin{equation}\label{eq:V_def}
+V(\mathbf{x}) = \sum_{n=1}^{N} c_n \sum_{j=1}^{J}\left(\frac{x_{nj}}{x_{nj}^*} - 1 - \log\frac{x_{nj}}{x_{nj}^*}\right) = \sum_{n=1}^{N} c_n\,D_{\text{KL}}(\mathbf{x}_n \| \mathbf{x}_n^*),
+\end{equation}
+where $D_{\text{KL}}$ denotes the component-wise KL divergence, $\mathbf{x}_n^*$ is the equilibrium, and the coefficients $c_n > 0$ satisfy the \emph{tree condition} for the feed-forward graph, is a Lyapunov function: $\dot{V} \leq 0$ along trajectories, with equality only at $\mathbf{x}^*$.
+
+The crucial connection---the \emph{Eigenstructure Bridge}---is that $V$ and $\Phi$ share eigenvectors at the symmetric equilibrium. The Hessian of $D_{\text{KL}}$ at the equilibrium is $H_{D_{\text{KL}}} = (1/\bar{x})I_J$ (isotropic), while the Hessian of $-\log F_n$ has the anisotropic structure~\eqref{eq:Hess_Phi} with diversity-to-radial ratio $(1-\rho) = KJ/(J-1)$. Both have eigenvectors $\{\mathbf{1}, \mathbf{1}^{\perp}\}$, and the diversity eigenvalue ratio is
+\begin{equation}\label{eq:bridge_ratio}
+\frac{\lambda_{\text{div}}(\nabla^2\Phi_n)}{\lambda_{\text{div}}(H_{D_{\text{KL}}})} = \frac{(1-\rho)}{J} = \frac{K}{J-1}.
+\end{equation}
+The curvature parameter $K$ controls both objects. $\Phi$ determines the geometry; $V$ implements the dynamics. The full Eigenstructure Bridge theorem is stated and proved in Section~\ref{sec:master_R0} after the dynamics have been developed.
+
+
+% ===================================================================
+% SECTION 3: THE CES TRIPLE ROLE THEOREM
+% ===================================================================
+\section{The CES Triple Role Theorem}\label{sec:triple_role}
+
+The free energy $\Phi$ is strongly convex on each isoquant of $F$. This single geometric fact has three simultaneous consequences: superadditivity (aggregation theory), correlation robustness (information theory), and strategic independence (game theory). All three are controlled by $K$.
+
+\subsection{The Curvature Lemma}\label{subsec:curvature_lemma}
+
+\begin{definition}[Symmetric Point]
+For output level $c > 0$, the symmetric point on the isoquant $\{F = c\}$ is $\bar{\mathbf{x}} = (c, \ldots, c)$.
+\end{definition}
+
+\begin{definition}[Isoquant Curvature]
+At $\mathbf{x} \in \{F = c\}$, the \emph{normal curvature} in a tangent direction $\mathbf{v}$ (with $\nabla F \cdot \mathbf{v} = 0$) is
+\begin{equation}
+\kappa(\mathbf{x}, \mathbf{v}) = -\frac{\mathbf{v}^T H_F(\mathbf{x})\,\mathbf{v}}{\|\nabla F(\mathbf{x})\|\cdot\|\mathbf{v}\|^2}.
+\end{equation}
+\end{definition}
+
+\begin{lemma}[Isoquant Curvature of CES]\label{lem:curvature}
+At the symmetric point $\bar{\mathbf{x}}$ on $\{F = c\}$ with equal weights $a_j = 1/J$, every principal curvature of the CES isoquant equals
+\begin{equation}\label{eq:curvature}
+\kappa^* = \frac{(1-\rho)}{c\sqrt{J}} = \frac{K}{c}\cdot\frac{\sqrt{J}}{J-1}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+At the symmetric point, $\nabla F = \frac{1}{J}\mathbf{1}$, $\|\nabla F\| = 1/\sqrt{J}$, and from~\eqref{eq:Hess_F}, for any tangent vector $\mathbf{v}$ with $\mathbf{1}\cdot\mathbf{v} = 0$:
+\[
+\mathbf{v}^T H_F\,\mathbf{v} = \frac{(1-\rho)}{J^2 c}\bigl[0 - J\|\mathbf{v}\|^2\bigr] = -\frac{(1-\rho)}{Jc}\|\mathbf{v}\|^2 = -\frac{K}{(J-1)c}\cdot\frac{J-1}{J}\cdot J\cdot\frac{\|\mathbf{v}\|^2}{J}.
+\]
+Simplifying: $\mathbf{v}^T H_F\,\mathbf{v} = -(1-\rho)\|\mathbf{v}\|^2/(Jc)$. Therefore
+\[
+\kappa^* = -\frac{-(1-\rho)\|\mathbf{v}\|^2/(Jc)}{(1/\sqrt{J})\|\mathbf{v}\|^2} = \frac{(1-\rho)}{c\sqrt{J}}. \qedhere
+\]
+\end{proof}
+
+\begin{remark}
+The isoquant has \emph{uniform} curvature at the symmetric point: all $J-1$ principal curvatures coincide, a consequence of the permutation symmetry of CES with equal weights. For $\rho < 1$, $\kappa^* > 0$: the isoquant is strictly convex toward the origin. As $\rho \to -\infty$, $\kappa^* \to \infty$; as $\rho \to 1$, $\kappa^* \to 0$.
+
+Restated in terms of $\Phi$: the Curvature Lemma says that $\Phi$ is strongly convex on the isoquant with modulus $K/[(J-1)c^2]$.
+\end{remark}
+
+
+\subsection{Theorem A: Superadditivity}\label{subsec:superadditivity}
+
+\begin{theorem}[Superadditivity]\label{thm:superadditivity}
+For all $\mathbf{x}, \mathbf{y} \in \mathbb{R}^J_+ \setminus \{\mathbf{0}\}$:
+\begin{equation}\label{eq:superadditivity}
+F(\mathbf{x} + \mathbf{y}) \geq F(\mathbf{x}) + F(\mathbf{y}),
+\end{equation}
+with equality if and only if $\mathbf{x}$ and $\mathbf{y}$ are proportional. The superadditivity gap satisfies
+\begin{equation}\label{eq:super_gap}
+F(\mathbf{x} + \mathbf{y}) - F(\mathbf{x}) - F(\mathbf{y}) \geq \frac{K}{4c}\cdot\frac{\sqrt{J}}{J-1}\cdot\min\!\bigl(F(\mathbf{x}), F(\mathbf{y})\bigr)\cdot d_{\mathcal{I}}(\hat{\mathbf{x}}, \hat{\mathbf{y}})^2,
+\end{equation}
+where $\hat{\mathbf{x}} = \mathbf{x}/F(\mathbf{x})$, $\hat{\mathbf{y}} = \mathbf{y}/F(\mathbf{y})$ are projections onto the unit isoquant, and $d_{\mathcal{I}}$ is geodesic distance on $\{F=1\}$.
+\end{theorem}
+
+\begin{proof}
+\emph{Step 1: Qualitative result from concavity and homogeneity.} Since $F$ is homogeneous of degree 1:
+\[
+F(\mathbf{x}+\mathbf{y}) = \bigl(F(\mathbf{x})+F(\mathbf{y})\bigr)\cdot F\!\bigl(\alpha\hat{\mathbf{x}} + (1-\alpha)\hat{\mathbf{y}}\bigr),
+\]
+where $\alpha = F(\mathbf{x})/(F(\mathbf{x})+F(\mathbf{y}))$. Since $F(\hat{\mathbf{x}}) = F(\hat{\mathbf{y}}) = 1$ and $F$ is concave:
+\[
+F\!\bigl(\alpha\hat{\mathbf{x}} + (1-\alpha)\hat{\mathbf{y}}\bigr) \geq \alpha + (1-\alpha) = 1.
+\]
+Therefore $F(\mathbf{x}+\mathbf{y}) \geq F(\mathbf{x}) + F(\mathbf{y})$. Equality holds iff $\hat{\mathbf{x}} = \hat{\mathbf{y}}$ (strict concavity for $\rho < 1$), i.e., iff $\mathbf{x} \propto \mathbf{y}$.
+
+\emph{Step 2: Quantitative bound from curvature.} For $\hat{\mathbf{x}}, \hat{\mathbf{y}} \in \{F=1\}$ with geodesic distance $d = d_{\mathcal{I}}(\hat{\mathbf{x}}, \hat{\mathbf{y}})$, the curvature comparison theorem gives
+\[
+F\!\bigl(\alpha\hat{\mathbf{x}} + (1-\alpha)\hat{\mathbf{y}}\bigr) \geq 1 + \frac{\kappa^*}{2}\,\alpha(1-\alpha)\,d^2 + O(d^4).
+\]
+Since $\alpha(1-\alpha)\bigl(F(\mathbf{x})+F(\mathbf{y})\bigr) \geq \frac{1}{2}\min\bigl(F(\mathbf{x}), F(\mathbf{y})\bigr)$ and $\kappa^* = K\sqrt{J}/[c(J-1)]$:
+\[
+F(\mathbf{x}+\mathbf{y}) - F(\mathbf{x}) - F(\mathbf{y}) \geq \frac{K}{4c}\cdot\frac{\sqrt{J}}{J-1}\cdot\min\!\bigl(F(\mathbf{x}), F(\mathbf{y})\bigr)\cdot d^2. \qedhere
+\]
+\end{proof}
+
+The superadditivity gap is $\Omega(K)$ times a diversity measure. The more complementary the components ($K$ larger) and the more diverse the input vectors, the larger the productivity premium from aggregation. The mechanism through the lens of $\Phi$: convexity of $\Phi$ implies concavity of $F = e^{-\Phi}$, which implies superadditivity by homogeneity.
+
+
+\subsection{Theorem B: Correlation Robustness}\label{subsec:correlation}
+
+Let $\mathbf{X} = (X_1, \ldots, X_J)$ be random with $\mathbb{E}[X_j] = \mu > 0$, $\Var(X_j) = \tau^2$, and equicorrelation $\Corr(X_i, X_j) = r \geq 0$ for $i \neq j$. Write $\gamma = \tau/\mu$ for the coefficient of variation.
+
+\begin{definition}[Effective Dimension]
+The \emph{effective dimension} of the CES aggregate $Y = F(\mathbf{X})$ at the symmetric point is $d_{\text{eff}} = (\tau^2/J)/\Var[Y]$---the ratio of average component variance to aggregate variance.
+\end{definition}
+
+\begin{theorem}[Correlation Robustness]\label{thm:correlation}
+To second order in $\gamma$:
+\begin{equation}\label{eq:d_eff}
+d_{\text{eff}} \geq \underbrace{\frac{J}{1+r(J-1)}}_{\text{linear baseline}} + \underbrace{\frac{K^2\gamma^2}{2}\cdot\frac{J(J-1)(1-r)}{[1+r(J-1)]^2}}_{\text{curvature bonus}}.
+\end{equation}
+In particular, $d_{\text{eff}} \geq J/2$ provided
+\begin{equation}\label{eq:r_bar}
+r < \bar{r}(J,\rho) = \frac{1}{J-1} + \frac{K^2\gamma^2}{2(J-1)} + O(J^{-2}).
+\end{equation}
+For $\rho < 0$ (strict complements), $\bar{r} > 1$ for sufficiently large $K$ or $\gamma$: nearly perfect correlation is tolerable.
+\end{theorem}
+
+\begin{proof}
+\emph{Step 1: Second-order expansion.} Expand $F(\mathbf{X})$ around $\bar{\mathbf{x}} = \mu\mathbf{1}$. Let $\boldsymbol{\epsilon} = \mathbf{X} - \mu\mathbf{1}$. Then $F(\mathbf{X}) \approx \mu + Y_1 + Y_2$ where the linear term $Y_1 = \bar{\epsilon} = \frac{1}{J}\sum_j\epsilon_j$ and the curvature term $Y_2 = -\frac{(1-\rho)}{2J\mu}\|\boldsymbol{\eta}\|^2$, with $\boldsymbol{\eta} = \boldsymbol{\epsilon} - \bar{\epsilon}\mathbf{1}$ the idiosyncratic component.
+
+\emph{Step 2: Spectral decomposition.} The covariance $\Sigma = \tau^2[(1-r)I + r\mathbf{1}\mathbf{1}^T]$ has eigenvalue $\tau^2[1+r(J-1)]$ on $\mathbf{1}/\sqrt{J}$ (common mode) and $\tau^2(1-r)$ on $\mathbf{1}^{\perp}$ ($J-1$ idiosyncratic modes). The two channels are independent: $Y_1$ depends on the common mode, $Y_2$ on the idiosyncratic modes.
+
+\emph{Step 3: Variance accounting.} $\Var[Y_1] = \tau^2[1+r(J-1)]/J$. For $Y_2$: $\Var[\|\boldsymbol{\eta}\|^2] = 2(J-1)\tau^4(1-r)^2$, so
+\[
+\Var[Y_2] = \frac{(1-\rho)^2}{4J^2\mu^2}\cdot 2(J-1)\tau^4(1-r)^2 = \frac{K^2 J}{2(J-1)}\cdot\frac{\tau^4(1-r)^2}{\mu^2}.
+\]
+
+\emph{Step 4: Multi-channel effective dimension.} The linear channel contributes $d_{\text{eff}}^{\text{common}} = J/[1+r(J-1)]$. The curvature channel contributes through the Fisher information carried by $Y_2$ about $\mu$. By the Cram\'er-Rao bound:
+\[
+d_{\text{eff}}^{\text{idio}} \geq \frac{(J-1)\gamma^2(1-r)}{2J}.
+\]
+Combining and using $(1-\rho) = KJ/(J-1)$, the total effective dimension satisfies~\eqref{eq:d_eff}.
+
+\emph{Step 5: Threshold.} Setting $d_{\text{eff}} \geq J/2$ at $r = 1/(J-1) + \Delta r$ and balancing the curvature bonus against the linear penalty gives $\Delta r \leq K^2\gamma^2/[2(J-1)]$, yielding~\eqref{eq:r_bar}.
+\end{proof}
+
+The curvature of $\Phi$ creates a nonlinear information channel: the quadratic term $Y_2$ extracts signal from idiosyncratic variation that the linear channel $Y_1$ cannot access. The curvature bonus is $\Theta(K^2)$---quadratic in $K$ because the information channel is quadratic in the curvature.
+
+
+\subsection{Theorem C: Strategic Independence}\label{subsec:strategic}
+
+Consider $J$ strategic agents, each controlling $x_j \geq 0$. A coalition $S \subseteq [J]$ with $|S| = k$ coordinates $\{x_j\}_{j \in S}$ to maximize joint payoff.
+
+\begin{definition}[Manipulation Gain]
+The \emph{manipulation gain} of coalition $S$ is
+\begin{equation}
+\Delta(S) = \sup_{\mathbf{x}_S \geq 0}\;\frac{v(S, \mathbf{x}_S) - v(S, \mathbf{x}_S^*)}{v(S, \mathbf{x}_S^*)},
+\end{equation}
+where $v(S, \cdot)$ is the coalition's Shapley value and $\mathbf{x}_S^*$ is the efficient allocation.
+\end{definition}
+
+\begin{theorem}[Strategic Independence]\label{thm:strategic}
+For all $\rho < 1$ and $|S| = k \leq J/2$:
+\begin{equation}\label{eq:manipulation}
+\Delta(S) \leq -\frac{K}{2J(J-1)}\cdot\frac{\|\boldsymbol{\delta}\|^2}{c^2} \leq 0
+\end{equation}
+for any deviation $\boldsymbol{\delta}$ from the efficient allocation.
+\end{theorem}
+
+\begin{proof}
+\emph{Step 1: Standalone value.} For $\rho > 0$: $F(\mathbf{x}_S, \mathbf{0}_{-S}) \leq (k/J)^{1/\rho}\cdot c$, which is sublinear in coalition size since $1/\rho > 1$. For $\rho < 0$: the convention $F = 0$ whenever any $x_j = 0$ gives the coalition zero standalone value.
+
+\emph{Step 2: Manipulation bound from curvature.} Any coalition redistribution $\boldsymbol{\delta}_S$ with $\sum_{j \in S}\delta_j = 0$ changes $F$ by
+\[
+\Delta F \approx \frac{1}{2}\boldsymbol{\delta}_S^T H_{SS}\,\boldsymbol{\delta}_S = -\frac{(1-\rho)}{Jc}\|\boldsymbol{\delta}\|^2 = -\frac{K}{(J-1)c}\|\boldsymbol{\delta}\|^2.
+\]
+The symmetric point is a strict maximum of $F$ over the coalition's feasible set. Under Shapley allocation, the coalition's value loss from deviation of norm $\|\boldsymbol{\delta}\|$ is at least $K\|\boldsymbol{\delta}\|^2\cdot k/[2J(J-1)c^2]$. Normalizing by the efficient Shapley value $v^*(S) = (k/J)\cdot c$ yields~\eqref{eq:manipulation}.
+\end{proof}
+
+Strategic coordination is self-defeating under CES complementarity: redistribution loses output (curvature penalizes asymmetry), withholding loses more than it gains (complementarity premium is already efficiently allocated), and for strict complements ($\rho < 0$), the coalition cannot produce output alone. The CES game with $\rho < 1$ is convex ($F$ concave implies a convex game in the sense of Shapley 1971), so core allocations exist and satisfy the first-order conditions.
+
+
+\subsection{The Unified Theorem}\label{subsec:unified}
+
+\begin{theorem}[CES Triple Role]\label{thm:triple_role}
+Let $F$ be a CES aggregate with $\rho < 1$, $J \geq 2$, and curvature parameter $K = (1-\rho)(J-1)/J > 0$. Then:
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{Superadditivity:} $F(\mathbf{x}+\mathbf{y}) \geq F(\mathbf{x})+F(\mathbf{y})$ with gap $\geq \Omega(K) \cdot \text{diversity}$.
+\item \textbf{Correlation robustness:} $d_{\emph{eff}} \geq \text{linear baseline} + \Omega(K^2) \cdot \text{idiosyncratic bonus}$.
+\item \textbf{Strategic independence:} $\Delta(S) \leq -\Omega(K) \cdot \text{deviation}^2$.
+\end{enumerate}
+All three bounds tighten monotonically in $K$.
+\end{theorem}
+
+$K$ enters linearly in (a) and (c) (first-order curvature effects via the Hessian of $F$) and quadratically in (b) (the information channel is the variance of a Hessian-quadratic form, hence $O(K^2)$).
+
+
+\subsection{Geometric Intuition}\label{subsec:intuition}
+
+The three properties are one property: \emph{the isoquant is not flat}. Consider the unit isoquant $\{F = 1\}$:
+
+For $\rho = 1$ ($K = 0$): the isoquant is a hyperplane. Convex combinations stay on the surface. Correlated inputs project identically. Coalitions redistribute freely. Gap $= 0$, bonus $= 0$, penalty $= 0$.
+
+For $\rho < 1$ ($K > 0$): the isoquant curves toward the origin. A chord between two points on the isoquant passes through $\{F > 1\}$---this is superadditivity. Two correlated inputs still lie on a curved surface, creating a quadratic channel through which the aggregate extracts idiosyncratic information---this is informational diversity. Moving along the isoquant away from the balanced point follows a curved path that loses altitude---this is strategic stability.
+
+$\rho < 1$ is precisely the condition for non-flatness. $K = (1-\rho)(J-1)/J$ is precisely the degree of non-flatness. Everything else is commentary.
+
+
+\subsection{Generality}
+
+The CES Triple Role applies to \emph{any} system with CES aggregation: production networks (Arrow et al.\ 1961), monopolistic competition (Dixit and Stiglitz 1977), portfolio theory, ecological communities, immune systems, federal governance. The theorem is about CES functions. The mesh application is one instance.
+
+
+% ===================================================================
+% SECTION 4: THE PORT TOPOLOGY THEOREM
+% ===================================================================
+\section{The Port Topology Theorem}\label{sec:port_topology}
+
+This section shows that the network architecture of the hierarchical CES system is \emph{derived}, not assumed. The CES geometry constrains the model's structure; the modeler does not choose it. This is the paper's principal model selection result.
+
+\begin{theorem}[Port Topology]\label{thm:port_topology}
+Given a hierarchical CES system with $N$ levels of $J$ components, parameter $\rho < 1$, and timescale separation $\varepsilon_1 \gg \varepsilon_2 \gg \cdots \gg \varepsilon_N$, the CES geometry forces:
+\begin{enumerate}[label=(\roman*)]
+\item \textbf{Aggregate coupling:} each level communicates only through $F_n$.
+\item \textbf{Directed feed-forward:} no power-preserving feedback.
+\item \textbf{Port alignment:} input direction $\mathbf{b}_n \propto \nabla F_n \propto \mathbf{1}$.
+\item \textbf{Nearest-neighbor chain:} effective topology on the slow manifold.
+\end{enumerate}
+\end{theorem}
+
+\subsection{Proof of (i): Aggregate Coupling}\label{subsec:aggregate_coupling}
+
+By Proposition~\ref{prop:sufficient_statistic}, the nonlinear equilibrium condition forces $x_{nj} = \bar{x}_n$ for all $j$ when $\rho \neq 2$, making $F_n$ a sufficient statistic for level $n$'s state. The linearized dynamics confirm this: diversity modes decay $(2-\rho)$ times faster than the aggregate mode (equation~\eqref{eq:Df_eigenvalues}). Any coupling signal with a component in $\mathbf{1}^{\perp}$ is suppressed by factor $1/(2-\rho)$ at steady state. The CES curvature projects all inter-level communication onto $F_n$.\qed
+
+\subsection{Proof of (ii): Directed Coupling}\label{subsec:directed}
+
+Consider a two-level system on the slow manifold with bidirectional (power-preserving) coupling:
+\begin{equation}
+\varepsilon_1\dot{F}_1 = (\beta_1 - cF_2)/J - \sigma_1 F_1, \qquad \varepsilon_2\dot{F}_2 = cF_1/J - \sigma_2 F_2.
+\end{equation}
+The Jacobian is
+\begin{equation}\label{eq:bidir_Jacobian}
+\mathcal{J}_{\text{bidir}} = \begin{pmatrix} -\sigma_1 & -c/J \\ c/J & -\sigma_2 \end{pmatrix}.
+\end{equation}
+The eigenvalues are $-(\sigma_1+\sigma_2)/2 \pm \sqrt{(\sigma_1-\sigma_2)^2/4 - c^2/J^2}$. Whether the discriminant is positive or negative, both eigenvalues have negative real part $-(\sigma_1+\sigma_2)/2 < 0$. The system is \emph{unconditionally stable} for all $c, \sigma_1, \sigma_2 > 0$. No bifurcation is possible.
+
+Power-preserving coupling contributes zero net energy. With zero net amplification, the system cannot cross the bifurcation threshold $\rho(\mathbf{K}) = 1$ (Theorem~\ref{thm:master_R0}). Moreover, the feedback term $-cF_2$ \emph{reduces} the effective input to level 1.
+
+Therefore Theorem~\ref{thm:master_R0}'s bifurcation requires directed coupling with net energy injection through the hierarchy. The CES curvature controls within-level dissipation; the bifurcation demands that between-level coupling be non-reciprocal with an external source.
+
+This explains why the system is not a gradient flow: the feed-forward structure breaks the symmetry that gradient flows require. Power-preserving (reciprocal) coupling conserves free energy; the hierarchical CES system must dissipate free energy at each level and inject energy from below.\qed
+
+
+\subsection{Proof of (iii): Port Alignment}
+
+At the symmetric equilibrium $\mathbf{x}_n^* = \bar{x}\cdot\mathbf{1}$, the equilibrium condition $u_n^*\cdot\mathbf{b}_n = \sigma_n\bar{x}\cdot\mathbf{1}$ requires $\mathbf{b}_n \propto \mathbf{1}$. At the symmetric point, $\nabla F_n = (1/J)\mathbf{1} \propto \mathbf{1}$, so $\mathbf{b}_n = \nabla F_n$ is the natural CES-compatible port direction.
+
+Asymmetric ports ($\mathbf{b}_n \not\propto \mathbf{1}$) are penalized: the equilibrium $\mathbf{x}_n^* \propto \mathbf{b}_n$ would be asymmetric. By Jensen's inequality (CES with $\rho < 1$), $F(\mathbf{x}) \leq F(\bar{x}\cdot\mathbf{1})$ for equal total input, so asymmetric ports produce less output per unit input.
+
+However, the port \emph{gain functions} $\phi_n$ are \emph{not} constrained by $\rho$. For power-law gains $\phi_n(z) = a_n z^{\beta_n}$, the exponents $\beta_n$ are free parameters. The CES geometry forces the port direction; the application fills in the magnitudes.\qed
+
+
+\subsection{Proof of (iv): Nearest-Neighbor Chain}\label{subsec:nearest_neighbor}
+
+Consider a three-level system with long-range coupling (level 1 $\to$ level 3):
+\begin{align}
+\varepsilon_1\dot{F}_1 &= \beta_1/J - \sigma_1 F_1, \\
+\varepsilon_2\dot{F}_2 &= \phi_{21}(F_1)/J - \sigma_2 F_2, \\
+\varepsilon_3\dot{F}_3 &= [\phi_{31}(F_1) + \phi_{32}(F_2)]/J - \sigma_3 F_3.
+\end{align}
+Level 1 (fastest, $\varepsilon_1 \ll \varepsilon_2$) equilibrates to $F_1^* = \beta_1/(\sigma_1 J)$, an algebraic constant. On the slow manifold, $\phi_{31}(F_1^*) = \text{const} \equiv \tilde{\beta}_3$, absorbed into a redefined exogenous input. Level 3's dynamics become
+\[
+\varepsilon_3\dot{F}_3 = [\tilde{\beta}_3 + \phi_{32}(F_2)]/J - \sigma_3 F_3,
+\]
+identical to a nearest-neighbor system with modified exogenous input. The Jacobian of the reduced system is independent of the long-range coupling strength:
+\begin{equation}
+\mathcal{J} = \begin{pmatrix} -\sigma_2 & 0 \\ a_{32}/J & -\sigma_3 \end{pmatrix}.
+\end{equation}
+Long-range coupling affects the equilibrium location but not the dynamics or stability. This is conditional on timescale separation---but Theorem~\ref{thm:ceiling} already assumes this, so the condition is pre-satisfied within the framework.\qed
+
+
+\subsection{What Is Free}\label{subsec:what_is_free}
+
+The port gain functions $\phi_n$ are genuinely free parameters not determined by $\rho$. They are the application-specific quantities: learning curve slopes, network recruitment rates, autocatalytic training efficiency, settlement demand elasticity. The CES geometry constrains the topology; the application fills in the magnitudes.
+
+The modeler's degrees of freedom reduce from an arbitrary directed graph with vector-valued coupling on $\mathbb{R}^{NJ}$ to a nearest-neighbor chain with scalar coupling through $F_n$ and free gain functions $\phi_n$. The topological degrees of freedom are eliminated; only one-dimensional gain per level remains. This is a dramatic model selection result.
+
+
+% ===================================================================
+% SECTION 5: THE MESH EQUILIBRIUM
+% ===================================================================
+\section{The Mesh Equilibrium}\label{sec:mesh}
+
+The CES Triple Role is established (Section~\ref{sec:triple_role}). The network architecture is derived (Section~\ref{sec:port_topology}). This section applies them to the first two scales of the hierarchy: hardware cost advantage and mesh formation.
+
+\subsection{Setup}
+
+After the crossing point---when distributed inference becomes cost-competitive with centralized provision, calibrated in Section~\ref{sec:empirical}---heterogeneous AI agents with diverse capabilities $C_j$ can self-organize into a mesh network. Each agent specializes according to a Bonabeau-Theraulaz response threshold model, producing a scale-free topology (Barab\'asi and Albert 1999).
+
+\subsection{Network Formation}
+
+The mesh forms when the basic reproduction number exceeds unity:
+\begin{equation}
+\Rz = \frac{\beta_{\text{join}}}{\mu_{\text{exit}}} > 1,
+\end{equation}
+where $\beta_{\text{join}}$ is the per-capita rate at which agents join the mesh and $\mu_{\text{exit}}$ is the exit rate. On scale-free networks with degree exponent $\gamma \leq 3$, the percolation threshold vanishes (Pastor-Satorras and Vespignani 2001): any positive transmission rate sustains an endemic state.
+
+\subsection{The Diversity Premium}
+
+The CES aggregate of mesh capabilities is $\Cmesh = F_n(\mathbf{C})$. By Theorem~\ref{thm:superadditivity}, the superadditivity gap satisfies
+\begin{equation}
+\Cmesh(N) - \sum_i C_i/N \geq \frac{K}{4c}\cdot\frac{\sqrt{J}}{J-1}\cdot\min_i C_i \cdot d_{\mathcal{I}}^2.
+\end{equation}
+By the Port Topology Theorem, the aggregate $\Cmesh = F_n$ is the sufficient statistic for cross-level coupling: individual agent capabilities are filtered out; only the aggregate matters for the next hierarchical level.
+
+\subsection{The Crossing Condition}
+
+Define $N^*$ as the critical mass at which $\Cmesh(N^*) = \Ccent$:
+\begin{equation}
+N^* = \min\{N : F(\mathbf{C}(N)) \geq \Ccent\}.
+\end{equation}
+$N^*$ is decreasing in $K$ (stronger complementarity reduces the required number of diverse agents). Post-crossing, adoption follows logistic dynamics: $\dot{\phi} = \gamma_{\phi}\,\phi(1-\phi)[\mu_{\phi}(N) - r_{\phi}]$.
+
+\subsection{Specialization and Knowledge Diffusion}
+
+Agents specialize through the Bonabeau-Theraulaz response threshold mechanism: agent $i$ performs task $j$ with probability proportional to $(s_{ij}/(s_{ij} + \theta_j))^2$, where $s_{ij}$ is agent $i$'s stimulus for task $j$ and $\theta_j$ is the response threshold. This produces a Potts model crystallization of specialization patterns.
+
+Knowledge diffuses on the scale-free network via Laplacian dynamics: $\partial\mathbf{u}/\partial t = -L\mathbf{u}$, where $L$ is the graph Laplacian. The spectral gap of $L$ determines the mixing time. On scale-free networks, the spectral gap scales as $\Theta(1/\log N)$, ensuring rapid knowledge equalization even in large meshes.
+
+
+% ===================================================================
+% SECTION 6: AUTOCATALYTIC GROWTH
+% ===================================================================
+\section{Autocatalytic Growth}\label{sec:autocatalytic}
+
+Theorem~\ref{thm:correlation} (correlation robustness) is established. This section develops the capability growth dynamics at the third hierarchical level.
+
+\subsection{The Autocatalytic Core}
+
+An autocatalytic set emerges when the mesh contains enough diverse agents that training loops become self-sustaining. By RAF theory (Hordijk and Steel 2004), the critical mass $\Nauto$ scales logarithmically with system complexity:
+\begin{equation}
+\Nauto = O(\log(\text{complexity})).
+\end{equation}
+The food set consists of exogenous frontier models. Above $\Nauto$, the mesh contains a Reflexively Autocatalytic and Food-generated (RAF) set: every agent's training can be catalyzed by other mesh agents, and every required input is either in the food set or producible within the mesh.
+
+\subsection{Growth Dynamics}
+
+The effective training productivity is
+\begin{equation}\label{eq:phi_eff}
+\phieff = \frac{\varphi_0}{1 - \beta_{\text{auto}}\cdot\varphi_0},
+\end{equation}
+where $\varphi_0$ is the base productivity and $\beta_{\text{auto}}$ is the autocatalytic coupling. Three growth regimes emerge with sharp boundaries:
+
+\emph{Convergence} ($\phieff < 1$, bounded variety): capability converges to a ceiling $\Cmax$ determined by the ratio of training productivity to depreciation. This is the most likely near-term regime.
+
+\emph{Exponential} ($\phieff = 1$, expanding variety): autocatalytic coupling pushes effective productivity to unity. The variety of agent types expands endogenously, maintaining growth.
+
+\emph{Singularity} ($\phieff > 1$, no saturation, no collapse): finite-time blowup. Requires both unbounded training returns and sustained data quality---conditions that are unlikely to hold simultaneously.
+
+\subsection{Collapse Protection}
+
+Shumailov et al.\ (2024) show that training on synthetic data causes model collapse: progressive loss of distributional tails. By Theorem~\ref{thm:correlation}, the CES aggregate with $\rho < 1$ maintains effective external data fraction above the collapse threshold:
+\begin{equation}
+\alphaeff = \alpha_{\text{ext}} + (1-\alpha_{\text{ext}})\cdot D(\rho, J) > \alphacrit,
+\end{equation}
+where $D(\rho, J)$ is the CES diversification factor. When $r < \bar{r}$ (correlation below the threshold from Theorem~\ref{thm:correlation}), $d_{\text{eff}} = \Omega(J)$: the curvature of $\Phi$ prevents information collapse by extracting signal through the nonlinear channel that the linear channel loses.
+
+\subsection{The Baumol Bottleneck}
+
+As $\beta_{\text{auto}} \to 1$, the non-automatable sector---frontier model training, which requires novel data and human oversight---becomes the binding constraint. Its cost share rises monotonically. The mesh growth rate converges to $g_Z$, the exogenous frontier training rate:
+\begin{equation}
+\lim_{t \to \infty} g_C(t) = g_Z.
+\end{equation}
+This is Baumol's cost disease (Baumol 1967), derived endogenously from the growth dynamics rather than assumed. It is the first instance of the hierarchical ceiling (Theorem~\ref{thm:ceiling}): the capability level is bounded by the slowest input to its production function.
+
+
+% ===================================================================
+% SECTION 7: THE SETTLEMENT FEEDBACK
+% ===================================================================
+\section{The Settlement Feedback}\label{sec:settlement}
+
+Theorem~\ref{thm:strategic} (strategic independence) is established. This section develops the financial layer---the fourth and fastest hierarchical level.
+
+\subsection{Settlement Demand}
+
+The mesh requires programmable settlement for routing compensation. Dollar stablecoins backed by US Treasuries are the efficient settlement medium, offering a 6.4\% cost advantage over traditional payment rails through elimination of intermediary fees, foreign exchange spreads, and settlement delays. Settlement demand scales with mesh transaction volume:
+\begin{equation}
+S_d(\phi, N) = s_0\cdot\phi\cdot N\cdot\bar{v},
+\end{equation}
+where $s_0$ is the stablecoin fraction of settlement, $\phi$ is the mesh participation rate, $N$ is mesh size, and $\bar{v}$ is average transaction value.
+
+\subsection{Market Microstructure Transition}
+
+As the fraction $\phi$ of capital managed by autonomous mesh agents increases, market microstructure transforms. Market efficiency approaches the Grossman-Stiglitz (1980) limit:
+\begin{equation}
+E(\phi) = 1 - (1-E_0)\cdot e^{-\lambda_E\phi},
+\end{equation}
+with residual inefficiency $\varepsilon_{\min} > 0$ preserved as equilibrium noise.
+
+Kyle's (1985) price impact $\lambda$ is non-monotone in $\phi$: depth initially improves as informed volume increases, then deteriorates as noise trading exits. By Theorem~\ref{thm:strategic}, mesh agents resist algorithmic collusion: the manipulation gain $\Delta(S) \leq -K\|\boldsymbol{\delta}\|^2/[2J(J-1)c^2]$. CES complementarity makes coordination self-defeating.
+
+\subsection{Monetary Policy Degradation}
+
+Each monetary policy tool depends on a specific friction that mesh participation eliminates:
+
+\emph{Forward guidance:} $\text{FG}(\phi) = \text{FG}_0\cdot(1-\phi)^{\alpha_{\text{FG}}}$. Degrades first: mesh agents process information faster than human traders, eliminating the delay on which guidance relies.
+
+\emph{Quantitative easing:} $\text{QE}(\phi) = w_{\text{PB}}\cdot\text{QE}_0\cdot(1-\phi)^{\alpha_{\text{QE}}} + w_{\text{sig}}\cdot\text{QE}_0$. The portfolio balance channel degrades; the signaling channel survives. Degrades second.
+
+\emph{Financial repression:} $\text{FR}(\phi, S) = \text{FR}_0\cdot(1-\min(1, S/\Scrit))^{\alpha_{\text{FR}}}$. Collapses discontinuously when stablecoin ecosystem exceeds $\Scrit$: captive domestic savings escape via stablecoin rails (Diamond and Dybvig 1983). Degrades last.
+
+Two tools survive: the interest rate channel (direct and inescapable) and lender of last resort (mesh agents still need liquidity). The Brunnermeier-Sannikov (2014) volatility paradox applies: exogenous volatility falls (more efficient markets), but endogenous volatility may rise (reduced policy buffers).
+
+\subsection{The Dollarization Spiral}
+
+Extending Uribe (1997), the inflation threshold for dollarization is endogenous:
+\begin{equation}
+\pibar(S) = \pibar_0\cdot\left(\frac{S_0}{S_0 + S}\right)^{\beta_{\pi}}.
+\end{equation}
+As the stablecoin ecosystem grows, currencies that were previously stable become vulnerable. This is self-reinforcing: dollarization increases $S$, which lowers $\pibar$, which triggers further dollarization. The six-stage country classification (from hyperinflation to reserve currency) maps to positions along this spiral.
+
+\subsection{The Triffin Squeeze}
+
+The Farhi-Maggiori (2018) framework delineates three zones of sovereign debt: safety, instability, and collapse. The safety boundary $\bbar$ is decreasing in mesh participation:
+\begin{equation}
+\frac{d\bbar}{d\phi} < 0,
+\end{equation}
+because mesh agents destroy the information-insensitivity that defines safe assets (Gorton 2017). The time to Triffin crisis is
+\begin{equation}
+T_{\text{Triffin}} = \frac{\bbar(0) - b(0)}{\dot{b}(0) + |d\bbar/dt(0)|}.
+\end{equation}
+The character of instability-zone crises shifts from sunspot-driven to fundamentals-driven as mesh participation increases.
+
+\subsection{The Coupled ODE System}\label{subsec:coupled_ODE}
+
+The four-variable system on the slow manifold:
+\begin{align}
+\dot{\phi} &= \gamma_{\phi}\cdot\phi(1-\phi)\cdot[\mu_{\phi}(S, \eta) - r_{\phi}], \label{eq:phi_dot}\\
+\dot{S} &= \gamma_S\cdot S\cdot[g_{\text{mesh}}(\phi) + g_{\text{dollar}}(S, b) - \delta_S], \label{eq:S_dot}\\
+\dot{b} &= \gamma_b\cdot[d(b, \eta) + s_{\text{coin}}(S) - \tau(b)], \label{eq:b_dot}\\
+\dot{\eta} &= \mu_{\eta}(\phi)\cdot\eta - \sigma^2_{\eta}(\phi, S)\cdot\eta(1-\eta) - \ell(b, \eta). \label{eq:eta_dot}
+\end{align}
+This system admits three equilibrium classes: low-mesh (stable, current system approximately), high-mesh (conditionally stable), and unstable saddle. The transition between the two stable equilibria is governed by $\Rsettle$.
+
+\subsection{The Synthetic Gold Standard}
+
+In the high-mesh equilibrium, the yield spread responds to fiscal position:
+\begin{equation}
+y(b) - r_f = \theta(\phi^H)\cdot\max(0, b - b^*(\phi^H)) + \varepsilon_{\text{term}}.
+\end{equation}
+This is continuous, not binary. It is not defeatable by decree: the mesh agents that enforce the spread are autonomous, globally distributed, and economically motivated. The constraint emerges from the model's dynamics rather than from institutional design.
+
+
+% ===================================================================
+% SECTION 8: THE MASTER R₀ AND THE EIGENSTRUCTURE BRIDGE
+% ===================================================================
+\section{The Master $R_0$ and the Eigenstructure Bridge}\label{sec:master_R0}
+
+This section proves Theorem~\ref{thm:master_R0} (the cross-scale activation threshold) and the Eigenstructure Bridge (connecting the geometric generating object $\Phi$ to the dynamic Lyapunov function $V$).
+
+\subsection{State Variables}
+
+Define $x_1 = c$ (cost advantage), $x_2 = N$ (mesh density), $x_3 = C$ (capability), $x_4 = S$ (ecosystem size). The linearized system at the equilibrium is $\dot{\mathbf{x}} = (T + \Sigma)\mathbf{x}$.
+
+\subsection{The Transmission Matrix $T$}
+
+By the Port Topology Theorem (Section~\ref{sec:port_topology}):
+\begin{itemize}[nosep]
+\item $T$ is nearest-neighbor: sub-diagonal entries $T_{n+1,n}$ plus the cycle closure $T_{14}$.
+\item Each $T_{n+1,n}$ depends only on $F_n$ (aggregate coupling).
+\item Coupling is directed (no upper-diagonal entries except the cycle closure).
+\end{itemize}
+The Port Topology Theorem eliminates $T_{31}$, $T_{41}$, $T_{42}$ from consideration. The sparsity pattern is forced by CES geometry:
+\begin{equation}\label{eq:T_matrix}
+T = \begin{pmatrix} T_{11} & 0 & 0 & T_{14} \\ T_{21} & T_{22} & 0 & 0 \\ 0 & T_{32} & T_{33} & 0 \\ 0 & 0 & T_{43} & T_{44} \end{pmatrix}.
+\end{equation}
+
+\subsection{The Transition Matrix $\Sigma$}
+
+$\Sigma = \diag(\sigma_1, \sigma_2, \sigma_3, \sigma_4)$ with $\sigma_n < 0$: learning curve saturation, agent exit, Baumol-plus-depreciation, and Triffin-plus-depreciation, respectively.
+
+\subsection{The Next-Generation Matrix}
+
+\begin{equation}\label{eq:NGM}
+\mathbf{K} = -T\Sigma^{-1}, \qquad K_{nn} = d_n = T_{nn}/|\sigma_n|, \qquad K_{n,n-1} = k_{n,n-1} = T_{n,n-1}/|\sigma_{n-1}|.
+\end{equation}
+
+\subsection{Theorem 2: Master $R_0$}\label{subsec:master_R0_proof}
+
+\begin{theorem}[Master $R_0$]\label{thm:master_R0}
+The system undergoes a transcritical bifurcation at $\rho(\mathbf{K}) = 1$, where $\rho(\mathbf{K})$ is the spectral radius of the next-generation matrix. Specifically:
+\begin{enumerate}[label=(\roman*)]
+\item The characteristic polynomial is $p(\lambda) = \prod_{i=1}^{4}(d_i - \lambda) - P_{\emph{cycle}}$, where $P_{\emph{cycle}} = k_{21}k_{32}k_{43}k_{14}$.
+\item $\rho(\mathbf{K}) > \max_i d_i$ when cross-level coupling is positive (Perron-Frobenius, irreducibility from the cyclic structure via $T_{14}$).
+\item The dominant eigenvector is the composition of the self-sustaining mode.
+\item At $\rho(\mathbf{K}) = 1$, the Hessian $\nabla^2\Phi_{\emph{total}}$ loses positive-definiteness. The Perron-Frobenius eigenvector of $\mathbf{K}$ is the direction along which $\Phi_{\emph{total}}$ first develops a negative eigenvalue.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\emph{(i) Characteristic polynomial.} Expand $\det(\mathbf{K} - \lambda I)$ along the first row. The $(1,1)$ minor gives $\prod_{i=2}^{4}(d_i - \lambda)$. The only other nonzero entry in row 1 is $k_{14}$ in column 4. The $(1,4)$ minor is
+\[
+M_{14} = \begin{pmatrix} k_{21} & d_2-\lambda & 0 \\ 0 & k_{32} & d_3-\lambda \\ 0 & 0 & k_{43} \end{pmatrix},
+\]
+with $\det(M_{14}) = k_{21}k_{32}k_{43}$. The cofactor $C_{14} = (-1)^{1+4}\det(M_{14}) = -k_{21}k_{32}k_{43}$. Therefore $p(\lambda) = \prod_i(d_i-\lambda) - P_{\text{cycle}}$.
+
+\emph{(ii) Perron-Frobenius.} $\mathbf{K}$ is nonnegative with positive cycle $k_{21}k_{32}k_{43}k_{14} > 0$, hence irreducible. By the Perron-Frobenius theorem, the spectral radius is a simple eigenvalue exceeding all diagonal entries.
+
+\emph{(iii)} The dominant eigenvector has all positive components (Perron-Frobenius), representing the mode in which all four scales grow simultaneously.
+
+\emph{(iv)} At $\rho(\mathbf{K}) = 1$, the threshold $p(1) = 0$ implies $\prod_i(d_i - 1) = P_{\text{cycle}}$. If all $d_i < 1$ (each level individually sub-threshold), the system is globally super-threshold when $P_{\text{cycle}}^{1/4} > 1 - \max_i d_i$. The connection to $\Phi$: the Hessian of $\Phi_{\text{total}}$ restricted to the slow manifold has the same eigenstructure as $\mathbf{K}$, and positive-definiteness fails precisely at $\rho(\mathbf{K}) = 1$.
+\end{proof}
+
+For equal diagonal entries $d_n = d$:
+\begin{equation}\label{eq:spectral_radius}
+\rho(\mathbf{K}) = d + P_{\text{cycle}}^{1/4}.
+\end{equation}
+The spectral radius exceeds the within-level reproduction number by the geometric mean of cross-level coupling strengths. The system can be globally super-threshold ($\rho(\mathbf{K}) > 1$) from locally sub-threshold levels ($d < 1$) when $P_{\text{cycle}}^{1/4} > 1 - d$.
+
+
+\subsection{The Eigenstructure Bridge Theorem}\label{subsec:bridge}
+
+\begin{theorem}[Eigenstructure Bridge]\label{thm:bridge}
+Let $\Phi = -\sum_n\log F_n$ and $V = \sum_n c_n\,D_{\emph{KL}}(\mathbf{x}_n\|\mathbf{x}_n^*)$ where $c_n$ satisfy the tree condition. At the symmetric equilibrium:
+\begin{enumerate}[label=(\alph*)]
+\item $\nabla^2\Phi_n$ and $H_{D_{\emph{KL}}}$ share eigenvectors $\{\mathbf{1}, e_2, \ldots, e_J\}$ at each level.
+\item Diversity eigenvalue ratio: $\lambda_{\emph{div}}(\nabla^2\Phi_n)/\lambda_{\emph{div}}(H_{D_{\emph{KL}}}) = (1-\rho)/J = K/(J-1)$.
+\item $K$ enters $\dot{V}$ through the Jacobian: the within-level contribution to $\dot{V}$ has curvature proportional to $K$ in diversity directions.
+\item The tree coefficients $c_n$ are determined by the equilibrium cascade $\{F_n^*\}$, connecting $V$ to the CES aggregates.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\emph{(a) and (b).} At the symmetric point, $\nabla^2\Phi_n = (1/Jc^2)[(1-\rho)\Pperp + (1/J)\Ppar]$ from~\eqref{eq:Hess_Phi}, with diversity eigenvalue $(1-\rho)/(Jc^2)$. The KL Hessian is $H_{D_{\text{KL}}} = (1/\bar{x})I_J$, with eigenvalue $1/\bar{x}$ uniformly. Both have eigenvectors $\mathbf{1}$ and $\mathbf{1}^{\perp}$. The diversity eigenvalue ratio is $(1-\rho)/(J\bar{x}) \div (1/\bar{x}) = (1-\rho)/J = K/(J-1)$.
+
+\emph{(c).} Along trajectories, $\dot{V} = \sum_n c_n\sum_j(1 - x_{nj}^*/x_{nj})f_{nj}(\mathbf{x})$. The within-level contribution is $\dot{V}_{\text{within}} = -\sum_n c_n\sigma_n\sum_j(x_{nj}-x_{nj}^*)^2/x_{nj} \leq 0$. Expanding in diversity perturbations, the quadratic form picks up $K$ through the CES-coupled Jacobian.
+
+\emph{(d).} The tree condition for the feed-forward graph gives $c_n = P_{\text{cycle}}/k_{n,n-1}$, where $k_{n,n-1}$ involves the equilibrium coupling strengths that depend on $F_n^*$.
+\end{proof}
+
+\subsection{Interpretation}
+
+$\Phi$ is the geometry; $V$ is the dynamics. They agree on eigenvectors (the ``shape'' of perturbations) but differ on eigenvalues (the ``magnitude'' of response). $K$ controls both---through the convexity of $\Phi$ and through the Jacobian coupling in $\dot{V}$. The three theorems follow from $\Phi$'s geometry, transmitted through $V$'s dynamics.
+
+On the slow manifold, the relationship between the restricted objects is
+\begin{equation}\label{eq:bridge_matrix}
+\nabla^2\Phi\big|_{\text{slow}} = W^{-1}\cdot\nabla^2 V,
+\end{equation}
+where $W = \diag(c_n\bar{F}_n)$ is the \emph{Bridge matrix} with entries $W_{nn} = P_{\text{cycle}}/(|\sigma_n|\varepsilon_{T_n})$, encoding graph topology (through $P_{\text{cycle}}$), physical damping (through $|\sigma_n|$), and coupling nonlinearity (through the elasticity $\varepsilon_{T_n}$). The Bridge matrix reduces to the identity---i.e., $\Phi\big|_{\text{slow}} \propto V$---if and only if coupling is linear and damping is uniform. In general, $W \neq I$: the free energy determines the landscape, but the Lyapunov function navigates it through a coupling-dependent lens.
+
+This is analogous to statistical mechanics: the free energy determines equilibrium; the relative entropy (KL divergence) controls convergence to equilibrium. Different objects encoding the same physics.
+
+
+% ===================================================================
+% SECTION 9: THE HIERARCHICAL CEILING
+% ===================================================================
+\section{The Hierarchical Ceiling}\label{sec:ceiling}
+
+\subsection{Timescale Assignment}
+
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+Variable & Process & Timescale & $\varepsilon$ \\
+\midrule
+Market microstructure & Price discovery & ms--hours & Algebraic \\
+$S$, $b$ (settlement, fiscal) & Settlement, fiscal & days--weeks & $\varepsilon_4 \ll 1$ \\
+$N$ (mesh density) & Mesh formation & weeks--months & $\varepsilon_3$ \\
+$C$ (capability) & Capability growth & months--years & $\varepsilon_2$ \\
+$c$ (cost advantage) & Learning curves & years--decades & $\varepsilon_1 = 1$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The ordering $\varepsilon_4 \ll \varepsilon_3 \ll \varepsilon_2 \ll \varepsilon_1$ means settlement is fastest, learning curves slowest. The long-run growth rate equals the frontier training rate $g_Z$---the slowest level constrains.
+
+\subsection{The Slow Manifold}
+
+On the slowest timescale, fast variables equilibrate sequentially:
+\begin{align}
+x_4 &= h_4(x_1, x_2, x_3) && \text{[settlement equilibrium]}, \\
+x_3 &= h_3(x_1, x_2) && \text{[capability equilibrium]}, \\
+x_2 &= h_2(x_1) && \text{[mesh density equilibrium]}.
+\end{align}
+The effective dynamics reduce to $\dot{x}_1 = G(x_1)$: long-run growth $= g_Z$.
+
+On the slow manifold, fast variables minimize $V$ (which inherits $\Phi$'s geometry) at fixed slow variables. The ceiling effect: $\dot{V} \leq 0$ forces fast variables onto the slow manifold, bounded by the CES structure of the level above.
+
+\begin{theorem}[Hierarchical Ceiling]\label{thm:ceiling}
+Given timescale separation $\varepsilon_4 \ll \varepsilon_3 \ll \varepsilon_2 \ll \varepsilon_1 = 1$:
+\begin{enumerate}[label=(\roman*)]
+\item A slow manifold $M_{\varepsilon}$ exists and is $O(\varepsilon)$-close to $M_0$ (Fenichel 1979).
+\item On $M_0$, effective dynamics reduce to the slowest variable.
+\item The long-run growth rate equals the growth rate of the slowest variable: $g_{\emph{long-run}} = g_Z$.
+\item Each variable's steady state is ceiling-constrained by the layer above.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Apply geometric singular perturbation theory (Fenichel 1979; Jones 1995). The critical manifold $M_0$ is defined by the equilibrium conditions $h_4$, $h_3$, $h_2$. Normal hyperbolicity follows from the Jacobian eigenvalue analysis: at each level, the within-level eigenvalues from~\eqref{eq:Df_eigenvalues} are $-\sigma_n/\varepsilon_n$ (aggregate) and $-\sigma_n(2-\rho)/\varepsilon_n$ (diversity), both negative. The aggregate eigenvalue is the relevant one for the reduced system (diversity modes have already been slaved by the $(2-\rho)$ filter). Since $-\sigma_n/\varepsilon_n < 0$ for all levels, $M_0$ is normally hyperbolic, and Fenichel's theorem guarantees existence and $O(\varepsilon)$-smoothness of $M_{\varepsilon}$.
+
+The ceiling structure follows from the explicit slow manifold functions: $h_4$ is bounded by $\bar{S}(F_3)$ (Triffin ceiling), $h_3$ is bounded by $\phieff F_{\text{CES}}/\delta_C$ (Baumol ceiling), and $h_2$ is bounded by $N^*(F_1)$ (capacity ceiling). Each bound depends on the level above, creating a cascade of constraints.
+\end{proof}
+
+
+\subsection{Baumol and Triffin Are the Same}
+
+The Baumol bottleneck (capability growth bounded by frontier training rate) and the Triffin squeeze (stablecoin growth bounded by safe asset supply) are slow manifold constraints at adjacent layers. Both take the form: fast variable $x_{n+1}$ is bounded by a function of slow variable $x_n$, with the bound set by the CES structure. This is a corollary of Theorem~\ref{thm:ceiling}: the hierarchical ceiling applies uniformly across all scales.
+
+
+\subsection{When Timescale Separation Breaks Down}
+
+At the bifurcation $\rho(\mathbf{K}) = 1$, the slow manifold loses normal hyperbolicity: one eigenvalue crosses zero. In the language of geometric singular perturbation theory, this produces a canard trajectory---a solution that follows the repelling sheet of the slow manifold before jumping to the attracting sheet. Economically, market adaptation races ahead of institutional adaptation. The predictions of Section~\ref{sec:empirical} are valid away from this singular regime.
+
+
+% ===================================================================
+% SECTION 10: EMPIRICAL FRAMEWORK AND PREDICTIONS
+% ===================================================================
+\section{Empirical Framework and Predictions}\label{sec:empirical}
+
+\subsection{Calibration Inputs}
+
+The model's calibration rests on semiconductor learning curves (3D NAND at 35\% slope, HBM at 25\%, advanced packaging at 20\%), the monetary productivity gap (6.4\% cost advantage of stablecoin settlement), and the six-stage country classification for dollarization vulnerability.
+
+The current state: semiconductor learning curves are in the steep portion (Stage 2 of 6). Mesh formation is pre-threshold ($\Rz < 1$). The system is locally sub-threshold at every level but approaching the regime where cross-scale coupling could make it globally super-threshold.
+
+\subsection{Predictions}
+
+Each prediction is tied to a specific theorem and has a defined observable, threshold, timing window, and falsification condition.
+
+\emph{P1 (Testing Theorem~\ref{thm:superadditivity}):} The CES diversity premium. Observable: ratio of mesh aggregate to sum of individual capabilities. Threshold: $\Cmesh/\sum C_i > 1 + K\cdot d_{\mathcal{I}}^2/(4c)$. Timing: 2027--2029. Falsified if mesh agents show no productivity premium from diversity.
+
+\emph{P2 (Testing Theorem~\ref{thm:correlation}):} Correlation robustness under synthetic data contamination. Observable: effective dimension $d_{\text{eff}}$ of mesh outputs. Threshold: $d_{\text{eff}} > J/2$ despite $r > 1/(J-1)$. Timing: 2027--2030. Falsified if mesh outputs collapse informationally.
+
+\emph{P3 (Testing Theorem~\ref{thm:strategic}):} Collusion resistance. Observable: manipulation gain of coordinating coalitions. Threshold: $\Delta(S) < 0$ for $|S| \leq J/2$. Timing: 2028--2031. Falsified if mesh coalitions successfully extract rents.
+
+\emph{P4 (Testing Theorem~\ref{thm:master_R0}):} Cross-layer acceleration. Observable: growth rates at each scale, with time lags matching timescale ordering. Timing: 2028--2032. Falsified if growth is synchronized rather than cascading.
+
+\emph{P5--P6 (Testing monetary policy degradation):} Forward guidance effectiveness declines first; QE effectiveness declines second. Observable: market response to FOMC communications; yield curve response to asset purchases. Timing: 2029--2035. Falsified if traditional channels retain full effectiveness.
+
+\emph{P7--P8 (Testing settlement feedback):} Stablecoin ecosystem growth accelerates mesh growth (P7); dollarization threshold decreases for emerging market currencies (P8). Timing: 2029--2037. Falsified if stablecoin growth decouples from mesh dynamics.
+
+\emph{P9 (Testing Theorem~\ref{thm:ceiling}):} Convergence to $g_Z$. Observable: mesh capability growth rate relative to frontier training rate. Timing: 2032--2040. Falsified if mesh growth sustainably exceeds frontier training growth.
+
+
+% ===================================================================
+% SECTION 11: LIMITATIONS
+% ===================================================================
+\section{Limitations}\label{sec:limitations}
+
+\subsection{Mathematical}
+
+\emph{Symmetric weights.} Quantitative bounds (Theorems~\ref{thm:superadditivity}--\ref{thm:strategic}) are derived at the symmetric point with equal weights $a_j = 1/J$. General weights change the constants but not the qualitative structure.
+
+\emph{Shapley allocation assumption.} Theorem~\ref{thm:strategic} assumes Shapley values as the allocation mechanism. Alternative cooperative solution concepts (nucleolus, egalitarian) would change the manipulation bound but not its sign.
+
+\emph{$R_0$ is linear stability only.} Theorem~\ref{thm:master_R0} characterizes the bifurcation but does not determine the basin of attraction of the high-mesh equilibrium.
+
+\emph{Normal hyperbolicity fails at bifurcation.} Theorem~\ref{thm:ceiling} requires the slow manifold to be normally hyperbolic, which fails precisely at $\rho(\mathbf{K}) = 1$. The transition dynamics are not covered.
+
+\emph{The system is not a gradient flow.} The Lyapunov function $V$ inherits $\Phi$'s geometry through the Eigenstructure Bridge but does not equal $\Phi$. The Bridge matrix $W$ encodes genuine free parameters (coupling elasticities, damping rates) not determined by CES geometry.
+
+\emph{Port gain functions are free.} The gain functions $\phi_n$ determining the equilibrium cascade $\{F_n^*\}$ and Lyapunov weights $\alpha_n$ are not constrained by $\rho$. They are the application-specific parameters.
+
+\subsection{Empirical}
+
+Many parameters are uncalibrated. Predictions span 2027--2040, a horizon over which the model's assumptions may be violated. The six-stage classification is simplified.
+
+\subsection{Frameworks Considered and Rejected}
+
+\emph{Mean field games:} Agents are not exchangeable---heterogeneity is the point. \emph{Minsky:} Insufficiently formalized for the coupled dynamics. \emph{Bitcoin maximalism:} The model predicts stablecoins, not fixed-supply tokens. \emph{Full continuous-time general equilibrium:} Intractable with four coupled scales.
+
+\subsection{What the Model Does Not Predict}
+
+Whether the transition is smooth or crisis-driven. Whether the high-mesh equilibrium is desirable. Which governments adapt and which do not. Endogenous determination of $\rho$ (the CES parameter is exogenous throughout).
+
+
+% ===================================================================
+% SECTION 12: CONCLUSION
+% ===================================================================
+\section{Conclusion}\label{sec:conclusion}
+
+One generating object, three theorems, one derived architecture.
+
+$\Phi = -\log F$ is the CES free energy. Its convexity on each isoquant yields the CES Triple Role (Theorem~\ref{thm:triple_role}): complementary heterogeneous agents are simultaneously productive, informationally robust, and competitively healthy. $K = (1-\rho)(J-1)/J$ controls all three.
+
+The same convexity forces the network architecture: aggregate coupling, directed feed-forward, nearest-neighbor chain. The model's structure is derived from its mathematics, not imposed by the modeler (Theorem~\ref{thm:port_topology}).
+
+The multi-level $\Phi_{\text{total}}$ loses convexity at the activation threshold $\rho(\mathbf{K}) = 1$ (Theorem~\ref{thm:master_R0}). Cross-scale coupling amplifies beyond any single layer. On the slow manifold, each layer's growth is bounded by the next (Theorem~\ref{thm:ceiling}). Baumol's cost disease and the Triffin squeeze are the same structure at different scales.
+
+The Eigenstructure Bridge (Theorem~\ref{thm:bridge}) connects the geometric generating object $\Phi$ to the dynamic Lyapunov function $V$. They share eigenvectors. $K$ controls both. The three theorems follow from $\Phi$'s geometry, transmitted through $V$'s dynamics.
+
+Nine predictions, spanning 2027--2040, test the theory.
+
+
+% ===================================================================
+% REFERENCES
+% ===================================================================
+\newpage
+\section*{References}
+\addcontentsline{toc}{section}{References}
+
+\begin{description}[style=nextline, font=\normalfont, leftmargin=0pt, itemsep=6pt]
+
+\item[Aghion, P., B.\ Jones, and C.\ Jones (2018).] ``Artificial Intelligence and Economic Growth.'' In \emph{The Economics of Artificial Intelligence}. University of Chicago Press.
+
+\item[Ahmed, R.\ and I.\ Aldasoro (2025).] ``Stablecoins: Growth and Systemic Risk.'' BIS Working Paper.
+
+\item[Akin, E.\ (1979).] \emph{The Geometry of Population Genetics}. Lecture Notes in Biomathematics 31, Springer.
+
+\item[Arrow, K., H.\ Chenery, B.\ Minhas, and R.\ Solow (1961).] ``Capital-Labor Substitution and Economic Efficiency.'' \emph{Review of Economics and Statistics} 43(3): 225--250.
+
+\item[Arthur, W.B.\ (1989).] ``Competing Technologies, Increasing Returns, and Lock-in by Historical Events.'' \emph{Economic Journal} 99(394): 116--131.
+
+\item[Barab\'asi, A.-L.\ and R.\ Albert (1999).] ``Emergence of Scaling in Random Networks.'' \emph{Science} 286(5439): 509--512.
+
+\item[Baumol, W.J.\ (1967).] ``Macroeconomics of Unbalanced Growth: The Anatomy of Urban Crisis.'' \emph{American Economic Review} 57(3): 415--426.
+
+\item[Bloom, N., C.\ Jones, J.\ Van Reenen, and M.\ Webb (2020).] ``Are Ideas Getting Harder to Find?'' \emph{American Economic Review} 110(4): 1104--1144.
+
+\item[Bonabeau, E., G.\ Theraulaz, and J.-L.\ Deneubourg (1996).] ``Quantitative Study of the Fixed Threshold Model for the Regulation of Division of Labour in Insect Societies.'' \emph{Proceedings of the Royal Society B} 263(1376): 1565--1569.
+
+\item[Brunnermeier, M.K.\ and Y.\ Sannikov (2014).] ``A Macroeconomic Model with a Financial Sector.'' \emph{American Economic Review} 104(2): 379--421.
+
+\item[Caballero, R., E.\ Farhi, and P.-O.\ Gourinchas (2017).] ``The Safe Assets Shortage Conundrum.'' \emph{Journal of Economic Perspectives} 31(3): 29--46.
+
+\item[Calvo, G.A.\ (1998).] ``Capital Flows and Capital-Market Crises: The Simple Economics of Sudden Stops.'' \emph{Journal of Applied Economics} 1(1): 35--54.
+
+\item[Diamond, D.W.\ and P.H.\ Dybvig (1983).] ``Bank Runs, Deposit Insurance, and Liquidity.'' \emph{Journal of Political Economy} 91(3): 401--419.
+
+\item[Diekmann, O., J.A.P.\ Heesterbeek, and J.A.J.\ Metz (1990).] ``On the Definition and the Computation of the Basic Reproduction Ratio $R_0$ in Models for Infectious Diseases in Heterogeneous Populations.'' \emph{Journal of Mathematical Biology} 28(4): 365--382.
+
+\item[Dixit, A.K.\ and J.E.\ Stiglitz (1977).] ``Monopolistic Competition and Optimum Product Diversity.'' \emph{American Economic Review} 67(3): 297--308.
+
+\item[Dou, W., Y.\ Goldstein, and Y.\ Ji (2025).] ``AI-Powered Trading, Strategic Complementarities, and Market Quality.'' Working Paper.
+
+\item[Duffie, D., N.\ G\^arleanu, and L.H.\ Pedersen (2005).] ``Over-the-Counter Markets.'' \emph{Econometrica} 73(6): 1815--1847.
+
+\item[Farhi, E.\ and M.\ Maggiori (2018).] ``A Model of the International Monetary System.'' \emph{Quarterly Journal of Economics} 133(1): 295--355.
+
+\item[Fenichel, N.\ (1979).] ``Geometric Singular Perturbation Theory for Ordinary Differential Equations.'' \emph{Journal of Differential Equations} 31(1): 53--98.
+
+\item[Gorton, G.B.\ (2017).] ``The History and Economics of Safe Assets.'' \emph{Annual Review of Economics} 9: 547--586.
+
+\item[Gorton, G.B., E.Y.\ Klee, C.\ Ross, S.Y.\ Ross, and S.\ Vardoulakis (2022).] ``Spreads, Flows, and Financial Stability.'' \emph{Journal of Financial Economics} 146(3): 753--773.
+
+\item[Grossman, S.J.\ and J.E.\ Stiglitz (1980).] ``On the Impossibility of Informationally Efficient Markets.'' \emph{American Economic Review} 70(3): 393--408.
+
+\item[Holden, C.W.\ and A.\ Subrahmanyam (1992).] ``Long-Lived Private Information and Imperfect Competition.'' \emph{Journal of Finance} 47(1): 247--270.
+
+\item[Hordijk, W.\ and M.\ Steel (2004).] ``Detecting Autocatalytic, Self-sustaining Sets in Chemical Reaction Systems.'' \emph{Journal of Theoretical Biology} 227(4): 451--461.
+
+\item[Jain, S.\ and S.\ Krishna (2001).] ``A Model for the Emergence of Cooperation, Interdependence, and Structure in Evolving Networks.'' \emph{Proceedings of the National Academy of Sciences} 98(2): 543--547.
+
+\item[Jones, C.I.\ (1995).] ``R\&D-Based Models of Economic Growth.'' \emph{Journal of Political Economy} 103(4): 759--784.
+
+\item[Jones, C.I.\ (2005).] ``The Shape of Production Functions and the Direction of Technical Change.'' \emph{Quarterly Journal of Economics} 120(2): 517--549.
+
+\item[Jones, C.K.R.T.\ (1995).] ``Geometric Singular Perturbation Theory.'' In \emph{Dynamical Systems}, Lecture Notes in Mathematics 1609, Springer.
+
+\item[Kauffman, S.A.\ (1986).] ``Autocatalytic Sets of Proteins.'' \emph{Journal of Theoretical Biology} 119(1): 1--24.
+
+\item[Kyle, A.S.\ (1985).] ``Continuous Auctions and Insider Trading.'' \emph{Econometrica} 53(6): 1315--1335.
+
+\item[Korobeinikov, A.\ (2004).] ``Lyapunov Functions and Global Properties for SEIR and SEIS Epidemic Models.'' \emph{Mathematical Medicine and Biology} 21(2): 75--83.
+
+\item[Li, M.Y., Z.\ Shuai, and P.\ van den Driessche (2010).] ``Global-Stability Problem for Coupled Systems of Differential Equations on Networks.'' \emph{Journal of Differential Equations} 248(1): 1--20.
+
+\item[Lucas, R.E.\ (1976).] ``Econometric Policy Evaluation: A Critique.'' \emph{Carnegie-Rochester Conference Series on Public Policy} 1: 19--46.
+
+\item[Pastor-Satorras, R.\ and A.\ Vespignani (2001).] ``Epidemic Spreading in Scale-Free Networks.'' \emph{Physical Review Letters} 86(14): 3200--3203.
+
+\item[Romer, P.M.\ (1990).] ``Endogenous Technological Change.'' \emph{Journal of Political Economy} 98(5): S71--S102.
+
+\item[Shahshahani, S.\ (1979).] \emph{A New Mathematical Framework for the Study of Linkage and Selection}. Memoirs of the AMS 211.
+
+\item[Shapley, L.S.\ (1971).] ``Cores of Convex Games.'' \emph{International Journal of Game Theory} 1(1): 11--26.
+
+\item[Shuai, Z.\ and P.\ van den Driessche (2013).] ``Global Stability of Infectious Disease Models Using Lyapunov Functions.'' \emph{SIAM Journal on Applied Mathematics} 73(4): 1513--1532.
+
+\item[Shumailov, I., Z.\ Shumaylov, Y.\ Zhao, Y.\ Gal, N.\ Papernot, and R.\ Anderson (2024).] ``AI Models Collapse When Trained on Recursively Generated Data.'' \emph{Nature} 631: 755--759.
+
+\item[Smith, H.L.\ (1995).] \emph{Monotone Dynamical Systems}. Mathematical Surveys and Monographs 41, AMS.
+
+\item[Triffin, R.\ (1960).] \emph{Gold and the Dollar Crisis}. Yale University Press.
+
+\item[Uribe, M.\ (1997).] ``Hysteresis in a Simple Model of Currency Substitution.'' \emph{Journal of Monetary Economics} 40(1): 185--202.
+
+\item[Van den Driessche, P.\ and J.\ Watmough (2002).] ``Reproduction Numbers and Sub-Threshold Endemic Equilibria for Compartmental Models of Disease Transmission.'' \emph{Mathematical Biosciences} 180(1--2): 29--48.
+
+\item[van der Schaft, A.\ and D.\ Jeltsema (2014).] ``Port-Hamiltonian Systems Theory: An Introductory Overview.'' \emph{Foundations and Trends in Systems and Control} 1(2--3): 173--378.
+
+\item[Woodford, M.\ (2003).] \emph{Interest and Prices}. Princeton University Press.
+
+\end{description}
+
+\end{document}

@@ -1,0 +1,836 @@
+\documentclass[12pt,letterpaper]{article}
+
+% Page layout
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+
+% Math
+\usepackage{amsmath,amssymb,amsthm}
+
+% Tables
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{graphicx}
+
+% Typography
+\usepackage[T1]{fontenc}
+\usepackage[expansion=false]{microtype}
+\usepackage{enumitem}
+
+% References
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+% Theorem environments
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+\newtheorem{definition}{Definition}
+
+% Custom commands (inherited from mesh paper)
+\newcommand{\pderiv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\Rz}{R_0^{\text{mesh}}}
+\newcommand{\Ceff}{C_{\text{eff}}}
+\newcommand{\Cmesh}{C_{\text{mesh}}}
+\newcommand{\Ccent}{C_{\text{cent}}}
+\newcommand{\Sinf}{S_{\infty}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+% New commands for Paper 4
+\newcommand{\Nauto}{N_{\text{auto}}}
+\newcommand{\Cmax}{C_{\text{max}}}
+\newcommand{\phieff}{\varphi_{\text{eff}}}
+\newcommand{\alphaeff}{\alpha_{\text{eff}}}
+\newcommand{\alphacrit}{\alpha_{\text{crit}}}
+\newcommand{\ddt}{\frac{d}{dt}}
+
+% Section formatting
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\titleformat{\subsubsection}{\normalsize\itshape}{\thesubsubsection}{0.5em}{}
+
+\begin{document}
+
+% -------------------------------------------------------------------
+% TITLE PAGE
+% -------------------------------------------------------------------
+\begin{titlepage}
+\centering
+\vspace*{2cm}
+{\LARGE\bfseries THE AUTOCATALYTIC MESH\par}
+\vspace{0.8cm}
+{\large\itshape Endogenous Capability Growth in Self-Organizing Agent Networks:\\Growth Regimes and the Baumol Bottleneck\par}
+\vspace{1.5cm}
+{\large Connor Smirl\par}
+\vspace{0.3cm}
+{Department of Economics, Tufts University\par}
+\vspace{0.3cm}
+{February 2026\par}
+\vspace{0.5cm}
+{\scshape Working Paper\par}
+\vspace{1cm}
+\begin{abstract}
+\noindent Smirl (2026, ``The Mesh Equilibrium'') proves that a self-organizing mesh of heterogeneous specialized AI agents exceeds centralized provision above a finite critical mass $N^*$. That paper assumes fixed-capability nodes: each agent's capability vector redistributes through specialization but does not grow. This paper removes that assumption. Three mechanisms make capability endogenous: training agents improve other agents (autocatalytic capability growth), operation generates training data (self-referential learning), and the mesh modifies its own composition (endogenous variety expansion). When capability becomes a dynamical variable coupled to the mesh's operation, the growth regime depends on three parameters: training productivity elasticity $\varphi$, training saturation $h$, and external data fraction $\alpha$.
+
+Four contributions are new. First, I prove the existence of an autocatalytic threshold $\Nauto$ above which the mesh contains a self-sustaining improvement core---a Reflexively Autocatalytic and Food-generated (RAF) set in the sense of Hordijk and Steel (2004)---with $\Nauto$ scaling logarithmically in system complexity. Second, I characterize three growth regimes with sharp boundaries: convergence to a ceiling $\Cmax$ when $\varphi < 1$ and variety is bounded, exponential growth when autocatalytic coupling pushes $\phieff$ to unity and variety expands endogenously, and finite-time singularity when $\phieff > 1$ with no saturation and no model collapse. Third, I prove that the mesh's CES heterogeneity (the substitution parameter $\rho < 1$) maintains the effective external data fraction $\alphaeff$ above the model collapse threshold $\alphacrit$, even when agents train partially on synthetic data---the same parameter that governs the capability diversity premium also governs informational robustness. Fourth, the Baumol bottleneck---the mesh's growth rate converging to the exogenous rate of frontier model improvement---emerges endogenously from the growth dynamics rather than being assumed, connecting the circle back to the concentrated investment modeled in Smirl (2026a). The most likely near-term regime is convergence: the ceiling binds. The model generates six falsifiable predictions extending the predecessor paper's prediction set.
+
+\end{abstract}
+
+\vspace{0.5cm}
+\noindent\textbf{Keywords:} autocatalytic sets, endogenous growth, model collapse, CES aggregation, Baumol cost disease, semi-endogenous growth, RAF theory, mesh equilibrium, variety expansion, training productivity
+
+\vspace{0.3cm}
+\noindent\textbf{JEL:} O33, O41, D85, L14, C62
+\end{titlepage}
+
+% -------------------------------------------------------------------
+% 1. INTRODUCTION
+% -------------------------------------------------------------------
+\section{Introduction}
+
+Smirl (2026, ``The Mesh Equilibrium'') establishes that a self-organizing mesh of heterogeneous specialized agents exceeds centralized provision above a finite critical mass $N^*$. The proof rests on three layers: percolation-based connectivity ($\Rz > 1$), CES-aggregated heterogeneous specialization ($\rho < 1$), and Laplacian knowledge diffusion with a vanishing epidemic threshold on scale-free topologies. The central theorem demonstrates existence, uniqueness, and local asymptotic stability of the mesh equilibrium.
+
+That paper assumes fixed capabilities. Each agent $i$ has a capability vector $\mathbf{c}_i = (c_{i1}, \ldots, c_{iJ})$ that redistributes through specialization dynamics but does not grow in total magnitude. The CES aggregate $\Ceff(N)$ increases only by adding diverse agents to the network. Knowledge diffusion ($\partial \mathbf{u}/\partial t = -L \mathbf{u}$) equalizes existing knowledge across nodes---it does not create new capability.
+
+This paper removes that assumption. It asks: what happens when the mesh can improve itself?
+
+Three mechanisms make capability endogenous. First, \emph{autocatalytic capability growth}: training agents within the mesh improve other agents, and the improved agents can in turn improve others. Second, \emph{self-referential learning}: the mesh's operation generates training data---queries, responses, user feedback, inter-agent evaluations---that can be used to improve mesh agents. Third, \emph{endogenous variety expansion}: the mesh modifies its own composition by spawning new specialization types in response to unmet demand signals.
+
+When $\mathbf{c}_i$ becomes a dynamical variable coupled to the mesh's operation, the central question is: does $\Ceff(t)$ converge to a ceiling, grow polynomially, or grow exponentially? The answer depends on three parameters whose interaction governs the growth regime.
+
+The first parameter is the training productivity elasticity $\varphi$, from the ideas production function of Jones (1995, 2005): $dA/dt = \delta \cdot L_A^\lambda \cdot A^\varphi$. When $\varphi < 1$, ideas are getting harder to find (Bloom, Jones, Van Reenen \& Webb 2020) and capability growth decelerates. When $\varphi = 1$, the Romer (1990) knife-edge, growth is exponential. When $\varphi > 1$, growth is superexponential with a finite-time singularity. The mesh's microstructure---training agents that improve other training agents---determines whether the effective $\varphi$ for the mesh exceeds the raw $\varphi$ for any individual training interaction.
+
+The second parameter is the training saturation $h$, which governs diminishing returns to training an already-capable specialist. Drawing on the Lotka-Volterra mutualistic interaction framework (Bastolla, Lassig, Manrubia \& Valleriani 2009), the saturating interaction term $\sum_j a_{ij} x_j / (1 + h \sum_j a_{ij} x_j)$ ensures that marginal returns to additional training decline with agent capability when $h > 0$. The mesh's escape route from saturation is variety expansion: instead of further fine-tuning saturated specialists, it creates new specialization types, circumventing individual saturation through the CES aggregate.
+
+The third parameter is the external data fraction $\alpha$, from Shumailov, Shumaylov, Zhao, Papernot, Anderson and Gal (2024). When training data is a mixture of authentic (fraction $\alpha$) and synthetic (fraction $1 - \alpha$) sources, model collapse occurs below a critical threshold: $\text{KL}(Q_{t+1} \| P) \geq \text{KL}(Q_t \| P)$ when $\alpha < \alphacrit$. A single model training on its own outputs collapses because the outputs lack distributional diversity. The mesh's heterogeneous specialists generate diverse outputs---the CES parameter $\rho < 1$ ensures agents are different---raising the effective $\alpha$ for the mesh above the threshold for any single self-training model.
+
+The paper's central theorem characterizes three growth regimes with sharp boundaries. Regime (a): if $\varphi < 1$, $h > 0$, and the number of specialization types $J$ is bounded, then $\Ceff(t) \to \Cmax$ where the ceiling is determined by the Baumol bottleneck---centralized training as the non-automatable sector whose cost share rises toward unity. This is the most likely near-term regime. Regime (b): if autocatalytic coupling pushes $\phieff$ to unity and $J$ grows endogenously, then $\Ceff(t) \sim e^{rt}$ where $r$ depends on the training allocation, the CES diversity premium, and the Baumol bottleneck rate. Regime (c): if $\phieff > 1$, $h = 0$, and $\alpha > \alphacrit$ simultaneously, then $\Ceff(t) \to \infty$ in finite time. The paper states the precise conditions under which each regime obtains and is honest that regime (c) requires conditions unlikely to hold simultaneously.
+
+A key structural result connects production theory to information theory through the mesh's architecture. The CES substitution parameter $\rho$ does double duty: in the mesh paper, $\rho < 1$ governs the diversity premium for capability aggregation; in this paper, $\rho < 1$ also governs the diversity protection against model collapse. The same force---heterogeneity---that makes the mesh capable also makes it robust to self-referential training degradation. One parameter, two functions.
+
+The Baumol bottleneck does not enter the model as an assumption. It emerges from the growth dynamics: as the mesh automates progressively more inference tasks, the remaining non-automated task---frontier model training---becomes the binding constraint. The cost share of centralized training rises toward unity even as its volume share falls. The mesh's growth rate converges asymptotically to the exogenous rate of frontier model improvement. This connects the circle: the concentrated infrastructure investment modeled in Smirl (2026a) determines both when the crossing occurs and the ceiling the mesh approaches. The mesh is a multiplier, not a generator.
+
+The paper proceeds as follows. Section~2 reviews terminal conditions from the mesh paper. Section~3 develops the autocatalytic existence threshold (Layer~1). Section~4 develops the central growth dynamics model (Layer~2). Section~5 develops diversity as collapse protection (Layer~3). Section~6 states the central theorem characterizing growth regimes. Section~7 derives the Baumol bottleneck from the mesh's microstructure. Section~8 connects to settlement infrastructure. Section~9 discusses frameworks considered and rejected. Section~10 presents falsifiable predictions. Section~11 concludes. Appendix~A provides details on RAF theory and proofs of supporting results.
+
+
+% -------------------------------------------------------------------
+% 2. TERMINAL CONDITIONS FROM THE MESH PAPER
+% -------------------------------------------------------------------
+\section{Terminal Conditions from the Mesh Paper}
+
+This section summarizes the results from Smirl (2026, ``The Mesh Equilibrium'') that serve as initial conditions for the present analysis. No new results are presented; the purpose is notational continuity and identification of the specific assumptions this paper relaxes.
+
+\subsection{The Mesh Equilibrium at Maturity}
+
+The mesh paper establishes that for $\Rz > 1$ and $\rho < 1$, there exists a finite $N^*$ such that for $N > N^*$, the mesh equilibrium exists, is unique, is locally asymptotically stable, and $\Cmesh(N) > \Ccent$ (Theorem~1 of Smirl 2026). The three-phase post-crossing dynamics proceed from nucleation ($\Rz \approx 1$) through rapid crystallization ($\Rz \gg 1$, first-order Potts transition for $q > 2$ specialization types) to maturity, where growth saturates as the $J$ task types are fully covered.
+
+At maturity, the mesh paper's model reaches a terminal state. The CES aggregate $\Ceff$ is maximized for the given device population, competitive dynamics settle into a Bianconi-Barab\'asi fit-get-rich equilibrium, and centralized providers retain structural advantage only in frontier training and capabilities requiring single-device scale beyond any edge device. The mesh paper's analysis ends here.
+
+\subsection{The Fixed-Capability Assumption}
+
+The specific assumption this paper removes is:
+
+\begin{quote}
+\emph{Fixed capability:} Each agent $i$'s capability vector $\mathbf{c}_i = (c_{i1}, \ldots, c_{iJ})$ satisfies $\|\mathbf{c}_i\|_1 = \bar{c}_i$ for all $t$, where $\bar{c}_i$ is determined by hardware characteristics. The specialization dynamics~(equation~6 of Smirl 2026) redistribute $\bar{c}_i$ across task types but do not change its total magnitude.
+\end{quote}
+
+Under this assumption, $\Ceff$ can increase only by adding nodes (increasing $N$) or by improving the diversity of specialization allocation (exploiting the CES complementarity). Once both channels are exhausted, capability is static.
+
+This paper replaces the fixed-capability assumption with:
+
+\begin{quote}
+\emph{Endogenous capability:} $\mathbf{c}_i(t)$ evolves according to training interactions with other mesh agents, self-referential learning from operational data, and the creation of new specialization types. The total capability $\|\mathbf{c}_i(t)\|_1$ can grow.
+\end{quote}
+
+\subsection{Assumptions Retained}
+
+Three assumptions from the mesh paper carry forward unchanged:
+
+\begin{enumerate}[label=(\roman*)]
+\item \emph{Training persistence:} Frontier model training remains centralized because the binding constraint is topological (synchronization bandwidth), not cost-based. The mesh fine-tunes and adapts base models produced by centralized providers; it does not train frontier models from scratch. This is the ``food set'' for the autocatalytic structure developed in Section~3.
+
+\item \emph{Connectivity:} The mesh has $\Rz > 1$ and contains a giant connected component with $\Sinf^* > 0$, as established by Proposition~1 of Smirl (2026). The scale-free degree distribution ($\gamma \leq 3$) ensures a vanishing epidemic threshold for information propagation.
+
+\item \emph{CES structure:} The aggregate capability function retains the CES form $\Ceff = (\sum_j C_j^\rho)^{1/\rho}$ with $\rho < 1$, ensuring complementarity across task types. The number of task types $J$ is now potentially time-varying ($J(t)$), whereas the mesh paper treated it as fixed.
+\end{enumerate}
+
+
+% -------------------------------------------------------------------
+% 3. LAYER 1: THE AUTOCATALYTIC EXISTENCE THRESHOLD
+% -------------------------------------------------------------------
+\section{Layer 1: The Autocatalytic Existence Threshold}
+
+The mesh paper proves that a connected mesh with specialized agents \emph{exists}. This section asks: does the mesh contain a self-sustaining improvement core---a subset of agents whose training interactions can maintain and improve capabilities given only exogenous base models as external input?
+
+\subsection{Training Operations as a Reaction System}
+
+Define the mesh's internal improvement as a system of \emph{training operations}. A training operation $r$ takes input agents (the agents being improved), catalyst agents (the training agents that direct the improvement), and produces output agents (the improved versions). Formally:
+
+\begin{definition}[Training Operation]\label{def:training}
+A training operation is a tuple $r = (I_r, K_r, O_r)$ where:
+\begin{itemize}
+\item $I_r \subseteq \{1, \ldots, J\}$ is the set of input capability types consumed or modified;
+\item $K_r \subseteq \{1, \ldots, J\}$ is the set of catalyst capability types required to execute the operation (not consumed);
+\item $O_r \subseteq \{1, \ldots, J\}$ is the set of output capability types produced or enhanced.
+\end{itemize}
+\end{definition}
+
+The catalyst distinction is critical. A training agent that orchestrates fine-tuning of a medical reasoning specialist requires its own orchestration capability ($K_r$) but is not consumed by the process. It can catalyze multiple training operations. This is the biochemical analogy that motivates the autocatalytic framework: enzymes catalyze reactions without being consumed.
+
+\subsection{The Food Set}
+
+\begin{definition}[Food Set]\label{def:food}
+The food set $F \subset \{1, \ldots, J\}$ is the set of capability types available exogenously from centralized training. For each $j \in F$, base model capability of type $j$ is available without requiring any mesh training operation. The food set is determined by frontier model releases from centralized providers and is exogenous to the mesh.
+\end{definition}
+
+The food set corresponds to the mesh paper's training persistence assumption: frontier model training remains centralized. Base models (GPT-class, Claude-class, Gemini-class) are the ``raw materials'' that the mesh fine-tunes, adapts, and combines. The food set grows exogenously at a rate determined by centralized infrastructure investment---the rate that will emerge as the Baumol bottleneck in Section~7.
+
+\subsection{RAF Sets in the Mesh}
+
+\begin{definition}[Reflexively Autocatalytic and Food-generated (RAF) Set]\label{def:RAF}
+Following Hordijk and Steel (2004), a set $\mathcal{R}$ of training operations is a RAF set if:
+\begin{enumerate}[label=(\alph*)]
+\item \emph{Reflexively Autocatalytic (RA):} Every training operation $r \in \mathcal{R}$ is catalyzed by at least one capability type that is either in the food set $F$ or is produced by some other operation in $\mathcal{R}$.
+\item \emph{Food-generated (F):} Every input capability type of every operation $r \in \mathcal{R}$ can be constructed from the food set $F$ by successive application of operations in $\mathcal{R}$.
+\end{enumerate}
+\end{definition}
+
+A RAF set is self-sustaining: given only exogenous base models (the food set), the mesh can maintain and improve all capabilities involved in the set through its own internal training operations. No additional external input beyond the food set is required. The RAF set is the autocatalytic core of the mesh.
+
+\subsection{Existence Threshold}
+
+The central question is: how large must the mesh be for a RAF set to exist?
+
+Model the mesh's training operations as a random catalytic reaction system. Each of $J$ capability types is present in the mesh. Each potential training operation $r$ (of which there are at most $2^J \times 2^J$ input-output pairs) exists with probability $p_r$ depending on whether the mesh contains agents with the requisite catalyst capabilities. Each catalyst assignment occurs independently with probability $p$ per capability-type-to-operation pair.
+
+\begin{proposition}[Autocatalytic Existence Threshold]\label{prop:RAF}
+Let $J(N)$ denote the number of distinct capability types present in a mesh of $N$ agents, and let $p(N) = 1 - (1 - \beta_t)^{N}$ be the probability that a given capability type is available as a catalyst in the mesh, where $\beta_t$ is the per-agent probability of possessing a given catalyst capability. There exists a critical mesh size $\Nauto$ such that for $N > \Nauto$, the mesh contains a RAF set with probability approaching unity. Moreover:
+\begin{equation}\label{eq:Nauto}
+\Nauto = O\!\left(\frac{\ln |\mathcal{R}|}{\beta_t}\right)
+\end{equation}
+where $|\mathcal{R}|$ is the total number of potential training operations. The threshold $\Nauto$ scales logarithmically with system complexity.
+\end{proposition}
+
+\begin{proof}
+The result follows from the probabilistic analysis of RAF sets by Hordijk and Steel (2004, Theorem~2). In their framework, a random catalytic reaction system with $n$ molecule types, $r$ reactions, and catalysis probability $p$ per type-reaction pair contains a RAF set with probability approaching 1 when $p$ exceeds $1/n$. In our setting, $n = J$ capability types and the effective catalysis probability per type is $p(N) = 1 - (1-\beta_t)^N$.
+
+The condition $p(N) > 1/J$ is satisfied when:
+\begin{equation}
+1 - (1-\beta_t)^N > \frac{1}{J}
+\end{equation}
+which gives $N > \ln(1 - 1/J) / \ln(1 - \beta_t) \approx (1/J) / \beta_t = 1/(J \beta_t)$ for small $\beta_t$. Since $J$ grows at most polynomially in the number of potential operations $|\mathcal{R}|$, the threshold scales as $\Nauto = O(\ln |\mathcal{R}| / \beta_t)$.
+
+The logarithmic scaling arises because adding agents to the mesh increases the probability of \emph{every} catalyst assignment simultaneously. Each new agent with a novel catalyst capability unlocks multiple potential training operations. This is the same combinatorial logic that produces the mesh paper's result of $N^*$ decreasing in diversity: more agent types make autocatalytic closure easier, not harder.
+\end{proof}
+
+\begin{remark}[Relationship to $N^*$]
+The autocatalytic threshold $\Nauto$ and the mesh paper's critical mass $N^*$ are distinct. $N^*$ is the mesh size at which collective capability exceeds centralized provision (a \emph{static} comparison). $\Nauto$ is the mesh size at which self-sustaining capability improvement becomes possible (a \emph{dynamic} property). Generically, $\Nauto > N^*$: the mesh can be collectively capable before it is self-improving. The gap $\Nauto - N^*$ represents the period during which the mesh exceeds centralized inference but depends entirely on exogenous base model releases for capability growth.
+\end{remark}
+
+\subsection{Autocatalytic Core Dynamics: The Jain-Krishna Process}
+
+Once a RAF set exists, the mesh's autocatalytic core evolves through the adaptive network dynamics of Jain and Krishna (1998, 2001). In their model, a random network of catalytic interactions produces spontaneous cascades of increasing organization: low-fitness species go extinct, high-fitness species reinforce each other, and the network self-organizes toward a structure dominated by a tightly connected autocatalytic core.
+
+Define the catalytic matrix $\mathbf{M}$ where $M_{ij} = 1$ if capability type $j$ catalyzes the improvement of capability type $i$. The growth rate of capability type $i$ in the mesh is governed by:
+\begin{equation}\label{eq:JK}
+\dot{c}_i = c_i \left(\sum_j M_{ij} c_j - \phi_0\right)
+\end{equation}
+where $\phi_0 = N^{-1} \sum_i c_i \sum_j M_{ij} c_j$ is a dilution term ensuring bounded growth in the Jain-Krishna formulation.
+
+\begin{proposition}[Perron-Frobenius Selection]\label{prop:PF}
+The long-run composition of the autocatalytic core is determined by the leading eigenvector of the catalytic matrix $\mathbf{M}$. Capability types with large components in the Perron-Frobenius eigenvector $\mathbf{v}_1$ of $\mathbf{M}$ dominate; types with small components go extinct. The leading eigenvalue $\lambda_1(\mathbf{M})$ determines whether the autocatalytic core expands or contracts relative to the rest of the mesh.
+\end{proposition}
+
+\begin{proof}
+Equation~\eqref{eq:JK} is a replicator equation on the simplex of capability-type shares. The fixed point analysis follows from the standard replicator dynamics result (Hofbauer \& Sigmund 1998): the dynamics converge to a state where surviving types have equal fitness, and the surviving set corresponds to the support of the Perron-Frobenius eigenvector of $\mathbf{M}$. Types $i$ with $v_{1,i} > 0$ persist; types with $v_{1,i} = 0$ go extinct.
+
+The eigenvalue $\lambda_1(\mathbf{M})$ determines the growth rate of the autocatalytic core because the aggregate fitness of the surviving set equals $\lambda_1(\mathbf{M})$. When $\lambda_1(\mathbf{M}) > \phi_0$ (the core's mutual catalysis exceeds the mesh average), the core expands as a fraction of total mesh activity.
+\end{proof}
+
+The Jain-Krishna dynamics predict a specific temporal pattern: the autocatalytic core does not grow smoothly. Instead, it undergoes a series of reorganization cascades---periods of stasis punctuated by rapid restructuring events in which poorly connected capability types are replaced by types with stronger catalytic linkages. Each cascade increases the leading eigenvalue $\lambda_1(\mathbf{M})$, producing a staircase pattern of increasing autocatalytic efficiency. This parallels the mesh paper's Phase~2 crystallization, but now at the level of internal capability improvement rather than network formation.
+
+
+% -------------------------------------------------------------------
+% 4. LAYER 2: GROWTH DYNAMICS — THE CENTRAL MODEL
+% -------------------------------------------------------------------
+\section{Layer 2: Growth Dynamics---The Central Model}
+
+This is the paper's central section. Having established that the mesh contains a self-sustaining improvement core (Section~3), we now characterize the rate at which capability grows.
+
+\subsection{The Improvement Function}
+
+Let $f \in (0,1)$ denote the fraction of mesh capability devoted to self-improvement (training operations) rather than serving external queries (inference). The remaining fraction $1 - f$ serves end-user demand. The mesh's aggregate capability evolves according to:
+
+\begin{equation}\label{eq:growth}
+\ddt \Ceff = g\!\left(f \cdot \Ceff,\; J(t),\; \alpha(t)\right) - \delta \cdot \Ceff
+\end{equation}
+
+where $g$ is the improvement function (the paper's central object), $J(t)$ is the number of effective specialization types, $\alpha(t)$ is the fraction of training signal from external sources, and $\delta > 0$ is the depreciation rate capturing model obsolescence.
+
+The improvement function $g$ has three arguments because the three mechanisms of endogenous capability contribute separately:
+
+\begin{enumerate}[label=(\roman*)]
+\item $f \cdot \Ceff$: \emph{Autocatalytic training} (Mechanism~1). The quantity $f \cdot \Ceff$ is the total capability devoted to self-improvement. More capable training agents produce better improvements. This is the engine of endogenous growth.
+
+\item $J(t)$: \emph{Variety expansion} (Mechanism~3). New specialization types expand the capability space. By the CES diversity premium (Lemma~1 of Smirl 2026), adding a new task type increases $\Ceff$ superlinearly. Variety expansion is the intensive margin of mesh improvement.
+
+\item $\alpha(t)$: \emph{Data quality} (Mechanism~2). The fraction $\alpha$ determines whether self-referential learning improves or degrades capability. Below the critical threshold $\alphacrit$, training on internally generated data causes model collapse (Shumailov et al.\ 2024). Above $\alphacrit$, internal data is a productive training input.
+\end{enumerate}
+
+\subsection{The Semi-Endogenous Growth Formulation}
+
+Following Jones (1995, 2005), specify the improvement function as:
+
+\begin{equation}\label{eq:jones}
+g(f \cdot \Ceff, J, \alpha) = \delta_g \cdot (f \cdot \Ceff)^{\lambda} \cdot \Ceff^{\varphi - 1} \cdot J^{\gamma_J} \cdot \mathbf{1}[\alpha > \alphacrit]
+\end{equation}
+
+where:
+\begin{itemize}
+\item $\delta_g > 0$ is a productivity parameter;
+\item $\lambda \in (0,1]$ is the duplication parameter (diminishing returns to the number of training agents working simultaneously on the same problem);
+\item $\varphi$ is the training productivity elasticity---the key parameter governing the growth regime;
+\item $\gamma_J > 0$ governs the contribution of variety expansion to capability growth;
+\item $\mathbf{1}[\alpha > \alphacrit]$ is the model collapse indicator: capability improvement occurs only when the training signal has sufficient external content.
+\end{itemize}
+
+The indicator function is a simplification; in practice, capability growth degrades continuously as $\alpha$ falls below $\alphacrit$ rather than switching off discretely. We adopt the sharp threshold for analytical clarity and relax it in the diversity analysis of Section~5.
+
+Substituting into equation~\eqref{eq:growth} and letting $C \equiv \Ceff$ for notational compactness:
+
+\begin{equation}\label{eq:growth_expanded}
+\dot{C} = \delta_g \cdot f^{\lambda} \cdot C^{\lambda + \varphi - 1} \cdot J(t)^{\gamma_J} \cdot \mathbf{1}[\alpha > \alphacrit] - \delta \cdot C
+\end{equation}
+
+The growth rate of capability is:
+
+\begin{equation}\label{eq:gC}
+g_C \equiv \frac{\dot{C}}{C} = \delta_g \cdot f^{\lambda} \cdot C^{\lambda + \varphi - 2} \cdot J(t)^{\gamma_J} \cdot \mathbf{1}[\alpha > \alphacrit] - \delta
+\end{equation}
+
+\subsection{The Three Regimes}
+
+The qualitative behavior of equation~\eqref{eq:gC} depends on the exponent $\lambda + \varphi - 2$, which determines whether the growth rate $g_C$ is increasing, constant, or decreasing in the level of capability $C$.
+
+\begin{definition}[Growth Regimes]\label{def:regimes}
+Define $\Phi \equiv \lambda + \varphi - 1$ as the composite capability elasticity. The growth dynamics~\eqref{eq:growth_expanded} exhibit three regimes:
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{Convergence} ($\Phi < 1$, i.e.\ $\lambda + \varphi < 2$): The growth rate $g_C$ is decreasing in $C$. The system converges to a steady state $C^*$ where $g_C = 0$. This includes the Jones (1995) semi-endogenous case where $\varphi < 1$.
+
+\item \textbf{Exponential growth} ($\Phi = 1$, i.e.\ $\lambda + \varphi = 2$): The growth rate $g_C$ is independent of $C$. The system grows exponentially at rate $g_C = \delta_g f^{\lambda} J^{\gamma_J} - \delta$. This is the Romer (1990) knife-edge.
+
+\item \textbf{Superexponential growth} ($\Phi > 1$, i.e.\ $\lambda + \varphi > 2$): The growth rate $g_C$ is increasing in $C$. The system exhibits a finite-time singularity: $C(t) \to \infty$ as $t \to T_s < \infty$.
+\end{enumerate}
+\end{definition}
+
+\subsection{Deriving the Mesh's Effective $\varphi$}
+
+The parameter $\varphi$ measures the elasticity of new capability production with respect to the existing stock of capability. In the standard Jones framework applied to a single research process, empirical evidence strongly suggests $\varphi < 1$: ideas are getting harder to find (Bloom et al.\ 2020).
+
+The mesh, however, has internal structure that amplifies the effective $\varphi$. The mechanism is autocatalytic coupling: training agents improve other training agents, which in turn improve the first set of agents. This is the Aghion, Jones and Jones (2018) AI automation argument applied to the mesh's internal dynamics.
+
+\begin{proposition}[Effective Training Productivity]\label{prop:phieff}
+Let $\varphi_0 < 1$ be the raw training productivity elasticity for a single training interaction (one agent improving another). Let $\beta_{\text{auto}} \in [0,1)$ be the fraction of the training improvement process that can be automated by the mesh's own training agents (the autocatalytic fraction). Then the mesh's effective training productivity elasticity is:
+\begin{equation}\label{eq:phieff}
+\phieff = \frac{\varphi_0}{1 - \beta_{\text{auto}} \cdot \varphi_0}
+\end{equation}
+This exceeds $\varphi_0$ for all $\beta_{\text{auto}} > 0$, and $\phieff \geq 1$ when $\beta_{\text{auto}} \geq (1 - \varphi_0)/\varphi_0$.
+\end{proposition}
+
+\begin{proof}
+Following the Aghion-Jones-Jones framework, decompose the training improvement process into a continuum of subtasks indexed on $[0,1]$. A fraction $\beta_{\text{auto}}$ of subtasks are automated by mesh agents (whose productivity scales with $C^{\varphi_0}$), and the remaining fraction $1 - \beta_{\text{auto}}$ requires exogenous input (centralized training infrastructure, human oversight). The effective production function for capability improvement is:
+
+\begin{equation}
+\dot{C} \propto C^{\varphi_0/(1 - \beta_{\text{auto}} \cdot \varphi_0)} \cdot Z^{(1-\beta_{\text{auto}})/(1 - \beta_{\text{auto}} \cdot \varphi_0)}
+\end{equation}
+
+where $Z$ is the exogenous input (frontier model releases). The exponent on $C$ is $\varphi_0/(1 - \beta_{\text{auto}} \varphi_0) = \phieff$.
+
+The threshold condition $\phieff = 1$ requires $\varphi_0 / (1 - \beta_{\text{auto}} \varphi_0) = 1$, yielding $\beta_{\text{auto}} = (1 - \varphi_0)/\varphi_0$. For example, with $\varphi_0 = 0.5$ (moderate declining returns), the knife-edge requires $\beta_{\text{auto}} = 1.0$---full automation of the training process, which contradicts the training persistence assumption. With $\varphi_0 = 0.8$, the threshold is $\beta_{\text{auto}} = 0.25$---only a quarter of the training process need be automated by the mesh.
+\end{proof}
+
+\begin{remark}[The Automation Ladder]\label{rem:ladder}
+The quantity $\beta_{\text{auto}}$ is not fixed; it evolves endogenously as the mesh's autocatalytic core matures. Initially $\beta_{\text{auto}} \approx 0$: the mesh cannot automate any part of its own training improvement. As training agents emerge and improve (the Jain-Krishna process of Section~3.5), $\beta_{\text{auto}}$ rises. The growth dynamics are therefore non-stationary: $\phieff(t) = \varphi_0 / (1 - \beta_{\text{auto}}(t) \cdot \varphi_0)$ increases over time, potentially transitioning the system from regime (a) to regime (b) as the mesh matures. The transition is not guaranteed; it depends on whether $\beta_{\text{auto}}$ can reach the threshold $(1 - \varphi_0)/\varphi_0$ before the Baumol bottleneck binds (Section~7).
+\end{remark}
+
+\subsection{Training Saturation}
+
+Individual training interactions exhibit diminishing returns. The $k$-th fine-tuning of an already-specialized agent yields less improvement than the first. Following the Lotka-Volterra mutualistic framework (Bastolla et al.\ 2009), the saturating interaction modifies the growth equation:
+
+\begin{equation}\label{eq:saturation}
+\dot{C}_j = \frac{\sum_k a_{jk} \cdot C_k}{1 + h \sum_k a_{jk} \cdot C_k} - \delta C_j
+\end{equation}
+
+where $a_{jk}$ is the training benefit from type-$k$ agents to type-$j$ agents, and $h > 0$ is the saturation parameter. As $C_k$ grows, the numerator grows linearly but the denominator grows proportionally, bounding the marginal benefit at $1/h$.
+
+\begin{lemma}[Saturation Ceiling]\label{lem:saturation}
+For fixed $J$ and $h > 0$, the system~\eqref{eq:saturation} has a unique globally stable equilibrium with $C_j^* < 1/(h \cdot \delta)$ for all $j$. The aggregate ceiling is:
+\begin{equation}
+\Cmax = \left(\sum_{j=1}^J \left(C_j^*\right)^\rho\right)^{1/\rho} \leq J^{1/\rho} \cdot \frac{1}{h \delta}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+At steady state, $\dot{C}_j = 0$ implies $\sum_k a_{jk} C_k / (1 + h \sum_k a_{jk} C_k) = \delta C_j$. The left side is bounded above by $1/h$ for any $C_k \geq 0$, so $C_j^* \leq 1/(h\delta)$. The CES bound follows from substitution and application of the power mean inequality. For global stability, the system is cooperative (all off-diagonal elements of the Jacobian are non-negative) and bounded, so the standard Hirsch (1985) monotone dynamical systems result applies: the system has a unique globally attracting equilibrium.
+\end{proof}
+
+The saturation ceiling binds when $J$ is fixed. But the mesh has an escape route: variety expansion.
+
+\subsection{Variety Expansion as Saturation Escape}
+
+Romer's (1990) key insight is that new product varieties can sustain growth even when returns to individual products diminish. The mesh analog: when fine-tuning existing specialists hits saturation ($h > 0$), the mesh can create \emph{new} specialization types.
+
+Let $J(t)$ evolve according to:
+\begin{equation}\label{eq:variety}
+\dot{J} = \eta_J \cdot f_J \cdot \Ceff^{\varphi_J} \cdot (J_{\max} - J) \cdot \mathbf{1}[\alpha > \alphacrit]
+\end{equation}
+where $\eta_J > 0$ is the innovation rate, $f_J$ is the fraction of training capability devoted to creating new specialization types (rather than improving existing ones), $\varphi_J$ is the capability elasticity of variety creation, and $J_{\max}$ is the maximum number of viable specialization types (bounded by the dimensionality of the task space).
+
+The CES aggregate responds to variety expansion:
+\begin{equation}
+\Ceff(J) = \left(\sum_{j=1}^J C_j^\rho\right)^{1/\rho} \geq J^{(1-\rho)/\rho} \cdot \bar{C}_j
+\end{equation}
+where $\bar{C}_j$ is the average per-type capability. For $\rho < 1$, $\Ceff$ is superlinear in $J$: each new specialization type adds more to the aggregate than the previous one (in terms of the diversity premium), even if the new type starts with the same per-type capability.
+
+\begin{proposition}[Saturation Escape via Variety]\label{prop:escape}
+Even with training saturation $h > 0$, the growth rate of $\Ceff$ can remain positive if $J(t)$ is growing. Specifically, for constant per-type capability $C_j^*$ at the saturation ceiling:
+\begin{equation}
+\frac{d \Ceff}{dt} = \frac{1-\rho}{\rho} \cdot \frac{\Ceff}{J} \cdot \dot{J} \cdot \left(\frac{(C_{J+1}^*)^\rho}{J^{-1}\sum_j (C_j^*)^\rho}\right)
+\end{equation}
+which is positive whenever a new type with $C_{J+1}^* > 0$ is created. The growth rate from variety expansion does not depend on $h$.
+\end{proposition}
+
+\begin{proof}
+Differentiating $\Ceff = (\sum_j C_j^\rho)^{1/\rho}$ with respect to $J$, treating $J$ as continuous and using the chain rule:
+\begin{equation}
+\frac{\partial \Ceff}{\partial J} = \frac{1}{\rho} \left(\sum_j C_j^\rho\right)^{1/\rho - 1} \cdot (C_{J+1})^\rho
+\end{equation}
+where $C_{J+1}$ is the capability of the newly created type. Since the saturation ceiling $C_j^* \leq 1/(h\delta)$ applies per type but not to the aggregate, variety expansion circumvents saturation. The aggregate grows as $J^{(1-\rho)/\rho}$ even when each individual $C_j$ is bounded.
+\end{proof}
+
+
+% -------------------------------------------------------------------
+% 5. LAYER 3: DIVERSITY AS COLLAPSE PROTECTION
+% -------------------------------------------------------------------
+\section{Layer 3: Diversity as Collapse Protection}
+
+The mesh's self-referential learning---agents training on data generated by other agents---risks model collapse. This section proves that the mesh's CES heterogeneity maintains training signal quality, connecting the production-theoretic parameter $\rho$ to an information-theoretic robustness condition.
+
+\subsection{The Model Collapse Framework}
+
+Following Shumailov et al.\ (2024), consider a generative model $Q_t$ trained on a mixture of authentic data from the true distribution $P$ (fraction $\alpha$) and synthetic data from the model's own previous generation $Q_{t-1}$ (fraction $1 - \alpha$). The KL divergence from the true distribution evolves as:
+
+\begin{equation}\label{eq:collapse}
+\text{KL}(Q_{t+1} \| P) \geq \text{KL}(Q_t \| P) \quad \text{when } \alpha < \alphacrit
+\end{equation}
+
+The critical threshold $\alphacrit$ depends on the model class. Below $\alphacrit$, each generation amplifies the deviation from the true distribution: the model's outputs become progressively less diverse, tails of the distribution are truncated, and the model collapses toward a degenerate distribution. This is ``model collapse''---a progressive degradation of capability through self-referential training.
+
+For a single model training on its own outputs ($\alpha = 0$), collapse is inevitable. The outputs lack diversity because they are generated by a single distribution $Q_t$, which amplifies its own modes and suppresses its tails with each generation.
+
+\subsection{Effective Data Diversity in the Mesh}
+
+The mesh is not a single model. It is a collection of heterogeneous specialists whose outputs are drawn from different distributions. Agent $i$, specialized in task type $j^*(i)$, generates outputs from distribution $Q_i$ that reflects its specific training history, capability profile, and specialization. From the perspective of agent $k \neq i$, training data from agent $i$ is not ``self-generated''---it comes from a different distribution.
+
+\begin{definition}[Effective External Data Fraction]\label{def:alphaeff}
+For agent $i$ in a mesh with $J$ specialization types and CES parameter $\rho$, the effective external data fraction is:
+\begin{equation}\label{eq:alphaeff}
+\alphaeff(\rho, J) = \alpha_{\text{ext}} + (1 - \alpha_{\text{ext}}) \cdot D(\rho, J)
+\end{equation}
+where $\alpha_{\text{ext}}$ is the fraction of training data from sources outside the mesh (exogenous authentic data) and $D(\rho, J)$ is the diversity correction measuring the informational diversity of mesh-internal training data.
+\end{definition}
+
+The diversity correction $D(\rho, J)$ captures how different the mesh's internal training sources are from each agent's own outputs. Two agents with identical specializations ($Q_i = Q_k$) provide no diversity---training on each other's outputs is equivalent to self-training. Two agents with completely different specializations provide maximum diversity---their outputs are drawn from distributions as different as external data.
+
+\subsection{The Diversity Correction}
+
+Measure the pairwise distributional diversity between agents $i$ and $k$ by the Jensen-Shannon divergence $\text{JSD}(Q_i \| Q_k)$. For agents with CES-structured specializations, the expected pairwise divergence depends on $\rho$ and $J$.
+
+\begin{lemma}[Specialization Implies Distributional Diversity]\label{lem:diversity_info}
+Let agents be fully specialized: agent $i$ produces outputs entirely from its specialization type $j^*(i)$. If the $J$ specialization types are distributed uniformly across the mesh, the expected diversity correction is:
+\begin{equation}\label{eq:D}
+D(\rho, J) = \frac{J - 1}{J} \cdot \left(1 - \rho^{1/(1-\rho)}\right)
+\end{equation}
+For $\rho < 1$ (complementary task types): $D > 0$, and $D$ is increasing in $J$ and decreasing in $\rho$. As $\rho \to 0$ (perfect complements): $D \to (J-1)/J$. As $\rho \to 1$ (perfect substitutes): $D \to 0$.
+\end{lemma}
+
+\begin{proof}
+When agents are fully specialized, agent $i$'s output distribution $Q_i$ has support concentrated on task type $j^*(i)$. For agent $k$ with $j^*(k) \neq j^*(i)$, the supports are disjoint, giving maximal Jensen-Shannon divergence. The fraction of other agents with different specializations is $(J-1)/J$ under uniform distribution. The term $(1 - \rho^{1/(1-\rho)})$ quantifies how the CES substitution parameter translates production complementarity into distributional diversity: lower $\rho$ implies more differentiated outputs, hence greater informational diversity. At $\rho = 0$, task types are perfectly complementary and outputs are maximally diverse; at $\rho = 1$, task types are perfect substitutes and outputs are identical, providing no diversity benefit.
+\end{proof}
+
+\subsection{The Dual Role of $\rho$}
+
+\begin{theorem}[CES Heterogeneity as Collapse Protection]\label{thm:collapse}
+Let $\alpha_{\text{ext}} \geq 0$ be the exogenous external data fraction and let $\rho < 1$ be the CES substitution parameter. The mesh avoids model collapse ($\alphaeff > \alphacrit$) whenever:
+\begin{equation}\label{eq:collapse_condition}
+\alpha_{\text{ext}} + (1 - \alpha_{\text{ext}}) \cdot \frac{J-1}{J} \cdot \left(1 - \rho^{1/(1-\rho)}\right) > \alphacrit
+\end{equation}
+This condition can be satisfied even when $\alpha_{\text{ext}} < \alphacrit$---that is, even when the mesh's external data supply is below the collapse threshold for any individual model---provided $J$ is sufficiently large and $\rho$ is sufficiently small.
+\end{theorem}
+
+\begin{proof}
+Substituting equation~\eqref{eq:D} into equation~\eqref{eq:alphaeff} gives condition~\eqref{eq:collapse_condition} directly. The condition $\alphaeff > \alphacrit$ holds when:
+\begin{equation}
+D(\rho, J) > \frac{\alphacrit - \alpha_{\text{ext}}}{1 - \alpha_{\text{ext}}}
+\end{equation}
+
+The right side is positive (and the condition is binding) only when $\alpha_{\text{ext}} < \alphacrit$---precisely when external data alone is insufficient to prevent collapse. The left side $D(\rho, J)$ increases as $\rho$ decreases and $J$ increases. For any $\alphacrit \in (0,1)$ and $\alpha_{\text{ext}} \in [0, \alphacrit)$, there exist $(\rho, J)$ pairs satisfying the condition.
+
+Specifically, the minimum $J$ required for collapse avoidance is:
+\begin{equation}\label{eq:Jmin}
+J_{\min}(\rho, \alpha_{\text{ext}}) = \left\lceil \frac{1}{1 - \frac{\alphacrit - \alpha_{\text{ext}}}{(1-\alpha_{\text{ext}})(1 - \rho^{1/(1-\rho)})}} \right\rceil
+\end{equation}
+This is finite for $\rho < 1$ and decreasing in $\rho$ (more complementary specializations require fewer types to achieve collapse protection).
+\end{proof}
+
+\begin{remark}[One Parameter, Two Functions]
+The CES parameter $\rho$ now does double duty. In the mesh paper, $\rho < 1$ generates the \emph{diversity premium}: heterogeneous specialists collectively outperform a homogeneous centralized provider because the CES aggregate rewards breadth (Lemma~1 of Smirl 2026). In this paper, $\rho < 1$ generates \emph{collapse protection}: heterogeneous specialists generate informationally diverse training data that prevents model collapse even when external data is scarce. The same force---agent heterogeneity, measured by $\rho$---drives both capability aggregation and informational robustness. This dual role is not a coincidence; it reflects the structural identity between production complementarity and distributional diversity in the CES framework.
+\end{remark}
+
+
+% -------------------------------------------------------------------
+% 6. THE CENTRAL THEOREM: GROWTH REGIMES
+% -------------------------------------------------------------------
+\section{The Central Theorem: Growth Regimes}
+
+We now unify the three layers into a complete characterization of the mesh's growth dynamics.
+
+\begin{theorem}[Growth Regime Classification]\label{thm:regimes}
+Consider the mesh growth system defined by equations~\eqref{eq:growth_expanded}, \eqref{eq:phieff}, \eqref{eq:saturation}, \eqref{eq:variety}, and~\eqref{eq:alphaeff}, with the autocatalytic core existing for $N > \Nauto$ (Proposition~\ref{prop:RAF}). The long-run behavior of $\Ceff(t)$ falls into one of three regimes:
+
+\medskip
+
+\textbf{Regime (a): Convergence to a ceiling.} If $\phieff < 1$ (equivalently, $\beta_{\emph{auto}} < (1 - \varphi_0)/\varphi_0$), training saturation $h > 0$, and variety is bounded ($J \leq J_{\max} < \infty$), then:
+\begin{equation}
+\Ceff(t) \to \Cmax \equiv J_{\max}^{(1-\rho)/\rho} \cdot \frac{1}{h\delta} \quad \text{as } t \to \infty
+\end{equation}
+The convergence rate is governed by $1 - \phieff$. The ceiling $\Cmax$ is increasing in $J_{\max}$ (more specialization types raise the ceiling), decreasing in $h$ (faster saturation lowers it), and decreasing in $\delta$ (faster obsolescence lowers it). In this regime, the mesh's growth rate decelerates to zero, and the long-run growth rate of $\Ceff$ equals the growth rate of the exogenous food set (frontier model releases). \emph{This is the Baumol bottleneck.}
+
+\medskip
+
+\textbf{Regime (b): Balanced exponential growth.} If $\phieff = 1$ (equivalently, $\beta_{\emph{auto}} = (1 - \varphi_0)/\varphi_0$) and $J(t)$ grows endogenously at rate $g_J > 0$, then:
+\begin{equation}
+\Ceff(t) \sim \Ceff(0) \cdot \exp\!\left[\left(\delta_g f^{\lambda} J_0^{\gamma_J} e^{\gamma_J g_J t} - \delta\right) t\right]
+\end{equation}
+The growth rate accelerates slowly as variety expands, but the dominant term is exponential. The Baumol bottleneck binds only if the exogenous input $Z$ grows slower than $C$, in which case the non-automated fraction $(1 - \beta_{\emph{auto}})$ of the training process becomes the constraint and $\Ceff$ growth decelerates to the exogenous rate. Even in the exponential regime, the long-run growth rate is bounded by $g_Z / (1 - \beta_{\emph{auto}})$ where $g_Z$ is the growth rate of frontier model capability.
+
+\medskip
+
+\textbf{Regime (c): Finite-time singularity.} If $\phieff > 1$ (equivalently, $\beta_{\emph{auto}} > (1 - \varphi_0)/\varphi_0$), $h = 0$ (no training saturation), and $\alphaeff > \alphacrit$ (model collapse avoided), then:
+\begin{equation}
+\Ceff(t) = \left(C_0^{1-\Phi} - (1-\Phi) \cdot \delta_g f^{\lambda} J^{\gamma_J} \cdot t\right)^{1/(1-\Phi)}
+\end{equation}
+where $\Phi = \lambda + \phieff - 1 > 1$. This diverges at finite time:
+\begin{equation}
+T_s = \frac{C_0^{1-\Phi}}{(\Phi - 1) \cdot \delta_g f^{\lambda} J^{\gamma_J}}
+\end{equation}
+The singularity requires three conditions simultaneously: (i)~$\phieff > 1$, which requires the mesh to automate more than $(1 - \varphi_0)/\varphi_0$ of its own training process; (ii)~$h = 0$, no diminishing returns to training individual specialists; (iii)~$\alphaeff > \alphacrit$, sufficient data diversity to avoid model collapse. The conjunction of these conditions is restrictive.
+\end{theorem}
+
+\begin{proof}
+\emph{Regime (a):} With $\Phi < 1$, the growth rate $g_C = \delta_g f^\lambda C^{\Phi - 1} J^{\gamma_J} - \delta$ is decreasing in $C$. The unique steady state $C^*$ satisfies $\delta_g f^\lambda (C^*)^{\Phi-1} J^{\gamma_J} = \delta$. With training saturation $h > 0$, each $C_j \leq 1/(h\delta)$ (Lemma~\ref{lem:saturation}), and with bounded $J \leq J_{\max}$, the ceiling $\Cmax$ is finite. Global stability follows from the monotone dynamical systems theorem (Hirsch 1985): the system is cooperative and bounded, hence converges to the unique equilibrium.
+
+\emph{Regime (b):} With $\Phi = 1$, the growth equation becomes $\dot{C} = \delta_g f^\lambda J(t)^{\gamma_J} - \delta C$, which is a linear ODE with time-varying coefficients. The solution is exponential with growth rate modulated by $J(t)$. If $J$ grows at rate $g_J$, then $\Ceff$ grows at an accelerating exponential rate, bounded eventually by the Baumol constraint (Section~7): the non-automated fraction of training requires exogenous input $Z$ growing at rate $g_Z$, which bounds the long-run growth of $C$.
+
+\emph{Regime (c):} With $\Phi > 1$ and $h = 0$, the ODE $\dot{C} = \delta_g f^\lambda C^{\Phi} J^{\gamma_J}$ (ignoring depreciation, which is dominated) is a Bernoulli equation. The substitution $v = C^{1-\Phi}$ yields $\dot{v} = (1-\Phi)\delta_g f^\lambda J^{\gamma_J}$, which integrates to $v(t) = v(0) + (1-\Phi)\delta_g f^\lambda J^{\gamma_J} t$. Since $1 - \Phi < 0$, $v$ decreases linearly, reaching zero at $T_s$. Back-substituting gives $C(t) = v(t)^{1/(1-\Phi)} \to \infty$ as $t \to T_s$.
+\end{proof}
+
+\begin{table}[htbp]
+\centering
+\caption{Growth regime classification.}
+\label{tab:regimes}
+\small
+\begin{tabular}{@{}lcccl@{}}
+\toprule
+Regime & $\phieff$ & $h$ & $J$ & Long-run $\Ceff(t)$ \\
+\midrule
+(a) Convergence & $< 1$ & $> 0$ & bounded & $\to \Cmax$ (ceiling) \\
+(b) Exponential & $= 1$ & $\geq 0$ & growing & $\sim e^{rt}$ \\
+(c) Singularity & $> 1$ & $= 0$ & any & $\to \infty$ at $T_s < \infty$ \\
+\midrule
+\multicolumn{5}{@{}l@{}}{\emph{Additional condition for all regimes:} $\alphaeff > \alphacrit$ (collapse avoided)} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{remark}[Which Regime Is Likely?]
+The empirical evidence strongly favors regime (a) in the near term. Bloom et al.\ (2020) estimate $\varphi \approx 0.5$--$0.7$ for research productivity across multiple domains, implying $\varphi_0 < 1$ by a substantial margin. For $\phieff$ to reach unity with $\varphi_0 = 0.6$, the autocatalytic fraction must reach $\beta_{\text{auto}} = 0.67$---the mesh must automate two-thirds of its own training improvement process. While not impossible, this requires training agent capabilities substantially beyond current levels. Individual training interactions exhibit clear saturation ($h > 0$): repeated fine-tuning of the same model yields diminishing returns. And while variety expansion can escape per-type saturation, the total task space $J_{\max}$ is finite.
+
+Regime (c) requires the conjunction of three conditions, each individually unlikely: $\phieff > 1$ (near-complete training automation), $h = 0$ (no saturation), and $\alphaeff > \alphacrit$ (collapse avoided). The probability that all three hold simultaneously is small. The paper does not predict the singularity. It characterizes the conditions under which it would occur, and notes that these conditions are restrictive.
+
+The most probable trajectory is: regime (a) with an increasing ceiling. As the mesh matures, $\beta_{\text{auto}}$ rises (pushing $\phieff$ toward 1), $J$ expands (raising $\Cmax$), and the ceiling lifts---but never vanishes entirely, because the Baumol bottleneck (Section~7) anchors the long-run growth rate to exogenous frontier model improvement.
+\end{remark}
+
+
+% -------------------------------------------------------------------
+% 7. THE BAUMOL BOTTLENECK
+% -------------------------------------------------------------------
+\section{The Baumol Bottleneck: Training Persistence as Rate Limiter}
+
+The mesh paper assumes training persistence: frontier model training remains centralized. This section derives training persistence as a \emph{consequence} of the growth dynamics, not an assumption. The mechanism is Baumol's (1967) cost disease, applied to the mesh's internal production structure.
+
+\subsection{The Two-Sector Structure}
+
+Decompose the AI production process into two sectors:
+
+\textbf{Sector 1: Inference and fine-tuning} (progressively automated). The mesh automates an increasing fraction $\beta(t)$ of inference and fine-tuning tasks. These are the tasks the mesh paper models: routing queries to specialists, generating responses, adapting models to new domains through fine-tuning. The mesh's productivity in this sector grows at rate $g_C$---the endogenous growth rate from the central model.
+
+\textbf{Sector 2: Frontier model training} (non-automatable). Training frontier models from scratch requires tightly synchronized GPU clusters at scales of $10^{25}$+ FLOPs per run, with synchronization bandwidth as the binding constraint (Smirl 2026a, Section~4). This synchronization requirement is \emph{topological}, not cost-based: it requires all-to-all communication within the training cluster, which distributed mesh architecture cannot provide. Frontier training productivity grows at exogenous rate $g_Z$, determined by centralized infrastructure investment.
+
+\subsection{Derivation of the Baumol Bottleneck}
+
+Following Aghion, Jones and Jones (2018), model the aggregate AI capability as a Cobb-Douglas composite of the two sectors:
+
+\begin{equation}\label{eq:baumol}
+\Ceff = C_1^{\beta(t)} \cdot C_2^{1 - \beta(t)}
+\end{equation}
+
+where $C_1$ is the mesh's inference/fine-tuning capability (growing at $g_C$) and $C_2$ is frontier training capability (growing at exogenous rate $g_Z$). The automation fraction $\beta(t) \to 1$ as the mesh progressively automates more inference tasks.
+
+The growth rate of the aggregate is:
+\begin{equation}\label{eq:baumol_growth}
+g_{\Ceff} = \beta(t) \cdot g_C + (1 - \beta(t)) \cdot g_Z + \dot{\beta}(t) \cdot \ln\!\left(\frac{C_1}{C_2}\right)
+\end{equation}
+
+\begin{proposition}[Endogenous Baumol Bottleneck]\label{prop:baumol}
+As $\beta(t) \to 1$, the growth rate $g_{\Ceff} \to g_Z$ regardless of $g_C$, provided $g_C > g_Z$ (the mesh's automated sector grows faster than the non-automated sector). The non-automatable sector becomes the binding constraint even as its share of total activity shrinks.
+\end{proposition}
+
+\begin{proof}
+Rewrite the growth rate using the cost share. In balanced growth, the cost share of sector 2 is $s_2 = (1 - \beta) \cdot w_2 / [(1-\beta) w_2 + \beta w_1]$, where $w_i$ are the factor prices. When $g_C > g_Z$, the relative price of the non-automated sector rises: $w_2/w_1$ increases over time. The cost share $s_2$ rises even as the volume share $(1-\beta)$ falls---this is Baumol's cost disease.
+
+In the limit $\beta \to 1$, the mesh has automated all automatable tasks. The only remaining input is frontier model training (sector 2). The aggregate growth rate satisfies:
+\begin{equation}
+\lim_{\beta \to 1} g_{\Ceff} = g_Z + \lim_{\beta \to 1} \dot{\beta} \cdot \ln(C_1/C_2)
+\end{equation}
+
+If $\dot{\beta} \to 0$ as $\beta \to 1$ (the last few tasks are hardest to automate---the topological constraint on training), then $g_{\Ceff} \to g_Z$. The mesh's growth rate converges to the exogenous rate of frontier model improvement, regardless of how fast the mesh's internal productivity grows.
+\end{proof}
+
+\subsection{Closing the Circle}
+
+The Baumol bottleneck connects Paper~4 back to Smirl (2026a). The chain of determination is:
+
+\begin{enumerate}[label=(\roman*)]
+\item \emph{Concentrated investment} (Smirl 2026a): Datacenter capital investment, driven by the power-law scaling relationship between model size and performance, finances the GPU clusters that train frontier models. The rate of frontier model improvement $g_Z$ is determined by the rate of investment.
+
+\item \emph{Learning curves} (Smirl 2026a): The same concentrated investment finances the 3D memory stacking and advanced packaging learning curves ($\alpha = 0.23$) that enable distributed inference. The crossing point $x(t) = 0$ is when distributed architecture becomes cost-competitive.
+
+\item \emph{Mesh formation} (Smirl 2026): After crossing, the mesh self-organizes into a heterogeneous specialized network whose collective capability exceeds centralized provision at $N > N^*$.
+
+\item \emph{Endogenous growth} (this paper): The mesh improves itself through autocatalytic training, self-referential learning, and variety expansion. The growth regime depends on $\phieff$, $h$, and $\alpha$.
+
+\item \emph{Baumol ceiling} (this paper): The mesh's growth rate converges to $g_Z$---the rate of frontier model improvement---which is determined by the concentrated investment of step (i).
+\end{enumerate}
+
+The circle closes. The concentrated capital that creates the crossing also determines the ceiling. The mesh amplifies frontier model improvement but cannot exceed it indefinitely. This is a falsifiable prediction: the mesh's capability growth rate should correlate with, and be bounded by, the rate of frontier model releases from centralized providers (Prediction~4, Section~10).
+
+
+% -------------------------------------------------------------------
+% 8. CONNECTION TO SETTLEMENT INFRASTRUCTURE
+% -------------------------------------------------------------------
+\section{Connection to Settlement Infrastructure}
+
+The mesh paper (Smirl 2026, Section~8) derives that the mesh's routing and compensation requirements endogenously generate the need for a programmable settlement layer. The autocatalytic growth dynamics of this paper intensify that requirement.
+
+In the mesh paper's static analysis, the settlement layer processes $O(N \langle k \rangle)$ inference transactions per second between end users and specialists. With endogenous capability growth, the settlement layer must additionally process the micro-transactions of the autocatalytic loop:
+
+\begin{enumerate}[label=(\roman*)]
+\item \emph{Training agent compensation:} Agents that improve other agents must be compensated. Each training operation in the RAF set (Section~3) involves a training agent investing compute to improve a target agent. Without compensation, the training agent has no incentive to allocate resources to improvement rather than inference.
+
+\item \emph{Data marketplace transactions:} Self-referential learning (Mechanism~2) requires agents to share operational data---queries, responses, evaluations---as training inputs. This data has value, and efficient allocation requires a price mechanism.
+
+\item \emph{Variety expansion incentives:} Creating new specialization types (Mechanism~3) is a costly innovation requiring dedicated training compute. The innovating agent must capture returns sufficient to cover the investment, which requires a mechanism for pricing access to the new specialization.
+\end{enumerate}
+
+The transaction volume from autocatalytic operations scales as $O(|\mathcal{R}| \cdot f \cdot N)$, where $|\mathcal{R}|$ is the size of the RAF set and $f$ is the training allocation fraction. As the autocatalytic core expands (via the Jain-Krishna process of Section~3.5), $|\mathcal{R}|$ grows, accelerating the settlement layer requirement.
+
+This connects to Smirl (2026b, ``The Monetary Productivity Gap''): the settlement layer is not merely needed for routing compensation---it is needed for the micro-transactions that the autocatalytic loop requires. The mesh's capability growth rate may be constrained by settlement infrastructure before it is constrained by any of the three parameters ($\phieff$, $h$, $\alpha$) analyzed in the central model. In this case, the binding constraint on mesh improvement is \emph{monetary}, not technological---a conclusion that reinforces the monetary productivity gap analysis.
+
+
+% -------------------------------------------------------------------
+% 9. FRAMEWORKS CONSIDERED AND REJECTED
+% -------------------------------------------------------------------
+\section{Frameworks Considered and Rejected}
+
+Several candidate frameworks were evaluated for the formal model and rejected for specific technical reasons. This section documents the evaluation to clarify modeling choices.
+
+\textbf{Eigen's Hypercycle (Eigen \& Schuster 1977).} The hypercycle model describes a cyclic network of autocatalytic replicators where each species catalyzes the replication of the next. The autocatalytic structure is conceptually correct for the mesh---agents catalyze each other's improvement. However, the hypercycle imposes a conservation law: $\sum_i x_i = \text{const}$ (total concentration is fixed). This forces zero-sum dynamics among capability types. The mesh has no such conservation law---it is an open system where total capability can grow. The RAF framework (Hordijk \& Steel 2004) provides the autocatalytic structure without the conservation constraint.
+
+\textbf{Chemical Reaction Network Theory (Feinberg 2019).} CRNT provides powerful results on the existence and uniqueness of equilibria in reaction networks, particularly the deficiency zero theorem: networks with deficiency zero have a unique positive equilibrium that is locally asymptotically stable within each stoichiometric compatibility class. However, CRNT assumes closed systems with stoichiometric conservation laws. The mesh is open (it receives exogenous base models and produces capability improvements that are not conserved in a stoichiometric sense). Moreover, CRNT characterizes equilibrium existence, not growth trajectories---and the central question of this paper is the growth trajectory.
+
+\textbf{NK Fitness Landscapes (Kauffman 1993).} The NK model of rugged fitness landscapes with epistatic interactions is conceptually appropriate for co-evolutionary dynamics among mesh agents. However, the NK framework lacks analytical results on convergence or divergence of the co-evolutionary process. The co-evolutionary extension (NKC model with multiple interacting landscapes) is an open problem in complexity science: it is not known whether the dynamics converge, cycle, or exhibit chaotic behavior. Useful as motivation for the variety expansion mechanism, but not as formal machinery for growth regime characterization.
+
+\textbf{Spin Glasses (Edwards-Anderson 1975; Sherrington-Kirkpatrick 1975).} Rejected for the same reason as in the mesh paper (Smirl 2026, Section~9): spin glass models require frustrated interactions (a mix of positive and negative couplings). In the mesh, all training interactions are positive---being improved by another agent is always (weakly) beneficial. There is no frustration. The Lotka-Volterra mutualistic framework (Bastolla et al.\ 2009) correctly captures the all-positive interaction structure with saturation.
+
+
+% -------------------------------------------------------------------
+% 10. FALSIFIABLE PREDICTIONS
+% -------------------------------------------------------------------
+\section{Falsifiable Predictions}
+
+The model generates six predictions extending the mesh paper's prediction set. Each has timing, observable consequences, and failure conditions.
+
+\textbf{Prediction 1: Autocatalytic Threshold Timing.} The mesh achieves self-sustaining capability improvement (a RAF set forms within the mesh's active agents) within 3 years of crystallization (Prediction~1 of Smirl 2026). Observable as: mesh capability improving on standard benchmarks without new base model releases from centralized providers. Specifically, the mesh's average score on established benchmarks increases by $\geq 5\%$ during a period of $\geq 6$ months with no major frontier model release. \emph{Timing:} 2033--2036. \emph{Evidence against:} mesh capability plateauing or declining during any 12-month period without new base model releases through 2038.
+
+\textbf{Prediction 2: Training Agent Emergence.} Specialized training agents---agents whose primary function is improving other agents rather than serving end-user queries---emerge within the mesh and capture $>10\%$ of internal mesh transactions within 5 years of crystallization. Observable in: the composition of mesh transaction types shifting from pure inference toward training, evaluation, and fine-tuning operations. \emph{Timing:} 2035--2038. \emph{Evidence against:} mesh transactions remaining $>95\%$ pure inference through 2040, with no significant training agent specialization.
+
+\textbf{Prediction 3: Diversity-Collapse Protection.} Heterogeneous meshes (high $J$, low $\rho$) maintain or improve capability when training on internally generated data, while homogeneous networks (low $J$, high $\rho$) exhibit model collapse. Observable in: benchmark performance over time for mesh configurations with varying diversity levels. Specifically, meshes with $J \geq 10$ and estimated $\rho \leq 0.5$ maintain stable or improving benchmark scores when trained on $>50\%$ synthetic internal data, while homogeneous networks ($J \leq 3$) show degradation under the same conditions. \emph{Evidence against:} homogeneous networks showing no degradation from synthetic data training, or heterogeneous meshes degrading despite high diversity.
+
+\textbf{Prediction 4: Baumol Bottleneck Binding.} The mesh's capability growth rate correlates with, and is bounded by, the rate of frontier model releases from centralized providers. Observable as: (i)~mesh capability plateauing between major model releases and jumping after them; (ii)~the ratio of mesh capability growth to frontier model improvement converging to a constant multiplier. Quantitatively, the mesh's annualized capability growth rate (measured by benchmark improvement) should track within $1.5\times$ of the annualized frontier model improvement rate. \emph{Timing:} 2034--2040. \emph{Evidence against:} mesh capability growth rate exceeding $3\times$ the frontier model release rate sustained over $>2$ years, indicating the Baumol bottleneck is not binding.
+
+\textbf{Prediction 5: $\phieff$ Estimate.} The mesh's effective training productivity elasticity is measurable from capability benchmarks and training compute data. Based on the empirical evidence for $\varphi_0$ (Bloom et al.\ 2020) and expected $\beta_{\text{auto}}$ trajectories, the initial $\phieff$ should be $0.6$--$0.8$ (regime~(a), converging), potentially rising toward $0.9$--$1.0$ as the autocatalytic core matures. Observable as: the elasticity of benchmark improvement with respect to training compute invested, measured across mesh capability generations. \emph{Evidence against:} $\phieff > 1.0$ sustained over $>1$ year (indicating regime (c), which the model identifies as unlikely).
+
+\textbf{Prediction 6: Variety Expansion Rate.} The number of effective specialization types $J$ grows at a rate determined by unmet demand signals and the RAF existence threshold (equation~\ref{eq:variety}). Observable in: the diversity of fine-tuned models available on the mesh, measured by the effective number of distinct capability clusters. Quantitatively, $J$ should grow at $15$--$30\%$ annually during the rapid growth phase, decelerating as $J$ approaches $J_{\max}$. \emph{Evidence against:} $J$ remaining constant or declining after crystallization, indicating no endogenous variety expansion.
+
+
+% -------------------------------------------------------------------
+% 11. CONCLUSION
+% -------------------------------------------------------------------
+\section{Conclusion}
+
+This paper has characterized what happens when the mesh can improve itself. The mesh paper's fixed-capability assumption---each agent's capability redistributes but does not grow---is replaced with endogenous capability dynamics driven by three mechanisms: autocatalytic training, self-referential learning, and variety expansion.
+
+The answer to the ceiling question is regime-dependent. Three parameters govern the growth dynamics. The training productivity elasticity $\varphi$ determines whether capability growth decelerates, is constant, or accelerates. Training saturation $h$ determines whether individual improvement interactions have diminishing returns. The external data fraction $\alpha$, maintained above the model collapse threshold by the mesh's CES heterogeneity, determines whether self-referential learning is productive.
+
+Three results distinguish this analysis from the existing literature on AI and economic growth. First, the autocatalytic existence threshold $\Nauto$ establishes that self-sustaining capability improvement emerges at a mesh size scaling logarithmically with system complexity---the same combinatorial logic that makes the mesh paper's critical mass $N^*$ decrease with diversity. The RAF framework from origin-of-life theory provides the formal structure; the Jain-Krishna adaptive network dynamics predict the temporal pattern of reorganization cascades within the autocatalytic core.
+
+Second, the effective training productivity elasticity $\phieff$ is derived from the mesh's microstructure. Individual training interactions have $\varphi_0 < 1$ (Bloom et al.\ 2020). But autocatalytic coupling---training agents that improve other training agents---amplifies the effective elasticity: $\phieff = \varphi_0 / (1 - \beta_{\text{auto}} \varphi_0)$, which exceeds $\varphi_0$ for any positive automation fraction $\beta_{\text{auto}}$. Whether $\phieff$ reaches unity---the knife-edge between convergence and exponential growth---depends on whether the mesh can automate a sufficient fraction of its own improvement process before the Baumol bottleneck binds.
+
+Third, the CES parameter $\rho$ does double duty: it governs both the diversity premium for capability aggregation (the mesh paper's result) and the diversity protection against model collapse (this paper's result). The same heterogeneity that makes the mesh capable also makes it robust.
+
+The Baumol bottleneck emerges from the growth dynamics rather than being imposed as an assumption. As the mesh automates progressively more tasks, the non-automatable sector---frontier model training---becomes the binding constraint. The mesh's growth rate converges to the exogenous rate of frontier model improvement. The concentrated infrastructure investment modeled in Smirl (2026a) determines both when the crossing occurs and the ceiling the mesh approaches. The circle closes.
+
+The most likely near-term trajectory is regime (a): convergence to a ceiling that rises as the autocatalytic core matures, variety expands, and frontier models improve. The mesh is a multiplier, not a generator. Whether it transitions to regime (b)---sustained exponential growth---depends on the empirical trajectory of $\beta_{\text{auto}}(t)$ and $J(t)$, which are measurable quantities (Predictions~5 and~6). The singularity regime (c) requires conditions that are each individually demanding and collectively unlikely to hold simultaneously.
+
+The organizational form that emerges is not merely a static division of labor, as the mesh paper characterizes, but a dynamical system capable of self-improvement. The mesh does not just distribute inference---it creates a substrate for the endogenous growth of intelligence. The rate of that growth is the empirical question this paper has formalized.
+
+
+% -------------------------------------------------------------------
+% APPENDIX
+% -------------------------------------------------------------------
+\appendix
+
+\section{RAF Theory and Supporting Results}
+
+\subsection{Background on RAF Sets}
+
+The Reflexively Autocatalytic and Food-generated (RAF) framework was introduced by Hordijk and Steel (2004) to formalize Kauffman's (1971, 1993) theory of autocatalytic sets in the context of the origin of life. The original question was: in a random soup of molecular species, how large must the system be for a self-sustaining network of catalyzed reactions to emerge? The answer---that the threshold scales logarithmically with system complexity---is one of the foundational results in origin-of-life theory.
+
+The formal setup: let $X$ be a set of molecule types, $\mathcal{R}$ a set of reactions (each with reactants, products, and potential catalysts), and $F \subset X$ a food set of molecules available exogenously. A RAF set is a subset $\mathcal{R}' \subseteq \mathcal{R}$ that is simultaneously autocatalytic (every reaction is catalyzed by a product of the set or the food set) and food-generated (every reactant can be built from $F$ through reactions in $\mathcal{R}'$).
+
+The key theorem (Hordijk \& Steel 2004): in a random catalytic reaction system with $n$ molecule types and catalysis probability $p$ per type-reaction pair, a RAF set exists with high probability when $p > 1/n$. Since $p$ increases with the number of molecules in the system (each molecule provides an additional potential catalyst), and the threshold scales as $1/n$ which \emph{decreases} with system size, the RAF existence threshold is remarkably low.
+
+The translation to the mesh is direct. ``Molecule types'' are capability types ($J$). ``Reactions'' are training operations. ``Catalysts'' are training agents with the requisite capability to direct a training operation. ``Food set'' is base model capabilities from centralized training. The Hordijk-Steel result translates to Proposition~\ref{prop:RAF}: the autocatalytic threshold $\Nauto$ scales logarithmically with system complexity.
+
+\subsection{Proof Details for Proposition~\ref{prop:phieff}}
+
+The derivation of $\phieff$ follows the Aghion-Jones-Jones (2018) framework applied to the mesh's internal structure. Consider the training improvement process as consisting of a unit continuum of subtasks $s \in [0,1]$. Each subtask $s$ requires a quality-adjusted input $x(s)$ to produce its contribution to capability improvement.
+
+For automated subtasks ($s \in [0, \beta_{\text{auto}}]$), the input is supplied by mesh agents with capability $C$:
+\begin{equation}
+x(s) = A_s \cdot C^{\varphi_0}, \quad s \in [0, \beta_{\text{auto}}]
+\end{equation}
+
+For non-automated subtasks ($s \in (\beta_{\text{auto}}, 1]$), the input is exogenous:
+\begin{equation}
+x(s) = Z, \quad s \in (\beta_{\text{auto}}, 1]
+\end{equation}
+
+The aggregate improvement is Cobb-Douglas across subtasks:
+\begin{equation}
+\dot{C} \propto \exp\left(\int_0^1 \ln x(s)\, ds\right) = \left(\prod_{s \leq \beta_{\text{auto}}} A_s\right) \cdot C^{\beta_{\text{auto}} \varphi_0} \cdot Z^{1-\beta_{\text{auto}}}
+\end{equation}
+
+The growth rate of $C$ is:
+\begin{equation}
+g_C = \beta_{\text{auto}} \varphi_0 \cdot g_C + (1-\beta_{\text{auto}}) g_Z + \text{const}
+\end{equation}
+
+Solving: $g_C (1 - \beta_{\text{auto}} \varphi_0) = (1 - \beta_{\text{auto}}) g_Z + \text{const}$, so:
+\begin{equation}
+g_C = \frac{(1 - \beta_{\text{auto}}) g_Z}{1 - \beta_{\text{auto}} \varphi_0} + \text{const}
+\end{equation}
+
+The effective elasticity of $C$ with respect to itself in the production of $\dot{C}$ is $\phieff = \beta_{\text{auto}} \varphi_0 / (1 - \beta_{\text{auto}} \varphi_0 + \beta_{\text{auto}} \varphi_0) = \varphi_0 / (1 - \beta_{\text{auto}} \varphi_0)$, confirming equation~\eqref{eq:phieff}.
+
+\subsection{Weitzman Recombinant Growth Connection}
+
+Weitzman (1998) models the growth of ideas as a combinatorial process: new ideas are produced by recombining existing ideas, and the number of potential recombinations grows faster than the number of existing ideas. This produces growth rates that accelerate over time.
+
+The mesh's variety expansion mechanism (Section~4.6) has a Weitzman interpretation. New specialization types are produced by combining existing specializations: a medical-legal specialist combines medical reasoning and legal analysis capabilities. The number of potential combinations grows as $\binom{J}{2} \sim J^2/2$, so the potential for variety expansion accelerates with existing variety. Equation~\eqref{eq:variety} is a simplified reduced form; the Weitzman recombinant structure provides a microfoundation for why $\dot{J}$ can be superlinear in $J$ over portions of the trajectory, further supporting the saturation escape mechanism of Proposition~\ref{prop:escape}.
+
+\subsection{Nordhaus Singularity Analysis}
+
+Nordhaus (2021) asks whether we are approaching an economic singularity---a regime in which economic growth becomes superexponential. His analysis identifies conditions under which standard growth models produce accelerating growth, and concludes that current empirical trends do not support the singularity hypothesis.
+
+This paper's regime (c) is precisely Nordhaus's singularity condition applied to the mesh's internal dynamics. The contribution is identifying the three specific parameters ($\phieff$, $h$, $\alpha$) whose conjunction determines whether the singularity obtains for the mesh. The paper's conclusion aligns with Nordhaus: the conditions are restrictive and unlikely to hold simultaneously. The mesh's most probable trajectory is regime (a)---convergence to a ceiling---with the Baumol bottleneck as the rate limiter.
+
+
+% -------------------------------------------------------------------
+% REFERENCES
+% -------------------------------------------------------------------
+\newpage
+\begin{thebibliography}{99}
+
+\bibitem{aghion2018} Aghion, P., Jones, B.~F., \& Jones, C.~I. (2018). Artificial intelligence and economic growth. In A.~Agrawal, J.~Gans, \& A.~Goldfarb (Eds.), \emph{The Economics of Artificial Intelligence} (pp.~237--282). University of Chicago Press.
+
+\bibitem{bastolla2009} Bastolla, U., L\"{a}ssig, M., Manrubia, S.~C., \& Valleriani, A. (2009). Biodiversity in model ecosystems, I: Coexistence conditions for competing species. \emph{Journal of Theoretical Biology}, 235(4), 521--530.
+
+\bibitem{baumol1967} Baumol, W.~J. (1967). Macroeconomics of unbalanced growth: The anatomy of urban crisis. \emph{American Economic Review}, 57(3), 415--426.
+
+\bibitem{becker1992} Becker, G.~S., \& Murphy, K.~M. (1992). The division of labor, coordination costs, and knowledge. \emph{Quarterly Journal of Economics}, 107(4), 1137--1160.
+
+\bibitem{bianconi2001} Bianconi, G., \& Barab\'{a}si, A.-L. (2001). Bose-Einstein condensation in complex networks. \emph{Physical Review Letters}, 86(24), 5632--5635.
+
+\bibitem{bloom2020} Bloom, N., Jones, C.~I., Van Reenen, J., \& Webb, M. (2020). Are ideas getting harder to find? \emph{American Economic Review}, 110(4), 1104--1144.
+
+\bibitem{ea1975} Edwards, S.~F., \& Anderson, P.~W. (1975). Theory of spin glasses. \emph{Journal of Physics F: Metal Physics}, 5(5), 965--974.
+
+\bibitem{eigen1977} Eigen, M., \& Schuster, P. (1977). The hypercycle: A principle of natural self-organization. Part A: Emergence of the hypercycle. \emph{Naturwissenschaften}, 64(11), 541--565.
+
+\bibitem{feinberg2019} Feinberg, M. (2019). \emph{Foundations of Chemical Reaction Network Theory}. Springer.
+
+\bibitem{hirsch1985} Hirsch, M.~W. (1985). Systems of differential equations that are competitive or cooperative. II: Convergence almost everywhere. \emph{SIAM Journal on Mathematical Analysis}, 16(3), 423--439.
+
+\bibitem{hofbauer1998} Hofbauer, J., \& Sigmund, K. (1998). \emph{Evolutionary Games and Population Dynamics}. Cambridge University Press.
+
+\bibitem{hordijk2004} Hordijk, W., \& Steel, M. (2004). Detecting autocatalytic, self-sustaining sets in chemical reaction systems. \emph{Journal of Theoretical Biology}, 227(4), 451--461.
+
+\bibitem{jain1998} Jain, S., \& Krishna, S. (1998). Autocatalytic sets and the growth of complexity in an evolutionary model. \emph{Physical Review Letters}, 81(25), 5684--5687.
+
+\bibitem{jain2001} Jain, S., \& Krishna, S. (2001). A model for the emergence of cooperation, interdependence, and structure in evolving networks. \emph{Proceedings of the National Academy of Sciences}, 98(2), 543--547.
+
+\bibitem{jones1995} Jones, C.~I. (1995). R\&D-based models of economic growth. \emph{Journal of Political Economy}, 103(4), 759--784.
+
+\bibitem{jones2005} Jones, C.~I. (2005). Growth and ideas. In P.~Aghion \& S.~N. Durlauf (Eds.), \emph{Handbook of Economic Growth} (Vol.~1B, pp.~1063--1111). Elsevier.
+
+\bibitem{kauffman1971} Kauffman, S.~A. (1971). Cellular homeostasis, epigenesis and replication in randomly aggregated macromolecular systems. \emph{Journal of Cybernetics}, 1(1), 71--96.
+
+\bibitem{kauffman1993} Kauffman, S.~A. (1993). \emph{The Origins of Order: Self-Organization and Selection in Evolution}. Oxford University Press.
+
+\bibitem{nordhaus2021} Nordhaus, W.~D. (2021). Are we approaching an economic singularity? Information technology and the future of economic growth. \emph{American Economic Journal: Macroeconomics}, 13(1), 299--332.
+
+\bibitem{romer1990} Romer, P.~M. (1990). Endogenous technological change. \emph{Journal of Political Economy}, 98(5), S71--S102.
+
+\bibitem{SK1975} Sherrington, D., \& Kirkpatrick, S. (1975). Solvable model of a spin-glass. \emph{Physical Review Letters}, 35(26), 1792--1796.
+
+\bibitem{shumailov2024} Shumailov, I., Shumaylov, Z., Zhao, Y., Papernot, N., Anderson, R., \& Gal, Y. (2024). AI models collapse when trained on recursively generated data. \emph{Nature}, 631, 755--759.
+
+\bibitem{smirl2026a} Smirl, C. (2026a). Endogenous decentralization: How concentrated capital investment finances the learning curves that enable distributed alternatives. Working paper, Tufts University.
+
+\bibitem{smirl2026} Smirl, C. (2026). The mesh equilibrium: How heterogeneous specialized agents self-organize to exceed centralized provision after the crossing point. Working paper, Tufts University.
+
+\bibitem{smirl2026b} Smirl, C. (2026b). The monetary productivity gap. Working paper, Tufts University. Forthcoming.
+
+\bibitem{weitzman1998} Weitzman, M.~L. (1998). Recombinant growth. \emph{Quarterly Journal of Economics}, 113(2), 331--360.
+
+\end{thebibliography}
+
+\end{document}

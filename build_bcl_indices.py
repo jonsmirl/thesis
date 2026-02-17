@@ -657,6 +657,77 @@ PRIVATE_MONITORING_QUESTIONS = {
 
 
 # ============================================================================
+# SECTION 1B: WAVE 5 EXPLICIT QUESTION MAPPING
+# ============================================================================
+# Wave 5 (2019) restructured the questionnaire significantly.  The dot-notation
+# IDs from waves 1-4 no longer match, and generic alt_patterns cause cross-
+# section false positives on the 1780-row combined dataset.  This map gives
+# the correct Q-format column-0 code for each BCL component.
+#
+# Components not in this map (or mapped to None) will be scored as missing
+# for wave 5, which is preferable to a wrong match.
+# ============================================================================
+
+WAVE5_QUESTION_MAP: Dict[str, Optional[str]] = {
+    # --- Capital Stringency Part A (Overall, 0-6) ---
+    'cap_risk_weighted':    'Q3_6_1_2016',    # 3.6.1 ICAAP/internal risk-based capital assessment required
+    'cap_credit_risk':      'Q3_2a_2016',     # 3.2.a Credit risk covered in capital requirement
+    'cap_market_risk':      'Q3_2b_2016',     # 3.2.b Market risk covered
+    'cap_deduct_loans':     'Q3_20_3g_2016',  # 3.20.3.g Shortfall of provisions to expected losses deducted from T1
+    'cap_deduct_securities':'Q3_20_3d_2016',  # 3.20.3.d Unrealized losses in fair valued exposures deducted from T1
+    'cap_deduct_fx':        None,             # No direct FX loss deduction question in wave 5
+    # --- Capital Stringency Part B (Initial, 0-3) ---
+    'cap_no_noncash':       'Q1_4_3_2016',    # 1.4.3 Can initial capital be non-cash assets?
+    'cap_no_borrowed':      'Q1_5_2016',      # 1.5 Can initial capital be borrowed?
+    'cap_verified':         'Q1_4_2_2016',    # 1.4.2 Sources of funds verified?
+    # --- Activity Restrictions (scored 1-4 each) ---
+    # Wave 5 splits each activity into 4 sub-questions (a=unrestricted...d=prohibited).
+    # Map to (a) unrestricted sub-question; Yes=score 1, No means higher restriction.
+    'act_securities':       'Q4_1a_2016',     # 4.1.a Full range of securities activities in banks
+    'act_insurance':        'Q4_2a_2016',     # 4.2.a Full range of insurance activities in banks
+    'act_real_estate':      'Q4_3a_2016',     # 4.3.a Full range of real estate activities in banks
+    'act_nonfinancial':     'Q4_4a_2016',     # 4.4.a Nonfinancial activities directly in banks
+    # --- Supervisory Power (0-14) ---
+    'sup_meet_external_auditor': 'Q5_9a_2016',# 5.9.a Supervisor receives auditor's report on financial statements
+    'sup_action_auditors':  'Q5_5b_2016',     # 5.5.b Prosecute auditor for negligence/fraud/collusion
+    'sup_change_org':       'Q12_5_2016',     # 12.5 Can supervisor force change in internal org structure?
+    'sup_suspend_dividends':'Q11_1j_2016',    # 11.1.j Require banks to reduce/suspend dividends
+    'sup_suspend_bonuses':  'Q11_1k_2016',    # 11.1.k Require banks to reduce/suspend bonuses
+    'sup_suspend_mgmt_fees':None,             # No direct equivalent in wave 5
+    'sup_force_provisions': 'Q11_1f_2016',    # 11.1.f Require banks to constitute provisions
+    'sup_supercede_shareholder':'Q11_8b_2016',# 11.8.b Supersede shareholders' rights
+    'sup_remove_directors': 'Q11_1l_2016',    # 11.1.l Suspend or remove bank directors
+    'sup_suspend_ownership':'Q11_8b_2016',    # 11.8.b Supersede shareholders' rights (closest proxy)
+    'sup_intervene_bank':   'Q11_1g_2016',    # 11.1.g Restrict/place conditions on business conducted
+    'sup_declare_insolvency':'Q11_8a_2016',   # 11.8.a Declare insolvency
+    'sup_restructuring':    'Q11_1i_2016',    # 11.1.i Require banks to reduce/restructure operations
+    'sup_forbearance':      'Q11_1b_2016',    # 11.1.b Forbearance (waive regulatory requirements)
+    # --- Entry Barriers (0-8) ---
+    'entry_deny_foreign':   'Q1_8_1_2016',    # 1.8.1 Foreign bank acquisitions not permitted
+    'entry_deny_domestic':  None,             # No direct equivalent in wave 5
+    'entry_draft_bylaws':   'Q1_6a_2016',     # 1.6.a Draft bylaws (first item in application requirements)
+    'entry_org_chart':      'Q1_6b_2016',     # 1.6.b Intended organizational chart
+    'entry_financial_projections':'Q1_6e_2016',# 1.6.e Financial projections for first three years
+    'entry_background_mgr': 'Q1_6h_2016',    # 1.6.h Background/experience of future senior managers
+    'entry_background_dir': 'Q1_6g_2016',    # 1.6.g Background/experience of future Board directors
+    'entry_source_funds':   'Q1_6f_2016',     # 1.6.f Sources of funds to be used
+    # --- Private Monitoring (0-12) ---
+    'pm_certified_audit':   'Q5_1_2016',      # 5.1 Is professional external audit required for all banks?
+    'pm_audit_percent':     'Q5_10_1_2016',   # 5.10.1 Auditors must inform supervisor of material issues
+    'pm_offbalance_disc':   'Q10_7b_2016',    # 10.7.b Off-balance sheet items disclosed
+    'pm_accrued_income':    'Q10_4_2016',     # 10.4 Does accrued unpaid interest enter income statement?
+    'pm_consolidated_gl':   'Q10_1_2016',     # 10.1 Are banks required to prepare consolidated accounts?
+    'pm_directors_liable':  'Q10_6_2016',     # 10.6 Required to submit financial statements to supervisor?
+    'pm_risk_mgmt_disc':    'Q10_7c_2016',    # 10.7.c Governance and risk management framework disclosed
+    'pm_subordinated_debt': 'Q3_20c_2016',    # 3.20.c Subordinated debt allowed in regulatory capital
+    'pm_no_explicit_di':    'Q8_1_2016',      # 8.1 Is there an explicit deposit insurance protection system?
+    'pm_no_copay':          'Q8_13_2016',     # 8.13 Formal coinsurance (all depositors insured < 100%)?
+    'pm_accounting_ias':    'Q5_6_2016',      # 5.6 Audits required per International Standards?
+    'pm_income_npl':        'Q9_5_2016',      # 9.5 Does accrued unpaid interest enter income while loan NPL?
+}
+
+
+# ============================================================================
 # SECTION 2: RESPONSE PARSING UTILITIES
 # ============================================================================
 
@@ -678,7 +749,7 @@ def parse_yes_no(val: Any) -> Optional[int]:
     s = normalize_response(val)
     if s is None:
         return None
-    if s in ('yes', 'y', '1', '1.0', 'true'):
+    if s in ('yes', 'y', '1', '1.0', 'true', 'x'):
         return 1
     if s in ('no', 'n', '0', '0.0', 'false'):
         return 0
@@ -687,6 +758,11 @@ def parse_yes_no(val: Any) -> Optional[int]:
         return 1
     if 'no' in s:
         return 0
+    # Wave 5 uses categorical codes (e.g. "BS"=Banking Supervisor,
+    # "C"=Court, "OTH"=Other) for certain multi-select questions.
+    # Any short substantive code implies the power/feature exists.
+    if 1 <= len(s) <= 20 and s not in ('dk', 'do not know', 'nan'):
+        return 1
     return None
 
 
@@ -782,19 +858,36 @@ class BRSSParser:
         sheets = xl.sheet_names
         print(f"  Sheets found: {sheets}")
         
-        # Try to find the main data sheet
-        data_sheet = None
-        for name in sheets:
-            nl = name.lower()
-            if any(kw in nl for kw in ['data', 'survey', 'response', 'database']):
-                data_sheet = name
-                break
-        if data_sheet is None and sheets:
-            data_sheet = sheets[0]
-        
-        print(f"  Using sheet: '{data_sheet}'")
-        self.df_raw = pd.read_excel(xl, sheet_name=data_sheet, header=None)
-        print(f"  Raw shape: {self.df_raw.shape}")
+        # Wave 5 splits data across numbered section sheets (01-15).
+        # Detect this layout and concatenate all section sheets.
+        numbered_sheets = sorted([s for s in sheets if re.fullmatch(r'\d{2}', s)])
+        if numbered_sheets and len(numbered_sheets) >= 5:
+            print(f"  Wave 5 multi-sheet layout: combining {len(numbered_sheets)} section sheets")
+            dfs = []
+            for i, sheet_name in enumerate(numbered_sheets):
+                sheet_df = pd.read_excel(xl, sheet_name=sheet_name, header=None)
+                if i == 0:
+                    # Keep the header row (row 0 with country names) from first sheet
+                    dfs.append(sheet_df)
+                else:
+                    # Skip the header row from subsequent sheets (same countries)
+                    dfs.append(sheet_df.iloc[1:])
+            self.df_raw = pd.concat(dfs, ignore_index=True)
+            print(f"  Combined shape: {self.df_raw.shape}")
+        else:
+            # Single-sheet layout (waves 1-4): find the main data sheet
+            data_sheet = None
+            for name in sheets:
+                nl = name.lower()
+                if any(kw in nl for kw in ['data', 'survey', 'response', 'database']):
+                    data_sheet = name
+                    break
+            if data_sheet is None and sheets:
+                data_sheet = sheets[0]
+
+            print(f"  Using sheet: '{data_sheet}'")
+            self.df_raw = pd.read_excel(xl, sheet_name=data_sheet, header=None)
+            print(f"  Raw shape: {self.df_raw.shape}")
         
         # Detect orientation
         self._detect_orientation()
@@ -836,28 +929,39 @@ class BRSSParser:
     
     def _find_question_column(self, question_def: dict) -> Optional[int]:
         """Find the column (or row) index for a specific question."""
+        comp_id = question_def.get('id', '')
+
+        # ----- Wave 5: use explicit Q-code mapping -----
+        # The wave 5 questionnaire was restructured so dot-notation IDs
+        # and generic alt_patterns produce cross-section false positives.
+        # Use the curated WAVE5_QUESTION_MAP to find the exact data row.
+        if self.wave == 5 and self.orientation != 'countries_as_rows':
+            target_qcode = WAVE5_QUESTION_MAP.get(comp_id)
+            if target_qcode is None:
+                return None  # component has no wave 5 equivalent
+            for idx in range(self.df_raw.shape[0]):
+                col0_val = str(self.df_raw.iloc[idx, 0]).strip()
+                if col0_val == target_qcode:
+                    return ('row', idx)
+            return None
+
+        # ----- Waves 1-4: original qid / alt_pattern search -----
         qid = question_def['question_ids'].get(self.wave_key)
         alt_patterns = question_def.get('alt_patterns', [])
-        
-        # Search headers for question number or pattern match
+
         if self.orientation == 'countries_as_rows':
             # Questions are in column headers
-            search_range = range(self.df_raw.shape[1])
-            for idx in search_range:
-                # Check first few rows for headers
+            for idx in range(self.df_raw.shape[1]):
                 for hrow in range(min(5, self.df_raw.shape[0])):
                     val = str(self.df_raw.iloc[hrow, idx]).strip()
-                    # Exact question number match
                     if qid and qid in val:
                         return ('col', idx)
-                    # Pattern match
                     for pattern in alt_patterns:
                         if re.search(pattern, val, re.IGNORECASE):
                             return ('col', idx)
         else:
             # Questions are in row headers
-            search_range = range(self.df_raw.shape[0])
-            for idx in search_range:
+            for idx in range(self.df_raw.shape[0]):
                 for hcol in range(min(5, self.df_raw.shape[1])):
                     val = str(self.df_raw.iloc[idx, hcol]).strip()
                     if qid and qid in val:
@@ -865,7 +969,7 @@ class BRSSParser:
                     for pattern in alt_patterns:
                         if re.search(pattern, val, re.IGNORECASE):
                             return ('row', idx)
-        
+
         return None
     
     def _get_countries(self) -> Dict[str, int]:

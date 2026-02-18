@@ -67,8 +67,8 @@
 \large Superadditivity, Correlation Robustness, and Strategic Independence\\
 as Three Views of Isoquant Curvature}
 
-\author{Connor Smirl\\
-Department of Economics, Tufts University}
+\author{Jon Smirl\\
+Independent Researcher}
 
 \date{February 2026\\[6pt]
 \textsc{Working Paper}}
@@ -456,10 +456,9 @@ We study the aggregate $Y = F(\bX)$.
 At the symmetric point with equal weights, the \textbf{effective
 dimension} of the CES aggregate is
 \begin{equation}
-d_{\mathrm{eff}} = \frac{\tau^2/J}{\Var[Y]}
+d_{\mathrm{eff}} = \frac{\tau^2}{\Var[Y]}
 \end{equation}
-the ratio of the average component variance (weighted by marginal
-products $1/J$) to the aggregate variance.  This counts how many
+the ratio of the component variance to the aggregate variance.  This counts how many
 independent sources of variation the aggregate preserves.  For a linear
 aggregate with independent components, $d_{\mathrm{eff}} = J$; with
 perfect correlation, $d_{\mathrm{eff}} = 1$.
@@ -660,7 +659,7 @@ For all $\rho < 1$ and any coalition $S$ with $|S| = k \leq J/2$:
 CES aggregate.
 \item For any redistribution $\bdelta_S$ with $\sum_{j\in S}\delta_j = 0$:
 \begin{equation}\label{eq:strategic}
-\Delta(S) \;\leq\; -\frac{K}{2J(J-1)}\cdot
+\Delta(S) \;\leq\; -\frac{K}{2(J-1)}\cdot
 \frac{\|\bdelta_S\|^2}{c^2} \;\leq\; 0.
 \end{equation}
 The penalty tightens monotonically in $K$.
@@ -706,17 +705,17 @@ $\sum_{j\in S}\delta_j = 0$, the Hessian quadratic form satisfies
 The symmetric point is a strict local maximum of $F$ over the
 coalition's feasible set; any redistribution reduces the aggregate.
 
-Under the Shapley allocation, the coalition's value changes by at most
-$(k/J)\cdot\Delta F$.  Since the CES game is convex, the Shapley value
-lies in the core, and the strong concavity of $F$ (minimum eigenvalue
-$K/[(J-1)c]$ on the feasible set) gives
+By symmetry, the efficient Shapley allocation assigns
+$v^*(S) = (k/J)\cdot c$.  Since the CES game is convex, the Shapley
+value lies in the core, so the coalition absorbs at least a $(k/J)$
+fraction of the output loss:
 \[
-|\Delta v(S)| \;\geq\; \frac{K}{2(J-1)c}\cdot\frac{k}{J}\cdot
-\|\bdelta_S\|^2.
+|\Delta v(S)| \;\geq\; \frac{k}{J}\cdot|\Delta F|
+\;=\; \frac{K}{2(J-1)c}\cdot\frac{k}{J}\cdot\|\bdelta_S\|^2.
 \]
-Normalizing by the efficient Shapley value $v^*(S) = (k/J)\cdot c$:
+Normalizing by $v^*(S) = (k/J)\cdot c$, the factors of $k/J$ cancel:
 \[
-\Delta(S) \leq -\frac{K}{2J(J-1)}\cdot\frac{\|\bdelta_S\|^2}{c^2}
+\Delta(S) \leq -\frac{K}{2(J-1)}\cdot\frac{\|\bdelta_S\|^2}{c^2}
 \leq 0. \qedhere
 \]
 \end{proof}
@@ -779,7 +778,7 @@ d_{\mathrm{eff}} \;\geq\; \frac{J}{1+r(J-1)}
 \noindent\textbf{(c) Strategic independence}
 (Theorem~\ref{thm:strategic}).  Manipulation gain:
 \[
-\Delta(S) \;\leq\; -\frac{K}{2J(J-1)}\cdot\frac{\|\bdelta\|^2}{c^2}
+\Delta(S) \;\leq\; -\frac{K}{2(J-1)}\cdot\frac{\|\bdelta\|^2}{c^2}
 \;=\; -\Omega(K)\cdot\mathrm{deviation}^2.
 \]
 

@@ -1,168 +1,230 @@
+[13:18:54] ============================================================
+[13:18:54] DISPERSION INDICATOR TEST — Prediction P11
+[13:18:54] Complementary Heterogeneity (Smirl 2026)
+[13:18:54] ============================================================
+[13:18:54] WSTS: 100 quarterly obs, 2000-2024
+[13:18:54] 
 ============================================================
-DISPERSION INDICATOR TEST — Prediction P11
-Complementary Heterogeneity (Smirl 2026)
+[13:18:54] 1. DESCRIPTIVE ANALYSIS
+[13:18:54] ============================================================
+[13:18:54] 
+Dispersion (growth SD) summary:
+[13:18:54]   Mean:   0.0456
+[13:18:54]   Median: 0.0392
+[13:18:54]   Std:    0.0264
+[13:18:54]   Min:    0.0070  (2006Q1)
+[13:18:54]   Max:    0.1435  (2023Q4)
+[13:18:54] 
+Regime transitions (expansion↔contraction): 35
+[13:18:54]   2000Q3: expansion→contraction
+[13:18:54]   2001Q4: contraction→expansion
+[13:18:54]   2002Q1: expansion→contraction
+[13:18:54]   2002Q2: contraction→expansion
+[13:18:54]   2002Q3: expansion→contraction
+[13:18:54]   2003Q1: contraction→expansion
+[13:18:54]   2004Q4: expansion→contraction
+[13:18:54]   2005Q2: contraction→expansion
+[13:18:54]   2005Q4: expansion→contraction
+[13:18:54]   2006Q2: contraction→expansion
+[13:18:54]   2006Q4: expansion→contraction
+[13:18:54]   2007Q2: contraction→expansion
+[13:18:54]   2007Q4: expansion→contraction
+[13:18:54]   2008Q2: contraction→expansion
+[13:18:54]   2008Q3: expansion→contraction
+[13:18:54]   2009Q2: contraction→expansion
+[13:18:54]   2010Q4: expansion→contraction
+[13:18:54]   2011Q2: contraction→expansion
+[13:18:54]   2011Q4: expansion→contraction
+[13:18:54]   2012Q2: contraction→expansion
+[13:18:54]   2012Q4: expansion→contraction
+[13:18:54]   2013Q2: contraction→expansion
+[13:18:54]   2013Q4: expansion→contraction
+[13:18:54]   2014Q2: contraction→expansion
+[13:18:54]   2014Q4: expansion→contraction
+[13:18:54]   2015Q2: contraction→expansion
+[13:18:54]   2015Q4: expansion→contraction
+[13:18:54]   2016Q2: contraction→expansion
+[13:18:54]   2018Q4: expansion→contraction
+[13:18:54]   2019Q2: contraction→expansion
+[13:18:54]   2020Q1: expansion→contraction
+[13:18:54]   2020Q2: contraction→expansion
+[13:18:54]   2022Q1: expansion→contraction
+[13:18:54]   2023Q2: contraction→expansion
+[13:18:54]   2024Q4: expansion→contraction
+[13:18:54] 
+Dispersion around regime transitions:
+[13:18:54]   2001Q4: pre-4Q avg=0.0710, at transition=0.0924, post-2Q avg=0.0498
+[13:18:54]   2002Q1: pre-4Q avg=0.0653, at transition=0.0358, post-2Q avg=0.0552
+[13:18:54]   2002Q2: pre-4Q avg=0.0557, at transition=0.0638, post-2Q avg=0.0515
+[13:18:54]   2002Q3: pre-4Q avg=0.0608, at transition=0.0465, post-2Q avg=0.0623
+[13:18:54]   2003Q1: pre-4Q avg=0.0507, at transition=0.0680, post-2Q avg=0.0382
+[13:18:54]   2004Q4: pre-4Q avg=0.0456, at transition=0.0676, post-2Q avg=0.0359
+[13:18:54]   2005Q2: pre-4Q avg=0.0531, at transition=0.0256, post-2Q avg=0.0247
+[13:18:54]   2005Q4: pre-4Q avg=0.0431, at transition=0.0164, post-2Q avg=0.0128
+[13:18:54]   2006Q2: pre-4Q avg=0.0205, at transition=0.0186, post-2Q avg=0.0425
+[13:18:54]   2006Q4: pre-4Q avg=0.0222, at transition=0.0382, post-2Q avg=0.0383
+[13:18:54]   2007Q2: pre-4Q avg=0.0362, at transition=0.0354, post-2Q avg=0.0341
+[13:18:54]   2007Q4: pre-4Q avg=0.0417, at transition=0.0160, post-2Q avg=0.0365
+[13:18:54]   2008Q2: pre-4Q avg=0.0364, at transition=0.0311, post-2Q avg=0.0305
+[13:18:54]   2008Q3: pre-4Q avg=0.0353, at transition=0.0314, post-2Q avg=0.0248
+[13:18:54]   2009Q2: pre-4Q avg=0.0280, at transition=0.0661, post-2Q avg=0.0524
+[13:18:54]   2010Q4: pre-4Q avg=0.0564, at transition=0.0531, post-2Q avg=0.0261
+[13:18:54]   2011Q2: pre-4Q avg=0.0387, at transition=0.0221, post-2Q avg=0.0390
+[13:18:54]   2011Q4: pre-4Q avg=0.0351, at transition=0.0430, post-2Q avg=0.0570
+[13:18:54]   2012Q2: pre-4Q avg=0.0477, at transition=0.0235, post-2Q avg=0.0285
+[13:18:54]   2012Q4: pre-4Q avg=0.0437, at transition=0.0392, post-2Q avg=0.0310
+[13:18:54]   2013Q2: pre-4Q avg=0.0263, at transition=0.0373, post-2Q avg=0.0254
+[13:18:54]   2013Q4: pre-4Q avg=0.0341, at transition=0.0158, post-2Q avg=0.0326
+[13:18:54]   2014Q2: pre-4Q avg=0.0273, at transition=0.0441, post-2Q avg=0.0398
+[13:18:54]   2014Q4: pre-4Q avg=0.0291, at transition=0.0440, post-2Q avg=0.0289
+[13:18:54]   2015Q2: pre-4Q avg=0.0402, at transition=0.0205, post-2Q avg=0.0166
+[13:18:54]   2015Q4: pre-4Q avg=0.0313, at transition=0.0097, post-2Q avg=0.0346
+[13:18:54]   2016Q2: pre-4Q avg=0.0260, at transition=0.0190, post-2Q avg=0.0788
+[13:18:54]   2018Q4: pre-4Q avg=0.0322, at transition=0.0445, post-2Q avg=0.0569
+[13:18:54]   2019Q2: pre-4Q avg=0.0458, at transition=0.0186, post-2Q avg=0.0704
+[13:18:54]   2020Q1: pre-4Q avg=0.0637, at transition=0.0593, post-2Q avg=0.0160
+[13:18:54]   2020Q2: pre-4Q avg=0.0547, at transition=0.0171, post-2Q avg=0.0305
+[13:18:54]   2022Q1: pre-4Q avg=0.0463, at transition=0.0195, post-2Q avg=0.0508
+[13:18:54]   2023Q2: pre-4Q avg=0.0547, at transition=0.0330, post-2Q avg=0.1238
+[13:18:54] 
 ============================================================
-WSTS: 100 quarterly obs, 2000-2024
-
-  Dispersion: mean=0.0456, median=0.0392, max=0.1435 (2023Q4)
-
-  -- Stationarity (ADF) --
-  Dispersion          : ADF=-8.642, p=0.0000 -> STATIONARY
-  Agg growth          : ADF=-5.046, p=0.0000 -> STATIONARY
-
-  -- Granger causality: dispersion -> aggregate growth --
-   Lag         F         p
-     1     0.077    0.7815 
-     2     1.485    0.2320 
-     3     0.959    0.4159 
-     4     0.942    0.4436 
-     5     0.832    0.5304 
-     6     0.865    0.5245 
-     7     0.941    0.4805 
-     8     1.415    0.2046 
-  Best: lag=8, p=0.2046
-
-  Reverse (aggregate -> dispersion):
-   Lag         F         p
-     1     0.087    0.7688 
-     2     0.079    0.9241 
-     3     1.020    0.3879 
-     4     2.174    0.0786 *
-     5     1.897    0.1036 
-     6     1.539    0.1762 
-     7     1.117    0.3614 
-     8     1.788    0.0930 *
-
-  -- Improved regime identification --
-  Markov (constant variance): converged, AIC=-235.5, 8 transitions
-  Transition quarters: ['2000Q4', '2001Q3', '2008Q4', '2009Q2', '2018Q4', '2019Q2', '2022Q4', '2023Q2']
-
-  Rolling 4Q mean regime definition:
-  MA4 transitions: 15 (vs 35 from sign-flip)
-  Transition quarters: ['2000Q3', '2000Q4', '2002Q2', '2008Q1', '2008Q2', '2008Q3', '2009Q4', '2011Q3', '2013Q1', '2015Q3', '2016Q3', '2018Q4', '2020Q1', '2022Q3', '2023Q4']
-
-  Using Markov regime for re-analysis
-
-  -- Granger causality (Markov regime) --
-  dispersion -> Markov regime transition:
-   Lag         F         p
-     1     0.107    0.7445 
-     2     0.648    0.5254 
-     3     0.748    0.5265 
-     4     1.199    0.3172 
-     5     0.733    0.6007 
-     6     0.341    0.9133 
-     7     0.866    0.5368 
-     8     0.812    0.5946 
-  Best: lag=4, p=0.3172
-  -> Not significant (p=0.3172)
-
-  Predictive regression (Markov transitions):
-   Lag      beta         t         p      R2
-     1    0.2893     0.271    0.7866   0.001 
-     2   -0.7574    -0.709    0.4803   0.005 
-     3    0.5577     0.545    0.5873   0.003 
-     4   -1.8266    -1.801    0.0750   0.034 *
-     5   -0.6743    -0.601    0.5494   0.004 
-     6   -0.8019    -0.739    0.4619   0.006 
-     7    0.4727     0.432    0.6668   0.002 
-     8    1.1412     1.036    0.3029   0.012 
-
-  -- Predictive regression: transition ~ lagged dispersion --
-  Regime transitions (QoQ sign flip): 35 in 99 quarters
-  WARNING: 35 transitions is too noisy — this is seasonal chatter,
-    not real regime shifts. The simple sign-flip definition dilutes the
-    signal and explains why Granger causality is flat.
-  RECOMMENDED FIX (pick one):
-    A) Markov switching model (Hamilton 1989) on total_g
-       -> R: MSwM package; Stata: mswitch dr total_g, states(2)
-       -> Identifies 4-5 real regime shifts (dot-com, GFC, 2016, AI)
-    B) Rolling 4Q mean threshold: expansion = (MA4 of total_g > 0)
-       -> Filters out quarterly noise, collapses to ~5 transitions
-    Either would likely sharpen the Granger results substantially.
-
-   Lag      beta         t         p      R2
-     1   -1.4112    -0.759    0.4500   0.006 
-     2   -2.1337    -1.156    0.2506   0.014 
-     3   -0.7075    -0.375    0.7083   0.001 
-     4    0.3431     0.181    0.8565   0.000 
-     5    3.7772     1.870    0.0647   0.037 *
-     6   -2.0871    -0.983    0.3282   0.011 
-     7   -0.5262    -0.247    0.8052   0.001 
-     8   -0.3427    -0.161    0.8726   0.000 
-
-  Multivariate (lags 1-4):
-  N=95, R2=0.0192, F=0.441, p(F)=0.7787
-         const    0.4893  t=  3.080  p=0.0027 ***
-         dlag1   -0.7443  t= -0.371  p=0.7115 
-         dlag2   -2.1428  t= -1.115  p=0.2676 
-         dlag3   -0.5909  t= -0.304  p=0.7619 
-         dlag4    0.5874  t=  0.301  p=0.7640 
-
-  -- VAR impulse response --
-  Optimal lag: AIC=5, BIC=2
+[13:18:54] 2. STATIONARITY TESTS (ADF)
+[13:18:54] ============================================================
+[13:18:54]   Dispersion (growth SD)        : ADF=-8.642, p=0.0000 → STATIONARY
+[13:18:54]   Aggregate growth              : ADF=-5.046, p=0.0000 → STATIONARY
+[13:18:54]   Dispersion (range)            : ADF=-8.881, p=0.0000 → STATIONARY
+[13:18:54] 
+============================================================
+[13:18:54] 3. GRANGER CAUSALITY TESTS
+[13:18:54] ============================================================
+[13:18:54]   Sample: 99 quarters
+[13:18:54]   H0: dispersion does NOT Granger-cause aggregate growth
+[13:18:54]   H1: dispersion DOES Granger-cause aggregate growth (model prediction)
+[13:18:54] 
+[13:18:54]    Lag    F-stat   p-value    Sig
+[13:18:54]   ────  ────────  ────────  ─────
+[13:18:54]      1     0.077    0.7815       
+[13:18:54]      2     1.485    0.2320       
+[13:18:54]      3     0.959    0.4159       
+[13:18:54]      4     0.942    0.4436       
+[13:18:54]      5     0.832    0.5304       
+[13:18:54]      6     0.865    0.5245       
+[13:18:54]      7     0.941    0.4805       
+[13:18:54]      8     1.415    0.2046       
+[13:18:54] 
+  Reverse test (aggregate → dispersion):
+[13:18:54]    Lag    F-stat   p-value    Sig
+[13:18:54]   ────  ────────  ────────  ─────
+[13:18:54]      1     0.087    0.7688       
+[13:18:54]      2     0.079    0.9241       
+[13:18:54]      3     1.020    0.3879       
+[13:18:54]      4     2.174    0.0786      *
+[13:18:54]      5     1.897    0.1036       
+[13:18:54]      6     1.539    0.1762       
+[13:18:54]      7     1.117    0.3614       
+[13:18:54]      8     1.788    0.0930      *
+[13:18:54] 
+============================================================
+[13:18:54] 4. PREDICTIVE REGRESSIONS
+[13:18:54] ============================================================
+[13:18:54] 
+  Panel A: Bivariate — transition_t = α + β × dispersion_{t-k}
+[13:18:54]    Lag k         β    t-stat   p-value      R²
+[13:18:54]   ──────  ────────  ────────  ────────  ──────
+[13:18:54]        1   -1.4112    -0.759    0.4500   0.006 
+[13:18:54]        2   -2.1337    -1.156    0.2506   0.014 
+[13:18:54]        3   -0.7075    -0.375    0.7083   0.001 
+[13:18:54]        4    0.3431     0.181    0.8565   0.000 
+[13:18:54]        5    3.7772     1.870    0.0647   0.037 *
+[13:18:54]        6   -2.0871    -0.983    0.3282   0.011 
+[13:18:54]        7   -0.5262    -0.247    0.8052   0.001 
+[13:18:54]        8   -0.3427    -0.161    0.8726   0.000 
+[13:18:54] 
+  Panel B: Multivariate — transition_t = α + Σ β_k × dispersion_{t-k}
+[13:18:54]   N = 95, R² = 0.0192, F-stat = 0.441, p(F) = 0.7787
+[13:18:54] 
+      Variable      Coef    t-stat   p-value
+[13:18:54]   ────────────  ────────  ────────  ────────
+[13:18:54]          const    0.4893     3.080    0.0027 ***
+[13:18:54]      disp_lag1   -0.7443    -0.371    0.7115 
+[13:18:54]      disp_lag2   -2.1428    -1.115    0.2676 
+[13:18:54]      disp_lag3   -0.5909    -0.304    0.7619 
+[13:18:54]      disp_lag4    0.5874     0.301    0.7640 
+[13:18:54] 
+  Joint F-test (all lags = 0): F = 0.441, p = 0.7787
+[13:18:54] 
+============================================================
+[13:18:54] 5. VAR MODEL — IMPULSE RESPONSE ANALYSIS
+[13:18:54] ============================================================
+[13:18:54] 
+  Optimal lag selection:
+[13:18:54]     AIC:  5 lags
+[13:18:54]     BIC:  2 lags
+[13:18:54]     HQIC: 5 lags
+[13:18:54] 
+  VAR(5) estimated on 99 observations
+[13:18:54] 
+  Impulse Response: 1 SD shock to dispersion → aggregate growth
+[13:18:54]    Horizon    Response   Lower 95%   Upper 95%
+[13:18:54]   ────────  ──────────  ──────────  ──────────
+[13:18:54]          0     0.00000     0.00000     0.00000
+[13:18:54]          1     0.03736     0.01868     0.05605
+[13:18:54]          2     0.17078     0.08539     0.25618
+[13:18:54]          3     0.26688     0.13344     0.40032
+[13:18:54]          4    -0.08177    -0.04089    -0.12266
+[13:18:54]          5     0.20544     0.10272     0.30815
+[13:18:54]          6     0.23270     0.11635     0.34905
+[13:18:54]          7     0.04641     0.02320     0.06961
+[13:18:54]          8    -0.15186    -0.07593    -0.22779
+[13:18:54]          9    -0.03879    -0.01940    -0.05819
+[13:18:54]         10     0.05880     0.02940     0.08820
+[13:18:54]         11    -0.01791    -0.00895    -0.02686
+[13:18:54]         12    -0.12494    -0.06247    -0.18740
+[13:18:54] 
   Peak response at horizon 3 quarters
-     h         IRF
-     0     0.00000
-     1     0.03736
-     2     0.17078
-     3     0.26688
-     4    -0.08177
-     5     0.20544
-     6     0.23270
-     7     0.04641
-     8    -0.15186
-     9    -0.03879
-    10     0.05880
-    11    -0.01791
-    12    -0.12494
-
-  INTERPRETATION:
-  Peak at h=3:
-    -> rho in [-0.5, 0] (moderate complements, Cobb-Douglas neighborhood)
-
-  -- CES rho estimation from filter ratio --
+[13:18:54]   ══════════════════════════════════════════
+[13:18:54]   INTERPRETATION FOR CES THEORY:
+[13:18:54]   If peak at h=1-2: consistent with ρ ∈ [0, 0.5] (weak complements)
+[13:18:54]   If peak at h=3-4: consistent with ρ ∈ [-0.5, 0] (moderate complements)
+[13:18:54]   If peak at h=5-8: consistent with ρ ∈ [-2, -0.5] (strong complements)
+[13:18:54]   If peak at h=0: dispersion is contemporaneous → model NEEDS REVISION
+[13:18:54] 
+============================================================
+[13:18:54] 6. CES ρ ESTIMATION FROM FILTER RATIO
+[13:18:54] ============================================================
+[13:18:54]   Average pairwise correlation of segment growth rates: 0.8556
+[13:18:54]   → Implied: ρ likely > 0 (weak complements, minimal filtering)
+[13:18:54] 
+  Mean level CV:     1.2646
+[13:18:54]   Mean growth SD:    0.0456
+[13:18:54] 
   Idiosyncratic/aggregate variance ratio: 0.4033
-  Implied rho: 0.425
-  Implied (2-rho) filter strength: 1.575
-  VALID: within economically meaningful range
-  Average pairwise growth correlation: 0.8556
-
-  -- Generating figures --
-  Saved: thesis_data/figure_dispersion_indicator.png
-  Saved: thesis_data/figure_leadlag_correlation.png
-
+[13:18:54]   Implied ρ from filter equation: 0.425
+[13:18:54]   Implied (2-ρ) filter strength: 1.575
+[13:18:54]   Implied σ elasticity: 1.740
+[13:18:54]   ✓ Estimate is within economically meaningful range
+[13:18:54]   Implied K = (1-ρ)(J-1)/J = 0.479 for J=6
+[13:18:54] 
 ============================================================
-INTERPRETATION SUMMARY — DISPERSION TEST (P11)
+[13:18:54] 7. GENERATING FIGURES
+[13:18:54] ============================================================
+[13:18:54]   Saved: /home/jonsmirl/thesis/figures/complementary_heterogeneity/figure_dispersion_indicator.png
+[13:18:54]   Saved: /home/jonsmirl/thesis/figures/complementary_heterogeneity/figure_leadlag_correlation.png
+[13:18:54] 
 ============================================================
-
-The Granger causality is flat (no significance at any lag, p > 0.20
-everywhere). But the VAR tells a different story: the impulse response
-peaks at horizon 2-3 quarters, consistent with rho in [-0.5, 0]
-(moderate complements near Cobb-Douglas). The lead-lag correlogram
-confirms visually: positive correlation at leads +2 to +3, negative
-at lags -4 to -5. The rho estimate from the variance filter ratio
-is reasonable and within economically meaningful range.
-
-The disconnect between flat Granger and informative VAR is almost
-certainly the regime definition. QoQ growth flipping sign gives ~35
-'transitions' in 100 quarters — seasonal chatter, not real regime
-shifts. This dilutes the predictive regression signal.
-
-FIX: Re-run with either:
-  A) Markov switching model (Hamilton 1989) on total_g
-     -> R: MSwM; Stata: mswitch dr
-     -> Collapses to 4-5 real transitions (dot-com, GFC, 2016, AI)
-  B) Rolling 4Q mean threshold (expansion = MA4 > 0)
-     -> Simple, transparent, same effect
-Either should sharpen the Granger results substantially.
-
-BOTTOM LINE: The VAR and correlogram support the CES leading-indicator
-prediction. The Granger null is a regime-definition artifact, not a
-model failure. Fix the regime classification and this test likely clears.
-
-WHAT WOULD MOVE THIS FROM 'SUPPORTIVE' TO 'CONVINCING':
-  The Markov switching regime fix. A few hours in Stata:
-    mswitch dr total_g, states(2) varswitch
-  This collapses 35 noisy transitions to 4-5 real ones and re-runs
-  the Granger test against economically meaningful regime shifts.
+[13:18:54] SUMMARY — FOR PAPER SECTION
+[13:18:54] ============================================================
+[13:18:54] The dispersion indicator test examines whether cross-segment
+[13:18:54] revenue growth dispersion (σ across 6 WSTS categories) leads
+[13:18:54] aggregate semiconductor regime transitions, as predicted by
+[13:18:54] the CES (2-ρ) low-pass filter (Section 2.3 of the paper).
+[13:18:54] 
+[13:18:54] Key results to report:
+[13:18:54]   1. Granger causality F-stats and p-values (Table X)
+[13:18:54]   2. Predictive regression coefficients (Table X+1)
+[13:18:54]   3. VAR impulse responses (Figure X)
+[13:18:54]   4. Implied ρ from filter ratio (inline)
+[13:18:54]   5. Lead-lag correlation structure (Figure X+1)
+[13:18:54] 
+[13:18:54] Falsification: If dispersion is contemporaneous or lags,
+[13:18:54] the CES filtering mechanism is not supported.

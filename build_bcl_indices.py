@@ -874,8 +874,37 @@ class BRSSParser:
                     dfs.append(sheet_df.iloc[1:])
             self.df_raw = pd.concat(dfs, ignore_index=True)
             print(f"  Combined shape: {self.df_raw.shape}")
+        # Wave 1 splits data across named section sheets (e.g. "1-entry",
+        # "2-ownership", "3-capital", "4-capital", ...).  Each sheet has
+        # countries as rows and that section's questions as columns.
+        # Merge them into a single wide DataFrame keyed on country name.
+        elif len(sheets) >= 5 and any(re.match(r'\d+-', s) for s in sheets):
+            named_section_sheets = [s for s in sheets if re.match(r'\d+-', s)]
+            if len(named_section_sheets) >= 5:
+                print(f"  Wave 1 per-section layout: merging {len(named_section_sheets)} sheets")
+                merged = None
+                for sheet_name in named_section_sheets:
+                    sheet_df = pd.read_excel(xl, sheet_name=sheet_name, header=None)
+                    if merged is None:
+                        merged = sheet_df
+                    else:
+                        # Each sheet has country names in col 0; drop that
+                        # column from subsequent sheets to avoid duplication.
+                        # Align by row index (same country order within rows).
+                        extra_cols = sheet_df.iloc[:, 1:]
+                        # Prefix column indices to avoid collision
+                        extra_cols.columns = range(merged.shape[1],
+                                                   merged.shape[1] + extra_cols.shape[1])
+                        merged = pd.concat([merged, extra_cols], axis=1)
+                self.df_raw = merged
+                print(f"  Merged shape: {self.df_raw.shape}")
+            else:
+                # Fallback
+                print(f"  Using sheet: '{sheets[0]}'")
+                self.df_raw = pd.read_excel(xl, sheet_name=sheets[0], header=None)
+                print(f"  Raw shape: {self.df_raw.shape}")
         else:
-            # Single-sheet layout (waves 1-4): find the main data sheet
+            # Single-sheet layout (waves 2-4): find the main data sheet
             data_sheet = None
             for name in sheets:
                 nl = name.lower()
@@ -949,29 +978,76 @@ class BRSSParser:
         qid = question_def['question_ids'].get(self.wave_key)
         alt_patterns = question_def.get('alt_patterns', [])
 
+        # Use anchored regex to avoid substring false positives
+        # (e.g. qid "4.1" must not match "3.4.1" or "1.4.1")
+        qid_re = re.compile(r'^\s*' + re.escape(qid) + r'(?:\s|$)') if qid else None
+
+        # Two-pass search: exact qid match first, alt_patterns only as fallback.
+        # This prevents generic alt_patterns (e.g. "securities") from matching
+        # an unrelated question row before the exact qid row is reached.
         if self.orientation == 'countries_as_rows':
             # Questions are in column headers
+            # Pass 1: exact qid match
+            if qid_re:
+                for idx in range(self.df_raw.shape[1]):
+                    for hrow in range(min(5, self.df_raw.shape[0])):
+                        val = str(self.df_raw.iloc[hrow, idx]).strip()
+                        if qid_re.match(val):
+                            return ('col', idx)
+            # Pass 2: alt_pattern fallback
             for idx in range(self.df_raw.shape[1]):
                 for hrow in range(min(5, self.df_raw.shape[0])):
                     val = str(self.df_raw.iloc[hrow, idx]).strip()
-                    if qid and qid in val:
-                        return ('col', idx)
                     for pattern in alt_patterns:
                         if re.search(pattern, val, re.IGNORECASE):
                             return ('col', idx)
         else:
             # Questions are in row headers
+            # Pass 1: exact qid match
+            if qid_re:
+                for idx in range(self.df_raw.shape[0]):
+                    for hcol in range(min(5, self.df_raw.shape[1])):
+                        val = str(self.df_raw.iloc[idx, hcol]).strip()
+                        if qid_re.match(val):
+                            return ('row', idx)
+            # Pass 2: alt_pattern fallback
             for idx in range(self.df_raw.shape[0]):
                 for hcol in range(min(5, self.df_raw.shape[1])):
                     val = str(self.df_raw.iloc[idx, hcol]).strip()
-                    if qid and qid in val:
-                        return ('row', idx)
                     for pattern in alt_patterns:
                         if re.search(pattern, val, re.IGNORECASE):
                             return ('row', idx)
 
         return None
-    
+
+    def _adjust_label_row(self, loc: tuple) -> tuple:
+        """Adjust a matched row if it's a label row with no data.
+
+        Wave 4 (BRSS 2011) uses a two-row pattern: a label row with the
+        question text (all NaN in country columns) followed by a data row
+        whose col-0 value starts with 'q' (e.g. 'q04_01_00').  When the
+        label row is matched, shift to the data row.
+        """
+        if loc is None or self.orientation == 'countries_as_rows':
+            return loc
+        loc_type, idx = loc
+        if loc_type != 'row' or idx + 1 >= self.df_raw.shape[0]:
+            return loc
+        # Check if the matched row is all NaN/---/empty in cols 2+
+        has_data = False
+        for c in range(2, min(self.df_raw.shape[1], 20)):
+            v = str(self.df_raw.iloc[idx, c]).strip()
+            if v not in ('nan', '---', '', 'NaN'):
+                has_data = True
+                break
+        if has_data:
+            return loc
+        # Check if the next row starts with a 'q' code and has data
+        next_col0 = str(self.df_raw.iloc[idx + 1, 0]).strip()
+        if re.match(r'^q\d', next_col0, re.IGNORECASE):
+            return (loc_type, idx + 1)
+        return loc
+
     def _get_countries(self) -> Dict[str, int]:
         """Extract country name -> index mapping."""
         countries = {}
@@ -1050,13 +1126,13 @@ class BRSSParser:
                 # Capital stringency has sub-parts
                 for part_key in ['part_a', 'part_b']:
                     for comp in idx_def[part_key]['components']:
-                        loc = self._find_question_column(comp)
+                        loc = self._adjust_label_row(self._find_question_column(comp))
                         question_locations[comp['id']] = loc
                         if loc is None:
                             missing_questions.append(comp['id'])
             else:
                 for comp in idx_def['components']:
-                    loc = self._find_question_column(comp)
+                    loc = self._adjust_label_row(self._find_question_column(comp))
                     question_locations[comp['id']] = loc
                     if loc is None:
                         missing_questions.append(comp['id'])
@@ -1095,8 +1171,45 @@ class BRSSParser:
                 record[comp_id] = score_component(raw_val, scoring)
             
             records.append(record)
-        
-        return pd.DataFrame(records)
+
+        result_df = pd.DataFrame(records)
+
+        # --- Wave 5: fix activity restriction scoring ---
+        # Wave 5 stores activity restrictions as checkbox rows (a/b/c/d),
+        # not as a single 1-4 value.  Override the broken scalar extraction
+        # by scanning the sub-rows for each question.
+        if self.wave == 5 and self.orientation != 'countries_as_rows':
+            act_qcodes = {
+                'act_securities':   ['Q4_1a_2016', 'Q4_1b_2016', 'Q4_1c_2016', 'Q4_1d_2016'],
+                'act_insurance':    ['Q4_2a_2016', 'Q4_2b_2016', 'Q4_2c_2016', 'Q4_2d_2016'],
+                'act_real_estate':  ['Q4_3a_2016', 'Q4_3b_2016', 'Q4_3c_2016', 'Q4_3d_2016'],
+                'act_nonfinancial': ['Q4_4a_2016', 'Q4_4b_2016', 'Q4_4c_2016', 'Q4_4d_2016'],
+            }
+            # Build Q-code -> row index mapping
+            qcode_rows = {}
+            for idx in range(self.df_raw.shape[0]):
+                col0 = str(self.df_raw.iloc[idx, 0]).strip()
+                if col0.startswith('Q4_'):
+                    qcode_rows[col0] = idx
+
+            for comp_id, sub_codes in act_qcodes.items():
+                sub_row_idxs = [qcode_rows.get(qc) for qc in sub_codes]
+                if all(r is None for r in sub_row_idxs):
+                    continue
+                scores = []
+                for country_name, country_col in countries.items():
+                    score = None
+                    for rank, row_idx in enumerate(sub_row_idxs, start=1):
+                        if row_idx is None:
+                            continue
+                        val = normalize_response(self.df_raw.iloc[row_idx, country_col])
+                        if val and val.upper() == 'X':
+                            score = rank  # a=1 (unrestricted) ... d=4 (prohibited)
+                            break
+                    scores.append(score)
+                result_df[comp_id] = scores
+
+        return result_df
 
 
 # ============================================================================

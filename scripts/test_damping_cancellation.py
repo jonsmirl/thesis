@@ -50,8 +50,9 @@ except ImportError:
     print("  pip install statsmodels scipy\n")
 
 
-DATA_DIR = "thesis_data"
-OUT_DIR = "thesis_data"
+DATA_DIR = "/home/jonsmirl/thesis/thesis_data"
+OUT_DIR = "/home/jonsmirl/thesis/thesis_data"
+FIG_DIR = "/home/jonsmirl/thesis/figures/complementary_heterogeneity"
 LOG_LINES = []
 
 def log(msg):
@@ -477,7 +478,7 @@ def plot_irf(all_results):
                   fontsize=11)
     plt.tight_layout()
 
-    fig_path = f"{OUT_DIR}/figure_damping_cancellation_irf.png"
+    fig_path = f"{FIG_DIR}/figure_damping_cancellation_irf.png"
     plt.savefig(fig_path, dpi=150, bbox_inches='tight')
     log(f"  Saved: {fig_path}")
     plt.close()

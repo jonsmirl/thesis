@@ -620,7 +620,7 @@ def compute_crossing_time_exact(p):
 
 def main():
     setup_style()
-    outdir = '/home/claude/model_output'
+    outdir = '/home/jonsmirl/thesis/figures/endogenous_decentralization'
     os.makedirs(outdir, exist_ok=True)
     
     print("=" * 60)

@@ -1,0 +1,388 @@
+\documentclass[12pt,letterpaper]{article}
+
+% Page layout
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+
+% Math
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+
+% Tables and figures
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multirow}
+
+% Typography
+\usepackage[T1]{fontenc}
+\usepackage[expansion=false]{microtype}
+\usepackage{enumitem}
+
+% References
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+% Section formatting
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\titleformat{\subsubsection}{\normalsize\itshape}{\thesubsubsection}{0.5em}{}
+
+% Custom commands
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Var}{Var}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Pcycle}{P_{\text{cycle}}}
+\newcommand{\phieff}{\varphi_{\text{eff}}}
+\newcommand{\alphaeff}{\alpha_{\text{eff}}}
+\newcommand{\alphacrit}{\alpha_{\text{crit}}}
+
+\begin{document}
+
+% -------------------------------------------------------------------
+% TITLE PAGE
+% -------------------------------------------------------------------
+\begin{titlepage}
+\centering
+\vspace*{1.5cm}
+{\LARGE\bfseries Endogenous Decentralization and\\[8pt]
+the Economics of Autonomous Agent Networks\par}
+\vspace{0.6cm}
+{\large\itshape A Unified CES Framework for Technology, Organization,\\
+and Monetary Infrastructure\par}
+\vspace{2cm}
+{\large Jon Smirl\par}
+\vspace{0.3cm}
+{Independent Researcher\par}
+\vspace{0.3cm}
+{February 2026\par}
+\vspace{1.5cm}
+
+\begin{abstract}
+\noindent This thesis develops a unified mathematical framework showing how concentrated investment in centralized AI infrastructure finances the learning curves that enable distributed alternatives---and how this self-undermining dynamic propagates through a four-level economic hierarchy.
+A single CES (Constant Elasticity of Substitution) aggregate with curvature parameter $K = (1-\rho)(J-1)/J$ serves as the generating function for the entire analysis: within each level, $K$ simultaneously controls diversity gains, informational robustness, and strategic stability (Chapter~2); between levels, CES geometry derives the hierarchical architecture, activation thresholds, and welfare decomposition (Chapter~3).
+The framework is applied to four levels operating at separated timescales: hardware learning curves (decades, Chapter~4), mesh network formation and capability growth (years--months, Chapter~5), and financial settlement infrastructure (days, Chapter~6).
+Each transition requires $R_0 > 1$, with cross-level amplification permitting system-wide activation even when individual levels are sub-threshold.
+The transition from the current centralized equilibrium to the distributed alternative takes approximately 8 years at Wright's Law semiconductor improvement rates.
+Empirical evidence for the settlement layer is provided by a 41-country panel study of fiat monetary quality and stablecoin adoption (Chapter~7).
+Six preliminary empirical tests show directional consistency across all predictions currently testable; the strongest results confirm strategic complementarity in hyperscaler investment ($p < 0.001$), the absence of distant-layer coupling predicted by the port topology theorem ($p = 0.40$--$0.85$), and a structural break in overinvestment ratios explained by a superintelligence option on the effective prize.
+Policy implications for automation-era wealth concentration are addressed in Chapter~8.
+The thesis generates falsifiable predictions with specific timing and failure conditions.
+\end{abstract}
+
+\vspace{0.8cm}
+\noindent\textbf{Keywords:} CES aggregation, endogenous decentralization, learning curves, mesh equilibrium, hierarchical economies, multi-timescale dynamics, stablecoins, monetary policy, autonomous agents
+
+\vspace{0.3cm}
+\noindent\textbf{JEL:} C62, C73, D24, D43, D85, E44, E52, L14, O33, O41
+
+\end{titlepage}
+
+
+% ===================================================================
+% 1. THE ECONOMIC QUESTION
+% ===================================================================
+\section{The Economic Question}\label{sec:question}
+
+Between 2018 and 2025, the five largest US technology companies---Alphabet, Amazon, Apple, Meta, and Microsoft---together with Oracle and the Stargate joint venture, committed an estimated \$1.3 trillion in cumulative capital expenditure to construct centralized AI infrastructure.  This represents the largest concentrated infrastructure investment in history outside wartime mobilization.  The facilities house tens of thousands of specialized GPUs consuming gigawatts of power, connected by proprietary high-bandwidth networks, and operated as vertically integrated cloud services.  The near-term business objective is to sell AI inference---running trained models to serve user requests---at premium margins.  A longer-horizon objective is frontier model training at scales that may produce discontinuous capability advances.
+
+This thesis asks a simple question: \emph{does this investment finance its own disruption?}
+
+The question is not rhetorical.  Prior infrastructure investments have occasionally exhibited self-undermining dynamics---railroad investment enabled trucking by financing steel and road-building capacity, AT\&T's Bell Labs produced the transistor that ultimately ended the analog telephone monopoly---but these were historical accidents, not structural mechanisms.  The thesis argues that the current AI infrastructure buildout is different: the self-undermining dynamic is \emph{endogenous}, meaning it follows from the structure of the investment itself, not from exogenous shocks or historical contingency.
+
+The argument has four steps, each formalized in a separate chapter:
+\begin{enumerate}[leftmargin=2em]
+\item Concentrated investment finances component learning curves---particularly in 3D memory stacking and advanced packaging---that reduce the cost of distributed inference hardware (Chapter~4).
+\item When distributed hardware crosses a cost threshold, heterogeneous specialized AI agents self-organize into a mesh economy whose collective capability exceeds centralized provision (Chapter~5).
+\item The mesh economy requires programmable settlement infrastructure for routing compensation among autonomous agents, creating demand for dollar-denominated stablecoins backed by US Treasuries (Chapter~6).
+\item Stablecoin demand transforms the monetary infrastructure that funds and settles centralized investment, feeding back to constrain sovereign fiscal capacity and alter the environment in which the next round of centralized investment decisions is made (Chapter~6).
+\end{enumerate}
+
+The four steps form a cycle, not a sequence.  The output of Step~4 feeds back into the conditions governing Step~1.  The thesis's contribution is to show that this cycle is governed by a single mathematical structure---the CES production function---operating at four timescales with strict separation.  The unified framework produces falsifiable predictions, identifies the structural parameters that determine whether the transition occurs, and derives policy principles that follow from theorems rather than from intuition.
+
+
+% ===================================================================
+% 2. THE THESIS ARGUMENT IN ONE PAGE
+% ===================================================================
+\section{The Thesis Argument in One Page}\label{sec:argument}
+
+The thesis can be stated in four paragraphs corresponding to the four levels of the hierarchy.
+
+\textbf{Level 1: Concentrated investment finances learning curves (Chapter~4).}
+Competing centralized AI firms face a common-pool problem: cumulative component production $Q(t)$ drives down costs via Wright's Law ($C(Q) \propto Q^{-\alpha}$, $\alpha \approx 0.23$), but cost reduction benefits all producers, including future distributed entrants.  In symmetric Markov Perfect Equilibrium, $N$ firms collectively overproduce by a factor of $3$--$4\times$ relative to the cooperative optimum, accelerating the crossing time $T^*$ by approximately $79\%$.  Each firm would prefer slower progress, but no firm can unilaterally slow down without losing market share.  The mechanism applies specifically to \emph{inference} workloads, which constitute $80$--$90\%$ of AI compute.  Training may remain permanently centralized due to synchronization constraints that cost reduction alone cannot address.  The effective crossing threshold is approached from two directions: from below by the packaging learning curve and from above by algorithmic efficiency gains driven by open-weight developers operating under export-control-imposed compute constraints.
+
+\textbf{Level 2: The mesh economy forms and grows (Chapter~5).}
+After crossing, a self-organizing mesh of heterogeneous specialized agents exceeds centralized provision above a finite critical mass $N^*$.  The phase transition is first-order (discontinuous): the mesh crystallizes rather than forming gradually, characterized by Fortuin-Kasteleyn/Potts dynamics when the number of specialization types exceeds two.  Once formed, the mesh's capability grows endogenously through autocatalytic training---agents improve other agents---but converges to the frontier training rate set by centralized providers (the Baumol bottleneck).  The mesh's CES heterogeneity ($\rho < 1$) prevents model collapse by maintaining the effective external data fraction above the critical threshold, even when agents train partially on synthetic data.
+
+\textbf{Level 3: Settlement demand transforms monetary infrastructure (Chapter~6).}
+The mesh requires a programmable settlement layer for routing compensation among autonomous agents operating at machine speed.  Dollar stablecoins backed by US Treasuries are the efficient settlement medium.  This creates a coupled dynamical system: mesh growth increases stablecoin demand, which increases Treasury absorption, which improves settlement infrastructure, which accelerates mesh growth.  Monetary policy tools degrade in a specific sequence---forward guidance first, then quantitative easing, then financial repression---because each tool depends on a friction that mesh participation eliminates.  The system admits two stable equilibria: the current low-mesh state and a high-mesh state where monetary policy is weak but continuous market discipline substitutes.
+
+\textbf{The cycle closes.}
+Stablecoin-driven Treasury absorption alters sovereign fiscal capacity and debt dynamics, feeding back to the macroeconomic environment in which centralized investment decisions at Level~1 are made.  The master reproduction number $R_0$ of the entire system depends on the product of cross-level amplification factors.  The transition from the low-activity equilibrium to the high-activity equilibrium takes approximately 8 years at current semiconductor improvement rates.
+
+The mathematical unity of this argument---the fact that a single CES aggregate controls all four levels---is not a modeling convenience.  It is the thesis's central claim, established in Chapters~2 and~3.
+
+
+% ===================================================================
+% 3. THE MATHEMATICAL SPINE: CES GEOMETRY
+% ===================================================================
+\section{The Mathematical Spine: CES Geometry}\label{sec:spine}
+
+The entire thesis rests on a single functional form: the CES (Constant Elasticity of Substitution) aggregate
+\begin{equation}\label{eq:CES}
+F_n \;=\; \Bigl(\frac{1}{J}\sum_{j=1}^{J} x_{nj}^{\rho}\Bigr)^{1/\rho}, \qquad \rho < 1, \quad \rho \neq 0,
+\end{equation}
+applied at each level $n$ of the hierarchy, where $x_{nj}$ denotes the $j$-th input at level $n$, $J \geq 2$ is the number of inputs, and $\rho$ is the substitution parameter (related to the elasticity of substitution by $\sigma = 1/(1-\rho)$).  The CES free energy $\Phi = -\sum_n \log F_n$ serves as the Hamiltonian of the hierarchical system.
+
+\subsection{The curvature parameter}
+
+The key quantity is the \textbf{curvature parameter} (Chapter~2, Definition~3.1):
+\begin{equation}\label{eq:K}
+K \;=\; (1-\rho)\,\frac{J-1}{J}.
+\end{equation}
+This is the normalized principal curvature of the CES isoquant at the cost-minimizing (symmetric) point.  The parameter $K$ ranges from $0$ (perfect substitutes, $\rho = 1$) upward as complementarity increases ($\rho$ decreases below~1).  It encodes both the degree of complementarity and the number of inputs in a single dimensionless number.
+
+\subsection{The triple role}
+
+Chapter~2 proves that $K$ simultaneously controls three properties that have previously been studied separately using different techniques (Chapter~2, Theorem~7.1):
+
+\begin{enumerate}[leftmargin=2em]
+\item \textbf{Superadditivity} (Chapter~2, Theorem~4.1).  Combining heterogeneous input bundles produces more output than the sum of separate productions.  The superadditivity gap is bounded below by $\Omega(K)$ times a geodesic diversity measure.  This is a first-order curvature effect: the isoquant bends away from the hyperplane, so convex combinations of diverse points lie above the level set.
+
+\item \textbf{Correlation robustness} (Chapter~2, Theorem~5.1).  The CES aggregate extracts idiosyncratic variation from correlated inputs that a linear aggregate would miss.  The effective dimensionality exceeds the linear baseline by $\Omega(K^2)$ times an idiosyncratic variation term.  This is a second-order curvature effect: the nonlinear mapping separates input trajectories that a linear function would conflate.
+
+\item \textbf{Strategic independence} (Chapter~2, Theorem~6.1).  The balanced allocation at the cost-minimizing point is a Nash equilibrium: no coalition of input suppliers can profitably redistribute or withhold inputs.  The strategic manipulation gain is bounded above by $-\Omega(K)$ times a squared deviation.  This is again a first-order curvature effect: deviations from the balanced allocation move along the isoquant into regions of lower marginal product.
+\end{enumerate}
+
+All three bounds tighten monotonically in $K$.  When $K = 0$ (perfect substitutes), all three vanish simultaneously.  The three properties are not three theorems sharing a common assumption---they are the same geometric fact, the curvature of the isoquant, viewed from aggregation theory, information theory, and game theory respectively.
+
+The results extend to general (unequal) CES weights $a_j > 0$ via the secular equation of the weighted inverse-share matrix (Chapter~2, Theorem~8.5).  With unequal weights, the principal curvatures of the isoquant are no longer degenerate; they are determined by the $J-1$ roots of the secular equation, whose smallest root $R_{\min}$ controls the generalized curvature parameter $K(\rho, \mathbf{a})$.
+
+\subsection{From within-level geometry to between-level architecture}
+
+Chapter~2 establishes the within-level properties of CES aggregation.  Chapter~3 asks: given that each level aggregates its inputs via CES, what is the structure of interaction \emph{between} levels?  The answer is that CES geometry derives the architecture---it is not a free modeling choice.
+
+Three architectural constraints follow from the geometry (Chapter~3, Theorem~3.1):
+\begin{enumerate}[leftmargin=2em]
+\item \textbf{Aggregate coupling.}  Each level communicates with other levels only through its aggregate output $F_n$.  Individual input allocations $x_{nj}$ within a level are invisible to other levels.  This is a consequence of the CES isoquant's invariance under permutations of inputs at the symmetric point.
+
+\item \textbf{Directed feed-forward.}  The coupling between levels must be asymmetric: level $n-1$'s output enters level $n$'s production function, but not vice versa at the same timescale.  Reciprocal coupling would violate the timescale separation that makes the hierarchy well-defined.
+
+\item \textbf{Nearest-neighbor topology.}  Long-range cross-level links---level 1 directly affecting level 4, for example---have no effect on the system's qualitative dynamics.  The architecture is a nearest-neighbor chain, with each level coupled only to its immediate neighbors in the timescale ordering.
+\end{enumerate}
+
+Furthermore, the \textbf{Moduli Space Theorem} (Chapter~3, Theorem~3.2) characterizes the set of all models consistent with the CES geometry: the substitution parameter $\rho$ at each level determines the qualitative dynamics, while the timescales, damping coefficients, and specific gain functions are free parameters that do not affect the model's qualitative behavior.  This means the framework's predictions about phase transitions, equilibrium structure, and policy are robust to reasonable parameter uncertainty.
+
+\subsection{The eigenstructure bridge}
+
+The deepest result connecting the mathematical framework to welfare is the \textbf{Eigenstructure Bridge} (Chapter~3, Theorem~6.3):
+\begin{equation}\label{eq:bridge}
+\nabla^2 \Phi\big|_{\text{slow}} \;=\; W^{-1}\,\nabla^2 V,
+\end{equation}
+where $\Phi = -\sum_n \log F_n$ is the CES free energy (the technology side), $V$ is the Lyapunov function measuring welfare loss (the welfare side), and $W$ is the institutional supply-rate matrix encoding how efficiently each level adjusts.  The Hessian of the technology surface, restricted to the slow manifold, equals the Hessian of the welfare loss function scaled by the inverse of institutional adjustment speed.
+
+This identity has a striking implication: the directions in which the economy adjusts fastest technologically are the directions in which welfare losses are most sensitive to institutional rigidity.  The binding welfare constraint is the most institutionally \emph{rigid} level, not the most \emph{visible} disequilibrium.  A sector may exhibit large price distortions yet contribute little to welfare loss if its institutional adjustment is fast; conversely, a sector with small visible distortions may be the dominant welfare bottleneck if its institutions are slow.
+
+
+% ===================================================================
+% 4. THE FOUR-LEVEL HIERARCHY
+% ===================================================================
+\section{The Four-Level Hierarchy}\label{sec:hierarchy}
+
+The framework operates on four levels with strict timescale separation ($\varepsilon_1 \gg \varepsilon_2 \gg \varepsilon_3 \gg \varepsilon_4$, where $\varepsilon_n$ denotes the characteristic adjustment speed of level $n$ from slowest to fastest):
+
+\begin{table}[h]
+\centering
+\caption{The four-level hierarchy}
+\label{tab:hierarchy}
+\begin{tabularx}{\textwidth}{@{}c c X X c@{}}
+\toprule
+Level & Chapter & State Variable & Gain Function $\varphi_n$ & Timescale \\
+\midrule
+1 (slowest) & 4 & Hardware/semiconductor cost & Wright's Law learning curve ($\alpha \approx 0.23$) & Decades \\
+2 & 5 & Heterogeneous AI agent density & Recruitment/adoption dynamics & Years \\
+3 & 5 & Training effectiveness/capability & Autocatalytic training feedback & Months \\
+4 (fastest) & 6 & Stablecoin infrastructure & Settlement demand & Days--weeks \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Timescale separation and the slow manifold}
+
+The timescale separation is not merely an ordering convenience; it is a structural feature that determines the system's dynamics.  When $\varepsilon_{n-1}/\varepsilon_n \ll 1$, the fast level $n$ equilibrates before the slow level $n-1$ changes appreciably.  The fast level's dynamics can therefore be solved conditional on the slow level's state, and the slow level sees only the equilibrium response of the fast level.  This is the standard singular perturbation / slow-manifold reduction, applied here to the economic hierarchy.
+
+The practical consequence is that each level's equilibrium is bounded from below by the level beneath it in the hierarchy.  No matter how rapidly the mesh economy grows (Level~2), its long-run growth rate cannot exceed the rate of hardware cost decline (Level~1).  No matter how efficiently stablecoin infrastructure scales (Level~4), its capacity is bounded by the mesh economy's settlement demand (Levels~2--3).
+
+\subsection{The hierarchical ceiling cascade}
+
+This bounding structure is formalized as the \textbf{Hierarchical Ceiling Cascade} (Chapter~3, Proposition~8.1): each level $n$'s steady-state output satisfies
+\begin{equation}\label{eq:ceiling}
+F_n^* \;\leq\; g\bigl(F_{n-1}^*\bigr),
+\end{equation}
+where $g(\cdot)$ is a monotone transformation determined by the cross-level coupling.  The long-run growth rate of the entire system equals the growth rate of the slowest level---hardware cost decline under Wright's Law.  This is not an assumption but a consequence of the timescale separation and the CES architecture.
+
+Two classical results in economics emerge as special cases of the ceiling cascade at adjacent levels.  The \textbf{Baumol bottleneck} (Chapter~5)---the mesh's capability growth rate converging to the frontier training rate set by centralized providers---is the ceiling constraint between Levels~2--3 and Level~1.  The \textbf{Triffin contradiction} (Chapter~6)---the tension between the dollar's domestic monetary policy role and its international settlement role---is the ceiling constraint between Level~4 and Levels~2--3.  These are mathematically the same object: a slow-manifold constraint at adjacent layers in the hierarchy.
+
+
+% ===================================================================
+% 5. THE MASTER REPRODUCTION NUMBER
+% ===================================================================
+\section{The Master Reproduction Number}\label{sec:R0}
+
+Each transition in the hierarchy requires a \textbf{basic reproduction number} exceeding unity.  At Level~1, the crossing condition is $R_0 > 1$, where $R_0$ generalizes pure cost parity to include the self-sustaining adoption dynamics of the distributed ecosystem.  At Level~2, the mesh forms when $R_0^{\text{mesh}} > 1$ (giant component via percolation).  At Level~4, the settlement feedback becomes self-reinforcing when $R_0^{\text{settle}} > 1$.
+
+Chapter~3 (Theorem~4.3) proves a \textbf{spectral activation threshold}: the hierarchy sustains non-trivial activity if and only if the spectral radius of the \textbf{next-generation matrix} $\mathcal{K}$ exceeds unity:
+\begin{equation}\label{eq:activation}
+\rho(\mathcal{K}) > 1, \qquad \text{where } \mathcal{K}_{nm} = \frac{\beta_n \, \varphi_n}{\delta_n} \cdot \mathbf{1}_{[m = n-1]}.
+\end{equation}
+Here $\beta_n$ is the cross-level coupling strength (how much Level $n-1$'s output amplifies Level $n$'s gain), $\varphi_n$ is the within-level gain function, and $\delta_n$ is the within-level decay rate.  The indicator $\mathbf{1}_{[m = n-1]}$ reflects the nearest-neighbor topology derived in Chapter~3.
+
+The crucial feature of this threshold is that individual levels can each be sub-threshold---$\beta_n \varphi_n / \delta_n < 1$ for every $n$---while the system as a whole is super-threshold through cross-level amplification.  Intuitively, Level~1's output amplifies Level~2, whose output amplifies Level~3, whose output amplifies Level~4, whose output feeds back to Level~1.  The cycle product
+\begin{equation}\label{eq:Pcycle}
+\Pcycle \;=\; \prod_{n=1}^{4} \frac{\beta_n \, \varphi_n}{\delta_n}
+\end{equation}
+governs the aggregate threshold: $\Pcycle > 1$ is necessary and sufficient for the system to sustain the high-activity equilibrium.  The system activates when the weakest cross-level link is strong enough that the cycle product exceeds unity, even if no single level could sustain activity on its own.
+
+This has a practical implication for the current AI infrastructure buildout.  The endogenous decentralization mechanism at Level~1 may appear insufficient by itself: the crossing point seems distant, the learning curve uncertain, the distributed ecosystem immature.  But the relevant threshold is not Level~1 in isolation---it is the cycle product across all four levels.  Settlement infrastructure improvements (Level~4), mesh network effects (Level~2), and autocatalytic capability growth (Level~3) all contribute multiplicatively.  The system can activate from a combination of modest progress at every level.
+
+
+% ===================================================================
+% 6. SUMMARY OF CONTRIBUTIONS BY CHAPTER
+% ===================================================================
+\section{Summary of Contributions by Chapter}\label{sec:contributions}
+
+\subsection{Chapter 2: The CES triple role---within-level geometry}
+
+Chapter~2 proves that three important properties of CES aggregation---superadditivity, correlation robustness, and strategic independence---are controlled by the single curvature parameter $K = (1-\rho)(J-1)/J$.  The superadditivity gap is $\Omega(K) \cdot \text{diversity}$ (first-order curvature effect).  The correlation robustness bonus is $\Omega(K^2) \cdot \text{idiosyncratic variation}$ (second-order curvature effect).  The strategic manipulation penalty is $-\Omega(K) \cdot \text{deviation}^2$ (first-order curvature effect).  All three vanish simultaneously at $K = 0$.  The underlying mechanism is the curvature of the isoquant: these are three views of a single geometric object, not three consequences of a shared assumption.  The results extend to general weights via the secular equation of the weighted inverse-share matrix.  Chapter~2 provides the mathematical foundation that all subsequent chapters assume.
+
+\subsection{Chapter 3: Complementary heterogeneity---between-level architecture and dynamics}
+
+Chapter~3 takes the CES triple role as given and asks what happens between sectors in a hierarchical economy.  Five results follow.  The Port Topology Theorem derives the architecture from CES geometry: aggregate coupling, directed feed-forward, and nearest-neighbor topology.  The Moduli Space Theorem characterizes which modeling choices affect qualitative dynamics ($\rho$) and which do not (timescales, damping, gain functions).  The spectral activation threshold shows that cross-level amplification can activate the system even when individual levels are sub-threshold.  The welfare distance function attributes inefficiency to each level, with the binding constraint at the most institutionally rigid level.  The damping cancellation theorem shows that tightening regulation at any level has zero net welfare effect---reform must target upstream.  The transition takes $O(1/\sqrt{\varepsilon_{\text{drift}}})$ time, yielding approximately 8 years at Wright's Law rates.
+
+\subsection{Chapter 4: Endogenous decentralization---Level 1 (hardware learning curves)}
+
+Chapter~4 formalizes the mechanism at Level~1 as a continuous-time differential game.  The distance to the crossing point is a common-pool state variable depleted by cumulative production.  In symmetric Markov Perfect Equilibrium, $N$ firms collectively overproduce by $3$--$4\times$, accelerating the crossing time $T^*$ by approximately $79\%$ relative to the cooperative optimum.  The pure cost-parity crossing condition generalizes to $R_0 > 1$, incorporating self-sustaining adoption dynamics.  A structural distinction between training and inference workloads predicts partial decentralization: inference distributes while training persists centrally.  Cross-domain empirical analysis identifies the operative learning curve as 3D memory stacking and advanced packaging ($\alpha = 0.23$), not planar DRAM die fabrication.  US--China semiconductor export controls provide a natural experiment distinguishing the endogenous mechanism from standard Arrow learning-by-doing.  The effective crossing threshold is simultaneously reduced from above by algorithmic efficiency gains.  Nine falsifiable predictions are derived, including hardware crossing circa 2028 and self-sustaining distributed adoption circa 2030--2032.
+
+\subsection{Chapter 5: The mesh economy---Levels 2--3 (network formation and capability growth)}
+
+Chapter~5 covers two levels of the hierarchy.  At Level~2, after the crossing point, heterogeneous specialized AI agents self-organize into a mesh whose collective capability exceeds centralized provision above a finite critical mass $N^*$.  The phase transition is first-order (discontinuous), characterized by Fortuin-Kasteleyn/Potts crystallization when the number of specialization types exceeds two.  The mesh equilibrium is proved to exist, be unique, and be locally asymptotically stable.  The crossing point corresponds to an inverse Bose-Einstein condensation in the network fitness model.
+
+At Level~3, the mesh's capability grows endogenously through autocatalytic training.  Three growth regimes are characterized: convergence to a ceiling (most likely near-term), exponential growth, and finite-time singularity.  The Baumol bottleneck---the mesh's growth rate converging to the frontier training rate---emerges endogenously from the dynamics.  CES heterogeneity prevents model collapse: the effective external data fraction $\alphaeff$ remains above the critical threshold $\alphacrit$ even when agents train partially on synthetic data, because the same curvature parameter $K$ that governs the diversity premium also governs informational robustness (the connection to Chapter~2's correlation robustness theorem).  The mesh's routing and compensation requirements endogenously generate the need for a programmable settlement layer, providing the connection to Chapter~6.
+
+\subsection{Chapter 6: Settlement feedback---Level 4 (monetary and financial infrastructure)}
+
+Chapter~6 formalizes the coupling between the mesh economy and the monetary system as a system of four coupled ODEs in mesh participation $\phi$, stablecoin ecosystem size $S$, Treasury debt ratio $b$, and financial sector capitalization $\eta$.  As mesh participation increases, market efficiency approaches the Grossman-Stiglitz limit; Kyle's price impact $\lambda$ is non-monotone in $\phi$ (depth first improves, then deteriorates as noise trading exits).  Monetary policy tools degrade in a specific sequence: forward guidance (which depends on information processing delay), then quantitative easing (which depends on arbitrage speed), then financial repression (which depends on captive savings).  Each tool depends on a friction that mesh participation eliminates.
+
+The system admits two stable equilibria: a low-mesh equilibrium (the current system, approximately) and a high-mesh equilibrium in which monetary policy is weak but real-time market discipline substitutes.  The transition between them is governed by the settlement reproduction number $R_0^{\text{settle}}$: the transition is self-reinforcing when each unit of mesh growth produces more than one unit of subsequent growth through the financial channel.  The high-mesh equilibrium constrains sovereign fiscal policy through continuous market discipline---a ``synthetic gold standard'' that emerges from the model.  The paper extends the Uribe (1997) hysteresis model of dollarization with endogenous stablecoin access, showing that the bifurcation thresholds are decreasing in stablecoin ecosystem size.
+
+\subsection{Chapter 7: Monetary productivity gap---empirical evidence for settlement demand}
+
+Chapter~7 provides micro-level empirical evidence for the settlement layer demand modeled in Chapter~6.  Using a 41-country panel, the chapter constructs a Fiat Quality Index (FQI) from five components: inflation stability, banking access, ATM density, government effectiveness, and internet penetration.  The key finding is a 13:1 remittance cost ratio between fiat and stablecoin channels in Sub-Saharan Africa, documenting the scale of the efficiency gap that creates demand for programmable settlement.
+
+The India 2022 tax natural experiment---a 30\% capital gains tax plus 1\% TDS on cryptocurrency transactions---provides causal identification: domestic volume fell $86\%$ but $72\%$ of activity displaced offshore rather than being suppressed, demonstrating revealed preference for settlement infrastructure.  The Yield Access Gap (YAG) regression produces a within-country coefficient of $\beta = +0.248$ ($p < 0.001$), with the sign flip from the cross-sectional regression confirming a precautionary savings motive: within countries, regions with worse fiat quality show higher stablecoin adoption, consistent with the settlement demand channel.
+
+\subsection{Chapter 8: Fair inheritance---policy implications}
+
+Chapter~8 addresses the distributional consequences of the technological transition modeled in Chapters~4--6.  A recipient-based inheritance tax replacing the current estate tax creates a binary choice: pay tax on concentrated transfers or disperse wealth widely through a zero-tax pathway.  The proposal treats inheritance as ordinary income and eliminates trust recognition.  Revenue is projected at \$85--135 billion per year, approximately $5\times$ the current estate tax yield.  The connection to the thesis is that automation-era wealth concentration---driven by the same learning curves and network effects modeled in the preceding chapters---requires distributional policy that accounts for the structural mechanisms generating concentration.
+
+
+% ===================================================================
+% 7. FALSIFIABLE PREDICTIONS
+% ===================================================================
+\section{Falsifiable Predictions}\label{sec:predictions}
+
+A theory that cannot be falsified is not a theory.  The framework generates specific predictions with timing, quantitative thresholds, and failure conditions.  Table~\ref{tab:predictions} collects the principal predictions from Chapters~4--6 and Chapter~3.
+
+\begin{table}[htbp]
+\centering
+\caption{Summary of falsifiable predictions}
+\label{tab:predictions}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{@{}c X c c@{}}
+\toprule
+\# & Prediction & Chapter & Horizon \\
+\midrule
+1 & Hardware crossing: consumer hardware capable of interactive 70B+ inference at mass-market prices ($<$\$500 incremental cost). & 4 & $\sim$2028 \\
+2 & Self-sustaining distributed adoption: $R_0 > 1$ for the distributed ecosystem, independent of continued centralized investment. & 4 & $\sim$2030--2032 \\
+3 & DRAM/HBM overcapacity: advanced packaging capacity exceeds demand, producing below-trend consumer memory pricing. & 4 & 2027--2029 \\
+4 & Training-inference bifurcation: training remains centralized even as inference distributes; partial, not complete, decentralization. & 4 & Ongoing \\
+5 & Mesh critical mass $N^*$: above a finite number of heterogeneous agents, the mesh equilibrium exists and dominates. & 5 & 2030--2035 \\
+6 & First-order phase transition: mesh adoption is discontinuous (crystallization), not gradual (logistic). Regional adoption will exhibit sharp jumps. & 5 & 2029--2033 \\
+7 & Baumol bottleneck: mesh capability growth converges to the frontier training rate $g_Z$, not to a higher endogenous rate. & 5 & 2032--2040 \\
+8 & Model collapse protection: diverse meshes avoid capability degradation from synthetic data; homogeneous networks do not. & 5 & Observable now \\
+9 & Stablecoin Treasury absorption: stablecoin reserves become a material fraction of short-duration Treasury demand ($>$5\% of T-bills). & 6 & 2027--2030 \\
+10 & Monetary policy degradation: forward guidance effectiveness declines first, QE second, financial repression last. & 6 & 2028--2040 \\
+11 & Kyle's $\lambda$ non-monotonicity: market depth first improves then deteriorates as autonomous agent participation $\phi$ increases. & 6 & Observable now \\
+12 & Transition duration: $\sim$8 years from hardware crossing to new monetary equilibrium, via canard bifurcation dynamics. & 3 & 2028--2036 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Several features of this prediction set merit emphasis.
+
+First, the predictions are \emph{ordered}.  Prediction~1 (hardware crossing) must occur before Prediction~5 (mesh critical mass), which must occur before Prediction~9 (Treasury absorption).  The ordering follows from the timescale separation.  If a lower-numbered prediction fails, higher-numbered predictions are invalidated.  This creates a clear sequential falsification structure.
+
+\subsection{Preliminary empirical status}
+
+The thesis's contribution is the unified mathematical framework, not definitive empirical proof of each prediction---most predictions target 2027--2040, and the data required to test them decisively does not yet exist. However, six preliminary tests using currently available data demonstrate that the predictions are (a)~testable with standard econometric methods, (b)~directionally consistent with the data across all six tests, and (c)~statistically significant for the subset of predictions that have already had time to manifest.
+
+\begin{table}[htbp]
+\centering
+\caption{Preliminary empirical tests: summary of results}
+\label{tab:empirical_status}
+\renewcommand{\arraystretch}{1.2}
+\small
+\begin{tabularx}{\textwidth}{@{}l c X c@{}}
+\toprule
+Test & Chapter & Key result & Status \\
+\midrule
+Capex overinvestment & 4 & Pre-AI: 2.8--3.9$\times$ (matches Prop.~1); post-2022: 11--19$\times$ (explained by ASI option) & Consistent \\
+Export control DID & 4 & $\hat{\delta} > 0$ across all specs; cross-section $p = 0.005$ & Directional \\
+Stablecoin--Treasury & 6 & First-diff.\ $\hat{\beta} = -0.30$ ($p = 0.092$); scale still small (5\% of T-bills) & Marginal \\
+FOMC absorption speed & 6 & Post-2020 era highest mean; trend $+0.004$/yr ($p = 0.60$) & Directional \\
+Inflation threshold & 6 & Time-varying threshold declining ($\rho = -0.40$); sample too short & Directional \\
+Cross-layer VAR topology & 3 & Block exogeneity: no L1$\to$L4 ($p = 0.40$); FEVD: 2/3 layers consistent & Mixed \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\noindent The strongest results are the capex overinvestment test (Chapter~4), which reveals a clean structural break at 2022: the basic learning-curve game fits the pre-AI period while the option-augmented model with a superintelligence prize fits the post-ChatGPT period; and the block exogeneity test (Chapter~3), which confirms that distant layers in the hierarchy do not directly couple---the most distinctive prediction of the port topology theorem. The weakest results are the settlement-layer tests (Chapter~6), which target phenomena at a scale (\$1T+ stablecoin ecosystem) that has not yet been reached. These tests establish baselines against which future acceleration can be measured as the sample period extends.
+
+Second, Prediction~6 (first-order phase transition) is the sharpest test of the framework.  Standard technology adoption models predict gradual S-curve diffusion.  This framework predicts discontinuous crystallization.  The difference is empirically distinguishable: gradual adoption produces a smooth time series of adoption rates, while first-order transition produces a regime change with a clear before/after.
+
+Third, Prediction~12 (transition duration) follows from the theoretical framework's deepest result---the canard bifurcation analysis of Chapter~3 (Theorem~8.2).  The duration scales as $O(1/\sqrt{\varepsilon_{\text{drift}}})$, where $\varepsilon_{\text{drift}}$ is the rate of secular improvement.  At Wright's Law semiconductor improvement rates ($\approx 15\%$ annual cost decline), this yields approximately 8 years.  The prediction is robust to parameter uncertainty because the square-root scaling compresses the sensitivity: a $2\times$ change in the drift rate changes the duration by only $\sqrt{2} \approx 1.4\times$.
+
+Fourth, some predictions are already partially testable.  Prediction~4 (training-inference bifurcation) is consistent with the observed pattern as of early 2026: inference is increasingly distributed through open-weight models running on consumer hardware, while frontier training remains concentrated in a handful of hyperscaler facilities.  Prediction~8 (model collapse protection) can be tested using existing data on model performance degradation under synthetic data training.  Prediction~11 (non-monotonic market depth) can be tested using high-frequency market microstructure data as algorithmic trading participation has increased.
+
+
+% ===================================================================
+% 8. ROADMAP
+% ===================================================================
+\section{Roadmap}\label{sec:roadmap}
+
+The thesis proceeds as follows.
+
+\textbf{Chapter 2} establishes the mathematical foundation.  The CES triple role theorem proves that a single curvature parameter $K$ controls superadditivity, correlation robustness, and strategic independence.  These are within-level properties: they characterize how heterogeneous inputs combine within a single sector.  The chapter develops the isoquant geometry from first principles, proves the three results, unifies them as views of the same curvature, and extends to general weights.  No economic application is developed; the chapter is pure microeconomic theory.
+
+\textbf{Chapter 3} builds the between-level architecture.  Taking the CES triple role as given, the chapter asks what structure of cross-sector interaction is consistent with CES geometry.  The Port Topology Theorem derives the architecture (aggregate coupling, directed feed-forward, nearest-neighbor topology).  The Moduli Space Theorem characterizes which modeling choices matter and which do not.  The spectral activation threshold, welfare decomposition, eigenstructure bridge, damping cancellation, hierarchical ceiling cascade, and transition duration are all proved.  This chapter provides the theoretical scaffolding for Chapters~4--6: it tells us that the four-level hierarchy has a specific architecture, a computable activation threshold, and a predictable transition duration, all derived from the CES geometry rather than assumed.
+
+\textbf{Chapter 4} applies the framework to Level~1.  The endogenous decentralization mechanism is formalized as a continuous-time differential game with exact closed-form Nash equilibrium.  The chapter provides both the theoretical model (the overinvestment result, the generalized $R_0$ crossing condition, the training-inference bifurcation) and the empirical evidence (HBM learning curve estimation, dual convergence, the export-control natural experiment).  The chapter can be read independently as a paper in industrial organization, but within the thesis it establishes the quantitative parameters---particularly the learning rate $\alpha \approx 0.23$ and the crossing time $T^* \approx 2028$---that feed into the hierarchy.
+
+\textbf{Chapter 5} applies the framework to Levels~2 and~3.  The mesh equilibrium (Level~2) establishes what happens after the crossing point: heterogeneous agents self-organize, the phase transition is first-order, and there exists a critical mass above which the mesh dominates.  The autocatalytic mesh (Level~3) makes capability endogenous: agents improve other agents, but the growth rate converges to the frontier rate (Baumol bottleneck).  The CES heterogeneity that makes the mesh productive (superadditivity) also makes it informationally robust (correlation robustness prevents model collapse).  This is the chapter where the triple role theorem of Chapter~2 pays its largest dividend: what appears to be two separate results---the mesh is productive and the mesh avoids model collapse---are the same result applied to different roles of the curvature parameter.
+
+\textbf{Chapter 6} applies the framework to Level~4 and closes the cycle.  The mesh's settlement requirements create stablecoin demand, stablecoin demand transforms monetary infrastructure, and monetary infrastructure feeds back to the macroeconomic environment.  The four coupled ODEs, the monetary policy degradation sequence, the bistable equilibrium, and the synthetic gold standard are all derived.  The Triffin contradiction appears as the ceiling cascade between Level~4 and Levels~2--3, mathematically identical in structure to the Baumol bottleneck one level below.
+
+\textbf{Chapter 7} provides empirical evidence.  The 41-country panel, the India natural experiment, and the Yield Access Gap regression document the demand for programmable settlement infrastructure---the micro-level phenomenon that Chapter~6 models at the macro level.  The chapter can be read independently as an empirical study of fiat monetary quality and cryptocurrency adoption, but within the thesis it provides the quantitative evidence that the settlement demand channel of Level~4 is operative.
+
+\textbf{Chapter 8} addresses policy.  The fair inheritance proposal responds to the distributional consequences of the technological transition analyzed in the preceding chapters.  The wealth concentration driven by learning curves (Chapter~4), network effects (Chapter~5), and financial infrastructure transformation (Chapter~6) motivates policy that accounts for these structural mechanisms.
+
+\bigskip
+
+The logical dependence is: Chapter~2 $\rightarrow$ Chapter~3 $\rightarrow$ Chapters~4, 5, 6 (which can be read in any order, though the narrative flows best in sequence) $\rightarrow$ Chapter~7 (empirical complement to Chapter~6) $\rightarrow$ Chapter~8 (policy).  A reader interested in the mathematical framework alone can read Chapters~2--3.  A reader interested in a specific application can read the relevant chapter after reviewing Sections~\ref{sec:spine}--\ref{sec:R0} of this introduction for the key definitions and results.
+
+
+\end{document}

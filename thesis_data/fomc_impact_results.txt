@@ -1,0 +1,182 @@
+========================================================================
+FOMC IMPACT ON TREASURY YIELDS: SPEED OF ADJUSTMENT TEST
+Paper 4 (Settlement Feedback), Prediction 2
+Run date: 2026-02-17 13:50:50
+========================================================================
+
+========================================================================
+1. FOMC MEETING DATABASE
+========================================================================
+   Total FOMC meetings: 217
+   Date range: 2000-02-02 to 2026-01-28
+     Hold: 134
+     Rate hike: 39
+     Rate cut: 34
+     QE announcement: 5
+     QE taper/end: 5
+
+========================================================================
+2. FETCHING TREASURY YIELD AND VIX DATA FROM FRED
+========================================================================
+   Fetching DGS2...
+     6531 observations, 2000-01-03 to 2026-02-12
+   Fetching DGS10...
+     6531 observations, 2000-01-03 to 2026-02-12
+   Fetching DGS1MO...
+     6135 observations, 2001-07-31 to 2026-02-12
+   Fetching VIXCLS...
+     6599 observations, 2000-01-03 to 2026-02-16
+   Merged panel: 6609 trading days
+
+========================================================================
+3. COMPUTING FOMC IMPACT METRICS (DGS2)
+========================================================================
+   Computed impacts for 213 meetings
+   Valid adjustment ratios: 205
+   Mean immediate move: 0.066 pp
+   Mean 5-day move: 0.088 pp
+   Mean adj ratio: 1.089
+   Median adj ratio: 0.714
+
+========================================================================
+4. REGRESSION ANALYSIS
+========================================================================
+   Observations with valid adj_ratio + VIX: 205
+
+--------------------------------------------------
+Model 1: adj_ratio = a + b*year_frac
+--------------------------------------------------
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:            adj_ratio_w   R-squared:                       0.001
+Model:                            OLS   Adj. R-squared:                 -0.004
+Method:                 Least Squares   F-statistic:                    0.2721
+Date:                Tue, 17 Feb 2026   Prob (F-statistic):              0.603
+Time:                        13:50:54   Log-Likelihood:                -262.04
+No. Observations:                 205   AIC:                             528.1
+Df Residuals:                     203   BIC:                             534.7
+Df Model:                           1                                         
+Covariance Type:                  HC1                                         
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+const         -7.6784     16.614     -0.462      0.644     -40.241      24.884
+year_frac      0.0043      0.008      0.522      0.602      -0.012       0.020
+==============================================================================
+Omnibus:                       35.974   Durbin-Watson:                   1.939
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               49.642
+Skew:                           1.189   Prob(JB):                     1.66e-11
+Kurtosis:                       3.397   Cond. No.                     5.40e+05
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity robust (HC1)
+[2] The condition number is large, 5.4e+05. This might indicate that there are
+strong multicollinearity or other numerical problems.
+
+   Trend coefficient: 0.0043 (p = 0.6020)
+   => Positive trend but not statistically significant at 10%
+
+--------------------------------------------------
+Model 2: adj_ratio = a + b*year_frac + c*vix + d*surprise_proxy
+--------------------------------------------------
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:            adj_ratio_w   R-squared:                       0.050
+Model:                            OLS   Adj. R-squared:                  0.035
+Method:                 Least Squares   F-statistic:                     2.960
+Date:                Tue, 17 Feb 2026   Prob (F-statistic):             0.0334
+Time:                        13:50:54   Log-Likelihood:                -256.97
+No. Observations:                 205   AIC:                             521.9
+Df Residuals:                     201   BIC:                             535.2
+Df Model:                           3                                         
+Covariance Type:                  HC1                                         
+==================================================================================
+                     coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------
+const             -4.7598     16.723     -0.285      0.776     -37.537      28.017
+year_frac          0.0030      0.008      0.363      0.716      -0.013       0.019
+log_vix           -0.1716      0.152     -1.130      0.259      -0.469       0.126
+surprise_proxy     3.6953      1.253      2.950      0.003       1.240       6.150
+==============================================================================
+Omnibus:                       37.264   Durbin-Watson:                   1.972
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               51.724
+Skew:                           1.203   Prob(JB):                     5.87e-12
+Kurtosis:                       3.512   Cond. No.                     5.55e+05
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity robust (HC1)
+[2] The condition number is large, 5.55e+05. This might indicate that there are
+strong multicollinearity or other numerical problems.
+
+--------------------------------------------------
+Split sample: pre/post-2015
+--------------------------------------------------
+   Pre-2015: N=118, b_year=-0.0140 (p=0.4111), mean adj_ratio=0.949
+   Post-2015: N=87, b_year=0.0219 (p=0.4293), mean adj_ratio=1.042
+
+--------------------------------------------------
+Split sample: pre/post-2020
+--------------------------------------------------
+   Pre-2020: N=158, b_year=-0.0035 (p=0.7729), mean adj_ratio=0.953
+   Post-2020: N=47, b_year=-0.0218 (p=0.7421), mean adj_ratio=1.106
+
+--------------------------------------------------
+Era comparison: mean adjustment ratio by era
+--------------------------------------------------
+           count      mean    median       std
+era                                           
+2000-2009     80  0.998217  0.720779  0.879835
+2010-2014     38  0.844507  0.600000  0.779498
+2015-2019     40  0.967457  0.651515  0.901572
+2020-2026     47  1.106032  0.875000  0.910464
+
+   One-way ANOVA: F=0.638, p=0.5911
+
+   Kruskal-Wallis: H=2.795, p=0.4244
+
+--------------------------------------------------
+Mean adjustment ratio by action type
+--------------------------------------------------
+        count      mean    median
+action                           
+C          33  0.975109  0.666667
+H         125  0.974337  0.714286
+QE          5  0.814444  0.750000
+QE_END      5  1.011667  0.600000
+U          37  1.068356  0.794872
+
+========================================================================
+6. GENERATING FIGURES
+========================================================================
+   Saved: /home/jonsmirl/thesis/figures/settlement_feedback/fig_fomc_adjustment_speed.png
+   Saved: /home/jonsmirl/thesis/figures/settlement_feedback/fig_fomc_absorption_time.png
+   Saved: /home/jonsmirl/thesis/figures/settlement_feedback/fig_fomc_era_comparison.png
+   Saved: /home/jonsmirl/thesis/figures/settlement_feedback/fig_fomc_yield_response.png
+
+========================================================================
+7. ROBUSTNESS: DGS10 AND 2-10 SPREAD
+========================================================================
+
+--- 10-year Treasury (DGS10) ---
+   N=205, b_year=-0.0108 (p=0.2074), R2=0.0074
+   Era means: {'2000-2009': np.float64(1.087), '2010-2014': np.float64(1.192), '2015-2019': np.float64(0.969), '2020-2026': np.float64(0.939)}
+
+--- 1-month Treasury (DGS1MO) ---
+   N=178, b_year=-0.0053 (p=0.5483), R2=0.0019
+   Era means: {'2000-2009': np.float64(1.033), '2010-2014': np.float64(0.735), '2015-2019': np.float64(1.089), '2020-2026': np.float64(0.839)}
+
+========================================================================
+SUMMARY
+========================================================================
+Main result (DGS2):
+  Trend in adjustment ratio: b = 0.0043 per year
+  p-value (HC1): 0.6020
+  Prediction 2 verdict: DIRECTIONALLY CONSISTENT but not significant
+
+Interpretation: A positive trend means Treasury yields absorb FOMC
+information faster in more recent years, consistent with the hypothesis
+that deepening digital/algorithmic market infrastructure accelerates
+price discovery in sovereign debt markets.
+

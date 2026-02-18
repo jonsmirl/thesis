@@ -20,6 +20,9 @@ Connor Smirl | EC 118 Quantitative Economic Growth | Tufts University | Spring 2
 """
 
 import numpy as np
+import os
+import matplotlib
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 from matplotlib.patches import FancyArrowPatch
@@ -923,7 +926,8 @@ if __name__ == "__main__":
     print_tables(econ)
 
     # Generate visualizations
-    output_dir = "/mnt/user-data/outputs"
+    output_dir = "/home/jonsmirl/thesis/figures/monetary_schism"
+    os.makedirs(output_dir, exist_ok=True)
 
     plot_dashboard(econ, f"{output_dir}/monetary_schism_dashboard.png")
     sensitivity_analysis(f"{output_dir}/monetary_schism_sensitivity.png")

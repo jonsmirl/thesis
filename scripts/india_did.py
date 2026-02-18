@@ -25,7 +25,7 @@ import statsmodels.api as sm
 import warnings
 warnings.filterwarnings('ignore')
 
-OUT = "/home/claude/figures"
+OUT = "/home/jonsmirl/thesis/figures/mpg"
 import os; os.makedirs(OUT, exist_ok=True)
 
 plt.rcParams.update({

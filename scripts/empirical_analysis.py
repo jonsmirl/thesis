@@ -40,21 +40,21 @@ plt.rcParams.update({
     'figure.dpi': 150,
 })
 
-OUT = "output"
+OUT = "/home/jonsmirl/thesis/figures/mpg"
 import os; os.makedirs(OUT, exist_ok=True)
 
 # ===========================================================
 # LOAD DATA
 # ===========================================================
 print("Loading data...")
-xls = pd.ExcelFile("thesis_data_package.xlsx")
+xls = pd.ExcelFile("/home/jonsmirl/thesis/thesis_data/thesis_data_package.xlsx")
 wdi = pd.read_excel(xls, sheet_name="wdi")
 findex = pd.read_excel(xls, sheet_name="findex")
 mining = pd.read_excel(xls, sheet_name="mining")
 india = pd.read_excel(xls, sheet_name="india")
 chainalysis = pd.read_excel(xls, sheet_name="chainalysis")
 regulatory = pd.read_excel(xls, sheet_name="regulatory")
-rpw = pd.read_csv("rpw_filtered.csv")
+rpw = pd.read_csv("/home/jonsmirl/thesis/thesis_data/rpw_filtered.csv")
 
 print(f"  WDI: {wdi.shape}, Findex: {findex.shape}, RPW: {rpw.shape}")
 print(f"  India: {india.shape}, Mining: {mining.shape}, Chainalysis: {chainalysis.shape}")

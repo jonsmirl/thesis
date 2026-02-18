@@ -1,0 +1,267 @@
+[14:11:23] ======================================================================
+[14:11:23] EXPORT CONTROL DID TEST
+[14:11:23] Paper 1 (Endogenous Decentralization), Section 5.1
+[14:11:23] Treatment date: 2022-10-07
+[14:11:23] Edge threshold: <= 7B parameters
+[14:11:23] ======================================================================
+[14:11:23] Fetching model metadata from HuggingFace API...
+[14:11:23]   Fetching Qwen...
+[14:11:23]     -> 413 models
+[14:11:24]   Fetching deepseek-ai...
+[14:11:24]     -> 83 models
+[14:11:25]   Fetching BAAI...
+[14:11:25]     -> 165 models
+[14:11:26]   Fetching 01-ai...
+[14:11:26]     -> 28 models
+[14:11:27]   Fetching internlm...
+[14:11:27]     -> 112 models
+[14:11:28]   Fetching openbmb...
+[14:11:28]     -> 122 models
+[14:11:29]   Fetching THUDM...
+[14:11:29]     -> 0 models
+[14:11:30]   Fetching shibing624...
+[14:11:31]     -> 44 models
+[14:11:32]   Fetching uer...
+[14:11:32]     -> 63 models
+[14:11:33]   Fetching meta-llama...
+[14:11:33]     -> 70 models
+[14:11:34]   Fetching google...
+[14:11:34]     -> 1000 models
+[14:11:35]   Fetching microsoft...
+[14:11:35]     -> 457 models
+[14:11:36]   Fetching mistralai...
+[14:11:36]     -> 66 models
+[14:11:37]   Fetching bigscience...
+[14:11:37]     -> 162 models
+[14:11:38]   Fetching EleutherAI...
+[14:11:38]     -> 948 models
+[14:11:39]   Fetching stabilityai...
+[14:11:39]     -> 103 models
+[14:11:40]   Fetching huggingface...
+[14:11:40]     -> 18 models
+[14:11:41] Cached 3854 models to /home/jonsmirl/thesis/thesis_data/hf_export_control_cache.json
+[14:11:42] Model dataset: 3854 models, 16 authors, 1030 from constrained firms
+[14:11:42]   After filtering to 2020+: 3854 models
+[14:11:42] Saved model-level data: /home/jonsmirl/thesis/thesis_data/export_control_model_level.csv
+[14:11:42] Quarterly panel: 170 author-quarter obs, 16 authors, 17 quarters
+[14:11:42] Saved panel data: /home/jonsmirl/thesis/thesis_data/export_control_panel.csv
+[14:11:42] 
+======================================================================
+[14:11:42] DESCRIPTIVE STATISTICS
+[14:11:42] ======================================================================
+[14:11:42] 
+  Control (US/EU):
+[14:11:42]     Total models:    2824
+[14:11:42]     Pre-treatment:   801
+[14:11:42]     Post-treatment:  2023
+[14:11:42]     Edge share pre:  39.2%
+[14:11:42]     Edge share post: 52.4%
+[14:11:42]     Edge share diff: +13.2pp
+[14:11:42]     MoE share pre:   0.0%
+[14:11:42]     MoE share post:  1.0%
+[14:11:42] 
+  Constrained (Chinese):
+[14:11:42]     Total models:    1030
+[14:11:42]     Pre-treatment:   69
+[14:11:42]     Post-treatment:  961
+[14:11:42]     Edge share pre:  33.3%
+[14:11:42]     Edge share post: 47.0%
+[14:11:42]     Edge share diff: +13.7pp
+[14:11:42]     MoE share pre:   0.0%
+[14:11:42]     MoE share post:  0.9%
+[14:11:42] 
+  Per-author model counts:
+[14:11:42]     [CN] Qwen                  pre=   0  post= 413  total=  413
+[14:11:42]     [CN] deepseek-ai           pre=   0  post=  83  total=   83
+[14:11:42]     [CN] BAAI                  pre=   0  post= 165  total=  165
+[14:11:42]     [CN] 01-ai                 pre=   0  post=  28  total=   28
+[14:11:42]     [CN] internlm              pre=   0  post= 112  total=  112
+[14:11:42]     [CN] openbmb               pre=   0  post= 122  total=  122
+[14:11:42]     [CN] shibing624            pre=  10  post=  34  total=   44
+[14:11:42]     [CN] uer                   pre=  59  post=   4  total=   63
+[14:11:42]     [US] meta-llama            pre=   0  post=  70  total=   70
+[14:11:42]     [US] google                pre= 443  post= 557  total= 1000
+[14:11:42]     [US] microsoft             pre= 195  post= 262  total=  457
+[14:11:42]     [US] mistralai             pre=   0  post=  66  total=   66
+[14:11:42]     [US] bigscience            pre= 139  post=  23  total=  162
+[14:11:42]     [US] EleutherAI            pre=  13  post= 935  total=  948
+[14:11:42]     [US] stabilityai           pre=   0  post= 103  total=  103
+[14:11:42]     [US] huggingface           pre=  11  post=   7  total=   18
+[14:11:42] 
+----------------------------------------------------------------------
+[14:11:42] DID FEASIBILITY CHECK
+[14:11:42] ----------------------------------------------------------------------
+[14:11:42]   DID feasibility: OK
+[14:11:42]     Constrained pre-treatment: 69 models, 5 author-quarter obs
+[14:11:42]     Control pre-treatment: 801 models, 14 author-quarter obs
+[14:11:42] 
+  Raw DID (edge_share):
+[14:11:42]     Constrained: pre=0.264, post=0.376, diff=+0.112
+[14:11:42]     Control: pre=0.375, post=0.468, diff=+0.093
+[14:11:42]     Raw DID = +0.0190
+[14:11:42] 
+======================================================================
+[14:11:42] DID REGRESSION RESULTS
+[14:11:42] ======================================================================
+[14:11:42] 
+  (1) Baseline:
+[14:11:42]     Y = edge_share
+[14:11:42]     delta (Post x Constrained) = +0.0190 (SE=0.2157)
+[14:11:42]     p-value = 0.9300
+[14:11:42]     N = 170, R^2 = 0.0209
+[14:11:42] 
+  (2) Firm FE:
+[14:11:42]     Y = edge_share
+[14:11:42]     delta (Post x Constrained) = +0.2012 (SE=0.1297)
+[14:11:42]     p-value = 0.1206
+[14:11:42]     N = 170, R^2 = 0.5189
+[14:11:42] 
+  (3) Two-way FE:
+[14:11:42]     Y = edge_share
+[14:11:42]     delta (Post x Constrained) = +0.1813 (SE=0.1401)
+[14:11:42]     p-value = 0.1959
+[14:11:42]     N = 170, R^2 = 0.5732
+[14:11:42] 
+  (4) Count (n_edge):
+[14:11:42]     Y = n_edge
+[14:11:42]     delta (Post x Constrained) = +10.4306 (SE=12.2777)
+[14:11:42]     p-value = 0.3956
+[14:11:42]     N = 170, R^2 = 0.0361
+[14:11:42] 
+  (5) Log downloads:
+[14:11:42]     Y = log_downloads
+[14:11:42]     delta (Post x Constrained) = +2.3827 (SE=1.7384)
+[14:11:42]     p-value = 0.1705
+[14:11:42]     N = 170, R^2 = 0.0298
+[14:11:42] 
+  (6) MoE share:
+[14:11:42]     Y = moe_share
+[14:11:42]     delta (Post x Constrained) = -0.0131 (SE=0.0110)
+[14:11:42]     p-value = 0.2315
+[14:11:42]     N = 170, R^2 = 0.0132
+[14:11:42] 
+======================================================================
+[14:11:42] ALTERNATIVE ANALYSIS (post-treatment identification)
+[14:11:42] ======================================================================
+[14:11:42]   Since most constrained (Chinese) firms only began publishing on
+[14:11:42]   HuggingFace after the Oct 2022 export controls, standard DID is
+[14:11:42]   not well-identified. We use three alternative approaches:
+[14:11:42] 
+  (A) Post-Treatment Cross-Sectional Comparison
+[14:11:42]   --------------------------------------------------
+[14:11:42]     Spec A1: edge_share ~ constrained + quarter_FE
+[14:11:42]       beta(constrained) = -0.1140 (SE=0.0570)**
+[14:11:42]       p = 0.0456, N = 151, R^2 = 0.0974
+[14:11:42]       Interpretation: Constrained firms have -11.4% lower
+[14:11:42]         edge share than controls in the same quarter (post-treatment)
+[14:11:42] 
+  (B) Post-Treatment Time-Trend Interaction
+[14:11:42]   --------------------------------------------------
+[14:11:42]     Spec B1: edge_share ~ constrained + time_idx + constrained*time_idx
+[14:11:42]       const                      +0.4476 (SE=0.0856)  p=0.0000  ***
+[14:11:42]       constrained                -0.1032 (SE=0.1185)  p=0.3837  
+[14:11:42]       time_idx                   +0.0031 (SE=0.0119)  p=0.7921  
+[14:11:42]       constrained_x_time         +0.0014 (SE=0.0156)  p=0.9263  
+[14:11:42]     N = 151, R^2 = 0.0184
+[14:11:42]     Interpretation: Constrained firms' edge share INCREASES
+[14:11:42]       +0.0014 faster per quarter than controls
+[14:11:42]     Spec B2: edge_share ~ time_idx + constrained*time_idx + firm_FE
+[14:11:42]       beta(constrained*time) = +0.0089 (SE=0.0122)
+[14:11:42]       p = 0.4641, N = 151, R^2 = 0.4934
+[14:11:42] 
+  (C) Model-Level Edge-Compatible Probability
+[14:11:42]   --------------------------------------------------
+[14:11:42]     Spec C1 (LPM): P(edge) ~ constrained + months_since_entry + quarter_FE
+[14:11:42]       beta(constrained)       = -0.0783 (SE=0.0279)***  p=0.0050
+[14:11:42]       beta(months_since_entry) = -0.0054
+[14:11:42]       N = 2984, R^2 = 0.0835
+[14:11:42]       Interpretation: Being a constrained firm decreases
+[14:11:42]         the probability of releasing an edge-compatible model by 7.8%
+[14:11:42]     Spec C2: n_edge ~ constrained + time_idx + constrained*time_idx
+[14:11:42]       beta(constrained*time) = +0.4993 (SE=0.4676)
+[14:11:42]       p = 0.2856, N = 151, R^2 = 0.0242
+[14:11:42]     Spec C3: log_downloads ~ constrained + time_idx + constrained*time_idx
+[14:11:42]       beta(constrained*time) = +0.3758 (SE=0.1734)**
+[14:11:42]       p = 0.0302, N = 151, R^2 = 0.0453
+[14:11:42] 
+======================================================================
+[14:11:42] EVENT STUDY / PARALLEL TRENDS TEST
+[14:11:42] ======================================================================
+[14:11:42] 
+  Event-study coefficients (ref = 2022Q3):
+[14:11:42]      Quarter     Coeff        SE         p   Sig
+[14:11:42]   --------------------------------------------------
+[14:11:42]       2022Q1   -0.3235    0.2694    0.2299        [PRE ]
+[14:11:42]       2022Q2   +0.0830    0.2266    0.7143        [PRE ]
+[14:11:42]       2022Q3   +0.0000    0.0000    1.0000        [PRE ]
+[14:11:42]       2022Q4   -0.0909    0.2143    0.6715        [POST]
+[14:11:42]       2023Q1   -0.0788    0.2305    0.7323        [POST]
+[14:11:42]       2023Q2   +0.2429    0.2717    0.3712        [POST]
+[14:11:42]       2023Q3   -0.0393    0.2424    0.8713        [POST]
+[14:11:42]       2023Q4   +0.0187    0.2952    0.9496        [POST]
+[14:11:42]       2024Q1   +0.0903    0.2804    0.7475        [POST]
+[14:11:42]       2024Q2   +0.1794    0.2900    0.5361        [POST]
+[14:11:42]       2024Q3   +0.4486    0.2840    0.1142        [POST]
+[14:11:42]       2024Q4   +0.2860    0.3382    0.3978        [POST]
+[14:11:42]       2025Q1   +0.1156    0.2622    0.6592        [POST]
+[14:11:42]       2025Q2   +0.1574    0.2714    0.5618        [POST]
+[14:11:42]       2025Q3   +0.2870    0.2806    0.3064        [POST]
+[14:11:42]       2025Q4   +0.1680    0.2502    0.5019        [POST]
+[14:11:42]       2026Q1   +0.0169    0.2919    0.9538        [POST]
+[14:11:42] 
+  PARALLEL TRENDS: SUPPORTED (no significant pre-treatment coefficients)
+[14:11:42] 
+Generating 4-panel DID figure...
+[14:11:43]   Saved: /home/jonsmirl/thesis/figures/endogenous_decentralization/figure_export_control_did.png
+[14:11:43] Generating event-study coefficient plot...
+[14:11:43]   Saved: /home/jonsmirl/thesis/figures/endogenous_decentralization/figure_export_control_event_study.png
+[14:11:43] 
+======================================================================
+[14:11:43] INTERPRETATION: PAPER 1 (Endogenous Decentralization), Section 5.1
+[14:11:43] ======================================================================
+[14:11:43] 
+  Post-treatment edge-compatible model shares:
+[14:11:43]     Constrained (CN): 47.0% (961 models)
+[14:11:43]     Control (US/EU):  52.4% (2023 models)
+[14:11:43]     Difference:       -5.4pp
+[14:11:43] 
+  Post-treatment median parameter count:
+[14:11:43]     Constrained (CN): 7.0B (n=707)
+[14:11:43]     Control (US/EU):  6.9B (n=1055)
+[14:11:43] 
+  Using STANDARD DID results:
+[14:11:43] 
+  Primary coefficient: +0.0190 (p = 0.9300)
+[14:11:43] 
+  VERDICT: AMBIGUOUS
+[14:11:43]   Results are ambiguous -- cannot clearly support or reject the theory.
+[14:11:43] 
+  Summary across all specifications:
+[14:11:43]     (1) Baseline                         coeff=+0.0190  p=0.9300  
+[14:11:43]     (2) Firm FE                          coeff=+0.2012  p=0.1206  
+[14:11:43]     (3) Two-way FE                       coeff=+0.1813  p=0.1959  
+[14:11:43]     (4) Count (n_edge)                   coeff=+10.4306  p=0.3956  
+[14:11:43]     (5) Log downloads                    coeff=+2.3827  p=0.1705  
+[14:11:43]     (6) MoE share                        coeff=-0.0131  p=0.2315  
+[14:11:43]     (A1) Cross-section                   coeff=-0.1140  p=0.0456  **
+[14:11:43]     (B1) Time trend interaction          coeff=+0.0014  p=0.9263  
+[14:11:43]     (B2) Time trend + firm FE            coeff=+0.0089  p=0.4641  
+[14:11:43]     (C1) Model-level LPM                 coeff=-0.0783  p=0.0050  ***
+[14:11:43]     (C2) Edge count trend                coeff=+0.4993  p=0.2856  
+[14:11:43]     (C3) Download trend                  coeff=+0.3758  p=0.0302  **
+[14:11:43] 
+  CAVEATS:
+[14:11:43]     - HuggingFace is not the complete universe of AI models (some
+[14:11:43]       Chinese models may be on domestic platforms).
+[14:11:43]     - Edge-compatibility classification is approximate (based on
+[14:11:43]       parameter count extracted from model names).
+[14:11:43]     - Both groups may shift to edge models for independent reasons
+[14:11:43]       (e.g., consumer demand, mobile deployment trends).
+[14:11:43] 
+  Connection to thesis mechanism:
+[14:11:43]     Paper 1 (Prop. 1): N firms overinvest by factor ~N/(N-1), accelerating
+[14:11:43]     learning curves. Export controls create exogenous variation in hardware
+[14:11:43]     access, separating the overinvestment/learning channel from standard
+[14:11:43]     Arrow learning-by-doing. If constrained firms produce more edge-compatible
+[14:11:43]     models, this confirms that the LEARNING EXTERNALITY (not just cost
+[14:11:43]     reduction) drives the transition to distributed architecture.

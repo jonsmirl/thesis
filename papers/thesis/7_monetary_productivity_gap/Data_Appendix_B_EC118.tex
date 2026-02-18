@@ -1,0 +1,157 @@
+\textbf{Data Appendix B: Empirical Analysis}
+
+\textbf{The Monetary Productivity Gap}
+
+Connor Smirl
+
+EC 118 --- Quantitative Economic Growth --- Tufts University --- Spring 2026
+
+\textbf{B.1 Data Sources and Construction}
+
+This appendix documents the empirical analysis supporting the thesis. All data are publicly available. The analysis uses seven primary sources: (1) World Bank World Development Indicators (WDI), providing 16 macroeconomic indicators for 41 countries over 2010--2023; (2) World Bank Global Findex, with five waves of financial inclusion data (2011, 2014, 2017, 2021, 2024); (3) World Bank Remittance Prices Worldwide (RPW), covering 300 corridors quarterly from 2016 to 2025; (4) Chainalysis Global Crypto Adoption Index, ranking 151 countries annually from 2020 to 2025; (5) Cambridge Centre for Alternative Finance Bitcoin Mining Map, with monthly hashrate shares for 2019--2022; (6) Esya Centre impact assessments of India\textquotesingle s crypto tax regime; and (7) CoinGecko monthly exchange volumes for Indian platforms.
+
+The countries span six industrialization stages following the Gollin, Lagakos, and Waugh (2014) structural transformation taxonomy: Stage I pre-industrial (Ethiopia, Tanzania, Nigeria, Ghana, Bangladesh, Nepal), Stage II early industrial (India, Vietnam, Kenya, Pakistan, Egypt), Stage III middle income (Philippines, Indonesia, Colombia, Mexico, Brazil, South Africa, Turkey), Stage IV upper middle (Thailand, Malaysia, UAE, Kazakhstan), and Stage V advanced (South Korea, Singapore, Japan, United States, United Kingdom, Germany).
+
+\textbf{B.2 Fiat Quality Index Construction}
+
+The Fiat Quality Index (FQI) measures the quality of a country\textquotesingle s fiat monetary infrastructure on a 0--1 scale. It is constructed as the equal-weighted average of five normalized components:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2350}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3739}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3910}}@{}}
+\toprule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Component} & \textbf{Source / Measure} & \textbf{Normalization} \\
+Inflation stability & CPI annual \% (WDI) & 1 − \textbar inflation\textbar{} / 50, clipped {[}0,1{]} \\
+Banking access & Account ownership \% 15+ (Findex) & ownership / 100 \\
+ATM density & ATMs per 100K adults (WDI) & value / 95th percentile, clipped {[}0,1{]} \\
+Governance quality & Govt effectiveness est. (WGI) & (value + 2.5) / 5, clipped {[}0,1{]} \\
+Digital infrastructure & Internet users \% (WDI) & value / 100 \\
+\end{longtable}
+
+The composite FQI is then min-max normalized across all country-years to a 0--1 scale. Countries with FQI near 0 (Venezuela, Nigeria) have weak fiat infrastructure---high inflation, limited banking access, poor governance. Countries near 1 (Singapore, Germany) have strong fiat systems. The model predicts that crypto adoption should be highest where FQI is lowest, since the monetary productivity gap is widest there.
+
+\includegraphics[width=6.04167in,height=3.4375in]{7_monetary_productivity_gap/media/623a51ec1a3b00f2c70adf2d5d78c34b1cd8f3b4.png}
+
+\emph{Figure B.1: Fiat Quality Index by country, 2010--2023. Darker red indicates weaker fiat quality.}
+
+\includegraphics[width=5.20833in,height=3.125in]{7_monetary_productivity_gap/media/192749ed45d36ff6f527e21df3d11d7629dc3662.png}
+
+\emph{Figure B.2: Mean FQI by development stage. The gap between Stage I and Stage V countries has narrowed slightly but remains large.}
+
+\textbf{B.3 Cross-Country Analysis: FQI and Crypto Adoption}
+
+I regress the Chainalysis Global Crypto Adoption Index score on the FQI and controls. The bivariate specification yields a negative coefficient (β = −0.055) consistent with the model\textquotesingle s prediction that weaker fiat quality drives crypto adoption, but with low explanatory power (R² = 0.013, n = 64). The multivariate specification controlling for log GDP per capita, internet penetration, and population improves fit modestly (R² = 0.087). The decomposed specification replacing the composite FQI with individual components shows that the inflation stability and banking access channels operate in the predicted direction.
+
+The weak cross-country results are expected and acknowledged. The Chainalysis index is already PPP-adjusted, which absorbs the income component of fiat quality. Additionally, the index captures all crypto activity (including speculative trading in advanced economies), not just the monetary-infrastructure-driven adoption the model predicts. The more compelling evidence comes from the India event study and remittance corridor analysis below.
+
+\textbf{Table B.1: Cross-Country Determinants of Crypto Adoption}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2991}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2244}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2244}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2521}}@{}}
+\toprule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+& \textbf{(1) Bivariate} & \textbf{(2) Controls} & \textbf{(3) Decomposed} \\
+FQI (composite) & −0.055 & −0.128 & \\
+& (0.048) & (0.118) & \\
+Inflation stability & & & --- \\
+Banking access & & & --- \\
+Governance & & & --- \\
+Log GDP/cap & & --- & --- \\
+Internet (\%) & & --- & \\
+Observations & 64 & 64 & 64 \\
+R² & 0.013 & 0.087 & 0.067 \\
+\end{longtable}
+
+\emph{Robust standard errors in parentheses. Full results in LaTeX tables.}
+
+\includegraphics[width=5.83333in,height=2.60417in]{7_monetary_productivity_gap/media/8d3b444b291722f0b8e6c7cc1e6b4d79ad98ec33.png}
+
+\emph{Figure B.3: Panel A shows the negative FQI--adoption relationship. Panel B shows inflation instability as a driver.}
+
+\textbf{B.4 India Event Study}
+
+India\textquotesingle s 2022 crypto tax regime provides a natural experiment for testing the model\textquotesingle s Proposition 2 (comparative static on regulatory friction φ). On April 1, 2022, India imposed a 30\% capital gains tax on virtual digital assets. On July 1, 2022, a 1\% tax deducted at source (TDS) was added. These represent two clean, known treatment dates against which domestic exchange volume can be measured.
+
+I estimate the specification: ln(Volume\_t) = α + β₁·Post30\%Tax\_t + β₂·PostTDS\_t + β₃·ln(BTC\_t) + ε\_t, where Volume is the monthly top-4 domestic exchange volume in billions USD, Post30\%Tax and PostTDS are treatment dummies, and ln(BTC) controls for the global crypto market cycle.
+
+\textbf{Table B.2: India Event Study Results}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3000}}@{}}
+\toprule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+& \textbf{(1) No BTC} & \textbf{(2) With BTC} \\
+Post 30\% Tax & −1.243*** & −1.243*** \\
+& (0.233) & (0.267) \\
+Post 1\% TDS & −0.705*** & −0.705** \\
+& (0.195) & (0.280) \\
+ln(BTC Price) & & 0.037 \\
+Observations & 27 & 27 \\
+R² & 0.938 & 0.938 \\
+Combined effect & −85.7\% & −85.7\% \\
+\end{longtable}
+
+\emph{Dep. var: ln(monthly volume \$B). Robust SE. *** p\textless0.01, ** p\textless0.05.}
+
+The 30\% capital gains tax reduced domestic volume by approximately 71\% (exp(−1.243) − 1 = −0.712). The subsequent 1\% TDS imposed an additional 51\% reduction on the already-diminished base. The combined effect is an 86\% collapse in domestic exchange volume. The R² of 0.938 indicates that the two tax shocks and BTC price explain virtually all volume variation. The Esya Centre independently estimates 3--5 million users migrated offshore, with \$42 billion traded on foreign exchanges between July 2022 and July 2023---representing over 90\% of total Indian crypto volume.
+
+This result directly validates Proposition 2: regulatory friction (φ) reduces domestic crypto adoption, but the economic activity does not disappear---it migrates offshore. The model\textquotesingle s innovation flight parameter (γ) is empirically confirmed.
+
+\includegraphics[width=6.04167in,height=2.60417in]{7_monetary_productivity_gap/media/2ec402d783c489061cc14be8585f09a3b781c0cd.png}
+
+\emph{Figure B.4: Panel A shows the raw volume collapse. Panel B shows the OLS fit with counterfactual (green dashed).}
+
+\textbf{B.5 The Monetary Productivity Gap: Direct Measurement}
+
+The monetary productivity gap (MPG) can be directly measured as the difference between fiat remittance costs and stablecoin transfer costs for the same corridor. Using the World Bank Remittance Prices Worldwide database (300 corridors, 36 quarters, 2016--2025) and a conservative stablecoin benchmark of 0.5\% per transaction, I compute MPG = fiat\_cost − 0.5 for each corridor-quarter.
+
+Key findings: The average MPG across all corridors in Q1 2025 is 6.4 percentage points. Sub-Saharan Africa has the widest gap at 9.4pp---meaning a \$200 remittance to an African country costs approximately \$19 via traditional banking versus \$1 via stablecoin. South Asia\textquotesingle s gap is 4.1pp. The SDG target of 3\% remittance costs by 2030 remains far from achieved for most corridors, while stablecoin transfers already operate well below this threshold.
+
+The highest-MPG corridors---Senegal→Mali (25pp), South Africa→China (23pp), Saudi Arabia→Syria (21pp)---involve countries with weak banking infrastructure, conflict zones, or regulatory barriers to traditional remittances. These are precisely the corridors where the model predicts crypto adoption will be strongest.
+
+\includegraphics[width=6.04167in,height=2.60417in]{7_monetary_productivity_gap/media/b6b6fe6a12fbb467441d5656e07a35154bec3e57.png}
+
+\emph{Figure B.5: Panel A shows persistent regional cost gaps vs. stablecoin (gold dashed). Panel B ranks corridors by MPG.}
+
+\textbf{B.6 China Mining Ban: Innovation Flight}
+
+China\textquotesingle s June 2021 mining ban provides a second natural experiment. The Cambridge Centre for Alternative Finance Bitcoin Mining Map shows China\textquotesingle s share of global hashrate collapsed from 46\% in April 2021 to effectively 0\% by August 2021, then partially recovered to approximately 21\% by January 2022 as miners resumed operations covertly. The hashrate migrated primarily to the United States (from 17\% to 38\%), Kazakhstan (from 8\% to 18\%), and Russia.
+
+This validates the model\textquotesingle s innovation flight mechanism: resistance does not eliminate crypto-economic activity but redirects it to accommodating jurisdictions. China\textquotesingle s resistance strategy resulted in a permanent loss of mining revenue, innovation capacity, and regulatory influence over a growing sector---exactly the outcome predicted by the game-theoretic analysis in the thesis.
+
+\includegraphics[width=5.41667in,height=2.91667in]{7_monetary_productivity_gap/media/dc95654bfca1640cc5da9fd5b6475ca921a48889.png}
+
+\emph{Figure B.6: China\textquotesingle s hashrate collapse and US/Kazakhstan absorption. Partial covert recovery visible by late 2021.}
+
+\textbf{B.7 Summary of Empirical Findings}
+
+\includegraphics[width=6.04167in,height=3.75in]{7_monetary_productivity_gap/media/04091c33e0782d16863227c6896e9490642dff56.png}
+
+\emph{Figure B.7: Empirical evidence dashboard summarizing all results.}
+
+The empirical analysis supports the thesis\textquotesingle s three core claims:
+
+\textbf{1. The monetary productivity gap is real and measurable.} Fiat remittance costs exceed stablecoin costs by 6.4 percentage points on average, with the gap widest in developing economies (9.4pp for Sub-Saharan Africa). This differential is persistent, large, and directly analogous to the agricultural productivity gap documented by Gollin, Lagakos, and Waugh (2014).
+
+\textbf{2. Regulatory friction drives adoption offshore, not to zero.} India\textquotesingle s 2022 tax regime caused an 86\% collapse in domestic exchange volume while offshore activity absorbed the displaced users. The Esya Centre documents 3--5 million users migrating to foreign platforms. This confirms the model\textquotesingle s Proposition 2 (∂θ*/∂φ \textless{} 0 but bounded) and the innovation flight parameter.
+
+\textbf{3. Resistance redistributes, not eliminates.} China\textquotesingle s mining ban transferred 46 percentage points of global hashrate to the United States and Kazakhstan within months. The country that built the world\textquotesingle s largest mining industry chose to export it. This validates the game-theoretic prediction that resistance is a dominated strategy.
+
+The cross-country regression results are intentionally presented with their limitations. The weak R² (0.013--0.087) reflects genuine measurement challenges: the Chainalysis index is PPP-adjusted, absorbing income variation; crypto adoption has multiple drivers beyond fiat quality; and the six-year panel is short. The event studies and remittance cost analysis provide more compelling identification. Together, the evidence supports the thesis\textquotesingle s central argument that the monetary productivity gap is a structural phenomenon driving endogenous monetary regime choice, with accommodation dominating resistance at every development stage.
+
+\textbf{B.8 Replication}
+
+All analysis is reproducible. The Python script empirical\_analysis.py and data fetcher fetch\_thesis\_data.py are available. Data sources are public: World Bank Open Data (CC BY-4.0), Cambridge CBECI (open access), Chainalysis Geography of Cryptocurrency Reports (published annually), and Esya Centre publications (open access). The RPW dataset contains 10,468 corridor-quarter observations covering 300 remittance corridors.

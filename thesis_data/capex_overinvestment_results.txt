@@ -1,0 +1,198 @@
+======================================================================
+CAPEX OVERINVESTMENT TEST: Empirical Validation of Paper 1, Prop 1
+Connor Smirl, Tufts University, February 2026
+======================================================================
+
+Data: 41 firm-year obs, 7 companies
+Years: 2018-2028
+Effective N by year: {np.int64(2018): np.int64(4), np.int64(2019): np.int64(4), np.int64(2020): np.int64(4), np.int64(2021): np.int64(4), np.int64(2022): np.int64(4), np.int64(2023): np.int64(4), np.int64(2024): np.int64(5), np.int64(2025): np.int64(5)}
+
+======================================================================
+PREDICTION TABLE
+======================================================================
+    Year   N     Actual       Nash       Coop   Act/Coop
+  ------ --- ---------- ---------- ---------- ----------
+    2018   4     $64.0B     $88.4B     $22.8B      2.80x
+    2019   4     $69.4B     $88.4B     $22.7B      3.06x
+    2020   4     $88.4B     $88.4B     $22.4B      3.94x
+    2021   4    $119.2B     $88.4B     $22.1B      5.40x
+    2022   4    $145.1B     $88.4B     $21.7B      6.69x
+    2023   4    $136.9B     $88.4B     $21.3B      6.43x
+    2024   5    $223.1B     $88.4B     $18.5B     12.05x
+    2025   5    $336.0B     $88.3B     $17.4B     19.31x
+
+======================================================================
+TEST 1: AGGREGATE CAPEX GROWTH vs COOPERATIVE OPTIMUM
+======================================================================
+  2018: Actual=$64.0B, Cooperative=$22.8B, Excess=$41.2B (2.80x)
+  2019: Actual=$69.4B, Cooperative=$22.7B, Excess=$46.7B (3.06x)
+  2020: Actual=$88.4B, Cooperative=$22.4B, Excess=$66.0B (3.94x)
+  2021: Actual=$119.2B, Cooperative=$22.1B, Excess=$97.1B (5.40x)
+  2022: Actual=$145.1B, Cooperative=$21.7B, Excess=$123.4B (6.69x)
+  2023: Actual=$136.9B, Cooperative=$21.3B, Excess=$115.6B (6.43x)
+  2024: Actual=$223.1B, Cooperative=$18.5B, Excess=$204.6B (12.05x)
+  2025: Actual=$336.0B, Cooperative=$17.4B, Excess=$318.6B (19.31x)
+
+  Capex growth 2020-2025:
+    Actual: 3.80x
+    Cooperative prediction: 0.78x
+    Excess growth factor: 4.90x
+  VERDICT: Actual growth EXCEEDS cooperative optimum
+
+======================================================================
+TEST 2: CAPEX ACCELERATION WITH FIRM ENTRY
+======================================================================
+
+  Effective N (firms with >$5B capex) by year:
+    2018: N = 4
+    2019: N = 4
+    2020: N = 4
+    2021: N = 4
+    2022: N = 4
+    2023: N = 4
+    2024: N = 5
+    2025: N = 5
+
+  Year-over-year aggregate capex growth:
+    2018->2019: +8.4%
+    2019->2020: +27.4%
+    2020->2021: +34.8%
+    2021->2022: +21.7%
+    2022->2023: -5.7%
+    2023->2024: +63.0% (N: 4->5)
+    2024->2025: +50.6%
+
+  Avg YoY growth when N increased: 63.0%
+  Avg YoY growth when N stable:    22.9%
+  VERDICT: Growth HIGHER when N increased (consistent with Corollary 1)
+
+  Meta capex: 2022=$31.4B (metaverse peak) -> 2024=$39.2B (AI pivot)
+  Meta growth: 25% (reflects AI arms race entry)
+
+  Model crossing-time acceleration vs N:
+     N     T*_Nash     T*_Coop    Accel%
+  ----  ----------  ----------  --------
+     3      0.7337      2.6975     72.8%
+     4      0.6593      2.8578     76.9%
+     5      0.6208      3.0027     79.3%
+     6      0.5973      3.1326     80.9%
+     8      0.5700      3.3548     83.0%
+    10      0.5547      3.5381     84.3%
+
+======================================================================
+TEST 3: OVERINVESTMENT RATIO vs 3-4x PREDICTION (Prop 1)
+======================================================================
+
+  Actual/Cooperative overinvestment ratio by year:
+    2018: 2.80x  [IN RANGE]
+    2019: 3.06x  [IN RANGE]
+    2020: 3.94x  [IN RANGE]
+    2021: 5.40x  [OUTSIDE]
+    2022: 6.69x  [OUTSIDE]
+    2023: 6.43x  [OUTSIDE]
+    2024: 12.05x  [OUTSIDE]
+    2025: 19.31x  [OUTSIDE]
+
+  Average ratio 2022-present: 11.12x
+  Predicted range (Prop 1): 3-4x
+  VERDICT: Empirical ratio INCONSISTENT with Proposition 1 prediction
+
+  Model Nash/Cooperative ratios:
+    2018: 3.87x
+    2019: 3.90x
+    2020: 3.94x
+    2021: 4.00x
+    2022: 4.08x
+    2023: 4.15x
+    2024: 4.77x
+    2025: 5.08x
+
+======================================================================
+TEST 4: NASH PATH vs ACTUAL TRAJECTORY
+======================================================================
+
+  Year-by-year comparison:
+    2018: Actual=$64.0B, Nash pred=$88.4B, error=-27.6%
+    2019: Actual=$69.4B, Nash pred=$88.4B, error=-21.5%
+    2020: Actual=$88.4B, Nash pred=$88.4B, error=+0.0%
+    2021: Actual=$119.2B, Nash pred=$88.4B, error=+34.9%
+    2022: Actual=$145.1B, Nash pred=$88.4B, error=+64.2%
+    2023: Actual=$136.9B, Nash pred=$88.4B, error=+54.9%
+    2024: Actual=$223.1B, Nash pred=$88.4B, error=+152.5%
+    2025: Actual=$336.0B, Nash pred=$88.3B, error=+280.4%
+
+  Fit statistics (Nash vs Actual):
+    Pearson correlation:  r = -0.8801
+    RMSE:                104.27 $B
+    MAE:                 70.24 $B
+    MAPE:                37.5%
+    VERDICT: Nash path POOR FIT to actual trajectory (r=-0.880)
+
+======================================================================
+COMPETITIVE DYNAMICS TESTS
+======================================================================
+
+  (a) Strategic Complementarity Test
+  H0: Firm capex growth is independent of rival capex
+  H1: Firm capex growth positively responds to rival capex (strategic complement)
+
+  Regression: own_capex_growth ~ rival_capex_growth
+    beta (rival_growth):  0.3979
+    t-stat:               1.532
+    p-value:              0.1376
+    R-squared:            0.0828
+    N obs:                28
+    VERDICT: No significant complementarity (beta=positive, p=>0.10)
+
+  Level regression: own_capex ~ rival_capex_lagged
+    beta (rival_capex_lag): 0.3997
+    t-stat:                4.483
+    p-value:               0.0001
+    R-squared:             0.4360
+
+  (b) Capex Concentration (HHI) Over Time
+  Model predicts: more competitors => more spread => more overinvestment
+
+    Year       HHI   N firms  Total ($B)
+  ------  --------  --------  ----------
+    2018    0.2777         4        64.0
+    2019    0.2614         4        69.4
+    2020    0.2823         4        88.4
+    2021    0.3128         4       119.2
+    2022    0.2825         4       145.1
+    2023    0.2649         4       136.9
+    2024    0.2693         4       214.2
+    2025    0.2563         4       320.0
+
+  HHI-year correlation: -0.3155
+  VERDICT: Concentration is DECLINING (consistent with more competitors entering)
+
+======================================================================
+SUMMARY STATISTICS
+======================================================================
+
+  Cumulative capex (core hyperscalers) 2018-2025:
+    Actual:      $1182.1B
+    Nash pred:   $707.0B
+    Coop pred:   $168.9B
+    Actual/Coop: 7.00x
+    Nash/Coop:   4.19x
+
+  Model calibration:
+    Learning rate alpha:      0.23 (Wrights Law, Paper 1)
+    Displacement rate delta:  0.30 (IBM calibration)
+    Discount rate r:          0.05
+    Baseline year:            2020
+    Baseline N:               4
+
+  KEY FINDING (AI period 2022+):
+    Average overinvestment ratio: 11.12x
+    Peak overinvestment ratio:    19.31x (in 2025)
+    Proposition 1 prediction:     3-4x
+
+  MODEL PREDICTION:
+    Crossing time acceleration (N=5): 79.3%
+    Paper 1 claim: ~79%%
+
+    Actual CAGR: 26.7%
+    Cooperative CAGR: -3.8%

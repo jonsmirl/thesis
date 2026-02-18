@@ -20,6 +20,7 @@ Methodology:
 
 import numpy as np
 import pandas as pd
+import matplotlib; matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from datetime import datetime
@@ -56,7 +57,7 @@ downloads_data = pd.DataFrame({
 downloads_data['date'] = pd.to_datetime(downloads_data['date'])
 
 # HuggingFace ecosystem snapshot
-hf_data = pd.read_csv('/mnt/user-data/uploads/huggingface_ecosystem.csv')
+hf_data = pd.read_csv('/home/jonsmirl/thesis/thesis_data/huggingface_ecosystem.csv')
 hf_data['created_at'] = pd.to_datetime(hf_data['created_at'])
 
 # ═══════════════════════════════════════════════════════════════
@@ -342,8 +343,8 @@ ax.legend(lines1 + lines2, labels1 + labels2, fontsize=8, loc='upper right')
 ax.xaxis.set_major_formatter(mdates.DateFormatter('%b\n%Y'))
 
 plt.tight_layout(rect=[0, 0, 1, 0.95])
-plt.savefig('/home/claude/r0_figure.png', dpi=300)
-plt.savefig('/home/claude/r0_figure.pdf')
+plt.savefig('/home/jonsmirl/thesis/figures/endogenous_decentralization/r0_figure.png', dpi=300)
+plt.savefig('/home/jonsmirl/thesis/figures/endogenous_decentralization/r0_figure.pdf')
 print("\n✓ Figures saved: r0_figure.png, r0_figure.pdf")
 
 # ═══════════════════════════════════════════════════════════════

@@ -52,8 +52,9 @@ except ImportError:
     print("Running descriptive analysis only.\n")
 
 
-DATA_DIR = "thesis_data"
-OUT_DIR = "thesis_data"
+DATA_DIR = "/home/jonsmirl/thesis/thesis_data"
+OUT_DIR = "/home/jonsmirl/thesis/thesis_data"
+FIG_DIR = "/home/jonsmirl/thesis/figures/complementary_heterogeneity"
 LOG_LINES = []
 
 def log(msg):
@@ -521,7 +522,7 @@ def plot_results(df):
     axes[2].set_xticklabels(tick_labels, rotation=45, fontsize=7)
 
     plt.tight_layout()
-    fig_path = f"{OUT_DIR}/figure_dispersion_indicator.png"
+    fig_path = f"{FIG_DIR}/figure_dispersion_indicator.png"
     plt.savefig(fig_path, dpi=150, bbox_inches='tight')
     log(f"  Saved: {fig_path}")
     plt.close()
@@ -551,7 +552,7 @@ def plot_results(df):
     ax.grid(True, alpha=0.3)
 
     plt.tight_layout()
-    fig_path2 = f"{OUT_DIR}/figure_leadlag_correlation.png"
+    fig_path2 = f"{FIG_DIR}/figure_leadlag_correlation.png"
     plt.savefig(fig_path2, dpi=150, bbox_inches='tight')
     log(f"  Saved: {fig_path2}")
     plt.close()

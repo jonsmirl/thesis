@@ -1,0 +1,201 @@
+======================================================================
+CROSS-LAYER VAR TEST -- Theorem 3.1 (Port Topology)
+Complementary Heterogeneity -- 2026-02-17 14:08:55
+======================================================================
+
+--- STEP 1: Loading Layer Proxies ---
+L1: Loading FRED semiconductor IP from CSV...
+  L1: 432 monthly obs, 1990-01 to 2025-12
+L2: Constructing HuggingFace ecosystem growth proxy...
+  L2: HuggingFace API responded, using milestone interpolation
+  L2: 68 monthly obs, 2020-06 to 2026-01
+L3: Loading inference pricing from CSV...
+  L3: 57 monthly obs, 2020-06 to 2025-02
+L4: Fetching stablecoin market cap from DeFiLlama...
+  L4: DeFiLlama current total: $307.4B across 283 stablecoins
+  L4: 100 monthly obs from DeFiLlama charts, 2017-11 to 2026-02
+
+--- STEP 2: Merging Layers and Stationarity ---
+
+======================================================================
+MERGING LAYERS
+======================================================================
+Merged: 57 monthly obs with all 4 layers present
+  Date range: 2020-06 to 2025-02
+  L1_hardware: 57 obs, range [109.24, 159.69]
+  L2_network: 57 obs, range [1000.00, 1046876.46]
+  L3_capability: 57 obs, range [100.00, 24000.00]
+  L4_settlement: 57 obs, range [9649635777.00, 142586943414.00]
+
+ADF Stationarity Tests (H0: unit root):
+-------------------------------------------------------
+  L1_hardware: ADF=0.151, p=0.9694, lags=0 -> NON-STATIONARY
+    -> dlog: ADF=-6.525, p=0.0000 -> STATIONARY
+  L2_network: ADF=1.326, p=0.9968, lags=1 -> NON-STATIONARY
+    -> dlog: ADF=-2.107, p=0.2416 -> STILL NON-STATIONARY
+  L3_capability: ADF=2.550, p=0.9991, lags=6 -> NON-STATIONARY
+    -> dlog: ADF=-2.616, p=0.0898 -> STILL NON-STATIONARY
+  L4_settlement: ADF=-0.721, p=0.8413, lags=1 -> NON-STATIONARY
+    -> dlog: ADF=-2.183, p=0.2124 -> STILL NON-STATIONARY
+
+Stationary dataset: 56 obs, columns: ['L1_hardware_dlog', 'L2_network_dlog', 'L3_capability_dlog', 'L4_settlement_dlog']
+
+--- STEP 3: Plotting ---
+
+Plotting raw series...
+  Saved: /home/jonsmirl/thesis/figures/complementary_heterogeneity/fig_cross_layer_raw_series.png
+
+--- STEP 4: VAR Estimation ---
+
+======================================================================
+VAR ESTIMATION
+======================================================================
+Lag selection (information criteria):
+  AIC: 1
+  BIC: 1
+  HQIC: 1
+  Selected lag order (BIC): p = 1
+
+VAR(1) Summary:
+  Number of observations: 55
+  Log-likelihood: 353.48
+  AIC: -23.4782
+  BIC: -22.7483
+
+  Lag-1 Coefficient Matrix:
+                      L1_hardware_  L2_network_d  L3_capabilit  L4_settlemen
+  L1_hardware_dlog          0.1176       -0.0448        0.0006        0.0233
+  L2_network_dlog           0.2077        0.9598       -0.0014       -0.0112
+  L3_capability_dlog        1.0161       -1.3151        0.0893        0.5924
+  L4_settlement_dlog        0.4216        0.3238        0.0006        0.5634
+
+--- STEP 5: Granger Causality ---
+
+======================================================================
+GRANGER CAUSALITY TESTS
+======================================================================
+
+Maxlag = 4
+Cause                -> Effect                Min p-val        Verdict         Type
+--------------------------------------------------------------------------------
+  L1_hardware_dlog     -> L2_network_dlog          0.0584    SIGNIFICANT     NEIGHBOR
+  L1_hardware_dlog     -> L3_capability_dlog       0.3765 NOT SIGNIFICANT      DISTANT
+  L1_hardware_dlog     -> L4_settlement_dlog       0.1430 NOT SIGNIFICANT      DISTANT
+  L2_network_dlog      -> L1_hardware_dlog         0.4671 NOT SIGNIFICANT     NEIGHBOR
+  L2_network_dlog      -> L3_capability_dlog       0.5381 NOT SIGNIFICANT     NEIGHBOR
+  L2_network_dlog      -> L4_settlement_dlog       0.0482    SIGNIFICANT      DISTANT
+  L3_capability_dlog   -> L1_hardware_dlog         0.7793 NOT SIGNIFICANT      DISTANT
+  L3_capability_dlog   -> L2_network_dlog          0.5305 NOT SIGNIFICANT     NEIGHBOR
+  L3_capability_dlog   -> L4_settlement_dlog       0.9768 NOT SIGNIFICANT     NEIGHBOR
+  L4_settlement_dlog   -> L1_hardware_dlog         0.6708 NOT SIGNIFICANT      DISTANT
+  L4_settlement_dlog   -> L2_network_dlog          0.5373 NOT SIGNIFICANT      DISTANT
+  L4_settlement_dlog   -> L3_capability_dlog       0.6282 NOT SIGNIFICANT     NEIGHBOR
+
+--- Topology Assessment ---
+  Nearest-neighbor significant: 1/6
+  Distant significant:          1/6
+  -> AMBIGUOUS (nearest-neighbor = distant)
+
+Plotting Granger causality heatmap...
+  Saved: /home/jonsmirl/thesis/figures/complementary_heterogeneity/fig_cross_layer_granger_heatmap.png
+
+--- STEP 6: Impulse Response Functions ---
+
+======================================================================
+IMPULSE RESPONSE FUNCTIONS (L1 shock)
+======================================================================
+
+Peak response timing (L1 shock, 24 periods):
+  Variable              Peak period   Peak magnitude
+  --------------------------------------------------
+  L1_hardware_dlog                1         0.117566
+  L2_network_dlog                 2         0.217566
+  L3_capability_dlog              1         1.016086
+  L4_settlement_dlog              1         0.421594
+
+  Peak sequence: L1=1, L2=2, L3=1, L4=1
+  -> NOT strictly sequential (may still be consistent if differences small)
+
+Plotting IRFs...
+  Saved: /home/jonsmirl/thesis/figures/complementary_heterogeneity/fig_cross_layer_irf.png
+
+--- STEP 7: Forecast Error Variance Decomposition ---
+
+======================================================================
+FORECAST ERROR VARIANCE DECOMPOSITION
+======================================================================
+
+FEVD at h=6 months:
+  Explained var        L1_hardware_ L2_network_d L3_capabilit L4_settlemen
+  ------------------------------------------------------------------------
+  L1_hardware_dlog           0.9831       0.0047       0.0002       0.0120
+  L2_network_dlog            0.1865       0.8093       0.0019       0.0023
+  L3_capability_dlog         0.0293       0.1366       0.8285       0.0056
+  L4_settlement_dlog         0.0478       0.0417       0.0052       0.9054
+
+FEVD at h=12 months:
+  Explained var        L1_hardware_ L2_network_d L3_capabilit L4_settlemen
+  ------------------------------------------------------------------------
+  L1_hardware_dlog           0.9811       0.0066       0.0002       0.0121
+  L2_network_dlog            0.1984       0.7968       0.0020       0.0028
+  L3_capability_dlog         0.0296       0.1377       0.8270       0.0057
+  L4_settlement_dlog         0.0611       0.0898       0.0050       0.8441
+
+--- FEVD Topology Assessment (h=12) ---
+  L1_hardware_dlog: own=0.981, neighbor=0.007 (L2_network_dlog), distant=0.012
+  L2_network_dlog: own=0.797, neighbor=0.200 (L1_hardware_dlog+L3_capability_dlog), distant=0.003
+  L3_capability_dlog: own=0.827, neighbor=0.143 (L2_network_dlog+L4_settlement_dlog), distant=0.030
+  L4_settlement_dlog: own=0.844, neighbor=0.005 (L3_capability_dlog), distant=0.151
+
+Plotting FEVD...
+  Saved: /home/jonsmirl/thesis/figures/complementary_heterogeneity/fig_cross_layer_fevd.png
+
+--- STEP 8: Block Exogeneity Tests ---
+
+======================================================================
+BLOCK EXOGENEITY TESTS
+======================================================================
+
+L1 -> L4 (should be INSIGNIFICANT if tridiagonal):
+  F-stat = 0.7259
+  p-value = 0.3952
+  -> NOT SIGNIFICANT at 10% (CONSISTENT with tridiagonal)
+
+L4 -> L1 (should be INSIGNIFICANT if tridiagonal):
+  F-stat = 0.5322
+  p-value = 0.4665
+  -> NOT SIGNIFICANT at 10% (CONSISTENT with tridiagonal)
+
+L1 -> L3 (should be INSIGNIFICANT if tridiagonal, mediated by L2):
+  F-stat = 0.0382
+  p-value = 0.8452
+  -> NOT SIGNIFICANT (CONSISTENT with tridiagonal)
+
+Plotting VAR coefficient matrix...
+  Saved: /home/jonsmirl/thesis/figures/complementary_heterogeneity/fig_cross_layer_coef_matrix.png
+
+======================================================================
+OVERALL SUMMARY -- Theorem 3.1 (Port Topology) Test
+======================================================================
+
+1. GRANGER CAUSALITY:
+   Nearest-neighbor significant: 1/6
+   Distant pairs significant:    1/6
+   Verdict: AMBIGUOUS
+
+2. IMPULSE RESPONSES:
+   Peak timing: L1=1, L2=2, L3=1, L4=1
+   Verdict: NOT STRICTLY SEQUENTIAL
+
+3. VARIANCE DECOMPOSITION (h=12):
+   Verdict: CONSISTENT (2/3 layers: neighbor >= distant)
+
+4. COEFFICIENT MATRIX STRUCTURE:
+   Tridiagonal band share of |coefficients|: 0.684
+   Verdict: AMBIGUOUS
+
+======================================================================
+OVERALL VERDICT: 1/4 tests CONSISTENT with Theorem 3.1
+  Results are MIXED. Some evidence for nearest-neighbor coupling but
+  not overwhelmingly supported. May reflect limited sample or proxy noise.
+======================================================================

@@ -17,7 +17,7 @@ from statsmodels.stats.diagnostic import het_breuschpagan
 import warnings
 warnings.filterwarnings('ignore')
 
-OUT = "/home/claude/figures"
+OUT = "/home/jonsmirl/thesis/figures/mpg"
 import os; os.makedirs(OUT, exist_ok=True)
 
 plt.rcParams.update({
@@ -754,10 +754,10 @@ YIELD ACCESS GAP KEY FINDINGS:
 """)
 
 # Save full dataset
-df.to_csv('/home/claude/yield_access_gap_data.csv', index=False)
-print("Dataset saved: /home/claude/yield_access_gap_data.csv")
+df.to_csv('/home/jonsmirl/thesis/figures/mpg/yield_access_gap_data.csv', index=False)
+print("Dataset saved: /home/jonsmirl/thesis/figures/mpg/yield_access_gap_data.csv")
 
-donor_data.to_csv('/home/claude/synthetic_control_data.csv', index=False)
-print("Synthetic control data saved: /home/claude/synthetic_control_data.csv")
+donor_data.to_csv('/home/jonsmirl/thesis/figures/mpg/synthetic_control_data.csv', index=False)
+print("Synthetic control data saved: /home/jonsmirl/thesis/figures/mpg/synthetic_control_data.csv")
 
 print("\nDone.")

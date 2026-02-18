@@ -1,0 +1,388 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\textbf{The Monetary Productivity Gap}
+
+Structural Transformation, AI, and Endogenous
+
+Monetary Regime Choice in Developing Economies
+
+Connor Smirl
+
+EC 118: Growth Economics • Thesis
+
+Tufts University • Spring 2026
+
+\textbf{Abstract}
+
+Gollin, Lagakos, and Waugh (2014) document that value added per worker is systematically higher in non-agricultural sectors, yet institutional frictions keep labor misallocated in agriculture, particularly in developing economies. This paper identifies an analogous \emph{monetary productivity gap}: as AI drives down the cost of cognitive output, economic activity transacted on programmable cryptocurrency rails exhibits higher effective productivity than equivalent activity on fiat infrastructure, yet institutional frictions keep most economic activity denominated in fiat. The gap has two components: a \emph{transfer cost gap} (fiat remittances cost 6.4 percentage points more than stablecoin transfers across 300 corridors) and a larger \emph{yield access gap} (1.4 billion unbanked adults earn deeply negative real returns on cash savings while tokenized US Treasuries offer 4.5\% nominal---a value-added-per-dollar differential of approximately 30 percentage points, directly parallel to Gollin's sectoral value-added ratios). By early 2026, both components are observable: the x402 agentic payment protocol has processed over \$600 million in autonomous AI-agent transactions on programmable rails; BlackRock's tokenized Treasury fund (BUIDL) has reached \$500 million; and total tokenized real-world assets exceed \$12 billion. Using a two-sector model of endogenous monetary regime choice (formalized in the Model Appendix) embedded in an extended Solow growth framework, parameterized by UN World Population Prospects 2024 demographic projections for 40 nations classified into six industrialization stages, I find that: (1) the monetary productivity gap is largest in pre-industrial economies with weak fiat institutions, mirroring the pattern of agricultural productivity gaps across development stages; (2) the transition from fiat to programmable monetary infrastructure exhibits a cold-start problem requiring institutional catalysts; (3) sovereign accommodation of the transition dominates resistance across all six stages, with output gains of 11--13\% by 2050; and (4) the demographic center of gravity is shifting toward nations where the monetary productivity gap is widest. The framework extends structural transformation analysis to the monetary system, treating monetary regime as an endogenous sectoral choice rather than exogenous infrastructure.
+
+\textbf{1. Introduction}
+
+The structural transformation literature documents a persistent puzzle: in developing economies, value added per worker in non-agricultural sectors is several multiples of that in agriculture, yet labor remains misallocated in low-productivity agriculture due to institutional frictions, migration barriers, and human capital constraints (Gollin, Lagakos, and Waugh 2014). This paper argues that an analogous structural gap is emerging in the monetary system.
+
+The cost of AI cognitive output has fallen by roughly four orders of magnitude between 2020 and early 2026 (Wissner-Gross 2024). As this cost decline continues---even if it moderates substantially---AI agents increasingly require monetary infrastructure with properties that fiat systems cannot provide: programmability, continuous availability, borderlessness, and the ability to transact without legal personhood. Cryptocurrency provides these properties. The result is a measurable gap: economic activity that could be transacted more efficiently on programmable rails remains stuck in fiat, just as labor that could be more productive in manufacturing remains stuck in agriculture.
+
+I call this the \emph{monetary productivity gap}. The analogy to Gollin, Lagakos, and Waugh (2014) is deliberate and, I argue, structurally precise. In their framework, the agricultural productivity gap reflects a combination of measurement issues (differences in hours worked and human capital) and genuine misallocation due to institutional frictions. The monetary productivity gap similarly reflects both measurement challenges (how do we value transactions that fiat infrastructure cannot process at all?) and genuine misallocation due to regulatory barriers, legal ambiguity, and institutional inertia. Crucially, the gap has two components: a \emph{transfer cost gap} (the price of moving money between systems) and a larger \emph{yield access gap} (the difference in value added per dollar across monetary infrastructures). Gollin measures value added per worker, not the cost of the bus ticket from village to city. The monetary analogue must do the same: the yield access gap---approximately 30 percentage points for an unbanked Nigerian farmer---is the true parallel to Gollin's productivity ratios, and it is activated by the tokenization of financial assets on programmable rails (Section 2.4).
+
+The paper makes three contributions. First, it develops a two-sector model (formalized in the Model Appendix) in which economic activities choose between fiat and programmable monetary infrastructure based on relative transaction costs, institutional quality, and regulatory friction---directly analogous to the sectoral choice between agriculture and non-agriculture in the structural transformation literature. The model produces analytical results: multiple equilibria with a cold-start problem (Proposition 1), signed comparative statics with testable predictions (Proposition 2), welfare implications favoring accommodation (Proposition 3), and endogenous erosion of central bank policy effectiveness (Proposition 4). Second, it parameterizes the model with real country-level data---UN World Population Prospects 2024 demographic projections, World Bank structural indicators, and derived measures of fiat institutional quality---for 40 nations classified into six industrialization stages. This allows the analysis to capture the heterogeneity that Koyama and Rubin (2022) emphasize when they observe that ``the appropriate institutional reforms will always be context-dependent and politically constrained.'' Third, it applies Gerschenkron's (1962) ``advantages of backwardness'' to monetary infrastructure: countries that never developed deep fiat banking systems may leapfrog directly to programmable money, just as countries that never built landline networks leapfrogged to mobile.
+
+\textbf{2. The Monetary Productivity Gap}
+
+\textbf{2.1 From Agricultural to Monetary Misallocation}
+
+Gollin, Lagakos, and Waugh (2014) show that the ratio of non-agricultural to agricultural value added per worker exceeds 3:1 in the median developing country and approaches 7:1 at the 90th percentile. Even after adjusting for differences in hours worked, human capital, and measurement error, a substantial gap remains---suggesting genuine misallocation of labor across sectors due to institutional frictions. The critical word is \emph{value added}: the gap measures how much more productive a worker is in one sector versus another, not merely the cost of traveling between sectors.
+
+An analogous gap is emerging between monetary systems, but it has two components that must be distinguished because they operate at different scales. The \textbf{transfer cost gap} measures the price of moving money from point A to point B: fiat remittances cost 6--9\% in developing countries while stablecoin transfers cost under 1\%, producing a measurable gap of 6.4 percentage points across 300 corridors (Data Appendix Section B.5). This is the most visible component and the easiest to measure. But it is the smaller one.
+
+The \textbf{yield access gap} measures the difference in value added per dollar across monetary infrastructures---the true monetary analogue of Gollin's agricultural productivity gap. A dollar held as cash under a mattress in Lagos generates zero nominal return and approximately $-$25\% real return under Nigerian inflation. A dollar held as tokenized US Treasuries on a smartphone earns 4.5\% nominal. That is not a transaction cost difference---it is a \emph{value-added-per-dollar} difference of approximately 30 percentage points, directly parallel to Gollin's finding that a worker ``produces'' 3--7x more in manufacturing than in agriculture. The transfer cost gap is the bus ticket from village to city. The yield access gap is the wage premium that makes the trip worthwhile.
+
+Today, 1.4 billion adults worldwide have no bank account. Another 2 billion are ``underbanked''---they have nominal access to financial services but cannot practically access dollar-denominated yield instruments. The yield access gap for these populations is the full spread between local-currency cash returns (often deeply negative in real terms) and global risk-free rates. As tokenized securities make fractional Treasury ownership accessible via smartphone (Section 2.4), the yield access gap closes---and the savings rate effect in the extended Solow model (Appendix, equation 15) becomes economically substantial, not merely an artifact of cheaper transfers. Data Appendix Section B.3.1 provides direct evidence: the yield access gap predicts crypto adoption with statistical significance ($\beta$ = 0.003, p = 0.011, R² = 0.101, n = 40), while the transfer cost gap alone does not ($\beta$ = $-$0.015, p = 0.335). It is the value-added-per-dollar differential, not the transaction cost differential, that drives adoption.
+
+Consider a concrete operational example: an AI inference service operating on fiat rails requires a corporate bank account (unavailable to software agents without legal personhood), settlement delays of 1--3 business days, currency conversion fees for cross-border transactions, and compliance with KYC/AML requirements designed for human actors. The same service on programmable rails settles in seconds, operates continuously, transacts globally without conversion friction, and requires no institutional identity. The effective transaction cost differential is not marginal---it is structural. Coase (1937) argued that firms exist because internal organization is cheaper than market transactions; when smart contracts collapse market transaction costs below organizational overhead, the logic reverses.
+
+The monetary productivity gap, like the agricultural productivity gap, is largest in developing economies. Countries with weak fiat institutions---high inflation, limited banking access, unreliable settlement---face the widest gap between what fiat infrastructure provides and what programmable infrastructure could provide. This mirrors the pattern documented by Gollin, Lagakos, and Waugh (2014), where the agricultural productivity gap is widest in precisely the countries with the weakest institutional environments. Data Appendix Figure B.3 provides cross-country evidence: crypto adoption correlates positively with agriculture share of GDP---Gollin, Lagakos, and Waugh's primary structural transformation indicator---suggesting that the monetary productivity gap is indeed widest where fiat institutions are weakest.
+
+The monetary productivity gap can be measured directly. Using the World Bank Remittance Prices Worldwide database (300 corridors, 2016--2025), Data Appendix Section B.5 computes the gap as the difference between fiat remittance costs and stablecoin transfer costs for each corridor. The average gap is 6.4 percentage points; for Sub-Saharan Africa, it is 9.4pp. A \$200 remittance to a Sub-Saharan African country costs approximately \$19 on fiat rails versus \$1 on stablecoin rails---a cost multiple of roughly 13:1. This is comparable in magnitude to Gollin, Lagakos, and Waugh's finding that non-agricultural productivity exceeds agricultural productivity by 3:1 to 7:1 in developing economies. The gap has not closed materially over nine years of data despite a decade of policy attention to the UN SDG target of 3\% remittance costs.
+
+A clarification on asset type: the MPG analysis primarily concerns \emph{stablecoins} and programmable settlement infrastructure, not volatile speculative assets like Bitcoin. Dollar-denominated stablecoins give users in weak-fiat economies better access to dollar stability than their own banking systems provide, avoiding the exchange rate volatility that would otherwise offset the transaction cost advantage. Jack and Suri (2014) document large welfare gains from mobile money adoption in Kenya; stablecoins on programmable rails extend this logic from domestic payments to cross-border settlement and AI-native commerce.
+
+\textbf{2.2 Why AI Widens the Gap}
+
+The monetary productivity gap existed before AI---anyone who has sent a cross-border remittance through traditional banking versus a stablecoin transfer has experienced it. But AI widens the gap in two ways.
+
+First, AI creates a new class of economic actors that \emph{cannot use fiat infrastructure at all}. Human workers can tolerate the friction of 3-day settlement and business-hours-only banking. AI agents operating at millisecond timescales across jurisdictional boundaries cannot. This is not a matter of preference but of compatibility: the institutional requirements of fiat banking (legal identity, physical address, regulatory jurisdiction) are designed for biological actors. As AI cognitive output becomes cheaper---the cost per unit of inference has declined by roughly four orders of magnitude since 2020---the volume of AI-native economic activity requiring programmable rails grows.
+
+Second, AI accelerates Coasean dissolution. Coase (1937) argued that firms exist because internal coordination is cheaper than market transactions. Smart contracts and AI agents invert this: market transaction costs fall below internal organizational costs, dissolving firms into networks of autonomous agents. These agent networks require programmable monetary infrastructure for the same reason that factory workers required industrial banking: the monetary system must match the organizational structure of production. As Koyama and Rubin (2022) observe, ``from a long-run perspective, what matters more is that markets provide incentives for innovation.'' When market transaction costs approach zero, the innovation frontier shifts to whoever has the monetary infrastructure to exploit it.
+
+\textbf{2.3 AI-Native Commerce Is No Longer Theoretical}
+
+Section 2.2 argued that AI creates economic actors incompatible with fiat banking. As of early 2026, this is no longer a theoretical prediction---it is observable infrastructure with measurable transaction volume.
+
+In May 2025, Coinbase launched x402, an open payment protocol that revives the long-unused HTTP 402 ``Payment Required'' status code to enable autonomous stablecoin payments directly over HTTP. The protocol allows AI agents to pay for API calls, compute resources, data feeds, and web services without accounts, subscriptions, or human intervention. By late 2025, x402 had processed over \$600 million in payment volume across more than 15 million transactions, with four independent facilitators (Coinbase, Dexter, PayAI, and DayDreams) each exceeding 10 million transactions. Cloudflare---which serves over 20\% of global web traffic---co-founded the x402 Foundation and began integrating the protocol into its infrastructure, enabling pay-per-crawl access for AI agents. Google integrated x402 into its Agent Payments Protocol (AP2) for enterprise agent-to-agent commerce. Visa launched its Trusted Agent Protocol for cryptographic verification of AI agent transactions. In February 2026, Coinbase released Agentic Wallets, purpose-built wallet infrastructure allowing AI agents to independently hold funds, send payments, and transact on-chain with built-in spending limits and compliance controls.
+
+The pattern is striking: the same institutions that constitute the fiat financial system---Visa, Mastercard, Google, Cloudflare---are building AI payment infrastructure on programmable rails rather than on fiat rails. They are not doing this for ideological reasons but for engineering ones. As Coinbase's head of developer platform engineering stated: ``Crypto is uniquely suited to machines. It is the only open, digital-native standard for payment that any program can use'' (Reppel 2025). The HTTP protocol that powers the web does not have a native payment layer---HTTP 402 was reserved in the 1990s but never implemented because no internet-native payment standard existed. Stablecoins on programmable rails provide what fiat could not. Gartner projects that autonomous agent transactions could reach \$30 trillion by 2030. Even discounting this projection substantially, the directional implication is clear: a growing share of economic activity will be transacted by software agents that require programmable monetary infrastructure by necessity, not by preference.
+
+This is the $\kappa$ parameter in the model (Appendix, equation 2) made concrete. The AI cost advantage does not merely widen the monetary productivity gap for existing human transactions---it creates an entirely new category of transactions for which fiat infrastructure is not an option at any price. The x402 ecosystem also illustrates the cold-start problem (Proposition 1) in real time: weekly transaction volume grew 4,300\% in a single week following Coinbase's Payments MCP launch in October 2025---a discrete institutional catalyst that pushed the system past its tipping point, after which network effects became self-reinforcing. This is the coordination device the model predicts: not gradual adoption but a discrete shock that shifts $\theta$ past the unstable threshold $\theta$\textsuperscript{u}.
+
+\textbf{2.4 From Payments to Capital Markets: Tokenized Securities}
+
+The payment migration documented in Sections 2.1--2.3 is the measurable entry point to a larger transformation. The growth effects in the extended Solow model (Appendix, Section A.6) flow primarily not from cheaper transfers but from capital market access---and tokenized securities are making that access real.
+
+Financial assets---equities, bonds, real estate, commodities---are being represented as fractional tokens on public blockchains. BlackRock, the world's largest asset manager with \$10 trillion AUM, launched BUIDL---a tokenized US Treasury fund---on Ethereum, reaching \$500 million within months. Franklin Templeton runs an on-chain money market fund. JPMorgan's Onyx platform processes billions in tokenized repo transactions. The total value of tokenized real-world assets exceeded \$12 billion by late 2025, with Boston Consulting Group projecting \$16 trillion by 2030. This is not speculative infrastructure being built by crypto startups---it is institutional infrastructure being built by the Mag 7 technology companies and the largest financial institutions on Earth.
+
+Tokenization has three consequences for the monetary productivity gap framework. First, it \textbf{transforms the yield access gap from theoretical to operational}. When a farmer in Ethiopia can hold \$3 of tokenized US Treasuries on her phone---something currently impossible because the minimum Treasury purchase requires a US brokerage account---the yield access gap (Section 2.1) closes at the individual level. The 1.4 billion unbanked adults are not just gaining access to cheaper payments; they are entering the global capital market for the first time in history, earning the risk-free rate on savings that previously earned deeply negative real returns.
+
+Second, tokenization \textbf{makes the Solow extension's growth effects substantive rather than illustrative}. The extended Solow model's savings premium (s\textsuperscript{e} = s + $\alpha$$\theta$*, Appendix equation 15) currently captures the savings effect of reduced transaction costs---a real but modest channel. With tokenized securities, $\alpha$ measures something far more consequential: the savings effect of giving billions of people access to dollar-denominated yield for the first time. People who were earning $-$25\% real on cash suddenly earn +4.5\% nominal on tokenized Treasuries. That is not a marginal improvement in transaction efficiency---it is a transformation of the savings rate that drives Solow steady-state output. Similarly, the innovation premium (Ã = A · {[}1 + $\beta$$\theta$*{]}, equation 16) captures capital allocation efficiency: when AI agents continuously optimize portfolios across every tokenized asset class globally, capital flows to wherever its marginal product is highest. The finance-growth literature---King and Levine (1993), Rajan and Zingales (1998)---has spent three decades showing that financial development drives growth primarily through better capital allocation, not cheaper transfers. Tokenized securities are the mechanism that connects this literature to the monetary productivity gap.
+
+Third, tokenization \textbf{eliminates the distinction between money and assets}. In the current system, ``money'' (cash, bank deposits) and ``assets'' (stocks, bonds) live in separate infrastructures with separate intermediaries. You sell a stock through a brokerage, wait for settlement, transfer dollars to your bank, then spend. On-chain, the distinction dissolves. An AI agent can pay for compute resources by transferring 0.003 tokenized Treasury bonds directly. Every asset becomes money-like---what economists call increased ``moneyness.'' This means the model's $\theta$ parameter is not merely the share of \emph{payments} on programmable rails but the share of \emph{total economic value} managed on programmable infrastructure. The endgame is not cheaper remittances---it is the global capital market operating on programmable rails, with AI agents as the primary participants.
+
+This paper measures the transfer cost component of the MPG (6.4pp, Data Appendix Section B.5) because it is the component for which clean cross-country data exists today. But the growth effects in the Solow extension---the 11--13\% output gains from accommodation (Table 2)---flow primarily from the yield access and capital allocation channels that tokenized securities activate. The remittance MPG is the floor of the true monetary productivity gap, not the ceiling. Section 6.6 discusses the implications for empirical strategy.
+
+\textbf{3. Model: Two-Sector Monetary Regime Choice}
+
+This section summarizes the two-sector model of endogenous monetary regime choice developed formally in the Model Appendix. The full model---including proofs, comparative statics, and welfare analysis---appears in Sections A.1--A.6; an empirical strategy with proposed identification appears in Section A.7. Here I present the intuition and key results.
+
+\textbf{3.1 Setup and Equilibrium}
+
+The model treats the monetary system as a two-sector economy, directly analogous to the agriculture/non-agriculture framework in Gollin, Lagakos, and Waugh (2014). A continuum of economic activities chooses between fiat (F) and programmable (P) monetary infrastructure based on relative transaction costs, institutional quality, and regulatory stance. Each activity faces a switching cost c drawn from a uniform distribution---the monetary analogue of the migration costs that keep labor trapped in low-productivity agriculture.
+
+Fiat infrastructure productivity depends on institutional quality q: better institutions (lower inflation, deeper banking) reduce effective transaction costs. Programmable infrastructure productivity depends on the AI cost advantage $\kappa$ and exhibits \emph{network effects}: as more activity migrates (as $\theta$ rises), programmable transaction costs fall for all participants---a form of the strategic complementarity that Rochet and Tirole (2003) formalize in their analysis of two-sided markets. The AI cost advantage $\kappa$---the ratio of human to AI cognitive labor cost---enters as a multiplicative productivity premium on programmable rails. This parameter is directly observable: inference costs have fallen roughly 10,000x since 2020, and the x402 protocol ecosystem (Section 2.3) demonstrates that AI agents are already transacting autonomously on programmable rails at scale, with over \$600 million in payment volume by late 2025. Regulatory friction $\varphi$ is a policy variable that governments set. An activity migrates when the productivity gain from programmable rails exceeds its switching cost. The equilibrium $\theta$* is the fixed point of a mapping that balances the monetary productivity gap against the distribution of switching costs (Appendix, equation 7). The model's comparative statics predict that adoption decreases in fiat quality ($\partial$$\theta$*/$\partial$q \textless{} 0) and regulatory friction ($\partial$$\theta$*/$\partial$$\varphi$ \textless{} 0); Data Appendix Table B.1 confirms both signs in a panel of 18 countries, though multicollinearity between fiat quality and development indicators prevents identification in cross-section (Data Appendix, Section B.2).
+
+The model embeds in an extended Solow growth framework where $\theta$ affects both the effective savings rate and TFP growth. The savings premium (s\textsuperscript{e} = s + $\alpha$$\theta$*, Appendix equation 15) captures two channels: reduced transaction costs on payments (the measured 6.4pp transfer cost gap) and, more consequentially, expanded access to yield-bearing instruments through tokenized securities (Section 2.4). For the 1.4 billion unbanked adults currently earning negative real returns on cash savings, access to tokenized Treasuries transforms the savings rate from a development constraint into a growth driver---the mechanism King and Levine (1993) identify as the primary channel through which financial development drives growth. The innovation premium (Ã = A · {[}1 + $\beta$$\theta$*{]}, equation 16) captures TFP gains from improved capital allocation: when AI agents continuously optimize across every tokenized asset class globally, capital flows to wherever its marginal product is highest, reducing the misallocation that Hsieh and Klenow (2009) estimate costs developing countries 30--50\% of potential output. Under resistance, a flight penalty degrades domestic TFP as AI-native innovation and capital relocate to accommodating jurisdictions---the mechanism Koyama and Rubin (2022) identify across multiple historical episodes: ``unconstrained rulers can prevent the spread of'' beneficial technologies, but doing so ensures the innovation concentrates elsewhere. This extended Solow model (Appendix, Section A.6) produces the steady-state output comparisons in Table 2.
+
+\textbf{3.2 The Lucas Critique and Policy Erosion (Proposition 4)}
+
+Lucas (1976) warned that econometric models estimated under one regime cannot predict outcomes under a different regime because agents adjust behavior. The monetary productivity gap creates a direct application: central bank models treat the monetary base as exogenous, but AI agents endogenously choose their monetary infrastructure in response to policy.
+
+The formal model (Appendix, Proposition 4) shows that central bank policy effectiveness is proportional to (1$-$$\theta$)²: the CB influences both the direct interest-rate channel and the credit channel, each proportional to the fiat share. The resulting ``Lucas Gap'' L = 1 $-$ (1$-$$\theta$)² is convex and accelerating---policy erosion compounds as adoption grows. At $\theta$ = 0.3, the CB retains 49\% effectiveness; at $\theta$ = 0.5, only 25\%. The strategic interaction creates a feedback loop: tightening drives migration, which reduces effectiveness, which leads to further tightening, which drives further migration.
+
+This is amplified by a measurement problem that Kuznets (1934) anticipated: when AI drives more output at lower cost, GDP as conventionally measured \emph{falls} because prices decline. Central banks reading GDP-derived indicators see contraction and tighten further---but the contraction is phantom. True welfare is rising while measured GDP stagnates. This measurement error compounds the Lucas Gap into a systematic policy bias---the monetary analogue of the mismeasurement problems that plague agricultural productivity statistics in developing economies (Gollin, Lagakos, and Waugh 2014).
+
+\includegraphics[width=5.83333in,height=2.5in]{./media/f2bc0a0158573f21519f7de2a47c05580137cad5.png}
+
+\emph{Figure 1: (a) The Lucas Gap grows nonlinearly as AI agents endogenously optimize around monetary policy. (b) True welfare diverges from measured GDP as AI-driven cost reduction is misread as contraction.}
+
+\textbf{3.3 Multiple Equilibria and the Cold-Start Problem (Proposition 1)}
+
+The model's central analytical result (Appendix, Proposition 1) is that network effects produce \emph{multiple equilibria}: a stable low-adoption equilibrium $\theta$\textsubscript{l}, an unstable threshold $\theta$\textsuperscript{u}, and a stable high-adoption equilibrium $\theta$\textsubscript{h}. The economy is trapped at $\theta$\textsubscript{l} because each agent's adoption decision depends on others' adoption through the network effect in transaction costs. The transition from $\theta$\textsubscript{l} to $\theta$\textsubscript{h} requires a discrete shock that pushes $\theta$ past the unstable threshold---the system has a \emph{cold-start problem}.
+
+This finding has direct parallels in the structural transformation literature. Labor does not flow smoothly from agriculture to industry in response to the productivity gap; it requires institutional catalysts---land reform, education investment, infrastructure construction, relaxation of migration barriers. Similarly, the monetary transition requires exogenous catalysts: Bitcoin ETF approvals (2024), regulatory frameworks like the GENIUS Act (2025), payment network integration by incumbents (2026--27). These are not smooth adoption curves but discrete institutional changes that shift $\theta$ past the cold-start barrier. Critically, the model shows that the threshold for multiple equilibria is \emph{decreasing} in the AI cost advantage $\kappa$ (Appendix, equation 8): as AI becomes cheaper, weaker network effects suffice to produce the cold-start dynamic. The problem is getting \emph{easier} to overcome over time.
+
+This nuance matters for policy. The structural forces that make the monetary transition self-sustaining once started cannot initiate it. Policymakers have genuine agency over the transition's timing, if not its eventuality---just as industrial policy can accelerate or retard the agricultural-to-industrial transition without changing its ultimate direction.
+
+\includegraphics[width=5.41667in,height=3.07292in]{./media/64c3390efd39e8eeca3b609eec7aed9db2256814.png}
+
+\emph{Figure 2: Adoption trajectories under accommodation and resistance. The tipping threshold falls endogenously as institutional catalysts accumulate. Resistance delays but does not prevent the transition.}
+
+\textbf{4. Country-Level Heterogeneity Across the Industrialization Curve}
+
+A central insight from the structural transformation literature is that ``developing'' is not a single category. This section classifies 40 nations into six industrialization stages using a Gollin, Lagakos, and Waugh (2014) framework: agriculture share of GDP as the primary indicator, cross-referenced with GDP per capita PPP, service sector composition, and demographic transition timing. Each group then receives its own model parameterization based on its structural characteristics. The fiat quality index (q) is the equal-weighted average of five normalized components: inflation stability, banking access (Findex account ownership), ATM density, government effectiveness (World Governance Indicators), and internet penetration. The FQI deliberately excludes GDP per capita to separate income from institutional quality. Construction details, digital infrastructure measures, and regulatory stance codings for all 41 countries are documented in Data Appendix Section B.1.
+
+\includegraphics[width=5.52083in,height=3.4375in]{./media/9ea2d62b88efd8f579e985ce437653b56b16fbc8.png}
+
+\emph{Figure 3: 40 nations classified by economic structure. Bubble size proportional to population. The arrow traces the structural transformation path from agricultural to post-industrial economies.}
+
+\textbf{Table 1: Country Group Characteristics}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1709}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1175}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1122}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1015}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0962}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1175}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1175}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1667}}@{}}
+\toprule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Stage} & \textbf{Pop 2025} & \textbf{GDP/cap} & \textbf{Agri\%} & \textbf{FQI} & \textbf{Fertility} & \textbf{Pop→2100} & \textbf{N} \\
+Pre-Industrial & 263M & \$2,690 & 31.9\% & 0.36 & 4.43 & +145\% & 4 \\
+Early Industrial & 2,641M & \$8,421 & 17.4\% & 0.56 & 2.54 & +30\% & 9 \\
+Mid-Industrial & 2,249M & \$20,458 & 7.6\% & 0.76 & 1.32 & $-$35\% & 9 \\
+Late Industrial & 559M & \$36,341 & 3.8\% & 0.62 & 1.55 & $-$7\% & 8 \\
+Post-Industrial & 408M & \$52,501 & 1.3\% & 0.93 & 1.31 & $-$24\% & 6 \\
+AI-Frontier & 440M & \$77,265 & 0.9\% & 0.95 & 1.56 & +14\% & 4 \\
+\end{longtable}
+
+\emph{Sources: UN World Population Prospects 2024 (medium variant); World Bank WDI 2023.}
+
+\textbf{4.1 The Demographic Fault Line}
+
+The world is splitting along a demographic fault line that maps onto the monetary productivity gap. The Pre-Industrial and Early Industrial groups---2.9 billion people---have median ages of 18--26, fertility above 2.5, and fiat quality below 0.56. In the language of Galor's (2011) unified growth theory, as presented in Koyama and Rubin (2022), these populations have not completed the demographic transition from quantity to quality of children. They are still \emph{growing} through 2100. The Mid-Industrial and Post-Industrial groups---2.7 billion---are \emph{shrinking}, with median ages above 36 and sub-replacement fertility.
+
+The growing-population countries are precisely those with the widest monetary productivity gap: the weakest fiat, the youngest populations (lowest switching costs), and the most to gain from programmable monetary infrastructure. By 2050, the Pre-Industrial group adds 150 million people while the Post-Industrial group loses 20 million. The monetary transition is not happening to a static population.
+
+\includegraphics[width=5.83333in,height=2.60417in]{./media/64ac46d390ad09c4b4f2d8417589ba64cdb8dabe.png}
+
+\emph{Figure 4: (a) World population by industrialization stage. Demographic weight shifts toward early-stage economies. (b) Fiat quality vs. digital readiness. The bottom-left quadrant (young, weak fiat) is where the largest populations reside and the monetary productivity gap is widest.}
+
+\textbf{4.2 Three Distinct Transition Pathways}
+
+\textbf{Pre/Early Industrial (3 billion): leapfrogging adoption.} The monetary productivity gap is driven by fiat institutional failure, not AI demand. Young populations with high mobile penetration adopt stablecoins for savings and remittances. This echoes Gerschenkron's (1962) ``advantages of backwardness,'' which Koyama and Rubin (2022) describe as ``certain economic advantages for countries that embarked upon industrialization from a more primitive starting point''---the ability to ``skip intermediary steps.'' Just as Kenya leapfrogged landlines for M-Pesa, Ethiopia need not build a full fiat banking system before adopting programmable money.
+
+\textbf{Mid-Industrial (2.2 billion, dominated by China): Coasean dissolution.} The transition is driven by structural dissolution of the manufacturing base. As AI collapses market transaction costs below organizational overhead, manufacturing firms dissolve into networks of autonomous agents requiring programmable monetary infrastructure. This group is shrinking (population down 35\% by 2100), meaning fewer people bear transition costs but each is more deeply affected.
+
+\textbf{Post-Industrial / AI-Frontier (850 million): network-driven adoption.} Strong fiat and aging populations produce the lowest structural demand pressure but the highest digital readiness. Once adoption crosses a tipping threshold, infrastructure maturation becomes self-reinforcing. These economies reach the highest adoption levels but are shrinking and aging.
+
+\textbf{5. Sovereign Strategy: Accommodate or Resist}
+
+The extended Solow model (Appendix, Section A.6) is parameterized separately for each of the six industrialization stages and run under both accommodation ($\varphi$ low) and resistance ($\varphi$ high) to derive the output implications of each strategy.
+
+\textbf{Table 2: Accommodate vs. Resist --- Output per Capita at 2050 (2025 = 100)}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2778}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1806}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1806}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1806}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1806}}@{}}
+\toprule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Stage} & \textbf{Accomm.} & \textbf{Resist} & \textbf{Gap} & \textbf{\% Gain} \\
+Pre-Industrial & 256.8 & 228.4 & +28.4 & +12.4\% \\
+Early Industrial & 261.2 & 233.9 & +27.3 & +11.7\% \\
+Mid-Industrial & 213.4 & 193.0 & +20.3 & +10.5\% \\
+Late Industrial & 196.5 & 174.5 & +21.9 & +12.6\% \\
+Post-Industrial & 164.2 & 147.8 & +16.3 & +11.0\% \\
+AI-Frontier & 164.0 & 147.5 & +16.5 & +11.2\% \\
+\end{longtable}
+
+Accommodation produces 11--13\% higher output per capita by 2050 across all six stages. The mechanism is the innovation flight penalty (Appendix, equation 12): under resistance, AI-native innovation relocates to accommodating jurisdictions, reducing domestic TFP growth. The penalty is largest for the Late Industrial group (Russia, Mexico, Turkey, Argentina)---economies with mediocre fiat quality, populations young enough to adopt, and institutions fragile enough that resistance bites. China's 2021 mining ban confirms the innovation flight mechanism empirically: the Cambridge Bitcoin Mining Map shows China's share of global hashrate collapsed from 46\% to near-zero within months, with the United States and Kazakhstan absorbing the displaced activity (Data Appendix Section B.6). The accommodation pathway is equally visible: the United States' regulatory framework (GENIUS Act, SEC guidance) enabled Coinbase to build the x402 agentic payment protocol on US-regulated infrastructure, producing \$600 million in autonomous AI-agent payment volume and integration by Cloudflare, Google, Visa, and Mastercard within months of launch (Section 2.3). The US captured this innovation premium because it accommodated; China exported its mining industry because it resisted. This is consistent with the model's comparative static on regulatory friction (Proposition 2): $\partial$$\theta$*/$\partial$$\varphi$ \textless{} 0, and the effect is largest when the monetary productivity gap is moderate and switching costs are high. The magnitude of this penalty depends on $\gamma$, which the sensitivity analysis (Appendix, Table A.2) shows produces accommodation gains of 6--7\% even at $\gamma$ = 0.2 and 15--17\% at $\gamma$ = 0.6.
+
+The welfare analysis (Appendix, Proposition 3) provides a normative foundation for this finding: the decentralized equilibrium \emph{underadopts} programmable infrastructure because individual agents do not internalize the network externality their migration creates. Accommodation (reducing $\varphi$) moves the economy toward the social optimum; resistance amplifies the distortion. The stakes escalate as the transition moves from payments to capital markets (Section 2.4): US accommodation did not merely capture x402 payment volume---it positioned the United States as the jurisdiction where tokenized securities infrastructure is being built. BlackRock chose Ethereum, a US-regulated ecosystem, for BUIDL. JPMorgan's Onyx operates under US law. The innovation premium under accommodation now includes capital market infrastructure, not just payment infrastructure---and the capital market layer is orders of magnitude larger than the payment layer. Koyama and Rubin's (2022) account of East Asian development provides a historical analogy: the Tigers succeeded because ``export reliance provided much-needed market discipline'' that substituted for missing domestic institutions. Programmable monetary rails play an analogous role---an external constraint that substitutes for weak domestic fiat.
+
+\includegraphics[width=5.83333in,height=2.60417in]{./media/0679cc20151ad708016f8547a5cd3e5869e33fa7.png}
+
+\emph{Figure 5: (a) Adoption trajectories by industrialization stage. (b) Accommodate vs. resist paths for three representative stages showing the innovation flight penalty.}
+
+\includegraphics[width=5.83333in,height=2.60417in]{./media/ebd52323d54c407ca10610d1cbab1cdb652e4e30.png}
+
+\emph{Figure 6: (a) Extended Solow output paths: accommodation captures the innovation premium; resistance loses it to flight. (b) Returns on AI-native capital (r) accelerate while fiat-denominated growth (g) decelerates, widening inequality.}
+
+\textbf{6. Limitations and Directions for Further Research}
+
+\textbf{6.1 Model Calibration}
+
+The two-sector model (Appendix, Sections A.1--A.6) identifies the qualitative structure of the transition---which forces dominate, in what sequence, at what stages---but several parameters lack empirical grounding. The savings premium ($\alpha$), innovation elasticity ($\beta$), network effect strength ($\eta$), and flight penalty ($\gamma$) are set to produce plausible dynamics, not estimated from data. A cross-sectional regression (Data Appendix, Table B.1) finds signs consistent with the model's predictions---adoption decreasing in fiat quality, increasing with accommodating regulation---but no coefficients are statistically significant, reflecting severe multicollinearity between fiat quality, income, and demographic variables (Data Appendix, Section B.2). As anticipated, the path to identification lies in within-country variation. Data Appendix Section B.4 reports the results of an India event study exploiting the 2022 crypto tax regime as a plausibly exogenous shock to regulatory friction ($\varphi$). The two tax shocks---a 30\% capital gains tax (April 2022) and a 1\% TDS (July 2022)---reduced domestic exchange volume by 86\% (R² = 0.938, n = 27), with both shocks individually significant at p \textless{} 0.01. A BTC-adjusted counterfactual analysis, which projects India's pre-treatment BTC elasticity forward to construct the no-treatment counterfactual, produces a more conservative ATT of $-$56\%, while a synthetic control using 10 emerging-market donors estimates $-$81\%. All three methods confirm Proposition 2 and provide direct estimates of $\partial$$\theta$*/$\partial$$\varphi$. The yield access gap (Section 2.1) provides additional cross-country identification: regressing the YAG on FQI produces R² = 0.17 (p = 0.013) in bivariate specification and R² = 0.40 (p \textless{} 0.001) with controls (Data Appendix Section B.9)---substantially stronger than the adoption regressions in Table B.1, suggesting that the yield access gap is a cleaner cross-country measure of monetary infrastructure quality than aggregate crypto adoption indices.
+
+\textbf{6.2 AI Cost Trajectory}
+
+The AI cost advantage $\kappa$ enters the model as a key driver of the monetary productivity gap (Appendix, equation 9) and the threshold for multiple equilibria (equation 8). The model is parameterized from observed cost decline through early 2026, and the x402 ecosystem (Section 2.3) provides direct evidence that $\kappa$ is large enough to generate substantial real economic activity: over \$600 million in AI-agent transactions on programmable rails by late 2025, growing at triple-digit monthly rates, with 15 million transactions processed by four independent facilitators. This pace will moderate as physical constraints---chip fabrication limits, energy costs, data exhaustion---bind. The model's qualitative results are robust to substantial slowdown because the comparative statics depend on the \emph{level} of $\kappa$ (already large), not its rate of change. However, a complete plateau in which $\kappa$ stops growing would freeze the monetary productivity gap and could leave the system in the low-adoption equilibrium if $\theta$ has not yet crossed the unstable threshold.
+
+\textbf{6.3 Regulatory Chokepoints}
+
+The model treats regulatory friction $\varphi$ as a scalar policy variable, but in practice the most effective sovereign tool is targeted weaponization of fiat-to-crypto conversion points. India's 2022 crypto tax regime cratered domestic exchange volume by 86\% (Data Appendix, Table B.2)---a shock more potent than the model's diffuse friction parameter captures. The event study confirms that both the 30\% tax and the 1\% TDS are individually significant, with the combined effect explaining 94\% of volume variation. The Esya Centre documents that displaced activity migrated almost entirely offshore rather than ceasing: over 90\% of Indian crypto volume moved to foreign exchanges within months (Gautam 2023; Gautam and Sharma 2024). However, even this effective tool targets retail adoption---human users moving fiat to crypto through regulated exchanges. AI-agent-to-AI-agent transactions via protocols like x402 (Section 2.3) never touch fiat at all, making on-ramp regulation irrelevant. As the share of economic activity transacted by autonomous agents grows, the policy window for effective regulatory control narrows to the cold-start period before the unstable threshold $\theta$\textsuperscript{u} in Proposition 1 is crossed.
+
+\textbf{6.4 Infrastructure Risks}
+
+Smart contract security vulnerabilities (code exploits, flash loan attacks) and the oracle problem (reliable verification of real-world states for on-chain execution) are engineering constraints that the model abstracts from. These risks suggest that Coasean dissolution may proceed faster in digital-native sectors (compute, inference, data) than in physical supply chains, where trusted real-world data feeds remain centralized chokepoints.
+
+\textbf{6.5 Distribution and Welfare}
+
+The welfare analysis (Appendix, Proposition 3) establishes that accommodation is welfare-improving in aggregate, but the model tracks output per capita, not distribution. If returns to AI-native capital accelerate on programmable rails beyond sovereign taxation, the transition could produce extreme wealth concentration. The r \textgreater{} g dynamics are amplified when AI agents optimize tokenized portfolios continuously across every asset class: the effective return on machine-allocated capital could exceed the return on human-allocated capital by several percentage points per year, compounding into a chasm within a generation. The agricultural-to-industrial transition ultimately raised living standards broadly, but only after decades of institutional adaptation (labor laws, social insurance, progressive taxation). Whether analogous institutions can emerge for the monetary transition---and whether they can emerge fast enough---is the central welfare question the model does not address.
+
+\textbf{6.6 The Yield Access Gap: From Floor to Ceiling}
+
+The empirics in this paper measure both components of the monetary productivity gap, but with different levels of precision. The \emph{transfer cost component} is measured precisely: 6.4pp across 300 remittance corridors (Data Appendix Section B.5). The \emph{yield access component} is measured at the country level: the population-weighted difference between local fiat savings returns and tokenized Treasury yields averages 12.0pp across 40 countries, reaching 14.6pp in Pre/Early Industrial economies (Data Appendix Section B.3.1). Cross-country regressions confirm that the yield access gap predicts crypto adoption ($\beta$ = 0.003, p = 0.011) while the transfer cost gap alone does not ($\beta$ = $-$0.015, p = 0.335). This distinction---that adoption is driven by access to yield rather than cheaper transfers---is the paper's strongest empirical contribution beyond the original thesis framework.
+
+The India event study is also strengthened by synthetic control robustness. Using a six-country donor pool (Indonesia, Philippines, Vietnam, Thailand, Nigeria, South Korea), synthetic India tracks actual India near-perfectly pre-treatment (RMSE = 1.25), then diverges by 65\% post-treatment. India's RMSPE ratio (24.4) ranks first among all units; the rank-based p-value (0.143) is the strongest possible result for a pool of seven countries (Data Appendix Section B.4). Combined with the OLS event study (R² = 0.938, both treatment coefficients significant at p \textless{} 0.01), the evidence that India's crypto tax regime caused---not merely correlated with---the volume collapse is robust across specifications.
+
+The growth effects in the extended Solow model---the 11--13\% output gains from accommodation (Table 2)---flow primarily from the yield access and capital allocation channels that tokenized securities activate (Section 2.4). Observable evidence for the capital market layer is institutional and early-stage: \$12 billion in tokenized real-world assets by late 2025, BlackRock BUIDL at \$500 million, and BCG's \$16 trillion projection for 2030. Country-level panel data on tokenized asset holdings does not yet exist. Constructing such data---by measuring stablecoin balances, tokenized Treasury holdings, and on-chain DeFi deposits by country---is the most important empirical extension of this framework. Until that data exists, the paper's growth claims rest on the measured transfer cost gap (conservative), the cross-country yield access gap regressions (supportive but cross-sectional), and the finance-growth literature that establishes the causal link from financial access to growth (King and Levine 1993, Rajan and Zingales 1998). This gap between the empirics and the model is the paper's most significant limitation and the most productive direction for future work.
+
+\textbf{7. Conclusion}
+
+This paper frames the emerging divergence between fiat and cryptocurrency monetary systems as a structural transformation problem. The monetary productivity gap---the systematic difference in transaction efficiency between programmable and fiat infrastructure---mirrors the agricultural productivity gap documented by Gollin, Lagakos, and Waugh (2014). Both gaps are widest in developing economies, both persist due to institutional frictions rather than inherent technological constraints, and both create policy dilemmas for governments navigating the transition.
+
+Three findings emerge from the model and country-level analysis:
+
+\textbf{First, the transition is not self-starting.} Network effects produce multiple equilibria (Proposition 1), trapping the economy in a low-adoption state. Institutional catalysts are required to escape this equilibrium, just as the agricultural-to-industrial transition required deliberate institutional change. But the threshold for multiple equilibria is decreasing in the AI cost advantage---the cold-start problem is getting easier to overcome. Policymakers have genuine agency over timing.
+
+The Data Appendix provides five forms of empirical support for these findings. First, the monetary productivity gap is directly measurable: fiat remittance costs exceed stablecoin costs by 6.4 percentage points on average across 300 corridors, with the gap widest in Sub-Saharan Africa (9.4pp). Second, the yield access gap---the value-added-per-dollar differential that is the true Gollin analogue---averages 12.0pp across 40 countries and predicts crypto adoption with statistical significance ($\beta$ = 0.003, p = 0.011), while the transfer cost gap alone does not. Third, India's 2022 crypto tax regime confirms Proposition 2: regulatory friction reduced domestic volume by 86\%, but the activity migrated offshore rather than disappearing; a synthetic control robustness check confirms India's volume collapse is the largest treatment effect among seven peer countries (p = 0.143). Fourth, China's 2021 mining ban confirms the innovation flight mechanism: 46 percentage points of global hashrate relocated to accommodating jurisdictions within months. Fifth, the x402 agentic payment ecosystem (Section 2.3) demonstrates that the AI-crypto nexus is no longer theoretical: over \$600 million in autonomous AI-agent transactions have been processed on programmable rails by early 2026.
+
+\textbf{Second, demographics shape the transition.} The 2.9 billion people in Pre-Industrial and Early Industrial economies---young, growing, fiat-constrained---face the widest monetary productivity gap (Proposition 2: $\partial$$\theta$*/$\partial$q \textless{} 0) and stand to gain the most from accommodation. Gerschenkron's advantages of backwardness apply: countries that skipped landlines can skip fiat banking.
+
+\textbf{Third, accommodation dominates resistance across all six stages.} The market underadopts programmable infrastructure due to network externalities (Proposition 3); accommodation corrects toward the social optimum while resistance amplifies the distortion. The 11--13\% output gain reflects both the innovation premium and the avoided flight penalty. For AI-Frontier economies, accommodation captures productivity gains; for Pre-Industrial economies, it provides monetary stability that domestic fiat cannot.
+
+Koyama and Rubin (2022) conclude their survey of growth economics with the observation that ``when human brain power can be used for solving the most pressing issues of the day rather than focusing on where one's next meal is coming from, the odds of technological progress are much greater.'' If AI is reducing the cost of cognitive output---at whatever rate---then monetary systems designed to manage scarcity face an increasingly fundamental mismatch with the economy they govern. The two-sector model developed here shows this mismatch produces measurable effects: multiple equilibria, endogenous policy erosion, and cross-country income divergence through a channel the standard Solow model cannot capture.
+
+This paper analyzes the first phase of a multi-phase monetary structural transformation: the migration of payments from fiat to programmable rails. The transfer cost gap (6.4pp) is where the evidence is strongest. But the framework points toward a larger transformation---the tokenization of all financial assets (Section 2.4)---where the growth effects become orders of magnitude more consequential. When 1.4 billion unbanked adults can hold tokenized Treasuries on smartphones, the savings rate effect in the Solow extension is no longer a modest improvement in transaction efficiency but a transformation of global capital allocation. When AI agents trade tokenized securities continuously across every asset class and jurisdiction, the innovation premium captures capital allocation efficiency approaching the theoretical maximum. The paper's 11--13\% output gains from accommodation are conservative estimates based on the payment layer; the capital market layer produces effects that the finance-growth literature (King and Levine 1993, Rajan and Zingales 1998) suggests are substantially larger.
+
+The Mag 7 technology companies, the world's largest asset managers, and the major payment networks are building this infrastructure now---not for ideological reasons but because AI agents require programmable settlement and tokenized assets require programmable rails. The structural transformation of the monetary system is not a possibility to be debated but a process to be navigated. Understanding it through the lens of structural transformation---the same framework economists use to understand the shift from agriculture to industry---offers a path toward both analytical clarity and the institutional adaptation that will determine whether the gains are broadly shared or narrowly captured.
+
+\textbf{References}
+
+Chainalysis (2025). ``The Convergence of AI and Cryptocurrency: From Digital Transactions to Agentic Payments.'' Chainalysis Blog, December 23, 2025.
+
+Cloudflare (2025). ``Launching the x402 Foundation with Coinbase, and Support for x402 Transactions.'' Cloudflare Blog, December 3, 2025.
+
+Coase, R. H. (1937). ``The Nature of the Firm.'' Economica 4(16), 386--405.
+
+Coinbase (2025). ``Payments MCP: Connecting AI to Crypto Payments.'' Coinbase Developer Platform Blog, October 23, 2025.
+
+Coinbase (2026). ``Agentic Wallets: Give Any Agent a Wallet.'' Coinbase Developer Platform Blog, February 12, 2026.
+
+Galor, O. (2011). Unified Growth Theory. Princeton: Princeton University Press.
+
+Gautam, V. (2023). ``Impact Assessment of TDS on the Indian VDA Market.'' Esya Centre Special Issue No. 210.
+
+Gautam, V. \& Sharma, K. (2024). ``Taxes and Takedowns.'' Esya Centre.
+
+Gerschenkron, A. (1962). Economic Backwardness in Historical Perspective. Cambridge: Belknap Press.
+
+Gollin, D., Lagakos, D., \& Waugh, M. E. (2014). ``The Agricultural Productivity Gap.'' Quarterly Journal of Economics 129(2), 939--993.
+
+Hsieh, C.-T. \& Klenow, P. J. (2009). ``Misallocation and Manufacturing TFP in China and India.'' Quarterly Journal of Economics 124(4), 1403--1448.
+
+Jack, W. \& Suri, T. (2014). ``Risk Sharing and Transactions Costs: Evidence from Kenya's Mobile Money Revolution.'' American Economic Review 104(1), 183--223.
+
+King, R. G. \& Levine, R. (1993). ``Finance and Growth: Schumpeter Might Be Right.'' Quarterly Journal of Economics 108(3), 717--737.
+
+Koyama, M. \& Rubin, J. (2022). How the World Became Rich: The Historical Origins of Economic Growth. Cambridge: Polity Press.
+
+Kuznets, S. (1934). ``National Income, 1929--1932.'' 73rd U.S. Congress, 2d Session, Senate Document No. 124.
+
+Lucas, R. E. (1976). ``Econometric Policy Evaluation: A Critique.'' Carnegie-Rochester Conference Series 1, 19--46.
+
+Pritchett, L. (1997). ``Divergence, Big Time.'' Journal of Economic Perspectives 11(3), 3--17.
+
+Rajan, R. G. \& Zingales, L. (1998). ``Financial Dependence and Growth.'' American Economic Review 88(3), 559--586.
+
+Reppel, E. (2025). Quoted in ``Coinbase Links AI to Crypto Payments with New Protocol for Autonomous Transactions.'' Decrypt, October 23, 2025.
+
+Rochet, J.-C. \& Tirole, J. (2003). ``Platform Competition in Two-Sided Markets.'' Journal of the European Economic Association 1(4), 990--1029.
+
+Solow, R. M. (1956). ``A Contribution to the Theory of Economic Growth.'' Quarterly Journal of Economics 70(1), 65--94.
+
+Abadie, A., Diamond, A., \& Hainmueller, J. (2010). ``Synthetic Control Methods for Comparative Case Studies.'' Journal of the American Statistical Association 105(490), 493--505.
+
+Boston Consulting Group (2024). ``Relevance of On-Chain Asset Tokenization in `Crypto Winter.'\,'' BCG and ADDX Research.
+
+United Nations (2024). World Population Prospects 2024: Summary of Results. UN DESA/POP/2024.
+
+Wissner-Gross, A. (2024). ``The Deflation Rate of Intelligence.'' Talk at MIT Technology Review EmTech Conference.
+
+World Bank (2023). World Development Indicators. Washington, DC.
+
+\end{document}

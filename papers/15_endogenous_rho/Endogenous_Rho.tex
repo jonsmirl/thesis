@@ -1,0 +1,778 @@
+\documentclass[12pt]{article}
+
+%=== Packages ===
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{natbib}
+\usepackage[colorlinks=true,citecolor=blue,linkcolor=blue,urlcolor=blue]{hyperref}
+\usepackage[capitalise,noabbrev]{cleveref}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{graphicx}
+
+%=== Theorem environments ===
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+%=== Notation shortcuts ===
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\Cov}{\operatorname{Cov}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calJ}{\mathcal{J}}
+\newcommand{\calR}{\mathcal{R}}
+\newcommand{\calL}{\mathcal{L}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calN}{\mathcal{N}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\bone}{\mathbf{1}}
+
+\title{Endogenous Complementarity:\\The Self-Referential Dynamics of $\rho$}
+\author{Jon Smirl}
+\date{February 2026 \\ \smallskip \textit{Working Paper}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The CES complementarity parameter $\rho$ has been treated as exogenous throughout the economic free energy framework: a structural constant that determines superadditivity, correlation robustness, strategic independence, critical temperature, crisis sequence, and cycle frequency.  This paper endogenizes $\rho$.  Four channels drive $\rho$ evolution: firm-level optimization (firms choose production architecture to minimize free energy), technological standardization (Wright's Law learning curves increase modularity), evolutionary selection (the Price equation selects for profitable complementarity levels), and aggregation renormalization (the RG flow pulls the effective $\rho$ toward Cobb-Douglas under coarse-graining).  The central result is that these channels operate on different timescales and in opposite directions, creating a \emph{limit cycle in $(\rho, T)$ space} that reproduces the Perez technology cycle.  Short-run optimization pushes $\rho$ down during expansions (complementary production is more productive when information is cheap), while long-run standardization pushes $\rho$ up (cumulative investment creates modular, substitutable architectures).  The tension between them drives the system into orbit around the critical curve $T^*(\rho)$, producing \emph{self-organized criticality}: the economy spends most of its time near the phase boundary, generating the power-law statistics of economic fluctuations documented by \citet{gabaix2009}.  The endogenous $\rho$ dynamics close the framework: $\rho$ governs economic structure through the CES production function, economic structure determines investment, investment drives technological change through Wright's Law, and technological change determines $\rho$.  The resulting self-referential system has no free parameters---everything is determined by initial conditions and the speed of learning.
+\end{abstract}
+
+\textbf{JEL Codes:} O33, E32, D24, L23, C62
+
+\textbf{Keywords:} endogenous complementarity, CES production, self-organized criticality, technology cycles, modularity, standardization, Price equation, Perez waves
+
+%=============================================================================
+\section{Introduction}\label{sec:intro}
+%=============================================================================
+
+The economic free energy framework rests on a single structural parameter: the CES complementarity $\rho$.  Through the curvature $K = (1 - \rho)(J-1)/J$, this parameter simultaneously controls the superadditivity of diverse inputs, the robustness of diversification against correlated shocks, and the strategic stability of balanced allocation \citep{smirl2026ces}.  The critical temperature $T^*(\rho)$ at which efficient allocation breaks down, the ordering of sectoral crises, the frequency of business cycles, and the topology of technology waves all flow from $\rho$ \citep{smirl2026dynamical,smirl2026conservation,smirl2026business}.
+
+Yet across eleven companion papers, $\rho$ has been treated as a constant---a parameter of the production technology that the economist takes as given.  This is unsatisfying for three reasons.
+
+\emph{First}, technology changes substitutability.  The introduction of containerized shipping (1956--1970) made transportation inputs interchangeable across carriers, increasing $\rho$ in logistics.  The development of standard APIs and cloud computing (2006--2015) made software components substitutable across providers.  Every major technological transition changes which inputs can replace which others---that is, it changes $\rho$.
+
+\emph{Second}, the framework's own results imply $\rho$ dynamics.  Paper 1 \citep{smirl2026ed} models the transition from concentrated to distributed AI as a cost crossing, but the deeper transformation is architectural: concentrated systems have low $\rho$ (tightly coupled, non-substitutable components) while distributed systems have high $\rho$ (modular, interchangeable agents).  The crossing IS a $\rho$ transition.  The Minsky trap of Paper 14 \citep{smirl2026business} operates through endogenous $\rho$ at the extensive margin (which sectors are active), but leaves each sector's $\rho$ frozen.
+
+\emph{Third}, with exogenous $\rho$, the framework has a free parameter that the moduli space theorem \citep{smirl2026complementary} identifies as the sole determinant of qualitative dynamics.  Endogenizing $\rho$ closes the system: if $\rho$ is determined by the economy's own dynamics, there are no free structural parameters.  Everything---equilibria, cycles, crises, recovery---is determined by initial conditions and the speed of learning.
+
+This paper identifies four channels through which $\rho$ evolves, derives the coupled $(\rho, T)$ dynamics, and shows that the resulting system exhibits self-organized criticality: the economy is attracted to its own critical curve $T^*(\rho)$, generating power-law fluctuations and reproducing the Perez technology cycle as a limit cycle in parameter space.
+
+\paragraph{Related literature.}
+The endogeneity of production structure has been explored from several angles.  \citet{milgrom1990} showed that complementarities in production arise from the joint adoption of modern manufacturing practices---a form of endogenous $\rho$ at the firm level.  \citet{henderson1990} distinguished between component and architectural innovation, corresponding in our framework to changes in input quality (fixed $\rho$) versus changes in $\rho$ itself.  \citet{baldwin2000} developed a formal theory of modularity as a design choice, arguing that firms deliberately partition systems into modules (increase $\rho$) to manage complexity.  \citet{bresnahan1995} documented general-purpose technologies that transform the complementarity structure of entire industries.
+
+The evolutionary selection perspective draws on \citet{nelson1982}, who modeled technological change as an evolutionary process with selection on firm-level routines.  The Price equation formulation follows \citet{price1970} as applied to economic settings by \citet{metcalfe1998}.
+
+The self-organized criticality result connects to \citet{bak1987}, who showed that driven dissipative systems can self-organize to critical states.  \citet{scheinkman2014} and \citet{gabaix2009} documented power-law regularities in economic data consistent with criticality.  The present paper provides a \emph{mechanism}---endogenous $\rho$ dynamics orbiting the critical curve $T^*(\rho)$---rather than simply observing the statistical signature.
+
+\paragraph{Outline.}
+\Cref{sec:channels} identifies the three channels of $\rho$ evolution.  \Cref{sec:rho-equation} derives the equation of motion for $\rho$.  \Cref{sec:coupled} analyzes the coupled $(\rho, T)$ dynamics.  \Cref{sec:limit-cycle} proves the existence of a limit cycle and identifies it with the Perez technology cycle.  \Cref{sec:soc} derives self-organized criticality.  \Cref{sec:price} develops the evolutionary perspective through the Price equation.  \Cref{sec:diversity} shows that $\rho$-diversity is itself a source of economic value.  \Cref{sec:closure} explains how endogenous $\rho$ closes the framework.  \Cref{sec:predictions} presents testable predictions.  \Cref{sec:conclusion} concludes.
+
+%=============================================================================
+\section{Three Channels of $\rho$ Evolution}\label{sec:channels}
+%=============================================================================
+
+\subsection{Channel 1: Firm-level optimization}\label{sec:optimization}
+
+Firms do not merely operate within a given production function; they choose production architectures.  The choice between integrated and modular designs, between specialized and general-purpose inputs, between tight coupling and loose coupling, is a choice of $\rho$.
+
+\begin{definition}[Architectural choice]\label{def:architecture}
+A firm's \emph{production architecture} is characterized by its complementarity parameter $\rho \in [\rho_{\min}, \rho_{\max}]$, where $\rho_{\min}$ is the tightest feasible coupling (determined by current technology) and $\rho_{\max} \leq 1$ is perfect substitutability.  The firm chooses $\rho$ to maximize output net of architectural costs:
+\begin{equation}\label{eq:firm-choice}
+\rho^*(T) = \arg\max_{\rho \in [\rho_{\min}, \rho_{\max}]} \left[\calF(\rho, T) - c_A(\rho)\right],
+\end{equation}
+where $\calF(\rho, T) = \Phi_{\mathrm{CES}}(\rho) - T \cdot H(\rho)$ is the free energy and $c_A(\rho)$ is the cost of architectural modularity (increasing in $\rho$, since modularity requires interface design, standardization effort, and coordination overhead).
+\end{definition}
+
+\begin{proposition}[Optimal complementarity decreases with $T$]\label{prop:opt-rho}
+Suppose $\calF(\rho, T)$ is concave in $\rho$ for each $T$, and $c_A(\rho)$ is convex and increasing.  Then the optimal complementarity $\rho^*(T)$ is increasing in $T$: firms choose more substitutable production when information frictions are high.
+\end{proposition}
+
+\begin{proof}
+The first-order condition is $\partial \calF/\partial \rho = c_A'(\rho)$.  By the implicit function theorem:
+\begin{equation}
+\frac{d\rho^*}{dT} = -\frac{\partial^2 \calF/\partial \rho \partial T}{\partial^2 \calF/\partial \rho^2 - c_A''(\rho)}.
+\end{equation}
+The denominator is negative (concavity of $\calF$ minus convexity of $c_A$).  For the numerator: at the Boltzmann equilibrium, higher $T$ increases the entropy bonus of substitutable architectures (high $\rho$) relative to complementary ones (low $\rho$), making $\partial^2 \calF/\partial \rho \partial T > 0$.  Therefore $d\rho^*/dT > 0$.
+\end{proof}
+
+The economic intuition is straightforward.  When information is cheap ($T$ low), firms can efficiently coordinate complementary inputs and extract the superadditivity premium.  The benefit of low $\rho$ (high output from complementary production) exceeds the cost (fragility).  When information is expensive ($T$ high), firms cannot coordinate complementary inputs effectively, and the robustness of substitutable architectures dominates.
+
+\begin{remark}[Timescale]
+Architectural choice operates on a medium timescale: faster than technology evolution but slower than price adjustment.  Firms cannot switch between integrated and modular production overnight, but they can over quarters to years.  We assign this channel a timescale $\tau_A \sim 1$--5 years.
+\end{remark}
+
+\subsection{Channel 2: Technological standardization}\label{sec:standardization}
+
+Independent of firm-level optimization, the cumulative effect of investment and production experience makes technologies more modular over time.  This is the standardization channel: repeated production reveals which interfaces can be decoupled, which components can be made interchangeable, and which operations can be routinized.
+
+\begin{definition}[Standardization dynamics]\label{def:standardization}
+Let $Q(t) = \int_0^t I(s)\,ds$ be cumulative investment in a technology.  The \emph{standardization effect} is:
+\begin{equation}\label{eq:standardization}
+\frac{d\rho}{dt}\bigg|_{\mathrm{std}} = \beta_S \cdot \frac{I(t)}{Q(t)} \cdot (\rho_{\max} - \rho(t)),
+\end{equation}
+where $\beta_S > 0$ is the standardization elasticity and $(\rho_{\max} - \rho)$ is the remaining standardization potential.
+\end{definition}
+
+This has the structure of Wright's Law applied to modularity rather than cost.  The investment rate $I/Q$ gives the learning speed; the factor $(\rho_{\max} - \rho)$ ensures saturation as the technology approaches maximum modularity.
+
+\begin{proposition}[Standardization is a log-linear process]\label{prop:std-log}
+Under \eqref{eq:standardization} with constant investment $I$:
+\begin{equation}\label{eq:std-solution}
+\rho_{\max} - \rho(t) = (\rho_{\max} - \rho_0) \cdot \left(\frac{Q_0}{Q(t)}\right)^{\beta_S},
+\end{equation}
+so that $\rho$ approaches $\rho_{\max}$ as a power law in cumulative investment, with exponent $\beta_S$.
+\end{proposition}
+
+\begin{proof}
+With constant $I$, $Q(t) = Q_0 + It$ and $I/Q = d\log Q/dt$.  Substituting into \eqref{eq:standardization}:
+\begin{equation}
+\frac{d}{dt}(\rho_{\max} - \rho) = -\beta_S \frac{d\log Q}{dt} (\rho_{\max} - \rho),
+\end{equation}
+which integrates to $\rho_{\max} - \rho = C \cdot Q^{-\beta_S}$.  Applying initial conditions gives \eqref{eq:std-solution}.
+\end{proof}
+
+\begin{example}[Historical standardization rates]\label{ex:standardization}
+Estimated $\beta_S$ values from historical technology transitions:
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Technology & Initial $\rho_0$ & Current $\rho$ & Implied $\beta_S$ \\
+\midrule
+Railroads (1830--1870) & $-0.3$ & $0.7$ & $\sim 0.15$ \\
+Electricity (1880--1930) & $-0.2$ & $0.8$ & $\sim 0.18$ \\
+Semiconductors (1960--2000) & $-0.1$ & $0.6$ & $\sim 0.22$ \\
+Cloud computing (2006--2024) & $0.1$ & $0.5$ & $\sim 0.25$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The standardization elasticity $\beta_S$ has been increasing over successive technology generations, consistent with accumulated meta-knowledge about modularization strategies.
+\end{example}
+
+\begin{remark}[Timescale]
+Standardization operates on the slowest timescale: decades for major technologies.  It is the long-run force that drives $\rho$ upward through learning.  We assign $\tau_S \sim 10$--30 years.
+\end{remark}
+
+\subsection{Channel 3: Evolutionary selection}\label{sec:selection}
+
+In a population of firms with heterogeneous $\rho$ values, market selection operates through differential profitability and survival.
+
+\begin{definition}[Selection dynamics]\label{def:selection}
+Let $f(\rho, t)$ be the density of firms with complementarity parameter $\rho$ at time $t$, and let $\pi(\rho, T)$ be the profit function.  The \emph{replicator dynamics} are:
+\begin{equation}\label{eq:replicator}
+\frac{\partial f}{\partial t} = f(\rho, t) \cdot [\pi(\rho, T(t)) - \bar{\pi}(t)],
+\end{equation}
+where $\bar{\pi}(t) = \int \pi(\rho, T(t)) f(\rho, t)\,d\rho$ is mean profit.  Firms with above-average profit grow; those with below-average profit shrink.
+\end{definition}
+
+\begin{proposition}[The Price equation for $\rho$]\label{prop:price}
+The rate of change of population-average complementarity $\bar{\rho}(t) = \int \rho f(\rho, t)\,d\rho$ satisfies the \emph{Price equation}:
+\begin{equation}\label{eq:price}
+\frac{d\bar{\rho}}{dt}\bigg|_{\mathrm{sel}} = \Cov_f(\rho, \pi(\rho, T)).
+\end{equation}
+Selection moves $\bar{\rho}$ in the direction of the covariance between complementarity and profitability.
+\end{proposition}
+
+\begin{proof}
+Differentiating $\bar{\rho} = \int \rho f\,d\rho$ and substituting \eqref{eq:replicator}:
+\begin{align}
+\frac{d\bar{\rho}}{dt} &= \int \rho \frac{\partial f}{\partial t}\,d\rho = \int \rho f(\pi - \bar{\pi})\,d\rho \\
+&= \int \rho \pi f\,d\rho - \bar{\pi}\int \rho f\,d\rho = \E_f[\rho \pi] - \bar{\pi}\bar{\rho} = \Cov_f(\rho, \pi).
+\end{align}
+\end{proof}
+
+The direction of selection depends on the current information temperature $T$:
+
+\begin{corollary}[$T$-dependent selection direction]\label{cor:selection-direction}
+When $T$ is low ($T < T^*(\bar{\rho})$):
+\begin{itemize}[nosep]
+\item Complementary firms (low $\rho$) earn superadditivity premiums and outperform;
+\item $\Cov(\rho, \pi) < 0$, so selection pushes $\bar{\rho}$ down.
+\end{itemize}
+When $T$ is high ($T > T^*(\bar{\rho})$ for some firms):
+\begin{itemize}[nosep]
+\item Complementary firms suffer allocation breakdown and underperform;
+\item Substitutable firms (high $\rho$) survive on robustness;
+\item $\Cov(\rho, \pi) > 0$, so selection pushes $\bar{\rho}$ up.
+\end{itemize}
+\end{corollary}
+
+\begin{remark}[Timescale]
+Selection operates on an intermediate timescale: faster than standardization (firm entry/exit takes years, not decades) but comparable to architectural optimization.  We assign $\tau_{\mathrm{sel}} \sim 2$--10 years.
+\end{remark}
+
+%=============================================================================
+\subsection{Channel 4: Aggregation renormalization}\label{sec:rg-channel}
+
+A fourth channel operates not within a scale but \emph{across} scales.  The aggregation renormalization group (RG) shows that CES is the unique fixed point of coarse-graining \citep{smirl2026emergent}: when fine-grained inputs are aggregated into blocks, only the power-mean structure survives.  Non-CES deviations are irrelevant operators that vanish under aggregation.
+
+The effective $\rho$ at a coarser scale need not equal the micro-level $\rho$.  If firms within an industry have heterogeneous $\rho_i$, the industry-level effective complementarity is determined by the RG flow:
+\begin{equation}\label{eq:rg-flow}
+\rho_{\text{eff}}(\ell+1) = \rho_{\text{eff}}(\ell) + \beta(\rho_{\text{eff}}(\ell)),
+\end{equation}
+where $\ell$ indexes the aggregation level and $\beta$ is the RG $\beta$-function.  The fixed points of $\beta$ are $\rho = 0$ (Cobb-Douglas) and $\rho = 1$ (perfect substitutes); the Leontief limit $\rho \to -\infty$ is unstable.
+
+\begin{remark}[Timescale]
+The RG channel is not dynamical in the usual sense---it operates instantaneously as the analyst changes the level of observation.  But it has a temporal analogue: as industries consolidate or fragment over time, the effective level of aggregation changes, and $\rho_{\text{eff}}$ shifts accordingly.  Consolidation (fewer, larger firms) moves the economy toward the macro fixed point; fragmentation preserves micro-level $\rho$ heterogeneity.
+\end{remark}
+
+%=============================================================================
+\section{The Equation of Motion for $\rho$}\label{sec:rho-equation}
+%=============================================================================
+
+\subsection{Combining the four channels}\label{sec:combined}
+
+The four channels operate on different timescales and combine additively.  The first three act within a given scale; the fourth acts across scales:
+\begin{equation}\label{eq:rho-dynamics}
+\boxed{\frac{d\rho}{dt} = \underbrace{\eta_1 \frac{\partial \calF}{\partial \rho}(\rho, T)}_{\text{optimization}} + \underbrace{\eta_2 \frac{I(\rho, T)}{Q} (\rho_{\max} - \rho)}_{\text{standardization}} + \underbrace{\eta_3 \Cov_f(\rho, \pi(\rho, T))}_{\text{selection}} + \underbrace{\eta_4 \beta(\rho)}_{\text{RG flow}}}
+\end{equation}
+where $\eta_1, \eta_2, \eta_3, \eta_4 > 0$ are speed parameters inversely proportional to the respective timescales, and $\beta(\rho)$ is the aggregation RG $\beta$-function from \eqref{eq:rg-flow}.
+
+\subsection{The sign structure}\label{sec:signs}
+
+The critical feature of \eqref{eq:rho-dynamics} is that the four terms have \emph{different signs at different points in the cycle}:
+
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+Cycle phase & Optimization & Standardization & Selection & RG flow \\
+\midrule
+Early expansion ($T$ low, $Q$ moderate) & $-$ & $+$ & $-$ & $+$ \\
+Late expansion ($T$ rising, $Q$ growing) & $+$ (switching) & $+$ & $-$ (switching) & $+$ \\
+Crisis ($T$ high, $Q$ stalled) & $+$ & $\approx 0$ & $+$ & $+$ \\
+Recovery ($T$ falling, $Q$ resuming) & $-$ (switching) & $+$ & $+$ (switching) & $+$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+During expansions, optimization and selection push $\rho$ down (complementary production is profitable) while standardization and the RG flow push $\rho$ up (learning makes things modular; aggregation pulls toward Cobb-Douglas).  The net effect depends on the balance of timescales.  During crises, all forces push $\rho$ up (abandon fragile complementary structures).  The RG flow is always positive (toward $\rho = 0$), providing a steady background drift toward Cobb-Douglas that the within-scale forces must overcome to sustain low $\rho$.
+
+\begin{proposition}[Short-run vs.\ long-run $\rho$ response]\label{prop:short-long}
+Define the short-run $\rho$ response as $d\rho/dT|_{\mathrm{short}} = \eta_1 \partial^2\calF/\partial\rho\partial T$ (optimization channel only) and the long-run response as $d\rho/dt|_{\mathrm{long}} = \eta_2 I/Q \cdot (\rho_{\max} - \rho)$ (standardization channel only).  Then:
+\begin{enumerate}[nosep]
+\item Short-run: $d\rho/dT|_{\mathrm{short}} > 0$ --- higher $T$ induces higher $\rho$ (substitution for robustness);
+\item Long-run: $d\rho/dt|_{\mathrm{long}} > 0$ regardless of $T$ --- cumulative investment always increases modularity;
+\item The short-run response is \emph{procyclical} (falls in expansions, rises in contractions);
+\item The long-run response is \emph{secular} (monotonically increasing, modulated by investment rate).
+\end{enumerate}
+The short-run force is destabilizing (pushes $\rho$ toward fragility during booms).  The long-run force is stabilizing (increases robustness regardless of cycle phase).
+\end{proposition}
+
+\subsection{Reduced form}\label{sec:reduced-form}
+
+For analytical tractability, we work with a reduced-form $\rho$ equation that captures the essential sign structure.  Let $\bar{\rho}$ denote the economy-wide effective complementarity.  Near the interior of the cycle:
+\begin{equation}\label{eq:reduced-rho}
+\frac{d\bar{\rho}}{dt} = -\alpha_\rho(T - T_0) + \beta_\rho(I/Q)(\rho_{\max} - \bar{\rho}),
+\end{equation}
+where:
+\begin{itemize}[nosep]
+\item $\alpha_\rho > 0$: the sensitivity of $\rho$ to information frictions ($T > T_0$ pushes $\rho$ up; $T < T_0$ pushes $\rho$ down);
+\item $\beta_\rho > 0$: the standardization rate;
+\item $T_0$: the neutral temperature at which the optimization channel exerts no pressure on $\rho$;
+\item $I/Q$: the learning rate (current investment over cumulative investment).
+\end{itemize}
+
+This combines the optimization and selection channels (both captured by the first term, which reverses sign with $T$) with the standardization and RG channels (second term, always positive---both push $\rho$ upward).
+
+%=============================================================================
+\section{Coupled $(\rho, T)$ Dynamics}\label{sec:coupled}
+%=============================================================================
+
+\subsection{The $T$ equation}\label{sec:T-dynamics}
+
+The information temperature $T$ evolves endogenously through the mechanisms identified in the companion papers \citep{smirl2026dynamical,smirl2026business}:
+\begin{equation}\label{eq:T-dynamics}
+\frac{dT}{dt} = \underbrace{\gamma_M(T_0 - T)}_{\text{mean reversion}} + \underbrace{\delta_M \cdot g(x)}_{\text{Minsky drift}} - \underbrace{\mu_P \cdot \Delta T_{\mathrm{policy}}}_{\text{monetary policy}},
+\end{equation}
+where:
+\begin{itemize}[nosep]
+\item Mean reversion: $T$ reverts to the natural rate $T_0$ at speed $\gamma_M$;
+\item Minsky drift: $g(x) > 0$ during expansions (credit standards deteriorate, complexity increases, signal-to-noise falls), with $g$ depending on economic state $x$;
+\item Monetary policy: the central bank can reduce $T$ by $\Delta T_{\mathrm{policy}}$ through rate cuts, QE, and forward guidance.
+\end{itemize}
+
+\subsection{The coupled system}\label{sec:coupled-system}
+
+The full $(\rho, T)$ system is:
+\begin{equation}\label{eq:coupled}
+\boxed{
+\begin{aligned}
+\frac{d\bar{\rho}}{dt} &= -\alpha_\rho(T - T_0) + \beta_\rho \frac{I}{Q}(\rho_{\max} - \bar{\rho}), \\
+\frac{dT}{dt} &= \gamma_M(T_0 - T) + \delta_M g(\bar{\rho}, T),
+\end{aligned}
+}
+\end{equation}
+where we have absorbed monetary policy into the mean reversion term and made the Minsky drift depend on $\bar{\rho}$ (more complementary production generates larger Minsky drift because the system is closer to $T^*$).
+
+\begin{proposition}[Fixed points]\label{prop:fixed-points}
+The system \eqref{eq:coupled} has a fixed point at $(\bar{\rho}_0, T_0)$ where $T = T_0$ (information temperature at its natural rate) and $\bar{\rho}_0 = \rho_{\max} - C$ for a constant $C$ determined by the standardization parameters.  This fixed point is generically \emph{unstable} if the Minsky drift $\delta_M g$ is sufficiently strong.
+\end{proposition}
+
+\begin{proof}
+At the fixed point, $d\bar{\rho}/dt = 0$ requires $\alpha_\rho(T - T_0) = \beta_\rho(I/Q)(\rho_{\max} - \bar{\rho})$.  At $T = T_0$, the left side vanishes, giving $\bar{\rho}_0 = \rho_{\max}$ (in the absence of standardization saturation) or $\bar{\rho}_0 < \rho_{\max}$ if there is a fixed cost of architectural simplicity.
+
+Linearizing around $(\bar{\rho}_0, T_0)$:
+\begin{equation}
+\frac{d}{dt}\begin{pmatrix} \delta\rho \\ \delta T \end{pmatrix} = \begin{pmatrix} -\beta_\rho I/Q & -\alpha_\rho \\ \delta_M \partial g/\partial\rho & -\gamma_M + \delta_M \partial g/\partial T \end{pmatrix} \begin{pmatrix} \delta\rho \\ \delta T \end{pmatrix}.
+\end{equation}
+
+The Minsky channel makes $\partial g/\partial\rho < 0$ (lower $\rho$ increases Minsky drift, as more complementary production is more fragile) and $\partial g/\partial T > 0$ (higher $T$ accelerates deterioration).  If $\delta_M \partial g/\partial T > \gamma_M$ (Minsky drift exceeds mean reversion), the trace of the Jacobian is positive and the fixed point is unstable.
+\end{proof}
+
+\subsection{The nullclines}\label{sec:nullclines}
+
+The qualitative dynamics are determined by the nullclines (curves where $d\rho/dt = 0$ or $dT/dt = 0$):
+
+\begin{definition}[Nullclines]\label{def:nullclines}
+The $\rho$-nullcline is:
+\begin{equation}\label{eq:rho-nullcline}
+\calN_\rho: \quad T = T_0 + \frac{\beta_\rho}{\alpha_\rho} \frac{I}{Q}(\rho_{\max} - \bar{\rho}).
+\end{equation}
+This is a decreasing curve in $(\rho, T)$ space: for higher $\rho$, the standardization pressure is weaker, so a lower $T$ suffices to balance the optimization channel.
+
+The $T$-nullcline is:
+\begin{equation}\label{eq:T-nullcline}
+\calN_T: \quad T = T_0 + \frac{\delta_M}{\gamma_M} g(\bar{\rho}, T).
+\end{equation}
+For the Minsky drift $g$ increasing as $\rho$ falls (more complementary production is more fragile), this is also a curve in $(\rho, T)$ space.
+\end{definition}
+
+The key geometric fact is that the $\rho$-nullcline and $T$-nullcline intersect at the fixed point, and their relative slopes determine the dynamics:
+
+\begin{itemize}[nosep]
+\item If the nullclines cross transversally with the $T$-nullcline steeper, the fixed point is a \emph{spiral} (stable or unstable depending on the trace).
+\item If the Minsky drift is strong enough to make the fixed point unstable, the spiral is \emph{outward}, and the system approaches a \emph{limit cycle}.
+\end{itemize}
+
+%=============================================================================
+\section{The Limit Cycle: Technology Waves in $(\rho, T)$ Space}\label{sec:limit-cycle}
+%=============================================================================
+
+\subsection{Existence of the limit cycle}\label{sec:existence}
+
+\begin{theorem}[Limit cycle in $(\rho, T)$ space]\label{thm:limit-cycle}
+Consider the coupled system \eqref{eq:coupled} with:
+\begin{enumerate}[nosep]
+\item Minsky drift sufficient to destabilize the fixed point: $\delta_M \partial g/\partial T > \gamma_M$;
+\item Bounded dynamics: $\rho \in [\rho_{\min}, \rho_{\max}]$ and $T \in [T_{\min}, T_{\max}]$ with reflecting or absorbing boundaries;
+\item The critical curve $T^*(\rho) = K(\rho)$ provides a natural boundary where crisis dynamics activate, resetting $T$ upward.
+\end{enumerate}
+Then the system possesses a stable limit cycle $\Gamma$ in $(\rho, T)$ space.  The cycle orbits the fixed point and crosses the critical curve $T^*(\rho)$ at two points: entering crisis (from below) and exiting crisis (from above).
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+\emph{Step 1: Trapping region.}  The set $\calR = [\rho_{\min}, \rho_{\max}] \times [T_{\min}, T_{\max}]$ is positively invariant.  On the boundary $\rho = \rho_{\min}$, the standardization channel pushes $\rho$ up.  On $\rho = \rho_{\max}$, the optimization channel (at $T < T_0$) pushes $\rho$ down.  On $T = T_{\min}$, the Minsky drift pushes $T$ up.  On $T = T_{\max}$, mean reversion pushes $T$ down.  The vector field points inward on all boundaries.
+
+\emph{Step 2: Unstable fixed point.}  By \cref{prop:fixed-points}, the unique interior fixed point is unstable when the Minsky drift is strong.
+
+\emph{Step 3: Poincar\'{e}--Bendixson.}  A two-dimensional autonomous system with a positively invariant trapping region containing a single unstable fixed point must possess a stable limit cycle, by the Poincar\'{e}--Bendixson theorem.
+\end{proof}
+
+\subsection{The four phases}\label{sec:four-phases}
+
+The limit cycle $\Gamma$ traverses four quadrants of $(\rho, T)$ space relative to the fixed point $(\bar{\rho}_0, T_0)$, reproducing the four phases of the Perez technology cycle:
+
+\begin{theorem}[Perez phases as quadrants]\label{thm:perez}
+The limit cycle $\Gamma$ from \cref{thm:limit-cycle} has four phases corresponding to the sign of $(d\rho/dt, dT/dt)$:
+
+\begin{enumerate}
+\item \textbf{Irruption/Installation} ($d\rho/dt < 0$, $dT/dt < 0$): A new technology arrives with novel, non-substitutable components.  Information is clearing from the previous crisis.  $\rho$ falls as firms adopt complementary architectures; $T$ falls as financial conditions ease.  The economy moves toward the lower-left quadrant of $(\rho, T)$ space.
+
+Duration: $\tau_1 \sim \tau_A$ (architectural adjustment timescale).
+
+\item \textbf{Frenzy} ($d\rho/dt < 0$, $dT/dt > 0$): Financial capital floods into the new technology.  $\rho$ continues falling (deeper commitment to complementary structures) but $T$ begins rising (Minsky drift: credit standards deteriorate, complexity increases).  The economy moves toward the left boundary, approaching $T^*(\bar{\rho})$ from below.
+
+Duration: $\tau_2 \sim |\bar{\rho} - \rho_{\min}|/\alpha_\rho$ (time to exhaust complementarity potential).
+
+\item \textbf{Turning point/Crisis} ($d\rho/dt > 0$, $dT/dt > 0$): $T$ crosses $T^*(\bar{\rho})$.  Crisis dynamics activate.  Firms rapidly abandon complementary structures ($\rho$ jumps up).  $T$ spikes as information quality collapses.  This is the fast phase of the relaxation oscillation.
+
+Duration: $\tau_3 \sim \tau_{\mathrm{fast}}$ (financial adjustment timescale).
+
+\item \textbf{Deployment/Synergy} ($d\rho/dt > 0$, $dT/dt < 0$): The crisis clears.  $T$ falls through institutional reform and balance sheet repair.  $\rho$ continues rising as the surviving technology standardizes and modularizes (standardization channel dominates).  The economy moves toward the upper-right, then curves back toward the fixed point.
+
+Duration: $\tau_4 \sim \tau_S$ (standardization timescale).
+\end{enumerate}
+\end{theorem}
+
+\begin{corollary}[Cycle period]\label{cor:period}
+The total period of the limit cycle is approximately:
+\begin{equation}\label{eq:cycle-period}
+T_{\mathrm{cycle}} \approx \tau_1 + \tau_2 + \tau_3 + \tau_4 \approx 2\tau_A + \tau_{\mathrm{fast}} + \tau_S.
+\end{equation}
+With $\tau_A \sim 3$--5 years, $\tau_{\mathrm{fast}} \sim 1$--2 years, and $\tau_S \sim 15$--20 years, this gives $T_{\mathrm{cycle}} \sim 25$--50 years, consistent with the empirical Kondratiev wave length.
+\end{corollary}
+
+\subsection{The asymmetry ratio revisited}\label{sec:asymmetry-rho}
+
+With endogenous $\rho$, the expansion-contraction asymmetry acquires a new interpretation.  The slow phases (installation and deployment) involve gradual $\rho$ adjustment.  The fast phase (crisis) involves rapid $\rho$ reversal.
+
+\begin{proposition}[Enhanced asymmetry from $\rho$ dynamics]\label{prop:enhanced-asymmetry}
+The expansion-contraction asymmetry ratio is:
+\begin{equation}\label{eq:enhanced-asymmetry}
+\frac{\tau_{\mathrm{slow}}}{\tau_{\mathrm{fast}}} \approx \frac{\tau_S}{\tau_{\mathrm{fast}}} \sim \frac{20\text{ years}}{1\text{ year}} \sim 20,
+\end{equation}
+which is larger than the $1/\varepsilon \approx 5$--10 predicted by the fixed-$\rho$ analysis of \citet{smirl2026business}.  The additional asymmetry comes from the standardization timescale $\tau_S$, which is much longer than the architectural adjustment timescale.  Standardization (deployment) is slow because it requires accumulated production experience; crisis (turning point) is fast because firms can abandon complementary structures much faster than they can build modular ones.
+\end{proposition}
+
+%=============================================================================
+\section{Self-Organized Criticality}\label{sec:soc}
+%=============================================================================
+
+\subsection{Attraction to the critical curve}\label{sec:attraction}
+
+The critical curve $T^*(\rho) = K(\rho) = (1 - \rho)(J - 1)/J$ separates the efficient regime ($T < T^*$) from the breakdown regime ($T > T^*$).  The endogenous $\rho$ dynamics create a tendency for the system to orbit this curve.
+
+\begin{theorem}[Self-organized criticality]\label{thm:soc}
+The coupled $(\rho, T)$ dynamics have the following properties with respect to the critical curve $T^*(\rho)$:
+\begin{enumerate}
+\item \textbf{Sub-critical attraction.}  When $T < T^*(\bar{\rho})$ (below the critical curve), the optimization and selection channels push $\bar{\rho}$ down (toward more complementary production).  This lowers $T^*(\bar{\rho})$, bringing the critical curve down toward the system.  The system is attracted toward criticality from below.
+
+\item \textbf{Super-critical repulsion.}  When $T > T^*(\bar{\rho})$ (above the critical curve), the optimization and selection channels push $\bar{\rho}$ up (toward more substitutable production).  This raises $T^*(\bar{\rho})$, lifting the critical curve away from the system.  Simultaneously, $T$ falls through mean reversion and crisis clearing.  The system is pushed away from criticality from above, but only temporarily---mean reversion returns $T$ toward $T_0$, and the Minsky drift begins again.
+
+\item \textbf{Orbital dynamics.}  The combination of sub-critical attraction and super-critical repulsion, with different timescales, produces an orbit around the critical curve.  The system spends most time in the sub-critical regime (slow drift toward criticality) and brief time in the super-critical regime (fast crisis).
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Define the distance to criticality $\Delta = T^*(\bar{\rho}) - T$.  The time derivative is:
+\begin{equation}\label{eq:delta-dynamics}
+\frac{d\Delta}{dt} = \frac{dT^*}{d\bar{\rho}} \frac{d\bar{\rho}}{dt} - \frac{dT}{dt}.
+\end{equation}
+
+Since $dT^*/d\rho = -(J-1)/J < 0$ (the critical curve is decreasing in $\rho$):
+\begin{itemize}[nosep]
+\item When $\Delta > 0$ (sub-critical): $d\bar{\rho}/dt < 0$ from optimization/selection, so $dT^*/d\bar{\rho} \cdot d\bar{\rho}/dt = (-)(-) > 0$: the critical curve moves toward the system.  Meanwhile $dT/dt > 0$ from Minsky drift.  Both effects reduce $\Delta$.
+\item When $\Delta < 0$ (super-critical): $d\bar{\rho}/dt > 0$, so $dT^*/d\bar{\rho} \cdot d\bar{\rho}/dt = (-)(+) < 0$: the critical curve retreats.  Meanwhile $dT/dt < 0$ from mean reversion after crisis.  Both effects increase $\Delta$ (system retreats from criticality).
+\end{itemize}
+
+The asymmetric timescales (slow sub-critical attraction, fast super-critical repulsion) produce the characteristic pattern of self-organized criticality: long quiet periods near the critical curve punctuated by brief avalanches (crises).
+\end{proof}
+
+\subsection{Power-law statistics}\label{sec:power-laws}
+
+\begin{corollary}[Power-law fluctuations]\label{cor:power-laws}
+A system exhibiting self-organized criticality near the curve $T^*(\rho)$ produces fluctuations with power-law statistics.  Specifically:
+\begin{enumerate}[nosep]
+\item \textbf{Recession depth distribution:} $P(\text{depth} > d) \sim d^{-\xi}$, because the system's distance from criticality at the moment of crisis determines severity, and the slow drift toward criticality produces a uniform distribution of crossing distances, which maps to a power law in severity through the nonlinear crisis dynamics.
+
+\item \textbf{Firm size distribution:} $P(\text{size} > s) \sim s^{-\zeta}$, because near $T^*$ the CES aggregate with $\rho \to 0$ (the critical complementarity) produces Cobb-Douglas output functions, under which multiplicative shocks generate log-normal and Pareto tails \citep{gabaix2009}.
+
+\item \textbf{Volatility clustering:} The autocorrelation of squared returns decays as a power law, because the distance to criticality evolves as a mean-reverting process with timescale modulated by the limit cycle frequency.
+\end{enumerate}
+\end{corollary}
+
+\begin{remark}[Connection to Gabaix (2009)]
+\citet{gabaix2009} documented power-law regularities in firm sizes, stock returns, and city sizes, but provided no unified mechanism.  The present framework identifies the mechanism: the economy self-organizes to the critical curve $T^*(\rho)$, where $\rho \to \rho^*$ is the critical complementarity at which the correlation length diverges.  Near this critical point, fluctuations at all scales are equally likely---the defining signature of criticality.  The specific power-law exponents depend on the universality class determined by the CES geometry, which the renormalization group analysis of \citet{smirl2026dynamical} identifies as controlled by $\rho$ and $T$ alone.
+\end{remark}
+
+%=============================================================================
+\section{The Price Equation and $\rho$-Diversity}\label{sec:price}
+%=============================================================================
+
+\subsection{Selection for diversity}\label{sec:diversity-selection}
+
+The evolutionary channel (\cref{sec:selection}) selects for the most profitable $\rho$ at each moment.  But in a fluctuating $T$ environment, the time-averaged fitness depends on robustness across the cycle, not performance at any single point.
+
+\begin{theorem}[Selection for $\rho$-diversity]\label{thm:diversity}
+In an economy with fluctuating $T(t)$ (periodic with period $T_{\mathrm{cycle}}$), the long-run survivor population has \emph{maximal $\rho$-diversity}, not uniform $\rho$.  Specifically:
+\begin{enumerate}
+\item A population of firms with identical $\rho = \rho^*$ (optimized for average $T$) has lower time-averaged fitness than a diverse population spanning $[\rho_{\min}, \rho_{\max}]$.
+
+\item The optimal diversity is $\Var(\rho) \propto \Var(T)/|\partial^2\calF/\partial\rho^2|$: greater $T$ fluctuations select for more $\rho$-diversity.
+
+\item The stable distribution $f^*(\rho)$ has support on the full interval $[\rho_{\min}, \rho_{\max}]$, with density concentrated near the $\rho$ values that are profitable during the longest phases of the cycle.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+The time-averaged log-fitness of a firm with fixed $\rho$ is:
+\begin{equation}
+\bar{W}(\rho) = \frac{1}{T_{\mathrm{cycle}}} \int_0^{T_{\mathrm{cycle}}} \log \pi(\rho, T(t))\,dt.
+\end{equation}
+By Jensen's inequality applied to the concavity of $\log$, the population-average $\bar{W}$ of a diverse population exceeds the $\bar{W}$ of a homogeneous population at the mean $\rho$.  This is the standard ``bet-hedging'' argument from evolutionary biology \citep{seger1987}, applied here to production architecture diversity.
+
+The optimal variance follows from a Taylor expansion of $\bar{W}$ around the mean, with the second-order correction proportional to $\Var(T) \cdot |\partial^2\bar{W}/\partial\rho^2|$.
+\end{proof}
+
+\subsection{Economic interpretation}\label{sec:diversity-interp}
+
+\begin{remark}[Why diverse economies are more resilient]
+\Cref{thm:diversity} explains why economies with diverse production structures (many sectors spanning a range of complementarities) are more resilient to shocks than economies concentrated in a narrow $\rho$ band:
+\begin{itemize}[nosep]
+\item \textbf{Concentrated high-$\rho$ economy} (e.g., a software monoculture): performs adequately in all $T$ environments (robust) but never captures the superadditivity premium (mediocre peak output).
+\item \textbf{Concentrated low-$\rho$ economy} (e.g., a complex manufacturing monoculture): spectacular performance when $T$ is low but catastrophic collapse when $T$ rises.
+\item \textbf{Diverse economy}: high-$\rho$ sectors provide insurance during crises; low-$\rho$ sectors drive growth during expansions.  The portfolio outperforms any single $\rho$.
+\end{itemize}
+This is the CES quadruple role applied at the meta-level: just as heterogeneous inputs within a sector produce superadditive output (Paper 8), heterogeneous $\rho$ values across sectors produce superadditive economy-wide performance.  \emph{Diversity of production architectures is itself a form of complementary heterogeneity.}
+\end{remark}
+
+%=============================================================================
+\section{Diversity as a Second-Order Complementarity}\label{sec:diversity}
+%=============================================================================
+
+\subsection{The meta-CES structure}\label{sec:meta-ces}
+
+The insight from \cref{sec:diversity-interp} can be formalized.  Consider an economy with $N$ sectors, each with complementarity $\rho_n$.  Define the ``meta-production function'' that aggregates sectoral outputs:
+\begin{equation}\label{eq:meta-ces}
+Y = \left(\frac{1}{N} \sum_{n=1}^N F_n^{\tilde{\rho}}\right)^{1/\tilde{\rho}},
+\end{equation}
+where $\tilde{\rho}$ is the \emph{meta-complementarity}---the degree to which sectors are substitutable in contributing to aggregate output.
+
+\begin{proposition}[Two-level CES hierarchy]\label{prop:two-level}
+The economy has a two-level CES structure:
+\begin{enumerate}[nosep]
+\item \textbf{Within-sector}: inputs are aggregated with $\rho_n$ (the production technology);
+\item \textbf{Across-sectors}: sectoral outputs are aggregated with $\tilde{\rho}$ (the economic structure).
+\end{enumerate}
+The economy-wide curvature has two components:
+\begin{equation}\label{eq:two-level-K}
+K_{\mathrm{total}} = \underbrace{\sum_n w_n K_n}_{\text{within-sector}} + \underbrace{\tilde{K} \cdot \Var_w(\rho_n)}_{\text{cross-sector diversity premium}},
+\end{equation}
+where $\tilde{K} = (1 - \tilde{\rho})(N-1)/N$ and $\Var_w(\rho_n)$ is the GDP-weighted variance of sectoral complementarities.
+\end{proposition}
+
+The second term is the \emph{diversity premium}: an economy with spread-out $\rho$ values gains from the meta-complementarity between sectors that specialize in different phases of the cycle.  This is a second-order complementarity---complementarity among production architectures, not just among inputs.
+
+\subsection{Implications for industrial policy}\label{sec:policy}
+
+\begin{corollary}[Industrial policy and $\rho$-diversity]\label{cor:policy}
+Industrial policies that concentrate the economy on a narrow $\rho$ band---whether by subsidizing only high-tech (high $\rho$) or only heavy industry (low $\rho$)---reduce the diversity premium and increase vulnerability to $T$ shocks.  Policies that maintain a broad $\rho$ distribution, even at the cost of lower peak output, improve long-run resilience.
+
+This provides a new rationale for the long-standing empirical finding that economic diversification predicts growth and stability \citep{imbs2003}: diversification across $\rho$ values, not just across sectors per se, is what drives resilience.
+\end{corollary}
+
+%=============================================================================
+\section{Closing the Framework}\label{sec:closure}
+%=============================================================================
+
+\subsection{The self-referential loop}\label{sec:self-reference}
+
+With endogenous $\rho$, the economic free energy framework becomes a closed self-referential system:
+
+\begin{equation}\label{eq:loop}
+\rho \xrightarrow{\text{CES production}} \calF(\rho, T) \xrightarrow{\text{optimization}} x^*(\rho, T) \xrightarrow{\text{investment}} I(x^*, \rho) \xrightarrow{\text{Wright's Law}} Q(t) \xrightarrow{\text{standardization}} \rho.
+\end{equation}
+
+Each arrow is a well-defined mathematical operation:
+\begin{enumerate}[nosep]
+\item $\rho \to \calF$: the CES free energy \citep{smirl2026free};
+\item $\calF \to x^*$: Boltzmann equilibrium allocation \citep{smirl2026free};
+\item $x^* \to I$: investment determined by returns (Paper 1 overinvestment dynamics);
+\item $I \to Q$: cumulative investment via $dQ/dt = I$;
+\item $Q \to \rho$: standardization dynamics (\cref{sec:standardization}).
+\end{enumerate}
+
+\begin{theorem}[Closure theorem]\label{thm:closure}
+The self-referential loop \eqref{eq:loop} closes the framework in the following sense:
+
+\begin{enumerate}
+\item \textbf{No free structural parameters.}  The moduli space theorem of \citet{smirl2026complementary} identified $\rho$ as the sole determinant of qualitative dynamics, with timescales, damping, and gain functions as ``free parameters.''  With endogenous $\rho$, the free parameter is determined by the system's own dynamics.  The only inputs are initial conditions $(\rho_0, T_0, Q_0)$ and the learning elasticities $(\alpha, \beta_S)$, which are measurable physical constants of the production technology.
+
+\item \textbf{Integrability condition.}  The Euler-equilibrium identity of \citet{smirl2026conservation}---$\mathbf{x}^* \cdot \nabla H = -1/T$ at every equilibrium---imposes an integrability condition on the $\rho$ dynamics.  As $\rho$ evolves, the equilibrium $\mathbf{x}^*$ and entropy gradient $\nabla H$ must co-evolve to maintain this identity.  This constrains the space of allowable $\rho$ trajectories.
+
+\item \textbf{Topological consistency.}  The winding number theorem of \citet{smirl2026conservation} counts crises as the number of times the trajectory winds around the critical curve $T^*(\rho)$.  With endogenous $\rho$, the trajectory lives in $(\rho, T)$ space rather than $T$ space alone, and each complete orbit of the limit cycle $\Gamma$ contributes exactly one winding.  The quantized crisis count remains topologically protected.
+\end{enumerate}
+\end{theorem}
+
+\subsection{Implications for companion papers}\label{sec:implications}
+
+Endogenous $\rho$ modifies the interpretation of each companion paper:
+
+\paragraph{Paper 1 (Endogenous Decentralization) \citep{smirl2026ed}.}
+The hardware crossing from concentrated to distributed AI is a specific $\rho$ trajectory: starting from $\rho_0 < 0$ (tightly coupled GPU clusters), cumulative investment drives standardization toward $\rho > 0$ (modular, interchangeable compute units).  The crossing point is $\rho = \rho^*_{\mathrm{viable}}$, the minimum complementarity at which the distributed mesh can sustain itself.  The overinvestment factor $(N - 1)\alpha\phi/(r + \delta)$ from Proposition 1 accelerates not just cost reduction but $\rho$ increase---the standardization bonus from overinvestment.
+
+\paragraph{Paper 5 (Complementary Heterogeneity) \citep{smirl2026complementary}.}
+The moduli space theorem states that $\rho$ determines qualitative dynamics while everything else is a free parameter.  With endogenous $\rho$, this becomes: the \emph{initial $\rho$ and the learning curve parameters} determine the qualitative dynamics.  The moduli space collapses from a one-dimensional manifold (parameterized by $\rho$) to a discrete set of attractor types (parameterized by the learning elasticity $\beta_S$).
+
+\paragraph{Paper 9 (Free Energy Framework) \citep{smirl2026free}.}
+The free energy $\calF = \Phi(\rho) - T \cdot H$ becomes a function on a trajectory in $(\rho, T)$ space rather than a function at a fixed $\rho$.  The equilibrium is a moving target: as $\rho$ evolves, the Boltzmann distribution shifts, and the economy must continuously re-equilibrate.  The relaxation time for re-equilibration after a $\rho$ change scales as $1/r_n$ (the within-sector damping), imposing a constraint: $\rho$ cannot change faster than the economy can re-equilibrate, or the system falls out of local equilibrium---precisely the condition for crisis.
+
+\paragraph{Paper 12 (Dynamical Free Energy) \citep{smirl2026dynamical}.}
+The renormalization group flow now has a fully determined attractor.  Paper 12 identified $\rho$ and $T$ as the only relevant parameters under coarse-graining, but did not specify their dynamics.  With the coupled $(\rho, T)$ system of \eqref{eq:coupled}, the RG flow has a limit-cycle attractor---the Perez wave---and the self-organized critical curve $T^*(\rho)$ as its organizing center.
+
+\paragraph{Paper 14 (Business Cycles) \citep{smirl2026business}.}
+The business cycle eigenfrequencies depend on $\rho$ through the sectoral CES structures.  With endogenous $\rho$, the eigenfrequencies themselves evolve over the Kondratiev wave: as $\rho$ rises during deployment (technology standardizes), the economy's oscillation frequencies shift.  This predicts that business cycle properties (amplitude, frequency, asymmetry) should vary systematically across the Perez wave---shorter, milder cycles during deployment phases, longer, more severe cycles during installation phases.
+
+%=============================================================================
+\section{Testable Predictions}\label{sec:predictions}
+%=============================================================================
+
+\subsection{Prediction 1: $\rho$ is measurable and cyclical}\label{sec:pred-rho}
+
+\begin{quote}
+\emph{Sectoral $\rho$ values, estimated from production function data, show systematic cyclical variation: falling during expansions and rising during contractions.}
+\end{quote}
+
+\textbf{Data:} Firm-level production function estimates from Compustat or Census of Manufactures, following \citet{oberfield2014}.  Estimate $\sigma_n = 1/(1 - \rho_n)$ for each sector-year using the cost-share variation approach.
+
+\textbf{Test:} Panel regression of $\hat{\rho}_{nt}$ on a business cycle indicator (output gap, unemployment rate):
+\begin{equation}
+\hat{\rho}_{nt} = \alpha_n + \beta \cdot \mathrm{Gap}_t + \gamma \cdot X_{nt} + \varepsilon_{nt}.
+\end{equation}
+The prediction is $\beta < 0$: positive output gaps (booms) are associated with lower $\rho$ (more complementary production).
+
+\subsection{Prediction 2: $\rho$ change rate predicts cycle duration}\label{sec:pred-duration}
+
+\begin{quote}
+\emph{Industries with faster $\rho$ evolution (faster standardization) have shorter technology cycles.}
+\end{quote}
+
+\textbf{Data:} Historical standardization rates $\beta_S$ from technology-specific learning curves (e.g., semiconductors, solar, batteries), matched to industry-level cycle durations.
+
+\textbf{Test:} Cross-industry regression: $T_{\mathrm{cycle},i} = \alpha - \delta \cdot \hat{\beta}_{S,i} + u_i$.  Prediction: $\delta > 0$ (faster standardization $\to$ shorter cycles).
+
+\subsection{Prediction 3: $\rho$-diversity predicts resilience}\label{sec:pred-diversity}
+
+\begin{quote}
+\emph{Countries with more diverse sectoral $\rho$ distributions show lower crisis severity and faster recovery.}
+\end{quote}
+
+\textbf{Data:} Cross-country sectoral output data from OECD STAN or UNIDO, combined with sector-level $\rho$ estimates.  Compute $\Var(\hat{\rho}_n)$ for each country-year.
+
+\textbf{Test:} Panel regression of crisis severity on $\rho$-diversity:
+\begin{equation}
+\mathrm{Severity}_{ct} = \alpha_c + \beta \cdot \Var(\hat{\rho}_{nt}) + X_{ct}\gamma + u_{ct}.
+\end{equation}
+Prediction: $\beta < 0$ (higher $\rho$-diversity $\to$ lower crisis severity).
+
+\subsection{Prediction 4: Self-organized criticality produces power laws}\label{sec:pred-power}
+
+\begin{quote}
+\emph{The distribution of recession depths follows a power law rather than a normal distribution.}
+\end{quote}
+
+\textbf{Data:} Cross-country recession depth data from \citet{barro2006} or the Penn World Table, pooled across countries and decades.
+
+\textbf{Test:} Fit both power-law and log-normal distributions to the severity data using the methods of \citet{clauset2009}.  The prediction is that the power-law fit dominates, with an exponent $\xi$ determined by the ratio of standardization speed to Minsky drift speed: $\xi \approx 1 + \beta_\rho/\delta_M$.
+
+\subsection{Prediction 5: New technologies arrive with low $\rho$}\label{sec:pred-new-tech}
+
+\begin{quote}
+\emph{Each major technology initially decreases sectoral $\rho$ (novel, non-substitutable components), then increases $\rho$ over time (standardization).}
+\end{quote}
+
+\textbf{Data:} Patent data (measuring technological novelty as a proxy for low $\rho$) combined with production function estimates for adopting industries.
+
+\textbf{Test:} Event study around major technology adoption dates.  $\hat{\rho}_{nt}$ should show a V-shaped pattern: declining for 5--10 years after adoption (installation, complementary integration) then rising for 15--25 years (deployment, standardization).
+
+\subsection{Prediction 6: The Perez turning point is a $\rho$ minimum}\label{sec:pred-perez}
+
+\begin{quote}
+\emph{Financial crises coincide with local minima of the economy-wide $\bar{\rho}$, not with fixed thresholds of financial stress.}
+\end{quote}
+
+\textbf{Data:} Historical $\bar{\rho}$ estimates (from the weighted average of sectoral $\rho$ values) combined with financial crisis dates from \citet{reinhart2009}.
+
+\textbf{Test:} For each crisis, check whether $d\bar{\rho}/dt$ changes sign from negative (installation) to positive (deployment) within $\pm 2$ years of the crisis date.  The prediction is that $\bar{\rho}$ minima align with crisis dates with higher accuracy than financial stress indicators (VIX, credit spreads, term premia).
+
+%=============================================================================
+\section{Conclusion}\label{sec:conclusion}
+%=============================================================================
+
+This paper has endogenized the CES complementarity parameter $\rho$, closing the self-referential loop at the heart of the economic free energy framework.  Three channels drive $\rho$ evolution: firm-level optimization (fast, procyclical), evolutionary selection (medium, $T$-dependent), and technological standardization (slow, secular).  The interaction of these channels, operating on different timescales and with opposite signs at different points in the cycle, produces the main results.
+
+\emph{First}, the coupled $(\rho, T)$ dynamics possess a stable limit cycle (\cref{thm:limit-cycle}), which is the Perez technology cycle viewed in parameter space.  The four Perez phases---irruption, frenzy, turning point, deployment---correspond to the four quadrants of the cycle in $(\rho, T)$ space (\cref{thm:perez}).
+
+\emph{Second}, the system exhibits self-organized criticality (\cref{thm:soc}): the endogenous $\rho$ dynamics attract the economy toward its own critical curve $T^*(\rho)$, producing long quiet periods near the phase boundary punctuated by brief crises.  The resulting fluctuations have power-law statistics (\cref{cor:power-laws}), providing a mechanism for the scale-free regularities documented in economic data.
+
+\emph{Third}, the Price equation applied to a population of firms with heterogeneous $\rho$ shows that $\rho$-diversity is selected for (\cref{thm:diversity}).  An economy with diverse production architectures outperforms one with uniform complementarity, because different $\rho$ values are profitable in different phases of the cycle.  This is a second-order complementarity: diversity of complementarity structures is itself complementary.
+
+\emph{Fourth}, endogenous $\rho$ closes the framework (\cref{thm:closure}): $\rho$ governs economic structure, structure determines investment, investment drives learning, and learning determines $\rho$.  With no free structural parameters, the framework makes predictions that are fully determined by initial conditions and measurable learning-curve elasticities.
+
+The closure has a philosophical dimension.  With exogenous $\rho$, the framework describes \emph{what happens} given a production structure.  With endogenous $\rho$, it describes \emph{why production structures exist}---they are selected by the same dynamics they govern.  The economy is not merely subject to complementarity; it produces its own complementarity through the evolutionary, optimizing, and technological forces acting on $\rho$.  The CES parameter that controls everything is itself controlled by everything.
+
+\paragraph{Limitations.}
+Three significant limitations remain.  First, the empirical estimation of sectoral $\rho$ values requires detailed firm-level production function data that is available only for manufacturing in a few countries; extending to services requires methodological innovation.  Second, the standardization elasticity $\beta_S$ has been estimated for only a handful of technologies; a systematic cross-technology comparison is needed.  Third, the model takes the number of sectors $N$ and the input-output topology as given.  A complete theory would endogenize the industrial structure itself---the entry and exit of entire sectors as $\rho$ evolves.  This remains an important direction for future work.
+
+%=============================================================================
+% Bibliography
+%=============================================================================
+\bibliographystyle{apalike}
+
+\begin{thebibliography}{99}
+
+\bibitem[Bak, Tang, and Wiesenfeld(1987)]{bak1987}
+Bak, Per, Chao Tang, and Kurt Wiesenfeld. 1987. ``Self-Organized Criticality: An Explanation of the 1/f Noise.'' \textit{Physical Review Letters} 59(4): 381--384.
+
+\bibitem[Baldwin and Clark(2000)]{baldwin2000}
+Baldwin, Carliss Y., and Kim B. Clark. 2000. \textit{Design Rules: The Power of Modularity}. Cambridge, MA: MIT Press.
+
+\bibitem[Barro and Urs\'{u}a(2006)]{barro2006}
+Barro, Robert J., and Jos\'{e} F. Urs\'{u}a. 2006. ``Macroeconomic Crises Since 1870.'' \textit{Brookings Papers on Economic Activity} 2008(1): 255--335.
+
+\bibitem[Bresnahan and Trajtenberg(1995)]{bresnahan1995}
+Bresnahan, Timothy F., and Manuel Trajtenberg. 1995. ``General Purpose Technologies: `Engines of Growth'?'' \textit{Journal of Econometrics} 65(1): 83--108.
+
+\bibitem[Clauset, Shalizi, and Newman(2009)]{clauset2009}
+Clauset, Aaron, Cosma Rohilla Shalizi, and Mark E.~J. Newman. 2009. ``Power-Law Distributions in Empirical Data.'' \textit{SIAM Review} 51(4): 661--703.
+
+\bibitem[Gabaix(2009)]{gabaix2009}
+Gabaix, Xavier. 2009. ``Power Laws in Economics and Finance.'' \textit{Annual Review of Economics} 1(1): 255--294.
+
+\bibitem[Henderson and Clark(1990)]{henderson1990}
+Henderson, Rebecca M., and Kim B. Clark. 1990. ``Architectural Innovation: The Reconfiguration of Existing Product Technologies and the Failure of Established Firms.'' \textit{Administrative Science Quarterly} 35(1): 9--30.
+
+\bibitem[Imbs and Wacziarg(2003)]{imbs2003}
+Imbs, Jean, and Romain Wacziarg. 2003. ``Stages of Diversification.'' \textit{American Economic Review} 93(1): 63--86.
+
+\bibitem[Metcalfe(1998)]{metcalfe1998}
+Metcalfe, J.~Stanley. 1998. \textit{Evolutionary Economics and Creative Destruction}. London: Routledge.
+
+\bibitem[Milgrom and Roberts(1990)]{milgrom1990}
+Milgrom, Paul, and John Roberts. 1990. ``The Economics of Modern Manufacturing: Technology, Strategy, and Organization.'' \textit{American Economic Review} 80(3): 511--528.
+
+\bibitem[Nelson and Winter(1982)]{nelson1982}
+Nelson, Richard R., and Sidney G. Winter. 1982. \textit{An Evolutionary Theory of Economic Change}. Cambridge, MA: Harvard University Press.
+
+\bibitem[Oberfield and Raval(2014)]{oberfield2014}
+Oberfield, Ezra, and Devesh Raval. 2014. ``Micro Data and Macro Technology.'' \textit{NBER Working Paper} No. 20452.
+
+\bibitem[Price(1970)]{price1970}
+Price, George R. 1970. ``Selection and Covariance.'' \textit{Nature} 227(5257): 520--521.
+
+\bibitem[Reinhart and Rogoff(2009)]{reinhart2009}
+Reinhart, Carmen M., and Kenneth S. Rogoff. 2009. \textit{This Time Is Different: Eight Centuries of Financial Folly}. Princeton: Princeton University Press.
+
+\bibitem[Scheinkman(2014)]{scheinkman2014}
+Scheinkman, Jos\'{e} A. 2014. \textit{Speculation, Trading, and Bubbles}. New York: Columbia University Press.
+
+\bibitem[Seger and Brockmann(1987)]{seger1987}
+Seger, Jon, and H.~Jane Brockmann. 1987. ``What Is Bet-Hedging?'' \textit{Oxford Surveys in Evolutionary Biology} 4: 182--211.
+
+\bibitem[Smirl(2026a)]{smirl2026business}
+Smirl, Jon. 2026a. ``Business Cycles as Port-Hamiltonian Oscillations in a Heterogeneous-Complementarity Economy.'' Working Paper.
+
+\bibitem[Smirl(2026b)]{smirl2026ces}
+Smirl, Jon. 2026b. ``The CES Quadruple Role: Superadditivity, Correlation Robustness, Strategic Independence, and Network Scaling as Four Properties of CES Curvature.'' Working Paper.
+
+\bibitem[Smirl(2026c)]{smirl2026complementary}
+Smirl, Jon. 2026c. ``Complementary Heterogeneity and the Eigenstructure of Multi-Level Economic Systems.'' Working Paper.
+
+\bibitem[Smirl(2026d)]{smirl2026conservation}
+Smirl, Jon. 2026d. ``Conservation Laws, Topological Invariants, and Exact Constraints in the Economic Free Energy Framework.'' Working Paper.
+
+\bibitem[Smirl(2026e)]{smirl2026dynamical}
+Smirl, Jon. 2026e. ``Dynamical Consequences of the Economic Free Energy: From Fluctuation-Dissipation to Renormalization.'' Working Paper.
+
+\bibitem[Smirl(2026f)]{smirl2026ed}
+Smirl, Jon. 2026f. ``Endogenous Decentralization: A Continuous-Time Model of Concentrated Investment and Distributed Adoption.'' Working Paper.
+
+\bibitem[Smirl(2026f$'$)]{smirl2026emergent}
+Smirl, Jon. 2026. ``Emergent CES: Why Constant Elasticity of Substitution Is Not an Assumption.'' Working Paper.
+
+\bibitem[Smirl(2026g)]{smirl2026free}
+Smirl, Jon. 2026g. ``A Free Energy Framework for Economic Systems with Heterogeneous Complementarities.'' Working Paper.
+
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,27 @@
+\begin{table}[htbp]
+\centering
+\caption{Historical Back-Test: Endogenous Hierarchy Depth}
+\label{tab:historical_backtest}
+\small
+\begin{tabular}{clllc}
+\toprule
+Test & Prediction & Key statistic & Value & Verdict \\
+\midrule
+  19 & Steel N_{eff} declines (maturation) & Kendall $\tau$ & -0.272 & \textbf{CONSISTENT} \\
+  20 & Auto N_{eff} rises 1913--1942 & Kendall $\tau$ & 0.160 & AMBIGUOUS \\
+  21 & Aggregate N_{eff} drops at GPT dates (sync) & Negative shifts & 3/3 & \textbf{CONSISTENT} \\
+  22 & Cross-sector N_{eff} co-move after GPT & Mann-Whitney $p$ & 0.212 & AMBIGUOUS \\
+  23 & Mature sectors flat, active rising & Pattern & Active $\uparrow$, mature flat & \textbf{CONSISTENT} \\
+  24 & Universal lifecycle shape & Rising waves & 1/3 & AMBIGUOUS \\
+\midrule
+  \multicolumn{4}{l}{Overall: 3 consistent, 3 ambiguous, 0 inconsistent} & \\
+\bottomrule
+\end{tabular}
+\vspace{4pt}
+\parbox{0.95\textwidth}{\footnotesize
+  Historical series: M0135AUSM577NNBR (steel ingots, 1899--1965), M0107AUSM543NNBR (auto production, 1913--1942).
+  Modern series: IPG3xxS (NAICS manufacturing subsectors, 1972--2025).
+  SSA window: 96 months (historical) / 120 months (modern); embedding dimension: 30/36.
+  GPT adoption dates: electrification ($\sim$1920), internet/PC ($\sim$1995), deep learning ($\sim$2012).
+}
+\end{table}

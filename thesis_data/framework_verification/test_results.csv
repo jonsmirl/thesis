@@ -1,0 +1,7 @@
+test,verdict,rho_s,p,n_sectors,slope,corr_onset,ip_trough,bf_peak,lead_corr_ip_months,lead_ip_bf_months,corr_r2_lin,corr_r2_quad,ip_r2_lin,ip_r2_quad,corr_r2_gain,ip_r2_gain,pre_rec_consistent,control_quiet,t_star_high,t_star_low,r2_high,r2_low,consistent_count
+test1,CONSISTENT,-0.6607835656513564,0.010090632660600082,14.0,-0.021392908397527548,,,,,,,,,,,,,,,,,,
+test2,CONSISTENT,,,,,2008-04,2008-09,2009-07,5.026281208935611,9.95400788436268,,,,,,,,,,,,,
+test3,AMBIGUOUS,,,,,,,,,,0.09012068886042424,0.09019096508984459,0.10691410929080236,0.10717281142022272,7.027622942035183e-05,0.00025870212942036286,,,,,,,
+test4,AMBIGUOUS,,,,,,,,,,,,,,,,1.0,0.0,,,,,
+test5,CONSISTENT,,,,,,,,,,,,,,,,,,8.425139803029648,4.299303471195614,0.013522096231720071,0.006130109540235407,
+test6,CONSISTENT,,,,,,,,,,,,,,,,,,,,,,3.0

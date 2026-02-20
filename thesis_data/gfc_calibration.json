@@ -1,0 +1,22 @@
+{
+  "part_a": {
+    "n_countries": 147,
+    "main_model_r2": 0.13823549301424465,
+    "ari_x_pmi_beta": 0.30652456055780347,
+    "ari_x_pmi_p": 0.015629302876757806,
+    "roc_auc": 0.8218793828892006,
+    "quadrant_worst": "High ARI / Low PMI",
+    "quadrant_worst_adj": -0.7737544348655337,
+    "quadrant_worst_raw": 3.8373302594196357,
+    "placebo_CSI_p": 0.5131795710123865,
+    "placebo_SPI_p": 0.06725332864595276,
+    "placebo_EBI_p": 0.3053481705986528
+  },
+  "part_b": {
+    "n_months": 192,
+    "first_signal_date": "2003-02-01",
+    "mean_fragility_pre_2004": -1.425075507680723,
+    "mean_fragility_buildup": 2.371758749311499,
+    "mean_fragility_crisis": -1.6615547914174376
+  }
+}

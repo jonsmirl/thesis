@@ -1,0 +1,13 @@
+naics_4digit,naics_sector_name,subst_category,n,median_markup,mean_markup,median_offers
+1153,Agriculture/Forestry/Fishing,HIGH,50,1.0,0.9856507735555181,3.0
+2362,Nonresidential Building Construction,MEDIUM,50,1.0,0.9541278469109187,3.0
+3241,Petroleum/Coal Products Mfg,HIGH,50,1.0,0.9989785708963602,1.0
+4234,Prof/Commercial Equipment Wholesale,HIGH,50,1.0,0.912473909363654,1.5
+5241,Finance/Insurance,MEDIUM,50,1.0,0.8738362446067134,2.0
+4236,Wholesale Trade,HIGH,50,1.0,0.9905663242581791,1.0
+4238,Wholesale Trade,HIGH,50,1.0,1.0,29.0
+4242,Wholesale Trade,HIGH,50,1.0,0.9948985395939762,1.0
+3364,Aerospace Product Mfg,MEDIUM,145,0.973008554411147,0.8853617094236215,1.0
+5416,Management/Scientific Consulting,LOW,50,0.9169815789736939,0.8359310424865005,2.0
+5415,Computer Systems Design,LOW,149,0.9112064874610283,0.8397745996321441,3.0
+5417,Scientific R&D,LOW,100,0.831670543640505,0.7758200095661378,2.0

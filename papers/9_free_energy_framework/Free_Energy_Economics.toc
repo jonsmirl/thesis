@@ -1,0 +1,89 @@
+\contentsline {section}{\numberline {1}Introduction}{5}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Summary of Results}{6}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Related Literature}{7}{subsection.1.2}%
+\contentsline {paragraph}{CES as a generating function across fields.}{7}{section*.2}%
+\contentsline {paragraph}{Entropy and information theory in economics.}{8}{section*.3}%
+\contentsline {paragraph}{Statistical mechanics and economic equilibrium.}{8}{section*.4}%
+\contentsline {paragraph}{Active inference and the free energy principle.}{9}{section*.5}%
+\contentsline {paragraph}{Information economics.}{10}{section*.6}%
+\contentsline {paragraph}{Mechanism design.}{10}{section*.7}%
+\contentsline {paragraph}{Social choice.}{10}{section*.8}%
+\contentsline {paragraph}{Search and matching.}{10}{section*.9}%
+\contentsline {paragraph}{Contract theory.}{11}{section*.10}%
+\contentsline {paragraph}{Behavioral economics.}{11}{section*.11}%
+\contentsline {paragraph}{Closest antecedents.}{11}{section*.12}%
+\contentsline {section}{\numberline {2}The CES Generating Function}{12}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Definition and Properties}{12}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}The Quadruple Role of $\rho $}{13}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Micro-Foundations: Why CES Is Forced}{14}{subsection.2.3}%
+\contentsline {section}{\numberline {3}The Shannon Entropy Generating Function}{16}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Definition and Properties}{16}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Mutual Information and the Cost of Knowledge}{16}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}The Information Temperature}{17}{subsection.3.3}%
+\contentsline {section}{\numberline {4}The Free Energy Connection}{17}{section.4}%
+\contentsline {subsection}{\numberline {4.1}The Free Energy of an Economic System}{17}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}The Two Limits}{18}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}The Critical Temperature}{18}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Uniqueness of the Free Energy Framework}{19}{subsection.4.4}%
+\contentsline {section}{\numberline {5}Derivation I: Akerlof's Market for Lemons}{21}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Setup}{21}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}$T = 0$: Efficient Allocation}{22}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}$T \to \infty $: Akerlof Unraveling}{22}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Intermediate $T$: Rational Inattention}{22}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}The $\rho $-Dependent Robustness Result}{24}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}Empirical Implications}{28}{subsection.5.6}%
+\contentsline {subsection}{\numberline {5.7}Dynamic Extension: Endogenous Information Quality}{29}{subsection.5.7}%
+\contentsline {section}{\numberline {6}Derivation II: Myerson's Optimal Mechanism}{30}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Setup}{30}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}The Virtual Valuation as Free Energy Gradient}{31}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}The Revelation Principle as Thermodynamic Equilibrium}{34}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}$\rho $-Dependent Mechanism Structure}{35}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Empirical Implications}{39}{subsection.6.5}%
+\contentsline {section}{\numberline {7}Derivation III: Arrow's Impossibility Theorem}{40}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Arrow's Conditions}{40}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}CES Social Welfare at $T = 0$}{40}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}$T > 0$: The Phase Transition}{41}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}$\rho $-Dependent Democratic Robustness}{44}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Empirical Implications}{46}{subsection.7.5}%
+\contentsline {subsection}{\numberline {7.6}Connection to the Condorcet Jury Theorem}{47}{subsection.7.6}%
+\contentsline {section}{\numberline {8}Derivation IV: Search and Matching}{47}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Setup}{47}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}$T = 0$: Frictionless Assignment}{48}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}$T > 0$: Costly Search as Entropy Reduction}{48}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}The $\rho $-Dependent Search Duration}{49}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.5}The Beveridge Curve as Free Energy Surface}{50}{subsection.8.5}%
+\contentsline {subsection}{\numberline {8.6}Empirical Implications}{52}{subsection.8.6}%
+\contentsline {section}{\numberline {9}Derivation V: Contract Theory}{53}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Setup}{53}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}$T = 0$: Complete Contracts}{54}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}$T > 0$: Contractual Incompleteness as Information Friction}{55}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}The Hold-Up Problem}{55}{subsection.9.4}%
+\contentsline {subsection}{\numberline {9.5}The Integration Boundary}{58}{subsection.9.5}%
+\contentsline {subsection}{\numberline {9.6}Empirical Implications}{59}{subsection.9.6}%
+\contentsline {section}{\numberline {10}Derivation VI: Behavioral Economics}{60}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Setup: Rational Inattention and the Logit-CES Duality}{60}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}$T = 0$: Standard Expected Utility}{61}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}$T > 0$: The Behavioral Catalog}{61}{subsection.10.3}%
+\contentsline {subsection}{\numberline {10.4}The Rabin Calibration Resolution}{64}{subsection.10.4}%
+\contentsline {subsection}{\numberline {10.5}Empirical Implications}{66}{subsection.10.5}%
+\contentsline {section}{\numberline {11}Empirical Test: Banking Regulation and the Global Financial Crisis}{67}{section.11}%
+\contentsline {subsection}{\numberline {11.1}The BCL Puzzle}{67}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}Data and Identification}{68}{subsection.11.2}%
+\contentsline {subsection}{\numberline {11.3}Results}{68}{subsection.11.3}%
+\contentsline {subsection}{\numberline {11.4}Placebo Tests}{69}{subsection.11.4}%
+\contentsline {subsection}{\numberline {11.5}Interpretation}{69}{subsection.11.5}%
+\contentsline {subsection}{\numberline {11.6}Companion Test: Financial Development Panel}{71}{subsection.11.6}%
+\contentsline {subsection}{\numberline {11.7}Companion Test: Price of Incentive Compatibility in Procurement}{72}{subsection.11.7}%
+\contentsline {paragraph}{Prediction.}{72}{section*.13}%
+\contentsline {paragraph}{Data.}{73}{section*.14}%
+\contentsline {paragraph}{Results.}{73}{section*.15}%
+\contentsline {paragraph}{Interpretation.}{74}{section*.16}%
+\contentsline {section}{\numberline {12}The Architecture}{74}{section.12}%
+\contentsline {subsection}{\numberline {12.1}What Is Unified}{74}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}What Determines What}{74}{subsection.12.2}%
+\contentsline {subsection}{\numberline {12.3}What Remains Separate}{75}{subsection.12.3}%
+\contentsline {section}{\numberline {13}Discussion}{76}{section.13}%
+\contentsline {subsection}{\numberline {13.1}Why Wasn't This Seen Before?}{76}{subsection.13.1}%
+\contentsline {subsection}{\numberline {13.2}Testability}{76}{subsection.13.2}%
+\contentsline {subsection}{\numberline {13.3}Implications for Economic Methodology}{77}{subsection.13.3}%
+\contentsline {section}{\numberline {14}Conclusion}{77}{section.14}%

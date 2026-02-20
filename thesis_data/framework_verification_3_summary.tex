@@ -1,0 +1,27 @@
+\begin{table}[htbp]
+\centering
+\caption{Endogenous Hierarchy Depth: Does Complexity Determine $N$?}
+\label{tab:framework_verification_3}
+\small
+\begin{tabular}{clllc}
+\toprule
+Test & Prediction & Key statistic & Value & Verdict \\
+\midrule
+  13 & SSA dimensionality $\uparrow$ with R\&D & Spearman $\rho$ & 0.344 & AMBIGUOUS \\
+  14 & ACF peaks $\uparrow$ with R\&D & Spearman $\rho$ & -0.021 & AMBIGUOUS \\
+  15 & Spectral peaks $\uparrow$ with R\&D & Spearman $\rho$ & -0.183 & AMBIGUOUS \\
+  16 & Within-sector eigenvalue depth $\uparrow$ & Spearman $\rho$ (EV1) & 0.700 & AMBIGUOUS \\
+  17 & Timescale span $\uparrow$ with R\&D & Spearman $\rho$ & 0.275 & AMBIGUOUS \\
+  18 & Computer/Elec gains levels over time & Kendall $\tau$ (tech) & 0.257 & \textbf{CONSISTENT} \\
+\midrule
+  \multicolumn{4}{l}{Tests 13--18: 1 consistent, 5 ambiguous, 0 inconsistent} & \\
+\bottomrule
+\end{tabular}
+\vspace{4pt}
+\parbox{0.95\textwidth}{\footnotesize
+  R\&D intensity from NSF NCSES Business R\&D Survey 2019.
+  SSA window $L=48$ months (4 years); Marchenko--Pastur noise threshold.
+  4-digit NAICS subsectors from FRED for within-sector analysis (Test 16).
+  Temporal emergence (Test 18): 10-year rolling window, 1-year step.
+}
+\end{table}

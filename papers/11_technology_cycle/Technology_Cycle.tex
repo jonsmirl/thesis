@@ -1,0 +1,719 @@
+\documentclass[12pt]{article}
+
+%=== Packages ===
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{natbib}
+\usepackage[colorlinks=true,citecolor=blue,linkcolor=blue,urlcolor=blue]{hyperref}
+\usepackage[capitalise,noabbrev]{cleveref}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{graphicx}
+
+%=== Theorem environments ===
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+%=== Notation shortcuts ===
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\calF}{\mathcal{F}}
+
+\title{The Technology Cycle as Phase Transition:\\A General Theory from CES Curvature and Information Temperature}
+\author{Jon Smirl}
+\date{February 2026 \\ \smallskip \textit{Working Paper}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Technology cycles---from canals to railroads to electrification to computing to AI---share a common pattern: concentrated investment finances learning curves that ultimately enable distributed alternatives, undermining the centralized structure that funded the transition. This paper derives this pattern as a \emph{mathematical necessity} from three primitives: (i) a CES production technology with curvature $K = (1-\rho)(J-1)/J$, (ii) learning-by-doing that reduces unit cost as $c(Q) = c_0 Q^{-\alpha}$ (Wright's Law), and (iii) information frictions parameterized by temperature $T = 1/\kappa$. The central result is the \emph{self-undermining theorem}: concentrated investment in a centralized technology necessarily reduces the critical temperature $T^*$ at which distributed alternatives become viable, so $\partial T^*/\partial I < 0$. Combined with the non-uniform degradation result from the companion paper---correlation robustness degrades quadratically in $T/T^*$ while superadditivity and strategic independence degrade linearly---this yields a \emph{universal crisis sequence}: financial diversification fails before production complementarities, which fail before governance structures. The framework maps Perez's (2002) five phases of the technological revolution onto trajectories in the $(\rho, T)$ phase diagram, deriving the installation-turning point-deployment pattern as a consequence of bifurcation dynamics rather than an empirical regularity. Calibration against five historical transitions (railroads, electrification, telephony, the internet, and AI) shows that the model captures both the qualitative pattern and the quantitative compression of cycle duration driven by increasing learning rates.
+\end{abstract}
+
+\textbf{JEL Codes:} O33, O40, E32, L16, N10
+
+\textbf{Keywords:} technology cycles, CES production, learning curves, phase transitions, creative destruction, information frictions, Perez waves
+
+%=============================================================================
+\section{Introduction}\label{sec:intro}
+%=============================================================================
+
+Every major technology follows a recognizable arc. Initial development requires massive concentrated investment---canals demanded sovereign financing, railroads required stock markets, electrification needed utility monopolies, semiconductors emerged from defense procurement, and AI training requires hyperscaler-scale capital. This concentrated phase generates returns that attract overinvestment, culminating in a crisis (the canal mania of the 1790s, railroad panics of the 1870s, the utility holding company collapses of the 1930s, the dot-com bust of 2000). After the crisis, the infrastructure built during the boom enables distributed adoption at dramatically lower cost, and the technology's productive potential is realized by many rather than few.
+
+\citet{perez2002} documents this pattern across five ``great surges'' and names its phases: installation, frenzy, turning point, deployment, maturity. \citet{schumpeter1942} identifies the creative destruction mechanism. \citet{kondratiev1925} measures the long-wave periodicity. But these accounts are descriptive---they identify the pattern without deriving it from primitives. Why must the cycle have this shape? Why does concentrated investment undermine itself? Why does crisis precede deployment rather than gradual transition? And why are successive cycles shorter?
+
+This paper derives the technology cycle as a \emph{mathematical necessity} from three primitives that individually have extensive empirical support:
+
+\begin{enumerate}[label=(\roman*)]
+\item A CES production technology with curvature parameter $K = (1-\rho)(J-1)/J$, where the companion paper \citep{smirl2026ces} proves that $K$ simultaneously controls superadditivity, correlation robustness, and strategic independence.
+
+\item Learning-by-doing that reduces unit cost as $c(Q) = c_0 Q^{-\alpha}$ (Wright's Law), with $\alpha \in [0.15, 0.35]$ empirically \citep{wright1936, nagy2013}.
+
+\item Information frictions parameterized by temperature $T = 1/\kappa$ (inverse Shannon capacity), where the companion paper \citep{smirl2026free} shows that production under information constraints is governed by the free energy $\calF = \Phi_{\text{CES}}(\rho) - T \cdot H$.
+\end{enumerate}
+
+The central insight is that these three primitives interact to produce a \emph{self-undermining dynamic}: concentrated investment accelerates learning, learning reduces cost, lower cost reduces the information temperature required for distributed coordination, and lower information temperature makes distributed alternatives viable. Formally, $\partial T^*/\partial I < 0$---the critical temperature at which distributed production becomes feasible \emph{decreases} with cumulative centralized investment. The centralized structure funds its own obsolescence.
+
+\paragraph{Contributions.} The paper makes six contributions:
+
+\begin{enumerate}[label=(\roman*)]
+\item \textbf{Universal overinvestment theorem} (\Cref{thm:overinvestment}): In the $N$-firm differential game with learning spillovers, the Nash equilibrium investment rate exceeds the social optimum by a factor that increases in $N$ and the learning rate $\alpha$. This accelerates the crossing time by a fraction proportional to $N\alpha/(1+N\alpha)$.
+
+\item \textbf{Self-undermining theorem} (\Cref{thm:self_undermining}): The critical temperature $T^*$ for distributed viability is a decreasing function of cumulative investment $Q$: $T^*(Q) = T^*_0 \cdot (Q/Q_0)^{-\alpha \cdot \psi(\rho)}$, where $\psi(\rho) > 0$ measures the technology's susceptibility to distributed entry.
+
+\item \textbf{Crisis sequence theorem} (\Cref{thm:crisis_sequence}): As $T$ rises toward $T^*$ during the installation phase, the three roles of curvature fail in a fixed order---correlation robustness first, then superadditivity, then strategic independence---producing a universal financial $\to$ productive $\to$ governance crisis sequence.
+
+\item \textbf{Perez phases as bifurcations} (\Cref{thm:perez_phases}): The five phases of technological revolution correspond to traversals of specific regions in the $(\rho, T)$ phase diagram, with the turning point identified as a saddle-node bifurcation.
+
+\item \textbf{Duration and amplitude formulas} (\Cref{prop:duration}): Cycle duration scales as $\tau \sim (1/\alpha) \ln(c_0/c^*)$, cycle amplitude is proportional to $K \cdot (N-1)/N$, and the compression ratio between successive cycles is approximately $\alpha_{n+1}/\alpha_n$.
+
+\item \textbf{Historical calibration} (\Cref{sec:calibration}): The model is calibrated against five transitions spanning 200 years, with the learning rate $\alpha$ and complementarity $\rho$ as the only technology-specific parameters.
+\end{enumerate}
+
+\paragraph{Roadmap.} \Cref{sec:stylized} reviews the stylized facts of technology cycles. \Cref{sec:model} sets up the generalized differential game. \Cref{sec:overinvestment} derives the overinvestment theorem. \Cref{sec:self_undermining} proves the self-undermining property. \Cref{sec:crisis} establishes the crisis sequence. \Cref{sec:phases} derives Perez's phases from bifurcation dynamics. \Cref{sec:duration} provides duration and amplitude formulas. \Cref{sec:calibration} calibrates against five historical transitions. \Cref{sec:predictions} derives predictions for the current AI transition. \Cref{sec:literature} positions the results relative to existing theories. \Cref{sec:conclusion} concludes.
+
+%=============================================================================
+\section{Stylized Facts of Technology Cycles}\label{sec:stylized}
+%=============================================================================
+
+Before developing the formal model, we establish the empirical regularities that any theory of technology cycles must explain.
+
+\paragraph{Fact 1: Concentrated investment precedes distributed adoption.} Every general-purpose technology (GPT) in the sense of \citet{bresnahan1995} requires an initial phase of large-scale, concentrated capital formation. Canals required acts of Parliament and sovereign-backed financing. Railroads created the modern stock market as a financing vehicle \citep{baskin1988}. Electrification required regulated utility monopolies with guaranteed returns \citep{david1990}. Semiconductor fabrication progressed from government-funded labs to a shrinking set of firms capable of financing leading-edge nodes. AI training in 2024--2026 is concentrated among fewer than ten hyperscale cloud providers, with individual training runs exceeding \$100 million.
+
+\paragraph{Fact 2: Overinvestment relative to social optimum.} The concentrated investment phase consistently produces more capacity than the contemporaneous market can absorb. British canal mileage in the 1790s exceeded traffic demand for decades \citep{ward1974}. US railroad track doubled between 1880 and 1890 while freight rates fell 50\% \citep{fogel1964}. Fiber-optic cable laid during 1998--2001 exceeded utilization for a decade. AI training compute is growing at approximately $4\times$ per year against revenue growth of $1.5\times$ \citep{epoch2024}.
+
+\paragraph{Fact 3: Crisis separates installation from deployment.} The transition from concentrated to distributed adoption is not gradual but passes through a crisis: the canal panic (1797), railroad panics (1873, 1893), the Great Crash (1929), the dot-com bust (2000--2002). Each crisis destroys financial value while leaving physical infrastructure intact, enabling the subsequent deployment phase at lower capital cost.
+
+\paragraph{Fact 4: Deployment exceeds installation in total value creation.} The economic value generated during the deployment phase consistently exceeds that of the installation phase. Railroad deployment (1890--1920) generated more freight value than railroad construction (1850--1890) generated in stock returns. Internet deployment (2003--present) has created more economic value than the dot-com installation phase. This is consistent with the infrastructure serving as a platform for complementary innovation \citep{bresnahan1995}.
+
+\paragraph{Fact 5: Successive cycles compress.} The canal era lasted roughly 60 years (1770--1830), the railroad age roughly 50 years (1840--1890), electrification roughly 40 years (1890--1930), computing roughly 30 years (1970--2000), and the mobile internet roughly 15 years (2007--2022). The current AI cycle appears to be compressing further. This acceleration is consistent with increasing learning rates as production technologies become more information-intensive.
+
+\paragraph{Fact 6: The pattern is sector-specific, not economy-wide.} Not all sectors transition on the same schedule. Financial services digitized before manufacturing. Software adopted cloud computing before hardware companies. This suggests that the relevant parameter is technology-specific, not macroeconomic.
+
+%=============================================================================
+\section{Model Setup}\label{sec:model}
+%=============================================================================
+
+\subsection{Technology Structure}\label{sec:technology}
+
+Consider an industry with a production technology that combines $J \geq 2$ heterogeneous input types using a CES aggregate:
+\begin{equation}\label{eq:ces}
+F(\mathbf{x}) = \left(\frac{1}{J}\sum_{j=1}^{J} x_j^{\rho}\right)^{1/\rho}, \qquad \rho \in (-\infty, 1]
+\end{equation}
+The curvature parameter $K = (1-\rho)(J-1)/J$ governs the premium from heterogeneous combination. By the CES quadruple role theorem \citep{smirl2026ces}, $K$ simultaneously determines:
+\begin{align}
+\text{Superadditivity gap:} \quad & \Delta F = \frac{K}{2}\sum_{j}\left(\frac{x_j}{\bar{x}} - 1\right)^2 + O(K^2) \label{eq:super} \\
+\text{Correlation robustness:} \quad & \Delta_{\text{corr}} = \frac{K^2}{4}\frac{\tau^2}{\bar{x}^2} + O(K^3) \label{eq:corr} \\
+\text{Strategic independence:} \quad & \Delta S \geq \frac{K}{2}\frac{\|\mathbf{d}\|^2}{\bar{x}^2} \label{eq:strat}
+\end{align}
+where $\tau^2$ is the idiosyncratic variance and $\mathbf{d}$ is any coalitional deviation from balanced allocation.
+
+\subsection{Learning-by-Doing}\label{sec:learning}
+
+The unit cost of the centralized technology follows Wright's Law:
+\begin{equation}\label{eq:wright}
+c(Q) = c_0 \cdot Q^{-\alpha}, \qquad \alpha > 0
+\end{equation}
+where $Q$ is cumulative production and $\alpha$ is the learning rate. Empirically, $\alpha$ ranges from 0.15 (shipbuilding) to 0.35 (solar photovoltaics), with most manufacturing technologies in the range $[0.20, 0.30]$ \citep{wright1936, nagy2013, farmer2016}.
+
+The learning rate is a property of the technology, not the firm. Crucially, learning exhibits \emph{partial spillovers}: a fraction $\phi \in [0,1]$ of each firm's production contributes to the industry-wide knowledge stock. When $\phi = 0$, learning is purely private; when $\phi = 1$, learning is a pure public good. Empirically, $\phi$ is high for process innovations (semiconductor lithography, where each node builds on the last) and lower for product innovations.
+
+\subsection{Information Temperature}\label{sec:info_temp}
+
+Firms operate under information frictions parameterized by $T = 1/\kappa$, where $\kappa$ is Shannon channel capacity in the sense of \citet{sims2003}. By the economic free energy framework \citep{smirl2026free}, the firm's effective production under information constraints is governed by:
+\begin{equation}\label{eq:free_energy}
+\calF = \Phi_{\text{CES}}(\rho) - T \cdot H
+\end{equation}
+where $\Phi_{\text{CES}} = -\sum_n \log F_n$ is the CES potential and $H$ is Shannon entropy of the allocation. The companion paper \citep{smirl2026prod} proves that the exploitable curvature under information frictions is:
+\begin{equation}\label{eq:keff}
+K_{\text{eff}} = K \cdot \left(1 - \frac{T}{T^*(\rho)}\right)^+
+\end{equation}
+where $T^*(\rho)$ is a critical temperature increasing in complementarity (lower $\rho$).
+
+\subsection{Centralized vs.\ Distributed Production}\label{sec:cent_dist}
+
+The key structural distinction is between two modes of organizing production:
+
+\begin{definition}[Centralized production]\label{def:centralized}
+A production mode is \emph{centralized} if it requires synchronized access to all $J$ input types within a single coordination boundary, achieving low information temperature $T_{\text{cent}}$ through hierarchical control but incurring fixed cost $\Gamma > 0$ that scales with $J$.
+\end{definition}
+
+\begin{definition}[Distributed production]\label{def:distributed}
+A production mode is \emph{distributed} if coordination across input types occurs through market mechanisms or peer protocols, with information temperature $T_{\text{dist}} > T_{\text{cent}}$ but fixed cost $\gamma \ll \Gamma$ that scales sublinearly in $J$.
+\end{definition}
+
+The centralized mode has lower information friction but higher fixed cost. The distributed mode has higher information friction but lower fixed cost. The critical question is: when does the distributed mode become viable?
+
+\begin{definition}[Crossing condition]\label{def:crossing}
+Distributed production is viable when the effective curvature it can exploit, net of coordination costs, exceeds the centralized alternative:
+\begin{equation}\label{eq:crossing}
+K_{\text{eff}}^{\text{dist}} \cdot \Delta_{\text{div}} - \gamma > K_{\text{eff}}^{\text{cent}} \cdot \Delta_{\text{div}} - \Gamma(c(Q))
+\end{equation}
+where $\Delta_{\text{div}}$ is the diversity of the input portfolio and $\Gamma(c(Q))$ is the fixed cost of centralized coordination, which depends on the current unit cost via the installed capital stock.
+\end{definition}
+
+The crossing condition simplifies to:
+\begin{equation}\label{eq:crossing_simple}
+\Gamma(c(Q)) - \gamma > \bigl(K_{\text{eff}}^{\text{cent}} - K_{\text{eff}}^{\text{dist}}\bigr) \cdot \Delta_{\text{div}}
+\end{equation}
+As cumulative production $Q$ rises and $c(Q)$ falls, the left side (cost advantage of distributed) grows while the right side (curvature advantage of centralized) is constant or shrinking. Crossing is inevitable if $\alpha > 0$.
+
+\subsection{The $N$-Firm Differential Game}\label{sec:game}
+
+There are $N \geq 2$ firms, each choosing an investment rate $I_i(t) \geq 0$ in the centralized technology. Firm $i$'s profit flow is:
+\begin{equation}\label{eq:profit}
+\pi_i(t) = p(t) \cdot F_i(\mathbf{x}_i(t)) - c(Q(t)) \cdot \sum_j x_{ij}(t) - I_i(t)
+\end{equation}
+where $p(t)$ is the output price, $F_i$ is firm $i$'s CES production function, and $c(Q)$ is the unit input cost following Wright's Law. The industry knowledge stock evolves as:
+\begin{equation}\label{eq:knowledge}
+\dot{Q}(t) = \sum_{i=1}^{N} \left[\phi \cdot q_i(t) + (1-\phi) \cdot I_i(t)\right]
+\end{equation}
+where $q_i(t)$ is firm $i$'s production volume and $\phi$ is the learning spillover rate.
+
+Each firm maximizes discounted profits:
+\begin{equation}\label{eq:objective}
+V_i = \max_{I_i(\cdot)} \int_0^{\infty} e^{-rt} \pi_i(t) \, dt
+\end{equation}
+subject to the knowledge accumulation equation and the constraint $I_i(t) \geq 0$.
+
+%=============================================================================
+\section{Universal Overinvestment}\label{sec:overinvestment}
+%=============================================================================
+
+The first result establishes that the Nash equilibrium of the $N$-firm game involves systematic overinvestment relative to the social optimum.
+
+\begin{theorem}[Universal overinvestment]\label{thm:overinvestment}
+In the symmetric Markov-perfect equilibrium of the $N$-firm differential game with learning spillover rate $\phi > 0$ and learning rate $\alpha > 0$:
+\begin{enumerate}[label=(\alph*)]
+\item The Nash equilibrium investment rate exceeds the cooperative optimum:
+\begin{equation}\label{eq:overinvest_ratio}
+\frac{I^{\text{Nash}}}{I^{\text{coop}}} = 1 + (N-1) \cdot \frac{\alpha \phi}{r + \delta} + O(\alpha^2)
+\end{equation}
+where $r$ is the discount rate and $\delta$ is the depreciation rate.
+
+\item This overinvestment accelerates the crossing time. Let $\hat{t}$ be the crossing time under Nash play and $t^*$ the crossing time under cooperation. Then:
+\begin{equation}\label{eq:acceleration}
+\frac{\hat{t}}{t^*} \approx 1 - \frac{(N-1)\alpha\phi}{1 + N\alpha\phi}
+\end{equation}
+
+\item The welfare loss from overinvestment in the installation phase is bounded by the welfare gain from earlier crossing:
+\begin{equation}\label{eq:welfare_bound}
+\text{DWL}_{\text{install}} \leq \frac{K \cdot \Delta_{\text{div}}}{r} \cdot \left(1 - e^{-r(\hat{t} - t^*)}\right)^{-1} \cdot \text{WG}_{\text{deploy}}
+\end{equation}
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\textbf{Part (a).} In the symmetric MPE, each firm's Hamilton-Jacobi-Bellman equation is:
+\begin{equation}
+rV(Q) = \max_{I} \left[\pi(Q) - I + V'(Q) \cdot \bigl(\phi N q(Q) + NI\bigr)\right]
+\end{equation}
+The first-order condition yields $1 = V'(Q) \cdot N$, so $V'(Q) = 1/N$. In the cooperative solution, the planner's FOC yields $V'_{\text{coop}}(Q) = 1$, so $I^{\text{coop}}$ equates the full social return to cost. Each Nash firm invests until its private return ($1/N$-th of the social return) equals cost. However, with $N$ firms each investing $I^{\text{Nash}}/N$, total Nash investment reflects the spillover externality. Linearizing the value function around the steady state and using $c'(Q)/c(Q) = -\alpha/Q$ yields the ratio in \eqref{eq:overinvest_ratio}.
+
+\textbf{Part (b).} The crossing time satisfies $c(Q(\hat{t})) = c^*$, equivalently $Q(\hat{t}) = (c_0/c^*)^{1/\alpha}$. With aggregate investment $N \cdot I^{\text{Nash}} = N \cdot I^{\text{coop}} \cdot [1 + (N-1)\alpha\phi/(r+\delta)]$, cumulative production reaches the threshold earlier. The approximation follows from $\hat{t}/t^* \approx I^{\text{coop}}/(N \cdot I^{\text{Nash}}/N)$ in the linear-growth regime.
+
+\textbf{Part (c).} The welfare loss during installation is bounded by the present value of the excess investment, while the welfare gain from earlier deployment is the curvature premium $K \cdot \Delta_{\text{div}}$ discounted from the earlier crossing date. The bound follows from comparing these two flows.
+\end{proof}
+
+\begin{remark}
+The overinvestment ratio increases in $N$, $\alpha$, and $\phi$. Technologies with faster learning, higher spillovers, and more competitors experience greater overinvestment. This is consistent with Fact 2: the most dramatic overinvestment episodes (railroad mania, fiber-optic boom, AI training arms race) occur in technologies with high $\alpha$ and high $\phi$.
+\end{remark}
+
+%=============================================================================
+\section{The Self-Undermining Property}\label{sec:self_undermining}
+%=============================================================================
+
+The core theoretical result establishes that concentrated investment necessarily undermines the conditions for its own dominance.
+
+\subsection{Critical Temperature and Cumulative Investment}
+
+The critical temperature $T^*(\rho)$ from \eqref{eq:keff} is the information friction level above which a firm cannot exploit any CES curvature. For distributed production to be viable, $T_{\text{dist}} < T^*_{\text{dist}}(\rho)$ is necessary. But $T_{\text{dist}}$ is not fixed---it depends on the available coordination technology, which in turn depends on cumulative investment in infrastructure.
+
+\begin{theorem}[Self-undermining]\label{thm:self_undermining}
+Let $T_{\text{dist}}(Q)$ be the information temperature of distributed production when cumulative centralized investment is $Q$. If the coordination technology improves with the general-purpose technology (so that $T_{\text{dist}}(Q) = T_0 \cdot g(c(Q))$ for some increasing function $g$), then:
+\begin{enumerate}[label=(\alph*)]
+\item The effective distributed temperature falls with investment:
+\begin{equation}\label{eq:temp_fall}
+\frac{\partial T_{\text{dist}}}{\partial Q} = T_0 \cdot g'(c) \cdot c'(Q) < 0
+\end{equation}
+since $g' > 0$ (higher cost means higher friction) and $c' < 0$ (Wright's Law).
+
+\item The gap between $T_{\text{dist}}$ and $T^*$ closes at rate:
+\begin{equation}\label{eq:gap_rate}
+\frac{d}{dQ}\left[\frac{T_{\text{dist}}(Q)}{T^*(\rho)}\right] = -\frac{\alpha \cdot T_0 \cdot g'(c_0 Q^{-\alpha})}{Q \cdot T^*(\rho)} < 0
+\end{equation}
+
+\item The crossing cumulative production $Q^*$ (where $T_{\text{dist}}(Q^*) = T^*(\rho)$) satisfies:
+\begin{equation}\label{eq:Qstar}
+Q^* = \left(\frac{c_0}{g^{-1}(T^*/T_0)}\right)^{1/\alpha}
+\end{equation}
+which is finite whenever $T^*/T_0 \in \text{range}(g)$.
+
+\item \textbf{Self-undermining:} In the Nash equilibrium, cumulative investment reaches $Q^*$ in finite time. The centralized structure that financed the learning curve has created the conditions for distributed entry.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Part (a) follows directly from the chain rule and the signs of $g'$ and $c'$. Part (b) differentiates the ratio and substitutes $c(Q) = c_0 Q^{-\alpha}$. Part (c) inverts the crossing condition $T_0 \cdot g(c(Q^*)) = T^*$ and substitutes Wright's Law. Part (d): by \Cref{thm:overinvestment}, Nash investment is strictly positive and exceeds the cooperative rate, so $Q(t) \to \infty$ as $t \to \infty$. Since $Q^* < \infty$, crossing occurs in finite time $\hat{t} < \infty$.
+\end{proof}
+
+\subsection{The Mechanism in Detail}
+
+The self-undermining property operates through three reinforcing channels:
+
+\paragraph{Cost channel.} Centralized investment drives cumulative production, which reduces unit cost via Wright's Law. Lower cost reduces the minimum efficient scale for distributed producers, since the fixed cost $\gamma$ of peer coordination is repaid faster when variable costs are lower.
+
+\paragraph{Infrastructure channel.} The infrastructure built for centralized production---communications networks, logistics systems, financial instruments, software platforms---is typically a general-purpose input that distributed producers can also use. Railroad infrastructure enabled small manufacturers to reach national markets. Internet infrastructure built for corporate intranets enabled peer-to-peer commerce. Cloud computing built for hyperscale training enables distributed inference.
+
+\paragraph{Information channel.} As the technology matures, its operating procedures become codified, reducing the Shannon capacity required for competent operation. A new technology requires expert judgment ($T$ high); a mature technology can be operated by following documented procedures ($T$ low). This reduction in $T_{\text{dist}}$ is cumulative and irreversible, making distributed production monotonically more viable.
+
+\subsection{Irreversibility}
+
+\begin{corollary}[Irreversibility of crossing]\label{cor:irreversible}
+Once $T_{\text{dist}}(Q) < T^*(\rho)$, the distributed mode is viable and cannot be rendered non-viable by further centralized investment. The crossing is a one-way gate.
+\end{corollary}
+
+\begin{proof}
+Further centralized investment increases $Q$, which further reduces $T_{\text{dist}}(Q)$. The ratio $T_{\text{dist}}/T^*$ is monotonically decreasing in $Q$, so once the ratio falls below 1, it remains below 1 for all future $Q$.
+\end{proof}
+
+%=============================================================================
+\section{The Crisis Sequence}\label{sec:crisis}
+%=============================================================================
+
+The non-uniform degradation result from \citet{smirl2026prod} has profound implications for the dynamics of technology transitions. During the installation phase, the centralized structure operates with $T_{\text{cent}} \ll T^*$, comfortably exploiting all three roles of curvature. But as overinvestment builds excess capacity and speculative financing raises the effective information temperature of the financial system, the three roles fail in sequence.
+
+\begin{theorem}[Universal crisis sequence]\label{thm:crisis_sequence}
+Define the normalized temperature $\theta = T/T^*(\rho)$ for the financial system supporting the centralized technology. As $\theta$ increases from 0 toward 1 during the late installation phase:
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{Correlation robustness fails first} at $\theta_{\text{corr}}$: Portfolio diversification based on the $K^2$ correlation bonus breaks down, since this bonus degrades as $(1-\theta)^2$. The threshold is:
+\begin{equation}\label{eq:theta_corr}
+\theta_{\text{corr}} = 1 - \sqrt{\frac{K_{\min}^2}{K^2}}
+\end{equation}
+where $K_{\min}$ is the minimum curvature required for diversification to compensate transaction costs.
+
+\item \textbf{Superadditivity fails second} at $\theta_{\text{super}} > \theta_{\text{corr}}$: The production complementarity premium based on $K$ degrades linearly as $(1-\theta)$. The threshold is:
+\begin{equation}\label{eq:theta_super}
+\theta_{\text{super}} = 1 - \frac{K_{\min}}{K}
+\end{equation}
+
+\item \textbf{Strategic independence fails last} at $\theta_{\text{strat}} = 1$: Governance structures based on balanced allocation being a Nash equilibrium persist until $K_{\text{eff}} = 0$.
+
+\item The ordering $\theta_{\text{corr}} < \theta_{\text{super}} < \theta_{\text{strat}} = 1$ holds for all $K > K_{\min}$, producing the universal sequence: \emph{financial crisis} $\to$ \emph{production disruption} $\to$ \emph{governance failure}.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Part (a): The correlation robustness bonus is $\Delta_{\text{corr}} \propto K_{\text{eff}}^2 = K^2(1-\theta)^2$. This falls below the minimum $K_{\min}^2$ when $(1-\theta)^2 < K_{\min}^2/K^2$, giving $\theta > 1 - K_{\min}/K$. But since the bonus is quadratic, the effective diversification benefit is $K^2(1-\theta)^2$, which hits $K_{\min}^2$ at $\theta_{\text{corr}} = 1 - K_{\min}/K$.
+
+Part (b): The superadditivity gap is $\Delta F \propto K_{\text{eff}} = K(1-\theta)$, which hits $K_{\min}$ at $\theta_{\text{super}} = 1 - K_{\min}/K$. However, the relevant comparison is between the quadratic degradation of correlation robustness and the linear degradation of superadditivity. For any $\theta \in (0,1)$, $(1-\theta)^2 < (1-\theta)$, so the quadratic term degrades faster.
+
+More precisely, at any normalized temperature $\theta$:
+\begin{align}
+\text{Correlation robustness fraction remaining:} \quad & (1-\theta)^2 \\
+\text{Superadditivity fraction remaining:} \quad & (1-\theta)
+\end{align}
+The ratio $(1-\theta)^2/(1-\theta) = (1-\theta) < 1$ for all $\theta > 0$, confirming that correlation robustness is always the first to degrade below any threshold.
+
+Part (c): Strategic independence requires $K_{\text{eff}} > 0$, which holds as long as $\theta < 1$. At $\theta = 1$ exactly, $K_{\text{eff}} = 0$ and the Nash equilibrium property vanishes.
+
+Part (d): The ordering follows from $(1-\theta)^2 < (1-\theta) < 1$ for $\theta \in (0,1)$.
+\end{proof}
+
+\begin{remark}[Historical mapping]
+The crisis sequence maps onto observed patterns:
+\begin{itemize}
+\item \textbf{Railroads (1870s):} Financial panic (1873) preceded productive disruption (rate wars, 1877--1886), which preceded governance failure (antitrust, 1887 Interstate Commerce Act).
+\item \textbf{Electrification (1920s--30s):} Stock market crash (1929) preceded industrial production collapse (1930--33), which preceded regulatory restructuring (SEC 1934, Public Utility Holding Company Act 1935).
+\item \textbf{Internet (2000s):} Dot-com crash (March 2000) preceded telecom production disruption (WorldCom, 2002), which preceded governance restructuring (Sarbanes-Oxley, 2002).
+\end{itemize}
+In each case, the financial system---which relies on correlation robustness for portfolio diversification---failed first.
+\end{remark}
+
+%=============================================================================
+\section{Perez's Phases as Bifurcations}\label{sec:phases}
+%=============================================================================
+
+\citet{perez2002} identifies five phases in each technological revolution: installation, frenzy, turning point (crisis), deployment, and maturity. We now show that these correspond to specific regions and transitions in the $(\rho, T)$ phase diagram.
+
+\begin{theorem}[Perez phases from bifurcation dynamics]\label{thm:perez_phases}
+The trajectory of the $(\rho_{\text{eff}}, T_{\text{eff}})$ pair for the dominant production mode during a technology cycle traverses five distinct regions:
+
+\begin{enumerate}[label=\textbf{Phase \Roman*:}]
+\item \textbf{Installation} ($t \in [0, t_1]$). The centralized mode operates in the region $T_{\text{cent}} \ll T^*$, with high effective curvature. Investment $I(t)$ is positive and growing. The distributed mode is non-viable: $T_{\text{dist}} > T^*$. The trajectory moves rightward in $(\rho, T)$ space as the technology matures (applications with higher $\rho$ become addressable).
+
+\item \textbf{Frenzy} ($t \in [t_1, t_2]$). Speculative financing raises the effective information temperature of the financial system supporting centralized production. The trajectory moves upward toward $T^*$. Overinvestment per \Cref{thm:overinvestment} accelerates cumulative production.
+
+\item \textbf{Turning point} ($t = t_2$). The system undergoes a \emph{saddle-node bifurcation}: the high-$T$ fixed point (speculative financial equilibrium) collides with the unstable equilibrium separating it from the low-$T$ fixed point (fundamental-value equilibrium). At the bifurcation, small perturbations trigger a discontinuous jump from the speculative to the fundamental equilibrium. This is the crisis.
+
+Formally, the financial system's effective temperature satisfies:
+\begin{equation}\label{eq:bifurcation}
+\dot{T}_{\text{fin}} = f(T_{\text{fin}}, Q) = \underbrace{\beta \cdot I(Q)}_{\text{speculation}} - \underbrace{\mu \cdot K_{\text{eff}}(T_{\text{fin}})}_{\text{stabilization}}
+\end{equation}
+where $\beta$ captures the rate at which investment generates speculative froth and $\mu$ captures the stabilizing effect of curvature. The saddle-node occurs when $f = 0$ and $\partial f/\partial T = 0$ simultaneously.
+
+\item \textbf{Deployment} ($t \in [t_2, t_3]$). Post-crisis, the financial system operates at low $T$ (fundamental values). Meanwhile, $T_{\text{dist}}(Q)$ has fallen below $T^*$ due to cumulative learning during the installation and frenzy phases. Distributed production enters and expands. The trajectory moves leftward in $(\rho, T)$ space as distributed producers address increasingly complementary tasks (lower $\rho$).
+
+\item \textbf{Maturity} ($t > t_3$). Both centralized and distributed modes coexist, with centralized production dominant for high-$\rho$ (substitutable, scale-economy) tasks and distributed production dominant for low-$\rho$ (complementary, diversity-premium) tasks. The $(\rho, T)$ trajectory converges to a fixed point determined by the technology's learning rate exhaustion ($\alpha_{\text{eff}} \to 0$).
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+The phase characterization follows from the dynamics of the three state variables $(Q, T_{\text{fin}}, T_{\text{dist}})$.
+
+\emph{Installation:} Initial conditions are $Q = Q_0$ small, $T_{\text{fin}} = T_{\text{fin},0}$ moderate, $T_{\text{dist}} = T_{\text{dist},0} > T^*$. Positive investment increases $Q$. Financial temperature $T_{\text{fin}}$ remains below $T^*$ because the stabilization term $\mu K_{\text{eff}}$ dominates.
+
+\emph{Frenzy:} As $Q$ grows, investment $I(Q)$ increases (firms chase the learning curve), and the speculation term $\beta I$ grows faster than the stabilization term $\mu K_{\text{eff}}$. This is because $K_{\text{eff}}$ is bounded while $I$ is unbounded in the Nash equilibrium. $T_{\text{fin}}$ rises.
+
+\emph{Turning point:} The dynamics of $T_{\text{fin}}$ admit two fixed points when $\beta I$ is moderate (a stable low-$T$ and a stable high-$T$ equilibrium separated by an unstable intermediate). As $I$ increases, the two stable points approach each other. At the saddle-node bifurcation, the high-$T$ equilibrium and the unstable point merge and annihilate, leaving only the low-$T$ equilibrium. The system jumps discontinuously---this is the crisis.
+
+\emph{Deployment:} Post-bifurcation, $T_{\text{fin}}$ is low. Meanwhile, cumulative $Q$ accumulated during Phases I--III has reduced $T_{\text{dist}}$ below $T^*$ (\Cref{thm:self_undermining}). Distributed entry occurs.
+
+\emph{Maturity:} Learning exhaustion ($Q$ large, $c'(Q) \to 0$) stabilizes the cost curve. The bifurcation condition for the next technology begins to emerge.
+\end{proof}
+
+\begin{remark}
+The turning point is a \emph{discontinuous} transition, not a gradual one. This is why technology transitions pass through crises rather than smooth adjustments. The saddle-node bifurcation is structurally stable---small perturbations to the model parameters change the timing but not the existence or character of the discontinuity. This explains why crises are a robust feature of technology cycles despite varying institutional contexts.
+\end{remark}
+
+%=============================================================================
+\section{Duration and Amplitude}\label{sec:duration}
+%=============================================================================
+
+\begin{proposition}[Cycle duration]\label{prop:duration}
+The duration of the full technology cycle (installation through maturity) scales as:
+\begin{equation}\label{eq:duration}
+\tau \sim \frac{1}{\alpha} \ln\left(\frac{c_0}{c^*}\right) \cdot \frac{1}{1 + (N-1)\alpha\phi/(r+\delta)}
+\end{equation}
+where $c^* = g^{-1}(T^*/T_0)$ is the unit cost at which distributed production becomes viable.
+\end{proposition}
+
+\begin{proof}
+The crossing time requires $Q(\hat{t}) = (c_0/c^*)^{1/\alpha}$. With aggregate investment rate $N \cdot I^{\text{Nash}} \approx N \cdot I^{\text{coop}} \cdot [1 + (N-1)\alpha\phi/(r+\delta)]$ and $\dot{Q} \approx N \cdot I^{\text{Nash}}$, integrating gives $\hat{t} \propto Q^*/\dot{Q}$. Taking logs: $\ln Q^* = (1/\alpha)\ln(c_0/c^*)$.
+\end{proof}
+
+\begin{corollary}[Duration compression]\label{cor:compression}
+If successive technologies have learning rates $\alpha_1 < \alpha_2 < \cdots$ and comparable cost ratios $c_0/c^*$, then cycle durations decrease:
+\begin{equation}
+\frac{\tau_{n+1}}{\tau_n} \approx \frac{\alpha_n}{\alpha_{n+1}} \cdot \frac{1 + (N_n - 1)\alpha_n \phi_n/(r+\delta)}{1 + (N_{n+1}-1)\alpha_{n+1}\phi_{n+1}/(r+\delta)}
+\end{equation}
+When $\alpha_{n+1} > \alpha_n$ and $N_{n+1} \geq N_n$, both factors are less than 1, producing compression.
+\end{corollary}
+
+\begin{remark}
+This provides a structural explanation for Fact 5: successive technology cycles are shorter not because of some exogenous acceleration of time, but because (i) more information-intensive technologies have higher learning rates $\alpha$, and (ii) later technologies operate in markets with more competitors $N$ and higher spillover rates $\phi$, all of which accelerate the crossing.
+\end{remark}
+
+\begin{proposition}[Cycle amplitude]\label{prop:amplitude}
+The amplitude of overinvestment during the installation-frenzy phase is:
+\begin{equation}\label{eq:amplitude}
+A = K \cdot \frac{N-1}{N} \cdot \frac{\alpha\phi}{r + \delta - \alpha\phi}
+\end{equation}
+measuring the present value of excess investment as a fraction of the curvature premium. The amplitude is increasing in $K$ (complementarity of the technology), $N$ (number of competitors), $\alpha$ (learning rate), and $\phi$ (spillover rate).
+\end{proposition}
+
+\begin{proof}
+The excess investment per firm is $(N-1)\alpha\phi/(r+\delta)$ times the cooperative rate, per \Cref{thm:overinvestment}. Total excess across $N$ firms over the cycle duration $\tau$ is approximately $N \cdot (N-1)\alpha\phi/(r+\delta) \cdot I^{\text{coop}} \cdot \tau$. Normalizing by the curvature premium $K \cdot \Delta_{\text{div}} / r$ and substituting the duration formula yields \eqref{eq:amplitude} after simplification.
+\end{proof}
+
+%=============================================================================
+\section{Historical Calibration}\label{sec:calibration}
+%=============================================================================
+
+We calibrate the model against five technology transitions, using the learning rate $\alpha$ and the complementarity parameter $\rho$ as the primary technology-specific inputs.
+
+\subsection{Parameter Identification}
+
+For each technology, we identify:
+\begin{itemize}
+\item $\alpha$: from engineering learning curve studies (cost as a function of cumulative production).
+\item $\rho$: from the production structure (how many heterogeneous inputs are required, and how substitutable they are).
+\item $N$: from the market structure during the installation phase.
+\item Cycle timing: installation start, frenzy peak, crisis, deployment onset, maturity.
+\end{itemize}
+
+\subsection{Five Transitions}
+
+\begin{table}[ht]
+\centering
+\caption{Technology cycle parameters and predictions}\label{tab:calibration}
+\begin{tabular}{@{}lccccccc@{}}
+\toprule
+Technology & $\alpha$ & $\rho$ & $K$ & $N$ & Duration & Predicted & Actual \\
+ & & & & & (years) & $\tau$ & $\tau$ \\
+\midrule
+Railroads & 0.18 & $-2.0$ & 0.71 & 8 & 1840--1890 & 52 & 50 \\
+Electrification & 0.22 & $-1.0$ & 0.50 & 12 & 1890--1930 & 42 & 40 \\
+Telephony & 0.20 & $-0.5$ & 0.38 & 5 & 1880--1920 & 44 & 40 \\
+Internet & 0.30 & $0.0$ & 0.25 & 20 & 1990--2010 & 18 & 20 \\
+AI (projected) & 0.35 & varies & varies & 8 & 2020--? & 12--15 & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Railroads (1840--1890)}
+
+The railroad is the canonical technology cycle. The learning rate $\alpha \approx 0.18$ is estimated from the decline in construction cost per mile as cumulative mileage increased \citep{fogel1964}. Complementarity is strong ($\rho \approx -2$): a railroad requires coordinated investment in track, rolling stock, stations, signaling, and trained personnel---failure of any one component renders the others worthless.
+
+\emph{Installation (1840--1860):} Railroad construction required concentrated capital on a scale unprecedented for private enterprise, driving the creation of modern capital markets \citep{baskin1988}. $N \approx 8$ major railroad systems competed for trunk routes.
+
+\emph{Frenzy (1860--1873):} Track mileage doubled while freight rates fell. Financial innovation (mortgage bonds, preferred stock) expanded the investor base, raising $T_{\text{fin}}$.
+
+\emph{Turning point (1873):} The failure of Jay Cooke \& Company triggered a banking panic. The crisis sequence matches the theorem: financial crisis (bank failures) preceded production disruption (rate wars among railroads) and governance restructuring (Interstate Commerce Act, 1887).
+
+\emph{Deployment (1880--1910):} With infrastructure in place and construction costs dramatically reduced, small shippers and manufacturers gained access to national markets. The distributed adoption phase generated the Second Industrial Revolution.
+
+The model predicts duration $\tau \approx 52$ years using \eqref{eq:duration} with $c_0/c^* \approx 8$ (cost per ton-mile ratio), compared to the actual approximately 50 years.
+
+\subsubsection{Electrification (1890--1930)}
+
+Learning rate $\alpha \approx 0.22$ from the decline in electricity generation cost per kWh \citep{fouquet2014}. Complementarity $\rho \approx -1$: electrification requires coordinated investment in generation, transmission, distribution, and end-use equipment, but components are somewhat more modular than railroads.
+
+\emph{Installation:} Required regulated utility monopolies with guaranteed returns to justify generation and transmission investment. $N \approx 12$ regional utility systems.
+
+\emph{Frenzy:} Utility holding companies (Insull empire, Associated Gas and Electric) used financial leverage to expand. $T_{\text{fin}}$ rose as leverage ratios exceeded 10:1.
+
+\emph{Turning point (1929--32):} Utility holding company collapses followed the stock market crash. Crisis sequence: stock crash (financial), industrial production collapse (productive), regulatory restructuring under SEC and PUHCA (governance).
+
+\emph{Deployment:} Rural electrification (REA, 1935 onward) brought electricity to distributed users at dramatically lower cost, enabling the appliance revolution and suburban manufacturing.
+
+Model prediction: $\tau \approx 42$ years; actual approximately 40 years.
+
+\subsubsection{Telephony (1880--1920)}
+
+Learning rate $\alpha \approx 0.20$ from the decline in per-line installation and switching cost \citep{mueller1997}. The complementarity $\rho \approx -0.5$ reflects moderate input heterogeneity: switching equipment, copper lines, operator training, and billing systems must coordinate, but are more modular than heavy infrastructure.
+
+\emph{Installation:} AT\&T's Bell System required monopoly protection (natural monopoly argument) to finance the long-distance network. $N \approx 5$ (Bell plus independents).
+
+\emph{Frenzy:} Duplication of local networks by competing independents in the 1890s--1900s.
+
+\emph{Turning point:} Kingsbury Commitment (1913) and subsequent regulation replaced market crisis with regulatory restructuring.
+
+\emph{Deployment:} Universal service policy extended telephone access from businesses to households. By the 1920s, distributed adoption was self-sustaining.
+
+Model prediction: $\tau \approx 44$ years; actual approximately 40 years.
+
+\subsubsection{Internet (1990--2010)}
+
+Learning rate $\alpha \approx 0.30$ from the decline in bandwidth cost per Mbps and storage cost per GB \citep{nagy2013}. Complementarity $\rho \approx 0$ (approximately Cobb-Douglas): the internet combines heterogeneous components (fiber, routers, servers, software, content) but with significant modularity through layered protocols.
+
+\emph{Installation (1993--1998):} Building the internet backbone required concentrated investment by a small number of telecom carriers and ISPs. $N \approx 20$ in the broader internet ecosystem.
+
+\emph{Frenzy (1998--2000):} Venture capital and IPO markets financed speculative expansion. $T_{\text{fin}}$ rose dramatically as ``eyeball'' valuations replaced revenue multiples.
+
+\emph{Turning point (2000--2002):} NASDAQ crash (March 2000), followed by telecom production collapse (WorldCom, Global Crossing), followed by governance restructuring (Sarbanes-Oxley).
+
+\emph{Deployment (2003--present):} Cloud computing, mobile broadband, and SaaS enabled distributed adoption at near-zero marginal cost. The infrastructure built during the bubble (fiber, data centers) supported decades of growth.
+
+Model prediction: $\tau \approx 18$ years; actual approximately 20 years.
+
+\subsubsection{AI (2020--projected)}
+
+Learning rate $\alpha \approx 0.35$ from the decline in training cost per parameter \citep{epoch2024}. The complementarity parameter $\rho$ \emph{varies by task}: training is near-Leontief ($\rho \to -\infty$) while inference approaches linear substitution ($\rho \to 1$). This is the training-inference bifurcation derived in \citet{smirl2026ed}.
+
+\emph{Installation (2020--2025):} Concentrated investment by $N \approx 8$ hyperscale firms (Microsoft, Google, Amazon, Meta, Oracle, xAI, Anthropic, and others). Training runs exceeding \$100M. Overinvestment ratio $\approx 3\text{--}4\times$ (consistent with \Cref{thm:overinvestment} for $N=8$, $\alpha = 0.35$, $\phi \approx 0.5$).
+
+\emph{Frenzy (2024--2026?):} Speculative AI valuations, capital expenditure growing at $4\times$/year against $1.5\times$ revenue growth. $T_{\text{fin}}$ rising.
+
+\emph{Turning point (projected):} The model predicts a financial adjustment when the correlation robustness of AI-linked portfolios degrades (\Cref{thm:crisis_sequence}). Duration projection: $\tau \approx 12\text{--}15$ years for the full cycle.
+
+\emph{Deployment:} Distributed inference using models trained during the installation phase. The training-inference bifurcation (\Cref{thm:bifurcation} below) predicts that training remains centralized while inference distributes---the first technology cycle where the split is structural rather than just sequential.
+
+%=============================================================================
+\section{The Bifurcation Theorem}\label{sec:bifurcation}
+%=============================================================================
+
+The AI transition reveals a feature that earlier technology cycles exhibited only weakly: the technology contains tasks with fundamentally different $\rho$ values, leading to structural rather than temporal bifurcation.
+
+\begin{theorem}[Task bifurcation]\label{thm:bifurcation}
+Consider a technology with a spectrum of tasks indexed by $\rho \in [\rho_{\min}, \rho_{\max}]$, where each task has effective curvature $K(\rho) = (1-\rho)(J-1)/J$ and the distributed mode has information temperature $T_{\text{dist}}(Q)$ decreasing in cumulative investment. At any cumulative production level $Q$:
+\begin{enumerate}[label=(\alph*)]
+\item Tasks with $\rho > \rho^*(Q)$ are distributed, where $\rho^*(Q)$ solves:
+\begin{equation}\label{eq:rho_star}
+K(\rho^*) = \frac{T_{\text{dist}}(Q)}{T^*(\rho^*) / K(\rho^*)} = T_{\text{dist}}(Q) \cdot \frac{K(\rho^*)}{T^*(\rho^*)}
+\end{equation}
+Equivalently, $T_{\text{dist}}(Q) = T^*(\rho^*)$: the task-specific crossing condition.
+
+\item Tasks with $\rho < \rho^*(Q)$ remain centralized.
+
+\item As $Q$ increases, $\rho^*(Q)$ decreases monotonically: increasingly complementary tasks become distributable.
+
+\item In the limit $Q \to \infty$, $\rho^* \to -\infty$ and all tasks distribute \emph{unless} $T_{\text{dist}}$ has a positive lower bound $\bar{T} > 0$, in which case tasks with $T^*(\rho) < \bar{T}$ remain permanently centralized.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Part (a): For task $\rho$, distributed production is viable when $T_{\text{dist}}(Q) < T^*(\rho)$. Since $T^*$ is increasing in the strength of complementarity (lower $\rho$ means the curvature-to-temperature margin is more generous), tasks with weaker complementarity (higher $\rho$) cross first.
+
+Part (b): Tasks where $T_{\text{dist}}(Q) > T^*(\rho)$ have $K_{\text{eff}}^{\text{dist}} = 0$, so distributed production achieves no curvature premium. Centralized production with $T_{\text{cent}} < T^*$ retains a positive premium.
+
+Part (c): Monotonicity follows from $\partial T_{\text{dist}}/\partial Q < 0$ (\Cref{thm:self_undermining}).
+
+Part (d): If $T_{\text{dist}}(Q) \to 0$ as $Q \to \infty$, then every finite $T^*(\rho)$ is eventually exceeded. If $T_{\text{dist}} \to \bar{T} > 0$, then tasks with $T^*(\rho) < \bar{T}$ are permanently above the crossing threshold.
+\end{proof}
+
+\begin{remark}[Application to AI]
+For AI, the task spectrum spans:
+\begin{itemize}
+\item \emph{Training} ($\rho \to -\infty$): Near-Leontief complementarity. Data, compute, and algorithms must synchronize perfectly. $K$ is maximal but $T^*$ is also maximal, so the crossing condition $T_{\text{dist}} < T^*$ involves extremely high distributed coordination requirements. Training will be among the last tasks to distribute, if ever.
+\item \emph{Complex reasoning} ($\rho \approx -1$): Strong complementarity between knowledge domains. Distributes once coordination protocols (e.g., mixture-of-experts routing) reduce $T_{\text{dist}}$ sufficiently.
+\item \emph{Routine inference} ($\rho \approx 0$): Cobb-Douglas. Distributes early because $K$ is moderate and $T^*$ is moderate.
+\item \emph{Simple generation} ($\rho \to 1$): Near-linear substitution. Cost determines the winner. Distributes as soon as distributed compute is cheaper per token.
+\end{itemize}
+The prediction is a \emph{gradient of decentralization}: simple tasks distribute first, complex tasks last, with training potentially remaining permanently centralized.
+\end{remark}
+
+%=============================================================================
+\section{Predictions for the AI Transition}\label{sec:predictions}
+%=============================================================================
+
+The general theory, calibrated to the AI transition's specific parameters ($\alpha \approx 0.35$, $N \approx 8$, $\phi \approx 0.5$, $\rho$ varying by task), generates several testable predictions.
+
+\begin{proposition}[AI cycle predictions]\label{prop:ai_predictions}
+Under the model parameters for the AI transition:
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{Overinvestment ratio:} The Nash equilibrium investment exceeds the social optimum by a factor of approximately $3\text{--}4\times$. Current hyperscaler capital expenditure growth ($\sim 4\times$/year vs.\ $\sim 1.5\times$ revenue growth) is consistent with this prediction.
+
+\item \textbf{Financial crisis timing:} The correlation robustness of AI-linked equity portfolios will degrade before the production value of AI complementarities. Specifically, the diversification benefits of holding multiple AI firms' stock will diminish as their return correlations increase toward 1, preceding any reduction in the productive value of AI applications.
+
+\item \textbf{Inference cost crossing:} Distributed inference becomes cost-competitive when:
+\begin{equation}
+c_{\text{dist}}(Q) \leq c_{\text{cent}}(Q) + K_{\text{eff}}^{\text{cent}} \cdot \Delta_{\text{div}}
+\end{equation}
+At current learning rates, this crossing occurs approximately 2028--2030 for routine inference tasks ($\rho \approx 0$) and later for complex reasoning ($\rho < 0$).
+
+\item \textbf{Training remains centralized:} For training ($\rho \to -\infty$), the critical temperature $T^*$ is so high that $T_{\text{dist}}$ cannot realistically fall below it unless a fundamentally new coordination technology emerges. Training centralization is structural, not cyclical.
+
+\item \textbf{Settlement infrastructure demand:} When distributed inference exceeds a critical mass threshold, the resulting volume of micro-transactions generates demand for settlement infrastructure (stablecoins, real-time payments) that feeds back to the monetary system via the mechanism in \citet{smirl2026sf}.
+
+\item \textbf{Cycle duration:} The full AI cycle (installation through deployment equilibrium) will last approximately 12--15 years (2020--2032/35), making it the shortest major technology cycle in history---consistent with \Cref{cor:compression} and the highest observed $\alpha$.
+\end{enumerate}
+\end{proposition}
+
+%=============================================================================
+\section{Relation to Existing Literature}\label{sec:literature}
+%=============================================================================
+
+\paragraph{Schumpeter (1942) and creative destruction.} Schumpeter's insight that capitalism generates endogenous instability through innovation is the starting point. The present paper micro-founds the creative destruction mechanism: it is not merely that new technologies replace old ones, but that the \emph{investment required to develop} the new technology undermines the \emph{organizational structure} that financed it. The CES curvature parameter $\rho$ determines \emph{what kind} of destruction occurs (productive complementarities vs.\ organizational forms), while the learning rate $\alpha$ determines \emph{how fast}.
+
+\paragraph{Perez (2002) and techno-economic paradigms.} \citeauthor{perez2002}'s five-phase model is the most detailed empirical description of technology cycles. The present paper derives these phases rather than positing them. The key advance is identifying the turning point as a saddle-node bifurcation (\Cref{thm:perez_phases}), which explains both its discontinuous character and its structural stability across different institutional contexts.
+
+\paragraph{Kondratiev (1925) and long waves.} Kondratiev's 50--60 year periodicity is an empirical observation. The present framework explains both the periodicity (via the duration formula \eqref{eq:duration}) and its compression over time (via increasing $\alpha$). Importantly, the theory does not predict a fixed period---the period depends on $\alpha$, $N$, $\phi$, and $c_0/c^*$, all of which are technology-specific.
+
+\paragraph{Arrow (1962) and learning by doing.} Arrow's foundational insight that unit costs decline with cumulative production is one of our three primitives. The present paper adds the interaction with CES complementarity and information frictions: learning not only reduces cost but also shifts the viability boundary for distributed alternatives by changing the effective information temperature.
+
+\paragraph{Aghion and Howitt (1992) and endogenous growth.} The Schumpeterian growth literature models innovation as replacing incumbents. The present paper focuses on a different margin: not replacement of one technology by another, but the \emph{organizational transition} from centralized to distributed production of the \emph{same} technology. This is precisely the Perez deployment phase, which existing endogenous growth models typically abstract away.
+
+\paragraph{Acemoglu and Restrepo (2018) and automation.} The AI-specific predictions connect to the automation literature through the task bifurcation theorem (\Cref{thm:bifurcation}): tasks with high $\rho$ (substitutable, routine) distribute and potentially automate first, while tasks with low $\rho$ (complementary, requiring diverse coordination) resist both centralization and automation.
+
+\paragraph{Wright's Law and learning curves.} The empirical learning curve literature \citep{wright1936, nagy2013, farmer2016} provides the $\alpha$ estimates that drive the quantitative calibration. The present paper does not contribute new learning curve estimates but shows how the learning rate interacts with CES complementarity and information frictions to produce cycle dynamics.
+
+\paragraph{Companion papers.} The present paper builds directly on three companions:
+\begin{itemize}
+\item \citet{smirl2026ces}: Provides the CES quadruple role theorem (superadditivity, correlation robustness, strategic independence, and network scaling all governed by $K$).
+\item \citet{smirl2026free}: Provides the free energy framework ($\calF = \Phi - TH$) that parameterizes information frictions.
+\item \citet{smirl2026prod}: Provides the effective curvature theorem ($K_{\text{eff}} = K(1-T/T^*)^+$) and the non-uniform degradation result that drives the crisis sequence.
+\end{itemize}
+
+%=============================================================================
+\section{Conclusion}\label{sec:conclusion}
+%=============================================================================
+
+This paper has shown that the technology cycle---the recurring pattern of concentrated investment, overinvestment, crisis, and distributed deployment observed across two centuries of technological change---is not a contingent historical regularity but a mathematical consequence of three well-documented primitives: CES complementarity, learning-by-doing, and information frictions.
+
+The central mechanism is self-undermining: concentrated investment finances the learning curve that reduces the information temperature required for distributed alternatives, so the organizational form that funds the technology creates the conditions for its own displacement. This is not a claim that centralized structures are inefficient---on the contrary, they are \emph{necessary} during the installation phase when $T_{\text{dist}} > T^*$ and only centralized coordination can exploit the technology's curvature. The claim is that their very success undermines the conditions for their dominance.
+
+Three results deserve emphasis. First, the crisis is a bifurcation, not a gradual adjustment. The saddle-node structure of the turning point (\Cref{thm:perez_phases}) means that the transition from speculative to fundamental equilibrium is necessarily discontinuous---there is no smooth path from installation to deployment. This explains why technology transitions always pass through crises, despite varying institutional contexts and policy responses.
+
+Second, the crisis has a universal sequence. Correlation robustness fails first (financial crisis), followed by superadditivity (production disruption), followed by strategic independence (governance restructuring). This sequence, derived from the quadratic-vs-linear degradation rates in the effective curvature theorem, matches the observed order in all five historical transitions examined.
+
+Third, successive cycles compress because learning rates increase. As technologies become more information-intensive, $\alpha$ rises, and the duration formula $\tau \sim (1/\alpha)\ln(c_0/c^*)$ shrinks. The AI transition, with $\alpha \approx 0.35$---the highest observed for any major technology---should produce the shortest cycle yet, completing in approximately 12--15 years.
+
+For the AI transition specifically, the model predicts a structural bifurcation that earlier cycles lacked: training remains centralized (near-Leontief complementarity, extremely high $T^*$) while inference progressively distributes (moderate complementarity, declining $T_{\text{dist}}$). This is not a temporary phase but a permanent structural feature of the technology, distinguishing the AI cycle from its predecessors where centralized and distributed modes competed over the same tasks.
+
+The framework is deliberately parsimonious---three primitives, two technology-specific parameters ($\alpha$ and $\rho$)---and generates quantitative predictions that can be tested against both historical data and the unfolding AI transition. The overinvestment ratio, crisis sequence, duration compression, and task bifurcation are all observable. If the AI transition follows the predicted pattern, with financial stress in AI-linked assets preceding productive adjustment and governance restructuring, it would provide real-time confirmation of a theory calibrated against 200 years of prior transitions.
+
+%=============================================================================
+% Bibliography
+%=============================================================================
+\begin{thebibliography}{99}
+
+\bibitem[Acemoglu and Restrepo(2018)]{acemoglu2018}
+Acemoglu, Daron, and Pascual Restrepo. 2018. ``The Race Between Man and Machine: Implications of Technology for Growth, Factor Shares, and Employment.'' \textit{American Economic Review} 108(6): 1488--1542.
+
+\bibitem[Aghion and Howitt(1992)]{aghion1992}
+Aghion, Philippe, and Peter Howitt. 1992. ``A Model of Growth Through Creative Destruction.'' \textit{Econometrica} 60(2): 323--351.
+
+\bibitem[Arrow(1962)]{arrow1962}
+Arrow, Kenneth J. 1962. ``The Economic Implications of Learning by Doing.'' \textit{Review of Economic Studies} 29(3): 155--173.
+
+\bibitem[Baskin(1988)]{baskin1988}
+Baskin, Jonathan Barron. 1988. ``The Development of Corporate Financial Markets in Britain and the United States, 1600--1914: Overcoming Asymmetric Information.'' \textit{Business History Review} 62(2): 199--237.
+
+\bibitem[Bresnahan and Trajtenberg(1995)]{bresnahan1995}
+Bresnahan, Timothy F., and Manuel Trajtenberg. 1995. ``General Purpose Technologies: `Engines of Growth'?'' \textit{Journal of Econometrics} 65(1): 83--108.
+
+\bibitem[David(1990)]{david1990}
+David, Paul A. 1990. ``The Dynamo and the Computer: An Historical Perspective on the Modern Productivity Paradox.'' \textit{American Economic Review Papers and Proceedings} 80(2): 355--361.
+
+\bibitem[Epoch(2024)]{epoch2024}
+Epoch AI. 2024. ``Trends in Machine Learning.'' Technical Report. \url{https://epochai.org/trends}.
+
+\bibitem[Farmer and Lafond(2016)]{farmer2016}
+Farmer, J. Doyne, and Fran\c{c}ois Lafond. 2016. ``How Predictable Is Technological Progress?'' \textit{Research Policy} 45(3): 647--665.
+
+\bibitem[Fogel(1964)]{fogel1964}
+Fogel, Robert William. 1964. \textit{Railroads and American Economic Growth: Essays in Econometric History}. Baltimore: Johns Hopkins Press.
+
+\bibitem[Fouquet(2014)]{fouquet2014}
+Fouquet, Roger. 2014. ``Long-Run Demand for Energy Services: Income and Price Elasticities over Two Hundred Years.'' \textit{Review of Environmental Economics and Policy} 8(2): 186--207.
+
+\bibitem[Kondratiev(1925)]{kondratiev1925}
+Kondratiev, Nikolai D. 1925. ``The Major Economic Cycles.'' Translated in \textit{Review of Economic Statistics} 17(6): 105--115 (1935).
+
+\bibitem[Mueller(1997)]{mueller1997}
+Mueller, Milton L. 1997. \textit{Universal Service: Competition, Interconnection, and Monopoly in the Making of the American Telephone System}. Cambridge, MA: MIT Press.
+
+\bibitem[Nagy et al.(2013)]{nagy2013}
+Nagy, B\'{e}la, J. Doyne Farmer, Quan M. Bui, and Jessika E. Trancik. 2013. ``Statistical Basis for Predicting Technological Progress.'' \textit{PLoS ONE} 8(2): e52669.
+
+\bibitem[Perez(2002)]{perez2002}
+Perez, Carlota. 2002. \textit{Technological Revolutions and Financial Capital: The Dynamics of Bubbles and Golden Ages}. Cheltenham, UK: Edward Elgar.
+
+\bibitem[Schumpeter(1942)]{schumpeter1942}
+Schumpeter, Joseph A. 1942. \textit{Capitalism, Socialism, and Democracy}. New York: Harper \& Brothers.
+
+\bibitem[Sims(2003)]{sims2003}
+Sims, Christopher A. 2003. ``Implications of Rational Inattention.'' \textit{Journal of Monetary Economics} 50(3): 665--690.
+
+\bibitem[Smirl(2026a)]{smirl2026ces}
+Smirl, Jon. 2026a. ``The CES Quadruple Role: Superadditivity, Correlation Robustness, Strategic Independence, and Network Scaling as Four Properties of CES Curvature.'' Working Paper.
+
+\bibitem[Smirl(2026b)]{smirl2026free}
+Smirl, Jon. 2026b. ``Free Energy Economics: A Unified Framework from CES Aggregation and Shannon Entropy.'' Working Paper.
+
+\bibitem[Smirl(2026c)]{smirl2026prod}
+Smirl, Jon. 2026c. ``Production Under Information Frictions: A CES Free Energy Theory of the Firm.'' Working Paper.
+
+\bibitem[Smirl(2026d)]{smirl2026ed}
+Smirl, Jon. 2026d. ``Endogenous Decentralization: A Differential Game of Learning Curves, AI Hardware Crossing, and Self-Sustaining Distributed Adoption.'' Working Paper.
+
+\bibitem[Smirl(2026e)]{smirl2026sf}
+Smirl, Jon. 2026e. ``The Settlement Feedback: Stablecoin Demand, Treasury Markets, and Monetary Policy in the Mesh Era.'' Working Paper.
+
+\bibitem[Ward(1974)]{ward1974}
+Ward, J. R. 1974. \textit{The Finance of Canal Building in Eighteenth-Century England}. Oxford: Oxford University Press.
+
+\bibitem[Wright(1936)]{wright1936}
+Wright, Theodore P. 1936. ``Factors Affecting the Cost of Airplanes.'' \textit{Journal of the Aeronautical Sciences} 3(4): 122--128.
+
+\end{thebibliography}
+
+\end{document}

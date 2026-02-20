@@ -1,0 +1,29 @@
+\begin{table}[htbp]
+\centering
+\caption{Arrow Prediction Test: Majoritarian Systems and Informational Noise}
+\label{tab:arrow_test}
+\small
+\begin{tabular}{lccccc}
+\toprule
+WGI Outcome & $\hat\beta_{\text{Maj}\times\text{Inet}}$ & SE & $p$ & $N$ & $R^2$ \\
+\midrule
+  Government Effectiveness & 0.0123 & (0.0994) & 0.902 & 1587 & 0.961 \\
+  Regulatory Quality & -0.1508 & (0.1100) & 0.170 & 1587 & 0.949 \\
+  Rule of Law & -0.1920* & (0.0978) & 0.050 & 1587 & 0.971 \\
+  Control of Corruption & -0.0206 & (0.0852) & 0.809 & 1587 & 0.974 \\
+  Voice & Accountability & -0.0986* & (0.0487) & 0.043 & 1587 & 0.950 \\
+  Political Stability & 0.2108* & (0.0956) & 0.027 & 1587 & 0.912 \\
+\bottomrule
+\end{tabular}
+\vspace{4pt}
+\parbox{0.9\textwidth}{\footnotesize
+  Panel regression with country and year fixed effects;
+  standard errors clustered by country.
+  Internet = users as fraction of population (0--1).
+  Majoritarian score from Lijphart (2012) executives-parties dimension,
+  extended to additional democracies.
+  Theory predicts $\hat\beta > 0$: majoritarian systems (high $\rho$)
+  tolerate more informational noise.
+  $^{***}p<0.001$; $^{**}p<0.01$; $^{*}p<0.05$.
+}
+\end{table}

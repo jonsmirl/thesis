@@ -1,0 +1,26 @@
+\begin{table}[htbp]
+\centering
+\caption{Akerlof Prediction: Adverse Selection vs.\ Trade Elasticity of Substitution}
+\label{tab:akerlof_test}
+\small
+\begin{tabular}{lcccc}
+\toprule
+Measure & $\hat\beta(\log\sigma)$ & SE & $p$ & $R^2$ \\
+\midrule
+  log(Amihud illiquidity) & 0.034 & (0.046) & 0.464 & 0.998 \\
+\bottomrule
+\end{tabular}
+\vspace{4pt}
+\parbox{0.9\textwidth}{\footnotesize
+  Cross-section of 32 industry ETFs.
+  Dependent variables: log Amihud (2002) illiquidity and log Corwin-Schultz (2012)
+  estimated bid-ask spread, computed from daily prices over trailing 2 years.
+  $\sigma$ = trade elasticity of substitution from Broda-Weinstein (2006),
+  Ahmad-Riker (2020), and Caliendo-Parro (2015).
+  Controls: log annualized volatility, log average daily dollar volume.
+  Robust (HC1) standard errors.
+  Theory predicts $\hat\beta > 0$: higher $\sigma$ (more substitutable goods)
+  implies wider spreads (more adverse selection).
+  $^{***}p<0.001$; $^{**}p<0.01$; $^{*}p<0.05$.
+}
+\end{table}

@@ -1,0 +1,175 @@
+[16:33:08] Fetching FRED data...
+[16:33:08]   Fetching IPG336S...
+[16:33:08]   Fetching IPG331S...
+[16:33:08]   Fetching IPG327S...
+[16:33:08]   Fetching IPG333S...
+[16:33:08]   Fetching IPG321S...
+[16:33:08]   Fetching IPG332S...
+[16:33:08]   Fetching IPG335S...
+[16:33:08]   Fetching IPG322S...
+[16:33:08]   Fetching IPG337S...
+[16:33:08]   Fetching IPG325S...
+[16:33:08]   Fetching IPG326S...
+[16:33:08]   Fetching IPG339S...
+[16:33:08]   Fetching IPG311S...
+[16:33:08]   Fetching IPG334S...
+[16:33:08]   Fetching INDPRO...
+[16:33:08]   Fetching STLFSI2...
+[16:33:08]   Fetching USREC...
+[16:33:08] 
+========================================================================
+[16:33:08]   TEST 7: Hysteresis — Asymmetric Correlation Dynamics
+[16:33:08] ========================================================================
+[16:33:08]   Prediction: correlation spikes faster than it recovers
+[16:33:08] 
+  2001 recession:
+[16:33:08]     Baseline corr: 0.1410, Peak corr: 0.2517
+[16:33:08]     Rise: 0.1107 in 18.0 months (rate=0.0061/mo)
+[16:33:08]     Fall: 0.1107 in 2.0 months (rate=0.0552/mo)
+[16:33:08]     Asymmetry ratio (rise/fall): 0.11
+[16:33:08] 
+  2008 recession:
+[16:33:08]     Baseline corr: 0.1200, Peak corr: 0.4776
+[16:33:08]     Rise: 0.3576 in 20.0 months (rate=0.0179/mo)
+[16:33:08]     Fall: 0.3576 in 1.0 months (rate=0.3511/mo)
+[16:33:08]     Asymmetry ratio (rise/fall): 0.05
+[16:33:08] 
+  2020 recession:
+[16:33:08]     Baseline corr: 0.0263, Peak corr: 0.9440
+[16:33:08]     Rise: 0.9177 in 2.0 months (rate=0.4656/mo)
+[16:33:08]     Fall: 0.9177 in 6.0 months (rate=0.1526/mo)
+[16:33:08]     Asymmetry ratio (rise/fall): 3.05
+[16:33:08] 
+  Average asymmetry ratio: 1.07
+[16:33:08]   Recessions with faster rise: 1/3
+[16:33:08]   Verdict: AMBIGUOUS
+[16:33:08]   Saved figures/framework_verification/test7_hysteresis.png/.pdf
+[16:33:08] 
+========================================================================
+[16:33:08]   TEST 8: Eigenvalue Concentration During Crises
+[16:33:08] ========================================================================
+[16:33:08]   Prediction: first eigenvalue share spikes during crises
+[16:33:09] 
+  N observations: 338
+[16:33:09]   Mean EV1 share: 0.3373
+[16:33:09]   Stress coefficient: 0.0175 (p = 0.0035)
+[16:33:09]   R^2: 0.0194
+[16:33:09] 
+  Calm periods (T<0): mean EV1 share = 0.3343 (N=220)
+[16:33:09]   Crisis periods (T>1): mean EV1 share = 0.4068 (N=27)
+[16:33:09]   Increase: 21.7%
+[16:33:09]   Verdict: CONSISTENT
+[16:33:09]   Saved figures/framework_verification/test8_eigenvalue.png/.pdf
+[16:33:09] 
+========================================================================
+[16:33:09]   TEST 9: Granger Causality — Stress → Correlation
+[16:33:09] ========================================================================
+[16:33:09]   Prediction: stress Granger-causes correlation, not reverse
+[16:33:09] 
+  N observations: 338
+[16:33:09]   Lag 1: Stress→Corr p=0.0016, Corr→Stress p=0.0531
+[16:33:09]   Lag 2: Stress→Corr p=0.0038, Corr→Stress p=0.0751
+[16:33:09]   Lag 3: Stress→Corr p=0.0106, Corr→Stress p=0.1430
+[16:33:09]   Lag 4: Stress→Corr p=0.0206, Corr→Stress p=0.2517
+[16:33:09]   Lag 5: Stress→Corr p=0.0030, Corr→Stress p=0.3653
+[16:33:09]   Lag 6: Stress→Corr p=0.0043, Corr→Stress p=0.4401
+[16:33:09] 
+  Min p-value (Stress→Corr): 0.0016 **
+[16:33:09]   Min p-value (Corr→Stress): 0.0531 
+[16:33:09]   Direction: unidirectional Stress → Correlation
+[16:33:09]   Verdict: CONSISTENT
+[16:33:10]   Saved figures/framework_verification/test9_granger.png/.pdf
+[16:33:10] 
+========================================================================
+[16:33:10]   TEST 10: Recovery Ordering by Sigma
+[16:33:10] ========================================================================
+[16:33:10]   Prediction: higher sigma -> faster recovery (less coordination needed)
+[16:33:10] 
+  2001 recession:
+[16:33:10]     Sectors: 14
+[16:33:10]     Spearman rho(sigma, recovery_months) = -0.2967, p = 0.3029
+[16:33:10]     (negative = higher sigma recovers faster = CONSISTENT)
+[16:33:10]     Verdict: AMBIGUOUS
+[16:33:10] 
+  2008 recession:
+[16:33:10]     Sectors: 14
+[16:33:10]     Spearman rho(sigma, recovery_months) = -0.2104, p = 0.4703
+[16:33:10]     (negative = higher sigma recovers faster = CONSISTENT)
+[16:33:10]     Verdict: AMBIGUOUS
+[16:33:10] 
+  2020 recession:
+[16:33:10]     Sectors: 14
+[16:33:10]     Spearman rho(sigma, recovery_months) = -0.2665, p = 0.3570
+[16:33:10]     (negative = higher sigma recovers faster = CONSISTENT)
+[16:33:10]     Verdict: AMBIGUOUS
+[16:33:10] 
+  Overall (0/3 consistent): AMBIGUOUS
+[16:33:10]   Saved figures/framework_verification/test10_recovery.png/.pdf
+[16:33:10] 
+========================================================================
+[16:33:10]   TEST 11: Hierarchical Lead-Lag
+[16:33:10] ========================================================================
+[16:33:10]   Prediction: high-sigma sectors lead low-sigma sectors
+[16:33:10]   Fast group (high sigma): ['Plastics/Rubber', 'Miscellaneous', 'Food', 'Computer/Elec']
+[16:33:10]   Slow group (low sigma): ['Transport Equip', 'Primary Metals', 'Nonmetallic Min', 'Machinery']
+[16:33:10] 
+  Cross-correlation peak at lag = 0 months
+[16:33:10]   Peak correlation = 0.7424
+[16:33:10]   (positive lag = fast leads slow)
+[16:33:10] 
+  Granger: Computer/Elec → Transport: min p = 0.5478
+[16:33:10]   Granger: Transport → Computer/Elec: min p = 0.0000
+[16:33:10]   Verdict: AMBIGUOUS
+[16:33:11]   Saved figures/framework_verification/test11_leadlag.png/.pdf
+[16:33:11] 
+========================================================================
+[16:33:11]   TEST 12: PC1 Loading Ordered by Sigma
+[16:33:11] ========================================================================
+[16:33:11]   Prediction: lower sigma -> higher PC1 loading (more coupled)
+[16:33:11] 
+  Sectors in PCA: 14
+[16:33:11]   Variance explained by PC1: 43.3%
+[16:33:11]   Variance explained by PC1-2: 51.9%
+[16:33:11] 
+  Spearman rho(sigma, |PC1 loading|) = -0.1370, p = 0.6404
+[16:33:11]   (negative = lower sigma has higher loading = CONSISTENT)
+[16:33:11] 
+  Sector                sigma   |PC1|
+[16:33:11]   -----------------------------------
+[16:33:11]   Transport Equip        0.50  0.2826
+[16:33:11]   Primary Metals         0.55  0.2459
+[16:33:11]   Nonmetallic Min        0.60  0.2903
+[16:33:11]   Machinery              0.65  0.2998
+[16:33:11]   Wood                   0.70  0.2120
+[16:33:11]   Fabricated Metals      0.70  0.3316
+[16:33:11]   Electrical Equip       0.70  0.2463
+[16:33:11]   Paper                  0.85  0.1659
+[16:33:11]   Furniture              0.85  0.3157
+[16:33:11]   Chemicals              0.90  0.2207
+[16:33:11]   Plastics/Rubber        0.95  0.3156
+[16:33:11]   Miscellaneous          1.10  0.3170
+[16:33:11]   Food                   1.15  0.2195
+[16:33:11]   Computer/Elec          1.40  0.2141
+[16:33:11]   Verdict: AMBIGUOUS
+[16:33:11] 
+  Calm (pre-2007): Spearman rho = 0.0906, p = 0.7580
+[16:33:11] 
+  Crisis (2008-09): Spearman rho = -0.1878, p = 0.5202
+[16:33:11]   Saved figures/framework_verification/test12_pc1_loading.png/.pdf
+[16:33:11] 
+========================================================================
+[16:33:11]   SUMMARY (Tests 7-12)
+[16:33:11] ========================================================================
+[16:33:11]   test7: AMBIGUOUS
+[16:33:11]   test8: CONSISTENT
+[16:33:11]   test9: CONSISTENT
+[16:33:11]   test10: AMBIGUOUS
+[16:33:11]   test11: AMBIGUOUS
+[16:33:11]   test12: AMBIGUOUS
+[16:33:11] 
+  Round 2: 2 consistent, 4 ambiguous, 0 inconsistent
+[16:33:11] 
+  Combined (Tests 1-12): 6 consistent, 6 ambiguous, 0 inconsistent out of 12
+[16:33:11]   Overall assessment: MODERATE SUPPORT
+[16:33:11] 
+  Saved /home/jonsmirl/thesis/thesis_data/framework_verification_2_summary.tex

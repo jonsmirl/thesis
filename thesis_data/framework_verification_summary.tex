@@ -1,0 +1,29 @@
+\begin{table}[htbp]
+\centering
+\caption{CES Free Energy Framework: Empirical Verification Summary}
+\label{tab:framework_verification}
+\small
+\begin{tabular}{clllc}
+\toprule
+Test & Prediction & Key statistic & Value & Verdict \\
+\midrule
+  1 & $\rho$-ordering of cycle amplitudes & Spearman $\rho$ & -0.661 & \textbf{CONSISTENT} \\
+  2 & Crisis sequence (corr $\to$ IP $\to$ gov) & Lead time (months) & 5.0 & \textbf{CONSISTENT} \\
+  3 & Quadratic correlation degradation & $R^2$ gain (corr vs output) & 0.0001 & AMBIGUOUS \\
+  4 & Critical slowing down & Pre-recession signals & 1/3 & AMBIGUOUS \\
+  5 & $K_{\text{eff}} = K(1 - T/T^*)^+$ & $T^*_{\text{high}}$ vs $T^*_{\text{low}}$ & 8.43 vs 4.30 & \textbf{CONSISTENT} \\
+  6 & $\sigma$ predicts crisis severity & Recessions consistent & 3/3 & \textbf{CONSISTENT} \\
+\midrule
+  \multicolumn{4}{l}{Overall: 4 consistent, 2 ambiguous, 0 inconsistent} & \\
+\bottomrule
+\end{tabular}
+\vspace{4pt}
+\parbox{0.95\textwidth}{\footnotesize
+  Literature $\sigma$ values from Oberfield \& Raval (2021), Atalay (2017), Herrendorf et al.\ (2013).
+  FRED manufacturing IP subsectors (IPG3xxS), INDPRO, STLFSI2, USREC.
+  HP filter with $\lambda=129600$ (Ravn--Uhlig monthly).
+  Robust (HC1) standard errors where applicable.
+  Verdict criteria: CONSISTENT if key statistic significant at 10\% in predicted direction;
+  INCONSISTENT if significant in wrong direction; AMBIGUOUS otherwise.
+}
+\end{table}

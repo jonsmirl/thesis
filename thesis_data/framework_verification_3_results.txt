@@ -1,0 +1,212 @@
+[16:40:03] Fetching FRED data (3-digit + 4-digit NAICS)...
+[16:40:10]   Loaded 35/36 series
+[16:40:10] 
+========================================================================
+[16:40:10]   TEST 13: Effective Dimensionality (SSA) vs R&D Intensity
+[16:40:10] ========================================================================
+[16:40:10]   Prediction: higher R&D -> more effective dynamical dimensions
+[16:40:10] 
+  Sector                  R&D% N_eff     SV above MP
+[16:40:10]   --------------------------------------------------
+[16:40:10]   Food                     0.4    24     0.9642
+[16:40:10]   Wood                     0.2    18     0.9287
+[16:40:10]   Paper                    1.0    28     0.7422
+[16:40:10]   Chemicals                9.5    21     0.9999
+[16:40:10]   Plastics/Rubber          1.2    35     0.6393
+[16:40:10]   Nonmetallic Min          0.7    18     1.0869
+[16:40:10]   Primary Metals           0.7    28     0.8188
+[16:40:10]   Fabricated Metals        1.1    22     0.7456
+[16:40:10]   Machinery                3.8    19     0.9352
+[16:40:10]   Computer/Elec           14.8    27     0.5430
+[16:40:10]   Electrical Equip         4.2    29     0.7203
+[16:40:10]   Transport Equip          4.6    32     0.7617
+[16:40:10]   Furniture                0.6     9     1.2127
+[16:40:10]   Miscellaneous            8.2    19     1.0912
+[16:40:10] 
+  Spearman rho(R&D%, N_eff) = 0.3444, p = 0.2279
+[16:40:10]   Verdict: AMBIGUOUS
+[16:40:11]   Saved figures/framework_verification/test13_ssa_rd.png/.pdf
+[16:40:11] 
+========================================================================
+[16:40:11]   TEST 14: ACF Timescale Count vs R&D Intensity
+[16:40:11] ========================================================================
+[16:40:11]   Prediction: higher R&D -> more ACF peaks (more timescales)
+[16:40:11] 
+  Sector                  R&D%  ACF peaks
+[16:40:11]   ----------------------------------------
+[16:40:11]   Food                     0.4          5
+[16:40:11]   Wood                     0.2         11
+[16:40:11]   Paper                    1.0          8
+[16:40:11]   Chemicals                9.5          6
+[16:40:11]   Plastics/Rubber          1.2          2
+[16:40:11]   Nonmetallic Min          0.7          7
+[16:40:11]   Primary Metals           0.7          2
+[16:40:11]   Fabricated Metals        1.1          3
+[16:40:11]   Machinery                3.8          4
+[16:40:11]   Computer/Elec           14.8         13
+[16:40:11]   Electrical Equip         4.2          4
+[16:40:11]   Transport Equip          4.6          0
+[16:40:11]   Furniture                0.6          3
+[16:40:11]   Miscellaneous            8.2          4
+[16:40:11] 
+  Spearman rho(R&D%, ACF_peaks) = -0.0210, p = 0.9431
+[16:40:11]   Verdict: AMBIGUOUS
+[16:40:11]   Saved figures/framework_verification/test14_acf_timescales.png/.pdf
+[16:40:11] 
+========================================================================
+[16:40:11]   TEST 15: Spectral Peak Count vs R&D Intensity
+[16:40:11] ========================================================================
+[16:40:11]   Prediction: higher R&D -> more spectral peaks
+[16:40:11] 
+  Sector                  R&D%  Spectral peaks
+[16:40:11]   ---------------------------------------------
+[16:40:11]   Food                     0.4              21
+[16:40:11]   Wood                     0.2              17
+[16:40:11]   Paper                    1.0              14
+[16:40:11]   Chemicals                9.5              14
+[16:40:11]   Plastics/Rubber          1.2              19
+[16:40:11]   Nonmetallic Min          0.7              17
+[16:40:11]   Primary Metals           0.7              17
+[16:40:11]   Fabricated Metals        1.1              18
+[16:40:11]   Machinery                3.8              20
+[16:40:11]   Computer/Elec           14.8              17
+[16:40:11]   Electrical Equip         4.2              20
+[16:40:11]   Transport Equip          4.6              25
+[16:40:11]   Furniture                0.6              20
+[16:40:11]   Miscellaneous            8.2              16
+[16:40:11] 
+  Spearman rho(R&D%, spectral_peaks) = -0.1835, p = 0.5301
+[16:40:11]   Verdict: AMBIGUOUS
+[16:40:12]   Saved figures/framework_verification/test15_spectral.png/.pdf
+[16:40:12] 
+========================================================================
+[16:40:12]   TEST 16: Within-Sector Hierarchy Depth (4-digit NAICS)
+[16:40:12] ========================================================================
+[16:40:12]   Prediction: higher R&D -> more significant eigenvalues within sector
+[16:40:12] 
+  Computer/Elec (334) (R&D = 14.8%):
+[16:40:12]     Computer/Peripheral: 647 obs
+[16:40:12]     Communications Equip: 647 obs
+[16:40:12]     Semiconductor: 647 obs
+[16:40:12]     Instruments: 647 obs
+[16:40:12]     Subsectors: 4, Months: 647
+[16:40:12]     Eigenvalues: [1.6759 0.9183 0.735  0.6708]
+[16:40:12]     MP threshold: 0.7804
+[16:40:12]     Significant eigenvalues: 2
+[16:40:12]     EV1 share: 41.9%
+[16:40:12] 
+  Chemicals (325) (R&D = 9.5%):
+[16:40:12]     Basic Chemical: 647 obs
+[16:40:12]     Resin/Synthetic: 647 obs
+[16:40:12]     Pharmaceutical: 647 obs
+[16:40:12]     Soap/Cleaning: 647 obs
+[16:40:12]     Subsectors: 4, Months: 647
+[16:40:12]     Eigenvalues: [1.641  1.0372 0.9215 0.4003]
+[16:40:12]     MP threshold: 0.4657
+[16:40:12]     Significant eigenvalues: 3
+[16:40:12]     EV1 share: 41.0%
+[16:40:12] 
+  Transport (336) (R&D = 4.6%):
+[16:40:12]     Motor Vehicle: 647 obs
+[16:40:12]     Motor Vehicle Parts: 647 obs
+[16:40:12]     Aerospace: 647 obs
+[16:40:12]     Subsectors: 3, Months: 647
+[16:40:12]     Eigenvalues: [2.1602 0.7403 0.0995]
+[16:40:12]     MP threshold: 0.1135
+[16:40:12]     Significant eigenvalues: 2
+[16:40:12]     EV1 share: 72.0%
+[16:40:12] 
+  Food (311) (R&D = 0.4%):
+[16:40:12]     Animal Food: 647 obs
+[16:40:12]     Grain/Oilseed: 647 obs
+[16:40:12]     Sugar/Confect: 647 obs
+[16:40:12]     Fruit/Veg Preserv: 647 obs
+[16:40:12]     Dairy: 647 obs
+[16:40:12]     Animal Slaughter: 647 obs
+[16:40:12]     Bakeries: no data or too short
+[16:40:12]     Subsectors: 6, Months: 647
+[16:40:12]     Eigenvalues: [1.3422 1.0885 1.0319 0.9512 0.8695 0.7167]
+[16:40:12]     MP threshold: 0.8613
+[16:40:12]     Significant eigenvalues: 5
+[16:40:12]     EV1 share: 22.4%
+[16:40:12] 
+  Machinery (333) (R&D = 3.8%):
+[16:40:12]     Ag/Construct/Mining Mach: 647 obs
+[16:40:12]     Industrial Machinery: 647 obs
+[16:40:12]     HVAC: 647 obs
+[16:40:12]     Engine/Turbine: 647 obs
+[16:40:12]     Subsectors: 4, Months: 647
+[16:40:12]     Eigenvalues: [1.4911 0.9096 0.8759 0.7234]
+[16:40:12]     MP threshold: 0.8417
+[16:40:12]     Significant eigenvalues: 3
+[16:40:12]     EV1 share: 37.3%
+[16:40:12] 
+  Spearman rho(R&D%, n_sig_eigenvalues) = -0.7379, p = 0.1546
+[16:40:12]   Spearman rho(R&D%, EV1_share) = 0.7000, p = 0.1881
+[16:40:12]   (negative = higher R&D has more distributed eigenvalues = deeper hierarchy)
+[16:40:12]   Verdict: AMBIGUOUS
+[16:40:12]   Saved figures/framework_verification/test16_within_sector.png/.pdf
+[16:40:12] 
+========================================================================
+[16:40:12]   TEST 17: Timescale Span vs R&D Intensity
+[16:40:12] ========================================================================
+[16:40:12]   Prediction: higher R&D -> wider timescale span (tau_max/tau_min)
+[16:40:13] 
+  Sector                  R&D%       Span
+[16:40:13]   ----------------------------------------
+[16:40:13]   Food                     0.4        2.1
+[16:40:13]   Wood                     0.2        3.8
+[16:40:13]   Paper                    1.0        4.1
+[16:40:13]   Chemicals                9.5        2.1
+[16:40:13]   Plastics/Rubber          1.2        3.3
+[16:40:13]   Nonmetallic Min          0.7        2.3
+[16:40:13]   Primary Metals           0.7        3.0
+[16:40:13]   Fabricated Metals        1.1        6.9
+[16:40:13]   Machinery                3.8        3.9
+[16:40:13]   Computer/Elec           14.8       22.8
+[16:40:13]   Electrical Equip         4.2        4.7
+[16:40:13]   Transport Equip          4.6        2.6
+[16:40:13]   Furniture                0.6        1.9
+[16:40:13]   Miscellaneous            8.2        2.2
+[16:40:13] 
+  Spearman rho(R&D%, timescale_span) = 0.2750, p = 0.3413
+[16:40:13]   Verdict: AMBIGUOUS
+[16:40:13]   Saved figures/framework_verification/test17_timescale_span.png/.pdf
+[16:40:13] 
+========================================================================
+[16:40:13]   TEST 18: Temporal Emergence of Hierarchy Levels
+[16:40:13] ========================================================================
+[16:40:13]   Prediction: Computer/Elec gains levels over time; Food does not
+[16:40:13] 
+  Computer/Elec:
+[16:40:13]     Windows: 44, Dim range: 11-27
+[16:40:13]     Kendall tau (trend) = 0.2572, p = 0.0183
+[16:40:13]     Mean dim early (first third): 17.43
+[16:40:13]     Mean dim late (last third): 20.40
+[16:40:13] 
+  Food:
+[16:40:13]     Windows: 44, Dim range: 12-28
+[16:40:13]     Kendall tau (trend) = 0.1514, p = 0.1625
+[16:40:13]     Mean dim early (first third): 18.93
+[16:40:13]     Mean dim late (last third): 21.13
+[16:40:13] 
+  Tech increasing: True, Control flat: True
+[16:40:13]   Verdict: CONSISTENT
+[16:40:13]   Saved figures/framework_verification/test18_temporal_emergence.png/.pdf
+[16:40:13] 
+========================================================================
+[16:40:13]   SUMMARY (Tests 13-18: Endogenous Hierarchy Depth)
+[16:40:13] ========================================================================
+[16:40:13]   test13: AMBIGUOUS
+[16:40:13]   test14: AMBIGUOUS
+[16:40:13]   test15: AMBIGUOUS
+[16:40:13]   test16: AMBIGUOUS
+[16:40:13]   test17: AMBIGUOUS
+[16:40:13]   test18: CONSISTENT
+[16:40:13] 
+  Round 3: 1 consistent, 5 ambiguous, 0 inconsistent
+[16:40:13] 
+  All tests (1-18): 7 consistent, 11 ambiguous, 0 inconsistent out of 18
+[16:40:13]   Overall assessment: MIXED EVIDENCE
+[16:40:13] 
+  Saved /home/jonsmirl/thesis/thesis_data/framework_verification_3_summary.tex

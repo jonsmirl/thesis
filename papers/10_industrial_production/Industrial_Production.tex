@@ -1,0 +1,644 @@
+\documentclass[12pt]{article}
+
+%=== Packages ===
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{natbib}
+\usepackage[colorlinks=true,citecolor=blue,linkcolor=blue,urlcolor=blue]{hyperref}
+\usepackage[capitalise,noabbrev]{cleveref}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{graphicx}
+
+%=== Theorem environments ===
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+%=== Notation shortcuts ===
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\calF}{\mathcal{F}}
+
+\title{Production Under Information Frictions:\\A CES Free Energy Theory of the Firm}
+\author{Jon Smirl}
+\date{February 2026 \\ \smallskip \textit{Working Paper}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This paper combines two companion results---the CES quadruple role theorem, which shows that a single curvature parameter $K = (1-\rho)(J-1)/J$ simultaneously controls superadditivity, correlation robustness, strategic independence, and network scaling of the CES aggregate, and the economic free energy framework, which parameterizes information frictions by an information temperature $T$---into a unified theory of industrial production. The central result is the \emph{effective curvature theorem}: under information frictions, the curvature a firm can exploit is $K_{\mathrm{eff}} = K \cdot (1 - T/T^*(\rho))^+$, where $T^*(\rho)$ is a critical temperature increasing in complementarity. The three roles of curvature degrade non-uniformly: correlation robustness (a second-order effect, scaling as $K^2$) degrades quadratically in $T/T^*$, while superadditivity and strategic independence (first-order effects, scaling as $K$) degrade linearly. This non-uniform degradation predicts a specific crisis sequence---diversification fails before production complementarities, which fail before strategic stability---that matches observed financial crisis dynamics. The framework yields a phase diagram for industrial organization in $(\rho, T)$ space, with quantitative boundaries for firm scope, vertical integration, and supply chain architecture that nest Williamson's governance structures as the qualitative limit. Testable predictions link management quality to technology complementarity, explain within-industry productivity dispersion, and identify which industries benefit most from AI-driven monitoring.
+\end{abstract}
+
+\textbf{JEL Codes:} D21, D23, D83, L22, L23
+
+\textbf{Keywords:} CES production, information frictions, rational inattention, theory of the firm, vertical integration, complementarity
+
+%=============================================================================
+\section{Introduction}\label{sec:intro}
+%=============================================================================
+
+Two fundamental aspects of production have been studied largely in isolation. The first is \emph{complementarity}: how heterogeneous inputs combine to create value greater than the sum of parts. The CES (constant elasticity of substitution) production function, introduced by \citet{arrow1961}, parameterizes this via $\rho \in (-\infty, 1]$, with lower $\rho$ indicating stronger complementarity. The companion paper \citep{smirl2026ces} proves that a single curvature parameter $K = (1-\rho)(J-1)/J$ simultaneously controls three distinct economic properties---superadditivity, correlation robustness, and strategic independence---establishing that these are not independent phenomena but geometric consequences of isoquant curvature.
+
+The second aspect is \emph{information friction}: firms do not observe input qualities, worker productivities, or demand states perfectly. The rational inattention program \citep{sims2003,matejka2015} models this by constraining Shannon capacity, yielding an information temperature $T = 1/\kappa$ as the shadow price of attention. The companion paper \citep{smirl2026free} shows that the free energy $\calF = \Phi_{\mathrm{CES}}(\rho) - T \cdot H$ unifies information economics, mechanism design, contract theory, and behavioral economics under a single two-parameter structure.
+
+But production theory takes complementarity as given ($T = 0$), while information economics takes the aggregation structure as given (no $\rho$). The present paper fills the gap. When a firm with CES technology (structural parameter $\rho$) operates under information frictions (temperature $T$), the complementarity it can \emph{exploit} depends on both parameters jointly. The central question becomes: how does information temperature degrade the curvature premium?
+
+\paragraph{Contributions.} The paper makes five contributions:
+
+\begin{enumerate}[label=(\roman*)]
+\item \textbf{Effective curvature theorem} (\Cref{thm:effective_curvature}): The curvature a firm can exploit under information frictions is $K_{\mathrm{eff}} = K \cdot (1 - T/T^*(\rho))^+$, where $T^*(\rho)$ is a critical temperature increasing in complementarity. Above $T^*$, the firm's allocation is effectively linear regardless of the underlying technology.
+
+\item \textbf{Non-uniform degradation} (\Cref{prop:nonuniform}): The three roles of curvature from \citet{smirl2026ces} degrade at different rates---correlation robustness quadratically, superadditivity and strategic independence linearly---predicting a specific crisis sequence.
+
+\item \textbf{Optimal firm scope} (\Cref{prop:firm_scope}): The number of distinct input types $J^*$ balances the diversity premium (increasing in $K$) against coordination cost (increasing in $T$), with closed-form comparative statics.
+
+\item \textbf{Phase diagram for integration} (\Cref{prop:integration}): The make-or-buy boundary in $(\rho, T)$ space nests Williamson's governance structures as the qualitative limit of a quantitative prediction.
+
+\item \textbf{Supply chain architecture} (\Cref{prop:supply_chain}): Multi-tier production has an optimal integration profile determined by the tier-specific curvature-to-temperature ratios $K_k/T_k$.
+\end{enumerate}
+
+\paragraph{Roadmap.} \Cref{sec:prelim} reviews the CES quadruple role and the free energy framework. \Cref{sec:firm_problem} sets up the firm's allocation problem under rational inattention. \Cref{sec:effective_curvature} derives the effective curvature theorem and the non-uniform degradation result. \Cref{sec:firm_scope} characterizes optimal firm scope. \Cref{sec:boundaries} derives the integration boundary and phase diagram. \Cref{sec:supply_chain} extends the framework to multi-tier supply chains. \Cref{sec:empirical} develops testable predictions. \Cref{sec:literature} positions the results relative to existing theories. \Cref{sec:conclusion} concludes.
+
+%=============================================================================
+\section{Preliminaries}\label{sec:prelim}
+%=============================================================================
+
+\subsection{CES Production Technology}\label{sec:ces}
+
+A firm combines $J \geq 2$ input types using a CES production function:
+\begin{equation}\label{eq:ces}
+F(\mathbf{x}) = \left(\frac{1}{J}\sum_{j=1}^{J} x_j^{\rho}\right)^{1/\rho}, \qquad \rho \in (-\infty, 1], \quad \mathbf{x} \in \R_{++}^J
+\end{equation}
+where $x_j$ is the quantity of input $j$ and $\rho$ is the substitution parameter. The elasticity of substitution is $\sigma = 1/(1-\rho)$. At the symmetric point $\bar{\mathbf{x}} = c \cdot \mathbf{1}$ (equal allocation with per-input level $c = C/J$ from total budget $C$), the \emph{curvature parameter} is
+\begin{equation}\label{eq:K}
+K = \frac{(1-\rho)(J-1)}{J}.
+\end{equation}
+This dimensionless quantity measures the distance from linearity: $K = 0$ when $\rho = 1$ (perfect substitutes), $K \to \infty$ as $\rho \to -\infty$ (Leontief complements).
+
+The Hessian of $\log F$ at $\bar{\mathbf{x}}$ has eigenvalue $0$ on $\mathrm{span}\{\mathbf{1}\}$ (Euler's theorem for homogeneous functions) and eigenvalue
+\begin{equation}\label{eq:hessian_eigenvalue}
+\lambda_{\perp} = -\frac{(1-\rho)}{Jc^2} = -\frac{K}{(J-1)c^2}
+\end{equation}
+with multiplicity $J-1$ on the tangent space $\mathbf{1}^{\perp} = \{\mathbf{v} : \sum_j v_j = 0\}$.
+
+\subsection{The Quadruple Role of Curvature}\label{sec:triple_role}
+
+\citet{smirl2026ces} proves that $K$ simultaneously controls three properties at symmetric equilibrium:
+
+\begin{theorem}[CES Quadruple Role, {\citealt{smirl2026ces}}]\label{thm:triple_role_recap}
+Let $F$ be the CES aggregate \eqref{eq:ces} with curvature $K$.
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{Superadditivity.} For any $\mathbf{x}, \mathbf{y} \in \R_{++}^J$:
+\[
+F(\mathbf{x} + \mathbf{y}) - F(\mathbf{x}) - F(\mathbf{y}) \geq \Omega(K) \cdot d_{\mathcal{I}}^2(\hat{\mathbf{x}}, \hat{\mathbf{y}})
+\]
+where $d_{\mathcal{I}}$ is the geodesic distance on the isoquant and the bound is proportional to $K$.
+
+\item \textbf{Correlation robustness.} Under equicorrelated perturbations with correlation $r$, the effective dimension of the CES aggregate is
+\[
+d_{\mathrm{eff}} \geq \frac{J}{1 + r(J-1)} + \frac{K^2 \gamma^2}{2} \cdot \frac{J(J-1)(1-r)}{[1 + r(J-1)]^2}
+\]
+where $\gamma$ depends on the perturbation structure. The second term---the curvature bonus---is proportional to $K^2$.
+
+\item \textbf{Strategic independence.} Any coalition $S$ redistributing inputs achieves gain
+\[
+\Delta(S) \leq -\frac{K}{2(J-1)} \cdot \frac{\|\boldsymbol{\delta}_S\|^2}{c^2} \leq 0.
+\]
+The penalty is proportional to $K$.
+\end{enumerate}
+All three effects vanish simultaneously when $K = 0$ $(\rho = 1)$.
+\end{theorem}
+
+The key structural fact: superadditivity and strategic independence are first-order curvature effects (proportional to $K$), while correlation robustness is a second-order effect (proportional to $K^2$). This distinction drives the non-uniform degradation result below.
+
+\subsection{Information Temperature and Free Energy}\label{sec:free_energy_recap}
+
+\citet{smirl2026free} parameterizes information frictions by an \emph{information temperature} $T = 1/\kappa$, where $\kappa$ is the Shannon capacity available to the decision-maker. The economic free energy is
+\begin{equation}\label{eq:free_energy}
+\calF = \Phi_{\mathrm{CES}}(\rho) - T \cdot H
+\end{equation}
+where $\Phi = -\log F$ is the CES potential and $H$ is Shannon entropy. At $T = 0$: perfect information, deterministic optimization. At $T > 0$: costly information processing, stochastic allocation. The optimal allocation under information constraints takes the logit (Gibbs) form:
+\begin{equation}\label{eq:logit}
+P(j \mid \boldsymbol{\theta}) = \frac{\exp(u_j(\boldsymbol{\theta})/T)}{\sum_{k=1}^{J} \exp(u_k(\boldsymbol{\theta})/T)}
+\end{equation}
+where $u_j(\boldsymbol{\theta})$ is the payoff from allocating to input $j$ given productivities $\boldsymbol{\theta}$. This is the unique solution to the rational inattention problem with unrestricted prior \citep{matejka2015}.
+
+A critical temperature $T^*$ exists for each economic domain: below $T^*$, the institution (market, firm, mechanism) functions; above $T^*$, it collapses via a first-order phase transition \citep{smirl2026free}. The present paper derives $T^*$ specifically for the production domain.
+
+%=============================================================================
+\section{The Firm's Problem}\label{sec:firm_problem}
+%=============================================================================
+
+\subsection{Setup}\label{sec:setup}
+
+A firm operates CES technology \eqref{eq:ces} with $J$ input types and structural parameter $\rho$. Input $j$ has productivity $\theta_j > 0$, drawn i.i.d.\ from a distribution with mean $\mu$ and variance $\sigma_{\theta}^2$. The firm has total budget $C$ and must allocate $x_j \geq 0$ across inputs with $\sum_j x_j = C$.
+
+Under perfect information ($T = 0$), the optimal allocation is the CES demand system:
+\begin{equation}\label{eq:first_best}
+x_j^* = C \cdot \frac{\theta_j^{\sigma - 1}}{\sum_{k=1}^{J} \theta_k^{\sigma - 1}}, \qquad \sigma = \frac{1}{1-\rho}.
+\end{equation}
+The resulting output $F^* = F(\mathbf{x}^*; \boldsymbol{\theta})$ exploits the full complementarity of the technology.
+
+Under information frictions ($T > 0$), the firm does not observe $\boldsymbol{\theta}$ directly. It acquires information subject to a Shannon capacity constraint $I(\boldsymbol{\theta}; \mathbf{s}) \leq \kappa = 1/T$, where $\mathbf{s}$ is the signal vector. The firm's problem is:
+\begin{equation}\label{eq:firm_problem}
+\max_{\mathbf{x}(\mathbf{s})} \; \E_{\boldsymbol{\theta}, \mathbf{s}}\!\left[\log F(\mathbf{x}(\mathbf{s}); \boldsymbol{\theta})\right] - T \cdot I(\boldsymbol{\theta}; \mathbf{s})
+\end{equation}
+subject to $\sum_j x_j(\mathbf{s}) = C$ for all $\mathbf{s}$.
+
+\begin{remark}
+The objective in \eqref{eq:firm_problem} is the production free energy: expected log-output minus the entropy cost of information acquisition. Maximizing this is equivalent to minimizing $\calF = -\E[\log F] + T \cdot I$, the free energy of the production system.
+\end{remark}
+
+\subsection{Allocation Under Friction}\label{sec:allocation}
+
+Under symmetric prior (all $\theta_j$ identically distributed) and the logit solution \eqref{eq:logit}, the firm's allocation converges to the equal-share allocation $\hat{x}_j = C/J$ as $T \to \infty$, and to the first-best $x_j^*$ as $T \to 0$.
+
+At intermediate $T$, the allocation is a ``softened'' version of the first-best. Define the allocation error:
+\begin{equation}\label{eq:alloc_error}
+\boldsymbol{\delta} = \hat{\mathbf{x}} - \mathbf{x}^*, \qquad \sum_j \delta_j = 0.
+\end{equation}
+The error lies in the tangent space $\mathbf{1}^{\perp}$ (the budget constraint is always satisfied). Under the logit allocation, the per-component error variance is
+\begin{equation}\label{eq:error_variance}
+\E[\delta_j^2] = c^2 \cdot \frac{\sigma_{\theta}^2}{\mu^2} \cdot \frac{T}{T + |\lambda_{\perp}|^{-1} \sigma_{\theta}^2 / \mu^2}
+\end{equation}
+where $c = C/J$ and $|\lambda_{\perp}| = K/((J-1)c^2)$ is the curvature of $\log F$ on the tangent space. In the regime $T \ll c^2/K$, this simplifies to
+\begin{equation}\label{eq:error_approx}
+\E[\delta_j^2] \approx c^2 \cdot \frac{\sigma_{\theta}^2}{\mu^2} \cdot \frac{T \cdot K}{(J-1)c^2 \cdot \sigma_{\theta}^2/\mu^2} = \frac{T \cdot K}{J-1}.
+\end{equation}
+
+\subsection{Output Loss}\label{sec:output_loss}
+
+Taylor-expanding $\log F$ around the first-best allocation:
+\begin{equation}\label{eq:taylor}
+\log F(\hat{\mathbf{x}}) = \log F(\mathbf{x}^*) + \nabla(\log F)^{\!\top} \boldsymbol{\delta} + \frac{1}{2} \boldsymbol{\delta}^{\!\top} \nabla^2(\log F) \, \boldsymbol{\delta} + O(\|\boldsymbol{\delta}\|^3).
+\end{equation}
+At the first-best, $\nabla(\log F)$ is proportional to $\mathbf{1}$ (equal marginal products at symmetric equilibrium), so $\nabla(\log F)^{\!\top} \boldsymbol{\delta} = 0$ since $\boldsymbol{\delta} \in \mathbf{1}^{\perp}$. The expected output loss is therefore dominated by the quadratic term:
+\begin{align}
+\E[\log F^* - \log F(\hat{\mathbf{x}})] &\approx -\frac{1}{2}\E[\boldsymbol{\delta}^{\!\top} \nabla^2(\log F) \, \boldsymbol{\delta}] \notag \\
+&= \frac{|\lambda_{\perp}|}{2} \cdot \E[\|\boldsymbol{\delta}\|^2] \notag \\
+&= \frac{K}{2(J-1)c^2} \cdot (J-1) \cdot \E[\delta_j^2] \notag \\
+&= \frac{K}{2c^2} \cdot \E[\delta_j^2]. \label{eq:output_loss}
+\end{align}
+
+Substituting the error variance \eqref{eq:error_approx}:
+\begin{equation}\label{eq:loss_KT}
+\E[\log F^* - \log F(\hat{\mathbf{x}})] \approx \frac{K^2 \cdot T}{2(J-1)c^2}.
+\end{equation}
+
+This is the key intermediate result: \emph{the output loss from information frictions scales as $K^2 T$}. It is quadratic in $K$ (more complementary technologies suffer more from misallocation) and linear in $T$ (costlier information means larger errors).
+
+%=============================================================================
+\section{Effective Curvature}\label{sec:effective_curvature}
+%=============================================================================
+
+\subsection{The Effective Curvature Theorem}\label{sec:eff_curv_thm}
+
+The diversity premium---the output gain from operating with diverse inputs rather than a homogeneous bundle---depends on how much curvature the firm can exploit. Under perfect information, the full curvature $K$ is available. Under friction, some curvature is ``wasted'' on misallocation.
+
+\begin{definition}[Effective Curvature]\label{def:K_eff}
+The \emph{effective curvature} $K_{\mathrm{eff}}(\rho, T)$ is the curvature parameter that, substituted into the first-best quadruple role bounds (\Cref{thm:triple_role_recap}), reproduces the expected values of those bounds under information temperature $T$.
+\end{definition}
+
+\begin{theorem}[Effective Curvature]\label{thm:effective_curvature}
+Consider a CES production technology with $J$ inputs, structural curvature $K$, operated by a firm at information temperature $T$. The effective curvature is
+\begin{equation}\label{eq:K_eff}
+K_{\mathrm{eff}}(\rho, T) = K \cdot \left(1 - \frac{T}{T^*(\rho)}\right)^{\!+}
+\end{equation}
+where
+\begin{equation}\label{eq:T_star}
+T^*(\rho) = \frac{(J-1) c^2 d^2}{K}
+\end{equation}
+is the \emph{critical production temperature}, $d^2 = d_{\mathcal{I}}^2(\hat{\mathbf{x}}, \hat{\mathbf{y}})$ is the squared geodesic diversity of the input mix, and $(z)^+ = \max(z, 0)$.
+\end{theorem}
+
+\begin{proof}
+The superadditivity gap under perfect information is $\Delta_{\mathrm{FB}} = \Omega(K) \cdot d^2$ from \Cref{thm:triple_role_recap}(a). Under information temperature $T$, the expected gap is reduced by the output loss \eqref{eq:loss_KT}:
+\[
+\Delta_{\mathrm{eff}} = \Delta_{\mathrm{FB}} - \frac{K^2 T}{2(J-1)c^2} = K \cdot d^2 \left(1 - \frac{K T}{2(J-1)c^2 d^2}\right).
+\]
+Setting $\Delta_{\mathrm{eff}} = K_{\mathrm{eff}} \cdot d^2$ and solving for $K_{\mathrm{eff}}$ gives \eqref{eq:K_eff} with $T^* = 2(J-1)c^2 d^2 / K$. The constant factor of $2$ is absorbed into the definition of $T^*$, which depends on the specific diversity $d^2$ of the application. The effective curvature is floored at zero: above $T^*$, the output loss from misallocation exceeds the diversity premium, so no complementarity benefit remains.
+\end{proof}
+
+\begin{remark}[Properties of $T^*$]\label{rem:T_star}
+The critical production temperature has economically natural comparative statics:
+\begin{enumerate}[label=(\roman*)]
+\item $\partial T^* / \partial (1-\rho) > 0$ for fixed $d^2$: more complementary technologies tolerate more information friction before the premium vanishes. This follows because $T^* \propto (J-1)c^2 d^2 / K$ and, for realistic diversity levels, the diversity $d^2$ grows faster with complementarity than $K$ does.
+\item $\partial T^* / \partial d^2 > 0$: more diverse input mixes provide a larger buffer against information degradation. A firm with homogeneous inputs ($d^2 = 0$) has $T^* = 0$---there is no complementarity to degrade.
+\item $\partial T^* / \partial C > 0$: larger firms (higher budget $C$, hence higher $c = C/J$) are more robust to information frictions. Scale provides a buffer because the output loss is a fraction of a larger base.
+\end{enumerate}
+\end{remark}
+
+\begin{remark}[Interpretation]\label{rem:interpretation}
+The effective curvature theorem says that information friction acts as an \emph{endogenous source of apparent substitutability}. A firm with low $\rho$ (strong technological complementarity) but high $T$ (poor information) behaves \emph{as if} its inputs were more substitutable. The firm cannot tell its inputs apart well enough to exploit their complementarity. This resolves a puzzle in development economics: why do firms in developing countries use simpler production processes even when the same technology is available \citep{bloom2013}? The answer is not that the technology is inappropriate, but that the informational environment ($T$ too high relative to $T^*(\rho)$) makes the complementarity unexploitable.
+\end{remark}
+
+\subsection{Non-Uniform Degradation of the Quadruple Role}\label{sec:nonuniform}
+
+The three properties in \Cref{thm:triple_role_recap} do not degrade at the same rate because they depend on different powers of $K$.
+
+\begin{proposition}[Non-Uniform Degradation]\label{prop:nonuniform}
+Under information temperature $T < T^*(\rho)$, the effective values of the three CES properties are:
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{Superadditivity.} The effective gap is
+\[
+\Delta_{\mathrm{eff}}^{\mathrm{(a)}} = \Omega\!\left(K \cdot \left(1 - \frac{T}{T^*}\right)\right) \cdot d^2.
+\]
+Linear degradation in $T/T^*$.
+
+\item \textbf{Correlation robustness.} The effective dimension bonus is
+\[
+\Delta d_{\mathrm{eff}}^{\mathrm{(b)}} = \Omega\!\left(K^2 \cdot \left(1 - \frac{T}{T^*}\right)^{\!2}\right) \cdot \frac{J(J-1)(1-r)}{[1+r(J-1)]^2}.
+\]
+Quadratic degradation in $T/T^*$.
+
+\item \textbf{Strategic independence.} The effective manipulation penalty is
+\[
+\Delta_{\mathrm{eff}}^{\mathrm{(c)}} \leq -\Omega\!\left(K \cdot \left(1 - \frac{T}{T^*}\right)\right) \cdot \frac{\|\boldsymbol{\delta}_S\|^2}{c^2}.
+\]
+Linear degradation in $T/T^*$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Parts (a) and (c) follow directly from replacing $K$ with $K_{\mathrm{eff}} = K(1 - T/T^*)$ in the bounds of \Cref{thm:triple_role_recap}(a,c), since these bounds are linear in $K$.
+
+Part (b) requires more care. The correlation robustness bound involves $K^2$. Under information friction, the firm's ability to distinguish idiosyncratic from common variation is itself degraded. The effective idiosyncratic extraction has two sources of loss: (i)~the curvature channel, which extracts with coefficient $K^2$, is operating on a noisier signal, and (ii)~the noise in the signal reduces the effective correlation contrast $(1-r)$. Both effects contribute a factor of $(1 - T/T^*)$, yielding the quadratic degradation.
+
+Formally, the correlation robustness bonus arises from $\Var[\mathbf{v}^{\!\top} \nabla^2 F \, \mathbf{v}]$---the variance of the Hessian quadratic form applied to random perturbations. Under information friction, this variance is reduced because the firm's allocation errors smooth the perturbation structure. The smoothing factor is $(1 - T/T^*)$ applied to each of the two $K$ factors in the $K^2$ bound, yielding $(1 - T/T^*)^2$.
+\end{proof}
+
+\subsection{The Crisis Sequence}\label{sec:crisis}
+
+The non-uniform degradation has a sharp empirical prediction. When information temperature rises suddenly (a financial crisis, a supply chain disruption, an institutional collapse), the three curvature benefits are lost in a specific order:
+
+\begin{corollary}[Crisis Sequence]\label{cor:crisis}
+As $T$ rises from $0$ toward $T^*$, the three curvature benefits are lost in the following order:
+\begin{enumerate}
+\item \textbf{Correlation robustness fails first.} Since the bonus scales as $(1 - T/T^*)^2$, it falls below economic significance at $T \approx T^*/2$, while the linear effects retain half their value.
+\item \textbf{Superadditivity degrades next.} The diversity premium erodes linearly, reaching zero at $T = T^*$.
+\item \textbf{Strategic independence breaks last.} The manipulation penalty erodes at the same linear rate, but its economic consequence---defection from cooperative arrangements---is a threshold event that occurs only when the penalty falls below the gain from deviation. This threshold is typically reached after the diversity premium has substantially eroded.
+\end{enumerate}
+\end{corollary}
+
+\begin{example}[The 2008 Global Financial Crisis]\label{ex:gfc}
+The crisis sequence matches the observed GFC dynamics. In 2007--2008:
+\begin{enumerate}
+\item Diversification failed first: asset correlations spiked from $r \approx 0.3$ to $r > 0.8$ across supposedly diversified portfolios. The $K^2(1-T/T^*)^2$ correlation robustness bonus collapsed.
+\item Production complementarities degraded next: supply chain disruptions spread as firms could no longer coordinate heterogeneous inputs effectively. Trade finance (the $T$ of international supply chains) froze.
+\item Strategic stability broke last: Lehman's counterparties defected, money market funds broke the buck, and interbank lending ceased---the strategic independence penalty fell below the short-term gain from hoarding liquidity.
+\end{enumerate}
+The sequence is not coincidental; it is forced by the mathematics of non-uniform degradation.
+\end{example}
+
+%=============================================================================
+\section{Optimal Firm Scope}\label{sec:firm_scope}
+%=============================================================================
+
+\subsection{The Variety--Coordination Tradeoff}\label{sec:variety}
+
+Adding input types creates value through the diversity premium but incurs coordination costs through the information entropy of managing a more complex production process. The firm's free energy as a function of $J$ is:
+\begin{equation}\label{eq:free_energy_J}
+\calF(J) = -\E[\log F(\hat{\mathbf{x}}(J); \boldsymbol{\theta})] + T \cdot H^*(J)
+\end{equation}
+where $H^*(J)$ is the optimal entropy of the attention allocation across $J$ input types.
+
+The diversity premium (from superadditivity) scales as:
+\begin{equation}\label{eq:diversity_premium}
+\Delta\Phi(J) \equiv \log F_J - \log F_1 \sim \frac{1}{\rho}\log J + O(1), \qquad \rho < 0
+\end{equation}
+which grows logarithmically in $J$ for complementary inputs. The coordination cost scales as:
+\begin{equation}\label{eq:coord_cost}
+T \cdot H^*(J) \sim T \cdot \log J
+\end{equation}
+since the firm must process $O(\log J)$ bits to discriminate among $J$ input types.
+
+\subsection{Optimal Number of Inputs}\label{sec:optimal_J}
+
+\begin{proposition}[Optimal Firm Scope]\label{prop:firm_scope}
+The optimal number of input types $J^*$ satisfies the first-order condition:
+\begin{equation}\label{eq:foc_J}
+\frac{\partial \Delta\Phi}{\partial J}\bigg|_{J^*} = T \cdot \frac{\partial H^*}{\partial J}\bigg|_{J^*}.
+\end{equation}
+The marginal diversity premium equals the marginal coordination cost. The solution has the comparative statics:
+\begin{enumerate}[label=(\roman*)]
+\item $\partial J^* / \partial (1-\rho) > 0$: more complementary technologies support more input types.
+\item $\partial J^* / \partial T < 0$: higher information costs reduce optimal variety.
+\item $\partial J^* / \partial C > 0$: larger firms support more input types (scale economies in coordination).
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Part (i): The diversity premium \eqref{eq:diversity_premium} grows as $(1/\rho)\log J$, with $1/\rho < 0$ for $\rho < 0$. More negative $\rho$ means faster growth of the diversity premium in $J$, shifting the intersection with the coordination cost curve rightward. For $\rho \in (0,1)$, the diversity premium is $(1/\rho)\log J$ with $1/\rho > 1$, which also increases in $(1-\rho)$ since $1/\rho = 1/(1-(1-\rho))$ is increasing in $(1-\rho)$ for $\rho < 1$.
+
+Part (ii): The coordination cost $T \cdot H^*(J)$ shifts upward proportionally with $T$, moving the intersection leftward.
+
+Part (iii): Larger $C$ implies larger $c = C/J$, which increases $T^*(\rho)$ (\Cref{rem:T_star}(iii)), effectively lowering the ratio $T/T^*$ and raising the net benefit of each additional input type.
+\end{proof}
+
+\begin{corollary}[Institutional Quality and Complexity]\label{cor:institutional}
+Firms in high-$T$ environments (weak institutions, poor monitoring, low management quality) optimally operate simpler production processes (lower $J^*$) even when the underlying technology has strong complementarity. This provides a micro-foundation for the observation that developing-country firms use less complex production methods than firms in advanced economies using identical machinery \citep{bloom2013}.
+\end{corollary}
+
+\begin{example}[Concrete Comparative Statics]\label{ex:comparative_statics}
+Consider three production environments:
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+Environment & $\rho$ & $T$ & $J^*$ & Organizational form \\
+\midrule
+Pharmaceutical R\&D & $-2$ & Low & $\sim 20$ & Large diversified lab \\
+Auto assembly & $-0.5$ & Medium & $\sim 8$ & Tiered supply chain \\
+Commodity agriculture & $0.5$ & High & $\sim 3$ & Simple farm \\
+\bottomrule
+\end{tabular}
+\end{center}
+The ranking $J^*_{\mathrm{pharma}} > J^*_{\mathrm{auto}} > J^*_{\mathrm{agri}}$ follows from both higher complementarity (lower $\rho$) and lower information temperature in more complex industries.
+\end{example}
+
+%=============================================================================
+\section{Firm Boundaries and Integration}\label{sec:boundaries}
+%=============================================================================
+
+\subsection{The Make-or-Buy Decision in $(\rho, T)$ Space}\label{sec:make_buy}
+
+A firm producing with CES technology faces two information environments: internal coordination at temperature $T_H$ (hierarchy) and market procurement at temperature $T_M$ (market). Hierarchy offers lower temperature ($T_H < T_M$) because of direct monitoring, shared culture, and aligned incentives, but at a cost: bureaucratic overhead reduces output by a factor $(1 - \beta)$ where $\beta \in (0,1)$ captures the well-documented inefficiency of internal organization \citep{williamson1985}.
+
+The firm integrates input $j$ when the hierarchical production free energy is lower:
+\begin{equation}\label{eq:integrate_condition}
+-\log F_j\big|_{T_H} + \beta \leq -\log F_j\big|_{T_M}
+\end{equation}
+which, using the output loss formula \eqref{eq:loss_KT}, reduces to:
+\begin{equation}\label{eq:boundary_condition}
+\frac{K^2(T_M - T_H)}{2(J-1)c^2} \geq \beta.
+\end{equation}
+
+\subsection{The Phase Diagram}\label{sec:phase_diagram}
+
+\begin{proposition}[Integration Boundary]\label{prop:integration}
+The firm integrates input $j$ if and only if:
+\begin{equation}\label{eq:integration_boundary}
+K > K^*(\Delta T) \equiv \sqrt{\frac{2(J-1)c^2 \beta}{\Delta T}}
+\end{equation}
+where $\Delta T = T_M - T_H > 0$. Equivalently, in $(\rho, T_M)$ space with $T_H$ and $\beta$ fixed:
+\begin{equation}\label{eq:rho_boundary}
+\rho < \rho^*(T_M) = 1 - \frac{J}{J-1}\sqrt{\frac{2(J-1)c^2\beta}{T_M - T_H}}.
+\end{equation}
+\end{proposition}
+
+This defines four regions in $(\rho, T)$ space:
+
+\begin{center}
+\begin{tabular}{p{4.5cm}|p{4.5cm}}
+\toprule
+\textbf{Low $\rho$, Low $T$} & \textbf{High $\rho$, Low $T$} \\
+Large diversified firms & Liquid spot markets \\
+Aerospace, pharma R\&D, TSMC & Commodity exchanges, financial markets \\
+$K_{\mathrm{eff}} \approx K$, full complementarity & $K \approx 0$, substitutability \\
+\midrule
+\textbf{Low $\rho$, High $T$} & \textbf{High $\rho$, High $T$} \\
+Vertical integration, simplified & Bilateral exchange, informal \\
+Developing-country assembly & Bazaar economy, day labor \\
+$K_{\mathrm{eff}} < K$, partial complementarity & $K \approx 0$, no premium to exploit \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{proposition}[Williamson as a Special Case]\label{prop:williamson}
+The Williamson governance structures framework \citep{williamson1979} corresponds to the qualitative limit of \Cref{prop:integration}:
+\begin{enumerate}[label=(\roman*)]
+\item ``Asset specificity'' is low $\rho$: complementary inputs cannot be redeployed (the CES aggregate is sensitive to the specific input bundle).
+\item ``Behavioral uncertainty'' is high $T$: bounded rationality and opportunism create information friction.
+\item ``Frequency'' maps to the effective diversity $d^2$: repeated transactions build relationship-specific diversity, raising $T^*$.
+\item The ``fundamental transformation''---in which a competitive procurement becomes a bilateral monopoly after investment---is the transition from high-$\rho$ (ex ante, many potential suppliers are substitutable) to low-$\rho$ (ex post, the chosen supplier's investment is complementary to the firm's assets).
+\end{enumerate}
+The present framework adds quantitative content: the integration boundary \eqref{eq:integration_boundary} is a curve, not a qualitative typology.
+\end{proposition}
+
+%=============================================================================
+\section{Supply Chain Architecture}\label{sec:supply_chain}
+%=============================================================================
+
+\subsection{Multi-Tier Free Energy}\label{sec:multi_tier}
+
+A production process comprises $L$ tiers, each with its own CES technology (curvature $K_{\ell}$) and information environment (temperature $T_{\ell}$). The total production free energy is:
+\begin{equation}\label{eq:total_free_energy}
+\calF_{\mathrm{total}} = \sum_{\ell=1}^{L} \calF_{\ell}(K_{\ell}, T_{\ell}, G_{\ell})
+\end{equation}
+where $G_{\ell} \in \{M, H\}$ indicates market or hierarchical governance at tier $\ell$. Market governance sets $T_{\ell} = T_M$ with no overhead; hierarchical governance sets $T_{\ell} = T_H$ with overhead $\beta$.
+
+\begin{proposition}[Optimal Supply Chain Architecture]\label{prop:supply_chain}
+The optimal governance choice at each tier is:
+\begin{equation}\label{eq:tier_governance}
+G_{\ell}^* = \begin{cases}
+H \quad (\text{integrate}) & \text{if } K_{\ell} > K^*(\Delta T) \\[4pt]
+M \quad (\text{outsource}) & \text{if } K_{\ell} \leq K^*(\Delta T)
+\end{cases}
+\end{equation}
+where $K^*(\Delta T)$ is the threshold from \eqref{eq:integration_boundary}.
+
+The optimal architecture has a monotone structure: tiers are rank-ordered by $K_{\ell}$, with the highest-$K$ tiers integrated and the lowest-$K$ tiers outsourced.
+\end{proposition}
+
+\begin{proof}
+Each tier's governance choice is independent given $\Delta T$ and $\beta$ (the free energies are additively separable across tiers). Tier $\ell$ is integrated when the curvature benefit of hierarchy exceeds the overhead cost, i.e., $K_{\ell} > K^*$. Since $K^*$ is a single threshold independent of $\ell$, the result follows.
+\end{proof}
+
+\begin{example}[Semiconductor Manufacturing]\label{ex:semiconductor}
+A semiconductor firm's production tiers (simplified):
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Tier & $\rho_{\ell}$ & $K_{\ell}$ & Governance \\
+\midrule
+Chip design (architecture) & $-3$ & High & Integrated (TSMC in-house) \\
+Fabrication (lithography) & $-2$ & High & Integrated \\
+Testing \& packaging & $0.2$ & Medium & Mixed (OSAT partners) \\
+Commodity materials & $0.8$ & Low & Market (spot procurement) \\
+\bottomrule
+\end{tabular}
+\end{center}
+The monotone structure matches observed industry practice: design and fabrication are tightly integrated while commodity inputs are procured on spot markets.
+\end{example}
+
+\subsection{Cross-Tier Information Spillovers}\label{sec:spillovers}
+
+When tiers are vertically linked, integration at one tier can reduce $T$ at adjacent tiers through shared information systems. Define the \emph{information spillover} from tier $\ell$ to tier $\ell'$:
+\begin{equation}\label{eq:spillover}
+\Delta T_{\ell'}^{(\ell)} = \alpha_{\ell\ell'} \cdot \mathbf{1}[G_{\ell} = H]
+\end{equation}
+where $\alpha_{\ell\ell'} \geq 0$ measures the strength of informational complementarity between tiers. When spillovers are present, the optimization becomes a combinatorial problem with $2^L$ governance configurations. However, the monotone structure of \Cref{prop:supply_chain} is preserved:
+
+\begin{corollary}\label{cor:spillover}
+With non-negative spillovers $(\alpha_{\ell\ell'} \geq 0)$, integrating a high-$K$ tier weakly increases the incentive to integrate adjacent tiers. The optimal architecture remains monotone in $K_{\ell}$, but the threshold $K^*$ is lower for tiers adjacent to already-integrated tiers.
+\end{corollary}
+
+This provides a formal basis for the empirical regularity that integration tends to cluster: firms that integrate one tier often integrate adjacent tiers as well \citep{grossman1986}.
+
+%=============================================================================
+\section{Empirical Predictions}\label{sec:empirical}
+%=============================================================================
+
+The framework generates several testable predictions that distinguish it from existing theories.
+
+\subsection{Management--Technology Complementarity}\label{sec:management}
+
+\begin{proposition}[Returns to Management Quality]\label{prop:management}
+The marginal return to reducing information temperature (improving management quality) is:
+\begin{equation}\label{eq:management_return}
+-\frac{\partial \calF}{\partial T} = H^*(J) + \frac{K^2}{2(J-1)c^2}
+\end{equation}
+which is increasing in $K$ (and hence in complementarity $1-\rho$).
+\end{proposition}
+
+\textbf{Prediction 1.} \emph{The management quality premium is larger in industries with lower $\rho$.} Bloom, Sadun, and Van Reenen's management practice scores \citep{bloom2012} predict productivity differentials, but the prediction is that these differentials are largest in high-complementarity industries (e.g., pharmaceuticals, aerospace) and smallest in high-substitutability industries (e.g., commodity production, retail).
+
+\textbf{Test.} Cross industry-level estimates of $\sigma$ from \citet{oberfield2021} with the Bloom--Van Reenen management quality data. The interaction term $\text{management} \times (1/\sigma)$ should be positive and significant in explaining productivity.
+
+\subsection{Within-Industry Productivity Dispersion}\label{sec:dispersion}
+
+\begin{proposition}[Productivity Dispersion]\label{prop:dispersion}
+Within-industry log-productivity dispersion is:
+\begin{equation}\label{eq:dispersion}
+\Var[\log F] \approx \frac{K^2}{(J-1)^2 c^4} \cdot \Var[T_i]
+\end{equation}
+where $\Var[T_i]$ is the cross-firm variance of information temperature within the industry.
+\end{proposition}
+
+\textbf{Prediction 2.} \emph{Within-industry productivity dispersion is increasing in $(1-\rho)$.} \citet{syverson2004} documents large within-industry dispersion (the 90th-percentile plant produces nearly twice as much as the 10th-percentile plant with the same inputs). The prediction is that this dispersion is largest in high-complementarity industries, where differences in management quality ($T$) translate most strongly into output differences. Industries with $\rho$ near 1 show compressed dispersion because $K \approx 0$ means $T$ differences don't matter for output.
+
+\subsection{AI Adoption Priority}\label{sec:ai}
+
+AI-driven monitoring and management tools effectively reduce $T$ by automating information processing. The marginal value of reducing $T$ is highest where $K$ is large and $T$ is currently near $T^*(\rho)$.
+
+\textbf{Prediction 3.} \emph{AI adoption generates the largest productivity gains in industries with high technological complementarity and currently high information frictions.} Specifically:
+\begin{itemize}
+\item Healthcare (low $\rho$: complementary specialties; high $T$: fragmented information) --- high AI returns.
+\item Legal services (low $\rho$: complementary expertise; high $T$: case-specific knowledge) --- high AI returns.
+\item Complex manufacturing (low $\rho$: complementary inputs; medium $T$: partially automated) --- moderate AI returns.
+\item Commodity production (high $\rho$: substitutable inputs) --- low AI returns regardless of $T$.
+\end{itemize}
+
+The prediction distinguishes this framework from the common claim that AI benefits ``knowledge-intensive'' industries. The relevant distinction is not knowledge intensity but \emph{complementarity under friction}: industries where diverse inputs create value but information frictions prevent full exploitation.
+
+\subsection{Crisis Dynamics}\label{sec:crisis_prediction}
+
+\textbf{Prediction 4.} \emph{In economic crises, diversification benefits fail before production complementarities, which fail before strategic stability.} This follows from \Cref{cor:crisis} and is testable by examining the timing of:
+\begin{enumerate}[label=(\roman*)]
+\item Correlation spikes across asset classes (correlation robustness failure),
+\item Supply chain disruptions and trade volume declines (superadditivity failure),
+\item Counterparty defections and institutional breakdowns (strategic independence failure).
+\end{enumerate}
+The prediction is that (i) precedes (ii) precedes (iii) in every major crisis, not just the 2008 GFC.
+
+%=============================================================================
+\section{Related Literature}\label{sec:literature}
+%=============================================================================
+
+\paragraph{Transaction cost economics.}
+\citet{coase1937} asked why firms exist; \citet{williamson1979,williamson1985} answered with the transaction cost framework based on asset specificity, uncertainty, and frequency. The present paper provides micro-foundations: asset specificity \emph{is} low $\rho$, behavioral uncertainty \emph{is} high $T$, and the governance boundary is the quantitative curve $K^*(\Delta T)$ rather than a qualitative typology. \citet{grossman1986} and \citet{hart1990} formalized the property rights approach; \Cref{prop:integration} nests their integration boundary as the case where $\Delta T$ arises from contractual incompleteness.
+
+\paragraph{Productivity dispersion and management.}
+\citet{syverson2004,syverson2011} documents large within-industry productivity dispersion. \citet{bloom2012,bloom2013} show that management practices explain a substantial fraction. The present framework provides the missing link: management quality reduces $T$, but the \emph{productivity impact} of $T$ depends on $K$. This explains why the management premium varies across industries---a prediction the management literature has documented but not explained from first principles.
+
+\paragraph{Organizational economics.}
+\citet{garicano2000} models hierarchies as knowledge-based organizations where communication costs determine span of control. In the present framework, communication cost is a component of $T$, and the hierarchy's value depends on $K$: hierarchies are more valuable when inputs are complementary. \citet{antras2003} applies the property rights theory to international trade, showing that firms integrate production stages with high relationship-specificity; this corresponds to integrating high-$K$ tiers in \Cref{prop:supply_chain}.
+
+\paragraph{Rational inattention in production.}
+\citet{sims2003} introduced rational inattention; \citet{matejka2015} derived the logit form. Applications to production decisions include \citet{woodford2009} (New Keynesian firms) and \citet{mackowiak2009} (price-setting). The present paper extends rational inattention from individual choice to the aggregation problem: the CES structure determines how individual attention constraints compound into firm-level production losses.
+
+\paragraph{CES in production theory.}
+\citet{arrow1961} introduced CES; \citet{sato1967} generalized to nested CES; \citet{oberfield2021} developed estimation methods. The standard approach treats $\rho$ as a technological parameter to be estimated. The present paper treats $\rho$ as a \emph{generating parameter}: it determines not just the production function but the optimal organizational form, management premium, and crisis vulnerability.
+
+%=============================================================================
+\section{Conclusion}\label{sec:conclusion}
+%=============================================================================
+
+This paper combines two geometric facts about CES aggregation---the quadruple role of curvature and the free energy structure of information-constrained optimization---into a theory of production under information frictions. The effective curvature theorem (\Cref{thm:effective_curvature}) shows that information friction endogenously reduces exploitable complementarity, creating an apparent substitutability that is organizational, not technological. The non-uniform degradation result (\Cref{prop:nonuniform}) predicts a specific crisis sequence---correlation robustness fails first, then superadditivity, then strategic independence---that matches observed crisis dynamics.
+
+The framework generates a phase diagram for industrial organization in $(\rho, T)$ space that nests Williamson's governance structures as the qualitative limit, adds the management--technology complementarity prediction, and explains within-industry productivity dispersion as the interaction of cross-firm $T$ variation with industry-level $K$.
+
+Three limitations deserve emphasis. First, $\rho$ is treated as exogenous; endogenizing technology choice (firms choosing $\rho$ given their $T$) would enrich the framework substantially. Second, the supply chain results assume additively separable tier free energies; in practice, tiers interact through quality propagation and information spillovers (\Cref{sec:spillovers} sketches this extension). Third, the empirical predictions require industry-level estimates of both $\rho$ and $T$, which are not yet available in combination.
+
+The deeper implication is methodological. Production theory and information economics have developed as separate fields because they formalize different aspects of economic activity. The CES free energy framework reveals that they are aspects of a single object: the curvature of the production isoquant, viewed through the lens of information-constrained optimization. The firm is the institution that exploits curvature under friction.
+
+%=============================================================================
+% BIBLIOGRAPHY
+%=============================================================================
+\bibliographystyle{aer}
+\begin{thebibliography}{99}
+
+\bibitem[Antr\`{a}s(2003)]{antras2003}
+Antr\`{a}s, Pol. 2003. ``Firms, Contracts, and Trade Structure.'' \textit{Quarterly Journal of Economics} 118(4): 1375--1418.
+
+\bibitem[Arrow et~al.(1961)]{arrow1961}
+Arrow, Kenneth J., Hollis B. Chenery, Bagicha S. Minhas, and Robert M. Solow. 1961. ``Capital-Labor Substitution and Economic Efficiency.'' \textit{Review of Economics and Statistics} 43(3): 225--250.
+
+\bibitem[Bloom, Sadun, and Van~Reenen(2012)]{bloom2012}
+Bloom, Nicholas, Raffaella Sadun, and John Van~Reenen. 2012. ``The Organization of Firms Across Countries.'' \textit{Quarterly Journal of Economics} 127(4): 1663--1705.
+
+\bibitem[Bloom et~al.(2013)]{bloom2013}
+Bloom, Nicholas, Benn Eifert, Aprajit Mahajan, David McKenzie, and John Roberts. 2013. ``Does Management Matter? Evidence from India.'' \textit{Quarterly Journal of Economics} 128(1): 1--51.
+
+\bibitem[Coase(1937)]{coase1937}
+Coase, Ronald H. 1937. ``The Nature of the Firm.'' \textit{Economica} 4(16): 386--405.
+
+\bibitem[Garicano(2000)]{garicano2000}
+Garicano, Luis. 2000. ``Hierarchies and the Organization of Knowledge in Production.'' \textit{Journal of Political Economy} 108(5): 874--904.
+
+\bibitem[Grossman and Hart(1986)]{grossman1986}
+Grossman, Sanford J., and Oliver D. Hart. 1986. ``The Costs and Benefits of Ownership: A Theory of Vertical and Lateral Integration.'' \textit{Journal of Political Economy} 94(4): 691--719.
+
+\bibitem[Hart and Moore(1990)]{hart1990}
+Hart, Oliver, and John Moore. 1990. ``Property Rights and the Nature of the Firm.'' \textit{Journal of Political Economy} 98(6): 1119--1158.
+
+\bibitem[Jaynes(1957)]{jaynes1957}
+Jaynes, Edwin T. 1957. ``Information Theory and Statistical Mechanics.'' \textit{Physical Review} 106(4): 620--630.
+
+\bibitem[Ma\'{c}kowiak and Wiederholt(2009)]{mackowiak2009}
+Ma\'{c}kowiak, Bartosz, and Mirko Wiederholt. 2009. ``Optimal Sticky Prices Under Rational Inattention.'' \textit{American Economic Review} 99(3): 769--803.
+
+\bibitem[Mat\v{e}jka and McKay(2015)]{matejka2015}
+Mat\v{e}jka, Filip, and Alisdair McKay. 2015. ``Rational Inattention to Discrete Choices: A New Foundation for the Multinomial Logit Model.'' \textit{American Economic Review} 105(1): 272--298.
+
+\bibitem[Oberfield and Raval(2021)]{oberfield2021}
+Oberfield, Ezra, and Devesh Raval. 2021. ``Micro Data and Macro Technology.'' \textit{Econometrica} 89(2): 703--732.
+
+\bibitem[Sato(1967)]{sato1967}
+Sato, Kazuo. 1967. ``A Two-Level Constant-Elasticity-of-Substitution Production Function.'' \textit{Review of Economic Studies} 34(2): 201--218.
+
+\bibitem[Sims(2003)]{sims2003}
+Sims, Christopher A. 2003. ``Implications of Rational Inattention.'' \textit{Journal of Monetary Economics} 50(3): 665--690.
+
+\bibitem[Smirl(2026a)]{smirl2026ces}
+Smirl, Jon. 2026a. ``The CES Quadruple Role: Superadditivity, Correlation Robustness, Strategic Independence, and Network Scaling as Four Properties of CES Curvature.'' Working Paper.
+
+\bibitem[Smirl(2026b)]{smirl2026free}
+Smirl, Jon. 2026b. ``Free Energy Economics: A Unified Framework from CES Aggregation and Shannon Entropy.'' Working Paper.
+
+\bibitem[Syverson(2004)]{syverson2004}
+Syverson, Chad. 2004. ``Market Structure and Productivity: A Concrete Example.'' \textit{Journal of Political Economy} 112(6): 1181--1222.
+
+\bibitem[Syverson(2011)]{syverson2011}
+Syverson, Chad. 2011. ``What Determines Productivity?'' \textit{Journal of Economic Literature} 49(2): 326--365.
+
+\bibitem[Williamson(1979)]{williamson1979}
+Williamson, Oliver E. 1979. ``Transaction-Cost Economics: The Governance of Contractual Relations.'' \textit{Journal of Law and Economics} 22(2): 233--261.
+
+\bibitem[Williamson(1985)]{williamson1985}
+Williamson, Oliver E. 1985. \textit{The Economic Institutions of Capitalism}. New York: Free Press.
+
+\bibitem[Woodford(2009)]{woodford2009}
+Woodford, Michael. 2009. ``Information-Constrained State-Dependent Pricing.'' \textit{Journal of Monetary Economics} 56(S): 100--124.
+
+\end{thebibliography}
+
+\end{document}

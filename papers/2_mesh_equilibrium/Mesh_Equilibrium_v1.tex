@@ -480,6 +480,7 @@ No central coordinator computes these allocations. Agents respond to prices, and
 \subsection{Connection to Monetary Infrastructure}
 
 The settlement layer requirements---programmable, peer-to-peer, high-throughput, low-latency---describe the functional specification of a programmable monetary system. The detailed analysis of how existing and emerging monetary infrastructure maps to these requirements is the subject of Smirl (2026b, \emph{The Monetary Productivity Gap}, forthcoming). This paper notes the connection without developing it: the mesh equilibrium's viability depends on the existence of adequate settlement infrastructure, and the mesh's growth may be constrained by the settlement layer before it is constrained by device capability or network connectivity. Prediction~6 (Section~10) formalizes this as a testable claim.
+The mesh level is one of $N_{\mathrm{eff}}$ endogenously determined hierarchy levels (Smirl 2026d, Theorem~4.3): the effective hierarchy depth is set by the technology's timescale distribution, not structurally fixed at four.
 
 
 % -------------------------------------------------------------------
@@ -532,6 +533,9 @@ Three results distinguish this analysis from standard network economics. First, 
 The central theorem establishes that the mesh equilibrium exists, is unique, is stable, and dominates centralized provision above a finite critical mass $N^*$ that decreases with population diversity. The post-crossing dynamics proceed through three phases: slow nucleation on long-tail niches, rapid crystallization with first-order specialization, and maturity with centralized coexistence on training and frontier inference.
 
 What the model predicts unambiguously is that the distributed ecosystem does not remain a collection of isolated devices. The same economic forces that drive specialization and trade in human economies---comparative advantage, network effects, complementary capabilities---drive the formation of a mesh whose collective intelligence exceeds what any centralized system can provide. The organizational form is not designed; it is the equilibrium.
+
+The mesh equilibrium results---critical mass $N^*$, diversity premium, settlement layer endogeneity---are structural features of CES aggregation with $\rho < 1$ and do not depend on the specific number of hierarchy levels.
+The companion paper (Smirl 2026d) proves that the four-level structure assumed across the paper sequence ($N_{\mathrm{eff}} = 4$) is endogenously determined by the technology's timescale distribution and may evolve as the AI transition matures.
 
 
 % -------------------------------------------------------------------
@@ -599,6 +603,8 @@ The practical implication is that the paper's use of mean-field models requires 
 \bibitem{smirl2026a} Smirl, C. (2026a). Endogenous decentralization: How concentrated capital investment finances the learning curves that enable distributed alternatives. Working paper, Tufts University.
 
 \bibitem{smirl2026b} Smirl, C. (2026b). The monetary productivity gap. Working paper, Tufts University. Forthcoming.
+
+\bibitem{smirl2026d} Smirl, C. (2026d). Complementary heterogeneity: How CES curvature unifies the four-level hierarchy. Working paper, Tufts University.
 
 \bibitem{tarski1955} Tarski, A. (1955). A lattice-theoretical fixpoint theorem and its applications. \emph{Pacific Journal of Mathematics}, 5(2), 285--309.
 

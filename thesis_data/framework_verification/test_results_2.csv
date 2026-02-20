@@ -1,0 +1,7 @@
+test,verdict,avg_asymmetry,n_faster_rise,n_recessions,stress_beta,stress_p,r2,min_p_forward,min_p_reverse,consistent_count,peak_lag,peak_corr,granger_p_fwd,granger_p_rev,rho_s,p,var_explained_pc1
+test7,AMBIGUOUS,1.0706714103265829,1.0,3.0,,,,,,,,,,,,,
+test8,CONSISTENT,,,,0.01753909162793891,0.003540123949512033,0.019369587261981902,,,,,,,,,,
+test9,CONSISTENT,,,,,,,0.0016365448038207619,0.05313252304586237,,,,,,,,
+test10,AMBIGUOUS,,,,,,,,,0.0,,,,,,,
+test11,AMBIGUOUS,,,,,,,,,,0.0,0.742410090160671,0.5477752506989579,4.746848553782957e-05,,,
+test12,AMBIGUOUS,,,,,,,,,,,,,,-0.1370186657872378,0.6404341647230511,0.43270015605143364

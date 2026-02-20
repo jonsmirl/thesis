@@ -1,0 +1,36 @@
+\begin{table}[htbp]
+\centering
+\caption{Cross-Country GFC Severity: Activity Restrictions $\times$ Private Monitoring}
+\label{tab:gfc_prediction}
+\small
+\begin{tabular}{lccccc}
+\toprule
+ & (1) & (2) & (3) & (4) & (5) \\
+ & Baseline & +PMI & Interaction & +FinDev & GDP growth \\
+\midrule
+  DV: & GDP loss & GDP loss & GDP loss & GDP loss & GDP growth \\
+\midrule
+  ARI (Activity Restrictions) & \makecell{0.324 \\ (0.212)} & \makecell{0.317 \\ (0.210)} & \makecell{-1.928* \\ (0.950)} & \makecell{-1.447 \\ (0.922)} & \makecell{-0.566 \\ (1.052)} \\[4pt]
+  PMI (Private Monitoring) &  & \makecell{-0.391 \\ (0.304)} & \makecell{-3.310** \\ (1.246)} & \makecell{-2.623* \\ (1.238)} & \makecell{-0.836 \\ (1.582)} \\[4pt]
+  ARI $\times$ PMI &  &  & \makecell{0.307* \\ (0.127)} & \makecell{0.240 \\ (0.124)} & \makecell{0.113 \\ (0.153)} \\[4pt]
+  $\log$ GDP per capita & \makecell{-1.828*** \\ (0.496)} & \makecell{-1.718*** \\ (0.483)} & \makecell{-1.797*** \\ (0.487)} & \makecell{-1.721* \\ (0.767)} & \makecell{-1.820*** \\ (0.376)} \\[4pt]
+  Financial Development &  &  &  & \makecell{0.000 \\ (0.023)} &  \\[4pt]
+\midrule
+  $N$ & 147 & 147 & 147 & 139 & 147 \\
+  $R^2$ & 0.110 & 0.117 & 0.138 & 0.126 & 0.169 \\
+  SE & HC1 & HC1 & HC1 & HC1 & HC1 \\
+\bottomrule
+\end{tabular}
+\vspace{4pt}
+\parbox{0.95\textwidth}{\footnotesize
+  Dependent variable: columns (1)--(4) cumulative GDP per capita loss 2007--2009 (\%);
+  column (5) GDP growth rate 2009 (\%).
+  ARI = BCL Activity Restrictions Index (higher = banks restricted to commodity lending = higher $\sigma$).
+  PMI = BCL Private Monitoring Index (higher = stronger information disclosure = lower $T$).
+  All from BCL Wave~2 (2003), pre-crisis.
+  Robust (HC1) standard errors in parentheses.
+  Placebo interactions (all insignificant): CSI$\times$PMI: $\beta$=-0.093 (p=0.513); SPI$\times$PMI: $\beta$=-0.260 (p=0.067); EBI$\times$PMI: $\beta$=-0.243 (p=0.305).
+  Logit crisis probability: ARI$\times$PMI $\beta$=-0.006 (p=0.942), pseudo $R^2$=0.309.
+  $^{***}p<0.001$; $^{**}p<0.01$; $^{*}p<0.05$.
+}
+\end{table}

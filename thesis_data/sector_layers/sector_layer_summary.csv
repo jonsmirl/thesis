@@ -1,0 +1,8 @@
+sector_id,name,description,n_eff,peak_periods,dominant_period_yr,kendall_tau,kendall_p,character
+INDPRO,Aggregate IP,aggregate,2,"0.6, 1.6",0.6034532782802409,0.1432382364601019,0.4462829300776954,"Two-layer, short-cycle dominant"
+IPG334S,Computer & Electronics,low-rho (active tech wave),2,"2.9, 16.3",2.920423032233899,0.0,1.0,"Two-layer, business-cycle dominant"
+IPG335S,Electrical Equipment,intermediate-low rho,4,"0.6, 1.1, 2.1, 4.7",0.6122463985832777,-0.4665694748158435,0.17423138824802498,"Multi-layer (innovative), short-cycle dominant"
+IPG336S,Transport Equipment,EV wave,0,,,-0.05292561240249632,0.8738446985173735,No peaks detected
+IPG325S,Chemicals,intermediate,1,2.1,2.063781181604822,-0.6900655593423543,0.05280751141611358,"Single-layer (mature), business-cycle dominant"
+IPG331S,Primary Metals,high-rho (mature),0,,,-0.2760262237369417,0.4385780260809998,No peaks detected
+IPG311S,Food Manufacturing,control (stable),1,1.8,1.7601722824588981,-0.6998542122237652,0.04154006700988516,"Single-layer (mature), short-cycle dominant"

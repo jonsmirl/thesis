@@ -1,0 +1,21 @@
+\begin{table}[htbp]
+\centering
+\caption{Cross-Industry Regression: Matching Outcomes on Task Complementarity}
+\label{tab:labor_matching}
+\begin{tabular}{lcccc}
+\hline\hline
+ & (1) & (2) & (3) & (4) \\
+Dep. Var. & $\alpha_i$ & $H/V$ & $H/\sqrt{VU}$ & Bev. Slope \\
+\hline
+Complementarity & $-18.6830$ & $0.8992$ & $-0.4826$ & $5.2941$ \\
+ & (23.4788) & (8.9480) & (3.1054) & (3.3550) \\
+$R^2$ & 0.083 & 0.001 & 0.003 & 0.262 \\
+N (industries) & \multicolumn{4}{c}{9} \\
+\hline
+Predicted sign & $-$ & $-$ & $-$ & $-$ \\
+\hline\hline
+\end{tabular}
+\begin{tablenotes}\small
+\item \textit{Notes:} Stage 1 estimates industry matching functions: $\log H_{it} = \alpha_i + \beta_V \log V_{it} + \beta_U \log U_{it} + \varepsilon_{it}$ using JOLTS (vacancies, hires) and CPS (unemployment) monthly data, 2001--2025, with Newey--West (HAC) standard errors (12 lags). Stage 2 regresses industry-level matching outcomes on an O*NET-based task complementarity index (employment-weighted average of teamwork, coordination, and interdependence scores from Work Context and Work Activities databases, aggregated from occupations to industries via OES employment weights). Higher complementarity $\approx$ lower $\rho$ in CES framework. Column (4) Beveridge slope is from $\log V_{it} = a_i + b_i \log U_{it} + \varepsilon_{it}$. *, **, *** denote significance at 10\%, 5\%, 1\%.
+\end{tablenotes}
+\end{table}

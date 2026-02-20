@@ -1,0 +1,27 @@
+\begin{table}[htbp]
+\centering
+\caption{CES Free Energy Framework: Extended Verification (Tests 7--12)}
+\label{tab:framework_verification_2}
+\small
+\begin{tabular}{clllc}
+\toprule
+Test & Prediction & Key statistic & Value & Verdict \\
+\midrule
+  7 & Hysteresis (fast spike, slow recovery) & Avg asymmetry ratio & 1.071 & AMBIGUOUS \\
+  8 & EV1 concentration in crises & Stress $\beta$ & 0.0175 & \textbf{CONSISTENT} \\
+  9 & Stress $\to$ correlation (Granger) & Min $p$ forward & 0.0016 & \textbf{CONSISTENT} \\
+  10 & High-$\sigma$ recovers faster & Recessions consistent & 0/3 & AMBIGUOUS \\
+  11 & High-$\sigma$ leads low-$\sigma$ & CCF peak lag (months) & 0 & AMBIGUOUS \\
+  12 & Lower $\sigma$ $\to$ higher PC1 loading & Spearman $\rho$ & -0.137 & AMBIGUOUS \\
+\midrule
+  \multicolumn{4}{l}{Tests 7--12: 2 consistent, 4 ambiguous, 0 inconsistent} & \\
+\bottomrule
+\end{tabular}
+\vspace{4pt}
+\parbox{0.95\textwidth}{\footnotesize
+  Same 14 FRED manufacturing IP subsectors as Tests 1--6.
+  Granger causality uses F-test (SSR) at lags 1--6.
+  PCA computed on standardized monthly growth rates.
+  Recovery measured as months from trough to 90\% of pre-crisis peak.
+}
+\end{table}

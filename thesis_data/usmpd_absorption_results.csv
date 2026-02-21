@@ -1,0 +1,9 @@
+test,metric,statistic,value,p_value
+A_concentration,stmt_daily_ratio_trend,kendall_tau,-0.17249789706359708,0.00020145350083401498
+B_surprise_response,sensitivity_10y_STMT,kendall_tau,0.01490182843336628,0.7167934281444215
+B_surprise_response,sensitivity_10y_ME,kendall_tau,-0.04958841914090349,0.228315114428412
+C_pc_incremental,stmt_share_trend,kendall_tau,-0.164179111240491,0.027121627741927206
+C_pc_reversal,reversal_rate_trend,kendall_tau,0.12802974607411122,0.15562929532112227
+D_cross_maturity,2y_10y_ratio_trend,kendall_tau,0.01365112759817122,0.7464381624515348
+E_magnitude,abs_10y_trend,kendall_tau,-0.11101447920976444,0.006213312579425805
+E_magnitude,abs_2y_trend,kendall_tau,-0.08121256428927111,0.04574321782111939

@@ -1,0 +1,10 @@
+test,metric,value,p_value,verdict
+rho_ordering,pooled_beta1,-14.654994228518708,0.0008451148976361297,CONSISTENT
+rho_ordering,pooled_tau,-0.3975260151746478,0.00015687599542992908,
+asymmetry,mean_ratio,11.777828279470953,,DIRECTIONAL
+critical_slowing,frac_rising,0.6666666666666666,0.18924713134765625,DIRECTIONAL
+temperature,probit_pseudo_R2,0.035377865750038984,0.0002905116870304612,CONSISTENT
+regulation,vol_ratio_post_pre,0.5234432936733066,,CONSISTENT
+phillips_slope,tau_K_slope,-0.3651411879259981,1.912181667019521e-06,AMBIGUOUS
+rho_diversity,tau_diversity,1.0,1.0,AMBIGUOUS
+power_law,hill_alpha,3.543094871312088,,SUGGESTIVE

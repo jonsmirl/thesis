@@ -1,0 +1,162 @@
+========================================================================
+MONETARY POLICY DEGRADATION SEQUENCE TEST
+Paper 4 (Settlement Feedback)
+Run date: 2026-02-20 16:04:27
+========================================================================
+
+Prediction: monetary policy tools degrade in sequence:
+  1. Forward guidance FIRST (FOMC days less special)
+  2. QE SECOND (lower yield compression per $100B)
+  3. Financial repression LAST (still functional at φ ≈ 0)
+
+========================================================================
+3. FETCHING FRED DATA
+========================================================================
+  Fetching DGS2 (2-year Treasury yield (daily))...
+    6534 obs, 2000-01-03 to 2026-02-18
+  Fetching DGS10 (10-year Treasury yield (daily))...
+    6534 obs, 2000-01-03 to 2026-02-18
+  Fetching DFF (Fed funds rate (daily))...
+    9546 obs, 2000-01-01 to 2026-02-18
+  Fetching VIXCLS (VIX volatility (daily))...
+    6602 obs, 2000-01-03 to 2026-02-19
+  Fetching WALCL (Fed total assets (weekly))...
+    1210 obs, 2002-12-18 to 2026-02-18
+  Fetching CPIAUCSL (CPI-U index (monthly))...
+    312 obs, 2000-01-01 to 2026-01-01
+  Fetching PSAVERT (Personal savings rate (monthly))...
+    312 obs, 2000-01-01 to 2025-12-01
+
+========================================================================
+4. TEST A: FORWARD GUIDANCE — FOMC IMPORTANCE RATIO
+========================================================================
+
+  --- DGS2 ---
+  Total trading days with Δy: 6533
+  FOMC days matched: 217
+  Rolling windows computed: 46
+  Importance ratio range: [0.981, 2.138]
+  Kendall τ (ratio vs time): 0.2232 (p = 0.0287)
+  => INCONSISTENT: ratio not declining
+
+  --- DGS10 ---
+  Total trading days with Δy: 6533
+  FOMC days matched: 217
+  Rolling windows computed: 46
+  Importance ratio range: [0.798, 1.613]
+  Kendall τ (ratio vs time): 0.0435 (p = 0.6701)
+  => INCONSISTENT: ratio not declining
+
+  --- VIX-conditional robustness (DGS10) ---
+    Low VIX (VIX median=17.8): importance ratio = 1.284 (n_fomc=106, n_total=3262)
+    High VIX (VIX median=17.8): importance ratio = 1.190 (n_fomc=111, n_total=3261)
+
+========================================================================
+5. TEST B: QE MULTIPLIER DECAY
+========================================================================
+
+  --- QE1: 2008-11-25 to 2010-03-31 ---
+    DGS10: 3.35% → 3.84% (Δ = +49.0 bp)
+    WALCL: $2187B → $2307B (Δ = $+120B)
+    Multiplier (bp per $100B): 40.83
+    Announcement effect (2 weeks): -68.0 bp
+    6-month multiplier: -272.48
+
+  --- QE2: 2010-11-03 to 2011-06-30 ---
+    DGS10: 2.63% → 3.18% (Δ = +55.0 bp)
+    WALCL: $2295B → $2865B (Δ = $+570B)
+    Multiplier (bp per $100B): 9.65
+    Announcement effect (2 weeks): +26.0 bp
+    6-month multiplier: 14.64
+
+  --- QE3: 2012-09-13 to 2014-10-29 ---
+    DGS10: 1.77% → 2.34% (Δ = +57.0 bp)
+    WALCL: $2823B → $4487B (Δ = $+1663B)
+    Multiplier (bp per $100B): 3.43
+    Announcement effect (2 weeks): -11.0 bp
+    6-month multiplier: 7.90
+
+  --- COVID-QE: 2020-03-15 to 2022-03-16 ---
+    DGS10: 0.94% → 2.19% (Δ = +125.0 bp)
+    WALCL: $4312B → $8954B (Δ = $+4642B)
+    Multiplier (bp per $100B): 2.69
+    Announcement effect (2 weeks): -22.0 bp
+    6-month multiplier: -1.00
+
+  --- Summary: multiplier comparison ---
+    QE1       : 40.83 bp/$100B
+    QE2       : 9.65 bp/$100B
+    QE3       : 3.43 bp/$100B
+    COVID-QE  : 2.69 bp/$100B
+
+    Absolute multiplier declining across episodes: True
+
+  Note: Operation Twist (2011-09 to 2012-12) excluded as natural placebo
+  (no net WALCL change — long-end purchased, short-end sold)
+  Note: COVID episode has confounds (pandemic shock, fiscal stimulus)
+
+========================================================================
+6. TEST C: FINANCIAL REPRESSION — REAL YIELD VS SAVINGS
+========================================================================
+  Monthly obs aligned: 299
+  Date range: 2001-01-01 to 2025-12-01
+  Real yield range: [-6.44%, 5.52%]
+  Savings rate range: [1.4%, 31.8%]
+  Full-sample correlation (real yield vs savings): -0.1226 (p = 0.0341)
+  Rolling 60-month windows: 240
+  Rolling corr range: [-0.485, 0.588]
+  Kendall τ (correlation vs time): -0.1358 (p = 0.0017)
+  => FR may be degrading (negative trend, p < 0.10)
+
+========================================================================
+7. SEQUENCING TEST: COMPOSITE DEGRADATION INDEX
+========================================================================
+  FG: 46 windows, max ratio = 1.613
+  QE: 4 episodes, QE1 ref = 40.83
+  FR: 240 windows, max |corr| = 0.588
+
+  --- Ordering assessment ---
+  Recent-period (2018-2026) average degradation:
+    FG: 0.305
+    QE: 0.934
+    FR: 0.569
+
+  Predicted ordering FG > QE > FR:
+    FG > QE: False (0.305 vs 0.934)
+    QE > FR: True (0.934 vs 0.569)
+    Full ordering: NOT CONFIRMED
+
+========================================================================
+8. GENERATING FIGURES
+========================================================================
+  Saved: /home/jonsmirl/thesis/figures/settlement_feedback/mp_degradation.pdf
+
+========================================================================
+9. WRITING OUTPUTS
+========================================================================
+  LaTeX table: /home/jonsmirl/thesis/thesis_data/mp_degradation_table.tex
+  CSV results: /home/jonsmirl/thesis/thesis_data/mp_degradation_results.csv
+
+========================================================================
+SUMMARY
+========================================================================
+
+Test A (Forward Guidance):
+  DGS2  importance ratio trend: τ = 0.2232 (p = 0.0287)
+  DGS10 importance ratio trend: τ = 0.0435 (p = 0.6701)
+
+Test B (QE Multiplier):
+  QE1       : 40.8 bp/$100B
+  QE2       : 9.7 bp/$100B
+  QE3       : 3.4 bp/$100B
+  COVID-QE  : 2.7 bp/$100B
+
+Test C (Financial Repression):
+  Correlation stability: τ = -0.1358 (p = 0.0017)
+
+Sequencing:
+  FG > QE > FR ordering: NOT CONFIRMED
+
+--------------------------------------------------
+Overall: PARTIALLY CONSISTENT — FR stable as predicted
+

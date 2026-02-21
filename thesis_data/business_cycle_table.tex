@@ -1,0 +1,24 @@
+\begin{table}[htbp]
+\centering
+\caption{Sectoral and macroeconomic predictions: empirical tests}
+\label{tab:business_cycle}
+\small
+\begin{tabular}{llcccl}
+\toprule
+\# & Prediction & Statistic & Value & $p$ & Verdict \\
+\midrule
+9--11 & $\rho$-ordering of recession entry & OLS $\beta_1$ & -14.65 & 0.001 & $\checkmark$ \\
+12 & Expansion/contraction $\approx 1/\varepsilon$ & mean ratio & 11.8 & --- & $\sim$ \\
+13 & Critical slowing down & frac rising AR(1) & 0.67 & 0.189 & $\sim$ \\
+14 & Temperature $T = \sigma^2/\chi$ & probit pseudo-$R^2$ & 0.0354 & 0.000 & $\checkmark$ \\
+15 & Regulation reduces amplitude & $\sigma$ ratio (post/pre 1984) & 0.52 & --- & $\checkmark$ \\
+16 & Phillips slope $\propto \bar{K}$ & Kendall $\tau$ & -0.365 & 0.000 & --- \\
+17 & $\rho$-diversity $\to$ resilience & Kendall $\tau$ & +1.000 & 1.000 & --- \\
+18 & Power-law recession depths & Hill $\hat{\alpha}$ & 3.54 & --- & suggestive \\
+\bottomrule
+\end{tabular}
+\begin{minipage}{0.95\textwidth}
+\vspace{0.5em}
+\footnotesize\textit{Notes:} $\rho$-ordering tests whether low-$\rho$ sectors (construction, metals) lead recessions via pooled OLS on peak timing ($\beta_1 < 0$ predicted). Asymmetry ratio uses 12 post-war NBER cycles. Critical slowing down tests whether rolling AR(1) rises in 36 months before NBER peaks. Temperature $T = \sigma^2/\chi$ tested via 12-month-ahead recession probit. Regulation test: Great Moderation volatility decomposition. Phillips slope tested against composition-weighted $\bar{K}$. $\checkmark$ = consistent ($p < 0.10$); $\sim$ = directional (correct sign, $p > 0.10$); --- = ambiguous/insufficient. Data: FRED IP subsectors (monthly, 1972--2025) and 50-state GDP (quarterly, 2005--2025).
+\end{minipage}
+\end{table}

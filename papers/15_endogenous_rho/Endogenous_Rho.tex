@@ -621,6 +621,10 @@ The business cycle eigenfrequencies depend on $\rho$ through the sectoral CES st
 \end{equation}
 The prediction is $\beta < 0$: positive output gaps (booms) are associated with lower $\rho$ (more complementary production).
 
+\begin{remark}[Preliminary evidence]
+Using monthly FRED Industrial Production data for 8 durable manufacturing subsectors (1972--2026), we test the countercyclicality of $\rho$ via two methods.  \emph{Method A} (correlation proxy): rolling 60-month average pairwise correlation among the 8 sectors serves as a proxy for $\rho$ (higher correlation $\approx$ higher complementarity $\approx$ lower $\rho$ in CES terms).  Kendall $\tau$ between average correlation and rolling INDPRO growth yields $\tau = -0.168$ ($p = 0.014$, $n = 99$ windows), confirming that inter-sector correlation rises in downturns.  \emph{Method B} (direct CES estimation): rolling 120-month window nonlinear least squares estimation of the CES production function applied to durable manufacturing yields 45 $\hat{\rho}$ estimates spanning $[-0.54, 0.99]$.  Kendall $\tau(\hat{\rho}, \text{INDPRO growth}) = -0.313$ ($p = 0.002$), confirming that $\rho$ rises (complementarity increases) during contractions.  Both methods support the prediction $\beta < 0$: complementarity is countercyclical.
+\end{remark}
+
 \subsection{Prediction 2: $\rho$ change rate predicts cycle duration}\label{sec:pred-duration}
 
 \begin{quote}
@@ -645,6 +649,10 @@ The prediction is $\beta < 0$: positive output gaps (booms) are associated with 
 \end{equation}
 Prediction: $\beta < 0$ (higher $\rho$-diversity $\to$ lower crisis severity).
 
+\begin{remark}[Preliminary evidence]
+Using 50-state quarterly GDP data (2005--2025) for 6 broad sectors spanning the $\rho$ range (Construction at $\rho = -0.5$ through Information at $\rho = 0.8$), we compute the weighted $\rho$-diversity $\sqrt{\sum_n w_n(\rho_n - \bar{\rho})^2}$ before each recession and compare with peak-to-trough GDP decline.  For the two available recessions: the 2007--09 recession ($\rho$-diversity $= 0.374$, depth $= 3.5\%$) and the 2020 recession ($\rho$-diversity $= 0.370$, depth $= 9.1\%$).  The direction is correct ($\tau = +1.0$: the recession with marginally higher diversity is shallower), but with only $n = 2$ the result is uninformative statistically.  A cross-country panel with sector-level $\rho$ estimates---or extension to pre-2005 US data using BEA gross output by industry---would provide a meaningful test.
+\end{remark}
+
 \subsection{Prediction 4: Self-organized criticality produces power laws}\label{sec:pred-power}
 
 \begin{quote}
@@ -654,6 +662,10 @@ Prediction: $\beta < 0$ (higher $\rho$-diversity $\to$ lower crisis severity).
 \textbf{Data:} Cross-country recession depth data from \citet{barro2006} or the Penn World Table, pooled across countries and decades.
 
 \textbf{Test:} Fit both power-law and log-normal distributions to the severity data using the methods of \citet{clauset2009}.  The prediction is that the power-law fit dominates, with an exponent $\xi$ determined by the ratio of standardization speed to Minsky drift speed: $\xi \approx 1 + \beta_\rho/\delta_M$.
+
+\begin{remark}[Preliminary evidence]
+Using peak-to-trough INDPRO declines for 7 post-1972 US recessions, we estimate the tail behavior.  The log-log rank plot yields $R^2 = 0.84$, indicating approximate power-law scaling.  The Hill estimator gives $\hat{\alpha} = 3.54$ (with $x_{\min}$ at the median depth of 9.3\%), while the OLS log-log slope yields an exponent of 1.07.  The KS test does not reject the lognormal ($D = 0.185$, $p = 0.94$) or exponential ($D = 0.332$, $p = 0.35$), which is expected given the small sample ($n = 7$).  The evidence is suggestive of heavy-tailed behavior---the two deepest recessions (2007: 17.2\%, 2020: 17.0\%) are far from the mean---but formal power-law inference requires many more observations.  A pooled cross-country dataset following \citet{barro2006} would provide the necessary sample size.
+\end{remark}
 
 \subsection{Prediction 5: New technologies arrive with low $\rho$}\label{sec:pred-new-tech}
 

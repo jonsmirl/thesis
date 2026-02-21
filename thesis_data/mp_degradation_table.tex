@@ -1,0 +1,27 @@
+\begin{table}[htbp]
+\centering
+\caption{Monetary policy degradation sequence test}
+\label{tab:mp_degradation}
+\small
+\begin{tabular}{llcccc}
+\toprule
+Tool & Metric & Statistic & Value & $p$-value & Prediction \\
+\midrule
+Forward Guidance & DGS2 importance & Kendall $\tau$ & 0.223 & 0.029 & --- \\
+Forward Guidance & DGS10 importance & Kendall $\tau$ & 0.043 & 0.670 & --- \\
+\midrule
+QE & QE1 multiplier & bp/\$100B & 40.8 & --- & --- \\
+QE & QE2 multiplier & bp/\$100B & 9.7 & --- & --- \\
+QE & QE3 multiplier & bp/\$100B & 3.4 & --- & --- \\
+QE & COVID-QE multiplier & bp/\$100B & 2.7 & --- & --- \\
+\midrule
+Fin.\ Repression & real yield--savings corr & Kendall $\tau$ & -0.136 & 0.002 & --- \\
+\midrule
+Sequencing & FG $>$ QE $>$ FR & ordering & not confirmed & --- & --- \\
+\bottomrule
+\end{tabular}
+\begin{minipage}{0.95\textwidth}
+\vspace{0.5em}
+\footnotesize\textit{Notes:} Forward guidance importance ratio = mean $|\Delta y|$ on FOMC days / mean $|\Delta y|$ all days, computed over rolling 3-year windows stepped every 6 months. QE multiplier = yield change (bp) per \$100B of Fed balance sheet expansion. Financial repression metric = rolling 60-month Pearson correlation between real 10-year yield and personal savings rate. Prediction column: $\checkmark$ if consistent with Paper 4 sequencing hypothesis (FG degrades first, then QE, FR last). Data: FRED series DGS2, DGS10, WALCL, CPIAUCSL, PSAVERT, 2000--2026.
+\end{minipage}
+\end{table}

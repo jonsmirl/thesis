@@ -52,11 +52,11 @@ Every major technology follows a recognizable arc. Initial development requires 
 This paper derives the technology cycle as a \emph{mathematical necessity} from three primitives that individually have extensive empirical support:
 
 \begin{enumerate}[label=(\roman*)]
-\item A CES production technology with curvature parameter $K = (1-\rho)(J-1)/J$, where the companion paper \citep{smirl2026ces} proves that $K$ simultaneously controls superadditivity, correlation robustness, and strategic independence.
+\item A CES production technology with curvature parameter $K = (1-\rho)(J-1)/J$---the unique aggregator compatible with constant returns to scale and scale-consistent nesting \citep{smirl2026emergent}. The companion paper \citep{smirl2026ces} proves that $K$ simultaneously controls superadditivity, correlation robustness, and strategic independence.
 
 \item Learning-by-doing that reduces unit cost as $c(Q) = c_0 Q^{-\alpha}$ (Wright's Law), with $\alpha \in [0.15, 0.35]$ empirically \citep{wright1936, nagy2013}.
 
-\item Information frictions parameterized by temperature $T = 1/\kappa$ (inverse Shannon capacity), where the companion paper \citep{smirl2026free} shows that production under information constraints is governed by the free energy $\calF = \Phi_{\text{CES}}(\rho) - T \cdot H$.
+\item Information frictions parameterized by temperature $T = 1/\kappa$ (inverse information capacity), where the companion paper \citep{smirl2026free} shows that production under information constraints is governed by the Tsallis free energy $\calF_q = \Phi_{\text{CES}}(\rho) - T \cdot S_q$ with $q = \rho$ \citep{smirl2026tsallis}.
 \end{enumerate}
 
 The central insight is that these three primitives interact to produce a \emph{self-undermining dynamic}: concentrated investment accelerates learning, learning reduces cost, lower cost reduces the information temperature required for distributed coordination, and lower information temperature makes distributed alternatives viable. Formally, $\partial T^*/\partial I < 0$---the critical temperature at which distributed production becomes feasible \emph{decreases} with cumulative centralized investment. The centralized structure funds its own obsolescence.
@@ -127,11 +127,11 @@ The learning rate is a property of the technology, not the firm. Crucially, lear
 
 \subsection{Information Temperature}\label{sec:info_temp}
 
-Firms operate under information frictions parameterized by $T = 1/\kappa$, where $\kappa$ is Shannon channel capacity in the sense of \citet{sims2003}. By the economic free energy framework \citep{smirl2026free}, the firm's effective production under information constraints is governed by:
+Firms operate under information frictions parameterized by $T = 1/\kappa$, where $\kappa$ is information capacity in the sense of \citet{sims2003}. By the economic free energy framework \citep{smirl2026free}, the firm's effective production under information constraints is governed by:
 \begin{equation}\label{eq:free_energy}
-\calF = \Phi_{\text{CES}}(\rho) - T \cdot H
+\calF_q = \Phi_{\text{CES}}(\rho) - T \cdot S_q, \qquad q = \rho
 \end{equation}
-where $\Phi_{\text{CES}} = -\sum_n \log F_n$ is the CES potential and $H$ is Shannon entropy of the allocation. The companion paper \citep{smirl2026prod} proves that the exploitable curvature under information frictions is:
+where $\Phi_{\text{CES}} = -\sum_n \log F_n$ is the CES potential and $S_q$ is Tsallis entropy of the allocation with $q = \rho$ locked by the emergence theorem \citep{smirl2026tsallis}. The companion paper \citep{smirl2026prod} proves that the exploitable curvature under information frictions is:
 \begin{equation}\label{eq:keff}
 K_{\text{eff}} = K \cdot \left(1 - \frac{T}{T^*(\rho)}\right)^+
 \end{equation}
@@ -272,7 +272,7 @@ The self-undermining property operates through three reinforcing channels:
 
 \paragraph{Infrastructure channel.} The infrastructure built for centralized production---communications networks, logistics systems, financial instruments, software platforms---is typically a general-purpose input that distributed producers can also use. Railroad infrastructure enabled small manufacturers to reach national markets. Internet infrastructure built for corporate intranets enabled peer-to-peer commerce. Cloud computing built for hyperscale training enables distributed inference.
 
-\paragraph{Information channel.} As the technology matures, its operating procedures become codified, reducing the Shannon capacity required for competent operation. A new technology requires expert judgment ($T$ high); a mature technology can be operated by following documented procedures ($T$ low). This reduction in $T_{\text{dist}}$ is cumulative and irreversible, making distributed production monotonically more viable.
+\paragraph{Information channel.} As the technology matures, its operating procedures become codified, reducing the information capacity required for competent operation. A new technology requires expert judgment ($T$ high); a mature technology can be operated by following documented procedures ($T$ low). This reduction in $T_{\text{dist}}$ is cumulative and irreversible, making distributed production monotonically more viable.
 
 \subsection{Irreversibility}
 
@@ -696,8 +696,14 @@ Sims, Christopher A. 2003. ``Implications of Rational Inattention.'' \textit{Jou
 \bibitem[Smirl(2026a)]{smirl2026ces}
 Smirl, Jon. 2026a. ``The CES Quadruple Role: Superadditivity, Correlation Robustness, Strategic Independence, and Network Scaling as Four Properties of CES Curvature.'' Working Paper.
 
+\bibitem[Smirl(2026f)]{smirl2026emergent}
+Smirl, Jon. 2026f. ``Emergent CES: Renormalization, Functional Equations, and Maximum Entropy Derivations of the CES Aggregate.'' Working Paper.
+
 \bibitem[Smirl(2026b)]{smirl2026free}
-Smirl, Jon. 2026b. ``Free Energy Economics: A Unified Framework from CES Aggregation and Shannon Entropy.'' Working Paper.
+Smirl, Jon. 2026b. ``Free Energy Economics: A Unified Framework from CES Aggregation and Tsallis Entropy.'' Working Paper.
+
+\bibitem[Smirl(2026g)]{smirl2026tsallis}
+Smirl, Jon. 2026g. ``From Shannon to Tsallis: Non-Additive Entropy as the Natural Information Measure for CES Production.'' Working Paper.
 
 \bibitem[Smirl(2026c)]{smirl2026prod}
 Smirl, Jon. 2026c. ``Production Under Information Frictions: A CES Free Energy Theory of the Firm.'' Working Paper.

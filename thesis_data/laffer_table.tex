@@ -1,0 +1,25 @@
+\begin{table}[htbp]
+\centering
+\caption{Laffer Curve Empirical Tests: CES Complementarity Predictions}
+\label{tab:laffer}
+\small
+\begin{tabular}{llcrr}
+\toprule
+Test & Metric & Statistic & Value & $p$-value \\
+\midrule
+Revenue Elasticity & mann_whitney_U & $U$ & $+6.0000$ & 0.3500 \\
+ & interaction & $coeff$ & $+0.0123$ & 0.0019 \\
+Event Study & event_consistency & $frac$ & $+0.5714$ & 0.3953 \\
+ & weighted_DID & $value$ & $-0.0174$ & -- \\
+Displacement & migration_elasticity & $beta$ & $+0.0136$ & 0.0000 \\
+Asymmetry & F_test_LOW & $F$ & $+0.3044$ & 0.5838 \\
+ & cubic_d_LOW & $d$ & $+0.0000$ & -- \\
+ & F_test_HIGH & $F$ & $+0.0000$ & 0.9999 \\
+ & cubic_d_HIGH & $d$ & $-0.0000$ & -- \\
+\bottomrule
+\end{tabular}
+\begin{minipage}{0.95\textwidth}
+\vspace{0.5em}
+\footnotesize\textit{Notes:} Tests predictions from the CES Laffer derivation (Smirl 2026). Test A: interaction of tax rate with sectoral complementarity ($\rho$ class) on GDP share; Mann-Whitney U compares $|\beta|$ across $\rho$ classes. Test B: DID around major tax changes (binomial test for consistency). Test C: IRS SOI migration AGI flow vs pairwise tax differential. Test D: cubic vs quadratic F-test for asymmetric decline by $\rho$ class. Data: FRED state GDP by industry, Tax Foundation rates, IRS SOI migration.
+\end{minipage}
+\end{table}

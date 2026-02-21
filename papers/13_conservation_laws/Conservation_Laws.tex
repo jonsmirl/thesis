@@ -85,9 +85,9 @@ F_n(\mathbf{x}_n) = \left(\frac{1}{J_n}\sum_{j=1}^{J_n} x_{nj}^{\rho_n}\right)^{
 \end{equation}
 with curvature $K_n = (1-\rho_n)(J_n-1)/J_n$. The CES potential is $\Phi = -\sum_{n} \log F_n$, information temperature is $T_n = 1/\kappa_n$, and the free energy is:
 \begin{equation}\label{eq:free_energy}
-\calF(\mathbf{x}; \boldsymbol{\rho}, \mathbf{T}) = \Phi(\mathbf{x}; \boldsymbol{\rho}) - \sum_{n=1}^{N} T_n \cdot H_n(\mathbf{x}_n)
+\calF_q(\mathbf{x}; \boldsymbol{\rho}, \mathbf{T}) = \Phi(\mathbf{x}; \boldsymbol{\rho}) - \sum_{n=1}^{N} T_n \cdot S_{q_n}(\mathbf{x}_n)
 \end{equation}
-where $H_n = -\sum_j p_{nj} \log p_{nj}$ is the Shannon entropy of the normalized allocation $p_{nj} = x_{nj}/\sum_k x_{nk}$.
+where $S_{q_n} = (1 - \sum_j p_{nj}^{q_n})/(q_n - 1)$ is the Tsallis entropy of the normalized allocation $p_{nj} = x_{nj}/\sum_k x_{nk}$ with $q_n = \rho_n$ \citep{smirl2026tsallis}.
 
 \subsection{Three Symmetries}
 
@@ -119,7 +119,7 @@ which inherits both the scaling and permutation symmetries.
 \begin{proof}
 Part (a): $F_n(\lambda\mathbf{x}_n) = \lambda F_n(\mathbf{x}_n)$ by degree-1 homogeneity of CES, so $\Phi_n(\lambda\mathbf{x}_n) = -\log(\lambda F_n) = \Phi_n - \log\lambda$. For entropy, $p_{nj}(\lambda\mathbf{x}_n) = \lambda x_{nj}/(\lambda\sum_k x_{nk}) = p_{nj}(\mathbf{x}_n)$, so $H_n$ is invariant.
 
-Part (b): The CES aggregate with equal weights is a symmetric function. Shannon entropy is a symmetric function of its arguments.
+Part (b): The CES aggregate with equal weights is a symmetric function. Tsallis entropy is a symmetric function of its arguments.
 
 Part (c): Standard result for Langevin dynamics with the Einstein relation (noise amplitude $\sqrt{2\mathbf{L}\mathbf{T}}$ chosen to produce Boltzmann equilibrium).
 \end{proof}
@@ -267,7 +267,7 @@ Given firm-level data within a sector:
 \item If the structure holds, extract $T_n/K_{\mathrm{eff},n}$ from \eqref{eq:eigenvalue_formula}.
 \item Compare with the FDT estimate and the Euler-equilibrium estimate of $T_n$.
 \end{enumerate}
-Systematic violation of the $(J_n - 1, 1)$ structure indicates that the equal-weight CES assumption is wrong for that sector---the inputs are not symmetric, and the general-weight CES from \citet{smirl2026ces} (Section 8) should be used instead.
+Systematic violation of the $(J_n - 1, 1)$ structure indicates that the equal-weight CES specification is wrong for that sector---the inputs are not symmetric, and the general-weight CES from \citet{smirl2026ces} (Section 8) should be used instead.
 \end{remark}
 
 %=============================================================================
@@ -535,9 +535,9 @@ The conservation laws generate specific, quantitative predictions.
 
 \begin{proposition}[Euler identity predictions]\label{prop:euler_predictions}
 \begin{enumerate}[label=(\alph*)]
-\item \textbf{Cross-sectional $T$ estimation:} For each sector, compute $\mathbf{x}^* \cdot \nabla H$ from input allocation data. The ratio $T_n^{\mathrm{Euler}} = -1/(\mathbf{x}_n^* \cdot \nabla_n H_n)$ should be positive and economically reasonable (finite Shannon capacity).
+\item \textbf{Cross-sectional $T$ estimation:} For each sector, compute $\mathbf{x}^* \cdot \nabla S_q$ from input allocation data. The ratio $T_n^{\mathrm{Euler}} = -1/(\mathbf{x}_n^* \cdot \nabla_n S_{q_n})$ should be positive and economically reasonable (finite information capacity).
 
-\item \textbf{Consistency with FDT:} The Euler estimate $T_n^{\mathrm{Euler}}$ and the FDT estimate $T_n^{\mathrm{FDT}} = \sigma_n^2/\chi_n$ should agree. Systematic disagreement identifies sectors that are out of equilibrium or where the CES assumption fails.
+\item \textbf{Consistency with FDT:} The Euler estimate $T_n^{\mathrm{Euler}}$ and the FDT estimate $T_n^{\mathrm{FDT}} = \sigma_n^2/\chi_n$ should agree. Systematic disagreement identifies sectors that are out of equilibrium or where the CES specification fails.
 
 \item \textbf{Cross-time stability:} If the sector is near equilibrium, $T_n^{\mathrm{Euler}}$ should be stable over time. Rapid changes in $T_n^{\mathrm{Euler}}$ indicate the sector is being driven out of equilibrium (e.g., by a technology shock or policy change).
 \end{enumerate}
@@ -554,6 +554,10 @@ The conservation laws generate specific, quantitative predictions.
 \item \textbf{Asymmetry diagnostic:} If the eigenvalues on $\bone^\perp$ are not equal, the asymmetry pattern reveals the weight structure of the underlying CES --- inputs with higher effective weight contribute more to the dominant eigenvectors.
 \end{enumerate}
 \end{proposition}
+
+\begin{remark}[Preliminary evidence]
+Using monthly FRED Industrial Production data for 17 manufacturing subsectors (1972--2026), we compute the $17 \times 17$ correlation matrix of log-growth rates (136 off-diagonal pairs).  The coefficient of variation (CV) of off-diagonal correlations is 0.363, with Frobenius distance from the equicorrelation matrix $\|\Sigma - \Sigma_{\mathrm{eq}}\|/\|\Sigma\| = 0.289$.  A permutation test (1000 draws, shuffling time indices to destroy temporal dependence while preserving marginal distributions) yields a null-distribution CV median of 17.463; the observed CV falls at the 0th percentile (more equicorrelated than all permuted samples).  Bartlett's test of sphericity rejects $\Sigma = I$ ($\chi^2 = 4975$, $\df = 136$, $p < 10^{-10}$), confirming that the near-equicorrelation is not driven by trivially weak correlations.  The result is strongly consistent with the compound symmetry structure $\Sigma = (\sigma^2 - \gamma)I + \gamma \bone\bone^\top$ predicted by \cref{prop:cov_predictions}(a).
+\end{remark}
 
 \subsection{From the Crooks Theorem}
 
@@ -672,7 +676,10 @@ Sato, Ryuzo. 1981. \textit{Theory of Technical Change and Economic Invariance: A
 Smirl, Jon. 2026a. ``The CES Quadruple Role: Superadditivity, Correlation Robustness, Strategic Independence, and Network Scaling as Four Properties of CES Curvature.'' Working Paper.
 
 \bibitem[Smirl(2026b)]{smirl2026free}
-Smirl, Jon. 2026b. ``Free Energy Economics: A Unified Framework from CES Aggregation and Shannon Entropy.'' Working Paper.
+Smirl, Jon. 2026b. ``The Free Energy Principle in Economics: CES Aggregation and Tsallis Entropy as Generating Functions of Economic Theory.'' Working Paper.
+
+\bibitem[Smirl(2026g)]{smirl2026tsallis}
+Smirl, Jon. 2026g. ``The Tsallis Free Energy: Non-Extensive Information Costs for Complementary Production.'' Working Paper.
 
 \bibitem[Smirl(2026c)]{smirl2026prod}
 Smirl, Jon. 2026c. ``Production Under Information Frictions: A CES Free Energy Theory of the Firm.'' Working Paper.

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.2.17)  19 FEB 2026 14:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.2.17)  21 FEB 2026 09:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -626,77 +626,82 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 624.
+(hyperref)                removing `math shift' on input line 628.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\rho' on input line 624.
+(hyperref)                removing `\rho' on input line 628.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 624.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 634.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\rho' on input line 634.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 634.
+(hyperref)                removing `math shift' on input line 628.
 
 [16]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 658.
+(hyperref)                removing `math shift' on input line 638.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\rho' on input line 658.
+(hyperref)                removing `\rho' on input line 638.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 658.
+(hyperref)                removing `math shift' on input line 638.
+
+[17]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 670.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 668.
+(hyperref)                removing `\rho' on input line 670.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\rho' on input line 668.
+(hyperref)                removing `math shift' on input line 670.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 668.
+(hyperref)                removing `math shift' on input line 680.
 
 
-Overfull \hbox (0.1284pt too wide) in paragraph at lines 682--683
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\rho' on input line 680.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 680.
+
+
+Overfull \hbox (0.1284pt too wide) in paragraph at lines 694--695
 \OT1/cmr/m/n/12 This pa-per has en-do-g-e-nized the CES com-ple-men-tar-ity pa-
 ram-e-ter $\OML/cmm/m/it/12 ^^Z$\OT1/cmr/m/n/12 , clos-ing the self-referential
 
  []
 
-[17] [18] [19]
-Underfull \hbox (badness 1158) in paragraph at lines 765--766
+[18] [19]
+Underfull \hbox (badness 1158) in paragraph at lines 777--778
 []\OT1/cmr/m/n/12 Smirl, Jon. 2026e. ``Dy-nam-i-cal Con-se-quences of the Eco-n
 omic Free En-ergy: From
  []
 
-[20] (./Endogenous_Rho.aux)
+[20] [21] (./Endogenous_Rho.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `Endogenous_Rho.out' has not changed.
 (rerunfilecheck)             Checksum: 3820B8F08B8E32B18B7B522A8C7B48C6;8005.
  ) 
 Here is how much of TeX's memory you used:
- 13728 strings out of 476182
- 222954 string characters out of 5795595
+ 13732 strings out of 476182
+ 222997 string characters out of 5795595
  1937975 words of memory out of 5000000
  35398 multiletter control sequences out of 15000+600000
  574858 words of font info for 98 fonts, out of 8000000 for 9000
@@ -721,10 +726,10 @@ exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Endogenous_Rho.pdf (20 pages, 333692 bytes).
+Output written on Endogenous_Rho.pdf (21 pages, 339863 bytes).
 PDF statistics:
- 613 PDF objects out of 1000 (max. 8388607)
- 546 compressed objects within 6 object streams
- 175 named destinations out of 1000 (max. 500000)
+ 622 PDF objects out of 1000 (max. 8388607)
+ 554 compressed objects within 6 object streams
+ 179 named destinations out of 1000 (max. 500000)
  305 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.2.17)  19 FEB 2026 14:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.2.17)  21 FEB 2026 09:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -497,7 +497,12 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 40.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
+
+Package natbib Warning: Citation `smirl2026tsallis' on page 3 undefined on inpu
+t line 90.
+
+[3] [4]
 Overfull \hbox (18.70102pt too wide) in paragraph at lines 206--207
 []\OT1/cmr/m/it/12 The en-tropy gra-di-ent $\OMS/cmsy/m/n/12 r[]\OML/cmm/m/it/1
 2 H[]$\OT1/cmr/m/it/12 : com-putable from $\OT1/cmr/bx/n/12 x[]$ \OT1/cmr/m/it/
@@ -586,18 +591,38 @@ cmm/m/it/12 ^^U[] \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 ^^[[] \OMS/cmsy/m/n/12 ^^@
 K[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 J[] \OMS/cmsy/m/n/12 ^^@
  []
 
+! Undefined control sequence.
+<recently read> \df 
+                    
+l.559 ...jects $\Sigma = I$ ($\chi^2 = 4975$, $\df
+                                                   = 136$, $p < 10^{-10}$), ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
 [14]
-Overfull \hbox (6.28268pt too wide) in paragraph at lines 588--589
+Overfull \hbox (6.28268pt too wide) in paragraph at lines 592--593
 []\OT1/cmr/bx/it/12 Trade open-ness and ad-just-ment
  []
 
-
-Overfull \hbox (12.86911pt too wide) in paragraph at lines 604--605
+[15]
+Overfull \hbox (12.86911pt too wide) in paragraph at lines 608--609
  []\OT1/cmr/bx/n/12 Fluctuation the-o-rems.[] \OT1/cmr/m/n/12 The Crooks the-o-
 rem ([][]Crooks[][], [][]1999[][]) and Jarzyn-ski equal-ity ([][]Jarzyn-
  []
 
-[15] [16] [17] [18] (./Conservation_Laws.aux)
+[16] [17]
+
+Package natbib Warning: There were undefined citations.
+
+[18] (./Conservation_Laws.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -606,13 +631,13 @@ Package rerunfilecheck Info: File `Conservation_Laws.out' has not changed.
 (rerunfilecheck)             Checksum: 4FF2A1F07885E01D95D29E1EF90FF0C5;6420.
  ) 
 Here is how much of TeX's memory you used:
- 13650 strings out of 476182
- 221189 string characters out of 5795595
+ 13656 strings out of 476182
+ 221295 string characters out of 5795595
  1937975 words of memory out of 5000000
- 35301 multiletter control sequences out of 15000+600000
+ 35305 multiletter control sequences out of 15000+600000
  573840 words of font info for 94 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,9n,79p,1966b,709s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,9n,79p,1966b,711s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/jonsmirl/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.
 600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/
@@ -635,10 +660,10 @@ onts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
 blic/amsfonts/symbols/msbm10.pfb>
-Output written on Conservation_Laws.pdf (18 pages, 347442 bytes).
+Output written on Conservation_Laws.pdf (18 pages, 350589 bytes).
 PDF statistics:
- 598 PDF objects out of 1000 (max. 8388607)
- 527 compressed objects within 6 object streams
- 188 named destinations out of 1000 (max. 500000)
+ 601 PDF objects out of 1000 (max. 8388607)
+ 530 compressed objects within 6 object streams
+ 190 named destinations out of 1000 (max. 500000)
  273 words of extra memory for PDF output out of 10000 (max. 10000000)
 

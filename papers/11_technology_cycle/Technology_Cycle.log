@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.2.17)  19 FEB 2026 12:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.2.17)  21 FEB 2026 09:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -497,7 +497,17 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 35.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+
+Package natbib Warning: Citation `smirl2026tsallis' on page 2 undefined on inpu
+t line 59.
+
+[2] [3] [4]
+
+Package natbib Warning: Citation `smirl2026tsallis' on page 5 undefined on inpu
+t line 134.
+
+[5]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 168.
@@ -525,19 +535,32 @@ Overfull \hbox (5.49806pt too wide) in paragraph at lines 415--416
 installation-
  []
 
-[12] [13] [14] [15] [16] [17] [18] [19] [20] [21] (./Technology_Cycle.aux)
+[12] [13] [14] [15] [16] [17] [18] [19] [20]
+
+Package natbib Warning: There were undefined citations.
+
+[21] (./Technology_Cycle.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `Technology_Cycle.out' has not changed.
 (rerunfilecheck)             Checksum: 9D4F633CB634056B8D43C937E69C16BC;4968.
  ) 
 Here is how much of TeX's memory you used:
- 13650 strings out of 476182
- 221314 string characters out of 5795595
+ 13658 strings out of 476182
+ 221504 string characters out of 5795595
  1937975 words of memory out of 5000000
- 35318 multiletter control sequences out of 15000+600000
+ 35324 multiletter control sequences out of 15000+600000
  572533 words of font info for 89 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  75i,11n,79p,1769b,705s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -560,10 +583,10 @@ texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on Technology_Cycle.pdf (21 pages, 336693 bytes).
+Output written on Technology_Cycle.pdf (21 pages, 337746 bytes).
 PDF statistics:
- 589 PDF objects out of 1000 (max. 8388607)
- 520 compressed objects within 6 object streams
- 176 named destinations out of 1000 (max. 500000)
+ 593 PDF objects out of 1000 (max. 8388607)
+ 524 compressed objects within 6 object streams
+ 178 named destinations out of 1000 (max. 500000)
  225 words of extra memory for PDF output out of 10000 (max. 10000000)
 

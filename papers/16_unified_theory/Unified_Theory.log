@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.2.17)  20 FEB 2026 15:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.2.17)  21 FEB 2026 09:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -706,27 +706,31 @@ File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count323
 \l__pdf_internal_box=\box67
 )
-(./Unified_Theory.aux)
+(./Unified_Theory.aux
+
+Package natbib Warning: Citation `smirl2026tsallis' multiply defined.
+
+)
 \openout1 = `Unified_Theory.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -762,7 +766,7 @@ LaTeX Font Info:    ... okay on input line 44.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring ON on input line 44.
+Package hyperref Info: Link coloring ON on input line 46.
 (./Unified_Theory.out) (./Unified_Theory.out)
 \@outlinefile=\write4
 \openout4 = `Unified_Theory.out'.
@@ -790,238 +794,391 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Trying to load font information for U+msa on input line 46.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 48.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 46.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 48.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Underfull \hbox (badness 10000) in paragraph at lines 83--83
+[]\OT1/cmr/m/sc/10 Quadruple
+ []
+
+
+Underfull \hbox (badness 2426) in paragraph at lines 85--86
+[]$\OML/cmm/m/it/10 K[]$\OT1/cmr/m/n/10 , cri-sis se-quence, firm
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 86--86
+[]\OT1/cmr/m/sc/10 Technology
+ []
+
+
+Underfull \hbox (badness 1931) in paragraph at lines 86--86
+[]\OT1/cmr/m/n/10 The Tech-nol-ogy Cy-cle as Phase
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 86--87
+[]\OT1/cmr/m/n/10 Overinvestment, self-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 89--89
+[]\OT1/cmr/m/sc/10 Business Cy-
+ []
+
+
+Underfull \hbox (badness 4543) in paragraph at lines 89--90
+[]$\OML/cmm/m/it/10 ^^Z$\OT1/cmr/m/n/10 -ordering, Min-sky, Great
+ []
+
+[2] [3] [4]
+Overfull \hbox (4.17352pt too wide) in paragraph at lines 154--155
+[]\OT1/cmr/m/n/12 Empirical cal-i-bra-tion via con-tin-u-ous wavelet trans-form
+ of US in-dus-trial pro-duc-tion (FRED
+ []
+
+[5] [6] [7] [8] [9] [10] [11] [12]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 169.
+(hyperref)                removing `math shift' on input line 423.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 169.
+(hyperref)                removing `\rho' on input line 423.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 169.
+(hyperref)                removing `math shift' on input line 423.
+
+[13]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 483.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 185.
+(hyperref)                removing `\rho' on input line 483.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 185.
+(hyperref)                removing `math shift' on input line 483.
 
-
-Overfull \hbox (3.81033pt too wide) in paragraph at lines 200--201
-\OT1/cmr/m/it/12 There is no sep-a-rate ``Hamiltonian''---the free en-ergy $\OM
-S/cmsy/m/n/12 F$ \OT1/cmr/m/it/12 plays both roles. The port-Hamiltonian
+[14]
+Overfull \hbox (20.45146pt too wide) in paragraph at lines 501--503
+\OT1/cmr/m/it/12 es-sar-ily re-duces the crit-i-cal tem-per-a-ture at which dis
+-tributed al-ter-na-tives be-come vi-able: $\OML/cmm/m/it/12 @T[]=@I <
  []
 
-[5]
-Overfull \hbox (9.48312pt too wide) in paragraph at lines 225--249
- [] 
- []
+[15]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 531.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 252.
+(hyperref)                removing `\rho' on input line 531.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\rho' on input line 252.
+(hyperref)                removing `math shift' on input line 531.
+
+
+Overfull \hbox (26.45413pt too wide) in paragraph at lines 537--538
+[]\OT1/cmr/bx/n/12 Technological stan-dard-iza-tion\OT1/cmr/m/n/12 : Wright's L
+aw learn-ing in-creases modularity---cumulative
+ []
+
+[16] [17]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 600.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 252.
-
-[6]
-Overfull \hbox (25.63289pt too wide) in paragraph at lines 284--285
-[]\OT1/cmr/m/n/12 The cri-sis sequence---financial cri-sis, then pro-duc-tive d
-is-rup-tion, then gov-er-nance breakdown---
- []
-
-[7] [8] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 430--430
-[]\OT1/cmr/m/n/10.95 Endogenous hi-er-ar-chy depth
- []
+(hyperref)                removing `\rho' on input line 600.
 
 
-Underfull \hbox (badness 4120) in paragraph at lines 439--439
-[]\OT1/cmr/m/n/10.95 Permutation co-vari-ance struc-
- []
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 600.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 446--446
-[]\OT1/cmr/m/n/10.95 Duration for-mula $\OML/cmm/m/it/10.95 ^^\ \OMS/cmsy/m/n/1
-0.95 ^^X
+[18] [19] [20]
+<../../figures/firm_predictions.pdf, id=549, 1004.22926pt x 709.54674pt>
+File: ../../figures/firm_predictions.pdf Graphic file (type pdf)
+<use ../../figures/firm_predictions.pdf>
+Package pdftex.def Info: ../../figures/firm_predictions.pdf  used on input line
+ 731.
+(pdftex.def)             Requested size: 469.75502pt x 331.9063pt.
+ (../../thesis_data/firm_predictions_table.tex) [21] [22 <../../figures/firm_pr
+edictions.pdf>]
+Underfull \hbox (badness 1881) in paragraph at lines 798--798
+[]\OT1/cmr/m/n/10.95 1. En-doge-nous
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 455--455
-[]\OT1/cmr/m/n/10.95 Cycle hi-er-ar-chy (Kitchin--
+Underfull \hbox (badness 1629) in paragraph at lines 798--798
+[]\OT1/cmr/m/sc/10.95 Quadruple Role\OT1/cmr/m/n/10.95 ,
  []
 
 
-Underfull \hbox (badness 3029) in paragraph at lines 456--456
-[]\OT1/cmr/m/n/10.95 Phillips curve as $(\OML/cmm/m/it/10.95 ^^Z; T\OT1/cmr/m/n
-/10.95 )$ phe-
- []
-
-[10] [11]
-Overfull \vbox (243.6097pt too high) has occurred while \output is active []
-
-
-[12] [13] [14] [15]
-Underfull \hbox (badness 2961) in paragraph at lines 600--600
-\OT1/cmr/m/n/10.95 undermining; du-ra-tion for-
+Underfull \hbox (badness 10000) in paragraph at lines 798--798
+\OT1/cmr/m/sc/10.95 Firm The-ory\OT1/cmr/m/n/10.95 ,
  []
 
 
-Underfull \hbox (badness 1122) in paragraph at lines 602--602
-[]\OT1/cmr/m/n/10.95 3. Au-to-cat-alytic
+Underfull \hbox (badness 7522) in paragraph at lines 798--798
+\OT1/cmr/m/sc/10.95 Tech-nol-ogy Cy-
  []
 
 
-Underfull \hbox (badness 3354) in paragraph at lines 602--602
-[]\OT1/cmr/m/n/10.95 Correlation ro-bust-ness pre-
+Underfull \hbox (badness 2213) in paragraph at lines 798--798
+[]\OT1/cmr/m/n/10.95 Paper 1's Nash MPE is the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 603--603
+Underfull \hbox (badness 1888) in paragraph at lines 798--798
+\OT1/cmr/m/n/10.95 The self-undermining prop-erty
+ []
+
+
+Underfull \hbox (badness 1629) in paragraph at lines 800--800
+[]\OT1/cmr/m/sc/10.95 Quadruple Role\OT1/cmr/m/n/10.95 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 800--800
+[]\OT1/cmr/m/n/10.95 The ac-ti-va-tion thresh-old
+ []
+
+
+Underfull \hbox (badness 1281) in paragraph at lines 800--800
+\OT1/cmr/m/n/10.95 ($\OML/cmm/m/it/10.95 R[] > \OT1/cmr/m/n/10.95 1$) gov-erns 
+mesh for-
+ []
+
+
+Underfull \hbox (badness 2495) in paragraph at lines 800--800
+\OT1/cmr/m/n/10.95 ma-tion. The CES di-ver-sity
+ []
+
+
+Underfull \hbox (badness 2970) in paragraph at lines 800--800
+\OT1/cmr/m/n/10.95 pre-mium from com-ple-men-tary
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 800--800
+\OT1/cmr/m/n/10.95 why the mesh out-per-forms
+ []
+
+
+Underfull \hbox (badness 3148) in paragraph at lines 800--800
+\OT1/cmr/m/n/10.95 cen-tral-ized pro-vi-sion. Gi-ant
+ []
+
+
+Underfull \hbox (badness 3735) in paragraph at lines 800--800
+\OT1/cmr/m/n/10.95 com-po-nent via per-co-la-tion is
+ []
+
+
+Underfull \hbox (badness 1629) in paragraph at lines 802--802
+[]\OT1/cmr/m/sc/10.95 Quadruple Role\OT1/cmr/m/n/10.95 ,
+ []
+
+
+Underfull \hbox (badness 5288) in paragraph at lines 804--804
 []\OT1/cmr/m/n/10.95 4. Set-tle-ment
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 603--603
-[]\OT1/cmr/m/n/10.95 Port-Hamiltonian cou-pling
+Underfull \hbox (badness 10000) in paragraph at lines 804--804
+[]\OT1/cmr/m/sc/10.95 Architecture\OT1/cmr/m/n/10.95 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 603--603
-\OT1/cmr/m/n/10.95 trap ap-plied to sta-ble-
+Underfull \hbox (badness 7168) in paragraph at lines 804--804
+[]\OT1/cmr/m/n/10.95 Port-Hamiltonian cou-pling at
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 603--603
-\OT1/cmr/m/n/10.95 coin/Treasury ab-sorp-tion.
+Underfull \hbox (badness 2050) in paragraph at lines 806--806
+\OT1/cmr/m/n/10.95 tary Het-ero-gene-
  []
 
 
-Underfull \hbox (badness 4995) in paragraph at lines 603--603
-\OT1/cmr/m/n/10.95 is Pa-per 14's tran-s-crit-i-cal
+Underfull \hbox (badness 3635) in paragraph at lines 806--806
+[]\OT1/cmr/m/n/10.95 IS the \OT1/cmr/m/sc/10.95 Ar-chi-tec-
  []
 
 
-Underfull \hbox (badness 3568) in paragraph at lines 604--604
-[]\OT1/cmr/m/n/10.95 IS the the-ory pa-per (Pa-
+Underfull \hbox (badness 1796) in paragraph at lines 806--806
+[]\OT1/cmr/m/n/10.95 Six main re-sults (port topol-
  []
 
 
-Underfull \hbox (badness 5091) in paragraph at lines 604--604
-\OT1/cmr/m/n/10.95 per 9b). Six main re-
+Underfull \hbox (badness 1210) in paragraph at lines 806--806
+\OT1/cmr/m/n/10.95 ogy, mod-uli space, ac-ti-va-tion,
  []
 
 
-Underfull \hbox (badness 1297) in paragraph at lines 606--607
+Underfull \hbox (badness 2393) in paragraph at lines 806--806
+\OT1/cmr/m/n/10.95 can-cel-la-tion, en-doge-nous $\OML/cmm/m/it/10.95 N[]$\OT1/
+cmr/m/n/10.95 )
+ []
+
+
+Underfull \hbox (badness 1259) in paragraph at lines 806--806
+\OT1/cmr/m/n/10.95 Wavelet cal-i-bra-tion ($\OML/cmm/m/it/10.95 r[] \OMS/cmsy/m
+/n/10.95 ^^Y \OT1/cmr/m/n/10.95 2$,
+ []
+
+
+Underfull \hbox (badness 8151) in paragraph at lines 806--806
+\OML/cmm/m/it/10.95 N[] \OT1/cmr/m/n/10.95 = 4$--$5$) grounds the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 808--808
+[]\OT1/cmr/m/sc/10.95 Free En-ergy\OT1/cmr/m/n/10.95 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 808--808
+\OT1/cmr/m/sc/10.95 Land-scape Dy-
+ []
+
+
+Underfull \hbox (badness 1331) in paragraph at lines 810--810
+[]\OT1/cmr/m/n/10.95 7. Fair In-her-i-
+ []
+
+
+Underfull \hbox (badness 7522) in paragraph at lines 810--810
+[]\OT1/cmr/m/sc/10.95 Technology Cy-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 810--811
 []\OT1/cmr/m/n/10.95 Overinvestment con-cen-trates
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 606--607
-\OT1/cmr/m/n/10.95 wealth dur-ing in-stal-la-tion
+Underfull \hbox (badness 1796) in paragraph at lines 810--811
+\OT1/cmr/m/n/10.95 wealth dur-ing the in-stal-la-tion
  []
 
 
-Underfull \hbox (badness 1694) in paragraph at lines 606--607
-\OT1/cmr/m/n/10.95 phase; Min-sky trap means
+Underfull \hbox (badness 1448) in paragraph at lines 810--811
+\OT1/cmr/m/n/10.95 con-cen-trated struc-tures per-sist
  []
 
 
-Underfull \hbox (badness 2951) in paragraph at lines 606--607
-\OT1/cmr/m/n/10.95 con-cen-trated struc-ture per-
+Underfull \hbox (badness 2173) in paragraph at lines 810--811
+\OT1/cmr/m/n/10.95 longer than op-ti-mal. Pa-per
  []
 
 
-Underfull \hbox (badness 5147) in paragraph at lines 606--607
-\OT1/cmr/m/n/10.95 sists longer than op-ti-mal.
- []
-
-[16]
-Overfull \vbox (89.20677pt too high) has occurred while \output is active []
-
-
-[17] [18] [19]
-Overfull \hbox (7.40623pt too wide) in paragraph at lines 689--690
-[]\OT1/cmr/m/n/12 The phase di-a-gram in $(\OML/cmm/m/it/12 ^^Z; T\OT1/cmr/m/n/
-12 )$ space is the the-ory's cen-tral ob-ject. Ev-ery eco-nomic question---
+Underfull \hbox (badness 2334) in paragraph at lines 810--811
+\OT1/cmr/m/n/10.95 7 ad-dresses the dis-tri-bu-tional
  []
 
 
-Overfull \hbox (31.99403pt too wide) in paragraph at lines 693--694
-[]\OT1/cmr/m/n/12 The deep-est open question---whether CES pro-duc-tion is it-s
-elf emer-gent un-der renormalization---
+Underfull \hbox (badness 1661) in paragraph at lines 810--811
+\OT1/cmr/m/n/10.95 con-se-quence: wealth stranded
  []
 
-[20]
-Underfull \hbox (badness 1158) in paragraph at lines 724--725
-[]\OT1/cmr/m/n/12 Smirl, Jon. 2026e. ``Dy-nam-i-cal Con-se-quences of the Eco-n
-omic Free En-ergy: From
+[23]
+Overfull \vbox (225.20683pt too high) has occurred while \output is active []
+
+
+[24]
+Overfull \hbox (6.92656pt too wide) in paragraph at lines 839--853
+ [] 
  []
 
-[21] (./Unified_Theory.aux)
+[25] [26] [27]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 965.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 965.
+
+[28] [29] [30] [31]
+
+Package natbib Warning: There were multiply defined citations.
+
+[32
+pdfTeX warning (ext4): destination with the same identifier (name{cite.smirl202
+6tsallis}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.1088 \end{document}
+                     ] (./Unified_Theory.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `Unified_Theory.out' has not changed.
-(rerunfilecheck)             Checksum: 4E742BF4798A4F56D27911E433F7F63E;6588.
+(rerunfilecheck)             Checksum: BB13AB7E30FF95196698CA8D2DEF7EB8;13293.
  ) 
 Here is how much of TeX's memory you used:
- 25070 strings out of 476182
- 475104 string characters out of 5795595
- 1970975 words of memory out of 5000000
- 46540 multiletter control sequences out of 15000+600000
- 577653 words of font info for 108 fonts, out of 8000000 for 9000
+ 25349 strings out of 476182
+ 480256 string characters out of 5795595
+ 1944975 words of memory out of 5000000
+ 46716 multiletter control sequences out of 15000+600000
+ 579279 words of font info for 113 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 84i,13n,93p,2198b,1139s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </home/jonsmirl/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.
-600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Unified_Theory.pdf (21 pages, 340669 bytes).
+ 84i,15n,93p,3211b,1139s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </home/jonsmirl/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcti1200.
+600pk> </home/jonsmirl/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1
+200.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/symbols/msbm10.pfb>
+Output written on Unified_Theory.pdf (32 pages, 478332 bytes).
 PDF statistics:
- 499 PDF objects out of 1000 (max. 8388607)
- 428 compressed objects within 5 object streams
- 141 named destinations out of 1000 (max. 500000)
- 285 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 941 PDF objects out of 1000 (max. 8388607)
+ 737 compressed objects within 8 object streams
+ 238 named destinations out of 1000 (max. 500000)
+ 586 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,0 +1,133 @@
+========================================================================
+FOMC INFORMATION ABSORPTION SPEED TEST (USMPD)
+Paper 4 (Settlement Feedback)
+Run date: 2026-02-20 16:30:56
+========================================================================
+
+Source: Acosta, Ajello, Bauer, Loria, Miranda-Agrippino (2025),
+  "Financial Market Effects of FOMC Communication," SF Fed WP 2025-30.
+
+========================================================================
+1. LOADING DATA
+========================================================================
+  Statements: 274 meetings, 1994-02-04 to 2026-01-28
+  Press Conferences: 90 meetings
+  Monetary Events: 274 meetings
+  MPS surprises: 274 meetings, PC non-null: 90
+  Fetching FRED DGS10, DGS2...
+    DGS10: 6534 obs
+    DGS2: 6534 obs
+
+========================================================================
+2. TEST A: STATEMENT CONCENTRATION RATIO
+========================================================================
+  Matched meetings: 210
+  Concentration ratio range: [0.000, 5.475]
+  Mean: 0.823, Median: 0.482
+  Kendall tau (concentration vs time): -0.1725 (p = 0.0002)
+  => NOT CONSISTENT: concentration not increasing
+
+  By era:
+    2000-05: mean=1.139, median=0.830, n=47
+    2006-11: mean=0.854, median=0.458, n=52
+    2012-17: mean=0.760, median=0.462, n=46
+    2018-26: mean=0.615, median=0.340, n=65
+
+========================================================================
+3. TEST B: SURPRISE-NORMALIZED YIELD RESPONSE
+========================================================================
+
+  --- Statement surprise (N=267) ---
+  |ΔUST10Y|/|surprise| mean: 2.179
+  Kendall tau (|sensitivity| vs time): 0.0149 (p = 0.7168)
+  Kendall tau (signed sensitivity vs time): -0.0294 (p = 0.4736)
+
+  --- Monetary Event surprise (N=266) ---
+  |ΔUST10Y|/|surprise| mean: 2.175
+  Kendall tau (|sensitivity| vs time): -0.0496 (p = 0.2283)
+  Kendall tau (signed sensitivity vs time): -0.0704 (p = 0.0874)
+
+========================================================================
+4. TEST C: PRESS CONFERENCE INCREMENTAL CONTENT
+========================================================================
+  PC meetings with |ME_10Y| > 0.5bp: 84
+  Statement share (|stmt|/|ME|) mean: 0.828
+  Kendall tau (stmt share vs time): -0.1642 (p = 0.0271)
+  => NOT CONSISTENT: statement share not increasing
+
+  PC reversal rate by era (PC moves opposite to statement):
+    2011-15: 38.9% (7/18)
+    2016-19: 26.3% (5/19)
+    2020-26: 48.9% (23/47)
+  Kendall tau (reversal rate vs time): 0.1280 (p = 0.1556)
+
+========================================================================
+5. TEST D: CROSS-MATURITY FG SIGNATURE
+========================================================================
+  Meetings with valid 2Y and 10Y moves: 253
+  |ΔUST2Y|/|ΔUST10Y| mean: 1.721
+  Kendall tau (2Y/10Y ratio vs time): 0.0137 (p = 0.7464)
+  => NOT CONSISTENT: 2Y/10Y ratio not declining
+
+  By era:
+    1994-99: mean=1.640, median=1.222, n=41
+    2000-05: mean=1.771, median=1.312, n=50
+    2006-11: mean=1.641, median=1.181, n=52
+    2012-17: mean=1.383, median=1.003, n=42
+    2018-26: mean=2.005, median=1.437, n=68
+
+  |ΔUST30Y|/|ΔUST10Y| ratio:
+  Kendall tau: 0.0627 (p = 0.1470)
+
+========================================================================
+6. TEST E: ABSOLUTE RESPONSE MAGNITUDE
+========================================================================
+  |ΔUST10Y| mean: 2.90 bp
+  Kendall tau (|response| vs time): -0.1110 (p = 0.0062)
+  |ΔUST2Y| mean: 3.57 bp
+  Kendall tau (|response| vs time): -0.0812 (p = 0.0457)
+
+  Mean |ΔUST10Y| by era (bp):
+    1994-99: 3.11 bp (n=50)
+    2000-05: 3.18 bp (n=51)
+    2006-11: 3.91 bp (n=54)
+    2012-17: 2.75 bp (n=48)
+    2018-26: 1.87 bp (n=71)
+
+========================================================================
+7. GENERATING FIGURES
+========================================================================
+  Saved: /home/jonsmirl/thesis/figures/settlement_feedback/usmpd_absorption.pdf
+
+========================================================================
+8. WRITING OUTPUTS
+========================================================================
+  CSV: /home/jonsmirl/thesis/thesis_data/usmpd_absorption_results.csv
+  LaTeX: /home/jonsmirl/thesis/thesis_data/usmpd_absorption_table.tex
+
+========================================================================
+SUMMARY
+========================================================================
+  A. Concentration    : tau=-0.172 (p=0.000) *
+    Prediction: 30-min captures more of daily move
+  B. Surprise resp.   : tau=+0.015 (p=0.717)
+    Prediction: yield less sensitive per unit surprise
+  C. PC share         : tau=-0.164 (p=0.027) *
+    Prediction: statement absorbs more, PC adds less
+  C. PC reversal      : tau=+0.128 (p=0.156)
+    Prediction: PC increasingly reverses statement
+  D. 2Y/10Y ratio     : tau=+0.014 (p=0.746)
+    Prediction: FG channel (2Y) weakening vs QE (10Y)
+  E. |response| 10Y   : tau=-0.111 (p=0.006) * <=
+    Prediction: statement less informationally important
+
+  Tests consistent with FG degradation: 1/6
+  => WEAK SUPPORT — isolated signals only
+
+Interpretation: At phi ~ 0, we expect limited FG degradation.
+Any degradation visible in 1994-2026 reflects pre-mesh technology
+(algorithmic trading, electronic market-making) that partially
+substitutes for the speed advantage mesh agents will bring.
+The baseline documented here enables future difference-in-differences
+detection as autonomous agent participation increases.
+

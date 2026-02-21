@@ -46,9 +46,9 @@ This paper combines two companion results---the CES quadruple role theorem, whic
 \section{Introduction}\label{sec:intro}
 %=============================================================================
 
-Two fundamental aspects of production have been studied largely in isolation. The first is \emph{complementarity}: how heterogeneous inputs combine to create value greater than the sum of parts. The CES (constant elasticity of substitution) production function, introduced by \citet{arrow1961}, parameterizes this via $\rho \in (-\infty, 1]$, with lower $\rho$ indicating stronger complementarity. The companion paper \citep{smirl2026ces} proves that a single curvature parameter $K = (1-\rho)(J-1)/J$ simultaneously controls three distinct economic properties---superadditivity, correlation robustness, and strategic independence---establishing that these are not independent phenomena but geometric consequences of isoquant curvature.
+Two fundamental aspects of production have been studied largely in isolation. The first is \emph{complementarity}: how heterogeneous inputs combine to create value greater than the sum of parts. The CES (constant elasticity of substitution) production function, introduced empirically by \citet{arrow1961}, is the \emph{unique} aggregator compatible with constant returns to scale and scale-consistent nesting \citep{smirl2026emergent}---not merely a convenient functional form but a theorem. It parameterizes complementarity via $\rho \in (-\infty, 1]$, with lower $\rho$ indicating stronger complementarity. The companion paper \citep{smirl2026ces} proves that a single curvature parameter $K = (1-\rho)(J-1)/J$ simultaneously controls three distinct economic properties---superadditivity, correlation robustness, and strategic independence---establishing that these are not independent phenomena but geometric consequences of isoquant curvature.
 
-The second aspect is \emph{information friction}: firms do not observe input qualities, worker productivities, or demand states perfectly. The rational inattention program \citep{sims2003,matejka2015} models this by constraining Shannon capacity, yielding an information temperature $T = 1/\kappa$ as the shadow price of attention. The companion paper \citep{smirl2026free} shows that the free energy $\calF = \Phi_{\mathrm{CES}}(\rho) - T \cdot H$ unifies information economics, mechanism design, contract theory, and behavioral economics under a single two-parameter structure.
+The second aspect is \emph{information friction}: firms do not observe input qualities, worker productivities, or demand states perfectly. The rational inattention program \citep{sims2003,matejka2015} models this by constraining information capacity, yielding an information temperature $T = 1/\kappa$ as the shadow price of attention. The companion paper \citep{smirl2026free} shows that the Tsallis free energy $\calF_q = \Phi_{\mathrm{CES}}(\rho) - T \cdot S_q$ with $q = \rho$ \citep{smirl2026tsallis} unifies information economics, mechanism design, contract theory, and behavioral economics under a single two-parameter structure.
 
 But production theory takes complementarity as given ($T = 0$), while information economics takes the aggregation structure as given (no $\rho$). The present paper fills the gap. When a firm with CES technology (structural parameter $\rho$) operates under information frictions (temperature $T$), the complementarity it can \emph{exploit} depends on both parameters jointly. The central question becomes: how does information temperature degrade the curvature premium?
 
@@ -122,11 +122,11 @@ The key structural fact: superadditivity and strategic independence are first-or
 
 \subsection{Information Temperature and Free Energy}\label{sec:free_energy_recap}
 
-\citet{smirl2026free} parameterizes information frictions by an \emph{information temperature} $T = 1/\kappa$, where $\kappa$ is the Shannon capacity available to the decision-maker. The economic free energy is
+\citet{smirl2026free} parameterizes information frictions by an \emph{information temperature} $T = 1/\kappa$, where $\kappa$ is the information capacity available to the decision-maker. The economic free energy is
 \begin{equation}\label{eq:free_energy}
-\calF = \Phi_{\mathrm{CES}}(\rho) - T \cdot H
+\calF_q = \Phi_{\mathrm{CES}}(\rho) - T \cdot S_q, \qquad q = \rho
 \end{equation}
-where $\Phi = -\log F$ is the CES potential and $H$ is Shannon entropy. At $T = 0$: perfect information, deterministic optimization. At $T > 0$: costly information processing, stochastic allocation. The optimal allocation under information constraints takes the logit (Gibbs) form:
+where $\Phi = -\log F$ is the CES potential and $S_q = (1 - \sum p_j^q)/(q-1)$ is Tsallis entropy with $q = \rho$ locked by the emergence theorem \citep{smirl2026tsallis}. At $T = 0$: perfect information, deterministic optimization. At $T > 0$: costly information processing, stochastic allocation. The optimal allocation under information constraints takes the logit (Gibbs) form:
 \begin{equation}\label{eq:logit}
 P(j \mid \boldsymbol{\theta}) = \frac{\exp(u_j(\boldsymbol{\theta})/T)}{\sum_{k=1}^{J} \exp(u_k(\boldsymbol{\theta})/T)}
 \end{equation}
@@ -148,7 +148,7 @@ x_j^* = C \cdot \frac{\theta_j^{\sigma - 1}}{\sum_{k=1}^{J} \theta_k^{\sigma - 1
 \end{equation}
 The resulting output $F^* = F(\mathbf{x}^*; \boldsymbol{\theta})$ exploits the full complementarity of the technology.
 
-Under information frictions ($T > 0$), the firm does not observe $\boldsymbol{\theta}$ directly. It acquires information subject to a Shannon capacity constraint $I(\boldsymbol{\theta}; \mathbf{s}) \leq \kappa = 1/T$, where $\mathbf{s}$ is the signal vector. The firm's problem is:
+Under information frictions ($T > 0$), the firm does not observe $\boldsymbol{\theta}$ directly. It acquires information subject to a capacity constraint $I(\boldsymbol{\theta}; \mathbf{s}) \leq \kappa = 1/T$, where $\mathbf{s}$ is the signal vector. The firm's problem is:
 \begin{equation}\label{eq:firm_problem}
 \max_{\mathbf{x}(\mathbf{s})} \; \E_{\boldsymbol{\theta}, \mathbf{s}}\!\left[\log F(\mathbf{x}(\mathbf{s}); \boldsymbol{\theta})\right] - T \cdot I(\boldsymbol{\theta}; \mathbf{s})
 \end{equation}
@@ -621,8 +621,14 @@ Sims, Christopher A. 2003. ``Implications of Rational Inattention.'' \textit{Jou
 \bibitem[Smirl(2026a)]{smirl2026ces}
 Smirl, Jon. 2026a. ``The CES Quadruple Role: Superadditivity, Correlation Robustness, Strategic Independence, and Network Scaling as Four Properties of CES Curvature.'' Working Paper.
 
+\bibitem[Smirl(2026c)]{smirl2026emergent}
+Smirl, Jon. 2026c. ``Emergent CES: Renormalization, Functional Equations, and Maximum Entropy Derivations of the CES Aggregate.'' Working Paper.
+
 \bibitem[Smirl(2026b)]{smirl2026free}
-Smirl, Jon. 2026b. ``Free Energy Economics: A Unified Framework from CES Aggregation and Shannon Entropy.'' Working Paper.
+Smirl, Jon. 2026b. ``Free Energy Economics: A Unified Framework from CES Aggregation and Tsallis Entropy.'' Working Paper.
+
+\bibitem[Smirl(2026d)]{smirl2026tsallis}
+Smirl, Jon. 2026d. ``From Shannon to Tsallis: Non-Additive Entropy as the Natural Information Measure for CES Production.'' Working Paper.
 
 \bibitem[Syverson(2004)]{syverson2004}
 Syverson, Chad. 2004. ``Market Structure and Productivity: A Concrete Example.'' \textit{Journal of Political Economy} 112(6): 1181--1222.

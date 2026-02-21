@@ -1,0 +1,23 @@
+\begin{table}[htbp]
+\centering
+\caption{FOMC information absorption speed (USMPD, 1994--2026)}
+\label{tab:usmpd_absorption}
+\small
+\begin{tabular}{llccc}
+\toprule
+Test & Metric & Kendall $\tau$ & $p$-value & FG prediction \\
+\midrule
+A. Concentration & |stmt$_{30\text{min}}$|/|daily| & -0.172 & 0.000 &  \\
+B. Surprise resp. & |$\Delta$UST10Y|/|surprise| & 0.015 & 0.717 &  \\
+C. PC increment & |stmt|/|ME| share & -0.164 & 0.027 &  \\
+C. PC reversal & reversal rate & 0.128 & 0.156 &  \\
+D. Cross-maturity & |$\Delta$2Y|/|$\Delta$10Y| & 0.014 & 0.746 &  \\
+E. Magnitude & |$\Delta$UST10Y| & -0.111 & 0.006 & $\checkmark$ \\
+E. Magnitude & |$\Delta$UST2Y| & -0.081 & 0.046 & $\checkmark$ \\
+\bottomrule
+\end{tabular}
+\begin{minipage}{0.95\textwidth}
+\vspace{0.5em}
+\footnotesize\textit{Notes:} High-frequency yield changes from the SF Fed U.S.\ Monetary Policy Event-Study Database (Acosta et al.\ 2025). Statement windows are 30 minutes; monetary events combine statement and press conference windows. Monetary policy surprises are the Acosta et al.\ normalized surprises from money market futures. FG prediction column indicates consistency with forward guidance degradation hypothesis: concentration and PC share should increase ($\tau > 0$); surprise sensitivity, cross-maturity ratio, and absolute magnitude should decrease ($\tau < 0$). All tests use the full 1994--2026 sample except press conference tests (2011--2026, $N \approx 85$).
+\end{minipage}
+\end{table}

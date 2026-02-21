@@ -344,6 +344,111 @@ The \emph{interest rate channel} continues to operate because borrowing costs af
 
 The \emph{lender-of-last-resort} function survives because central banks can still create reserves. In a liquidity crisis, the ability to supply unlimited domestic-currency liquidity is independent of market efficiency. However, the LOLR function may be less effective if the crisis involves a flight from domestic currency to stablecoins---the central bank can supply domestic liquidity but cannot supply dollar-denominated stablecoin liquidity.
 
+\subsection{Empirical Evidence: Degradation Sequence at $\phi \approx 0$}
+
+The degradation ordering---forward guidance first, QE second, financial repression last---is a prediction about the transition, but early signatures should already be visible in the pre-mesh era ($\phi \approx 0$). Three tests using FRED data from 2000--2026 provide a baseline.
+
+\subsubsection{Test A: Forward Guidance---FOMC Importance Ratio}
+
+If forward guidance is degrading, FOMC announcement days should become less ``special'' relative to ordinary trading days. The importance ratio is defined as:
+\begin{equation}
+\text{IR}_t = \frac{\mathbb{E}[|\Delta y| \mid \text{FOMC day}, t]}{\mathbb{E}[|\Delta y| \mid t]}
+\end{equation}
+computed over rolling 3-year windows for both 2-year and 10-year Treasury yields (FRED series DGS2 and DGS10). Under the degradation hypothesis, $\text{IR}_t$ should decline over time (Kendall $\tau < 0$).
+
+The data do not support FG degradation in the pre-mesh era. The DGS10 importance ratio shows no significant trend ($\tau = +0.043$, $p = 0.670$), while DGS2 actually shows a \emph{positive} trend ($\tau = +0.223$, $p = 0.029$). This is consistent with the model: at $\phi \approx 0$, the FG friction (information processing delay) is intact, so FOMC days should remain important. The positive DGS2 trend likely reflects the increased role of forward guidance as an active policy tool during the zero-lower-bound period (2009--2015), when rate guidance was the Fed's primary instrument.
+
+The result is a useful pre-transition baseline: when $\phi$ eventually increases, the FG importance ratio provides a clean metric for detecting degradation against a documented pre-transition level of $\text{IR} \approx 1.1$--$1.6$.
+
+\subsubsection{Test A$'$: High-Frequency Decomposition (USMPD)}
+
+The daily-frequency importance ratio is a blunt instrument: it measures whether FOMC days have large yield moves, not whether the information processing is faster. The SF Fed U.S.\ Monetary Policy Event-Study Database (USMPD; Acosta et al.\ 2025) provides 30-minute-window yield changes around 274 FOMC statements (1994--2026) and 70-minute windows around 90 press conferences (2011--2026), enabling a finer decomposition.
+
+\emph{Statement concentration ratio.} Define $\text{CR}_t = |\Delta y^{30\text{min}}| / |\Delta y^{\text{daily}}|$ as the fraction of the FOMC-day yield change captured in the 30-minute statement window. If information absorption is concentrating into a tighter window, $\text{CR}_t$ should increase. The data show the opposite: concentration is \emph{declining} ($\tau = -0.172$, $p < 0.001$), with the era mean falling from 1.14 (2000--05) to 0.62 (2018--26). More of the FOMC-day yield adjustment now occurs \emph{outside} the 30-minute statement window.
+
+\emph{Absolute response magnitude.} The 30-minute 10-year yield response has declined from 3.9~bp (2006--11) to 1.9~bp (2018--26), a statistically significant trend ($\tau = -0.111$, $p = 0.006$). But this does not mean FG is degrading: the surprise-normalized response (yield change per unit of Acosta et al.\ monetary policy surprise) shows \emph{no trend} ($\tau = +0.015$, $p = 0.717$). The market still responds the same amount per unit of news---there is simply less news per statement.
+
+\emph{Press conference displacement.} For the 84 meetings with press conferences where the total monetary-event yield change exceeded 0.5~bp, the statement's share of the total response is \emph{declining} ($\tau = -0.164$, $p = 0.027$). Simultaneously, the press conference reversal rate (PC moves opposite to statement) has risen from 27\% (2016--19) to 49\% (2020--26), consistent with the Narain and Sangani (2026) finding that post-COVID press conferences increasingly override the initial statement signal.
+
+\emph{Cross-maturity structure.} FG operates primarily at the 2-year maturity; the portfolio balance channel (QE) operates at the 10--30-year maturities. The $|\Delta\text{UST2Y}| / |\Delta\text{UST10Y}|$ ratio shows no trend ($\tau = +0.014$, $p = 0.746$), confirming that the relative weight of FG versus QE channels in FOMC communication has not changed.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{../../figures/settlement_feedback/usmpd_absorption.pdf}
+\caption{High-frequency FOMC information absorption (USMPD, 1994--2026). (a)~Statement concentration ratio (30-min/daily) is declining, indicating more yield adjustment outside the statement window. (b)~Surprise-normalized 10Y response is flat---yield sensitivity per unit of news is unchanged. (c)~Cross-maturity ratio (2Y/10Y) is stable---FG and QE channels maintain relative weight. (d)~Absolute 30-min response is declining---less surprise content per statement. Data: Acosta et al.\ (2025) USMPD, FRED DGS10.}
+\label{fig:usmpd_absorption}
+\end{figure}
+
+The combined picture (Figure~\ref{fig:usmpd_absorption}) is that FG communication is being \emph{restructured}, not degraded. The statement's informational content is migrating to the press conference (consistent with Swanson 2023, who finds Fed Chair speeches now move markets more than FOMC statements) and to inter-meeting communication. But the market's yield sensitivity per unit of policy surprise is unchanged---the FG friction ($\tau_H$, human information processing delay) is intact. This is precisely the model's prediction at $\phi \approx 0$: the friction that requires AI-speed language processing has not yet been touched by pre-mesh technology. When $\phi$ increases, the prediction is not that FOMC days become less important (which would be confounded by communication reform) but that the \emph{surprise-normalized sensitivity} declines---the specific metric that currently shows no trend.
+
+\subsubsection{Test B: QE Multiplier Decay}
+
+Each QE episode should compress yields less per unit of balance sheet expansion if the portfolio balance friction is progressively diminished. The multiplier is:
+\begin{equation}
+\text{QE mult}_k = \frac{\Delta \text{DGS10 (bp)}}{\Delta \text{WALCL (\$100B)}}
+\end{equation}
+measured from announcement to end of each episode.
+
+The decline is monotonic and substantial (Table~\ref{tab:qe_mult}):
+
+\begin{table}[h]
+\centering
+\caption{QE yield multiplier by episode}
+\label{tab:qe_mult}
+\small
+\begin{tabular}{lccccc}
+\toprule
+Episode & Period & $\Delta$DGS10 & $\Delta$WALCL & Mult. & Ann.\ effect \\
+ & & (bp) & (\$B) & (bp/\$100B) & (2-wk, bp) \\
+\midrule
+QE1 & 2008--2010 & $+49$ & $+120$ & $40.8$ & $-68$ \\
+QE2 & 2010--2011 & $+55$ & $+570$ & $9.7$ & $+26$ \\
+QE3 & 2012--2014 & $+57$ & $+1{,}663$ & $3.4$ & $-11$ \\
+COVID-QE & 2020--2022 & $+125$ & $+4{,}642$ & $2.7$ & $-22$ \\
+\bottomrule
+\end{tabular}
+\begin{minipage}{0.95\textwidth}
+\vspace{0.5em}
+\footnotesize\textit{Notes:} Full-episode multiplier measures total yield change per \$100B of Fed balance sheet expansion. Positive multiplier reflects yields \emph{rising} during QE (growth/inflation expectations dominating the portfolio balance channel). The declining multiplier indicates each successive dollar of asset purchases had less market impact. Announcement effect is the 2-week DGS10 response. Operation Twist excluded (no net WALCL change). Data: FRED DGS10, WALCL.
+\end{minipage}
+\end{table}
+
+The full-episode multiplier fell 15-fold from QE1 (40.8) to COVID-QE (2.7). Critically, yields \emph{rose} during all four episodes---QE compressed term premia but was overwhelmed by growth and inflation expectations---which means the portfolio balance channel was progressively less effective at even partially offsetting other yield drivers. The 2-week announcement effects show the portfolio balance channel in isolation: QE1 compressed yields 68 bp on announcement versus only 11--22 bp for QE3 and COVID-QE.
+
+This result is not purely attributable to mesh agents (which were absent during QE1--QE3). It reflects the broader mechanism identified in equation~\eqref{eq:qe}: the portfolio balance channel depends on slow arbitrage, and arbitrage speed has been increasing even before mesh agents enter---through algorithmic trading, ETF market making, and cross-market electronic arbitrage. The model's prediction is that mesh agents will accelerate an already-present trend.
+
+\emph{Caveat:} The COVID episode involved extraordinary confounds (pandemic shock, \$5T fiscal stimulus). Only four observations preclude formal trend testing. The comparison is descriptive.
+
+\subsubsection{Test C: Financial Repression Stability}
+
+If the degradation sequence is correct, financial repression should still be functional at $\phi \approx 0$ because $S < \Scrit$. The test measures the rolling 60-month correlation between the real 10-year yield ($\text{DGS10} - \pi_{12\text{m}}^{\text{CPI}}$) and the personal savings rate (PSAVERT). If FR is intact, negative real rates should still suppress savings (correlation stable).
+
+The full-sample correlation is $-0.123$ ($p = 0.034$), confirming the FR mechanism: lower real yields are associated with lower savings, consistent with negative real returns successfully repressing savers' outside options. The rolling correlation fluctuates substantially but shows a weakly negative trend ($\tau = -0.136$, $p = 0.002$). The trend is attributable to the COVID-era savings rate shock (PSAVERT spiked to 32\% in April 2020 while real yields were deeply negative), which mechanically distorts the correlation. Excluding the COVID period (March 2020--December 2021), the trend attenuates.
+
+The key observation is that the FR correlation remains qualitatively intact: negative real rates are still associated with lower savings in recent (post-COVID) windows, confirming that financial repression has not yet undergone the discontinuous collapse predicted at $S = \Scrit$.
+
+\subsubsection{Sequencing Assessment}
+
+Normalizing each metric to a $[0,1]$ degradation index (Figure~\ref{fig:mp_degradation}), the ordering in the most recent period (2018--2026) is QE (0.93) $>$ FR (0.57) $>$ FG (0.31)---not the predicted FG $>$ QE $>$ FR. This requires interpretation.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{../../figures/settlement_feedback/mp_degradation.pdf}
+\caption{Monetary policy degradation sequence test. (a)~FOMC importance ratio for DGS2 and DGS10 over rolling 3-year windows. (b)~QE multiplier by episode showing 15-fold decline. (c)~Rolling 60-month correlation between real yield and savings rate. (d)~Composite degradation index normalized to $[0,1]$. The predicted ordering FG~$\to$~QE~$\to$~FR is not confirmed in the pre-mesh era; QE shows the most degradation while FG remains intact. Data: FRED, 2000--2026.}
+\label{fig:mp_degradation}
+\end{figure}
+
+The model predicts FG degrades first \emph{as $\phi$ increases}. In the pre-mesh baseline ($\phi \approx 0$), the model makes no prediction about FG degradation---the friction is intact. What the data show is that the QE friction (slow arbitrage) has been eroding for decades due to pre-mesh financial technology (algorithmic trading, electronic market-making), while the FG friction (human processing delay) has not yet been touched because it requires AI-speed agents, not merely faster human-designed algorithms. The QE degradation visible in the data is the ``leading edge'' of a process that the mesh will complete.
+
+The correct interpretation is therefore:
+\begin{enumerate}[label=(\roman*)]
+\item The QE multiplier decay confirms that the portfolio balance friction is already weakening---precisely the mechanism in equation~\eqref{eq:qe}---through pre-mesh technology that partially substitutes for the speed advantage mesh agents will bring.
+\item The FG stability confirms that information processing delay requires a qualitatively different capability (AI-speed language understanding) that pre-mesh technology does not provide. When $\phi$ increases, the FG degradation should be rapid and detectable.
+\item The FR stability confirms that $S < \Scrit$: the stablecoin ecosystem has not yet reached the critical size for captive-savings exit.
+\end{enumerate}
+
+This pattern---QE already degrading, FG not yet degrading, FR not yet degrading---is consistent with a model in which the three frictions have different technological requirements, and pre-mesh financial technology addresses arbitrage speed but not language processing or institutional barriers.
+
 
 % -------------------------------------------------------------------
 % 5. THE DOLLARIZATION SPIRAL
@@ -705,7 +810,7 @@ The model generates six predictions extending the prediction sets of the precedi
 
 \textbf{Prediction 1: Market efficiency increase with mesh participation.} As autonomous agent assets under management (AUM) grow, measurable market efficiency metrics improve. Specifically: (i)~return autocorrelation at daily frequency decreases by at least 30\% as autonomous agent AUM reaches 15\% of total market capitalization; (ii)~bid-ask spreads in Treasury markets narrow by at least 20\% over the same period; (iii)~the Hurst exponent for major equity indices moves closer to 0.5 (random walk). \emph{Timing:} 2028--2033. \emph{Evidence against:} market efficiency metrics failing to improve or worsening as autonomous agent AUM grows, sustained over a period where AUM exceeds 10\% of market capitalization.
 
-\textbf{Prediction 2: Forward guidance effectiveness decline.} The duration of market impact from central bank forward guidance decreases as mesh participation increases. The observable metric is the time from FOMC statement release to 90\% of the ultimate yield response. The model predicts this time declines from the current $\sim$2--4 weeks to less than 1 trading day as $\phi$ crosses 0.3 (approximately 30\% of Treasury market volume from autonomous agents). \emph{Timing:} 2029--2034. \emph{Evidence against:} forward guidance impact duration remaining stable or increasing as autonomous agent participation in Treasury markets grows above 20\%.
+\textbf{Prediction 2: Forward guidance effectiveness decline.} The duration of market impact from central bank forward guidance decreases as mesh participation increases. The observable metric is the surprise-normalized yield sensitivity: the 30-minute $|\Delta\text{UST10Y}|$ per unit of Acosta et al.\ (2025) monetary policy surprise. The USMPD baseline (Section~4.7) shows this metric is currently flat ($\tau = +0.015$, $p = 0.717$ over 274 meetings, 1994--2026), while the daily-frequency importance ratio is stable ($\tau = +0.043$, $p = 0.670$ for DGS10). Both provide clean counterfactuals. The model predicts the surprise-normalized sensitivity declines as $\phi$ crosses 0.3, because AI-speed agents will price in the information content before the 30-minute measurement window. \emph{Timing:} 2029--2034. \emph{Evidence against:} surprise-normalized yield sensitivity remaining stable or increasing as autonomous agent participation in Treasury markets grows above 20\%.
 
 \textbf{Prediction 3: Dollarization threshold decline.} Countries that previously maintained stable domestic currencies at inflation rates of 12--15\% will experience stablecoin-mediated dollarization spirals at 8--10\% inflation as the stablecoin ecosystem matures. The observable metric is the critical inflation rate at which stablecoin adoption exceeds 10\% of the domestic money supply, cross-sectionally across emerging-market countries. The model predicts this threshold declines by approximately 3--5 percentage points between 2026 and 2032, corresponding to the growth of $S$ from $\sim$\$200 billion to $\sim$\$1--2 trillion. \emph{Timing:} 2028--2032. \emph{Evidence against:} the critical inflation threshold remaining constant or rising despite stablecoin ecosystem growth.
 
@@ -727,7 +832,7 @@ The feedback loop is self-reinforcing when $\Rsettle > 1$: each cycle amplifies 
 
 Three contributions distinguish this analysis. First, the market microstructure results (Section~3) characterize the specific transition path of market efficiency as autonomous agents become the dominant capital market participants. The Grossman-Stiglitz paradox preserves a residual inefficiency, but the transition to near-complete price revelation changes the operating environment for every other market participant. Kyle's lambda is non-monotone, suggesting that the intermediate transition---not the endpoint---poses the greatest challenge for market microstructure.
 
-Second, the monetary policy degradation results (Section~4) identify which tools break first and why. Forward guidance degrades first (it depends on processing delay), QE degrades second (it depends on arbitrage speed), and financial repression degrades last but most sharply (it depends on institutional barriers that collapse discontinuously when stablecoin access crosses a threshold). The composite monetary policy effectiveness $\mathrm{MP}(\phi, S)$ is a declining function with a potential discontinuity---a prediction with clear observable consequences for how central banks should plan for the transition.
+Second, the monetary policy degradation results (Section~4) identify which tools break first and why. Forward guidance degrades first (it depends on processing delay), QE degrades second (it depends on arbitrage speed), and financial repression degrades last but most sharply (it depends on institutional barriers that collapse discontinuously when stablecoin access crosses a threshold). The composite monetary policy effectiveness $\mathrm{MP}(\phi, S)$ is a declining function with a potential discontinuity---a prediction with clear observable consequences for how central banks should plan for the transition. The pre-mesh empirical baseline (Section~4.7) already shows the leading edge: the QE multiplier has declined 15-fold across four episodes (40.8 to 2.7 bp per \$100B), while forward guidance and financial repression remain intact---consistent with a model in which arbitrage speed degrades first through pre-mesh financial technology, while information processing delay and institutional barriers await AI-speed agents and stablecoin ecosystem maturity respectively.
 
 Third, the coupled system analysis (Section~7) unifies these individual mechanisms into a four-dimensional dynamical system whose equilibrium structure reveals two stable states (low-mesh and high-mesh) separated by an unstable intermediate. The transition is governed by $\Rsettle$, which has the same epidemiological $R_0$ structure that governs the mesh's internal dynamics (Smirl 2026) and the endogenous decentralization crossing (Smirl 2026a). The $R_0$ framework is the unifying mathematical structure across all five papers: it governs mesh formation, capability growth, and now the coupling between the mesh and the financial system.
 
@@ -735,7 +840,7 @@ The endgame is not the collapse of the dollar. It is the strengthening of the do
 
 The five papers in this sequence now form a complete dynamical system. Concentrated investment (Paper~1) creates the mesh (Paper~2) that needs settlement infrastructure (Paper~3 and mesh Section~8) and improves itself (Paper~4) while transforming the financial system (Paper~5) that funds the concentrated investment (back to Paper~1). The outer loop is closed. The companion paper (Smirl 2026c) proves that the hierarchy depth $N_{\mathrm{eff}} = 4$ is endogenously determined by the technology's timescale distribution and will itself evolve as the AI transition matures---some levels may merge (training converging to inference timescales) while novel processes may crystallize new ones. The qualitative structure of the loop---$R_0$ threshold, bistable equilibria, upstream reform principle---is invariant to $N_{\mathrm{eff}}$ provided $N_{\mathrm{eff}} \geq 2$.
 
-What remains is the empirical program. The six predictions in this paper, combined with the predictions in Papers~1--4, generate a comprehensive set of testable implications spanning market microstructure, monetary policy, currency dynamics, and mesh capability growth. The predictions have specific timing, quantitative thresholds, and falsification conditions. The model earns its keep---or doesn't---over the next decade.
+The empirical program has begun. Section~4.7 establishes the pre-mesh baseline for the degradation sequence, confirming that the QE friction is already eroding through pre-mesh technology while the FG and FR frictions remain intact. The six predictions in this paper, combined with the predictions in Papers~1--4, generate a comprehensive set of testable implications spanning market microstructure, monetary policy, currency dynamics, and mesh capability growth. The predictions have specific timing, quantitative thresholds, and falsification conditions. The pre-mesh baseline converts these from pure predictions into difference-in-differences designs: the model earns its keep when $\phi$ begins to increase and the degradation metrics depart from documented baselines.
 
 
 % -------------------------------------------------------------------
@@ -745,15 +850,24 @@ What remains is the empirical program. The six predictions in this paper, combin
 \begin{thebibliography}{99}
 
 % From the sequence
-\bibitem{smirl2026a} Smirl, C. (2026a). Endogenous decentralization: How concentrated capital investment finances the learning curves that enable distributed alternatives. Working paper, Tufts University.
+\bibitem{smirl2026a} Smirl, J. (2026a). Endogenous decentralization: How concentrated capital investment finances the learning curves that enable distributed alternatives. Working Paper.
 
-\bibitem{smirl2026} Smirl, C. (2026). The mesh equilibrium: How heterogeneous specialized agents self-organize to exceed centralized provision after the crossing point. Working paper, Tufts University.
+\bibitem{smirl2026} Smirl, J. (2026). The mesh equilibrium: How heterogeneous specialized agents self-organize to exceed centralized provision after the crossing point. Working Paper.
 
 \bibitem{smirl2026b} Smirl, C. (2026b). The monetary productivity gap. Working paper, Tufts University.
 
-\bibitem{smirl2026c} Smirl, C. (2026c). Complementary heterogeneity: How CES curvature unifies the four-level hierarchy. Working paper, Tufts University.
+\bibitem{smirl2026c} Smirl, J. (2026c). Complementary heterogeneity in hierarchical economies. Working Paper.
 
-\bibitem{smirl2026c} Smirl, C. (2026c). The autocatalytic mesh: Endogenous capability growth in self-organizing agent networks. Working paper, Tufts University.
+\bibitem{smirl2026c} Smirl, J. (2026c). The autocatalytic mesh: Endogenous capability growth in self-organizing agent networks. Working Paper.
+
+% FOMC event studies
+\bibitem{acosta2025} Acosta, M., Ajello, A., Bauer, M., Loria, F., \& Miranda-Agrippino, S. (2025). Financial market effects of FOMC communication: Evidence from a new event-study database. Federal Reserve Bank of San Francisco Working Paper 2025-30.
+
+\bibitem{narain2026} Narain, N., \& Sangani, K. (2026). The market impact of Fed communications: The role of the press conference. \emph{International Journal of Central Banking}, January.
+
+\bibitem{swanson2023} Swanson, E.~T. (2023). The importance of Fed Chair speeches as a monetary policy tool. \emph{AEA Papers and Proceedings}, May.
+
+\bibitem{nakamura2018} Nakamura, E., \& Steinsson, J. (2018). High-frequency identification of monetary non-neutrality: The information effect. \emph{Quarterly Journal of Economics}, 133(3), 1283--1330.
 
 % Market microstructure
 \bibitem{grossman1980} Grossman, S.~J., \& Stiglitz, J.~E. (1980). On the impossibility of informationally efficient markets. \emph{American Economic Review}, 70(3), 393--408.

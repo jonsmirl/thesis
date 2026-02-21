@@ -1,0 +1,22 @@
+\begin{table}[htbp]
+\centering
+\caption{CES emergence under aggregation: FRED IP hierarchy}
+\label{tab:ces_emergence}
+\small
+\begin{tabular}{llccccccc}
+\toprule
+Aggregate & Agg. & $K$ & $\|\beta\|/\|\alpha\|$ & $F$-test $p$ & $\hat\rho$ & 95\% CI & $R^2_{\text{CES}}$ & $\Delta$BIC/$\Delta k$ \\
+\midrule
+Total IP & 3 & 3 & 0.1757 & 0.0000 & -0.073 & [-0.13, -0.01] & 0.9999 & 37.9 \\
+Manufacturing & 2 & 2 & 0.1883 & 0.0000 & -0.299 & [-0.31, -0.29] & 1.0000 & 126.8 \\
+Durable Goods & 1 & 8 & 0.6927 & 0.0000 & 0.152 & [0.14, 0.17] & 0.9992 & 42.8 \\
+Computer/Electronics & 0 & 5 & 0.1789 & 0.0000 & -0.191 & [-0.20, -0.18] & 0.9999 & 65.4 \\
+Transport Equipment & 0 & 2 & 0.2771 & 0.0000 & 0.673 & [0.60, 0.75] & 0.9984 & 101.7 \\
+Nondurable Goods & 1 & 9 & 0.2361 & 0.0000 & 0.990 & [0.89, 1.09] & 0.9997 & 38.4 \\
+\bottomrule
+\end{tabular}
+\begin{minipage}{0.95\textwidth}
+\vspace{0.5em}
+\footnotesize\textit{Notes:} $\|\beta\|/\|\alpha\|$ is the ratio of translog interaction coefficients to first-order coefficients. $F$-test $p$ tests $H_0$: all interaction terms zero (CES restriction). $\hat\rho$ is the CES curvature parameter estimated via NLS. $\Delta$BIC/$\Delta k$ = [BIC(CES) $-$ BIC(Translog)] / (extra translog parameters); normalizes for translog parameter advantage at high $K$. Negative values favor CES. Data: FRED Industrial Production indices, monthly.
+\end{minipage}
+\end{table}

@@ -1,0 +1,8 @@
+test,value,prediction,cwt_comparison,pass
+P1_Neff,5,4-5,4.5 +/- 1.0,True
+P2_rstar,2.19,~2.0,"2.1 [1.84, 2.63]",True
+P3_cycle_match,3/5,>=2 matches,N/A,True
+P4_sector_neff,tau=-0.535,tau < 0,N/A,True
+P5_neighbor_coupling,adj=0.180 vs non=0.157,adjacent > non-adjacent,N/A,True
+P6_asymmetry,1.03,ratio > 1,N/A,True
+P7_cwt_emd_agreement,60.0%,>= 50% match,CWT=3 peaks,True

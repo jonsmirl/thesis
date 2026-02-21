@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.2.17)  20 FEB 2026 15:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.2.17)  20 FEB 2026 22:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -589,6 +589,15 @@ Overfull \hbox (6.07185pt too wide) in paragraph at lines 110--111
 tors op-er-at-ing at dif-fer-ent timescales: 
  []
 
+! Undefined control sequence.
+l.118 ...scale and scale-consistent nesting \citep
+                                                  {smirl2026emergent}.
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
@@ -655,7 +664,7 @@ Overfull \hbox (13.88916pt too wide) in paragraph at lines 1272--1275
  []
 
 [31] [32] [33] [34]
-Overfull \hbox (4.11827pt too wide) in paragraph at lines 1385--1390
+Overfull \hbox (4.11827pt too wide) in paragraph at lines 1387--1392
 []\T1/cmr/m/it/12 Step 2: Nor-mal hy-per-bol-ic-ity. \T1/cmr/m/n/12 De-fine the
  crit-i-cal man-i-fold $\OMS/cmsy/m/n/12 M[] \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12
  f\OML/cmm/m/it/12 x[] \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 F[]=J[][]j\OMS/cmsy/m
@@ -663,7 +672,7 @@ Overfull \hbox (4.11827pt too wide) in paragraph at lines 1385--1390
  []
 
 [35] [36] [37]
-Overfull \hbox (23.69057pt too wide) in paragraph at lines 1535--1537
+Overfull \hbox (23.69057pt too wide) in paragraph at lines 1537--1539
 []\T1/cmr/m/it/12 Step 1: De-com-pose the com-pos-ite ceil-ing. \T1/cmr/m/n/12 
 The full ceil-ing func-tion $\OT1/cmr/m/n/12 	(\OML/cmm/m/it/12 F[]\OT1/cmr/m/n
 /12 ) = \OML/cmm/m/it/12 I\OT1/cmr/m/n/12 ([](\OML/cmm/m/it/12 F[]\OT1/cmr/m/n/
@@ -674,14 +683,14 @@ The full ceil-ing func-tion $\OT1/cmr/m/n/12 	(\OML/cmm/m/it/12 F[]\OT1/cmr/m/n
 [38]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1559.
+(hyperref)                removing `math shift' on input line 1561.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1559.
+(hyperref)                removing `math shift' on input line 1561.
 
 
-Overfull \hbox (38.68974pt too wide) in paragraph at lines 1598--1602
+Overfull \hbox (38.68974pt too wide) in paragraph at lines 1600--1604
 []\T1/cmr/m/n/12 From The-o-rem [][]6.2[][], $\OML/cmm/m/it/12 c[] \OT1/cmr/m/n
 /12 = \OML/cmm/m/it/12 P[]=k[]$ \T1/cmr/m/n/12 where $\OML/cmm/m/it/12 k[] \OT1
 /cmr/m/n/12 = \OML/cmm/m/it/12 ^^^[]\OT1/cmr/m/n/12 ([])[]\OML/cmm/m/it/12 =\OM
@@ -689,7 +698,7 @@ S/cmsy/m/n/12 j\OML/cmm/m/it/12 ^^[[]\OMS/cmsy/m/n/12 j$\T1/cmr/m/n/12 .
  []
 
 
-Overfull \hbox (53.77245pt too wide) in paragraph at lines 1598--1602
+Overfull \hbox (53.77245pt too wide) in paragraph at lines 1600--1604
 \OML/cmm/m/it/12 P[] ^^[[]=\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^^L[] ^^[[] J []\O
 T1/cmr/m/n/12 )$\T1/cmr/m/n/12 . On the slow man-i-fold, $\OML/cmm/m/it/12 c[]D
 [] \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 c[][]g\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 F
@@ -699,7 +708,7 @@ m/it/12 F[]=[]\OT1/cmr/m/n/12 )$\T1/cmr/m/n/12 .
  []
 
 [39]
-Overfull \hbox (25.31207pt too wide) in paragraph at lines 1605--1612
+Overfull \hbox (25.31207pt too wide) in paragraph at lines 1607--1614
 \T1/cmr/m/n/12 re-stricted to the ag-gre-gate mode). (ii) Di-rect from the equi
 -lib-rium con-di-tion $[] \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 ^^^[]\OT1/cmr/m/n/
 12 ([])\OML/cmm/m/it/12 =\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^^[[]J\OT1/cmr/m/n/1
@@ -716,10 +725,10 @@ changed.
 (rerunfilecheck)             Checksum: C575DAA3083266681E63C9D666808419;11256.
  ) 
 Here is how much of TeX's memory you used:
- 14865 strings out of 476182
- 230610 string characters out of 5795595
+ 14867 strings out of 476182
+ 230651 string characters out of 5795595
  1938975 words of memory out of 5000000
- 36432 multiletter control sequences out of 15000+600000
+ 36433 multiletter control sequences out of 15000+600000
  584273 words of font info for 101 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  75i,13n,79p,1027b,745s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -756,10 +765,10 @@ cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
 /share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/
 texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Complementary_Heterogeneity_v4.pdf (42 pages, 475793 bytes).
+Output written on Complementary_Heterogeneity_v4.pdf (42 pages, 476004 bytes).
 PDF statistics:
- 1383 PDF objects out of 1440 (max. 8388607)
- 741 compressed objects within 8 object streams
- 220 named destinations out of 1000 (max. 500000)
+ 1384 PDF objects out of 1440 (max. 8388607)
+ 742 compressed objects within 8 object streams
+ 221 named destinations out of 1000 (max. 500000)
  17865 words of extra memory for PDF output out of 20736 (max. 10000000)
 

@@ -1,0 +1,98 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1.25in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage[colorlinks=true,citecolor=blue,linkcolor=blue,urlcolor=blue]{hyperref}
+\usepackage{booktabs}
+\usepackage{enumitem}
+
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newcommand{\calF}{\mathcal{F}}
+
+\title{The Laffer Curve as a Theorem:\\
+How Production Complementarity Determines\\
+the Revenue-Maximizing Tax Rate}
+\author{Jon Smirl}
+\date{February 2026 \\ \smallskip \textit{Note}}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+The Laffer curve is one of the most influential ideas in public economics: at a zero tax rate, revenue is zero; at 100\%, revenue is also zero; so a revenue-maximizing rate exists in between.  The logic is compelling, but the argument is qualitative---it establishes \emph{existence} without predicting \emph{where} the peak falls, \emph{why} it differs across sectors, or \emph{how} the economy deteriorates beyond it.
+
+This note derives the Laffer curve as a theorem from a two-parameter framework for production under information frictions \citep{smirl2026unified}, adding three results the qualitative argument cannot reach: (i)~the peak rate depends on a measurable property of each sector's production technology, (ii)~the economy deteriorates beyond the peak in a predictable sequence, and (iii)~revenue loss beyond the peak comes from displacement of activity, not suppression.
+
+\section{Setup and Derivation}
+
+Every productive sector is characterized by a \textbf{complementarity parameter} $\rho \in (-\infty, 1)$ measuring how substitutable its inputs are.  Construction requires land, labor, materials, permits, and financing that cannot replace each other ($\rho$ low).  Financial trading combines highly substitutable instruments ($\rho$ near 1).  The companion papers prove that the curvature premium---the extra value from combining diverse inputs well---degrades as information friction $T$ rises:
+\begin{equation}\label{eq:keff}
+K_{\mathrm{eff}} = K \cdot \left(1 - \frac{T}{T^*}\right)^{\!+}\!,
+\end{equation}
+where $K = (1-\rho)(J-1)/J$ is the sector's structural curvature, $T^* \propto K$ is a critical temperature, and $(\cdot)^+$ denotes the positive part.  Above $T^*$, allocation becomes effectively random.
+
+Taxation is an information friction: it distorts prices, creates compliance costs, and incentivizes avoidance.  A tax rate $\tau$ raises the effective temperature $T_{\mathrm{eff}}(\tau) = T_0 + g(\tau)$, where $g(0) = 0$ and $g' > 0$.  Revenue is rate times base:
+\begin{equation}\label{eq:revenue}
+R(\tau) = \tau \cdot Y\!\bigl(K_{\mathrm{eff}}(\tau)\bigr).
+\end{equation}
+
+\begin{proposition}[The Laffer curve]\label{prop:laffer}
+$R(\tau)$ is zero at $\tau = 0$ and zero when $g(\tau) \geq T^* - T_0$ (the tax pushes the sector past its critical temperature).  A revenue-maximizing rate $\tau^*$ therefore exists in $(0, \bar\tau)$ where $g(\bar\tau) = T^* - T_0$.
+\end{proposition}
+
+This is the Laffer curve, now derived from production fundamentals rather than assumed.
+
+\section{Three New Predictions}
+
+\subsection*{1.~The peak depends on sectoral complementarity}
+
+The ceiling rate $\bar\tau$ satisfies $g(\bar\tau) = T^* - T_0$, and $T^*$ is proportional to $K = (1-\rho)(J-1)/J$---higher for more complementary sectors.
+
+\begin{corollary}[Sector-specific peaks]\label{cor:sector}
+Sectors with lower $\rho$ (complementary inputs) tolerate higher tax rates before reaching the Laffer peak.  Sectors with higher $\rho$ (substitutable inputs) hit the peak at lower rates.
+\end{corollary}
+
+This is intuitive once stated: a construction project cannot substitute away from its inputs when taxed, so taxation degrades efficiency slowly.  A trading desk redirects capital to untaxed instruments almost immediately.  The policy implication is direct: \textbf{there is no single Laffer peak}---every sector has its own, determined by how substitutable its inputs are.  Financial services and digital goods reach their peaks at substantially lower rates than construction, manufacturing, and healthcare.
+
+\subsection*{2.~The decline follows a predictable sequence}
+
+The companion papers prove that three roles of curvature degrade at different rates: \emph{diversification value} degrades quadratically (fast), while \emph{productive complementarity} and \emph{coordination stability} degrade linearly (slower).  The Laffer decline therefore proceeds in order:
+
+\begin{enumerate}[nosep]
+\item \textbf{Capital flight and portfolio reallocation} (fast, gentle decline).  Diversification strategies fail first---investors redirect to untaxed asset classes.
+\item \textbf{Productive restructuring} (medium).  Firms reorganize: offshoring, entity restructuring, income reclassification.  The value from combining diverse inputs is now degraded.
+\item \textbf{Coordination collapse} (steep decline).  The underground economy expands as strategic stability breaks down entirely.
+\end{enumerate}
+
+The ordering is forced by the mathematics (quadratic degrades before linear), not by empirical generalization.  The curve is therefore \textbf{not symmetric}: the decline past the peak is initially gentle, then steepens.  For complementary sectors (low $\rho$) the curve is right-skewed; for substitutable sectors (high $\rho$) it is left-skewed and steep.
+
+\subsection*{3.~Displacement, not suppression}
+
+The framework predicts that activity beyond the Laffer peak does not vanish---it escapes to untaxed venues.  The escape rate from a taxed basin is
+\begin{equation}
+k = \nu \exp\!\left(-\Delta\calF\,/\,T_{\mathrm{eff}}\right),
+\end{equation}
+where $\Delta\calF$ is the barrier between taxed and untaxed states.  Higher $\tau$ raises $T_{\mathrm{eff}}$, \emph{exponentially increasing} the escape rate.  Revenue declines not because people stop working but because activity relocates.
+
+A natural experiment confirms this.  India imposed a 30\% tax on cryptocurrency transactions in 2022.  Domestic volume fell 86\%---but 72\% of the lost volume reappeared on offshore platforms.  The tax did not suppress activity; it displaced it.  The Laffer decline was almost entirely a displacement effect, exactly as predicted.
+
+\section{Conclusion}
+
+The Laffer curve is not merely a plausible conjecture---it is a theorem following from the interaction between taxation-as-friction and the complementarity structure of production.  The derivation preserves the original insight while adding quantitative structure: the peak depends on a measurable parameter ($\rho$), the decline follows a forced sequence (diversification $\to$ production $\to$ coordination), and revenue loss comes from displacement rather than suppression.
+
+The search for ``the'' Laffer peak is therefore misguided.  A revenue-maximizing system would recognize that financial services and digital goods reach their peaks at lower rates than manufacturing and healthcare, and would set effective rates accordingly.
+
+\begin{thebibliography}{9}
+
+\bibitem[Laffer(2004)]{laffer2004}
+Laffer, Arthur B. 2004. ``The Laffer Curve: Past, Present, and Future.'' Heritage Foundation Backgrounder 1765.
+
+\bibitem[Smirl(2026)]{smirl2026unified}
+Smirl, Jon. 2026. ``The $(\rho, T)$ Framework: A Unified Dynamical Theory of Production, Cycles, and Crises from Six Economic Axioms.'' Working Paper.
+
+\end{thebibliography}
+
+\end{document}

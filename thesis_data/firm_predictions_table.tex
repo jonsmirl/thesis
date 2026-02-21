@@ -1,0 +1,25 @@
+\begin{table}[htbp]
+\centering
+\caption{Firm-level predictions from CES free energy framework}
+\label{tab:firm_predictions}
+\small
+\begin{tabular}{llcccc}
+\toprule
+Prediction & Method & Statistic & Value & $p$-value & Verdict \\
+\midrule
+\#4 FDT ($T = \sigma^2/\chi$) & bivariate VAR + OLS & $R^2$ & 0.009 & 0.724 & --- \\
+\midrule
+\#6 Equicorrelation & correlation matrix & CV & 0.363 & pctl=0\% & $\checkmark$ \\
+ & & Frobenius ratio & 0.289 & --- & \\
+\midrule
+\#7 Onsager ($L_{ij} \approx L_{ji}$) & 8-var VAR IRF & Pearson $r$ & 0.067 & 0.733 & --- \\
+\midrule
+\#8 Cyclical $\rho$ (A) & rolling correlation & Kendall $\tau$ & -0.168 & 0.014 & $\checkmark$ \\
+\#8 Cyclical $\rho$ (B) & rolling CES NLS & Kendall $\tau$ & -0.313 & 0.002 & $\checkmark$ \\
+\bottomrule
+\end{tabular}
+\begin{minipage}{0.95\textwidth}
+\vspace{0.5em}
+\footnotesize\textit{Notes:} FDT tests whether sector variance ($\sigma^2$) and susceptibility ($\chi$) are linearly related. Equicorrelation tests whether off-diagonal correlations are uniform (CV and Frobenius distance from equicorrelation matrix; percentile against 1000 permutations). Onsager tests IRF matrix symmetry ($L_{ij} \approx L_{ji}$) via 8-variable VAR on durable sectors. Cyclical $\rho$ tests countercyclicality of CES complementarity: Method A uses rolling pairwise correlation as $\rho$ proxy; Method B uses rolling CES NLS estimation. Data: FRED Industrial Production indices, monthly, 1972--present.
+\end{minipage}
+\end{table}

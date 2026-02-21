@@ -1,0 +1,124 @@
+Laffer Curve Empirical Test
+Testing CES complementarity predictions with US state-level data
+Date: 2026-02-20 20:26
+
+======================================================================
+FRED State GDP by Industry
+======================================================================
+  Verified: CANQGSP (83 observations)
+  Fetched: 350/350 series, 0 missing
+  Panel: 5987 obs, 50 states, 20 years, 6 sectors
+
+======================================================================
+IRS SOI Migration Data
+======================================================================
+  SOI data: 26868 pairwise flows, 11 years
+
+Panel with tax rates: 5987 obs
+  Tax rate range: 0.0% - 13.3%
+  Years: 2005-2024
+  States: 50, Sectors: 6
+
+======================================================================
+TEST A: Revenue Elasticity by Sector Complementarity
+======================================================================
+
+  Per-sector elasticities (state FE + trend):
+    Construction    (LOW): beta = -0.022810, p = 0.0008, n = 998
+    Manufacturing   (LOW): beta = -0.000174, p = 0.9688, n = 994
+    Healthcare      (LOW): beta = +0.012918, p = 0.0000, n = 1000
+    Finance         (HIGH): beta = -0.014644, p = 0.0026, n = 1000
+    Information     (HIGH): beta = +0.043109, p = 0.0000, n = 995
+    ProfServices    (HIGH): beta = -0.007973, p = 0.0026, n = 1000
+
+  Mann-Whitney U: |beta_HIGH| > |beta_LOW|
+    U = 6.0, p = 0.3500
+    Mean |beta| LOW = 0.011968, HIGH = 0.021909
+
+  Pooled interaction regression:
+    rate x HighRho: coeff = +0.012315, p = 0.0019
+    Prediction: < 0 (high-rho sectors lose more share)
+    Result: INCONSISTENT
+
+======================================================================
+TEST B: Event Study Around Tax Changes
+======================================================================
+  Kansas Brownback     (CUT +2.5pp): DID = +0.1993 [Y]
+  Kansas reversal      (HIKE +1.8pp): DID = +0.0288 [N]
+  NC flat tax          (CUT +2.5pp): DID = +0.0271 [Y]
+  CA Prop 30           (HIKE +3.0pp): DID = +0.0323 [N]
+  NY surcharge         (HIKE +2.0pp): DID = +0.0716 [N]
+  NY millionaire       (HIKE +2.1pp): DID = +0.0300 [N]
+  NJ surcharge         (HIKE +1.8pp): DID = -0.0490 [Y]
+  IL temp hike         (HIKE +2.0pp): DID = +0.0242 [N]
+  IL sunset            (CUT +1.2pp): DID = +0.0348 [Y]
+  MN 4th bracket       (HIKE +2.0pp): DID = -0.0301 [Y]
+  RI reform            (CUT +3.9pp): DID = +0.0344 [Y]
+  UT flat tax          (CUT +2.0pp): DID = -0.0504 [N]
+  IA reform            (CUT +3.0pp): DID = +0.0006 [Y]
+  OH reduction         (CUT +1.6pp): DID = +0.0919 [Y]
+
+  Summary: 8/14 events consistent
+  Binomial test (H0: p=0.5): p = 0.3953
+  Magnitude-weighted DID: -0.0174
+  Prediction: < 0 (high-rho sectors more sensitive)
+  Result: CONSISTENT
+
+======================================================================
+TEST C: Displacement Evidence (SOI Migration)
+======================================================================
+  Observations: 26868
+  log(AGI_flow) ~ rate_diff + year_FE:
+    beta = +0.0136, p = 0.0000, R2 = 0.0230
+    Prediction: beta > 0 (income flows down tax gradient)
+    Result: CONSISTENT
+
+  Preservation check:
+    CV of total interstate AGI flow: 0.2940
+    Activity redistributes, not destroyed
+
+======================================================================
+TEST D: Asymmetry (Cubic vs Quadratic)
+======================================================================
+
+  LOW-rho sectors (50 states):
+    RSS quadratic: 0.01229312
+    RSS cubic:     0.01221231
+    F-test (cubic vs quad): F = 0.30, p = 0.5838
+    Cubic coeff (d): +0.0000411199
+    Predicted d: negative (right-skewed)
+    Result: INCONSISTENT
+
+  HIGH-rho sectors (50 states):
+    RSS quadratic: 0.01893094
+    RSS cubic:     0.01893094
+    F-test (cubic vs quad): F = 0.00, p = 0.9999
+    Cubic coeff (d): -0.0000000171
+    Predicted d: positive (left-skewed)
+    Result: INCONSISTENT
+
+======================================================================
+COMPOSITE SUMMARY
+======================================================================
+
+  Test A (Revenue Elasticity (sector-specific peaks)):
+    mann_whitney_U           : U = +6.000000  p = 0.3500
+    interaction              : coeff = +0.012315  p = 0.0019
+
+  Test B (Event Study (natural experiments)):
+    event_consistency        : frac = +0.571429  p = 0.3953
+    weighted_DID             : value = -0.017395  
+
+  Test C (Displacement (migration evidence)):
+    migration_elasticity     : beta = +0.013551  p = 0.0000
+
+  Test D (Asymmetry (cubic vs quadratic)):
+    F_test_LOW               : F = +0.304407  p = 0.5838
+    cubic_d_LOW              : d = +0.000041  
+    F_test_HIGH              : F = +0.000000  p = 0.9999
+    cubic_d_HIGH             : d = -0.000000  
+
+  Tests with data: 4/4
+
+Saved figure: /home/jonsmirl/thesis/figures/laffer_curve.pdf
+Saved: /home/jonsmirl/thesis/thesis_data/laffer_results.csv

@@ -37,7 +37,9 @@
 \newcommand{\calS}{\mathcal{S}}
 \newcommand{\bone}{\mathbf{1}}
 
-\title{The $(\rho, T)$ Framework:\\Six Axioms, One Phase Diagram, and the Deductive Structure\\of an Economic Free Energy Theory}
+\title{The $(\rho, T)$ Framework:\\
+A Unified Dynamical Theory of Production, Cycles, and Crises\\
+from Six Economic Axioms}
 \author{Jon Smirl}
 \date{February 2026 \\ \smallskip \textit{Working Paper}}
 
@@ -45,41 +47,57 @@
 \maketitle
 
 \begin{abstract}
-This paper consolidates a sequence of companion papers into a single deductive framework built on six axioms: constant returns to scale, scale consistency (which together force CES production), Shannon information constraints ($T$), timescale separation, Wright's Law learning, and directed input-output coupling.  From these six axioms, every result in the companion papers follows by mathematical derivation, with no additional assumptions.  The paper makes three contributions.  First, it states the axioms precisely, proves their independence, and maps the complete dependency structure: which results require which axioms.  Axioms 1--3 yield the static theory (free energy, effective curvature, crisis sequence, six classic economic results as special cases); adding Axiom 4 yields the multi-level hierarchy and eigenstructure bridge; adding Axiom 5 yields technology cycles; adding Axiom 6 yields business cycles; and all six together yield the self-referential closure where $\rho$ is endogenous and the system has no free structural parameters.  Second, it constructs the complete $(\rho, T)$ phase diagram---the single most important object in the framework---annotating all critical curves, bifurcation loci, oscillatory regions, and the limit-cycle attractor from the companion papers.  Third, it reconciles notational tensions across papers, compiles a unified inventory of 39 testable predictions organized by data requirement and specificity, and maps each theoretical result to its empirical counterpart in the applied papers (1--7).  This paper is intended to be read first: it provides the architecture that makes the companion papers legible as a unified theory rather than a collection of related results.
+Ten companion papers develop, from six axioms, a unified theory of economic structure and dynamics parameterized by two quantities: the CES complementarity parameter $\rho$ and information temperature $T = 1/\kappa$.  This paper consolidates the framework, with emphasis on its dynamical content---the aspect most novel relative to standard economic theory.  The six axioms are: constant returns to scale and scale consistency---which together force CES production as a theorem via the Kolmogorov--Nagumo--Acz\'el characterization, with $\rho$ emerging as a universality class label preserved under aggregation---Tsallis information constraints ($q = \rho$), timescale separation across economic levels, Wright's Law learning curves, and directed input-output coupling.  From the static foundation---the Tsallis free energy $\calF_q = \Phi_{\mathrm{CES}}(\rho) - T \cdot S_q$ with effective curvature $K_{\mathrm{eff}} = K(1 - T/T^*)^+$ and a universal crisis sequence---the framework derives three layers of dynamics.  \emph{Within-sector dynamics} follow gradient flow on the free energy landscape, yielding a fluctuation-dissipation theorem ($T = \sigma^2/\chi$), critical slowing down as early warning signals, and a Jarzynski lower bound on policy costs.  \emph{Cross-sector dynamics} take port-Hamiltonian form $\dot{\mathbf{x}} = (\mathbf{J} - \mathbf{R})\nabla\calF$, where directed input-output linkages generate antisymmetric coupling $\mathbf{J}$ that produces oscillatory modes---business cycles---with sectors entering recession in order of their complementarity ($\rho$-ordering), expansion-contraction asymmetry scaling as $1/\varepsilon$, and the Minsky instability emerging as a theorem in $(\rho,T)$ space.  \emph{Technology-cycle dynamics} arise when Wright's Law learning endogenizes the phase diagram itself: concentrated investment undermines the centralized structure that funded it ($\partial T^*/\partial I < 0$), and endogenous $\rho$ evolution drives a limit cycle around the critical curve $T^*(\rho)$, reproducing the Perez technology wave with self-organized criticality and no free structural parameters.  The complete $(\rho,T)$ phase diagram encodes all qualitative dynamics: critical curve, crisis sequence boundaries, oscillation boundary, and limit-cycle attractor.  Conservation laws---the Euler-equilibrium identity, Crooks fluctuation theorem, topologically protected crisis count, and network Casimir invariants---constrain all trajectories.  Empirical tests of the framework's predictions are reported: damping cancellation (158-country panel), CES emergence from FRED industrial production, QE multiplier decay (15-fold decline across episodes), the India 2022 displacement experiment, and four firm-level tests---equicorrelation (strongly supported), countercyclical $\rho$ (supported by both correlation proxy and direct CES estimation), the fluctuation-dissipation theorem (directional), and Onsager reciprocity (not supported at sector level).  The paper serves as a reader's guide: a concordance maps each theoretical result to its proof in the companion papers and to its empirical counterpart in the applied papers (1--7).
 \end{abstract}
 
-\textbf{JEL Codes:} B41, C02, D50, E32, O33
+\textbf{JEL Codes:} B41, C02, C62, D50, E32, O33
 
-\textbf{Keywords:} axiomatic foundations, CES production, free energy, phase diagram, information temperature, unified theory, deductive structure
+\textbf{Keywords:} CES production, free energy, port-Hamiltonian dynamics, phase diagram, information temperature, business cycles, technology cycles, unified theory
 
 %=============================================================================
 \section{Introduction}\label{sec:intro}
 %=============================================================================
 
-Between them, the companion papers derive business cycles from production technology, formalize Minsky's instability hypothesis, unify four classical cycle types as eigenfrequencies of a single operator, prove that the number of crises per technology wave is a topological invariant, and show that the economy self-organizes to its own critical curve.  But a reader encountering these papers in sequence faces two obstacles: the results were discovered in a different order than the logical structure requires, and each paper introduces notation calibrated to its specific domain rather than to the whole.
+The economic free energy framework is a deductive system built on six axioms---two structural (constant returns and scale consistency, which together force CES production as a theorem), two informational (Tsallis constraints with $q = \rho$ and timescale separation), and two empirical (Wright's Law learning and directed input-output coupling).  From these axioms, the companion papers derive business cycles from production technology, formalize Minsky's instability hypothesis, unify four classical cycle types as eigenfrequencies of a single operator, prove that the crisis count per technology wave is a topological invariant, and show that the economy self-organizes to its own critical curve.
 
-This paper removes both obstacles.  It presents the framework as it \emph{is}---a deductive system built on six axioms---rather than as it was discovered.  The reader who understands this paper can navigate any companion paper by locating it in the dependency graph (\cref{sec:dependencies}) and the phase diagram (\cref{sec:phase-diagram}).
+This paper serves three purposes.  First, it states the axioms precisely and maps the complete deductive structure: which results require which axioms, and how results build on each other.  Second, it develops the \emph{dynamical} content of the framework in detail---the static theory (equilibrium selection, crisis boundaries) occupies one section, while dynamics (oscillations, cycles, limit cycles, conservation laws) occupy four.  Previous versions of this roadmap paper underemphasized the dynamics, which are the framework's most novel contribution.  Third, it connects theory to evidence, reporting the results of empirical tests and mapping each theoretical prediction to its data requirements.
 
-\paragraph{The six axioms.}
-The complete framework rests on:
-\begin{enumerate}[nosep,label=\textbf{A\arabic*}:]
-\item Constant returns to scale (homogeneity of degree one);
-\item Scale consistency (aggregation is partition-invariant);
-\item Shannon information constraints with temperature $T = 1/\kappa$;
-\item Timescale separation across economic levels;
-\item Wright's Law learning curves with elasticity $\alpha$;
-\item Directed input-output coupling between sectors.
-\end{enumerate}
+\paragraph{The two parameters.}
+The entire framework is controlled by two quantities:
+\begin{itemize}[nosep]
+\item $\rho \in (-\infty, 1)$: the CES complementarity parameter.  Lower $\rho$ means inputs are less substitutable.  The associated curvature is $K = (1-\rho)(J-1)/J$.
+\item $T = 1/\kappa \geq 0$: information temperature.  Higher $T$ means coarser information, more entropy in allocation decisions.
+\end{itemize}
+Standard economics is the $T = 0$ limit.  The framework's content lies at $T > 0$, where the interplay between complementarity and information friction generates all the dynamics.
 
-Axioms A1--A2 together force CES production with complementarity parameter $\rho < 1$ \citep{smirl2026emergent}, making CES a theorem rather than an assumption.  The remaining axioms are \emph{independent}: no axiom is derivable from the others (\cref{sec:independence}).
+\paragraph{The companion papers.}
+The theoretical framework consists of ten papers, developed in the following logical (not chronological) order:
 
-\paragraph{Effective numbering convention.}
-Since A1 and A2 always appear jointly in the results (CES requires both), the dependency tables, symbol table, and tier structure use a compound numbering with five effective axioms: \textbf{A1}~=~CES production (A1+A2 above), \textbf{A2}~=~Shannon information (A3 above), \textbf{A3}~=~Timescale separation (A4 above), \textbf{A4}~=~Wright's Law (A5 above), \textbf{A5}~=~Directed I/O (A6 above).  The six-axiom decomposition above is logically sharper; the five-axiom labeling is used in the symbol table (\cref{sec:symbols}), dependency table (\cref{sec:dependency-table}), tier diagram (\cref{sec:axiom-dependencies}), and open problems section (\cref{sec:open}).
+\begin{center}
+\footnotesize
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{p{2.8cm}p{5.5cm}p{4.5cm}}
+\toprule
+Short title & Full title & Content \\
+\midrule
+\textsc{Quadruple Role} & The CES Quadruple Role & $K$ controls 4 properties \\
+\textsc{Free Energy} & The Free Energy Principle in Economics & $\calF_q = \Phi - TS_q$; 6 classic results \\
+\textsc{Firm Theory} & Production Under Information Frictions & $K_{\mathrm{eff}}$, crisis sequence, firm scope \\
+\textsc{Technology Cycle} & The Technology Cycle as Phase Transition & Overinvestment, self-undermining \\
+\textsc{Landscape Dyn.} & Dynamics on the Free Energy Landscape & FDT, CSD, Kramers, RG \\
+\textsc{Conservation} & Conservation Laws \& Topological Invariants & Euler, Crooks, winding number \\
+\textsc{Business Cycles} & Business Cycles as Port-Ham.\ Oscillations & $\rho$-ordering, Minsky, Great Mod. \\
+\textsc{Endogenous $\rho$} & Endogenous Complementarity & Limit cycle, SOC, closure \\
+\textsc{Architecture} & Complementary Heterogeneity & Port topology, damping cancel. \\
+\textsc{Emergent CES} & Emergent CES & A1+A2 $\Rightarrow$ CES (3 proofs); $\rho$ = universality class \\
+\bottomrule
+\end{tabular}
+\end{center}
 
-The logical structure is cumulative: A1--A2 (effective) suffice for the static theory; each subsequent axiom unlocks a new layer of results.
+\noindent These theory papers provide the mathematical foundation for seven applied papers: \textsc{Endogenous Decentralization} (Paper 1), \textsc{Mesh Equilibrium} (Paper 2), \textsc{Autocatalytic Mesh} (Paper 3), \textsc{Settlement Feedback} (Paper 4), the \textsc{Architecture} paper itself (Paper 5, which serves as both theory and application), \textsc{Monetary Productivity Gap} (Paper 6), and \textsc{Fair Inheritance} (Paper 7).  \Cref{sec:concordance} provides the complete mapping.
 
 \paragraph{Outline.}
-\Cref{sec:axioms} states the axioms.  \Cref{sec:notation} establishes the unified notation, reconciling differences across papers.  \Cref{sec:phase-diagram} constructs the complete $(\rho, T)$ phase diagram.  \Cref{sec:dependencies} maps the deductive chain from axioms to results.  \Cref{sec:predictions} compiles the prediction inventory.  \Cref{sec:theory-application} maps theory to the applied papers.  \Cref{sec:open} identifies open problems.  \Cref{sec:conclusion} concludes.
+\Cref{sec:axioms} states the six axioms---including the CES emergence theorem that derives CES from constant returns and scale consistency---and proves their independence.  \Cref{sec:statics} develops the static foundation.  \Cref{sec:architecture} derives the multi-level architecture.  \Cref{sec:landscape-dynamics} develops within-sector dynamics on the free energy landscape.  \Cref{sec:oscillations} derives business cycles from the port-Hamiltonian structure.  \Cref{sec:technology} derives technology cycles and endogenous $\rho$.  \Cref{sec:conservation} presents conservation laws and topological invariants.  \Cref{sec:phase-diagram} assembles the complete $(\rho,T)$ phase diagram.  \Cref{sec:evidence} reports empirical evidence.  \Cref{sec:concordance} maps theory to application.  \Cref{sec:predictions} inventories testable predictions.  \Cref{sec:open} identifies open problems.  \Cref{sec:conclusion} concludes.
 
 %=============================================================================
 \section{The Six Axioms}\label{sec:axioms}
@@ -90,59 +108,67 @@ Each productive unit $n$ aggregates $J_n \geq 2$ heterogeneous inputs via a func
 \end{axiom}
 
 \begin{axiom}[Scale Consistency]\label{ax:nesting}
-Aggregation is invariant to the level of coarse-graining: for any partition of inputs into blocks, computing $F_n$ directly gives the same result as first aggregating within blocks, then aggregating the block-level outputs.
+Aggregation is invariant to coarse-graining: for any partition of inputs into blocks, computing $F_n$ directly gives the same result as first aggregating within blocks, then aggregating block-level outputs.
 \end{axiom}
 
-These two axioms---constant returns and scale consistency---\emph{force} CES.  The Kolmogorov--Nagumo--Acz\'el theorem shows that the unique continuous, symmetric, strictly increasing aggregator satisfying both is the power mean \citep{smirl2026emergent}:
+These two axioms force CES production (\textsc{Emergent CES} paper).
+
+\begin{theorem}[Emergent CES {\citep{smirl2026emergent}}]\label{thm:emergent}
+Let $F: \R_+^J \to \R_+$ be continuous, symmetric, strictly increasing, homogeneous of degree one (\Cref{ax:crs}), and scale-consistent (\Cref{ax:nesting}).  Then there exists $\rho \in (-\infty, 1]$ such that
 \begin{equation}\label{eq:ces}
-F_n(\mathbf{x}_n) = \left(\frac{1}{J_n}\sum_{j=1}^{J_n} x_{nj}^{\rho_n}\right)^{1/\rho_n}, \qquad \rho_n \in (-\infty, 1).
+F(\mathbf{x}) = \left(\frac{1}{J}\sum_{j=1}^{J} x_{j}^{\rho}\right)^{1/\rho},
 \end{equation}
-The elasticity of substitution is $\sigma_n = 1/(1-\rho_n)$, and the curvature parameter is $K_n = (1 - \rho_n)(J_n - 1)/J_n$.  CES is not a parametric assumption; it is the unique aggregation function compatible with multi-scale economic structure, in the same sense that the Gaussian is the unique limit of the Central Limit Theorem \citep{smirl2026emergent}.  The restriction $\rho < 1$ (complementarity, not perfect substitutability) is the sole substantive economic assumption: inputs are not interchangeable.
+with the $\rho \to 0$ limit as the geometric mean (Cobb-Douglas).
+\end{theorem}
 
-\begin{axiom}[Shannon Information Constraints]\label{ax:shannon}
-Agents allocate inputs subject to a Shannon mutual information constraint:
+Three independent arguments converge on this result, each illuminating a different aspect:
+
+\begin{enumerate}[nosep]
+\item \textbf{Renormalization group.}  CES is the unique fixed point of the aggregation RG flow among symmetric, homogeneous-of-degree-one functions.  Non-CES deviations are irrelevant operators that contract under repeated coarse-graining at rate $O(1/k^\ell)$, where $k$ is the block size and $\ell$ the number of RG steps.  CES is the production-function analogue of the Central Limit Theorem: just as sums of many independent variables converge to a Gaussian regardless of the underlying distribution, aggregates of many heterogeneous inputs converge to CES regardless of the underlying production technology.
+
+\item \textbf{Functional equations.}  The Kolmogorov--Nagumo theorem shows that any continuous, symmetric, associative (= scale-consistent) mean is quasi-arithmetic: $M_\varphi(\mathbf{x}) = \varphi^{-1}((1/J)\sum \varphi(x_j))$.  Acz\'el's theorem shows that the additional requirement of homogeneity of degree one forces $\varphi(x) = cx^\rho$---exactly the power mean family, which is CES.
+
+\item \textbf{Maximum entropy self-consistency.}  CES of order $\rho$ is the unique aggregator whose energy levels are sufficient statistics for R\'enyi entropy of order $\alpha = \rho$.  The entropy-allocation loop (maximize entropy subject to aggregate constraint; check consistency) is self-consistent only for the power-mean form.  This locks the production technology to its natural entropy measure: $\rho = \alpha$.
+\end{enumerate}
+
+\begin{remark}[$\rho$ as universality class label]\label{rem:universality}
+Under the aggregation RG, $\rho$ has scaling dimension zero---it is exactly preserved under coarse-graining while all other features of the production function flow to zero.  This makes $\rho$ the economic analogue of a critical exponent: a universality class label determining qualitative behavior.  For $\rho < 0$, equilibrium allocations have power-law tails with Pareto exponent $\zeta = \sigma = 1/(1-\rho)$; for $\rho = 0$, log-normal; for $0 < \rho < 1$, thin-tailed.  The matching $\rho = \alpha$ connects CES to Tsallis non-extensive thermodynamics with $q = \rho$, providing a deep reason for the ubiquity of power laws in complementary production sectors \citep{gabaix2009}.  The translog production function---the standard ``flexible'' alternative---adds irrelevant operators to the CES fixed point; its interaction terms vanish under aggregation, explaining why CES fits aggregate data well despite being ``more restrictive.''
+\end{remark}
+
+The elasticity of substitution is $\sigma_n = 1/(1-\rho_n)$, and the curvature parameter is $K_n = (1 - \rho_n)(J_n - 1)/J_n$.  CES is not an assumption; it is a theorem---the unique aggregation function compatible with multi-scale structure.  The restriction $\rho < 1$ (complementarity, not perfect substitutability) is the sole substantive economic assumption: inputs are not interchangeable.
+
+\begin{axiom}[Tsallis Information Constraints]\label{ax:shannon}
+Agents allocate inputs subject to a Tsallis information constraint with $q = \rho$:
 \begin{equation}\label{eq:shannon}
-I(\mathbf{x}; \boldsymbol{\theta}) \leq \kappa \quad \text{(nats)},
+S_q(\mathbf{x}; \boldsymbol{\theta}) \leq \kappa \quad \text{(nats)}, \qquad q = \rho,
 \end{equation}
-where $\boldsymbol{\theta}$ is the vector of input qualities and $\kappa$ is channel capacity.  The \emph{information temperature} is $T = 1/\kappa$.
+where $\boldsymbol{\theta}$ is the vector of input qualities, $\kappa$ is channel capacity, and $S_q = (1-\sum p_j^q)/(q-1)$ is Tsallis entropy with $q = \rho$ locked by the emergence theorem (\Cref{thm:emergent}).  The information temperature is $T = 1/\kappa$.
 \end{axiom}
 
-This is the rational inattention framework of \citet{sims2003}, parameterized by $T$ rather than $\kappa$.  Higher $T$ means less information capacity, coarser allocation, more entropy.  The key consequence: the equilibrium allocation maximizes the \emph{economic free energy}
-\begin{equation}\label{eq:free-energy}
-\calF(\mathbf{x}; \rho, T) = \Phi_{\mathrm{CES}}(\mathbf{x}; \rho) - T \cdot H(\mathbf{x}),
-\end{equation}
-where $\Phi = -\sum_n \log F_n$ is the CES potential and $H = -\sum_{nj} p_{nj}\log p_{nj}$ is Shannon entropy \citep{smirl2026free}.
+This generalizes the rational inattention framework of \citet{sims2003} from Shannon ($q=1$) to Tsallis entropy.  The pseudo-additivity of Tsallis entropy captures the non-additive information costs inherent in complementary production ($\rho < 1$): learning about input $j$ changes the marginal value of information about input $k$ when inputs interact.  Higher $T$ means less information capacity, coarser allocation, more entropy.  The companion paper \citep{smirl2026tsallis} develops the full Tsallis framework and classifies all dynamical results.
 
 \begin{axiom}[Timescale Separation]\label{ax:timescale}
-The economy has $N$ levels with adjustment timescales $\tau_1 > \tau_2 > \cdots > \tau_N$, with adjacent ratios $r_k = \tau_k/\tau_{k+1} > r^*$ where $r^* \geq 2$ is the minimum ratio for the singular perturbation reduction to hold.
+The economy has $N$ levels with adjustment timescales $\tau_1 > \tau_2 > \cdots > \tau_N$, with adjacent ratios $r_k = \tau_k/\tau_{k+1} > r^*$ where $r^* \geq 2$ is the minimum ratio for singular perturbation reduction.
 \end{axiom}
 
-This is the standard assumption of multi-scale modeling \citep{kuehn2015}, applied to the economic observation that infrastructure changes more slowly than institutions, institutions more slowly than markets, and markets more slowly than financial prices.  Timescale separation enables the slow-manifold reductions that make the framework analytically tractable.
-
-\medskip
-\noindent\emph{Empirical calibration and approximation quality.}
-Continuous wavelet transform (Morlet) analysis of US industrial production (FRED INDPRO, 1919--2025) identifies spectral peaks with median adjacent-peak separation ratio $2.1$ (IQR~$[1.84, 2.63]$, maximum $5.5$), yielding an effective hierarchy depth $N_{\mathrm{eff}} = 4$--$5$ across all decades (mean $4.5$, s.d.\ $1.0$) when $r^* = 2$ \citep{smirl2026complementary}.
-At this empirically calibrated $r^* \approx 2$, the nearest-neighbor coupling topology (Paper 9b, Theorem~3.1(iv)) is an $O(1/r^*) \approx O(0.5)$ approximation: non-adjacent coupling terms are suppressed by a factor of $\sim 1/2$ relative to adjacent terms.
-All qualitative results (activation threshold, ceiling cascade, damping cancellation) are robust to this correction; quantitative predictions (transition duration, spectral radius) carry $O(1/r^*)$ uncertainty.
-The hierarchy is better understood as a \emph{wavelet multiresolution}---a continuous spectrum organized into approximately octave-spaced bands---rather than a cleanly separated discrete ladder.
+Empirical calibration via continuous wavelet transform of US industrial production (FRED INDPRO, 1919--2025) identifies $N_{\mathrm{eff}} = 4$--$5$ levels with median adjacent-ratio $r^* \approx 2.1$ \citep{smirl2026complementary}.
 
 \begin{axiom}[Wright's Law Learning]\label{ax:wright}
-Cumulative production $Q_n$ reduces unit cost according to:
+Cumulative production $Q_n$ reduces unit cost:
 \begin{equation}\label{eq:wright}
-c_n(Q_n) = c_{n,0} \cdot Q_n^{-\alpha_n}, \qquad \alpha_n \in (0, 1),
+c_n(Q_n) = c_{n,0} \cdot Q_n^{-\alpha_n}, \qquad \alpha_n \in (0, 1).
 \end{equation}
-where $\alpha_n$ is the learning elasticity.
 \end{axiom}
 
-Wright's Law is the most robust empirical regularity in the economics of technological change, verified across semiconductors, solar cells, batteries, aircraft, and dozens of other technologies \citep{wright1936,nagy2013}.  The learning elasticity $\alpha$ is a measurable physical constant of the production process.
+Wright's Law is the most robust empirical regularity in the economics of technological change, verified across semiconductors, solar cells, batteries, and dozens of other technologies \citep{wright1936,nagy2013}.
 
 \begin{axiom}[Directed Input-Output Coupling]\label{ax:io}
-Sectors are coupled through a Leontief input-output matrix $\mathbf{A} = [a_{nm}]$ that is generically asymmetric: $\mathbf{A} \neq \mathbf{A}^\top$.  The decomposition $\mathbf{A} = \mathbf{S} + \mathbf{J}_A$ into symmetric ($\mathbf{S}$) and antisymmetric ($\mathbf{J}_A$) components satisfies $\|\mathbf{J}_A\|_F / \|\mathbf{S}\|_F > 0$.
+Sectors are coupled through a Leontief input-output matrix $\mathbf{A} = [a_{nm}]$ that is generically asymmetric: $\mathbf{A} \neq \mathbf{A}^\top$.  The decomposition $\mathbf{A} = \mathbf{S} + \mathbf{J}_A$ into symmetric and antisymmetric components satisfies $\|\mathbf{J}_A\|_F / \|\mathbf{S}\|_F > 0$.
 \end{axiom}
 
-This is an empirical statement about the structure of real input-output tables: supply chains are directed.  Steel feeds into automobiles but not conversely.  The antisymmetric component is not small---in US BEA tables, $\|\mathbf{J}_A\|_F / \|\mathbf{S}\|_F \approx 0.4$--$0.7$ \citep{smirl2026business}.
+This is an empirical statement about real input-output tables: supply chains are directed.  In US BEA tables, the asymmetry ratio $\|\mathbf{J}_A\|_F / \|\mathbf{S}\|_F \approx 0.4$--$0.7$ \citep{smirl2026business}.
 
-\subsection{Independence of the axioms}\label{sec:independence}
+\subsection{Independence}\label{sec:independence}
 
 \begin{proposition}[Axiom independence]\label{prop:independence}
 No axiom is derivable from the remaining five.
@@ -150,152 +176,431 @@ No axiom is derivable from the remaining five.
 
 \begin{proof}[Proof sketch]
 For each axiom, exhibit a model satisfying the others but violating it:
-\begin{enumerate}[nosep]
-\item \emph{Drop A1} (CRS): An economy with fixed costs (increasing returns at small scale) satisfies A2--A6 but violates homogeneity.
-\item \emph{Drop A2} (Scale consistency): A translog production function satisfies A1, A3--A6 but violates partition invariance---the aggregate depends on how inputs are grouped.
-\item \emph{Drop A3} (Shannon): A perfect-information economy ($T = 0$) satisfies A1--A2, A4--A6 but has no information constraints.  The free energy reduces to the CES potential without the entropy term.
-\item \emph{Drop A4} (Timescale separation): A single-level economy satisfies A1--A3, A5--A6 but has no hierarchical structure.
-\item \emph{Drop A5} (Wright's Law): A static-technology economy with fixed costs satisfies A1--A4, A6 but has no learning dynamics.
-\item \emph{Drop A6} (Directed I/O): An economy with symmetric trade ($\mathbf{A} = \mathbf{A}^\top$) satisfies A1--A5 but produces purely dissipative dynamics with no oscillatory modes.
-\end{enumerate}
+(1)~Drop CRS: fixed costs (increasing returns at small scale) satisfy A2--A6.
+(2)~Drop Scale Consistency: translog satisfies A1, A3--A6 but its aggregate depends on grouping.
+(3)~Drop Tsallis: a perfect-information economy ($T = 0$) satisfies A1--A2, A4--A6 but has no entropy term.
+(4)~Drop Timescale Separation: a single-level economy satisfies A1--A3, A5--A6.
+(5)~Drop Wright's Law: static technology with fixed costs satisfies A1--A4, A6.
+(6)~Drop Directed I/O: symmetric trade ($\mathbf{A} = \mathbf{A}^\top$) satisfies A1--A5 but produces purely dissipative dynamics with no oscillations.
 \end{proof}
 
+\subsection{Cumulative structure}\label{sec:cumulative}
+
+The results of the framework organize by how many axioms they require:
+\begin{itemize}[nosep]
+\item \textbf{A1--A2} (CRS + Scale Consistency $\Rightarrow$ CES emergence): Quadruple role of $K$, $\rho$ as universality class, free energy $\calF$, effective curvature, crisis sequence.
+\item \textbf{+A3} (Tsallis): Free energy $\calF_q = \Phi - TS_q$ with $q = \rho$, information temperature $T = 1/\kappa$.
+\item \textbf{+A4} (Timescale separation): Port topology, eigenstructure bridge, damping cancellation, activation threshold.
+\item \textbf{+A5} (Wright's Law): Overinvestment, self-undermining, Perez phases, duration formula.
+\item \textbf{+A6} (Directed I/O): Port-Hamiltonian oscillations, $\rho$-ordering, Minsky trap, cycle hierarchy.
+\item \textbf{All six}: Endogenous $\rho$, limit cycle, self-organized criticality, closure.
+\end{itemize}
+Each axiom unlocks a new layer of results.  Crucially, the first two axioms are structural (constant returns and scale consistency)---CES production and its universality class label $\rho$ are derived, not assumed.  The static theory requires only CES and Tsallis information constraints; the full dynamical theory requires all six.
+
 %=============================================================================
-\section{Unified Notation}\label{sec:notation}
+\section{The Static Foundation}\label{sec:statics}
 %=============================================================================
 
-The companion papers developed organically, producing notational inconsistencies.  This section establishes the canonical notation.
+\subsection{The CES quadruple role}\label{sec:quadruple}
 
-\subsection{Resolving $T^*$}\label{sec:resolve-Tstar}
+The curvature parameter $K = (1-\rho)(J-1)/J$ simultaneously controls four distinct economic properties (\textsc{Quadruple Role} paper):
 
-The critical temperature appears in two forms across the papers:
-\begin{itemize}[nosep]
-\item \textbf{Paper 10} (exact): $T^*_n = 2(J_n - 1)c_n^2 d_n^2 / K_n$, derived from the condition that the output loss from misallocation equals the complementarity premium.
-\item \textbf{Papers 11--15} (leading-order): $T^*_n \approx K_n$, valid at the symmetric allocation with unit-normalized inputs.
-\end{itemize}
-
-\begin{definition}[Canonical critical temperature]\label{def:Tstar}
-The critical temperature of sector $n$ is:
-\begin{equation}\label{eq:Tstar}
-T^*_n = \frac{(1-\rho_n)(J_n - 1)}{J_n} \cdot \frac{2\bar{x}_n^2}{\lambda_{\max}(-\nabla^2\Phi_n|_{\mathrm{sym}})^{-1}} = K_n \cdot \Theta_n,
-\end{equation}
-where $\Theta_n = 2\bar{x}_n^2 / \lambda_{\max}^{-1}$ is a normalization factor equal to 1 at the symmetric allocation with unit inputs.  Papers 11--15 work at $\Theta_n = 1$; Paper 10 retains the full expression.  No results conflict: the leading-order approximation $T^* \approx K$ is exact at symmetric equilibrium and correct to first order elsewhere.
-\end{definition}
-
-\subsection{Resolving $H$}\label{sec:resolve-H}
-
-Two objects share the letter $H$:
-\begin{itemize}[nosep]
-\item $H(\mathbf{p}) = -\sum_j p_j \log p_j$: Shannon entropy of the allocation (Papers 8--10).
-\item $\calH(\mathbf{x})$: the Hamiltonian of the port-Hamiltonian system (Papers 13--14).
-\end{itemize}
-
-\begin{definition}[Canonical notation]\label{def:H-notation}
-We reserve:
-\begin{itemize}[nosep]
-\item $H$ for Shannon entropy;
-\item $\calF = \Phi - T \cdot H$ for the economic free energy;
-\item The port-Hamiltonian form uses $\calF$ as the Hamiltonian: $\dot{\mathbf{x}} = (\mathbf{J} - \mathbf{R})\nabla\calF$.
-\end{itemize}
-There is no separate ``Hamiltonian''---the free energy $\calF$ plays both roles.  The port-Hamiltonian system conserves $\calF$ along $\mathbf{J}$-flows (antisymmetric part) and dissipates $\calF$ along $\mathbf{R}$-flows (symmetric part).
-\end{definition}
-
-\subsection{Resolving gradient flow vs.\ port-Hamiltonian}\label{sec:resolve-dynamics}
-
-Paper 12 uses gradient flow ($\dot{\mathbf{x}} = -\mathbf{L}\nabla\calF$).  Paper 14 uses port-Hamiltonian dynamics ($\dot{\mathbf{x}} = (\mathbf{J} - \mathbf{R})\nabla\calF$).  These are not alternatives---they are limits of a single system.
-
-\begin{proposition}[Dynamics hierarchy]\label{prop:dynamics-hierarchy}
-The full dynamics of the multi-sector economy are port-Hamiltonian:
-\begin{equation}\label{eq:full-dynamics}
-\dot{\mathbf{x}} = (\mathbf{J} - \mathbf{R})\nabla\calF.
-\end{equation}
-Three limiting cases:
 \begin{enumerate}[nosep]
-\item \textbf{Within-sector} ($\mathbf{J} = 0$): reduces to gradient flow $\dot{\mathbf{x}} = -\mathbf{R}\nabla\calF$.  This is Paper 12's framework.  No oscillations; monotone convergence.
-\item \textbf{Infinite timescale separation} ($\varepsilon \to 0$): each level equilibrates instantly on its own slow manifold.  The effective dynamics are sequential gradient flows with no cross-level oscillations.  This is Paper 9b's framework.
-\item \textbf{Finite timescale separation} ($\varepsilon > 0$): the antisymmetric coupling $\mathbf{J}$ from directed input-output linkages generates oscillatory modes.  This is Paper 14's framework.
+\item \textbf{Superadditivity}: heterogeneous inputs produce more than the sum of parts, with gap $\propto K \cdot \text{diversity}$.
+\item \textbf{Correlation robustness}: the CES nonlinearity extracts idiosyncratic variation that linear aggregates miss, with bonus $\propto K^2 \cdot \text{idiosyncratic variance}$.
+\item \textbf{Strategic independence}: balanced allocation is a Nash equilibrium; coalitions cannot profitably redistribute, with manipulation penalty $\propto K \cdot \text{deviation}^2$.
+\item \textbf{Network scaling}: the value of adding an input scales as $J^{1/\rho}$, connecting CES complementarity to Sarnoff ($\rho \to 1$), Metcalfe ($\rho = 1/2$), and super-Metcalfe ($\rho < 1/2$) scaling.
 \end{enumerate}
-Gradient flow is the $\mathbf{J} = 0$ or $\varepsilon \to 0$ limit of the port-Hamiltonian system.  All results derived under gradient flow remain valid as the dissipative component of the full dynamics.
-\end{proposition}
 
-\subsection{Master symbol table}\label{sec:symbols}
+When $K = 0$ (perfect substitutes, $\rho \to 1$), all four vanish simultaneously.  These are not four separate properties; they are four views of the same geometric fact---the curvature of CES isoquants at symmetric equilibrium.  Results extend to asymmetric CES weights via the secular equation of the weighted inverse-share matrix.
 
+\subsection{The free energy}\label{sec:free-energy}
+
+Under information frictions (Axiom~3), the equilibrium allocation maximizes the economic free energy (\textsc{Free Energy} paper):
+\begin{equation}\label{eq:free-energy}
+\calF_q(\mathbf{x}; \rho, T) = \Phi_{\mathrm{CES}}(\mathbf{x}; \rho) - T \cdot S_q(\mathbf{x}), \qquad q = \rho,
+\end{equation}
+where $\Phi = -\sum_n \log F_n$ is the CES potential and $S_q = (1 - \sum_{nj} p_{nj}^q)/(q-1)$ is Tsallis entropy with $q = \rho$ locked by the emergence theorem (\Cref{rem:universality}).  Shannon entropy ($q \to 1$) is the special case for perfect substitutes.  The companion paper \citep{smirl2026tsallis} develops the full Tsallis framework: all results from Papers~12--13 are classified as exact survivors, $q$-corrected (factor $1/(2-q)$), or structurally changed ($\exp \to \exp_q$).  Standard economics is the $T = 0$ limit: perfect information, deterministic optimization.  At $T > 0$, six major areas of economic theory emerge as specific manifestations of information friction degrading a CES aggregate: Akerlof's adverse selection, Myerson's mechanism design, Arrow's impossibility (relaxed to possibility at $T > 0$), Diamond-Mortensen-Pissarides search, Grossman-Hart-Moore hold-up, and behavioral anomalies as rational inattention at $T > 0$.  Each derivation yields new $\rho$-dependent predictions absent from the original theories.
+
+\subsection{Effective curvature and crisis sequence}\label{sec:effective-curvature}
+
+Under information frictions, the curvature a firm can exploit is reduced (\textsc{Firm Theory} paper):
+\begin{equation}\label{eq:keff}
+K_{\mathrm{eff}} = K \cdot \left(1 - \frac{T}{T^*(\rho)}\right)^+
+\end{equation}
+where $T^*(\rho) = K(\rho)$ at the symmetric allocation with unit-normalized inputs.  Above $T^*$, allocation degrades to uniform randomness regardless of the underlying technology.
+
+The three roles of curvature degrade non-uniformly:
+\begin{itemize}[nosep]
+\item Correlation robustness (second-order in $K$): degrades \emph{quadratically} as $(1 - T/T^*)^2$.
+\item Superadditivity (first-order in $K$): degrades \emph{linearly} as $(1 - T/T^*)$.
+\item Strategic independence: degrades linearly, slightly lagging superadditivity.
+\end{itemize}
+
+This non-uniform degradation forces a \textbf{universal crisis sequence}: as $T$ rises at fixed $\rho$, diversification strategies fail first (financial crisis), then complementary production ceases to outperform (productive disruption), then coordination collapses (governance breakdown).  The ordering is mathematical---quadratic degrades faster than linear---and independent of institutional detail.
+
+The crisis sequence boundaries in $(\rho, T)$ space are:
+\begin{align}
+T_{\mathrm{corr}}^*(\rho) &= T^*(\rho)/2 \quad \text{(correlation robustness lost 75\%)}, \\
+T_{\mathrm{super}}^*(\rho) &= T^*(\rho) \quad \text{(superadditivity reaches zero)}, \\
+T_{\mathrm{strat}}^*(\rho) &= T^*(\rho)(1 + \delta) \quad \text{(strategic independence breaks)}.
+\end{align}
+
+\subsection{The Laffer curve as a free energy result}\label{sec:laffer}
+
+The effective curvature theorem yields the Laffer curve as a corollary, with additional structure absent from the standard argument.
+
+\paragraph{Derivation.}
+Taxation acts as an information friction: a tax rate $\tau$ distorts relative prices, creates compliance costs, and incentivizes avoidance, all of which raise the effective temperature:
+\begin{equation}\label{eq:tax-temp}
+T_{\mathrm{eff}}(\tau) = T_0 + g(\tau), \qquad g' > 0, \quad g(0) = 0,
+\end{equation}
+where $T_0$ is the pre-tax information temperature and $g$ is increasing in the tax rate.  Tax revenue is rate times base:
+\begin{equation}\label{eq:laffer}
+R(\tau) = \tau \cdot Y\!\left(K_{\mathrm{eff}}(\tau)\right),
+\end{equation}
+where output depends on effective curvature $K_{\mathrm{eff}} = K(1 - T_{\mathrm{eff}}/T^*)^+$.  Revenue is zero at $\tau = 0$ (no tax) and zero when $g(\tau) \geq T^* - T_0$ (the economy crosses the critical curve and the tax base collapses).  A maximum exists in between: the Laffer peak.
+
+\paragraph{What the framework adds.}
+The standard Laffer curve says only that the peak exists.  The free energy framework provides five additional predictions:
+
+\begin{enumerate}[nosep]
+\item \textbf{The peak depends on $\rho$.}  Low-$\rho$ sectors (complementary inputs: construction, manufacturing) have higher $T^*$ and tolerate higher tax rates before reaching the peak.  High-$\rho$ sectors (substitutable inputs: financial services, digital goods) have lower $T^*$ and hit the peak at lower rates.  This predicts \emph{sector-specific Laffer curves}.
+
+\item \textbf{The crisis sequence governs the decline.}  As $\tau$ rises past the peak, the three roles of $K$ degrade in order: correlation robustness first (capital flight, portfolio reallocation), then superadditivity (firms restructure to avoid tax), then strategic independence (underground economy).  The ordering within the Laffer decline is forced by the quadratic-before-linear degradation, independent of institutional detail.
+
+\item \textbf{Displacement, not suppression} (via Kramers escape).  The escape rate from the taxed basin is $k = \nu\exp(-\Delta\calF/T_{\mathrm{eff}})$.  Higher $\tau$ raises $T_{\mathrm{eff}}$, increasing the escape rate.  Activity does not vanish---it escapes to untaxed basins (offshore, informal sector).  The India 2022 experiment (\Cref{sec:evidence-india}) confirms this: a 30\% crypto tax produced $-86\%$ domestic volume but 72\% displacement offshore.
+
+\item \textbf{Non-symmetric shape.}  The quadratic degradation of correlation robustness means the initial decline past the peak is gentle (financial reallocation absorbs friction), then steepens sharply once superadditivity degrades.  The curve is right-skewed for low-$\rho$ sectors and left-skewed for high-$\rho$ sectors.
+
+\item \textbf{The Jarzynski bound constrains deadweight loss.}  The minimum cost of tax-induced reallocation is $\Delta\calF$.  Beyond the peak, deadweight loss $W_{\mathrm{diss}} = W - \Delta\calF$ grows as $\tau$ rises, estimable from the variance of outcomes across jurisdictions with different rates.
+\end{enumerate}
+
+\begin{remark}[Connection to Paper 7]\label{rem:fair-inheritance}
+The fair inheritance tax (Paper 7) is designed to sit at the Laffer peak by construction.  Its binary choice---pay the tax (concentrated transfer) or disperse widely (zero-tax pathway)---eliminates the distortion ($g(\tau) = 0$) for the disperse pathway while achieving the policy objective (deconcentration).  This is why the projected revenue (\$85--135B/yr) exceeds the current estate tax by $5\times$: the mechanism operates at the peak rather than on the declining portion.
+\end{remark}
+
+%=============================================================================
+\section{The Multi-Level Architecture}\label{sec:architecture}
+%=============================================================================
+
+With timescale separation (Axiom~4), the framework generates an economy with $N$ hierarchical levels.  The \textsc{Architecture} paper derives five results from CES geometry applied across levels.
+
+\subsection{Port topology theorem}\label{sec:port-topology}
+
+The cross-sector interaction structure is not assumed---it is derived.  CES geometry at symmetric equilibrium forces three topological constraints:
+
+\begin{enumerate}[nosep]
+\item \textbf{Aggregate coupling}: only sector-level output $F_n$ (not individual inputs $x_{nj}$) matters to other sectors.  The inter-sector Hessian has rank 1 per sector pair.
+\item \textbf{Directed feed-forward}: timescale separation requires that slow sectors set ceilings for fast sectors, not vice versa.  The coupling is generically asymmetric.
+\item \textbf{Nearest-neighbor topology}: sectors cannot skip levels in the hierarchy.  The coupling matrix is tridiagonal to leading order in $1/r^*$, with corrections of $O(1/r^*)$ from non-adjacent interactions.
+\end{enumerate}
+
+At the empirically calibrated $r^* \approx 2$, the nearest-neighbor approximation carries $O(0.5)$ corrections---meaningful but not dominant.  The hierarchy is better understood as a wavelet multiresolution (continuous spectrum in approximately octave-spaced bands) than a cleanly separated discrete ladder.
+
+\subsection{Spectral activation threshold}\label{sec:activation}
+
+Individual sectors can each be too weak to sustain non-trivial activity, yet the system as a whole can sustain it through cross-sector feedbacks.  The condition is:
+\begin{equation}\label{eq:activation}
+\rho(\mathbf{K}) > 1,
+\end{equation}
+where $\rho(\mathbf{K})$ is the spectral radius of the next-generation matrix---the same mathematical object that governs epidemic thresholds in SIR models.  This is the \textbf{master reproduction number} $R_0$ of the framework: nontrivial equilibrium exists if and only if the spectral radius exceeds 1.
+
+\subsection{Eigenstructure bridge}\label{sec:eigenbridge}
+
+The deepest architectural result connects technology to welfare:
+\begin{equation}\label{eq:eigenbridge}
+\nabla^2 \Phi\big|_{\mathrm{slow}} = \mathbf{W}^{-1} \cdot \nabla^2 V,
+\end{equation}
+where $\Phi$ is the CES free energy (technology Hessian), $V$ is the Lyapunov function (welfare loss), and $\mathbf{W}$ is the institutional supply-rate matrix (how efficiently adjustment occurs at each level).  The eigenvalues of $\mathbf{W}^{-1}\nabla^2 V$ are the adjustment speeds: the smallest eigenvalue identifies the binding constraint---the most institutionally rigid sector, not necessarily the most visible disequilibrium.
+
+\subsection{Damping cancellation}\label{sec:damping-cancellation}
+
+\begin{theorem}[Damping cancellation]\label{thm:damping}
+Increasing damping (regulation) $\sigma_n$ at level $n$ has two effects that exactly cancel in steady state: (i) faster convergence to equilibrium (beneficial), and (ii) lower equilibrium output (costly).  The net welfare effect is zero.
+\end{theorem}
+
+\noindent\textbf{Upstream reform principle}: to accelerate adjustment at level $n$, reform upstream---reduce $\sigma_{n-1}$ or increase gain elasticity $\beta_n$.  Local regulation cannot improve both speed and level simultaneously.
+
+\subsection{Hierarchical ceiling cascade}\label{sec:ceiling}
+
+Each level's output is bounded by the level below it in the timescale hierarchy:
+\begin{equation}
+F_n^* \leq g(F_{n-1}^*), \qquad n = 2, \ldots, N.
+\end{equation}
+The long-run growth rate of the entire system is set by the slowest level.  In the current hierarchy (hardware--network--capability--settlement), the binding constraint is semiconductor improvement, with transition duration $\sim 8$ years at Wright's Law rates via canard bifurcation dynamics.
+
+%=============================================================================
+\section{Dynamics I: On the Free Energy Landscape}\label{sec:landscape-dynamics}
+%=============================================================================
+
+The static theory characterizes equilibria; this section and the next two develop the dynamics.  The \textsc{Landscape Dynamics} paper treats the free energy $\calF$ as a landscape on which the economy evolves, importing six families of results from statistical mechanics with new economic content.
+
+\subsection{Gradient flow}\label{sec:gradient-flow}
+
+Within a single sector (no cross-sector coupling), the economy's relaxation toward equilibrium follows gradient flow:
+\begin{equation}\label{eq:gradient-flow}
+\dot{\mathbf{x}} = -\mathbf{L}\,\nabla \calF(\mathbf{x}),
+\end{equation}
+where $\mathbf{L} \succeq 0$ is a mobility matrix encoding how quickly inputs can be reallocated.  The eigenvalues of $\mathbf{L}\,\nabla^2\calF$ are the relaxation rates.  The smallest eigenvalue---the slowest relaxation mode---determines adjustment duration and identifies the bottleneck.
+
+This gradient flow is the $\mathbf{J} = 0$ limit of the full port-Hamiltonian dynamics developed in \Cref{sec:oscillations}.  It applies within sectors and in the limit of infinite timescale separation ($\varepsilon \to 0$), where each level equilibrates instantly on its own slow manifold.
+
+\subsection{Fluctuation-dissipation theorem}\label{sec:fdt}
+
+At equilibrium, the response of output to shocks equals the ratio of spontaneous fluctuations to information temperature:
+\begin{equation}\label{eq:fdt}
+\chi_{ij} = \frac{\sigma_{ij}^2}{T},
+\end{equation}
+where $\chi$ is the response matrix and $\sigma^2$ is the covariance of spontaneous fluctuations.  This operationalizes $T$ as a \textbf{measurable quantity}: information temperature equals productivity variance divided by shock responsiveness.  The FDT provides a data-driven method for estimating the key parameter that the companion papers treat as exogenous.
+
+\subsection{Critical slowing down}\label{sec:csd}
+
+As the system approaches a phase boundary ($T \to T^*$ or $K_{\mathrm{eff}} \to 0$), the dominant relaxation rate vanishes:
+\begin{equation}
+\lambda_{\min} \propto |T^* - T| \to 0.
+\end{equation}
+Autocorrelation time diverges and variance increases.  These are detectable \textbf{early warning signals} before technology crossings and financial crises:
+\begin{itemize}[nosep]
+\item Rising lag-1 autocorrelation in sector-level productivity;
+\item Rising variance in asset returns;
+\item Increasing cross-sector correlation (loss of independence).
+\end{itemize}
+The early warning signals are generic---they follow from the landscape geometry near any critical point---and independent of the specific mechanism driving $T$ toward $T^*$.
+
+\subsection{Onsager reciprocal relations}\label{sec:onsager}
+
+Near equilibrium, the matrix of cross-sector transport coefficients is symmetric: $L_{ij} = L_{ji}$.  A perturbation to complementarity in sector $i$ that induces information flow to sector $j$ has the same coefficient as a perturbation to information capacity in sector $j$ that induces complementarity change in sector $i$.  This is a testable overidentifying restriction.
+
+\subsection{Kramers escape theory}\label{sec:kramers}
+
+The transition rate from one basin (e.g., centralized production) to another (distributed production) is:
+\begin{equation}\label{eq:kramers}
+k = \nu \exp\left(-\frac{\Delta\calF}{T}\right),
+\end{equation}
+where $\Delta\calF$ is the free energy barrier height and $\nu$ is an attempt frequency determined by the landscape curvature.  This converts deterministic crossing predictions into probability distributions over transition times: the crossing is not a threshold event at a specific date but a stochastic process with rate $k$.
+
+\subsection{Jarzynski equality and policy costs}\label{sec:jarzynski}
+
+The minimum cost of forcing an economic transition is the free energy difference $\Delta\calF$:
+\begin{equation}\label{eq:jarzynski}
+\langle e^{-W/T} \rangle = e^{-\Delta\calF/T},
+\end{equation}
+where $W$ is the work performed by policy.  Excess cost (deadweight loss) equals dissipated work: $W_{\mathrm{diss}} = W - \Delta\calF \geq 0$.  This provides a thermodynamic lower bound on policy costs, measurable from the variance of outcomes across policy implementations.
+
+\subsection{Renormalization group}\label{sec:rg}
+
+Under coarse-graining from firms to industries to economies, $\rho$ and $T$ are the \textbf{only relevant parameters}.  All microscopic details---firm strategies, individual preferences, institutional forms---are irrelevant operators that renormalize to zero.  This is why macroscopic regularities (business cycles, technology waves) are predictable despite microscopic chaos: the RG flow preserves only the two parameters that matter.  CES is the fixed point of the aggregation RG flow (\Cref{thm:emergent}), so the production-function structure assumed at the aggregate level is in fact a \emph{consequence} of aggregation---the first of three routes to CES emergence.
+
+%=============================================================================
+\section{Dynamics II: Business Cycles}\label{sec:oscillations}
+%=============================================================================
+
+The \textsc{Business Cycles} paper shows that oscillatory dynamics---business cycles---are intrinsic to any production economy with heterogeneous complementarities and directed inter-sector linkages.
+
+\subsection{Port-Hamiltonian dynamics}\label{sec:port-ham}
+
+The full multi-sector dynamics take the port-Hamiltonian form:
+\begin{equation}\label{eq:port-ham}
+\dot{\mathbf{x}} = (\mathbf{J} - \mathbf{R})\,\nabla\calF(\mathbf{x}),
+\end{equation}
+where:
+\begin{itemize}[nosep]
+\item $\mathbf{R} = \mathbf{R}^\top \succeq 0$: the dissipation matrix encoding within-sector adjustment frictions.  This is the symmetric part of the dynamics, responsible for convergence and energy dissipation.
+\item $\mathbf{J} = -\mathbf{J}^\top$: the antisymmetric coupling matrix derived from directed input-output linkages.  This is the conservative (Hamiltonian) part, responsible for oscillations.
+\end{itemize}
+
+The $\mathbf{J}$-component conserves free energy ($\mathbf{x}^\top \mathbf{J}\,\nabla\calF = 0$ by antisymmetry) while transferring it between sectors.  The $\mathbf{R}$-component dissipates free energy ($-\mathbf{x}^\top \mathbf{R}\,\nabla\calF \leq 0$ by positive semidefiniteness).  Together they produce damped oscillations whose character depends on the damping ratio:
+\begin{equation}
+\zeta = \frac{r}{\omega},
+\end{equation}
+where $r$ is the dissipation rate (eigenvalue of $\mathbf{R}\nabla^2\calF$) and $\omega$ is the oscillation frequency (eigenvalue of $\mathbf{J}\nabla^2\calF$).
+
+\begin{remark}[Dynamics hierarchy]\label{rem:dynamics}
+The gradient flow of \Cref{sec:gradient-flow} is the $\mathbf{J} = 0$ special case.  All results derived under gradient flow remain valid as the dissipative component of the full dynamics.  The port-Hamiltonian structure adds oscillations; it does not invalidate gradient flow results.
+\end{remark}
+
+\subsection{The $\rho$-ordering theorem}\label{sec:rho-ordering}
+
+Different sectors have different complementarity parameters $\rho_n$.  Each sector has a critical temperature $T^*(\rho_n) \propto K_n$: sectors with lower $\rho$ (more complementary inputs) have higher critical temperatures and are more robust to information friction.
+
+\begin{theorem}[$\rho$-ordering]\label{thm:rho-ordering}
+As information friction $T$ rises during an expansion, sectors breach their critical thresholds in order of decreasing $\rho$ (increasing $K$): the most complementary sectors---housing, financial services---fail first, while the least complementary---consumer services, software---fail last.  Recovery follows the reverse order.
+\end{theorem}
+
+This derives the empirical regularity documented by \citet{leamer2007}: in every post-war US recession, housing and finance lead the downturn while services lag.  The framework provides the mechanism---sectoral $\rho$-heterogeneity---rather than assuming the ordering.
+
+\subsection{Relaxation oscillations and asymmetry}\label{sec:relaxation}
+
+Near a fold in the slow manifold, the port-Hamiltonian system produces \textbf{relaxation oscillations}---slow drift followed by fast transition.  The asymmetry between expansion and contraction durations scales as:
+\begin{equation}
+\frac{\text{expansion duration}}{\text{contraction duration}} \sim \frac{1}{\varepsilon},
+\end{equation}
+where $\varepsilon = \tau_{\mathrm{financial}}/\tau_{\mathrm{real}}$ is the timescale ratio between financial and real adjustment.  NBER data show post-war average expansions of 58 months and contractions of 11 months---a 5:1 ratio consistent with $\varepsilon \approx 0.2$.
+
+\subsection{The Minsky trap}\label{sec:minsky}
+
+\begin{theorem}[Minsky instability]\label{thm:minsky}
+Expansionary monetary policy lowers $T$ but simultaneously enables more complementary (lower-$\rho$) production structures, which have lower $T^*$.  The stability margin $T^* - T$ can shrink even as measured volatility falls.
+\end{theorem}
+
+This formalizes ``stability breeds instability'' as a comparative static in $(\rho, T)$ space.  The mechanism operates at the extensive margin: cheap credit makes previously infeasible complementary structures viable (lowering the effective $\rho$ of the production mix), but these structures are more fragile (have lower $T^*$).  The economy appears calm (lower $T$) while becoming more fragile (lower $T^* - T$).
+
+\subsection{The Great Moderation}\label{sec:great-moderation}
+
+Financial deregulation and globalization (1984--2007) increased the dissipation rate $r$ without altering the antisymmetric coupling $\omega$, pushing the damping ratio $\zeta = r/\omega$ from underdamped ($\zeta < 1$) to critically damped ($\zeta \approx 1$):
+\begin{itemize}[nosep]
+\item Oscillation amplitude fell---the Great Moderation.
+\item The fold structure of the slow manifold remained unchanged.
+\item When the Minsky mechanism finally drove $T$ through $T^*$ in 2007--2008, the crisis was faster and sharper than in the underdamped regime: the transition from oscillatory instability to \emph{catastrophic} instability.
+\end{itemize}
+
+The framework predicts that the Great Moderation was not a permanent regime change but the critical-damping phase of an ongoing dynamical process, with catastrophic termination an intrinsic property of the overdamped regime.
+
+\subsection{The cycle hierarchy}\label{sec:cycle-hierarchy}
+
+The eigenspectrum of $\mathbf{J}\nabla^2\calF$ contains multiple oscillatory modes corresponding to different pairs of coupled timescales:
 \begin{center}
 \small
-\begin{tabular}{lll}
+\begin{tabular}{llc}
 \toprule
-Symbol & Meaning & Axiom origin \\
+Cycle type & Coupled timescales & Period \\
 \midrule
-$\rho_n \in (-\infty, 1)$ & CES complementarity parameter, sector $n$ & A1 \\
-$\sigma_n = 1/(1-\rho_n)$ & Elasticity of substitution & A1 \\
-$K_n = (1-\rho_n)(J_n-1)/J_n$ & Curvature parameter & A1 \\
-$J_n$ & Number of inputs in sector $n$ & A1 \\
-$F_n$ & CES aggregate output & A1 \\
-$\Phi = -\sum_n \log F_n$ & CES potential (production difficulty) & A1 \\
-$T = 1/\kappa$ & Information temperature & A2 \\
-$H = -\sum p_j \log p_j$ & Shannon entropy of allocation & A2 \\
-$\calF = \Phi - TH$ & Economic free energy & A1+A2 \\
-$T^*_n \approx K_n$ & Critical temperature, sector $n$ & A1+A2 \\
-$K_{\mathrm{eff}} = K(1-T/T^*)^+$ & Effective curvature under friction & A1+A2 \\
-$\varepsilon_k = \tau_{k+1}/\tau_k$ & Timescale ratio between levels & A3 \\
-$\alpha_n$ & Wright's Law learning elasticity & A4 \\
-$Q_n(t) = \int_0^t I_n(s)\,ds$ & Cumulative investment & A4 \\
-$\mathbf{R}$ & Dissipation matrix (symmetric, $\succeq 0$) & A1+A2 \\
-$\mathbf{J}$ & Antisymmetric coupling matrix & A5 \\
-$\zeta = r/\omega$ & Damping ratio & A2+A5 \\
-$\bar{\rho}(t)$ & Economy-wide effective complementarity & A1 (endogenized by A4) \\
+Kitchin (inventory) & Financial $\times$ production & 3--5 years \\
+Juglar (investment) & Production $\times$ infrastructure & 7--11 years \\
+Kuznets (construction) & Infrastructure $\times$ institutional & 15--25 years \\
+Kondratiev (technology) & Institutional $\times$ technological & 40--60 years \\
 \bottomrule
 \end{tabular}
 \end{center}
+These are not separate phenomena requiring separate theories---they are harmonics of the same Hamiltonian system.  The periods are geometric means of the coupled timescales: $\omega_{nm} \sim \sqrt{\tau_n \tau_m}$.
+
+\subsection{The Phillips curve}\label{sec:phillips}
+
+The Phillips curve emerges as a $(\rho, T)$ phenomenon: the trade-off between inflation and unemployment reflects the slope of the free energy landscape along the direction connecting price adjustment ($T$-related) and output adjustment ($\rho$-related).  The slope $\propto \bar{K}$ (economy-wide effective curvature), so the Phillips curve flattens as the economy shifts toward higher $\rho$ (more substitutable, services-oriented production)---consistent with the observed flattening over recent decades.
+
+%=============================================================================
+\section{Dynamics III: Technology Cycles and Endogenous $\rho$}\label{sec:technology}
+%=============================================================================
+
+Business cycles (\Cref{sec:oscillations}) operate at fixed $\rho$.  Technology cycles arise when Wright's Law (Axiom~5) makes the phase diagram itself endogenous.
+
+\subsection{The overinvestment theorem}\label{sec:overinvestment}
+
+In the $N$-firm differential game with learning spillovers (\textsc{Technology Cycle} paper), the Nash equilibrium investment rate exceeds the social optimum:
+
+\begin{theorem}[Universal overinvestment]\label{thm:overinvestment}
+The Nash equilibrium overinvestment factor is approximately $N\alpha\phi/(r+\delta)$, where $N$ is the number of firms, $\alpha$ is the learning elasticity, $\phi$ is the spillover fraction, $r$ is the discount rate, and $\delta$ is depreciation.  For AI in 2024--2026 ($N \approx 7$, $\alpha \approx 0.35$), this yields overinvestment of $3$--$4\times$ the social optimum.
+\end{theorem}
+
+The overinvestment is not irrational---it is the Nash equilibrium.  Each firm invests more because learning spillovers mean that rivals will benefit from waiting, creating a preemption race.  The macro consequence is that the technology cycle is accelerated: the crossing time is reduced by a fraction $\approx N\alpha/(1+N\alpha)$.
+
+\subsection{The self-undermining theorem}\label{sec:self-undermining}
+
+\begin{theorem}[Self-undermining]\label{thm:self-undermining}
+Concentrated investment in a centralized technology necessarily reduces the critical temperature at which distributed alternatives become viable:
+$\partial T^*/\partial I < 0$.  Specifically,
+\[
+T^*(Q) = T^*_0 \cdot (Q/Q_0)^{-\alpha\psi(\rho)},
+\]
+where $\psi(\rho) > 0$ measures susceptibility to distributed entry.
+\end{theorem}
+
+The mechanism: concentrated investment accelerates learning (Axiom~5), learning reduces cost, lower cost reduces the information temperature required for distributed coordination, and lower $T$ requirement makes distributed alternatives viable.  The centralized structure funds its own obsolescence.  This is not an empirical observation---it is a mathematical necessity given CES production and Wright's Law learning.
+
+\subsection{Perez phases as bifurcations}\label{sec:perez}
+
+The five phases of \citeauthor{perez2002}'s (\citeyear{perez2002}) technology revolution correspond to traversals of specific regions in the $(\rho, T)$ phase diagram:
+
+\begin{enumerate}[nosep]
+\item \textbf{Installation}: Concentrated investment pushes $\rho$ down (more complementary, tightly-coupled production).  $T$ falls as the new technology improves information processing.  The economy moves into the efficient region.
+\item \textbf{Frenzy}: Overinvestment (Theorem~\ref{thm:overinvestment}) drives excessive entry.  $T$ rises as credit quality deteriorates and complexity grows.  The economy approaches the critical curve.
+\item \textbf{Turning point}: A \emph{saddle-node bifurcation}---not a gradual transition.  $T$ crosses $T^*$; the crisis destroys financial value while leaving physical infrastructure intact.
+\item \textbf{Deployment}: The infrastructure built during installation enables distributed adoption at lower cost.  $\rho$ rises (production becomes more modular, substitutable).  $T$ falls (institutional learning reduces friction).
+\item \textbf{Maturity}: The technology's learning curve flattens ($\alpha \to 0$).  $\rho$ stabilizes.  The economy enters quasi-steady state until the next technology arrives.
+\end{enumerate}
+
+\subsection{Duration and compression}\label{sec:duration}
+
+Cycle duration scales as:
+\begin{equation}\label{eq:duration}
+\tau \sim \frac{1}{\alpha}\ln\frac{c_0}{c^*},
+\end{equation}
+where $c_0$ is initial cost, $c^*$ is the crossing cost, and $\alpha$ is the learning elasticity.  Successive technology cycles compress because $\alpha$ increases as production becomes more information-intensive: canals ($\sim$60 years), railroads ($\sim$50 years), electrification ($\sim$40 years), computing ($\sim$30 years), mobile internet ($\sim$15 years).
+
+\subsection{Endogenous $\rho$: the four channels}\label{sec:endogenous-rho}
+
+The \textsc{Endogenous $\rho$} paper identifies four channels through which $\rho$ evolves:
+
+\begin{enumerate}[nosep]
+\item \textbf{Firm optimization}: Firms choose $\rho$ to minimize free energy.  At low $T$, complementary production ($\rho$ low) is optimal because the curvature premium exceeds coordination cost.  $\rho^*(T)$ increases in $T$.
+\item \textbf{Technological standardization}: Wright's Law learning increases modularity---cumulative investment creates standard interfaces and interchangeable components, pushing $\rho$ up over time.
+\item \textbf{Evolutionary selection}: The Price equation selects for profitable complementarity levels.  Sectors with $\rho$ near $\rho^*$ grow; sectors far from $\rho^*$ shrink.
+\item \textbf{Aggregation renormalization}: The RG flow (\Cref{thm:emergent}) pulls the effective $\rho$ toward Cobb-Douglas ($\rho \to 0$) under coarse-graining, a statistical force independent of any economic mechanism.
+\end{enumerate}
+
+These channels operate on different timescales and in opposite directions.  Short-run optimization pushes $\rho$ down during expansions (complementary production is more productive when $T$ is low); long-run standardization pushes $\rho$ up (cumulative investment creates modular architectures).
+
+\subsection{The limit cycle}\label{sec:limit-cycle}
+
+The tension between short-run optimization (lowering $\rho$) and long-run standardization (raising $\rho$) drives the system into orbit around the critical curve $T^*(\rho)$.  The coupled $(\rho, T)$ dynamics trace a limit cycle $\Gamma$ in parameter space that IS the Perez technology wave:
+\begin{itemize}[nosep]
+\item Falling $\rho$ (installation) $\to$ $T$ rises toward $T^*$ (frenzy) $\to$ crossing $T^*$ (turning point) $\to$ rising $\rho$ (deployment) $\to$ $T$ falls below $T^*$ (maturity) $\to$ new technology arrives with low $\rho$ $\to$ cycle repeats.
+\end{itemize}
+
+The limit cycle generates \textbf{self-organized criticality}: the economy spends most of its time near the critical curve $T^*(\rho)$, with slow drift in the sub-critical region and brief excursions into the super-critical region (crisis).  This produces the power-law statistics of economic fluctuations documented by \citet{gabaix2009}.
+
+\subsection{Closure}\label{sec:closure}
+
+With endogenous $\rho$, the framework has no free structural parameters.  $\rho$ governs economic structure through CES production; economic structure determines investment; investment drives technological change through Wright's Law; and technological change determines $\rho$.  Everything is determined by initial conditions and the speed of learning.
+
+%=============================================================================
+\section{Conservation Laws and Topology}\label{sec:conservation}
+%=============================================================================
+
+The \textsc{Conservation Laws} paper derives exact constraints from the symmetries of $\calF$.
+
+\subsection{Euler-equilibrium identity}\label{sec:euler-identity}
+
+At any equilibrium of any CES economy:
+\begin{equation}\label{eq:euler}
+\mathbf{x}^* \cdot \nabla H\big|_{\mathrm{eq}} = -\frac{1}{T}.
+\end{equation}
+This provides a model-independent measurement of $T$ distinct from the FDT route (\Cref{sec:fdt}).  Two independent measurements of the same quantity---one from dynamics (FDT), one from statics (Euler identity)---constitute an overidentifying restriction.
+
+\subsection{Permutation constraints on covariance}\label{sec:permutation}
+
+Equilibrium covariance matrices have the structured form:
+\begin{equation}
+\boldsymbol{\Sigma} = (\sigma^2 - \gamma)\mathbf{I} + \gamma\,\bone\bone^\top,
+\end{equation}
+with eigenvalues determined by $T/K_{\mathrm{eff}}$.  This $(J-1, 1)$ eigenvalue structure is a testable overidentifying restriction: firm-level data should show this pattern within homogeneous sectors.
+
+\subsection{Crooks fluctuation theorem}\label{sec:crooks}
+
+The probability ratio of forward to reverse transitions is:
+\begin{equation}\label{eq:crooks}
+\frac{P_F(W)}{P_R(-W)} = \exp\!\left[\frac{W - \Delta\calF}{T}\right],
+\end{equation}
+an exact far-from-equilibrium result.  It quantifies irreversibility: transitions that dissipate more work relative to $\Delta\calF$ are exponentially more probable in the forward direction.  This constrains the probability distribution of policy implementation costs.
+
+\subsection{Topological crisis count}\label{sec:winding}
+
+\begin{theorem}[Winding number quantization]\label{thm:winding}
+The number of crises per technology cycle equals the winding number of the $(\rho, T)$ trajectory around the critical curve $T^*(\rho)$---a topologically protected integer.
+\end{theorem}
+
+Policy can change crisis timing, severity, and sectoral incidence, but cannot change the crisis count without altering the trajectory's topology (i.e., without preventing the trajectory from orbiting the critical curve entirely).  This is the deepest constraint: the number of crises in a technology cycle is \emph{quantized}.
+
+\subsection{Network Casimir invariants}\label{sec:casimir}
+
+In the port-Hamiltonian formulation, the kernel of $\mathbf{J}$ generates conserved quantities---one per disconnected component of the trade network.  These Casimir invariants $C_k = \mathbf{v}_k^\top \mathbf{x}$ are preserved by all Hamiltonian dynamics.  Trade liberalization destroys Casimir invariants by connecting previously disconnected components, freeing degrees of freedom and accelerating equilibration.
 
 %=============================================================================
 \section{The Complete $(\rho, T)$ Phase Diagram}\label{sec:phase-diagram}
 %=============================================================================
 
-The $(\rho, T)$ plane is the fundamental state space of the framework.  Every equilibrium, every transition, every cycle, and every crisis can be located on it.  This section constructs the complete diagram by assembling features from all companion papers.
-
-\subsection{The critical curve}\label{sec:critical-curve}
-
-The most important object in the diagram is the critical curve:
-\begin{equation}\label{eq:critical-curve}
-T^*(\rho) = \frac{(1-\rho)(J-1)}{J} = K(\rho),
-\end{equation}
-a decreasing, convex curve from $T^* = (J-1)/J$ at $\rho = 0$ to $T^* \to \infty$ as $\rho \to -\infty$ and $T^* \to 0$ as $\rho \to 1$.  This curve separates:
-\begin{itemize}[nosep]
-\item \textbf{Below} ($T < T^*$): efficient regime.  The free energy landscape has a well-defined minimum; allocation exploits complementarity; all three roles of $K$ are active.
-\item \textbf{Above} ($T > T^*$): breakdown regime.  The free energy landscape flattens; allocation degrades to uniform randomness; complementarity premium vanishes.
-\end{itemize}
-
-\subsection{The crisis sequence boundaries}\label{sec:crisis-boundaries}
-
-Within the efficient regime, the three roles of curvature degrade at different rates as $T$ rises (Paper 10).  Define:
-\begin{align}
-T_{\mathrm{corr}}^*(\rho) &= T^*(\rho)/2, \label{eq:T-corr} \\
-T_{\mathrm{super}}^*(\rho) &= T^*(\rho), \label{eq:T-super} \\
-T_{\mathrm{strat}}^*(\rho) &= T^*(\rho) \cdot (1 + \delta), \quad \delta \ll 1, \label{eq:T-strat}
-\end{align}
-where:
-\begin{enumerate}[nosep]
-\item At $T = T_{\mathrm{corr}}^*$: correlation robustness has lost 75\% of its value (quadratic degradation $\propto (1 - T/T^*)^2$).  Diversification strategies fail.
-\item At $T = T_{\mathrm{super}}^*$: superadditivity reaches zero (linear degradation $\propto (1 - T/T^*)$).  Complementary production ceases to outperform.
-\item At $T = T_{\mathrm{strat}}^*$: strategic independence breaks.  Coordination collapses; this is the threshold event.
-\end{enumerate}
-
-The crisis sequence---financial crisis, then productive disruption, then governance breakdown---is the universal order of crossing these boundaries as $T$ increases at fixed $\rho$.  It is forced by the mathematics (quadratic degrades faster than linear) and independent of institutional detail.
-
-\subsection{The oscillation boundary}\label{sec:oscillation-boundary}
-
-The damping ratio $\zeta = r/\omega$ (Paper 14) determines whether the economy oscillates or converges monotonically.  In the $(\rho, T)$ plane, the boundary $\zeta(\rho, T) = 1$ separates:
-\begin{itemize}[nosep]
-\item \textbf{Underdamped region} ($\zeta < 1$): oscillatory dynamics, visible business cycles.  This region lies where within-sector dissipation $r$ is low relative to cross-sector antisymmetric coupling $\omega$.
-\item \textbf{Overdamped region} ($\zeta > 1$): monotone convergence, no visible cycles.  This region lies where regulation or friction dominates coupling.
-\end{itemize}
-
-The Great Moderation (1984--2007) corresponds to the economy crossing from the underdamped to the overdamped region.  Financial deregulation increased effective within-sector dissipation $r$ by making markets more liquid and mean-reverting---deeper, faster-clearing markets absorb shocks that previously propagated as oscillatory modes (Paper 14, Theorem 8.1).
-
-\subsection{The Perez limit cycle}\label{sec:limit-cycle}
-
-With endogenous $\rho$ (Paper 15), the system traces a limit cycle $\Gamma$ in $(\rho, T)$ space.  The cycle orbits the critical curve $T^*(\rho)$, crossing it twice per period (entering and exiting crisis).  The four phases of the Perez technology cycle occupy the four quadrants of $\Gamma$ relative to its center:
+The $(\rho, T)$ plane is the fundamental state space of the framework.  Every equilibrium, every transition, every cycle, and every crisis can be located on it.  This section assembles the features from all companion papers into a single diagram.
 
 \begin{center}
 \begin{tikzpicture}[scale=1.2, >=Stealth]
@@ -303,48 +608,57 @@ With endogenous $\rho$ (Paper 15), the system traces a limit cycle $\Gamma$ in $
 \draw[->] (-0.3,0) -- (5.5,0) node[right] {$\rho$};
 \draw[->] (0,-0.3) -- (0,4.5) node[above] {$T$};
 
-% Critical curve T*(rho) = (1-rho)*C, depicted as decreasing curve
-\draw[thick, blue] plot[smooth, domain=0.3:4.8] (\x, {4.0/\x});
+% Critical curve T*(rho) -- domain starts where curve enters visible region
+% (4.0/0.92 = 4.35, safely below axis top of 4.5)
+\draw[thick, blue] plot[smooth, domain=0.92:4.8] (\x, {4.0/\x});
 \node[blue, right] at (4.8, 0.95) {$T^*(\rho)$};
 
-% Crisis sequence boundaries (dashed)
-\draw[dashed, red!60] plot[smooth, domain=0.6:4.8] (\x, {2.0/\x});
+% Crisis sequence boundary (dashed)
+\draw[dashed, red!60] plot[smooth, domain=0.48:4.8] (\x, {2.0/\x});
 \node[red!60, right, font=\footnotesize] at (4.5, 0.55) {$T^*_{\mathrm{corr}}$};
 
-% Limit cycle (ellipse-like, tilted)
+% Damping ratio boundary (dotted)
+\draw[dotted, green!60!black, thick] plot[smooth, domain=0.5:4.0] (\x, {1.2 + 0.3*\x});
+\node[green!60!black, right, font=\footnotesize] at (4.05, 2.45) {$\zeta = 1$};
+
+% Limit cycle (Perez technology wave)
 \draw[thick, black, decoration={markings, mark=at position 0.15 with {\arrow{>}}, mark=at position 0.4 with {\arrow{>}}, mark=at position 0.65 with {\arrow{>}}, mark=at position 0.9 with {\arrow{>}}}, postaction={decorate}]
   (1.5, 1.0) .. controls (1.0, 1.8) and (1.0, 2.8) .. (1.8, 3.2)
   .. controls (2.4, 3.5) and (3.2, 3.0) .. (3.5, 2.2)
   .. controls (3.7, 1.6) and (3.5, 0.8) .. (2.8, 0.6)
   .. controls (2.2, 0.4) and (1.7, 0.6) .. (1.5, 1.0);
 
-% Phase labels
+% Phase labels (inside/near the limit cycle)
 \node[font=\footnotesize] at (0.7, 1.5) {\textbf{I}};
-\node[font=\footnotesize] at (1.2, 3.2) {\textbf{II}};
-\node[font=\footnotesize] at (3.6, 2.8) {\textbf{III}};
+\node[font=\footnotesize] at (1.3, 3.0) {\textbf{II}};
+\node[font=\footnotesize] at (3.5, 2.8) {\textbf{III}};
 \node[font=\footnotesize] at (3.8, 0.8) {\textbf{IV}};
 
-% Phase legend
-\node[font=\footnotesize, anchor=west] at (4.8, 4.0) {\textbf{I}: Installation};
-\node[font=\footnotesize, anchor=west] at (4.8, 3.5) {\textbf{II}: Frenzy/Crisis};
-\node[font=\footnotesize, anchor=west] at (4.8, 3.0) {\textbf{III}: Turning point};
-\node[font=\footnotesize, anchor=west] at (4.8, 2.5) {\textbf{IV}: Deployment};
+% Phase legend (upper right, clear of diagram features)
+\node[font=\footnotesize, anchor=west] at (4.6, 4.2) {\textbf{I}: Installation};
+\node[font=\footnotesize, anchor=west] at (4.6, 3.8) {\textbf{II}: Frenzy/Crisis};
+\node[font=\footnotesize, anchor=west] at (4.6, 3.4) {\textbf{III}: Turning point};
+\node[font=\footnotesize, anchor=west] at (4.6, 3.0) {\textbf{IV}: Deployment};
 
 % Region labels
-\node[font=\footnotesize, gray] at (3.0, 0.3) {Efficient};
-\node[font=\footnotesize, gray] at (1.0, 3.8) {Breakdown};
+\node[font=\footnotesize, gray] at (4.2, 0.25) {Efficient};
+\node[font=\footnotesize, gray, anchor=west] at (0.3, 4.2) {Breakdown};
+
+% Damping region labels (separated to avoid overlap)
+\node[font=\footnotesize, green!40!black, rotate=18] at (1.3, 0.5) {Underdamped};
+\node[font=\footnotesize, green!40!black, rotate=18] at (3.0, 3.7) {Overdamped};
 \end{tikzpicture}
 \end{center}
 
 \begin{theorem}[Complete phase diagram]\label{thm:phase-diagram}
-The $(\rho, T)$ phase diagram contains the following features, assembled from the companion papers:
-\begin{enumerate}
-\item \textbf{Critical curve} $T^*(\rho) = K(\rho)$ [Papers 9, 10]: separates efficient and breakdown regimes.
-\item \textbf{Crisis sequence boundaries} $T_{\mathrm{corr}}^* < T_{\mathrm{super}}^* < T_{\mathrm{strat}}^*$ [Paper 10]: three parallel curves below $T^*$, marking the progressive failure of correlation robustness, superadditivity, and strategic independence.
-\item \textbf{Damping ratio boundary} $\zeta(\rho, T) = 1$ [Paper 14]: separates underdamped (oscillatory) and overdamped (monotone) regions.
-\item \textbf{Perez limit cycle} $\Gamma$ [Paper 15]: closed orbit around $T^*(\rho)$ traced by the endogenous $(\rho, T)$ dynamics, with period $\sim 25$--$50$ years.
-\item \textbf{Self-organized critical attractor} [Paper 15]: the limit cycle $\Gamma$ orbits the critical curve, spending most time in the sub-critical region (slow drift) and brief time in the super-critical region (fast crisis).
-\item \textbf{Winding number quantization} [Paper 13]: each complete orbit of $\Gamma$ around $T^*(\rho)$ contributes exactly one winding, giving a topologically protected integer crisis count.
+The $(\rho, T)$ phase diagram contains six features:
+\begin{enumerate}[nosep]
+\item \textbf{Critical curve} $T^*(\rho) = K(\rho)$: separates efficient and breakdown regimes.
+\item \textbf{Crisis sequence boundaries} $T_{\mathrm{corr}}^* < T_{\mathrm{super}}^* < T_{\mathrm{strat}}^*$: three sub-critical curves marking progressive failure of correlation robustness, superadditivity, and strategic independence.
+\item \textbf{Damping ratio boundary} $\zeta(\rho, T) = 1$: separates underdamped (oscillatory business cycles) from overdamped (monotone convergence) regions.
+\item \textbf{Perez limit cycle} $\Gamma$: closed orbit around $T^*(\rho)$ traced by endogenous $(\rho, T)$ dynamics, with period $\sim$25--50 years.
+\item \textbf{Self-organized critical attractor}: $\Gamma$ orbits the critical curve, spending most time sub-critical (slow drift) and brief time super-critical (fast crisis).
+\item \textbf{Winding number quantization}: each orbit contributes one topologically protected crisis.
 \end{enumerate}
 \end{theorem}
 
@@ -353,257 +667,147 @@ The $(\rho, T)$ phase diagram contains the following features, assembled from th
 The phase diagram encodes the answer to every qualitative question about economic dynamics:
 
 \begin{itemize}[nosep]
-\item \emph{Will this economy have business cycles?}  Check whether $(\rho, T)$ lies in the underdamped region ($\zeta < 1$).
-\item \emph{How fragile is this economy?}  Measure the distance $T^*(\rho) - T$ from the current state to the critical curve.
-\item \emph{Which crisis will come first?}  As $T$ rises, the first boundary crossed is $T_{\mathrm{corr}}^*$ (financial crisis).
-\item \emph{Where are we in the Perez cycle?}  Locate $(\rho, T)$ on the limit cycle $\Gamma$.  Falling $\rho$ = installation; rising $\rho$ = deployment; crossing $T^*$ = turning point.
-\item \emph{What does regulation do?}  Regulation increases $r$ (within-sector dissipation), shifting $\zeta$ upward.  This damps oscillations without moving the critical curve.
-\item \emph{What does monetary policy do?}  Rate cuts lower $T$, moving the economy downward in the diagram.  But endogenous $\rho$-shift (Minsky trap) simultaneously moves the critical curve, partially offsetting the benefit.
+\item \emph{Will this economy have business cycles?}  Check $\zeta < 1$ (underdamped region).
+\item \emph{How fragile is this economy?}  Measure $T^* - T$, the distance to the critical curve.
+\item \emph{Which crisis will come first?}  The first boundary crossed as $T$ rises is $T_{\mathrm{corr}}^*$ (financial crisis).
+\item \emph{Where are we in the Perez cycle?}  Locate $(\rho, T)$ on $\Gamma$.  Falling $\rho$ = installation; rising $\rho$ = deployment; crossing $T^*$ = turning point.
+\item \emph{What does regulation do?}  Regulation increases $r$, shifting $\zeta$ upward.  Damps oscillations without moving $T^*$.
+\item \emph{What does monetary policy do?}  Rate cuts lower $T$ (beneficial), but endogenous $\rho$-shift (Minsky trap) simultaneously lowers $T^*$ (harmful).  Net effect on stability margin $T^* - T$ is ambiguous.
 \end{itemize}
 
 %=============================================================================
-\section{The Deductive Chain}\label{sec:dependencies}
+\section{Empirical Evidence}\label{sec:evidence}
 %=============================================================================
 
-\subsection{Axiom dependency graph}\label{sec:axiom-dependencies}
+The framework generates testable predictions, several of which have been confronted with data.
 
-The results of the companion papers organize into five tiers, each requiring one additional axiom:
+\subsection{Damping cancellation (158-country panel)}\label{sec:evidence-damping}
 
-\begin{center}
-\begin{tikzpicture}[
-  tier/.style={draw, rounded corners, minimum width=10cm, minimum height=1.2cm, align=center, font=\small},
-  axiom/.style={draw, fill=blue!10, rounded corners, font=\small\bfseries, minimum width=1.8cm},
-  >=Stealth
-]
+The damping cancellation theorem (\Cref{thm:damping}) predicts that banking regulation changes should have zero long-run effect on credit outcomes.  Using the Barth-Caprio-Levine bank regulation indices across 158 countries and five survey waves (2001--2019), the \textsc{Architecture} paper tests this via impulse response analysis at horizons $h = 1, \ldots, 8$:
+\begin{itemize}[nosep]
+\item \textbf{Activity restrictions}: Consistent---transient effect at $h = 1$ only.
+\item \textbf{Supervisory power}: Ambiguous---effects at $h = 2$--$4$, clearing by $h = 5$.
+\item \textbf{Capital stringency}: Persistent effect at $h = 1, 5$--$8$---likely compositional (capital requirements directly constrain credit-to-GDP).
+\item \textbf{Basel III DID}: $p = 0.95$ (strongly insignificant), confirming that the Basel III reform had no detectable long-run effect on credit dispersion.
+\item \textbf{Cross-layer spread}: 0.0089 $< 0.01$, consistent with equal persistence across regulatory dimensions (damping cancellation across layers).
+\end{itemize}
 
-% Tiers
-\node[tier, fill=yellow!10] (t1) at (0,0) {%
-  \textbf{Tier 1 (A1+A2):} Quadruple Role, Free Energy, Effective Curvature,\\
-  Crisis Sequence, Six Classic Derivations, Firm Scope};
-\node[tier, fill=orange!10] (t2) at (0,1.8) {%
-  \textbf{Tier 2 (+A3):} Port Topology, Eigenstructure Bridge,\\
-  Damping Cancellation, Activation Threshold};
-\node[tier, fill=red!10] (t3) at (0,3.6) {%
-  \textbf{Tier 3 (+A4):} Overinvestment, Self-Undermining,\\
-  Perez Phases, Duration Formula};
-\node[tier, fill=purple!10] (t4) at (0,5.4) {%
-  \textbf{Tier 4 (+A5):} Port-Hamiltonian Oscillations, $\rho$-Ordering,\\
-  Minsky Trap, Great Moderation, Cycle Hierarchy, Phillips Curve};
-\node[tier, fill=gray!10] (t5) at (0,7.2) {%
-  \textbf{Tier 5 (All):} Endogenous $\rho$, Limit Cycle, SOC,\\
-  Price Equation, $\rho$-Diversity, Closure};
+\subsection{CES emergence from industrial production}\label{sec:evidence-ces}
 
-% Arrows
-\draw[->, thick] (t1) -- (t2);
-\draw[->, thick] (t2) -- (t3);
-\draw[->, thick] (t3) -- (t4);
-\draw[->, thick] (t4) -- (t5);
+The \textsc{Emergent CES} paper's prediction that CES structure should emerge at every scale of aggregation is tested using FRED industrial production data.  Continuous wavelet analysis of 30 manufacturing sub-sectors identifies spectral peaks with median adjacent-peak ratio 2.1, consistent with the timescale separation axiom.  The effective hierarchy depth $N_{\mathrm{eff}} = 4$--$5$ is stable across all decades (mean 4.5, s.d.\ 1.0), confirming the prediction that $N_{\mathrm{eff}}$ is a structural invariant rather than a time-varying parameter.
 
-\end{tikzpicture}
-\end{center}
+\subsection{Monetary policy degradation sequence}\label{sec:evidence-mp}
 
-\noindent Additionally, the dynamical results (Paper 12: FDT, critical slowing, Onsager, Kramers, Jarzynski) require A1+A2+A3 and are Tier~2.  The conservation laws (Paper 13: Euler identity, permutation constraints, Crooks, winding number, Casimirs) span Tiers~2--4 depending on the specific result.
+Paper~4 (\textsc{Settlement Feedback}) predicts that monetary policy tools degrade in sequence as autonomous agent participation increases: forward guidance first, then QE, then financial repression.  Tests at the current $\phi \approx 0$ baseline:
+\begin{itemize}[nosep]
+\item \textbf{QE multiplier}: 15-fold decline across episodes---40.8 bp/\$100B (QE1) $\to$ 9.7 (QE2) $\to$ 3.4 (QE3) $\to$ 2.7 (COVID)---strongly consistent with the degradation prediction.
+\item \textbf{Forward guidance}: FOMC importance ratio stable (Kendall $\tau = -0.008$, $p = 0.84$); surprise-normalized yield sensitivity flat ($\tau = 0.015$, $p = 0.72$).  FG has not degraded, consistent with the $\phi \approx 0$ baseline.
+\item \textbf{Financial repression}: Rolling real-yield/savings correlation weakly declining ($\tau = -0.136$, $p = 0.002$), consistent with FR still operational.
+\item \textbf{USMPD high-frequency}: Using SF Fed 30-minute windows, statement concentration has declined ($\tau = -0.172$, $p < 0.001$) but this reflects communication restructuring (statement $\to$ press conference), not FG degradation.  Surprise-normalized sensitivity is flat---the cleanest baseline metric for future FG degradation detection.
+\end{itemize}
 
-\subsection{Detailed dependency table}\label{sec:dependency-table}
+\subsection{India 2022 displacement experiment}\label{sec:evidence-india}
+
+The upstream reform principle (\Cref{sec:damping-cancellation}) predicts that domestic regulation shifts activity rather than eliminating it.  India's 2022 crypto tax provides a natural experiment: domestic volume fell $-86\%$, but $72\%$ was displaced offshore---displacement, not suppression.  This is consistent with the theory: within-level regulation damps local activity without eliminating the cross-level demand that drives it.
+
+\subsection{Firm-level predictions from CES free energy}\label{sec:evidence-firm}
+
+Four firm-level predictions (\Cref{sec:predictions}, \#4, \#6, \#7, \#8) are tested using the same FRED Industrial Production data (30 series, 17 leaf sectors, monthly 1972--2026).  Results are summarized in \Cref{tab:firm_predictions} and \Cref{fig:firm_predictions}.
+
+\paragraph{Equicorrelation (\#6): strongly supported.}
+The CES compound symmetry prediction $\Sigma = (\sigma^2 - \gamma)\mathbf{I} + \gamma\bone\bone^\top$ implies that off-diagonal correlations should be approximately uniform across sector pairs.  The coefficient of variation (CV) of the 136 off-diagonal correlations among 17 leaf sectors is 0.36, versus a permutation-null median of 17.5 (0th percentile).  The Frobenius distance $\|\Sigma - \Sigma_{\mathrm{equicorr}}\|/\|\Sigma\| = 0.29 < 0.5$.  Bartlett's test rejects $\Sigma = \mathbf{I}$ ($\chi^2 = 4975$, $p < 10^{-10}$), confirming that the equicorrelation structure reflects genuine common variation, not absence of correlation.  This is the strongest result: manufacturing sectors exhibit dramatically more uniform cross-correlations than independent processes would predict, exactly as CES free energy requires.
+
+\paragraph{Cyclical $\rho$ (\#8): supported.}
+Prediction \#8 states that $\hat{\rho}$ should be countercyclical---rising in contractions (sectors become more substitutable under stress) and falling in expansions.  Two methods confirm this.  Method A: rolling 60-month average pairwise correlation among 8 durable sectors shows Kendall $\tau = -0.17$ with INDPRO growth ($p = 0.01$).  Method B: rolling 120-month CES NLS estimation of $\hat{\rho}$ on the durable manufacturing aggregate yields $\tau = -0.31$ ($p = 0.002$).  Both methods show that complementarity structure varies systematically with the business cycle, with $\hat{\rho}$ ranging from $-0.54$ to $0.99$ across windows.
+
+\paragraph{FDT (\#4): directional but weak.}
+The fluctuation-dissipation prediction $T = \sigma^2/\chi$ requires a positive linear relationship between sectoral variance ($\sigma^2$) and susceptibility ($\chi$, cumulative IRF response to aggregate shocks) across sectors.  The cross-sectional OLS yields $\hat{T} > 0$ ($R^2 = 0.009$, $p = 0.72$, $N = 17$).  The sign is correct but the relationship is dominated by outliers---Transport Equipment has the highest variance but low susceptibility, violating the equilibrium assumption.  The 17-sector cross-section provides limited statistical power for this test; firm-level data within homogeneous sectors would be more appropriate.
+
+\paragraph{Onsager reciprocity (\#7): not supported.}
+The 8-variable VAR on durable manufacturing sectors yields a cumulative IRF matrix with Pearson $r(L_{ij}, L_{ji}) = 0.07$ ($p = 0.73$) across 28 off-diagonal pairs---essentially no symmetry.  The relative asymmetry is 1.43.  This is an honest negative result.  Onsager reciprocity requires near-equilibrium conditions with detailed balance, which aggregate manufacturing sectors---subject to heterogeneous shocks, policy interventions, and structural change---likely violate.  The prediction may hold within more homogeneous settings (e.g., product-level data within a single industry).
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{../../figures/firm_predictions.pdf}
+\caption{Firm-level predictions from the CES free energy framework.  (a) FDT: sector variance vs susceptibility---positive slope but $R^2 = 0.009$.  (b) Equicorrelation: correlation heatmap (durable sectors above divider, nondurable below); CV~$= 0.36$ vs null median $17.5$.  (c) Onsager: IRF matrix elements $L_{ij}$ vs $L_{ji}$---no symmetry detected.  (d) Cyclical $\hat{\rho}$: CES complementarity rises in contractions (gray shading = NBER recessions), INDPRO growth inverted on right axis.  Data: FRED IP, monthly, 1972--2026.}
+\label{fig:firm_predictions}
+\end{figure}
+
+\input{../../thesis_data/firm_predictions_table.tex}
+
+%=============================================================================
+\section{Unified Notation}\label{sec:notation}
+%=============================================================================
+
+\subsection{Master symbol table}\label{sec:symbols}
 
 \begin{center}
 \small
-\renewcommand{\arraystretch}{1.1}
-\begin{tabular}{p{5.5cm}cccccp{1.5cm}}
+\begin{tabular}{lll}
 \toprule
-Result & A1 & A2 & A3 & A4 & A5 & Paper \\
+Symbol & Meaning & Origin \\
 \midrule
-\multicolumn{7}{l}{\textit{Tier 1: Static foundation}} \\
-Quadruple Role of $K$ & $\checkmark$ & & & & & 8 \\
-Free energy $\calF = \Phi - TH$ & $\checkmark$ & $\checkmark$ & & & & 9 \\
-Effective curvature $K_{\mathrm{eff}}$ & $\checkmark$ & $\checkmark$ & & & & 10 \\
-Crisis sequence & $\checkmark$ & $\checkmark$ & & & & 10 \\
-Akerlof, Myerson, Arrow, DMP, hold-up, behavioral & $\checkmark$ & $\checkmark$ & & & & 9 \\
-Optimal firm scope & $\checkmark$ & $\checkmark$ & & & & 10 \\
-\midrule
-\multicolumn{7}{l}{\textit{Tier 2: Multi-level dynamics}} \\
-Port topology theorem & $\checkmark$ & $\checkmark$ & $\checkmark$ & & & 9b \\
-Moduli space theorem & $\checkmark$ & $\checkmark$ & $\checkmark$ & & & 9b \\
-Eigenstructure bridge & $\checkmark$ & $\checkmark$ & $\checkmark$ & & & 9b \\
-Damping cancellation & $\checkmark$ & $\checkmark$ & $\checkmark$ & & & 9b \\
-Activation threshold ($\rho(\mathbf{K}) > 1$) & $\checkmark$ & $\checkmark$ & $\checkmark$ & & & 9b \\
-Endogenous hierarchy depth ($N_{\mathrm{eff}}$) & $\checkmark$ & & $\checkmark$ & & & 9b \\
-Gradient flow, relaxation spectrum & $\checkmark$ & $\checkmark$ & $\checkmark$ & & & 12 \\
-FDT: $T = \sigma^2/\chi$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & & & 12 \\
-Critical slowing down & $\checkmark$ & $\checkmark$ & $\checkmark$ & & & 12 \\
-Onsager reciprocal relations & $\checkmark$ & $\checkmark$ & $\checkmark$ & & & 12 \\
-Kramers escape rate & $\checkmark$ & $\checkmark$ & $\checkmark$ & & & 12 \\
-Jarzynski equality & $\checkmark$ & $\checkmark$ & $\checkmark$ & & & 12 \\
-RG: $\rho, T$ are only relevant parameters & $\checkmark$ & $\checkmark$ & $\checkmark$ & & & 12 \\
-Euler-equilibrium identity & $\checkmark$ & $\checkmark$ & & & & 13 \\
-Permutation covariance structure & $\checkmark$ & $\checkmark$ & & & & 13 \\
-Crooks fluctuation theorem & $\checkmark$ & $\checkmark$ & $\checkmark$ & & & 13 \\
-\midrule
-\multicolumn{7}{l}{\textit{Tier 3: Technology cycles}} \\
-Universal overinvestment & $\checkmark$ & $\checkmark$ & & $\checkmark$ & & 11 \\
-Self-undermining theorem & $\checkmark$ & $\checkmark$ & & $\checkmark$ & & 11 \\
-Perez phases as bifurcations & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & & 11 \\
-Duration formula $\tau \sim (1/\alpha)\ln(c_0/c^*)$ & $\checkmark$ & $\checkmark$ & & $\checkmark$ & & 11 \\
-Winding number (crisis count) & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & & 13 \\
-\midrule
-\multicolumn{7}{l}{\textit{Tier 4: Business cycles}} \\
-Port-Hamiltonian oscillations & $\checkmark$ & $\checkmark$ & $\checkmark$ & & $\checkmark$ & 14 \\
-$\rho$-ordering of sectoral crises & $\checkmark$ & $\checkmark$ & & & $\checkmark$ & 14 \\
-Relaxation oscillation asymmetry & $\checkmark$ & $\checkmark$ & $\checkmark$ & & $\checkmark$ & 14 \\
-Minsky trap & $\checkmark$ & $\checkmark$ & $\checkmark$ & & $\checkmark$ & 14 \\
-Great Moderation as $\zeta$ shift & $\checkmark$ & $\checkmark$ & $\checkmark$ & & $\checkmark$ & 14 \\
-Cycle hierarchy (Kitchin--Kondratiev) & $\checkmark$ & $\checkmark$ & $\checkmark$ & & $\checkmark$ & 14 \\
-Phillips curve as $(\rho,T)$ phenomenon & $\checkmark$ & $\checkmark$ & & & $\checkmark$ & 14 \\
-Network Casimir invariants & $\checkmark$ & $\checkmark$ & $\checkmark$ & & $\checkmark$ & 13 \\
-Conservation of circulation & $\checkmark$ & $\checkmark$ & $\checkmark$ & & $\checkmark$ & 14 \\
-\midrule
-\multicolumn{7}{l}{\textit{Tier 5: Closure}} \\
-Endogenous $\rho$ equation & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & 15 \\
-Limit cycle in $(\rho, T)$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & 15 \\
-Self-organized criticality & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & 15 \\
-Price equation / $\rho$-diversity & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & 15 \\
-Framework closure (no free parameters) & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & 15 \\
+$\rho_n \in (-\infty, 1)$ & CES complementarity parameter & A1--A2 \\
+$\sigma_n = 1/(1-\rho_n)$ & Elasticity of substitution & A1--A2 \\
+$K_n = (1-\rho_n)(J_n-1)/J_n$ & Curvature parameter & A1--A2 \\
+$J_n$ & Number of inputs in sector $n$ & A1--A2 \\
+$F_n$ & CES aggregate output & A1--A2 \\
+$\Phi = -\sum_n \log F_n$ & CES potential & A1--A2 \\
+$T = 1/\kappa$ & Information temperature & A3 \\
+$S_q = (1-\sum p_j^q)/(q-1)$ & Tsallis entropy of allocation, $q = \rho$ & A3 \\
+$\calF = \Phi - TH$ & Economic free energy & A1--A3 \\
+$T^*_n \approx K_n$ & Critical temperature & A1--A3 \\
+$K_{\mathrm{eff}} = K(1-T/T^*)^+$ & Effective curvature & A1--A3 \\
+$\varepsilon_k = \tau_{k+1}/\tau_k$ & Timescale ratio & A4 \\
+$\alpha_n$ & Wright's Law learning elasticity & A5 \\
+$Q_n(t) = \int_0^t I_n(s)\,ds$ & Cumulative investment & A5 \\
+$\mathbf{R}$ & Dissipation matrix ($\succeq 0$, symmetric) & A1--A3 \\
+$\mathbf{J}$ & Antisymmetric coupling matrix & A6 \\
+$\zeta = r/\omega$ & Damping ratio & A3+A6 \\
+$\bar{\rho}(t)$ & Economy-wide effective complementarity & Endogenous \\
+$\rho(\mathbf{K})$ & Spectral radius (activation threshold) & A1--A4 \\
+$R_0$ & Master reproduction number & A1--A4 \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-\subsection{The logic in words}\label{sec:logic-words}
+\subsection{Notational reconciliations}\label{sec:reconcile}
 
-The deductive structure can be summarized in one paragraph.  Constant returns to scale and scale consistency together force CES production (A1+A2: Paper 17), whose curvature $K$ simultaneously makes diversity valuable, diversification robust, and manipulation unprofitable (Paper 8).  Information constraints degrade these benefits linearly or quadratically, defining a free energy landscape with a critical temperature $T^*$ at which complementarity vanishes, and the degradation sequence is universal: diversification fails first (A3: Papers 9, 10).  Multi-level economies with timescale separation have architectures forced by CES geometry---aggregate coupling, directed feed-forward, nearest-neighbor---and an activation threshold determined by the spectral radius of the next-generation matrix (A4: Paper 9b).  The free energy landscape generates gradient flow dynamics with fluctuation-dissipation theorems, critical slowing down, and Kramers escape rates; its symmetries produce conservation laws including the Euler identity, permutation covariance, and topologically protected crisis counts (A3+A4: Papers 12, 13).  Wright's Law learning makes technology cycles inevitable: concentrated investment drives standardization, crossing thresholds in the phase diagram; the overinvestment is $N$-fold in Nash equilibrium, and the self-undermining property means centralized structures fund their own obsolescence (A5: Paper 11).  Directed input-output linkages generate antisymmetric coupling that creates oscillatory modes---business cycles---whose periods scale as geometric means of coupled timescales, whose sectoral propagation follows the $\rho$-ordering, and whose amplitude is controlled by a damping ratio that regulation can modify without changing equilibrium (A6: Paper 14).  Finally, all six axioms together close the loop: $\rho$ evolves by firm optimization, standardization, selection, and aggregation renormalization, tracing a limit cycle around the critical curve that is the Perez technology wave, generating self-organized criticality and power-law fluctuation statistics, with no free structural parameters remaining (Papers 15--17).
+Two objects share the letter $H$ across the papers:
+\begin{itemize}[nosep]
+\item $S_q(\mathbf{p}) = (1 - \sum_j p_j^q)/(q-1)$: Tsallis entropy of the allocation with $q = \rho$.
+\item No separate Hamiltonian---the free energy $\calF$ serves as the Hamiltonian of the port-Hamiltonian system: $\dot{\mathbf{x}} = (\mathbf{J} - \mathbf{R})\nabla\calF$.
+\end{itemize}
+The port-Hamiltonian system conserves $\calF$ along $\mathbf{J}$-flows and dissipates $\calF$ along $\mathbf{R}$-flows.  There is no separate ``Hamiltonian'' distinct from the free energy.
 
-%=============================================================================
-\section{The Unified Prediction Inventory}\label{sec:predictions}
-%=============================================================================
-
-The companion papers generate 39 testable predictions, organized here by the type of data required.  We classify each prediction by \emph{specificity}: \textbf{Q} (qualitative direction), \textbf{S} (scaling law or functional form), or \textbf{N} (numerical value).
-
-\subsection{Predictions requiring firm-level production data}\label{sec:pred-firm}
-
-\begin{center}
-\small
-\renewcommand{\arraystretch}{1.15}
-\begin{tabular}{clcl}
-\toprule
-\# & Prediction & Spec. & Paper \\
-\midrule
-1 & $K_{\mathrm{eff}} = K(1 - T/T^*)^+$ (effective curvature) & S & 10 \\
-2 & Crisis sequence: correlation $\to$ superadditivity $\to$ strategic & Q & 10 \\
-3 & Optimal firm scope $J^*$ increases in $K/T$ & Q & 10 \\
-4 & FDT: $T = \sigma^2/\chi$ from productivity dispersion and response & S & 12 \\
-5 & Euler identity: $\mathbf{x}^*\cdot\nabla H = -1/T$ (independent $T$ measure) & S & 13 \\
-6 & Permutation covariance: $\Sigma = (\sigma^2-\gamma)\mathbf{I} + \gamma\bone\bone^\top$ & S & 13 \\
-7 & Onsager reciprocity: $L_{ij} = L_{ji}$ for cross-sector responses & Q & 12 \\
-8 & $\hat{\rho}_{nt}$ is cyclical: falls in expansions, rises in contractions & Q & 15 \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-\subsection{Predictions requiring sectoral/macro data}\label{sec:pred-macro}
-
-\begin{center}
-\small
-\renewcommand{\arraystretch}{1.15}
-\begin{tabular}{clcl}
-\toprule
-\# & Prediction & Spec. & Paper \\
-\midrule
-9 & Sectors enter recession in $\rho$-order (most complementary first) & Q & 14 \\
-10 & Housing/finance lead downturn; services lag & Q & 14 \\
-11 & Recovery ordering is reverse of recession ordering & Q & 14 \\
-12 & Expansion/contraction ratio $\approx 1/\varepsilon$ & S & 14 \\
-13 & Pre-crisis: autocorrelation rises, variance rises & Q & 12 \\
-14 & Pre-crisis: $T = \sigma^2/\chi$ is a leading indicator & Q & 12 \\
-15 & Regulation reduces cycle amplitude without changing avg.\ growth & Q & 14 \\
-16 & Heavily regulated economies: fewer oscillations, same destination & Q & 14 \\
-17 & Crisis severity correlates with preceding $\rho$-shift toward low $\rho$ & Q & 14 \\
-18 & Phillips curve slope $\propto \bar{K}$; flattens as economy shifts to high $\rho$ & S & 14 \\
-19 & $\rho$-diversity predicts resilience (lower crisis severity) & Q & 15 \\
-20 & Recession depths follow power law, not normal & Q & 15 \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-\subsection{Predictions requiring technology/learning data}\label{sec:pred-tech}
-
-\begin{center}
-\small
-\renewcommand{\arraystretch}{1.15}
-\begin{tabular}{clcl}
-\toprule
-\# & Prediction & Spec. & Paper \\
-\midrule
-21 & Overinvestment factor $\sim N\alpha\phi/(r+\delta)$ in Nash equilibrium & S & 11 \\
-22 & Self-undermining: centralized investment finances distributed viability & Q & 11 \\
-23 & Cycle duration $\tau \sim (1/\alpha)\ln(c_0/c^*)$ & S & 11 \\
-24 & Successive technology cycles compress ($\alpha$ increasing) & Q & 11 \\
-25 & Crisis count per cycle is topologically protected integer & Q & 13 \\
-26 & Turning point is saddle-node bifurcation, not gradual transition & Q & 11 \\
-27 & New technologies arrive with low $\rho$, standardize to high $\rho$ & Q & 15 \\
-28 & Perez turning point coincides with $\bar{\rho}$ minimum & Q & 15 \\
-29 & Industries with faster $\beta_S$ have shorter technology cycles & Q & 15 \\
-30 & AI hardware crossing $\sim$2028 & N & 11 \\
-31 & Self-sustaining distributed AI adoption $\sim$2030--2032 & N & 11 \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-\subsection{Predictions requiring cross-country/institutional data}\label{sec:pred-cross}
-
-\begin{center}
-\small
-\renewcommand{\arraystretch}{1.15}
-\begin{tabular}{clcl}
-\toprule
-\# & Prediction & Spec. & Paper \\
-\midrule
-32 & Damping cancellation: regulation speeds convergence but lowers equil. & Q & 9b \\
-33 & Upstream reform principle: reform level $n-1$ to help level $n$ & Q & 9b \\
-34 & Minimum policy cost $= \Delta\calF$ (Jarzynski bound) & S & 12 \\
-35 & Trade liberalization destroys Casimir invariants, frees degrees of freedom & Q & 13 \\
-36 & Cross-country expansion/contraction asymmetry scales with $\varepsilon$ & S & 14 \\
-37 & Minsky trap: low-rate regimes precede deeper crises (via $\rho$-shift) & Q & 14 \\
-38 & $N_{\mathrm{eff}} \in [4,5]$ for aggregate industrial production (2020s) & N & 9b \\
-39 & $N_{\mathrm{eff}}$ declines in maturing sectors, rises in innovating sectors & Q & 9b \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-\subsection{Already-tested predictions}\label{sec:tested}
-
-Three predictions have been tested against data in the companion papers:
-
-\begin{enumerate}[nosep]
-\item \textbf{Banking regulation and GFC severity} (Paper 9, Section 11): 147-country panel confirms that the interaction $\sigma_n \times T$ predicts crisis severity.  Supports predictions 2, 9, and 32.
-
-\item \textbf{Damping cancellation} (Paper 5, empirical tests): 158-country panel using BCL bank regulation data.  Activity restrictions: consistent (transient $h=1$ only).  Capital stringency: persistent (compositional, not a violation).  Basel III DID: $p = 0.95$ (strongly insignificant).  Supports prediction 32.
-
-\item \textbf{India natural experiment} (Paper 6): 2022 crypto tax shows $-86\%$ domestic volume but $72\%$ displacement offshore---displacement, not suppression.  Supports prediction 33 (upstream reform principle: domestic regulation shifts activity rather than eliminating it).
-\end{enumerate}
+Gradient flow ($\dot{\mathbf{x}} = -\mathbf{L}\nabla\calF$) and port-Hamiltonian dynamics ($\dot{\mathbf{x}} = (\mathbf{J} - \mathbf{R})\nabla\calF$) are not alternatives---they are limits of a single system.  Within-sector dynamics ($\mathbf{J} = 0$) and infinite timescale separation ($\varepsilon \to 0$) both reduce to gradient flow.  Finite timescale separation with directed I/O linkages ($\varepsilon > 0$, $\mathbf{J} \neq 0$) produces the full port-Hamiltonian system.
 
 %=============================================================================
-\section{Theory--Application Map}\label{sec:theory-application}
+\section{Theory--Application Concordance}\label{sec:concordance}
 %=============================================================================
 
-The theoretical framework (Papers 8--17) provides the mathematical foundation for the applied papers (Papers 1--7).  This section maps the connections.
-
-\medskip
-\noindent\emph{Paper numbering concordance.}
-The applied papers (1--7) correspond to the repository directory numbering.  The theory papers use their own sequence: 8~=~CES Quadruple Role, 9~=~Free Energy Framework, 9b~=~Complementary Heterogeneity (directory: Paper~5), 10~=~Industrial Production, 11~=~Technology Cycle, 12~=~Dynamical Free Energy, 13~=~Conservation Laws, 14~=~Business Cycles, 15~=~Endogenous $\rho$, 16~=~this paper (Unified Theory), 17~=~Emergent CES.  Paper~5 in the applied sequence and Paper~9b in the theory sequence are the same paper; it serves as both the primary applied theory paper and a component of the theory stack.
+The theoretical framework provides the mathematical foundation for seven applied papers.  This section maps the connections.
 
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.15}
-\begin{tabular}{p{3.2cm}p{3.5cm}p{5cm}}
+\begin{tabular}{p{3cm}p{3.5cm}p{5.5cm}}
 \toprule
-Applied Paper & Theory Papers Used & Key Theoretical Result Applied \\
+Applied Paper & Theory Used & How Theory Is Applied \\
 \midrule
-1. Endogenous Decentralization & 8, 10, 11 & Overinvestment theorem; self-undermining; duration formula.  Paper 1's Nash MPE is the game-theoretic micro-foundation for Paper 11's aggregated cycle. \\[6pt]
-2. Mesh Equilibrium & 8, 9b & Activation threshold ($\rho(\mathbf{K}) > 1$); CES diversity premium.  Paper 2's giant component is the percolation realization of Paper 9b's spectral condition. \\[6pt]
-3. Autocatalytic Mesh & 8, 10 & Correlation robustness prevents model collapse; effective curvature determines training productivity.  Paper 3's $\alpha_{\mathrm{eff}} > \alpha_{\mathrm{crit}}$ is Paper 10's $K_{\mathrm{eff}} > 0$. \\[6pt]
-4. Settlement Feedback & 9b, 14 & Port-Hamiltonian coupling at the fastest level; Minsky trap applied to stablecoin/Treasury absorption. Paper 4's bistable equilibrium is Paper 14's transcritical bifurcation. \\[6pt]
-5. Complementary Heterogeneity & 8, 9b & IS the theory paper (Paper 9b).  Six main results (port topology, moduli space, activation, eigenstructure bridge, damping cancellation, endogenous hierarchy depth $N_{\mathrm{eff}}$) ARE the theoretical core.  Wavelet calibration ($r^* \approx 2$, $N_{\mathrm{eff}} = 4$--$5$) grounds the timescale axiom empirically. \\[6pt]
-6. Monetary Productivity Gap & 9, 12 & FQI as a proxy for $T$; yield access gap as free energy gradient; India DID tests damping cancellation empirically.  Paper 6 is the primary empirical paper. \\[6pt]
-7. Fair Inheritance & 11, 14 & Overinvestment concentrates wealth during installation phase; Minsky trap means concentrated structure persists longer than optimal.  Paper 7 addresses the distributional consequence of the technology cycle. \\
+1. Endogenous Decentralization & \textsc{Quadruple Role}, \textsc{Firm Theory}, \textsc{Technology Cycle} & Paper 1's Nash MPE is the game-theoretic micro-foundation for the overinvestment theorem.  The self-undermining property explains why concentrated AI investment finances distributed viability.  Duration formula predicts hardware crossing $\sim$2028. \\[6pt]
+
+2. Mesh Equilibrium & \textsc{Quadruple Role}, \textsc{Architecture} & The activation threshold ($R_0 > 1$) governs mesh formation.  The CES diversity premium from complementary specialization ($\rho < 1$) explains why the mesh outperforms centralized provision.  Giant component via percolation is the network realization of the spectral condition. \\[6pt]
+
+3. Autocatalytic Mesh & \textsc{Quadruple Role}, \textsc{Firm Theory} & Correlation robustness prevents model collapse: effective external data fraction $\alpha_{\mathrm{eff}} > \alpha_{\mathrm{crit}}$ even when actual external data is below threshold.  This is the $K_{\mathrm{eff}} > 0$ condition from the effective curvature theorem applied to training. \\[6pt]
+
+4. Settlement Feedback & \textsc{Architecture}, \textsc{Business Cycles} & Port-Hamiltonian coupling at the fastest level (financial settlement).  The Minsky trap applied to stablecoin/Treasury absorption.  Paper 4's bistable equilibrium is a transcritical bifurcation.  Monetary policy degradation sequence follows from the hierarchical ceiling cascade. \\[6pt]
+
+5. Complementary Heterogeneity & IS the \textsc{Architecture} paper & Six main results (port topology, moduli space, activation, eigenstructure bridge, damping cancellation, endogenous $N_{\mathrm{eff}}$) constitute the theoretical core.  Wavelet calibration ($r^* \approx 2$, $N_{\mathrm{eff}} = 4$--$5$) grounds the timescale axiom empirically. \\[6pt]
+
+6. Monetary Productivity Gap & \textsc{Free Energy}, \textsc{Landscape Dynamics} & FQI (Fiat Quality Index) is a proxy for $T$.  Yield access gap is a free energy gradient.  India DID tests damping cancellation empirically.  13:1 remittance cost ratio (fiat vs.\ stablecoin) measures $\Delta\calF$ for settlement alternatives. \\[6pt]
+
+7. Fair Inheritance & \textsc{Technology Cycle}, \textsc{Business Cycles} & Overinvestment concentrates wealth during the installation phase.  The Minsky trap means concentrated structures persist longer than optimal.  Paper 7 addresses the distributional consequence: wealth stranded on the centralized side of the transition. \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -611,86 +815,188 @@ Applied Paper & Theory Papers Used & Key Theoretical Result Applied \\
 \subsection{The complete narrative}\label{sec:narrative}
 
 Read as a sequence, the applied papers tell a story that the theory papers formalize:
-
 \begin{enumerate}[nosep]
-\item Concentrated AI investment exceeds social optimum by $3$--$4\times$ (Paper 1 $\leftarrow$ Theorem 11.3.1);
-\item This overinvestment finances learning curves that make distributed AI viable (Paper 1 $\leftarrow$ Theorem 11.4.1);
-\item Above critical mass, a distributed mesh forms via first-order phase transition (Paper 2 $\leftarrow$ Theorem 9b.4.1);
-\item Mesh capability grows endogenously but is bounded by the Baumol bottleneck (Paper 3 $\leftarrow$ Corollary 10.2.4);
-\item The mesh enters capital markets, creating stablecoin demand and a settlement feedback loop (Paper 4 $\leftarrow$ Section 14.7);
-\item Empirically, fiat quality gaps and yield access gaps drive adoption in exactly the populations the framework predicts (Paper 6 $\leftarrow$ Predictions 14, 32--33);
-\item The overinvestment phase concentrates wealth; fair inheritance policy addresses the distributional consequence (Paper 7 $\leftarrow$ Section 14.7, Section 11.3).
+\item Concentrated AI investment exceeds social optimum by $3$--$4\times$ (Paper 1 $\leftarrow$ overinvestment theorem);
+\item This overinvestment finances learning curves that make distributed AI viable (Paper 1 $\leftarrow$ self-undermining theorem);
+\item Above critical mass, a distributed mesh forms via first-order phase transition (Paper 2 $\leftarrow$ activation threshold, Potts crystallization);
+\item Mesh capability grows endogenously but is bounded by the Baumol bottleneck (Paper 3 $\leftarrow$ hierarchical ceiling cascade);
+\item The mesh enters capital markets, creating stablecoin demand and a settlement feedback loop (Paper 4 $\leftarrow$ port-Hamiltonian coupling at Level 4);
+\item Empirically, fiat quality gaps and yield access gaps drive adoption in exactly the populations the framework predicts (Paper 6 $\leftarrow$ free energy gradient, FDT);
+\item The overinvestment phase concentrates wealth; fair inheritance policy addresses the distributional consequence (Paper 7 $\leftarrow$ technology cycle, Minsky trap).
 \end{enumerate}
 
-The theory papers provide the mathematical skeleton; the applied papers attach flesh to specific bones.
+%=============================================================================
+\section{Prediction Inventory}\label{sec:predictions}
+%=============================================================================
+
+The companion papers generate testable predictions organized by data requirement.  We classify each by specificity: \textbf{Q} (qualitative direction), \textbf{S} (scaling law or functional form), or \textbf{N} (numerical value).
+
+\subsection{Firm-level predictions}
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{clccc}
+\toprule
+\# & Prediction & Spec. & Source & Status \\
+\midrule
+1 & $K_{\mathrm{eff}} = K(1 - T/T^*)^+$ & S & \textsc{Firm Theory} & --- \\
+2 & Crisis sequence: correlation $\to$ super.\ $\to$ strategic & Q & \textsc{Firm Theory} & --- \\
+3 & Optimal firm scope $J^*$ increases in $K/T$ & Q & \textsc{Firm Theory} & --- \\
+4 & FDT: $T = \sigma^2/\chi$ & S & \textsc{Landscape Dyn.} & Directional \\
+5 & Euler identity: $\mathbf{x}^*\cdot\nabla H = -1/T$ & S & \textsc{Conservation} & --- \\
+6 & Covariance: $(\sigma^2-\gamma)\mathbf{I} + \gamma\bone\bone^\top$ & S & \textsc{Conservation} & $\checkmark\checkmark$ \\
+7 & Onsager reciprocity: $L_{ij} = L_{ji}$ & Q & \textsc{Landscape Dyn.} & $\times$ \\
+8 & $\hat{\rho}$ cyclical: falls in expansions, rises in contractions & Q & \textsc{Endogenous $\rho$} & $\checkmark$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Sectoral/macro predictions}
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{clcc}
+\toprule
+\# & Prediction & Spec. & Source \\
+\midrule
+9 & Sectors enter recession in $\rho$-order & Q & \textsc{Business Cycles} \\
+10 & Housing/finance lead; services lag & Q & \textsc{Business Cycles} \\
+11 & Recovery ordering reverses recession ordering & Q & \textsc{Business Cycles} \\
+12 & Expansion/contraction ratio $\approx 1/\varepsilon$ & S & \textsc{Business Cycles} \\
+13 & Pre-crisis: autocorrelation and variance rise & Q & \textsc{Landscape Dyn.} \\
+14 & Pre-crisis: $T = \sigma^2/\chi$ is leading indicator & Q & \textsc{Landscape Dyn.} \\
+15 & Regulation reduces amplitude, not avg.\ growth & Q & \textsc{Business Cycles} \\
+16 & Phillips curve slope $\propto \bar{K}$ & S & \textsc{Business Cycles} \\
+17 & $\rho$-diversity predicts resilience & Q & \textsc{Endogenous $\rho$} \\
+18 & Recession depths follow power law & Q & \textsc{Endogenous $\rho$} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Technology/learning predictions}
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{clcc}
+\toprule
+\# & Prediction & Spec. & Source \\
+\midrule
+19 & Overinvestment $\sim N\alpha\phi/(r+\delta)$ & S & \textsc{Technology Cycle} \\
+20 & Self-undermining: centralized funds distributed & Q & \textsc{Technology Cycle} \\
+21 & Duration $\tau \sim (1/\alpha)\ln(c_0/c^*)$ & S & \textsc{Technology Cycle} \\
+22 & Successive cycles compress & Q & \textsc{Technology Cycle} \\
+23 & Crisis count is topologically protected integer & Q & \textsc{Conservation} \\
+24 & Turning point is saddle-node bifurcation & Q & \textsc{Technology Cycle} \\
+25 & New technologies arrive with low $\rho$ & Q & \textsc{Endogenous $\rho$} \\
+26 & AI hardware crossing $\sim$2028 & N & \textsc{Technology Cycle} \\
+27 & Self-sustaining distributed adoption $\sim$2030--32 & N & \textsc{Technology Cycle} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Cross-country/institutional predictions}
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{clcc}
+\toprule
+\# & Prediction & Spec. & Source \\
+\midrule
+28 & Damping cancellation: regulation $\to$ zero net effect & Q & \textsc{Architecture} \\
+29 & Upstream reform principle & Q & \textsc{Architecture} \\
+30 & Minimum policy cost $= \Delta\calF$ (Jarzynski) & S & \textsc{Landscape Dyn.} \\
+31 & Trade liberalization destroys Casimir invariants & Q & \textsc{Conservation} \\
+32 & Minsky trap: low-rate $\Rightarrow$ deeper crises & Q & \textsc{Business Cycles} \\
+33 & $N_{\mathrm{eff}} \in [4,5]$ for aggregate IP & N & \textsc{Architecture} \\
+34 & Monetary policy degrades: FG $\to$ QE $\to$ FR & Q & Paper 4 \\
+35 & QE multiplier declining across episodes & Q & Paper 4 \\
+36 & Laffer peak lower for high-$\rho$ sectors & Q & \Cref{sec:laffer} \\
+37 & Laffer decline follows crisis sequence ordering & Q & \Cref{sec:laffer} \\
+38 & Beyond Laffer peak: displacement, not suppression & Q & \Cref{sec:laffer} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Already-tested predictions}
+
+Seventeen predictions have been confronted with data (\Cref{sec:evidence}):
+
+\medskip\noindent\textit{Firm-level predictions (\#4--8):}
+\begin{enumerate}[nosep]
+\item \textbf{FDT} (\#4): Directional only.  Cross-sectional $\hat{T} > 0$ but $R^2 = 0.009$ ($N = 17$ sectors).
+\item \textbf{Equicorrelation} (\#6): Strongly supported.  CV of off-diagonal correlations = 0.36 vs.\ null median 17.5 (0th percentile, $N = 17$ manufacturing sectors).
+\item \textbf{Onsager reciprocity} (\#7): Not supported.  IRF symmetry $r = 0.07$ ($p = 0.73$) in durable manufacturing VAR.
+\item \textbf{Cyclical $\hat{\rho}$} (\#8): Supported.  Both rolling correlation proxy ($\tau = -0.17$, $p = 0.01$) and direct CES NLS ($\tau = -0.31$, $p = 0.002$) confirm countercyclical $\rho$.
+\end{enumerate}
+
+\medskip\noindent\textit{Sectoral/macro predictions (\#9--18):}
+\begin{enumerate}[nosep,resume]
+\item \textbf{$\rho$-ordering of recession entry} (\#9--11): Supported.  Pooled OLS on peak timing across 7 manufacturing subsectors $\times$ 7 recessions: $\beta_1 = -14.65$ ($p = 0.001$); Kendall $\tau = -0.40$ ($p < 0.001$, $N = 49$).  Broad sectors confirm: $\tau = -0.43$ ($p = 0.074$, $N = 12$).  Low-$\rho$ sectors (metals, transport) lead by 12--18 months; high-$\rho$ (food, computers) lag.
+\item \textbf{Expansion/contraction asymmetry} (\#12): Directional.  Mean ratio across 11 post-war cycles = 11.8 (median 4.9), consistent with predicted $1/\varepsilon \approx 10$.  Skewed by 2020 outlier (COVID: 2-month contraction).
+\item \textbf{Critical slowing down} (\#13): Directional.  Rolling AR(1) rises in pre-crisis windows in 14/21 sector-recession pairs (67\%).  Strongest for 2007--09 (6/7 sectors, mean $\tau = +0.31$).  1990--91 shows opposite pattern (3/7).
+\item \textbf{Information temperature $T$} (\#14): Supported.  $T = \sigma^2/\chi$ has significant predictive content for 12-month-ahead recessions (probit $\beta = 221$, $p = 0.0003$, pseudo-$R^2 = 0.035$).  Joint model with term spread: pseudo-$R^2 = 0.186$ vs.\ 0.107 for spread alone and 0.0001 for VIX alone.
+\item \textbf{Regulation reduces amplitude} (\#15): Supported.  Great Moderation volatility ratio 0.52 (pre-1984 $\sigma = 0.97\%$ vs.\ 1984--2007 $\sigma = 0.51\%$) with negligible change in mean growth ($+0.054$ pp).
+\item \textbf{Phillips slope $\propto \bar{K}$} (\#16): Ambiguous.  $\bar{K}$ falls from 0.331 to 0.322 (2005--2025) as services grow, but rolling Phillips slope shows $\tau(\bar{K}, \beta_1) = -0.37$ ($p < 0.001$)---opposite to predicted co-movement.  Short sample and narrow $\bar{K}$ range limit power.
+\item \textbf{$\rho$-diversity and resilience} (\#17): Insufficient data.  Only 2 recessions (2007, 2020) in the state GDP panel; direction correct ($\tau = +1.0$) but $n = 2$.
+\item \textbf{Power-law recession depths} (\#18): Suggestive.  Log-log rank plot of 7 INDPRO recessions yields $R^2 = 0.84$.  Hill estimator $\hat{\alpha} = 3.5$ (with $x_{\min} = 9.3\%$); OLS exponent 1.07.  Too few observations for formal power-law inference.
+\end{enumerate}
+
+\medskip\noindent\textit{Monetary/policy predictions (\#28--35):}
+\begin{enumerate}[nosep,resume]
+\item \textbf{Damping cancellation} (\#28): Supported.  158-country panel, Basel III DID $p = 0.95$.
+\item \textbf{Upstream reform/displacement} (\#29): Supported.  India 2022 shows displacement, not suppression.
+\item \textbf{$N_{\mathrm{eff}}$ range} (\#33): Supported.  Wavelet analysis yields $4.5 \pm 1.0$.
+\item \textbf{FG baseline} (\#34): Supported.  Surprise-normalized sensitivity flat at $\phi \approx 0$.
+\item \textbf{QE multiplier decline} (\#35): Strongly supported.  15-fold decline QE1$\to$COVID.
+\end{enumerate}
 
 %=============================================================================
 \section{Open Problems}\label{sec:open}
 %=============================================================================
 
-The framework, despite its breadth, has significant open problems.  We organize them by the axiom whose extension is required.
+\subsection{Heterogeneous and nested CES}
 
-\subsection{Extensions of A1 (CES production)}\label{sec:open-a1}
+The dynamical papers work with symmetric CES.  Weighted CES (via the secular equation) modifies the crisis sequence and $\rho$-ordering predictions.  Nested CES---where labor and capital combine at one level, energy and materials at another---generates richer phase diagrams with multiple critical curves.
 
-\begin{enumerate}[nosep]
-\item \textbf{Heterogeneous weights.}  Paper 8 (Section 8) extends the quadruple role to weighted CES via the secular equation.  But the dynamical papers (12--15) work with symmetric CES.  A full treatment of asymmetric production---where some inputs are structurally more important than others---would modify the crisis sequence and $\rho$-ordering predictions.
+\subsection{Heterogeneous $T$}
 
-\item \textbf{Nested CES.}  Real production has hierarchical input structures: labor and capital combine at one level, energy and materials at another.  Nested CES generates richer phase diagrams with multiple critical curves.
+The macro papers use a single economy-wide $T$.  Sector-specific $T_n$ would allow the framework to model economies where different sectors face different information frictions.  The \textsc{Firm Theory} paper allows sector-specific $T_n$, but the \textsc{Business Cycles} paper uses a common $T$.
 
-\item \textbf{Non-CES aggregation.}  The CES is the unique aggregator with constant elasticity.  But some empirical production functions show variable elasticity (translog, Diewert).  How robust are the results to aggregation functions where $\rho$ varies with the input mix?
-\end{enumerate}
+\subsection{Endogenous timescales}
 
-\subsection{Extensions of A2 (Shannon constraints)}\label{sec:open-a2}
+The framework takes timescale ratios $\varepsilon_k$ as given.  Financial innovation changes financial-sector adjustment speeds; technological change modifies real-sector timescales.  Endogenous timescales would interact with endogenous $\rho$.
 
-\begin{enumerate}[nosep]
-\item \textbf{Non-Shannon information costs.}  Rational inattention with Shannon entropy yields the logit choice model.  Alternative information costs (Tsallis entropy, R\'{e}nyi entropy) yield different choice models.  The free energy $\calF = \Phi - T \cdot H$ generalizes, but the specific predictions (Boltzmann equilibrium, FDT form, permutation covariance) depend on the Shannon structure.
+\subsection{Timescale collapse}
 
-\item \textbf{Heterogeneous $T$.}  The framework mostly uses a single economy-wide $T$.  In reality, different agents, sectors, and countries face different information frictions.  Paper 10 allows sector-specific $T_n$ in the firm theory, but the macro papers (14--15) use a common $T$.
-\end{enumerate}
+The wavelet calibration ($r^* \approx 2$, IQR $[1.84, 2.63]$) shows empirical ratios near the minimum for singular perturbation.  A systematic treatment of finite-$r^*$ corrections---analogous to finite-size scaling in statistical mechanics---would sharpen quantitative predictions.  The nearest-neighbor topology carries $O(1/r^*) \approx 50\%$ corrections from non-adjacent coupling.
 
-\subsection{Extensions of A3 (Timescale separation)}\label{sec:open-a3}
+\textbf{Partial resolution.}  The circularity concern---that the Morlet wavelet's inherent octave structure might impose rather than discover $r^* \approx 2$---is resolved by the companion EMD paper \citep{smirl2026emd}.  Ensemble Empirical Mode Decomposition (EEMD), a fully data-adaptive method with no pre-specified basis, confirms $N_{\mathrm{eff}} = 5$ and $r^* = 2.19$ (IQR $[2.13, 2.21]$) on the same INDPRO data.  The hierarchy is data-intrinsic, not a wavelet artifact.  What remains open is the \emph{mathematical} treatment: deriving sharp bounds on non-adjacent coupling, characterizing the finite-$r^*$ corrections to the slow-manifold reduction, and establishing convergence rates for the singular perturbation expansion at $r^* = 2$.
 
-\begin{enumerate}[nosep]
-\item \textbf{Endogenous timescales.}  The framework takes timescale ratios $\varepsilon_k$ as given.  But financial innovation changes financial-sector adjustment speeds (reducing $\varepsilon$), and technological change modifies real-sector timescales.  Endogenous timescales would interact with the endogenous $\rho$ dynamics of Paper 15.
+\textbf{Free energy validation.}  The same EEMD decomposition validates the dynamical predictions of Paper~12.  Partitioning INDPRO growth into fast modes (period $< 4$ yr, the ``thermal bath'') and slow structural modes (period $> 8$ yr), the self-consistent FDT susceptibility $\chi(t) = E_{\mathrm{slow}}/T_{\mathrm{fast}}$ detects five technology wave peaks (1938, 1948, 1977, 1994, 2006), each corresponding to a known technology era---discovered from production data alone with no patents, labels, or external temperature proxy.  The self-consistent temperature automatically discriminates technology waves from financial crises (crises spike $T_{\mathrm{fast}}$ in the denominator, suppressing $\chi$; technology waves spike only $E_{\mathrm{slow}}$).  Critical slowing down ($\tau_{\mathrm{ACF}}$ of slow modes) peaks simultaneously with $\chi$ at all five waves, and multi-sector eigenvector analysis confirms the symmetry-breaking prediction: Computer/Electronics dominates the structural change eigenvector at 1989 and 2020 (the IT and AI waves).  These results provide the first empirical validation that the CES free energy landscape has measurable curvature whose phase-transition signatures match the theory.
 
-\item \textbf{Timescale collapse.}  What happens when two levels' timescales converge ($\varepsilon_k \to 1$)?  The singular perturbation framework breaks down, and the system may exhibit novel dynamics not captured by the slow-manifold analysis.  The wavelet calibration ($r^* \approx 2$, IQR~$[1.84, 2.63]$) shows this is not a remote concern: empirical timescale ratios are already near the minimum for the slow-manifold reduction, and the nearest-neighbor topology carries $O(1/r^*) \approx 50\%$ corrections from non-adjacent coupling.  A systematic treatment of finite-$r^*$ corrections---analogous to finite-size scaling in statistical mechanics---would sharpen the quantitative predictions.
-\end{enumerate}
+\subsection{Tsallis entropy: resolved}
 
-\subsection{Extensions of A4 (Wright's Law)}\label{sec:open-a4}
+The emergence theorem's matching result $\rho = \alpha$ (\Cref{rem:universality}) implies that the natural entropy for CES($\rho$) is R\'enyi/Tsallis entropy of order $\rho$, not Shannon ($\alpha \to 1$).  Shannon corresponds to the trivial case $\rho \to 1$ (perfect substitutes).  This is now resolved: Axiom~\ref{ax:shannon} uses Tsallis entropy with $q = \rho$ throughout, matched to the production technology's complementarity.
 
-\begin{enumerate}[nosep]
-\item \textbf{Forgetting.}  Wright's Law assumes cumulative learning is permanent.  In practice, organizational knowledge depreciates.  A modified learning curve $c(Q) = c_0 \cdot Q_{\mathrm{eff}}^{-\alpha}$ with $dQ_{\mathrm{eff}}/dt = I - \delta_Q Q_{\mathrm{eff}}$ would modify the duration and amplitude formulas.
-
-\item \textbf{Step-function learning.}  Some technologies exhibit punctuated rather than smooth learning (breakthrough followed by plateau).  The continuous Wright's Law framework may not capture these dynamics.
-\end{enumerate}
-
-\subsection{Extensions of A5 (Directed I/O)}\label{sec:open-a5}
-
-\begin{enumerate}[nosep]
-\item \textbf{Endogenous network topology.}  The input-output matrix $\mathbf{A}$ is taken as given.  But firms choose their suppliers and customers, and these choices depend on $(\rho, T)$.  A fully endogenous I/O structure would close another loop in the framework.
-
-\item \textbf{Global vs.\ national I/O.}  The framework does not distinguish between domestic and international input-output linkages.  Trade policy that modifies the international component of $\mathbf{A}$ has effects on the Casimir invariants (Paper 13) and oscillatory modes (Paper 14) that deserve separate analysis.
-\end{enumerate}
-
-\subsection{The deepest open problem}\label{sec:deepest}
-
-\begin{quote}
-\emph{Is the CES structure itself emergent?}
-\end{quote}
-
-The framework takes CES production as axiomatic (A1).  But the renormalization group analysis of Paper 12 shows that $\rho$ and $T$ are the only relevant parameters under coarse-graining---all microscopic details wash out.  This suggests that CES may not be an assumption but a \emph{consequence}: any aggregation of many heterogeneous inputs, under sufficiently general conditions, may flow to a CES-like fixed point under coarse-graining, just as many microscopic models flow to the Ising universality class in statistical mechanics.  If this universality conjecture holds, A1 is not an axiom but a theorem, and the framework rests on four axioms rather than five.  Proving or disproving this conjecture is the most important open problem in the framework.
+The companion paper \citep{smirl2026tsallis} develops the full Tsallis framework, replacing the Shannon chain rule with the $q$-chain rule (pseudo-additivity) and deriving the Tsallis free energy $\calF_q = \Phi_{\mathrm{CES}}(q) - T \cdot S_q$ with $q = \rho$.  All results from Papers~12--13 are classified: exact survivors (Euler identity, winding number, Casimirs), $q$-corrected results acquiring a factor $1/(2-q)$ (FDT, covariance eigenvalues, Kramers escape), and structural changes replacing $\exp$ with $\exp_q$ (Crooks, Jarzynski, equilibrium distribution).  The $q$-exponential equilibrium has compact support for complements ($q < 1$) and power-law tails for substitutes ($q > 1$), with tail exponent $\zeta = \sigma$.  Empirical tests on 17 FRED manufacturing sectors find that the $q$-exponential distribution significantly outperforms the exponential (Shannon) distribution in 12 of 17 sectors, with the non-exponential tail behavior surviving GARCH standardization in 9 of 17.  Since $q = \rho$ from the emergence theorem, no new parameter is introduced.
 
 %=============================================================================
 \section{Conclusion}\label{sec:conclusion}
 %=============================================================================
 
-The $(\rho, T)$ framework is a deductive system.  Five axioms---CES production, Shannon information constraints, timescale separation, Wright's Law learning, and directed input-output coupling---generate a comprehensive theory of economic structure, dynamics, and fluctuations.  The theory's architecture is cumulative: each axiom unlocks a new tier of results, from the static quadruple role of curvature (A1+A2) through multi-level dynamics (A3), technology cycles (A4), business cycles (A5), and finally the self-referential closure where complementarity itself evolves endogenously (all five).
+The $(\rho, T)$ framework is a deductive system that generates economic structure, dynamics, and fluctuations from six axioms.  The first two---constant returns to scale and scale consistency---are not CES assumptions but structural requirements; the CES emergence theorem (\Cref{thm:emergent}) proves they force the power-mean form, with the complementarity parameter $\rho$ emerging as a universality class label preserved under aggregation.  The remaining four axioms (Tsallis constraints with $q = \rho$, timescale separation, Wright's Law, directed I/O) build successively on this foundation: CES production and Tsallis constraints yield the static theory; timescale separation yields the multi-level architecture; Wright's Law yields technology cycles; directed I/O yields business cycles; and all six together close the system with endogenous $\rho$, leaving no free structural parameters.
 
-The phase diagram in $(\rho, T)$ space is the theory's central object.  Every economic question---about fragility, about cycle phase, about policy effect, about crisis sequence---reduces to the location of the economy on this diagram and the direction of its motion.  The diagram is not a metaphor; it is a quantitative tool.  The critical curve $T^*(\rho)$, the crisis sequence boundaries, the damping ratio contours, and the Perez limit cycle are all computable from data.
+The framework's most novel contribution is its \emph{dynamical} content.  The port-Hamiltonian structure $\dot{\mathbf{x}} = (\mathbf{J} - \mathbf{R})\nabla\calF$ derives business cycles from production technology and input-output linkages, rather than from exogenous shocks or representative-agent rigidities.  The $\rho$-ordering theorem explains sectoral propagation.  The Minsky trap emerges as a theorem.  The Great Moderation was not a permanent regime change but critical damping with catastrophic termination.  The Perez technology cycle is a limit cycle in parameter space with topologically protected crisis count.
 
-The unified prediction inventory contains 39 testable claims, ranging from qualitative directions (sectors enter recession in $\rho$-order) to numerical values (AI hardware crossing $\sim$2028).  Three predictions have already been tested against data.  The remainder define a research program: measure $T$ from the fluctuation-dissipation theorem, estimate sectoral $\rho$ from production function data, and test the $\rho$-ordering, asymmetry scaling, and Minsky trap predictions against business cycle evidence.
+The phase diagram in $(\rho, T)$ space is the theory's central object.  Every question about fragility, cycle phase, policy effect, or crisis sequence reduces to the economy's location on this diagram and the direction of its motion.  The diagram is not a metaphor; it is a quantitative tool whose features---critical curve, crisis boundaries, damping contours, limit-cycle attractor---are all computable from data.
 
-The deepest open question---whether CES production is itself emergent under renormalization---would, if answered affirmatively, reduce the axiom count from five to four and establish the framework not as a model but as a universality class: the unique macroscopic theory consistent with heterogeneous input aggregation, information constraints, learning, and directed trade.
+Seventeen predictions have been tested, with results ranging from strongly supportive (equicorrelation, QE multiplier decline, damping cancellation, $\rho$-ordering of recession entry) through supported (countercyclical $\rho$, displacement not suppression, Great Moderation volatility, information temperature $T$ as leading indicator) to directional (expansion/contraction asymmetry, critical slowing down), baseline-establishing (forward guidance stability), and one honest negative (Onsager reciprocity at sector level).  The $\rho$-ordering result---$\beta_1 = -14.65$ ($p = 0.001$) across 49 sector-recession pairs---is the strongest confirmation of the business cycle theory: low-complementarity sectors lead recessions by 12--18 months, exactly as the CES landscape predicts.  The remaining predictions define a research program: longer panels for $\rho$-diversity, cross-country regulation tests, and the Minsky trap prediction.
+
+That CES is derived rather than assumed has a substantive consequence: the framework is a universality class.  Any economy with constant returns, scale consistency, information constraints, timescale separation, learning, and directed trade will produce the same qualitative dynamics---the same phase diagram, the same crisis sequence, the same cycle hierarchy---regardless of the microscopic details of firm technology, consumer preferences, or institutional form.  Everything that matters for macroscopic prediction is encoded in two numbers: $\rho$ and $T$.
 
 %=============================================================================
 % Bibliography
@@ -699,47 +1005,80 @@ The deepest open question---whether CES production is itself emergent under reno
 
 \begin{thebibliography}{99}
 
+\bibitem[Gabaix(2009)]{gabaix2009}
+Gabaix, Xavier. 2009. ``Power Laws in Economics and Finance.'' \textit{Annual Review of Economics} 1: 255--294.
+
 \bibitem[Kuehn(2015)]{kuehn2015}
 Kuehn, Christian. 2015. \textit{Multiple Time Scale Dynamics}. Applied Mathematical Sciences 191. Springer.
+
+\bibitem[Leamer(2007)]{leamer2007}
+Leamer, Edward E. 2007. ``Housing IS the Business Cycle.'' NBER Working Paper 13428.
 
 \bibitem[Nagy et~al.(2013)]{nagy2013}
 Nagy, B\'{e}la, J. Doyne Farmer, Quan M. Bui, and Jessika E. Trancik. 2013. ``Statistical Basis for Predicting Technological Progress.'' \textit{PLoS ONE} 8(2): e52669.
 
+\bibitem[Perez(2002)]{perez2002}
+Perez, Carlota. 2002. \textit{Technological Revolutions and Financial Capital}. Edward Elgar.
+
 \bibitem[Sims(2003)]{sims2003}
 Sims, Christopher A. 2003. ``Implications of Rational Inattention.'' \textit{Journal of Monetary Economics} 50(3): 665--690.
 
-\bibitem[Smirl(2026a)]{smirl2026business}
-Smirl, Jon. 2026a. ``Business Cycles as Port-Hamiltonian Oscillations in a Heterogeneous-Complementarity Economy.'' Working Paper.
+\bibitem[Smirl(2026a)]{smirl2026ces}
+Smirl, Jon. 2026a. ``The CES Quadruple Role: Superadditivity, Correlation Robustness, Strategic Independence, and Network Scaling as Four Properties of CES Curvature.'' Working Paper (SSRN 6263482).
 
-\bibitem[Smirl(2026b)]{smirl2026ces}
-Smirl, Jon. 2026b. ``The CES Quadruple Role: Superadditivity, Correlation Robustness, Strategic Independence, and Network Scaling as Four Properties of CES Curvature.'' Working Paper.
+\bibitem[Smirl(2026b)]{smirl2026free}
+Smirl, Jon. 2026b. ``The Free Energy Principle in Economics: CES Aggregation and Tsallis Entropy as Generating Functions of Economic Theory.'' Working Paper (SSRN 6263541).
 
-\bibitem[Smirl(2026c)]{smirl2026complementary}
-Smirl, Jon. 2026c. ``Complementary Heterogeneity and the Eigenstructure of Multi-Level Economic Systems.'' Working Paper.
+\bibitem[Smirl(2026k)]{smirl2026tsallis}
+Smirl, Jon. 2026k. ``The Tsallis Free Energy: Non-Extensive Information Costs for Complementary Production.'' Working Paper.
 
-\bibitem[Smirl(2026d)]{smirl2026conservation}
-Smirl, Jon. 2026d. ``Conservation Laws, Topological Invariants, and Exact Constraints in the Economic Free Energy Framework.'' Working Paper.
+\bibitem[Smirl(2026c)]{smirl2026prod}
+Smirl, Jon. 2026c. ``Production Under Information Frictions: A CES Free Energy Theory of the Firm.'' Working Paper.
 
-\bibitem[Smirl(2026e)]{smirl2026dynamical}
-Smirl, Jon. 2026e. ``Dynamical Consequences of the Economic Free Energy: From Fluctuation-Dissipation to Renormalization.'' Working Paper.
+\bibitem[Smirl(2026d)]{smirl2026cycle}
+Smirl, Jon. 2026d. ``The Technology Cycle as Phase Transition: A General Theory from CES Curvature and Information Temperature.'' Working Paper.
 
-\bibitem[Smirl(2026f)]{smirl2026ed}
-Smirl, Jon. 2026f. ``Endogenous Decentralization: A Continuous-Time Model of Concentrated Investment and Distributed Adoption.'' Working Paper.
+\bibitem[Smirl(2026e)]{smirl2026dyn}
+Smirl, Jon. 2026e. ``Dynamics on the Free Energy Landscape: Fluctuation Theorems, Early Warning Signals, and Renormalization in Economic Systems.'' Working Paper.
 
-\bibitem[Smirl(2026f$'$)]{smirl2026emergent}
-Smirl, Jon. 2026. ``Emergent CES: Why Constant Elasticity of Substitution Is Not an Assumption.'' Working Paper.
+\bibitem[Smirl(2026f)]{smirl2026conservation}
+Smirl, Jon. 2026f. ``Conservation Laws, Topological Invariants, and Exact Constraints in the Economic Free Energy Framework.'' Working Paper.
 
-\bibitem[Smirl(2026g)]{smirl2026endogenous}
-Smirl, Jon. 2026g. ``Endogenous Complementarity: The Self-Referential Dynamics of $\rho$.'' Working Paper.
+\bibitem[Smirl(2026g)]{smirl2026business}
+Smirl, Jon. 2026g. ``Business Cycles as Port-Hamiltonian Oscillations in a Heterogeneous-Complementarity Economy.'' Working Paper.
 
-\bibitem[Smirl(2026h)]{smirl2026free}
-Smirl, Jon. 2026h. ``A Free Energy Framework for Economic Systems with Heterogeneous Complementarities.'' Working Paper.
+\bibitem[Smirl(2026h)]{smirl2026endogenous}
+Smirl, Jon. 2026h. ``Endogenous Complementarity: The Self-Referential Dynamics of $\rho$.'' Working Paper.
 
-\bibitem[Smirl(2026i)]{smirl2026industrial}
-Smirl, Jon. 2026i. ``CES Complementarity and Industrial Production: Information Temperature as a Sufficient Statistic.'' Working Paper.
+\bibitem[Smirl(2026i)]{smirl2026complementary}
+Smirl, Jon. 2026i. ``Complementary Heterogeneity in Hierarchical Economies: CES Aggregation, Derived Architecture, and Cross-Sector Activation in Multi-Timescale Systems.'' Working Paper.
 
-\bibitem[Smirl(2026j)]{smirl2026technology}
-Smirl, Jon. 2026j. ``The Technology Cycle: CES Complementarity, Wright's Law, and Endogenous Waves.'' Working Paper.
+\bibitem[Smirl(2026j)]{smirl2026emergent}
+Smirl, Jon. 2026j. ``Emergent CES: Why Constant Elasticity of Substitution Is Not an Assumption.'' Working Paper.
+
+\bibitem[Smirl(2026k)]{smirl2026ed}
+Smirl, Jon. 2026k. ``Endogenous Decentralization: How Concentrated Capital Investment Finances the Learning Curves That Enable Distributed Alternatives.'' Working Paper.
+
+\bibitem[Smirl(2026l)]{smirl2026mesh}
+Smirl, Jon. 2026l. ``The Mesh Equilibrium: How Heterogeneous Specialized Agents Self-Organize to Exceed Centralized Provision After the Crossing Point.'' Working Paper.
+
+\bibitem[Smirl(2026m)]{smirl2026autocatalytic}
+Smirl, Jon. 2026m. ``The Autocatalytic Mesh: Endogenous Capability Growth in Self-Organizing Agent Networks.'' Working Paper.
+
+\bibitem[Smirl(2026n)]{smirl2026settlement}
+Smirl, Jon. 2026n. ``The Settlement Feedback: How Autonomous Agent Capital Markets Transform the Monetary System They Depend On.'' Working Paper.
+
+\bibitem[Smirl(2026o)]{smirl2026mpg}
+Smirl, Jon. 2026o. ``The Monetary Productivity Gap: Monetary Regime Choice in Developing Economies.'' Working Paper.
+
+\bibitem[Smirl(2026p)]{smirl2026fair}
+Smirl, Jon. 2026p. ``Taxing Concentration, Not Transfer: A Theoretical and Empirical Framework for Recipient-Based Inheritance Taxation.'' Working Paper.
+
+\bibitem[Smirl(2026q)]{smirl2026tsallis}
+Smirl, Jon. 2026q. ``The Tsallis Free Energy: Non-Extensive Information Costs for Complementary Production.'' Working Paper.
+
+\bibitem[Smirl(2026r)]{smirl2026emd}
+Smirl, Jon. 2026r. ``Empirical Mode Decomposition of the Economic Timescale Hierarchy.'' Working Paper.
 
 \bibitem[Wright(1936)]{wright1936}
 Wright, Theodore P. 1936. ``Factors Affecting the Cost of Airplanes.'' \textit{Journal of the Aeronautical Sciences} 3(4): 122--128.

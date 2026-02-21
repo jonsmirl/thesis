@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.2.17)  19 FEB 2026 12:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.2.17)  21 FEB 2026 09:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -497,13 +497,23 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 36.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+
+Package natbib Warning: Citation `smirl2026tsallis' on page 2 undefined on inpu
+t line 51.
+
+[2]
 Overfull \hbox (0.97124pt too wide) in paragraph at lines 109--111
 \OT1/cmr/m/it/12 where $\OML/cmm/m/it/12 ^^M$ \OT1/cmr/m/it/12 de-pends on the 
 per-tur-ba-tion struc-ture. The sec-ond term---the cur-va-ture bonus---
  []
 
-[3] [4] [5] [6] [7] [8] [9]
+[3]
+
+Package natbib Warning: Citation `smirl2026tsallis' on page 4 undefined on inpu
+t line 129.
+
+[4] [5] [6] [7] [8] [9]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 371.
@@ -538,22 +548,35 @@ Overfull \hbox (11.59952pt too wide) in paragraph at lines 556--557
 a
  []
 
-[15] [16] [17] (./Industrial_Production.aux)
+[15] [16] [17]
+
+Package natbib Warning: There were undefined citations.
+
+[18] (./Industrial_Production.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `Industrial_Production.out' has not changed.
-(rerunfilecheck)             Checksum: ACBCB10F668487984DC582E22FCF1DC6;5165.
+(rerunfilecheck)             Checksum: 613F19255B7A28EDBD0F938ECF3F19C9;5195.
  ) 
 Here is how much of TeX's memory you used:
- 13674 strings out of 476182
- 222157 string characters out of 5795595
+ 13683 strings out of 476182
+ 222354 string characters out of 5795595
  1937975 words of memory out of 5000000
- 35360 multiletter control sequences out of 15000+600000
+ 35366 multiletter control sequences out of 15000+600000
  574205 words of font info for 94 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,12n,79p,1641b,715s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,12n,79p,1661b,715s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/jonsmirl/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.
 600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/
@@ -575,10 +598,10 @@ e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Industrial_Production.pdf (17 pages, 321656 bytes).
+Output written on Industrial_Production.pdf (18 pages, 323902 bytes).
 PDF statistics:
- 563 PDF objects out of 1000 (max. 8388607)
- 496 compressed objects within 5 object streams
- 153 named destinations out of 1000 (max. 500000)
+ 572 PDF objects out of 1000 (max. 8388607)
+ 503 compressed objects within 6 object streams
+ 156 named destinations out of 1000 (max. 500000)
  233 words of extra memory for PDF output out of 10000 (max. 10000000)
 

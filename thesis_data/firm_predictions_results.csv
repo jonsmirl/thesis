@@ -1,0 +1,10 @@
+test,method,metric,value,p_value
+4_FDT,bivariate_VAR_OLS,R2,0.008572824055623762,0.7237595416369894
+4_FDT,bivariate_VAR_OLS,T_estimate,0.00010414000010906127,0.7237595416369894
+6_Equicorrelation,correlation_matrix,CV,0.36253388483922744,
+6_Equicorrelation,correlation_matrix,Frobenius_ratio,0.2889418414465974,
+6_Equicorrelation,permutation_test,CV_percentile,0.0,
+7_Onsager,8var_VAR_IRF,Pearson_r,0.06743869518938111,0.7331255001386453
+7_Onsager,8var_VAR_IRF,slope,0.060465927000584056,
+8_Cyclical_rho,rolling_correlation,Kendall_tau_A,-0.168418882704597,0.013515021474118196
+8_Cyclical_rho,rolling_CES_NLS,Kendall_tau_B,-0.31313131313131315,0.0024252172821987634

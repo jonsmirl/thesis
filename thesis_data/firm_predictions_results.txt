@@ -1,0 +1,168 @@
+========================================================================
+FIRM-LEVEL PREDICTIONS EMPIRICAL TEST
+Paper 16 (Unified Theory)
+Run date: 2026-02-20 21:23:15
+========================================================================
+
+Testing four predictions from the CES free energy framework:
+  #4 FDT: T = σ²/χ (fluctuation-dissipation theorem)
+  #6 Equicorrelation: off-diagonal correlations approximately equal
+  #7 Onsager Reciprocity: cross-sector IRF symmetry (L_ij ≈ L_ji)
+  #8 Cyclical ρ: CES complementarity countercyclical
+
+========================================================================
+1. LOADING FRED IP DATA
+========================================================================
+  Fetching 30 FRED IP series...
+    INDPRO: 649 obs (1972-2026)
+    IPDMAN: 649 obs (1972-2026)
+    IPG311A2S: 649 obs (1972-2026)
+    IPG313A4S: 649 obs (1972-2026)
+    IPG315A6S: 649 obs (1972-2026)
+    IPG321S: 649 obs (1972-2026)
+    IPG322S: 649 obs (1972-2026)
+    IPG323S: 649 obs (1972-2026)
+    IPG324S: 649 obs (1972-2026)
+    IPG325S: 649 obs (1972-2026)
+    IPG326S: 649 obs (1972-2026)
+    IPG331S: 649 obs (1972-2026)
+    IPG332S: 649 obs (1972-2026)
+    IPG333S: 649 obs (1972-2026)
+    IPG3341S: 649 obs (1972-2026)
+    IPG3342S: 649 obs (1972-2026)
+    IPG3343S: 649 obs (1972-2026)
+    IPG3344S: 649 obs (1972-2026)
+    IPG3345S: 649 obs (1972-2026)
+    IPG334S: 649 obs (1972-2026)
+    IPG335S: 649 obs (1972-2026)
+    IPG3361T3S: 649 obs (1972-2026)
+    IPG3364T9S: 649 obs (1972-2026)
+    IPG336S: 649 obs (1972-2026)
+    IPG337S: 649 obs (1972-2026)
+    IPG339S: 649 obs (1972-2026)
+    IPMAN: 649 obs (1972-2026)
+    IPMINE: 649 obs (1972-2026)
+    IPNMAN: 649 obs (1972-2026)
+    IPUTIL: 649 obs (1972-2026)
+  Loaded 30 series
+  Leaf sector panel: 648 months x 17 sectors
+  Date range: 1972-02-01 to 2026-01-01
+  Durable panel: 648 months x 8 sectors
+
+========================================================================
+2. TEST #4: FLUCTUATION-DISSIPATION THEOREM (FDT)
+========================================================================
+  Theory: T = σ²/χ — sector volatility and susceptibility linearly related
+
+  Testing 17 leaf sectors against INDPRO
+    Primary Metals      : σ²=0.000749, χ=1.2592, lags=1, n=648
+    Fabricated Metals   : σ²=0.000104, χ=0.4849, lags=3, n=648
+    Machinery           : σ²=0.000273, χ=0.7039, lags=3, n=648
+    Computer/Elec       : σ²=0.000146, χ=0.1302, lags=3, n=648
+    Electrical Equip    : σ²=0.000203, χ=0.5503, lags=2, n=648
+    Transport Equip     : σ²=0.001536, χ=0.1888, lags=3, n=648
+    Furniture           : σ²=0.000292, χ=0.1035, lags=1, n=648
+    Misc Mfg            : σ²=0.000149, χ=0.3893, lags=1, n=648
+    Food/Bev/Tobacco    : σ²=0.000088, χ=0.0963, lags=1, n=648
+    Textiles            : σ²=0.000310, χ=0.2191, lags=1, n=648
+    Apparel/Leather     : σ²=0.000359, χ=0.0559, lags=3, n=648
+    Wood Products       : σ²=0.000450, χ=0.1211, lags=1, n=648
+    Paper               : σ²=0.000232, χ=0.6404, lags=2, n=648
+    Printing            : σ²=0.000208, χ=0.2911, lags=1, n=648
+    Petroleum/Coal      : σ²=0.000395, χ=0.6203, lags=1, n=648
+    Chemicals           : σ²=0.000137, χ=0.3944, lags=1, n=648
+    Plastics/Rubber     : σ²=0.000304, χ=0.3552, lags=1, n=648
+
+  OLS: σ² = 0.000309 + 0.000104 · χ
+  R²  = 0.0086
+  T̂   = 0.000104 (SE = 0.000289, p = 0.7238)
+  N   = 17 sectors
+  => DIRECTIONAL: T > 0 but not significant (p = 0.724)
+
+========================================================================
+3. TEST #7: ONSAGER RECIPROCITY
+========================================================================
+  Theory: Cross-sector IRF matrix should be symmetric (L_ij ≈ L_ji)
+
+  Fitting 8-variable VAR on durable manufacturing sectors
+  Sectors: Primary Metals, Fabricated Metals, Machinery, Computer/Elec, Electrical Equip, Transport Equip, Furniture, Misc Mfg
+  Observations: 648
+  BIC-selected lag order: 1
+  Off-diagonal pairs: 28
+  Pearson r(L_ij, L_ji)  = 0.0674 (p = 0.7331)
+  Regression slope       = 0.0605 (SE = 0.1754)
+  Relative asymmetry     = 1.4308
+  => DIRECTIONAL: r > 0 but weak
+
+========================================================================
+4. TEST #6: EQUICORRELATION (COMPOUND SYMMETRY)
+========================================================================
+  Theory: CES implies Σ = (σ²−γ)I + γ11ᵀ — equal off-diagonal correlations
+
+  Computing 17x17 correlation matrix (136 off-diagonal pairs)
+  Mean off-diagonal correlation: 0.3757
+  Std of off-diagonal corr:      0.1362
+  CV of off-diagonal corr:        0.3625
+  Frobenius ratio ||Σ-Σ_eq||/||Σ||: 0.2889
+
+  Running 1000-permutation null distribution...
+  Null CV median: 17.4632 (actual: 0.3625)
+  CV percentile rank: 0.0% (lower = more equicorrelated)
+  Null Frobenius median: 0.1525 (actual: 0.2889)
+  Frobenius percentile rank: 100.0%
+
+  Bartlett's test of sphericity: χ²=4975.3, df=136, p=0.00e+00
+  (H0: Σ=I rejected)
+
+  => CONSISTENT: CV < null median and Frobenius ratio < 0.5
+
+========================================================================
+5. TEST #8: CYCLICAL ρ
+========================================================================
+  Theory: ρ is countercyclical — rises in contractions, falls in expansions
+
+  --- Method A: Rolling correlation proxy ---
+  Windows: 99
+  Kendall τ(avg_corr, INDPRO_growth): -0.1684 (p = 0.0135)
+  (Negative τ = correlation rises in downturns = ρ rises = countercyclical)
+  => CONSISTENT: countercyclical (τ < 0, p < 0.05)
+
+  --- Method B: Rolling CES NLS (120-month window) ---
+  CES windows estimated: 45
+  Aligned windows: 45
+  ρ̂ range: [-0.537, 0.990]
+  Kendall τ(ρ̂, INDPRO_growth): -0.3131 (p = 0.0024)
+  (Negative τ = ρ rises when growth falls = countercyclical)
+  => CONSISTENT: ρ countercyclical (τ < 0, p < 0.05)
+
+========================================================================
+6. SUMMARY: FIRM-LEVEL PREDICTIONS
+========================================================================
+
+  #4 FDT:
+    R²=0.009, T̂=0.0001, p=0.7238 → WEAK/INCONSISTENT
+
+  #6 Equicorrelation:
+    CV=0.363 (null median=17.463), Frobenius=0.289 → CONSISTENT
+
+  #7 Onsager Reciprocity:
+    r=0.067, p=0.7331 → WEAK/INCONSISTENT
+
+  #8 Cyclical ρ:
+    Method A: τ=-0.168 (p=0.014)
+    Method B: τ=-0.313 (p=0.002)
+    → CONSISTENT
+
+  Overall: 2 consistent, 0 partial, 2 weak/inconsistent out of 4 tested
+
+========================================================================
+7. GENERATING FIGURE
+========================================================================
+  Saved: /home/jonsmirl/thesis/figures/firm_predictions.pdf
+
+========================================================================
+8. WRITING OUTPUTS
+========================================================================
+  LaTeX table: /home/jonsmirl/thesis/thesis_data/firm_predictions_table.tex
+  CSV results: /home/jonsmirl/thesis/thesis_data/firm_predictions_results.csv
+

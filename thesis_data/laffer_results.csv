@@ -1,0 +1,10 @@
+test,metric,statistic,value,p_value
+A,mann_whitney_U,U,6.000000,0.350000
+A,interaction,coeff,0.012315,0.001876
+B,event_consistency,frac,0.571429,0.395264
+B,weighted_DID,value,-0.017395,
+C,migration_elasticity,beta,0.013551,0.000000
+D,F_test_LOW,F,0.304407,0.583803
+D,cubic_d_LOW,d,0.000041,
+D,F_test_HIGH,F,0.000000,0.999853
+D,cubic_d_HIGH,d,-0.000000,

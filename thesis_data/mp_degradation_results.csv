@@ -1,0 +1,14 @@
+test,series,metric,statistic,value,p_value
+A_forward_guidance,DGS2,importance_ratio_trend,kendall_tau,0.22318840579710147,0.028732081446489966
+A_forward_guidance,DGS10,importance_ratio_trend,kendall_tau,0.04347826086956522,0.6700591483829517
+B_qe_multiplier,QE1,multiplier_bp_per_100B,point_estimate,40.82891020139483,
+B_qe_multiplier,QE1,announcement_effect_bps,point_estimate,-68.00000000000001,
+B_qe_multiplier,QE2,multiplier_bp_per_100B,point_estimate,9.65151028587774,
+B_qe_multiplier,QE2,announcement_effect_bps,point_estimate,26.00000000000002,
+B_qe_multiplier,QE3,multiplier_bp_per_100B,point_estimate,3.4269100213670836,
+B_qe_multiplier,QE3,announcement_effect_bps,point_estimate,-11.00000000000001,
+B_qe_multiplier,COVID-QE,multiplier_bp_per_100B,point_estimate,2.692575707151158,
+B_qe_multiplier,COVID-QE,announcement_effect_bps,point_estimate,-21.999999999999996,
+C_financial_repression,DGS10-CPIAUCSL-PSAVERT,correlation_trend,kendall_tau,-0.13577405857740588,0.0017347063950348526
+C_financial_repression,DGS10-CPIAUCSL-PSAVERT,full_sample_correlation,pearson_r,-0.12260793741250234,
+D_sequencing,composite,ordering_FG_QE_FR,boolean,0.0,

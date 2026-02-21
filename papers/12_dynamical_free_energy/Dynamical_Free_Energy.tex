@@ -29,7 +29,7 @@
 \newcommand{\calL}{\mathcal{L}}
 \newcommand{\calR}{\mathcal{R}}
 
-\title{Dynamics on the Free Energy Landscape:\\Fluctuation Theorems, Early Warning Signals,\\and Renormalization in Economic Systems}
+\title{CES Potential Dynamics:\\Variance-Response Identities, Early Warning Signals,\\and Multi-Scale Aggregation in Economic Systems}
 \author{Jon Smirl}
 \date{February 2026 \\ \smallskip \textit{Working Paper}}
 
@@ -37,47 +37,47 @@
 \maketitle
 
 \begin{abstract}
-The companion papers establish that the Tsallis free energy $\calF_q = \Phi_{\mathrm{CES}}(\rho) - T \cdot S_q$ with $q = \rho$ governs equilibrium selection in economies with CES production technology (curvature $K$) and information frictions (temperature $T = 1/\kappa$). This paper develops the \emph{dynamical} consequences of that free energy. Treating $\calF$ as a landscape on which the economy evolves yields six families of results, each importing established physics machinery into economics with new economic content: (i) \emph{gradient flow dynamics} derive relaxation timescales and the multi-level hierarchy from the eigenstructure of $\nabla^2 \calF$; (ii) the \emph{fluctuation-dissipation theorem} (FDT) predicts that the responsiveness of output to shocks equals productivity variance divided by information temperature, operationalizing $T$ as a measurable quantity; (iii) \emph{critical slowing down} near phase boundaries generates early warning signals---rising autocorrelation and variance---before technology crossings and financial crises; (iv) \emph{Onsager reciprocal relations} predict that cross-sector coupling coefficients form a symmetric matrix, a non-obvious testable restriction; (v) \emph{Kramers escape theory} converts deterministic crossing predictions into probability distributions over transition times; and (vi) \emph{renormalization group} analysis identifies $\rho$ and $T$ as the only relevant parameters under coarse-graining from firms to industries to economies, providing the mathematical foundation for macroscopic predictability from microscopic unpredictability. Each result generates specific, quantitative, testable predictions. The framework also establishes a thermodynamic lower bound on policy costs via the Jarzynski equality: forcing an economic transition costs at least $\Delta \calF$, with excess cost measurable from implementation fluctuations.
+The companion papers establish that the Tsallis CES potential $\calF_q = \Phi_{\mathrm{CES}}(\rho) - T \cdot S_q$ with $q = \rho$ governs equilibrium selection in economies with CES production technology (curvature $K$) and information frictions ($T = 1/\kappa$). This paper develops the \emph{dynamical} consequences of that CES potential. Treating $\calF$ as a landscape on which the economy evolves yields six families of results, each importing established physics machinery into economics with new economic content: (i) \emph{adjustment dynamics} derive relaxation timescales and the multi-level hierarchy from the eigenstructure of $\nabla^2 \calF$; (ii) the \emph{Variance-Response Identity} (FDT; Fluctuation-Dissipation Theorem) predicts that the responsiveness of output to shocks equals productivity variance divided by information friction, operationalizing $T$ as a measurable quantity; (iii) \emph{pre-crisis deceleration} near regime boundaries generates early warning signals---rising autocorrelation and variance---before technology crossings and financial crises; (iv) the \emph{Symmetric Adjustment Theorem} (Onsager) predicts that cross-sector coupling coefficients form a symmetric matrix, a non-obvious testable restriction; (v) \emph{Noise-Driven Transition Rate theory} (Kramers) converts deterministic crossing predictions into probability distributions over transition times; and (vi) \emph{multi-scale aggregation} analysis identifies $\rho$ and $T$ as the only relevant parameters under aggregation from firms to industries to economies, providing the mathematical foundation for macroscopic predictability from microscopic unpredictability. Each result generates specific, quantitative, testable predictions. The framework also establishes a lower bound on policy costs via the Minimum Policy Cost Theorem (Jarzynski): forcing an economic transition costs at least $\Delta \calF$, with excess cost measurable from implementation fluctuations.
 \end{abstract}
 
 \textbf{JEL Codes:} C62, D50, E10, E32, O33
 
-\textbf{Keywords:} free energy, fluctuation-dissipation, critical slowing down, early warning signals, Onsager relations, renormalization group, phase transitions, information temperature
+\textbf{Keywords:} CES potential, variance-response identity, pre-crisis deceleration, early warning signals, symmetric adjustment, multi-scale aggregation, regime shifts, information friction
 
 %=============================================================================
 \section{Introduction}\label{sec:intro}
 %=============================================================================
 
-The companion papers establish a two-parameter framework for economic analysis. The CES quadruple role theorem \citep{smirl2026ces} shows that a single curvature parameter $K = (1-\rho)(J-1)/J$ controls superadditivity, correlation robustness, strategic independence, and network scaling. The free energy framework \citep{smirl2026free} shows that production under information frictions is governed by $\calF_q = \Phi_{\mathrm{CES}}(\rho) - T \cdot S_q$, where $T = 1/\kappa$ is information temperature and $S_q$ is Tsallis entropy with $q = \rho$ \citep{smirl2026tsallis}. The effective curvature theorem \citep{smirl2026prod} shows that exploitable curvature is $K_{\mathrm{eff}} = K \cdot (1 - T/T^*)^+$. And the technology cycle paper \citep{smirl2026cycle} derives the Perez phases from bifurcation dynamics on the $(\rho, T)$ phase diagram.
+The companion papers establish a two-parameter framework for economic analysis. The CES quadruple role theorem \citep{smirl2026ces} shows that a single curvature parameter $K = (1-\rho)(J-1)/J$ controls superadditivity, correlation robustness, strategic independence, and network scaling. The CES potential framework \citep{smirl2026free} shows that production under information frictions is governed by $\calF_q = \Phi_{\mathrm{CES}}(\rho) - T \cdot S_q$, where $T = 1/\kappa$ is information friction and $S_q$ is Tsallis entropy with $q = \rho$ \citep{smirl2026tsallis}. The effective curvature theorem \citep{smirl2026prod} shows that exploitable curvature is $K_{\mathrm{eff}} = K \cdot (1 - T/T^*)^+$. And the technology cycle paper \citep{smirl2026cycle} derives the Perez phases from bifurcation dynamics on the $(\rho, T)$ regime diagram.
 
-All of these results are \emph{static}: they characterize equilibria, compare equilibria, and identify boundaries between equilibrium regimes. But in physics, the free energy is not merely a selection criterion---it is the \emph{generating function for the entire dynamical theory}. Gradient flows on the free energy landscape determine relaxation dynamics. Fluctuations around equilibria satisfy the fluctuation-dissipation theorem. Phase transitions exhibit critical slowing down. Cross-couplings obey Onsager reciprocity. Escape from metastable states follows Kramers theory. And the renormalization group identifies which parameters survive coarse-graining.
+All of these results are \emph{static}: they characterize equilibria, compare equilibria, and identify boundaries between equilibrium regimes. But in physics, the CES potential is not merely a selection criterion---it is the \emph{generating function for the entire dynamical theory}. Adjustment dynamics on the CES potential landscape determine relaxation dynamics. Fluctuations around equilibria satisfy the Variance-Response Identity. Regime shifts exhibit pre-crisis deceleration. Cross-couplings obey the Symmetric Adjustment Theorem. Escape from metastable states follows Kramers transition rate theory. And multi-scale aggregation identifies which parameters survive aggregation.
 
-This paper imports each of these dynamical results into the economic free energy framework. The economics is not an analogy---the mathematical structure is identical because the free energy functional has the same form. What changes is the physical content: energy $E$ becomes CES potential $\Phi$, thermodynamic temperature becomes information temperature $T = 1/\kappa$, particle configurations become input allocations, and phase transitions become technology crossings.
+This paper imports each of these dynamical results into the economic CES potential framework. The economics is not an analogy---the mathematical structure is identical because the CES potential functional has the same form. What changes is the physical content: energy $E$ becomes CES potential $\Phi$, thermodynamic temperature becomes information friction $T = 1/\kappa$, particle configurations become input allocations, and regime shifts become technology crossings.
 
-The paper has a specific empirical payoff: it converts abstract parameters into observables and theoretical predictions into testable restrictions. Information temperature $T$, which enters the companion papers as a shadow price of information capacity, becomes measurable from the ratio of output variance to shock response (\Cref{sec:fdt}). The crisis sequence theorem, which predicts the order of failures, becomes an early warning system with specific signals to monitor (\Cref{sec:critical}). The technology crossing, which appears as a deterministic threshold, becomes a stochastic process with a computable probability distribution (\Cref{sec:kramers}). And the claim that $(\rho, T)$ suffices for macroscopic prediction becomes a testable statement about renormalization group relevance (\Cref{sec:rg}).
+The paper has a specific empirical payoff: it converts abstract parameters into observables and theoretical predictions into testable restrictions. Information friction $T$, which enters the companion papers as a shadow price of information capacity, becomes measurable from the ratio of output variance to shock response (\Cref{sec:fdt}). The crisis sequence theorem, which predicts the order of failures, becomes an early warning system with specific signals to monitor (\Cref{sec:critical}). The technology crossing, which appears as a deterministic threshold, becomes a stochastic process with a computable probability distribution (\Cref{sec:kramers}). And the claim that $(\rho, T)$ suffices for macroscopic prediction becomes a testable statement about multi-scale aggregation relevance (\Cref{sec:rg}).
 
 \paragraph{Contributions.} The paper makes seven contributions:
 
 \begin{enumerate}[label=(\roman*)]
-\item \textbf{Gradient flow dynamics} (\Cref{sec:gradient}): The economy's relaxation toward equilibrium follows $\dot{\mathbf{x}} = -\mathbf{L} \nabla \calF$, where $\mathbf{L}$ is a mobility matrix. The eigenvalues of $\mathbf{L} \nabla^2 \calF$ are the relaxation rates, deriving the $N$-level timescale hierarchy from the Hessian of $\calF$.
+\item \textbf{Adjustment dynamics} (\Cref{sec:gradient}): The economy's relaxation toward equilibrium follows $\dot{\mathbf{x}} = -\mathbf{L} \nabla \calF$, where $\mathbf{L}$ is a mobility matrix. The eigenvalues of $\mathbf{L} \nabla^2 \calF$ are the relaxation rates, deriving the $N$-level timescale hierarchy from the Hessian of $\calF$.
 
-\item \textbf{Fluctuation-dissipation theorem} (\Cref{sec:fdt}): At equilibrium, $\chi_{ij} = \sigma_{ij}^2 / T$, where $\chi$ is the response matrix (output response to input shocks) and $\sigma^2$ is the covariance of spontaneous fluctuations. This operationalizes $T$ from observable data.
+\item \textbf{Variance-Response Identity} (\Cref{sec:fdt}): At equilibrium, $\chi_{ij} = \sigma_{ij}^2 / T$, where $\chi$ is the response matrix (output response to input shocks) and $\sigma^2$ is the covariance of spontaneous fluctuations. This operationalizes $T$ from observable data.
 
-\item \textbf{Critical slowing down and early warning signals} (\Cref{sec:critical}): As the system approaches a phase boundary ($T \to T^*$ or $K_{\mathrm{eff}} \to 0$), the dominant relaxation rate vanishes, autocorrelation time diverges, and variance increases. These are detectable precursors to crises.
+\item \textbf{Pre-crisis deceleration and early warning signals} (\Cref{sec:critical}): As the system approaches a regime boundary ($T \to T^*$ or $K_{\mathrm{eff}} \to 0$), the dominant relaxation rate vanishes, autocorrelation time diverges, and variance increases. These are detectable precursors to crises.
 
-\item \textbf{Onsager reciprocal relations} (\Cref{sec:onsager}): Near equilibrium, the matrix of cross-sector transport coefficients is symmetric: $L_{ij} = L_{ji}$. A change in complementarity in sector $i$ that induces information flow to sector $j$ has the same coefficient as a change in information capacity in sector $j$ that induces complementarity change in sector $i$.
+\item \textbf{Symmetric Adjustment Theorem} (Onsager) (\Cref{sec:onsager}): Near equilibrium, the matrix of cross-sector transport coefficients is symmetric: $L_{ij} = L_{ji}$. A change in complementarity in sector $i$ that induces information flow to sector $j$ has the same coefficient as a change in information capacity in sector $j$ that induces complementarity change in sector $i$.
 
-\item \textbf{Kramers escape theory} (\Cref{sec:kramers}): The transition rate from the centralized to the distributed basin is $k = \nu \exp(-\Delta \calF / T)$, converting deterministic crossing predictions into probability distributions over transition times.
+\item \textbf{Kramers transition rate theory} (\Cref{sec:kramers}): The transition rate from the centralized to the distributed basin is $k = \nu \exp(-\Delta \calF / T)$, converting deterministic crossing predictions into probability distributions over transition times.
 
-\item \textbf{Jarzynski equality and policy costs} (\Cref{sec:jarzynski}): The minimum cost of forcing an economic transition is $\Delta \calF$. Excess cost (deadweight loss) equals the dissipated work $W_{\mathrm{diss}} = W - \Delta \calF \geq 0$, measurable from the variance of outcomes across policy implementations.
+\item \textbf{Minimum Policy Cost Theorem} (Jarzynski) (\Cref{sec:jarzynski}): The minimum cost of forcing an economic transition is $\Delta \calF$. Excess cost (deadweight loss) equals the friction work $W_{\mathrm{diss}} = W - \Delta \calF \geq 0$, measurable from the variance of outcomes across policy implementations.
 
-\item \textbf{Renormalization group analysis} (\Cref{sec:rg}): Under coarse-graining from firms to industries to economies, $\rho$ and $T$ are the only relevant parameters. All other microscopic details---firm strategies, individual preferences, institutional forms---are irrelevant operators that renormalize to zero. This provides the mathematical foundation for macroscopic predictability.
+\item \textbf{Multi-scale aggregation analysis} (\Cref{sec:rg}): Under aggregation from firms to industries to economies, $\rho$ and $T$ are the only relevant parameters. All other microscopic details---firm strategies, individual preferences, institutional forms---are irrelevant operators that aggregate to zero. This provides the mathematical foundation for macroscopic predictability.
 \end{enumerate}
 
-\paragraph{Roadmap.} \Cref{sec:landscape} establishes the free energy landscape and its properties. \Cref{sec:gradient} derives gradient flow dynamics. \Cref{sec:fdt} proves the economic fluctuation-dissipation theorem. \Cref{sec:critical} develops critical slowing down and early warning signals. \Cref{sec:onsager} establishes Onsager reciprocity. \Cref{sec:kramers} applies Kramers theory to technology transitions. \Cref{sec:jarzynski} derives the Jarzynski bound on policy costs. \Cref{sec:rg} develops the renormalization group analysis. \Cref{sec:empirical} collects testable predictions. \Cref{sec:literature} discusses the literature. \Cref{sec:conclusion} concludes.
+\paragraph{Roadmap.} \Cref{sec:landscape} establishes the CES potential landscape and its properties. \Cref{sec:gradient} derives adjustment dynamics. \Cref{sec:fdt} proves the economic Variance-Response Identity. \Cref{sec:critical} develops pre-crisis deceleration and early warning signals. \Cref{sec:onsager} establishes the Symmetric Adjustment Theorem. \Cref{sec:kramers} applies Kramers transition rate theory to technology transitions. \Cref{sec:jarzynski} derives the Minimum Policy Cost bound. \Cref{sec:rg} develops the multi-scale aggregation analysis. \Cref{sec:empirical} collects testable predictions. \Cref{sec:literature} discusses the literature. \Cref{sec:conclusion} concludes.
 
 %=============================================================================
-\section{The Free Energy Landscape}\label{sec:landscape}
+\section{The CES Potential Landscape}\label{sec:landscape}
 %=============================================================================
 
 \subsection{Setup}
@@ -86,7 +86,7 @@ Consider an economy with $N$ sectors, each employing a CES production technology
 \begin{equation}\label{eq:ces}
 F_n(\mathbf{x}_n) = \left(\frac{1}{J_n}\sum_{j=1}^{J_n} x_{nj}^{\rho_n}\right)^{1/\rho_n}
 \end{equation}
-with curvature $K_n = (1-\rho_n)(J_n - 1)/J_n$. The CES potential is $\Phi = -\sum_{n=1}^{N} \log F_n$ and the total free energy is:
+with curvature $K_n = (1-\rho_n)(J_n - 1)/J_n$. The CES potential is $\Phi = -\sum_{n=1}^{N} \log F_n$ and the total CES potential is:
 \begin{equation}\label{eq:free_energy}
 \calF_q(\mathbf{x}; \boldsymbol{\rho}, \mathbf{T}) = \Phi(\mathbf{x}; \boldsymbol{\rho}) - \sum_{n=1}^{N} T_n \cdot S_{q_n}(\mathbf{x}_n)
 \end{equation}
@@ -94,10 +94,10 @@ where $S_{q_n}$ is the Tsallis entropy of the normalized allocation in sector $n
 
 \subsection{Landscape Geometry}
 
-The free energy landscape $\calF: \R_{++}^{\sum J_n} \to \R$ has the following properties.
+The CES potential landscape $\calF: \R_{++}^{\sum J_n} \to \R$ has the following properties.
 
 \begin{proposition}[Landscape structure]\label{prop:landscape}
-The free energy $\calF$ defined in \eqref{eq:free_energy} satisfies:
+The CES potential $\calF$ defined in \eqref{eq:free_energy} satisfies:
 \begin{enumerate}[label=(\alph*)]
 \item \textbf{Convexity at low $T$:} When $T_n < T_n^*(\rho_n)$ for all $n$, $\calF$ is strictly convex with a unique minimum. The economy has a unique equilibrium.
 
@@ -109,11 +109,11 @@ The free energy $\calF$ defined in \eqref{eq:free_energy} satisfies:
 \end{equation}
 where $\mathbf{T} \odot$ denotes sector-wise scaling by $T_n$. The eigenvalues of this Hessian are the curvatures of the landscape in each direction, determining stability and relaxation rates.
 
-\item \textbf{Critical temperature:} The critical temperature for sector $n$ is:
+\item \textbf{Breakdown threshold:} The breakdown threshold for sector $n$ is:
 \begin{equation}\label{eq:Tstar}
 T_n^* = \frac{\lambda_{\min}(\nabla^2 \Phi_n)}{\lambda_{\max}(\nabla^2 H_n)}
 \end{equation}
-where $\lambda_{\min}$ and $\lambda_{\max}$ denote the smallest and largest eigenvalues respectively. At $T_n = T_n^*$, the Hessian acquires a zero eigenvalue---the hallmark of a phase transition.
+where $\lambda_{\min}$ and $\lambda_{\max}$ denote the smallest and largest eigenvalues respectively. At $T_n = T_n^*$, the Hessian acquires a zero eigenvalue---the hallmark of a regime shift.
 \end{enumerate}
 \end{proposition}
 
@@ -127,19 +127,19 @@ Part (c): Direct computation from $\calF = \Phi - \sum T_n H_n$.
 Part (d): The zero-eigenvalue condition $\nabla^2 \calF \cdot \mathbf{v} = 0$ for some $\mathbf{v} \neq 0$ requires $\nabla^2 \Phi \cdot \mathbf{v} = T_n \nabla^2 H_n \cdot \mathbf{v}$. The first crossing occurs at the ratio of the smallest $\Phi$-eigenvalue to the largest $H$-eigenvalue.
 \end{proof}
 
-\subsection{The Phase Diagram}
+\subsection{The Regime Diagram}
 
-The landscape structure defines a phase diagram in $(\rho, T)$ space for each sector. Below $T^*(\rho)$, the landscape has a unique minimum (the productive equilibrium). Above $T^*(\rho)$, multiple minima may coexist (centralized and distributed equilibria, or productive and unproductive configurations). At $T = T^*$, the system undergoes a phase transition.
+The landscape structure defines a regime diagram in $(\rho, T)$ space for each sector. Below $T^*(\rho)$, the landscape has a unique minimum (the productive equilibrium). Above $T^*(\rho)$, multiple minima may coexist (centralized and distributed equilibria, or productive and unproductive configurations). At $T = T^*$, the system undergoes a regime shift.
 
 The effective curvature theorem \citep{smirl2026prod} states that $K_{\mathrm{eff}} = K(1 - T/T^*)^+$. In the landscape language, this means the curvature of the unique minimum decreases linearly as $T \to T^*$ from below, vanishing at $T^*$. The vanishing curvature is the source of all the dynamical phenomena developed below.
 
 %=============================================================================
-\section{Gradient Flow Dynamics}\label{sec:gradient}
+\section{Adjustment Dynamics}\label{sec:gradient}
 %=============================================================================
 
 \subsection{The Dynamical Equation}
 
-The simplest dynamics consistent with the free energy landscape are gradient flow with a mobility matrix $\mathbf{L}$:
+The simplest dynamics consistent with the CES potential landscape are adjustment dynamics with a mobility matrix $\mathbf{L}$:
 \begin{equation}\label{eq:gradient_flow}
 \dot{\mathbf{x}}(t) = -\mathbf{L}(\mathbf{x}) \cdot \nabla \calF(\mathbf{x}(t))
 \end{equation}
@@ -204,24 +204,24 @@ The companion papers posit an $N$-level hierarchy with timescale separation; in 
 
 \subsection{Lyapunov Stability}
 
-The free energy $\calF$ itself is a Lyapunov function for the gradient flow dynamics.
+The CES potential $\calF$ itself is a welfare loss function for the adjustment dynamics.
 
 \begin{proposition}[Lyapunov property]\label{prop:lyapunov}
 Along trajectories of \eqref{eq:gradient_flow}:
 \begin{equation}\label{eq:lyapunov_decay}
 \frac{d\calF}{dt} = -\nabla \calF^\top \mathbf{L} \nabla \calF \leq 0
 \end{equation}
-with equality if and only if $\nabla \calF = 0$ (at equilibrium). The free energy decreases monotonically until the system reaches a local minimum.
+with equality if and only if $\nabla \calF = 0$ (at equilibrium). The CES potential decreases monotonically until the system reaches a local minimum.
 \end{proposition}
 
 \begin{proof}
 $d\calF/dt = \nabla \calF^\top \dot{\mathbf{x}} = \nabla \calF^\top (-\mathbf{L} \nabla \calF) = -\nabla \calF^\top \mathbf{L} \nabla \calF \leq 0$ since $\mathbf{L} \succ 0$.
 \end{proof}
 
-This result has a natural economic interpretation: the economy dissipates free energy as it adjusts toward equilibrium. The rate of free energy dissipation, $|\nabla \calF^\top \mathbf{L} \nabla \calF|$, measures the ``inefficiency burn rate''---how quickly the economy is eliminating misallocation. High mobility $\ell_n$ means faster burn; high gradient $|\nabla \calF|$ means more misallocation to eliminate.
+This result has a natural economic interpretation: the economy reduces CES potential as it adjusts toward equilibrium. The rate of CES potential reduction, $|\nabla \calF^\top \mathbf{L} \nabla \calF|$, measures the ``inefficiency burn rate''---how quickly the economy is eliminating misallocation. High mobility $\ell_n$ means faster burn; high gradient $|\nabla \calF|$ means more misallocation to eliminate.
 
 %=============================================================================
-\section{The Fluctuation-Dissipation Theorem}\label{sec:fdt}
+\section{The Variance-Response Identity}\label{sec:fdt}
 %=============================================================================
 
 \subsection{Stochastic Extension}
@@ -230,20 +230,20 @@ Real economies are subject to shocks. The stochastic extension of \eqref{eq:grad
 \begin{equation}\label{eq:langevin}
 d\mathbf{x}(t) = -\mathbf{L} \nabla \calF(\mathbf{x}) \, dt + \sqrt{2 \mathbf{L} \mathbf{T}} \, d\mathbf{W}(t)
 \end{equation}
-where $d\mathbf{W}$ is a vector Wiener process and $\mathbf{T} = \mathrm{diag}(T_1 \mathbf{I}_{J_1}, \ldots, T_N \mathbf{I}_{J_N})$ is the temperature matrix. The noise amplitude $\sqrt{2\mathbf{L}\mathbf{T}}$ is not arbitrary---it is fixed by the requirement that the stationary distribution is the Boltzmann distribution:
+where $d\mathbf{W}$ is a vector Wiener process and $\mathbf{T} = \mathrm{diag}(T_1 \mathbf{I}_{J_1}, \ldots, T_N \mathbf{I}_{J_N})$ is the friction matrix. The noise amplitude $\sqrt{2\mathbf{L}\mathbf{T}}$ is not arbitrary---it is fixed by the requirement that the stationary distribution is the logit equilibrium:
 \begin{equation}\label{eq:boltzmann}
 p_{\mathrm{eq}}(\mathbf{x}) \propto \exp\left(-\calF(\mathbf{x}) / T_{\mathrm{eff}}\right)
 \end{equation}
-This is the Einstein relation for the economic system: the strength of spontaneous fluctuations is determined by the information temperature and the institutional mobility, not by any separate ``shock process.''
+This is the Einstein relation for the economic system: the strength of spontaneous fluctuations is determined by the information friction and the institutional mobility, not by any separate ``shock process.''
 
 \begin{remark}[Economic interpretation of Langevin noise]
-The noise in \eqref{eq:langevin} is not exogenous---it arises from the information frictions themselves. Agents with finite information capacity $\kappa = 1/T$ make allocation decisions with inherent randomness (the $q$-logit choice model generalizing \citealt{matejka2015}). When aggregated across many agents, this produces Brownian fluctuations in the aggregate allocation with variance proportional to $T/(2-q)$ where $q = \rho$ \citep{smirl2026tsallis}. Higher information temperature means noisier aggregate outcomes; for complementary sectors ($q < 1$), the $1/(2-q) > 1$ factor amplifies fluctuations beyond the Shannon prediction.
+The noise in \eqref{eq:langevin} is not exogenous---it arises from the information frictions themselves. Agents with finite information capacity $\kappa = 1/T$ make allocation decisions with inherent randomness (the $q$-logit choice model generalizing \citealt{matejka2015}). When aggregated across many agents, this produces Brownian fluctuations in the aggregate allocation with variance proportional to $T/(2-q)$ where $q = \rho$ \citep{smirl2026tsallis}. Higher information friction means noisier aggregate outcomes; for complementary sectors ($q < 1$), the $1/(2-q) > 1$ factor amplifies fluctuations beyond the Shannon prediction.
 \end{remark}
 
 \subsection{The FDT for Economic Systems}
 
-\begin{theorem}[Economic fluctuation-dissipation theorem]\label{thm:fdt}
-At a stable equilibrium $\mathbf{x}^*$ of the free energy landscape, the following relation holds:
+\begin{theorem}[Economic Variance-Response Identity]\label{thm:fdt}
+At a stable equilibrium $\mathbf{x}^*$ of the CES potential landscape, the following relation holds:
 \begin{enumerate}[label=(\alph*)]
 \item \textbf{Static FDT:} The equilibrium covariance matrix $\boldsymbol{\Sigma} = \E[(\mathbf{x} - \mathbf{x}^*)(\mathbf{x} - \mathbf{x}^*)^\top]$ and the static response matrix $\boldsymbol{\chi} = (\nabla^2 \calF)^{-1}$ satisfy:
 \begin{equation}\label{eq:static_fdt}
@@ -274,12 +274,12 @@ Part (b): Restricting to sector $n$ and noting that the relevant eigenvalue of $
 Part (c): Standard result for Langevin dynamics: differentiate the autocorrelation $C_{ij}(t) = \langle \xi_i(t) \xi_j(0)\rangle$ using $\dot{\boldsymbol{\xi}} = -\mathbf{M}\boldsymbol{\xi} + \text{noise}$, and apply the Onsager regression hypothesis.
 \end{proof}
 
-\subsection{Operationalizing Information Temperature}
+\subsection{Operationalizing Information Friction}
 
-\Cref{thm:fdt} has a profound empirical consequence: information temperature is measurable from data.
+\Cref{thm:fdt} has a profound empirical consequence: information friction is measurable from data.
 
 \begin{corollary}[Measuring $T$ from data]\label{cor:measure_T}
-For any sector $n$ with observable output variance $\sigma_n^2$ (from firm-level productivity dispersion data) and measurable shock response $\chi_n$ (from natural experiments or policy changes), the information temperature is:
+For any sector $n$ with observable output variance $\sigma_n^2$ (from firm-level productivity dispersion data) and measurable shock response $\chi_n$ (from natural experiments or policy changes), the information friction is:
 \begin{equation}\label{eq:T_observable}
 T_n = \frac{\sigma_n^2}{\chi_n}
 \end{equation}
@@ -294,17 +294,17 @@ The FDT generates a testable overidentifying restriction. If $T_n$ is estimated 
 \end{remark}
 
 %=============================================================================
-\section{Critical Slowing Down and Early Warning Signals}\label{sec:critical}
+\section{Pre-Crisis Deceleration and Early Warning Signals}\label{sec:critical}
 %=============================================================================
 
-\subsection{The Approach to Criticality}
+\subsection{The Approach to the Tipping Point}
 
-As information temperature $T_n$ approaches the critical temperature $T_n^*$, the effective curvature $K_{\mathrm{eff},n} \to 0$ and the landscape flattens in the direction of the incipient instability. The relaxation rate in that direction vanishes:
+As information friction $T_n$ approaches the breakdown threshold $T_n^*$, the effective curvature $K_{\mathrm{eff},n} \to 0$ and the landscape flattens in the direction of the incipient instability. The relaxation rate in that direction vanishes:
 \begin{equation}\label{eq:critical_rate}
 \lambda_{\min}(n) = \ell_n \cdot K_n \cdot \left(1 - \frac{T_n}{T_n^*}\right) \cdot \frac{J_n - 1}{J_n \bar{x}_n^2} \to 0 \quad \text{as } T_n \to T_n^*
 \end{equation}
 
-\begin{theorem}[Critical slowing down]\label{thm:critical_slowing}
+\begin{theorem}[Pre-crisis deceleration]\label{thm:critical_slowing}
 As $T_n \to T_n^*$ from below, the following divergences occur:
 \begin{enumerate}[label=(\alph*)]
 \item \textbf{Autocorrelation time diverges:}
@@ -330,21 +330,21 @@ t_{\mathrm{rec}} = \frac{1}{\lambda_{\min}(n)} \ln\frac{\delta}{\epsilon} \propt
 \end{equation}
 The system becomes hypersensitive to perturbations in the direction of the incipient instability.
 \end{enumerate}
-All divergences are characterized by the critical exponent $\gamma = 1$ (mean-field universality class).
+All divergences are characterized by the divergence rate $\gamma = 1$ (mean-field aggregation-invariant class).
 \end{theorem}
 
 \begin{proof}
-All four results follow from the spectral decomposition of the linearized dynamics near the critical point. The autocorrelation function of the slowest mode is $C(t) = \sigma^2 e^{-\lambda_{\min} t}$, giving autocorrelation time $1/\lambda_{\min}$. The equilibrium variance from the FDT is $\sigma^2 = T/(\lambda_{\min}/\ell)$. Recovery time is $t_{\mathrm{rec}} = \ln(\delta/\epsilon)/\lambda_{\min}$. Susceptibility is $\chi = 1/(\lambda_{\min}/\ell)$. All diverge as $(1-T/T^*)^{-1}$ because $\lambda_{\min} \propto (1-T/T^*)$.
+All four results follow from the spectral decomposition of the linearized dynamics near the tipping point. The autocorrelation function of the slowest mode is $C(t) = \sigma^2 e^{-\lambda_{\min} t}$, giving autocorrelation time $1/\lambda_{\min}$. The equilibrium variance from the FDT is $\sigma^2 = T/(\lambda_{\min}/\ell)$. Recovery time is $t_{\mathrm{rec}} = \ln(\delta/\epsilon)/\lambda_{\min}$. Susceptibility is $\chi = 1/(\lambda_{\min}/\ell)$. All diverge as $(1-T/T^*)^{-1}$ because $\lambda_{\min} \propto (1-T/T^*)$.
 
-The mean-field exponent $\gamma = 1$ follows from the quadratic (Gaussian) nature of the Landau free energy near the critical point, which is exact for the CES system because the Hessian structure is mean-field-like (all-to-all coupling within each sector).
+The mean-field exponent $\gamma = 1$ follows from the quadratic (Gaussian) nature of the quadratic potential approximation near the tipping point, which is exact for the CES system because the Hessian structure is mean-field-like (all-to-all coupling within each sector).
 \end{proof}
 
 \subsection{Early Warning Signals}
 
-\Cref{thm:critical_slowing} translates directly into observable early warning signals (EWS) for economic phase transitions.
+\Cref{thm:critical_slowing} translates directly into observable early warning signals (EWS) for economic regime shifts.
 
 \begin{proposition}[Economic early warning signals]\label{prop:ews}
-The approach of an economic system to a phase boundary is signaled by:
+The approach of an economic system to a regime boundary is signaled by:
 \begin{enumerate}[label=(\alph*)]
 \item \textbf{Rising autocorrelation in productivity:} The lag-1 autocorrelation coefficient $\text{AR}(1)$ of sector output (or TFP residuals) increases toward 1 as $T \to T^*$:
 \begin{equation}
@@ -354,7 +354,7 @@ where $\Delta t$ is the observation interval.
 
 \item \textbf{Rising variance in output:} The rolling standard deviation of sector output increases as $(1 - T/T^*)^{-1/2}$.
 
-\item \textbf{Flickering:} Near the critical point, stochastic fluctuations push the system between the neighborhood of the vanishing equilibrium and the emerging alternative, producing bimodal distributions in time series that were previously unimodal.
+\item \textbf{Flickering:} Near the tipping point, stochastic fluctuations push the system between the neighborhood of the vanishing equilibrium and the emerging alternative, producing bimodal distributions in time series that were previously unimodal.
 
 \item \textbf{Cross-sector leading indicator:} By the non-uniform degradation result \citep{smirl2026prod}, correlation robustness degrades before superadditivity. Therefore, rising correlation among asset returns in a sector (loss of diversification) is an early warning signal for subsequent productivity disruption in that sector.
 \end{enumerate}
@@ -371,11 +371,11 @@ The EWS framework gives not just the order but the quantitative rate at which ea
 \end{remark}
 
 \begin{remark}[Comparison to ecological EWS]
-The ecological literature has documented critical slowing down before ecosystem transitions \citep{scheffer2009, dakos2012}. The economic application has a structural advantage: the $(\rho, T)$ framework predicts \emph{which} variable will show critical slowing down (the one corresponding to the critical eigenvector) and \emph{in what order} (via the degradation hierarchy), rather than requiring blind monitoring of all variables.
+The ecological literature has documented pre-crisis deceleration before ecosystem transitions \citep{scheffer2009, dakos2012}. The economic application has a structural advantage: the $(\rho, T)$ framework predicts \emph{which} variable will show pre-crisis deceleration (the one corresponding to the critical eigenvector) and \emph{in what order} (via the degradation hierarchy), rather than requiring blind monitoring of all variables.
 \end{remark}
 
 %=============================================================================
-\section{Onsager Reciprocal Relations}\label{sec:onsager}
+\section{Symmetric Adjustment Theorem (Onsager)}\label{sec:onsager}
 %=============================================================================
 
 \subsection{Cross-Sector Coupling}
@@ -386,8 +386,8 @@ When sectors interact---through shared inputs, demand linkages, or financial mar
 \end{equation}
 where $L_{nm}$ captures the coupling between sectors $n$ and $m$, and $\nabla_m^2 \calF$ is the Hessian block for sector $m$.
 
-\begin{definition}[Thermodynamic forces and fluxes]\label{def:forces_fluxes}
-Define the thermodynamic force in sector $n$ as the gradient of the free energy:
+\begin{definition}[Economic forces and fluxes]\label{def:forces_fluxes}
+Define the economic force in sector $n$ as the gradient of the CES potential:
 \begin{equation}
 X_n = -\nabla_n \calF = -\nabla_n \Phi + T_n \nabla_n H
 \end{equation}
@@ -400,7 +400,7 @@ The fluxes are linear in the forces near equilibrium, with the $L_{nm}$ as trans
 
 \subsection{Reciprocity}
 
-\begin{theorem}[Onsager reciprocity for economic sectors]\label{thm:onsager}
+\begin{theorem}[Symmetric Adjustment Theorem for economic sectors]\label{thm:onsager}
 If the microscopic dynamics of the economic system satisfy detailed balance (time-reversal symmetry at the agent level), then the transport coefficients satisfy:
 \begin{equation}\label{eq:onsager}
 L_{nm} = L_{mn}
@@ -409,7 +409,7 @@ for all sector pairs $(n, m)$.
 \end{theorem}
 
 \begin{proof}
-The Langevin dynamics \eqref{eq:langevin} with the Boltzmann equilibrium distribution \eqref{eq:boltzmann} satisfy detailed balance when $\mathbf{L}$ is symmetric. The Onsager regression hypothesis then gives $L_{nm} = L_{mn}$ as a consequence of microscopic reversibility. In the economic setting, microscopic reversibility holds when agent-level allocation decisions are time-symmetric: the probability of transitioning from allocation $\mathbf{a}$ to $\mathbf{a}'$ under the Boltzmann weights equals the reverse probability. This is satisfied by the logit choice model \citep{matejka2015}, which is the optimal decision rule under rational inattention.
+The Langevin dynamics \eqref{eq:langevin} with the logit equilibrium distribution \eqref{eq:boltzmann} satisfy detailed balance when $\mathbf{L}$ is symmetric. The Onsager regression hypothesis then gives $L_{nm} = L_{mn}$ as a consequence of microscopic reversibility. In the economic setting, microscopic reversibility holds when agent-level allocation decisions are time-symmetric: the probability of transitioning from allocation $\mathbf{a}$ to $\mathbf{a}'$ under the logit weights equals the reverse probability. This is satisfied by the logit choice model \citep{matejka2015}, which is the optimal decision rule under rational inattention.
 \end{proof}
 
 \begin{corollary}[Testable symmetry restriction]\label{cor:onsager_test}
@@ -417,7 +417,7 @@ The cross-sector response coefficients satisfy a symmetric restriction: if a com
 \end{corollary}
 
 \begin{remark}[Economic content]
-Onsager reciprocity is non-obvious economically. Consider two sectors: semiconductor manufacturing (strong complementarity, moderate information friction) and financial services (weak complementarity, low information friction). Reciprocity predicts:
+The Symmetric Adjustment Theorem is non-obvious economically. Consider two sectors: semiconductor manufacturing (strong complementarity, moderate information friction) and financial services (weak complementarity, low information friction). Reciprocity predicts:
 \begin{itemize}
 \item If a technology shock to semiconductors (increasing $K_{\text{semi}}$) causes information spillovers that reduce $T_{\text{fin}}$ with coefficient $\alpha$, then
 \item An information technology shock to finance (reducing $T_{\text{fin}}$) must cause complementarity changes in semiconductors ($K_{\text{semi}}$ responds) with the \emph{same} coefficient $\alpha$.
@@ -434,29 +434,29 @@ When the system is out of equilibrium, the rate of entropy production is:
 with equality only at equilibrium. This is the second law for the economic system: the total entropy production is non-negative, and the economy monotonically approaches equilibrium (in the absence of external driving).
 
 \begin{proposition}[Minimum entropy production]\label{prop:min_entropy}
-Among all steady states maintained by external forces, the one that minimizes entropy production is the one closest to equilibrium (in the metric defined by $\mathbf{L}^{-1}$). A policy that maintains the economy away from its free energy minimum incurs ongoing entropy production---a flow cost of misallocation.
+Among all steady states maintained by external forces, the one that minimizes entropy production is the one closest to equilibrium (in the metric defined by $\mathbf{L}^{-1}$). A policy that maintains the economy away from its CES potential minimum incurs ongoing entropy production---a flow cost of misallocation.
 \end{proposition}
 
 This gives a precise meaning to ``the cost of maintaining a suboptimal policy'': it is the steady-state entropy production rate, computable from the transport coefficients and the deviation from equilibrium.
 
 %=============================================================================
-\section{Kramers Escape Theory}\label{sec:kramers}
+\section{Noise-Driven Transition Rates (Kramers)}\label{sec:kramers}
 %=============================================================================
 
 \subsection{Metastable States and Transition Rates}
 
-When the free energy landscape has multiple local minima---as occurs near phase boundaries in the $(\rho, T)$ diagram---the system can be trapped in a metastable state. Kramers theory computes the rate of thermally activated escape.
+When the CES potential landscape has multiple local minima---as occurs near regime boundaries in the $(\rho, T)$ diagram---the system can be trapped in a metastable state. Kramers transition rate theory computes the rate of noise-driven escape.
 
-\begin{theorem}[Economic Kramers escape rate]\label{thm:kramers}
-Consider a free energy landscape with two minima (centralized equilibrium $\mathbf{x}_c$ and distributed equilibrium $\mathbf{x}_d$) separated by a saddle point $\mathbf{x}_s$. The transition rate from the centralized to the distributed basin is:
+\begin{theorem}[Economic Kramers transition rate]\label{thm:kramers}
+Consider a CES potential landscape with two minima (centralized equilibrium $\mathbf{x}_c$ and distributed equilibrium $\mathbf{x}_d$) separated by a saddle point $\mathbf{x}_s$. The transition rate from the centralized to the distributed basin is:
 \begin{equation}\label{eq:kramers}
 k_{c \to d} = \frac{1}{2\pi} \sqrt{\frac{\det \nabla^2 \calF|_{\mathbf{x}_c}}{|\det \nabla^2 \calF|_{\mathbf{x}_s}|}} \cdot \bar{\ell} \cdot \exp\left(-\frac{\Delta \calF}{T_{\mathrm{eff}}}\right)
 \end{equation}
-where $\Delta \calF = \calF(\mathbf{x}_s) - \calF(\mathbf{x}_c)$ is the barrier height, $\bar{\ell}$ is an effective mobility at the saddle, and $T_{\mathrm{eff}}$ is the effective temperature governing fluctuations.
+where $\Delta \calF = \calF(\mathbf{x}_s) - \calF(\mathbf{x}_c)$ is the barrier height, $\bar{\ell}$ is an effective mobility at the saddle, and $T_{\mathrm{eff}}$ is the effective information friction governing fluctuations.
 \end{theorem}
 
 \begin{proof}
-This is the multidimensional Kramers formula \citep{hanggi1990}, applied to the Langevin dynamics \eqref{eq:langevin}. The prefactor involves the ratio of determinants of the Hessian at the minimum (all positive eigenvalues) and the saddle (one negative eigenvalue), with the negative eigenvalue contributing to the $|\cdot|$ in the denominator. The exponential Arrhenius factor $\exp(-\Delta\calF/T)$ is the dominant term: the transition rate is exponentially suppressed by the barrier height relative to the temperature.
+This is the multidimensional Kramers formula \citep{hanggi1990}, applied to the Langevin dynamics \eqref{eq:langevin}. The prefactor involves the ratio of determinants of the Hessian at the minimum (all positive eigenvalues) and the saddle (one negative eigenvalue), with the negative eigenvalue contributing to the $|\cdot|$ in the denominator. The exponential Arrhenius factor $\exp(-\Delta\calF/T)$ is the dominant term: the transition rate is exponentially suppressed by the barrier height relative to the information friction.
 \end{proof}
 
 \subsection{Economic Interpretation}
@@ -473,7 +473,7 @@ t_{1/2} = \frac{\ln 2}{k_{c \to d}} = \frac{2\pi \ln 2}{\bar{\ell}} \cdot \sqrt{
 \end{proposition}
 
 \begin{remark}[From deterministic to probabilistic predictions]
-The companion papers give deterministic crossing conditions: distributed production is viable when $T_{\mathrm{dist}} < T^*$. Kramers theory adds the missing element: even before the deterministic threshold is reached ($\Delta\calF > 0$, the centralized basin is still deeper), stochastic fluctuations can trigger early crossing with probability $\sim \exp(-\Delta\calF/T)$ per unit time. Conversely, even after the threshold ($\Delta\calF < 0$, the distributed basin is deeper), the actual transition may be delayed by the time required to escape the metastable centralized basin.
+The companion papers give deterministic crossing conditions: distributed production is viable when $T_{\mathrm{dist}} < T^*$. Kramers transition rate theory adds the missing element: even before the deterministic threshold is reached ($\Delta\calF > 0$, the centralized equilibrium basin is still deeper), stochastic fluctuations can trigger early crossing with probability $\sim \exp(-\Delta\calF/T)$ per unit time. Conversely, even after the threshold ($\Delta\calF < 0$, the distributed equilibrium basin is deeper), the actual transition may be delayed by the time required to escape the metastable centralized equilibrium basin.
 
 For the AI transition: the deterministic crossing prediction of $\sim$2028--2030 becomes a probability distribution. If the barrier $\Delta\calF/T$ is moderate (say $\sim$5), the standard deviation of crossing time is $\sim t_{1/2}/\sqrt{2}$, giving a roughly 2-year window around the point estimate.
 \end{remark}
@@ -484,52 +484,52 @@ For the AI transition: the deterministic crossing prediction of $\sim$2028--2030
 A policy that reduces the barrier height $\Delta\calF$ by amount $\delta$ increases the transition rate by factor $\exp(\delta/T_{\mathrm{eff}})$. Small barrier reductions can produce exponentially large changes in transition probability. Conversely, a policy that attempts to prevent transition by raising the barrier must overcome exponentially growing fluctuations as $T$ rises during the frenzy phase.
 \end{corollary}
 
-This explains the historical observation that policies attempting to prevent technology transitions (the Red Flag Acts for automobiles, AT\&T monopoly protection for telephony, taxi medallion systems for ride-sharing) typically fail: they raise the barrier $\Delta\calF$ linearly, but the effective temperature $T$ during the frenzy phase rises sufficiently that $\Delta\calF/T$ still decreases over time.
+This explains the historical observation that policies attempting to prevent technology transitions (the Red Flag Acts for automobiles, AT\&T monopoly protection for telephony, taxi medallion systems for ride-sharing) typically fail: they raise the barrier $\Delta\calF$ linearly, but the effective information friction $T$ during the frenzy phase rises sufficiently that $\Delta\calF/T$ still decreases over time.
 
 %=============================================================================
-\section{The Jarzynski Equality and Policy Costs}\label{sec:jarzynski}
+\section{The Minimum Policy Cost Theorem (Jarzynski)}\label{sec:jarzynski}
 %=============================================================================
 
 \subsection{Non-Equilibrium Work}
 
-When policy forces an economic transition---through subsidies, regulations, or direct intervention---the system is driven out of equilibrium. The Jarzynski equality relates the work performed during such a non-equilibrium process to the equilibrium free energy difference.
+When policy forces an economic transition---through subsidies, regulations, or direct intervention---the system is driven out of equilibrium. The Minimum Policy Cost Theorem relates the work performed during such a non-equilibrium process to the equilibrium CES potential difference.
 
-\begin{theorem}[Economic Jarzynski equality]\label{thm:jarzynski}
+\begin{theorem}[Economic Minimum Policy Cost Theorem]\label{thm:jarzynski}
 Let $W$ be the total work (policy cost) of driving the economy from state $A$ to state $B$ along any protocol (time path of policy instruments). Then:
 \begin{equation}\label{eq:jarzynski}
 \left\langle e^{-W/T} \right\rangle = e^{-\Delta \calF / T}
 \end{equation}
-where $\Delta \calF = \calF_B - \calF_A$ is the free energy difference between the final and initial states, and $\langle \cdot \rangle$ denotes the average over many realizations of the stochastic dynamics under the policy protocol.
+where $\Delta \calF = \calF_B - \calF_A$ is the CES potential difference between the final and initial states, and $\langle \cdot \rangle$ denotes the average over many realizations of the stochastic dynamics under the policy protocol.
 \end{theorem}
 
 \begin{proof}
-The Jarzynski equality holds for any system governed by Langevin dynamics with Boltzmann equilibrium distribution and time-dependent external forcing \citep{jarzynski1997}. Our economic system satisfies these conditions by construction.
+The Minimum Policy Cost Theorem (Jarzynski equality) holds for any system governed by Langevin dynamics with logit equilibrium distribution and time-dependent external forcing \citep{jarzynski1997}. Our economic system satisfies these conditions by construction.
 \end{proof}
 
 \subsection{Consequences for Policy Design}
 
-\begin{corollary}[Thermodynamic bound on policy cost]\label{cor:policy_bound}
+\begin{corollary}[Lower bound on policy cost]\label{cor:policy_bound}
 By Jensen's inequality applied to \eqref{eq:jarzynski}:
 \begin{equation}\label{eq:second_law}
 \langle W \rangle \geq \Delta \calF
 \end{equation}
-The average policy cost of any transition is bounded below by the free energy difference. Equality is achieved only in the quasi-static limit (infinitely slow policy implementation).
+The average policy cost of any transition is bounded below by the CES potential difference. Equality is achieved only in the quasi-static limit (infinitely slow policy implementation).
 \end{corollary}
 
-\begin{definition}[Dissipated work]\label{def:dissipated_work}
-The dissipated work (deadweight loss of the policy) is:
+\begin{definition}[Friction work]\label{def:dissipated_work}
+The friction work (deadweight loss of the policy) is:
 \begin{equation}\label{eq:dissipated}
 W_{\mathrm{diss}} = \langle W \rangle - \Delta \calF \geq 0
 \end{equation}
-This measures the excess cost of the policy over the thermodynamic minimum.
+This measures the excess cost of the policy over the theoretical minimum.
 \end{definition}
 
-\begin{proposition}[Estimating dissipated work]\label{prop:dissipated_estimate}
-From the Jarzynski equality, the dissipated work can be estimated from the variance of work across policy implementations:
+\begin{proposition}[Estimating friction work]\label{prop:dissipated_estimate}
+From the Minimum Policy Cost Theorem, the friction work can be estimated from the variance of work across policy implementations:
 \begin{equation}\label{eq:diss_variance}
 W_{\mathrm{diss}} \approx \frac{\Var(W)}{2T}
 \end{equation}
-to leading order in the near-equilibrium expansion. This means the deadweight loss of a policy is proportional to the variance of its outcomes divided by information temperature.
+to leading order in the near-equilibrium expansion. This means the deadweight loss of a policy is proportional to the variance of its outcomes divided by information friction.
 \end{proposition}
 
 \begin{proof}
@@ -541,7 +541,7 @@ Taking logarithms and comparing with $e^{-\Delta\calF/T}$ gives $\langle W \rang
 \end{proof}
 
 \begin{remark}[Policy implications]
-The Jarzynski framework has three practical consequences:
+The Minimum Policy Cost framework has three practical consequences:
 \begin{enumerate}[label=(\roman*)]
 \item \textbf{Minimum cost exists:} No policy can force a technology transition cheaper than $\Delta\calF$. This bounds the fiscal cost of industrial policy.
 \item \textbf{Slow is cheap:} Quasi-static policy (gradual subsidy adjustment, phased regulation) achieves cost close to $\Delta\calF$. Abrupt policy (sudden mandate, immediate subsidy cliff) generates large $W_{\mathrm{diss}}$.
@@ -550,51 +550,51 @@ The Jarzynski framework has three practical consequences:
 \end{remark}
 
 \begin{example}[Renewable energy subsidies]
-Consider a policy forcing transition from fossil fuel generation ($\rho_{\text{fossil}}$, $T_{\text{fossil}}$) to renewable generation ($\rho_{\text{renew}}$, $T_{\text{renew}}$). The free energy difference $\Delta\calF$ depends on the curvature gap and temperature gap between the two technologies. The Jarzynski bound says the minimum subsidy cost is $\Delta\calF$---but different policy designs (feed-in tariffs, renewable portfolio standards, carbon taxes) achieve different realizations $W$, with $\langle W \rangle - \Delta\calF$ measuring the policy's inefficiency. Cross-country variation in renewable subsidy costs, controlling for $\Delta\calF$, directly estimates $W_{\mathrm{diss}}$.
+Consider a policy forcing transition from fossil fuel generation ($\rho_{\text{fossil}}$, $T_{\text{fossil}}$) to renewable generation ($\rho_{\text{renew}}$, $T_{\text{renew}}$). The CES potential difference $\Delta\calF$ depends on the curvature gap and information friction gap between the two technologies. The Minimum Policy Cost bound says the minimum subsidy cost is $\Delta\calF$---but different policy designs (feed-in tariffs, renewable portfolio standards, carbon taxes) achieve different realizations $W$, with $\langle W \rangle - \Delta\calF$ measuring the policy's inefficiency. Cross-country variation in renewable subsidy costs, controlling for $\Delta\calF$, directly estimates $W_{\mathrm{diss}}$.
 \end{example}
 
 %=============================================================================
-\section{Renormalization Group Analysis}\label{sec:rg}
+\section{Multi-Scale Aggregation Analysis}\label{sec:rg}
 %=============================================================================
 
-\subsection{The Coarse-Graining Problem}
+\subsection{The Aggregation Problem}
 
-The free energy $\calF$ is defined at the level of individual firms combining individual inputs. But macroeconomic predictions---technology crossings, crisis timing, cycle duration---operate at the level of industries or economies. The renormalization group (RG) provides the mathematical machinery for connecting these scales: which microscopic parameters survive coarse-graining, and which are ``washed out''?
+The CES potential $\calF$ is defined at the level of individual firms combining individual inputs. But macroeconomic predictions---technology crossings, crisis timing, cycle duration---operate at the level of industries or economies. Multi-scale aggregation provides the mathematical machinery for connecting these scales: which microscopic parameters survive aggregation, and which are ``washed out''?
 
-\begin{definition}[Coarse-graining operator]\label{def:coarse_grain}
-Define a coarse-graining operator $\calR_b$ that aggregates $b^d$ firms within each sector into a single ``block firm,'' where $b > 1$ is the blocking factor and $d$ is the number of spatial or organizational dimensions:
+\begin{definition}[Aggregation operator]\label{def:coarse_grain}
+Define an aggregation operator $\calR_b$ that aggregates $b^d$ firms within each sector into a single ``block firm,'' where $b > 1$ is the blocking factor and $d$ is the number of spatial or organizational dimensions:
 \begin{equation}\label{eq:coarse_grain}
 \calR_b: \calF(\{x_{nj}\}; \rho_n, T_n) \mapsto \calF'(\{X_{nJ}\}; \rho_n', T_n')
 \end{equation}
-where $X_{nJ}$ are the coarse-grained (block) allocations and $(\rho_n', T_n')$ are the renormalized parameters.
+where $X_{nJ}$ are the aggregated (block) allocations and $(\rho_n', T_n')$ are the aggregated parameters.
 \end{definition}
 
-\subsection{RG Flow Equations}
+\subsection{Aggregation Flow Equations}
 
-\begin{theorem}[Renormalization of $(\rho, T)$]\label{thm:rg}
-Under the coarse-graining operator $\calR_b$, the parameters flow according to:
+\begin{theorem}[Aggregation of $(\rho, T)$]\label{thm:rg}
+Under the aggregation operator $\calR_b$, the parameters flow according to:
 \begin{enumerate}[label=(\alph*)]
 \item \textbf{Complementarity parameter:}
 \begin{equation}\label{eq:rg_rho}
 \rho' = \rho + \delta\rho(\rho, T, b)
 \end{equation}
-where $\delta\rho$ is determined by the change in effective curvature under aggregation. For the CES aggregate, the key property is \emph{self-similarity}: a CES aggregate of CES aggregates is again CES (up to corrections that vanish at the fixed point). The renormalized curvature is:
+where $\delta\rho$ is determined by the change in effective curvature under aggregation. For the CES aggregate, the key property is \emph{self-similarity}: a CES aggregate of CES aggregates is again CES (up to corrections that vanish at the fixed point). The aggregated curvature is:
 \begin{equation}\label{eq:rg_K}
 K' = K \cdot \left(1 - \frac{T}{T^*}\right) + O(K^2)
 \end{equation}
-The effective curvature decreases under coarse-graining when $T > 0$: information frictions at the micro level erode complementarity at the macro level.
+The effective curvature decreases under aggregation when $T > 0$: information frictions at the micro level erode complementarity at the macro level.
 
-\item \textbf{Information temperature:}
+\item \textbf{Information friction:}
 \begin{equation}\label{eq:rg_T}
 T' = T \cdot b^{y_T}
 \end{equation}
-where $y_T > 0$ is the thermal scaling exponent. Information frictions are a \emph{relevant} perturbation: they grow under coarse-graining. This means that even small micro-level frictions become important at the macro level.
+where $y_T > 0$ is the friction scaling exponent. Information frictions are a \emph{relevant} perturbation: they grow under aggregation. This means that even small micro-level frictions become important at the macro level.
 
 \item \textbf{Irrelevant operators:} All other parameters---firm-specific strategies $s_i$, individual preference parameters $\theta_j$, institutional details $\eta_k$---have negative scaling exponents:
 \begin{equation}\label{eq:irrelevant}
 s_i' = s_i \cdot b^{y_s}, \quad y_s < 0
 \end{equation}
-They shrink under coarse-graining and vanish in the macroscopic limit.
+They shrink under aggregation and vanish in the macroscopic limit.
 \end{enumerate}
 \end{theorem}
 
@@ -603,26 +603,26 @@ Part (a): Consider a CES aggregate of $b$ firms, each with internal CES structur
 \begin{equation}
 F_{\text{block}} = \left(\frac{1}{b}\sum_{i=1}^{b} F_i^{\rho_{\text{out}}}\right)^{1/\rho_{\text{out}}}
 \end{equation}
-When the inner $F_i$ are themselves CES with parameter $\rho$, the combined aggregate is approximately CES with renormalized $\rho' = \rho + O(T/T^*)$. The correction arises because information frictions at the firm level introduce noise that reduces the effective complementarity visible at the industry level. This is precisely the effective curvature theorem applied at the aggregation level.
+When the inner $F_i$ are themselves CES with parameter $\rho$, the combined aggregate is approximately CES with aggregated $\rho' = \rho + O(T/T^*)$. The correction arises because information frictions at the firm level introduce noise that reduces the effective complementarity visible at the industry level. This is precisely the effective curvature theorem applied at the aggregation level.
 
 Part (b): Information frictions aggregate constructively. If each firm has capacity $\kappa = 1/T$, the block of $b$ firms does not have capacity $b\kappa$ (frictions are not pooled). Instead, coordination between firms introduces additional friction, so $T_{\text{block}} > T$. The scaling $T' = T b^{y_T}$ with $y_T > 0$ reflects the fact that coordinating larger groups requires more information.
 
 Part (c): The key argument is that firm-specific parameters average out under CES aggregation. For any firm-specific perturbation $\delta x_i$, the CES aggregate responds as $\delta F \sim (1/J)\sum (\bar{x})^{\rho-1} \delta x_i$. If the $\delta x_i$ are uncorrelated (different firm strategies are independent), the aggregate perturbation is $O(1/\sqrt{b})$, which vanishes as $b \to \infty$. Only parameters that are correlated across firms---$\rho$ (shared technology) and $T$ (common information environment)---survive.
 \end{proof}
 
-\subsection{Fixed Points and Universality Classes}
+\subsection{Fixed Points and Aggregation-Invariant Classes}
 
-\begin{corollary}[Universality classes]\label{cor:universality}
-The RG flow has fixed points at:
+\begin{corollary}[Aggregation-invariant classes]\label{cor:universality}
+The aggregation flow has fixed points at:
 \begin{enumerate}[label=(\alph*)]
 \item \textbf{Gaussian fixed point} ($K^* = 0$, $T^* = 0$): Perfect competition with perfect information. All CES technologies with $\rho$ close to 1 and small $T$ flow to this fixed point. The macroscopic behavior is Walrasian.
 
-\item \textbf{Critical fixed point} ($K^* > 0$, $T^*/T = 1$): The phase boundary between the productive and the information-dominated regime. Systems near this fixed point exhibit the critical phenomena of \Cref{sec:critical}: diverging correlation length, power-law distributions, and universal scaling.
+\item \textbf{Tipping point fixed point} ($K^* > 0$, $T^*/T = 1$): The regime boundary between the productive and the information-dominated regime. Systems near this fixed point exhibit the tipping phenomena of \Cref{sec:critical}: diverging correlation length, power-law distributions, and universal scaling.
 
 \item \textbf{Strong-coupling fixed point} ($K^* \to \infty$, $T/T^* \to 0$): Perfect complementarity with negligible information friction. The macroscopic behavior is Leontief (fixed-proportions). Central planning is efficient at this fixed point.
 \end{enumerate}
 
-Technologies with the same $(\rho, T/T^*)$ but different microscopic details (firm sizes, organizational structures, cultural factors) belong to the same \emph{universality class} and exhibit identical macroscopic dynamics---the same cycle shape, crisis sequence, and duration scaling.  The deeper reason CES survives coarse-graining is that it is the \emph{unique} homogeneous, scale-consistent aggregator (the Kolmogorov--Nagumo--Acz\'{e}l theorem); non-CES production functions are irrelevant perturbations guaranteed to vanish at the macro level \citep{smirl2026emergent}.
+Technologies with the same $(\rho, T/T^*)$ but different microscopic details (firm sizes, organizational structures, cultural factors) belong to the same \emph{aggregation-invariant class} and exhibit identical macroscopic dynamics---the same cycle shape, crisis sequence, and duration scaling.  The deeper reason CES survives aggregation is that it is the \emph{unique} homogeneous, scale-consistent aggregator (the Kolmogorov--Nagumo--Acz\'{e}l theorem); non-CES production functions are irrelevant perturbations guaranteed to vanish at the macro level \citep{smirl2026emergent}.
 \end{corollary}
 
 \subsection{The Foundation for Macroscopic Predictability}
@@ -632,7 +632,7 @@ In the macroscopic limit ($b \to \infty$), the dynamics of the economy depend on
 \begin{equation}\label{eq:predictability}
 \lim_{b \to \infty} {\calR_b}^n \calF = \calF^*(\rho, T, \ell) + O(b^{-|y_s|})
 \end{equation}
-where $\calF^*$ is the fixed-point free energy and the corrections decay as power laws with exponents $|y_s| > 0$.
+where $\calF^*$ is the fixed-point CES potential and the corrections decay as power laws with exponents $|y_s| > 0$.
 
 This means:
 \begin{enumerate}[label=(\roman*)]
@@ -643,11 +643,11 @@ This means:
 \end{theorem}
 
 \begin{proof}
-This follows from the standard RG argument: repeated application of $\calR_b$ drives all irrelevant operators to zero, leaving only the relevant parameters $(\rho, T, \ell)$ in the effective free energy. The convergence rate is $b^{-|y_s|}$ for the least irrelevant operator.
+This follows from the standard aggregation argument: repeated application of $\calR_b$ drives all irrelevant operators to zero, leaving only the relevant parameters $(\rho, T, \ell)$ in the effective CES potential. The convergence rate is $b^{-|y_s|}$ for the least irrelevant operator.
 \end{proof}
 
 \begin{remark}[The psychohistory connection]
-\Cref{thm:predictability} formalizes the intuition that motivates macroeconomic prediction: large-scale outcomes are insensitive to individual-level details. The RG provides the mechanism: coarse-graining eliminates microscopic information while preserving the relevant parameters. What the $(\rho, T)$ framework adds is the identification of \emph{which} parameters are relevant. In the Landau-Ginzburg classification, $\rho$ determines the universality class (what kind of transition occurs) and $T$ determines the distance from criticality (how close the transition is). Everything else is irrelevant in the precise technical sense.
+\Cref{thm:predictability} formalizes the intuition that motivates macroeconomic prediction: large-scale outcomes are insensitive to individual-level details. Multi-scale aggregation provides the mechanism: aggregation eliminates microscopic information while preserving the relevant parameters. What the $(\rho, T)$ framework adds is the identification of \emph{which} parameters are relevant. In the Landau-Ginzburg classification, $\rho$ determines the aggregation-invariant class (what kind of transition occurs) and $T$ determines the distance from the tipping point (how close the transition is). Everything else is irrelevant in the precise technical sense.
 \end{remark}
 
 %=============================================================================
@@ -656,11 +656,11 @@ This follows from the standard RG argument: repeated application of $\calR_b$ dr
 
 The dynamical framework generates a large number of specific, quantitative, testable predictions. We organize these by the theoretical result from which they derive.
 
-\subsection{From the Fluctuation-Dissipation Theorem}
+\subsection{From the Variance-Response Identity}
 
 \begin{proposition}[FDT predictions]\label{prop:fdt_predictions}
 \begin{enumerate}[label=(\alph*)]
-\item \textbf{Information temperature from data:} For each industry $n$, the ratio $T_n = \sigma_n^2 / \chi_n$ (productivity variance over shock responsiveness) should be stable across different shock types and time periods, yielding a consistent sector-specific $T_n$.
+\item \textbf{Information friction from data:} For each industry $n$, the ratio $T_n = \sigma_n^2 / \chi_n$ (productivity variance over shock responsiveness) should be stable across different shock types and time periods, yielding a consistent sector-specific $T_n$.
 
 \item \textbf{T declines with digitization:} Industries that adopt information technology should show declining $T_n$ over time, as $T = 1/\kappa$ and digitization increases information capacity $\kappa$.
 
@@ -674,15 +674,15 @@ The dynamical framework generates a large number of specific, quantitative, test
 Using monthly FRED Industrial Production data for 17 manufacturing subsectors (1972--2026), we estimate sector-specific $\sigma_n^2$ (variance of log-growth rates) and $\chi_n$ (cumulative impulse response to aggregate output shock from bivariate VARs with BIC-selected lag order).  The cross-sectional OLS regression $\sigma_n^2 = \alpha + T \cdot \chi_n + \varepsilon_n$ yields $\hat{T} = 1.04 \times 10^{-4}$ with correct (positive) sign but low explanatory power ($R^2 = 0.009$, $p = 0.72$, $N = 17$).  The directional result is consistent with the FDT, but power is limited by sample size and the use of aggregate (rather than firm-level) data.  A sharper test requires firm-level production function estimates, as specified in \cref{prop:fdt_predictions}(c)--(d).
 \end{remark}
 
-\begin{remark}[Stronger evidence: self-consistent temperature from EEMD]\label{rem:fdt_eemd}
-A more powerful validation of the FDT uses the EEMD decomposition developed in the companion paper \citep{smirl2026emd}.  EEMD partitions INDPRO growth into fast modes (period $< 4$ years, 93.6\% of energy) and slow structural modes (period $> 8$ years, 3.3\% of energy).  The fast-mode Hilbert energy $T_{\mathrm{fast}}(t) = \sum_{k \in \mathrm{fast}} a_k(t)^2$ is the self-consistent temperature---the exact analogue of kinetic temperature in molecular dynamics.  The FDT susceptibility $\chi(t) = E_{\mathrm{slow}}(t)/T_{\mathrm{fast}}(t)$ detects five technology wave peaks (1938, 1948, 1977, 1994, 2006) that all correspond to known technology eras.  Critically, the self-consistent $T$ automatically discriminates technology waves from financial crises: during crises (1929, 2008), $T_{\mathrm{fast}}$ spikes in the denominator, suppressing $\chi$; during technology waves, only $E_{\mathrm{slow}}$ rises.  This is exactly the FDT prediction---crisis and structural dynamics live in different spectral bands---validated over 106 years of data without any external proxy.
+\begin{remark}[Stronger evidence: self-consistent information friction from EEMD]\label{rem:fdt_eemd}
+A more powerful validation of the FDT uses the EEMD decomposition developed in the companion paper \citep{smirl2026emd}.  EEMD partitions INDPRO growth into fast modes (period $< 4$ years, 93.6\% of energy) and slow structural modes (period $> 8$ years, 3.3\% of energy).  The fast-mode Hilbert energy $T_{\mathrm{fast}}(t) = \sum_{k \in \mathrm{fast}} a_k(t)^2$ is the self-consistent information friction---the exact analogue of kinetic temperature in molecular dynamics.  The FDT susceptibility $\chi(t) = E_{\mathrm{slow}}(t)/T_{\mathrm{fast}}(t)$ detects five technology wave peaks (1938, 1948, 1977, 1994, 2006) that all correspond to known technology eras.  Critically, the self-consistent $T$ automatically discriminates technology waves from financial crises: during crises (1929, 2008), $T_{\mathrm{fast}}$ spikes in the denominator, suppressing $\chi$; during technology waves, only $E_{\mathrm{slow}}$ rises.  This is exactly the FDT prediction---crisis and structural dynamics live in different spectral bands---validated over 106 years of data without any external proxy.
 \end{remark}
 
 \begin{remark}[Empirical evidence: $T$ as recession leading indicator]\label{rem:T_probit}
-The operational temperature $T(t) = \sigma^2(t)/\chi(t)$, computed from rolling 60-month sector-level variance and responsiveness across 7 manufacturing subsectors (1972--2026), has significant predictive content for recessions.  A probit model for 12-month-ahead NBER recession indicators yields $\hat{\beta}(T) = 221$ ($p = 0.0003$, pseudo-$R^2 = 0.035$).  In a joint specification with the term spread (10Y--2Y Treasury), pseudo-$R^2$ rises to 0.186, compared to 0.107 for the term spread alone and 0.0001 for the VIX alone.  The information temperature thus adds substantial forecasting power beyond standard financial indicators.  This is consistent with the FDT: $T$ captures the misallocation friction that financial spreads and volatility indices measure only indirectly.
+The operational information friction $T(t) = \sigma^2(t)/\chi(t)$, computed from rolling 60-month sector-level variance and responsiveness across 7 manufacturing subsectors (1972--2026), has significant predictive content for recessions.  A probit model for 12-month-ahead NBER recession indicators yields $\hat{\beta}(T) = 221$ ($p = 0.0003$, pseudo-$R^2 = 0.035$).  In a joint specification with the term spread (10Y--2Y Treasury), pseudo-$R^2$ rises to 0.186, compared to 0.107 for the term spread alone and 0.0001 for the VIX alone.  The information friction thus adds substantial forecasting power beyond standard financial indicators.  This is consistent with the FDT: $T$ captures the misallocation friction that financial spreads and volatility indices measure only indirectly.
 \end{remark}
 
-\subsection{From Critical Slowing Down}
+\subsection{From Pre-Crisis Deceleration}
 
 \begin{proposition}[EWS predictions]\label{prop:ews_predictions}
 \begin{enumerate}[label=(\alph*)]
@@ -696,17 +696,17 @@ The operational temperature $T(t) = \sigma^2(t)/\chi(t)$, computed from rolling 
 \end{enumerate}
 \end{proposition}
 
-\begin{remark}[Empirical evidence: critical slowing at technology waves]\label{rem:ews_eemd}
-The EEMD-based free energy wave detector \citep{smirl2026emd} provides empirical support for the critical slowing down prediction.  The autocorrelation decay time $\tau_{\mathrm{ACF}}(t)$ of the slow EEMD modes (period $> 8$ years) peaks simultaneously with the FDT susceptibility at all five detected technology waves (1938, 1948, 1977, 1994, 2006).  The combined indicator $\Psi = \sqrt{\hat{\chi} \cdot \hat{\tau}}$ requires both signatures to be elevated, confirming that technology transitions exhibit the joint susceptibility/slowing signature predicted by \Cref{thm:critical_slowing}.  Multi-sector eigenvector analysis further confirms the symmetry-breaking component: the principal eigenvector of slow-mode cross-sector covariance rotates between technology eras, with Computer/Electronics dominant at 1989 and 2020 (IT and AI waves).
+\begin{remark}[Empirical evidence: pre-crisis deceleration at technology waves]\label{rem:ews_eemd}
+The EEMD-based CES potential wave detector \citep{smirl2026emd} provides empirical support for the pre-crisis deceleration prediction.  The autocorrelation decay time $\tau_{\mathrm{ACF}}(t)$ of the slow EEMD modes (period $> 8$ years) peaks simultaneously with the FDT susceptibility at all five detected technology waves (1938, 1948, 1977, 1994, 2006).  The combined indicator $\Psi = \sqrt{\hat{\chi} \cdot \hat{\tau}}$ requires both signatures to be elevated, confirming that technology transitions exhibit the joint susceptibility/slowing signature predicted by \Cref{thm:critical_slowing}.  Multi-sector eigenvector analysis further confirms the symmetry-breaking component: the principal eigenvector of slow-mode cross-sector covariance rotates between technology eras, with Computer/Electronics dominant at 1989 and 2020 (IT and AI waves).
 \end{remark}
 
-\begin{remark}[Empirical evidence: pre-recession critical slowing in manufacturing]\label{rem:ews_manufacturing}
-The critical slowing prediction extends from technology waves to business cycle recessions.  Using rolling 120-month AR(1) estimates for 7 manufacturing IP subsectors spanning the $\rho$ range $[-0.2, 0.7]$, we test whether AR(1) coefficients rise in the 36 months preceding NBER peaks.  Across 3 recessions (1990, 2001, 2007) and 7 sectors (21 sector-recession pairs), 14/21 (67\%) show rising AR(1) in the pre-crisis window (Kendall $\tau(\text{AR}(1), \text{time}) > 0$).  The signal is strongest for the 2007--09 recession (6/7 sectors, mean $\tau = +0.31$) and the 2001 recession (5/7 sectors, mean $\tau = +0.13$).  The 1990--91 recession is an exception (only 3/7 sectors), possibly because the mild, inventory-driven nature of that recession did not produce the landscape flattening that generates critical slowing.  These results provide sector-level confirmation of \Cref{thm:critical_slowing}: the approaching crisis manifests as longer relaxation times in the production data, observable months before the NBER peak.
+\begin{remark}[Empirical evidence: pre-recession deceleration in manufacturing]\label{rem:ews_manufacturing}
+The pre-crisis deceleration prediction extends from technology waves to business cycle recessions.  Using rolling 120-month AR(1) estimates for 7 manufacturing IP subsectors spanning the $\rho$ range $[-0.2, 0.7]$, we test whether AR(1) coefficients rise in the 36 months preceding NBER peaks.  Across 3 recessions (1990, 2001, 2007) and 7 sectors (21 sector-recession pairs), 14/21 (67\%) show rising AR(1) in the pre-crisis window (Kendall $\tau(\text{AR}(1), \text{time}) > 0$).  The signal is strongest for the 2007--09 recession (6/7 sectors, mean $\tau = +0.31$) and the 2001 recession (5/7 sectors, mean $\tau = +0.13$).  The 1990--91 recession is an exception (only 3/7 sectors), possibly because the mild, inventory-driven nature of that recession did not produce the landscape flattening that generates pre-crisis deceleration.  These results provide sector-level confirmation of \Cref{thm:critical_slowing}: the approaching crisis manifests as longer relaxation times in the production data, observable months before the NBER peak.
 \end{remark}
 
-\subsection{From Onsager Reciprocity}
+\subsection{From the Symmetric Adjustment Theorem}
 
-\begin{proposition}[Onsager predictions]\label{prop:onsager_predictions}
+\begin{proposition}[Symmetric Adjustment predictions]\label{prop:onsager_predictions}
 \begin{enumerate}[label=(\alph*)]
 \item \textbf{Symmetric cross-elasticities:} Using input-output tables and identified shocks, the cross-sector response matrix $L_{nm}$ should be approximately symmetric. Systematic asymmetry indicates that the near-equilibrium assumption fails for that sector pair.
 
@@ -718,9 +718,9 @@ The critical slowing prediction extends from technology waves to business cycle 
 We estimate an 8-variable VAR (BIC lag order 1) on the durable manufacturing subsectors (Primary Metals through Miscellaneous Manufacturing) using monthly FRED Industrial Production data (1972--2026, $n = 648$).  The cumulative impulse response matrix $L$ at horizon $h = 12$ yields 28 off-diagonal pairs $(L_{ij}, L_{ji})$ with $i < j$.  Pearson correlation $r(L_{ij}, L_{ji}) = 0.067$ ($p = 0.73$), with relative asymmetry $\|L - L^\top\|/\|L\| = 1.43$.  The result does not support approximate symmetry.  This may reflect violation of the near-equilibrium condition: durable manufacturing experienced large structural shifts over this period, and the Cholesky identification imposes an ordering that can systematically break the symmetry that the theory predicts for identified (structural) shocks.  A test using external instruments for sector-specific shocks would be more appropriate.
 \end{remark}
 
-\subsection{From Kramers Theory}
+\subsection{From Kramers Transition Rate Theory}
 
-\begin{proposition}[Kramers predictions]\label{prop:kramers_predictions}
+\begin{proposition}[Kramers transition rate predictions]\label{prop:kramers_predictions}
 \begin{enumerate}[label=(\alph*)]
 \item \textbf{Stochastic crossing times:} Technology crossings should be approximately exponentially distributed around the deterministic prediction, with standard deviation proportional to $T_{\mathrm{eff}} / \Delta\calF$.
 
@@ -730,11 +730,11 @@ We estimate an 8-variable VAR (BIC lag order 1) on the durable manufacturing sub
 \end{enumerate}
 \end{proposition}
 
-\subsection{From Renormalization}
+\subsection{From Multi-Scale Aggregation}
 
-\begin{proposition}[RG predictions]\label{prop:rg_predictions}
+\begin{proposition}[Aggregation predictions]\label{prop:rg_predictions}
 \begin{enumerate}[label=(\alph*)]
-\item \textbf{Universality:} Countries with different institutional structures but similar $(\rho, T)$ for a given technology should exhibit the same technology cycle dynamics (same phase ordering, same duration scaling, same crisis sequence).
+\item \textbf{Aggregation invariance:} Countries with different institutional structures but similar $(\rho, T)$ for a given technology should exhibit the same technology cycle dynamics (same regime ordering, same duration scaling, same crisis sequence).
 
 \item \textbf{Firm-level irrelevance:} Adding firm-level control variables (size, age, ownership structure) to models of technology adoption should not improve predictive power once $(\rho, T)$ are controlled for.
 
@@ -746,48 +746,48 @@ We estimate an 8-variable VAR (BIC lag order 1) on the durable manufacturing sub
 \section{Relation to Existing Literature}\label{sec:literature}
 %=============================================================================
 
-\paragraph{Statistical mechanics and economics.} The application of statistical mechanics to economics has a long history, from \citet{jaynes1957} through \citet{foley1994} to the econophysics literature \citep{yakovenko2009, bouchaud2000}. The present paper differs in having a specific economic content for the free energy---CES complementarity and rational inattention---rather than treating the correspondence as purely formal. The dynamical results (FDT, Onsager, Kramers) have not been previously developed for economic systems with this structure.
+\paragraph{Statistical mechanics and economics.} The application of statistical mechanics to economics has a long history, from \citet{jaynes1957} through \citet{foley1994} to the econophysics literature \citep{yakovenko2009, bouchaud2000}. The present paper differs in having a specific economic content for the CES potential---CES complementarity and rational inattention---rather than treating the correspondence as purely formal. The dynamical results (FDT, Onsager, Kramers) have not been previously developed for economic systems with this structure.
 
-\paragraph{Fluctuation-dissipation in economics.} \citet{bouchaud2018} discusses fluctuation-response relations in financial markets, finding approximate FDT-like behavior in price dynamics. Our contribution is to derive the FDT from the specific free energy structure of CES production under rational inattention, giving the theorem economic content (the temperature is \emph{information} temperature) and identifying what FDT violations mean economically (departure from near-equilibrium or breakdown of rational inattention).
+\paragraph{Variance-response relations in economics.} \citet{bouchaud2018} discusses fluctuation-response relations in financial markets, finding approximate FDT-like behavior in price dynamics. Our contribution is to derive the Variance-Response Identity from the specific CES potential structure of CES production under rational inattention, giving the theorem economic content ($T$ is \emph{information friction}) and identifying what FDT violations mean economically (departure from near-equilibrium or breakdown of rational inattention).
 
-\paragraph{Early warning signals.} The ecological EWS literature \citep{scheffer2009, dakos2012} establishes critical slowing down as a generic precursor to regime shifts. Applications to financial markets include \citet{battiston2016} and others. Our contribution is the \emph{ordered} EWS from the non-uniform degradation theorem: the framework predicts not just that signals exist but which variable signals first and by how much.
+\paragraph{Early warning signals.} The ecological EWS literature \citep{scheffer2009, dakos2012} establishes pre-crisis deceleration as a generic precursor to regime shifts. Applications to financial markets include \citet{battiston2016} and others. Our contribution is the \emph{ordered} EWS from the non-uniform degradation theorem: the framework predicts not just that signals exist but which variable signals first and by how much.
 
-\paragraph{Onsager relations in economics.} To our knowledge, this is the first explicit derivation of Onsager reciprocal relations for cross-sector economic coupling. The closest precedent is \citet{samuelson1947}, who noted that the symmetry of the Slutsky matrix is analogous to reciprocal relations, but did not develop the dynamical (transport coefficient) version.
+\paragraph{Symmetric adjustment in economics.} To our knowledge, this is the first explicit derivation of the Symmetric Adjustment Theorem (Onsager reciprocal relations) for cross-sector economic coupling. The closest precedent is \citet{samuelson1947}, who noted that the symmetry of the Slutsky matrix is analogous to reciprocal relations, but did not develop the dynamical (transport coefficient) version.
 
-\paragraph{Kramers theory and economic transitions.} The application of Kramers escape theory to economic models is novel. The closest work is the literature on stochastic exit from currency pegs \citep{krugman1991}, which uses a related barrier-crossing framework but without the free energy structure that connects barrier height to economic fundamentals.
+\paragraph{Kramers transition rate theory and economic transitions.} The application of Kramers transition rate theory to economic models is novel. The closest work is the literature on stochastic exit from currency pegs \citep{krugman1991}, which uses a related barrier-crossing framework but without the CES potential structure that connects barrier height to economic fundamentals.
 
-\paragraph{Renormalization in economics.} \citet{brock1999} and \citet{durlauf1999} discuss RG-like ideas in the context of social interactions. Our application is more specific: the CES aggregation structure provides a natural coarse-graining, and the relevance/irrelevance classification follows from the scaling properties of $K$ and $T$ under aggregation.
+\paragraph{Multi-scale aggregation in economics.} \citet{brock1999} and \citet{durlauf1999} discuss aggregation ideas in the context of social interactions. Our application is more specific: the CES aggregation structure provides a natural aggregation, and the relevance/irrelevance classification follows from the scaling properties of $K$ and $T$ under aggregation.
 
-\paragraph{Rational inattention.} The Sims program \citep{sims2003, matejka2015, mackowiak2009} provides the micro-foundation for our information temperature. Our contribution is the dynamical extension: rational inattention generates not just static allocation rules but a Langevin dynamics whose fluctuation and dissipation properties are linked by $T = 1/\kappa$.
+\paragraph{Rational inattention.} The Sims program \citep{sims2003, matejka2015, mackowiak2009} provides the micro-foundation for our information friction. Our contribution is the dynamical extension: rational inattention generates not just static allocation rules but a Langevin dynamics whose fluctuation and friction properties are linked by $T = 1/\kappa$.
 
 \paragraph{Companion papers.} This paper completes the dynamical program that the companion papers initiate:
 \begin{itemize}
 \item \citet{smirl2026ces}: Static---proves the three roles of $K$.
-\item \citet{smirl2026free}: Static---proves the free energy structure $\calF = \Phi - TH$.
+\item \citet{smirl2026free}: Static---proves the CES potential structure $\calF = \Phi - TH$.
 \item \citet{smirl2026prod}: Comparative static---derives $K_{\mathrm{eff}}(T)$ and non-uniform degradation.
 \item \citet{smirl2026cycle}: Deterministic dynamics---derives the technology cycle from bifurcation theory.
-\item \textbf{This paper}: Stochastic dynamics---derives fluctuation theorems, early warning signals, reciprocal relations, escape rates, and renormalization from the same $\calF$.
+\item \textbf{This paper}: Stochastic dynamics---derives variance-response identities, early warning signals, symmetric adjustment relations, transition rates, and multi-scale aggregation from the same $\calF$.
 \end{itemize}
 
 %=============================================================================
 \section{Conclusion}\label{sec:conclusion}
 %=============================================================================
 
-This paper has shown that treating the economic free energy $\calF = \Phi_{\mathrm{CES}}(\rho) - T \cdot H$ as a dynamical landscape---rather than merely an equilibrium selection criterion---generates a rich set of results, each with specific testable predictions.
+This paper has shown that treating the economic CES potential $\calF = \Phi_{\mathrm{CES}}(\rho) - T \cdot H$ as a dynamical landscape---rather than merely an equilibrium selection criterion---generates a rich set of results, each with specific testable predictions.
 
 The results fall into three categories by their relationship to observables.
 
-\emph{Results that operationalize abstract quantities.} The fluctuation-dissipation theorem converts information temperature $T$ from a theoretical construct into a measurable quantity: the ratio of productivity variance to shock responsiveness. This opens the possibility of tracking $T$ across industries and over time, providing an empirical foundation for the entire framework.
+\emph{Results that operationalize abstract quantities.} The Variance-Response Identity converts information friction $T$ from a theoretical construct into a measurable quantity: the ratio of productivity variance to shock responsiveness. This opens the possibility of tracking $T$ across industries and over time, providing an empirical foundation for the entire framework.
 
-\emph{Results that generate early warning signals.} Critical slowing down, combined with the non-uniform degradation hierarchy, produces an \emph{ordered} early warning system for economic phase transitions. The sequence---rising return correlations, then rising productivity dispersion, then governance instability---is specific enough to be falsified against historical data and applied prospectively to the AI transition.
+\emph{Results that generate early warning signals.} Pre-crisis deceleration, combined with the non-uniform degradation hierarchy, produces an \emph{ordered} early warning system for economic regime shifts. The sequence---rising return correlations, then rising productivity dispersion, then governance instability---is specific enough to be falsified against historical data and applied prospectively to the AI transition.
 
-\emph{Results that constrain policy.} The Jarzynski equality establishes thermodynamic lower bounds on policy costs: no intervention can force a technology transition cheaper than the free energy difference $\Delta\calF$, and the excess cost of any specific policy is measurable from the variance of its outcomes. The Kramers escape rate shows that small reductions in transition barriers produce exponentially large changes in transition probability, while barrier-raising policies face exponentially growing fluctuations during the frenzy phase.
+\emph{Results that constrain policy.} The Minimum Policy Cost Theorem (Jarzynski) establishes lower bounds on policy costs: no intervention can force a technology transition cheaper than the CES potential difference $\Delta\calF$, and the excess cost of any specific policy is measurable from the variance of its outcomes. The Kramers transition rate shows that small reductions in transition barriers produce exponentially large changes in transition probability, while barrier-raising policies face exponentially growing fluctuations during the frenzy phase.
 
-The renormalization group analysis ties everything together: $\rho$ and $T$ are the only parameters that survive coarse-graining from the firm level to the macroscopic level. Individual behavior, institutional details, and cultural factors are irrelevant operators in the precise technical sense---they wash out under aggregation. This is why macroscopic economic prediction is possible despite microscopic unpredictability, and it provides the mathematical foundation for the empirical success of the companion papers' two-parameter predictions.
+The multi-scale aggregation analysis ties everything together: $\rho$ and $T$ are the only parameters that survive aggregation from the firm level to the macroscopic level. Individual behavior, institutional details, and cultural factors are irrelevant operators in the precise technical sense---they wash out under aggregation. This is why macroscopic economic prediction is possible despite microscopic unpredictability, and it provides the mathematical foundation for the empirical success of the companion papers' two-parameter predictions.
 
-The framework is falsifiable at multiple levels. The FDT can be tested with existing firm-level data and identified shocks. The EWS predictions can be tested against historical crises. Onsager reciprocity can be tested with input-output data. The RG predictions can be tested by comparing technology adoption patterns across countries with different institutions but similar technologies. If these tests fail, the failure will be informative: FDT violation indicates departure from near-equilibrium; Onsager violation indicates breakdown of detailed balance (path-dependent dynamics); RG prediction failure indicates that some ``irrelevant'' parameter is in fact relevant, requiring extension of the framework.
+The framework is falsifiable at multiple levels. The Variance-Response Identity can be tested with existing firm-level data and identified shocks. The EWS predictions can be tested against historical crises. The Symmetric Adjustment Theorem can be tested with input-output data. The aggregation predictions can be tested by comparing technology adoption patterns across countries with different institutions but similar technologies. If these tests fail, the failure will be informative: FDT violation indicates departure from near-equilibrium; Symmetric Adjustment violation indicates breakdown of detailed balance (path-dependent dynamics); aggregation prediction failure indicates that some ``irrelevant'' parameter is in fact relevant, requiring extension of the framework.
 
-The deepest implication is epistemological. The $(\rho, T)$ framework does not claim that economies are physical systems. It claims that the mathematical structure governing production under information frictions has the same form as the free energy of a statistical mechanical system, and therefore inherits the dynamical theorems that physicists have spent 150 years developing. The economic content---what $\rho$ means, what $T$ means, what constitutes a ``phase transition''---is entirely economic. The mathematics is borrowed; the economics is original.
+The deepest implication is epistemological. The $(\rho, T)$ framework does not claim that economies are physical systems. It claims that the mathematical structure governing production under information frictions has the same form as the CES potential of a statistical mechanical system, and therefore inherits the dynamical theorems that physicists have spent 150 years developing. The economic content---what $\rho$ means, what $T$ means, what constitutes a ``regime shift''---is entirely economic. The mathematics is borrowed; the economics is original.
 
 %=============================================================================
 % Bibliography

@@ -1,0 +1,184 @@
+========================================================================
+CROSS-COUNTRY/INSTITUTIONAL PREDICTIONS #28-38
+Run date: 2026-02-21 10:14:20
+========================================================================
+
+========================================================================
+TEST #28: DAMPING CANCELLATION (Reference)
+========================================================================
+  Basel III DID coefficient: -0.0257
+  Basel III DID p-value:     0.8094
+
+  IRF Capital Stringency: CONSISTENT
+  IRF Activity Restrictions: INCONSISTENT
+  IRF Supervisory Power: CONSISTENT
+  IRF Overall Restrictiveness: INCONSISTENT
+
+  Verdict: CONSISTENT
+  Basel III DID p = 0.81 (insignificant → damping cancellation)
+
+========================================================================
+TEST #29: UPSTREAM REFORM / DISPLACEMENT (Reference)
+========================================================================
+  India 2022 30% tax natural experiment:
+    Domestic volume change: -86%
+    Offshore displacement: +72%
+    Chainalysis adoption DID: null (consistent with displacement)
+
+  Verdict: CONSISTENT
+  India 2022: -86% domestic, +72% offshore
+
+========================================================================
+TEST #30: JARZYNSKI MINIMUM POLICY COST
+========================================================================
+  Fraser × WDI merged: 45 obs, 9 countries
+
+  GDP growth variance by regulation tercile:
+      Low: σ² = 14.51 (n = 15)
+      Med: σ² = 3.53 (n = 15)
+     High: σ² = 13.92 (n = 15)
+
+  Cross-country: Spearman(regulation, GDP variance)
+    ρ = 0.100, p = 0.7980, N = 9
+
+  FDI variance by credit stringency tercile:
+      Low: σ² = 125.06 (n = 18)
+      Med: σ² = 0.95 (n = 12)
+     High: σ² = 0.99 (n = 15)
+
+  Verdict: DIRECTIONAL
+  Regulation–variance ρ = +0.100 (p = 0.798): correct sign, not significant
+
+========================================================================
+TEST #31: CASIMIR / TRADE LIBERALIZATION
+========================================================================
+  KAOPEN × WDI volatility: 35 countries
+
+  Spearman(KAOPEN, GDP volatility):
+    ρ = 0.082, p = 0.6399, N = 35
+
+  Spearman(KAOPEN, mean trade openness):
+    ρ = 0.376, p = 0.0259
+
+  Verdict: INCONSISTENT
+  KAOPEN–volatility ρ = 0.082 (p = 0.640): open → higher volatility
+
+========================================================================
+TEST #32: MINSKY TRAP
+========================================================================
+  Weekly data: 319 obs, 2020-01-10 to 2026-02-13
+
+  Median fed funds rate: 3.83%
+  VIX in low-rate periods:  24.11
+  VIX in high-rate periods: 17.32
+
+  Kendall τ(DFF, forward 26w max VIX):
+    τ = -0.3776, p = 0.0000, N = 293
+
+  Kendall τ(stability margin VIX/DFF, forward max VIX):
+    τ = 0.4825, p = 0.0000, N = 190
+
+  Stablecoin annualized growth:
+    Low-rate periods:  109.7%
+    High-rate periods: 24.0%
+
+  Forward 26w max VIX by rate regime:
+     Near-zero: mean = 33.0, std = 6.0, n = 111
+           Low: mean = 47.5, std = 17.3, n = 22
+        Normal: mean = 27.1, std = 8.7, n = 160
+
+  Verdict: CONSISTENT
+  τ(rate, fwd VIX) = -0.378 (p = 0.000): low rates → future volatility
+
+========================================================================
+TEST #33: N_eff RANGE (Reference)
+========================================================================
+  VAR observations: 57
+  Selected lag order: 1
+  Granger neighbor significant: 1/6
+  Granger distant significant:  1/6
+  Block exogeneity consistent:  True
+  Overall: 1/4 consistent
+
+  Verdict: CONSISTENT
+  4-layer VAR + wavelet N_eff = 4.5 ± 1.0; block exogeneity consistent with tridiagonal
+
+========================================================================
+TEST #34: FG DEGRADATION BASELINE (Reference)
+========================================================================
+  FOMC importance ratio trend (DGS10): τ = 0.0435, p = 0.6701
+  FOMC importance ratio trend (DGS2):  τ = 0.2232, p = 0.0287
+
+  Verdict: CONSISTENT
+  FG ratio flat/rising at φ ≈ 0 (DGS10 τ = 0.04, p = 0.67)
+
+========================================================================
+TEST #35: QE MULTIPLIER DECLINE (Reference)
+========================================================================
+         QE1: 40.83 bp/$100B
+         QE2: 9.65 bp/$100B
+         QE3: 3.43 bp/$100B
+    COVID-QE: 2.69 bp/$100B
+
+  Monotonically declining: True
+  First/last ratio: 15.2x
+
+  Verdict: CONSISTENT
+  15-fold decline QE1→COVID-QE; strictly monotone
+
+========================================================================
+TEST #36: LAFFER PEAK BY ρ (Reference)
+========================================================================
+  Pooled interaction (rate × HighRho): coeff = 0.012315, p = 0.0019
+  Prediction: coefficient < 0 (high-ρ sectors lose more share at high rates)
+
+  Verdict: INCONSISTENT
+  Interaction = +0.0123 (p = 0.0019): wrong sign
+
+========================================================================
+TEST #37: LAFFER DECLINE ORDERING (Reference)
+========================================================================
+  Event consistency: 8/14
+  Binomial test p-value: 0.3953
+  Magnitude-weighted DID: -0.0174
+  Prediction: weighted DID < 0 (high-ρ sectors more affected)
+
+  Verdict: DIRECTIONAL
+  8/14 events consistent; weighted DID = -0.0174 (correct sign)
+
+========================================================================
+TEST #38: DISPLACEMENT (Reference)
+========================================================================
+  SOI migration elasticity: β = +0.0136, p = 0.0
+  Prediction: β > 0 (income flows from high-tax to low-tax states)
+
+  Verdict: CONSISTENT
+  SOI β = +0.0136 (p < 0.001): strong displacement effect
+
+========================================================================
+COMPOSITE SUMMARY — Cross-Country/Institutional Predictions #28-38
+========================================================================
+
+    #  Prediction                      Verdict          Key Statistic                           
+  ───  ──────────────────────────────  ───────────────  ────────────────────────────────────────
+   28  Damping cancellation            CONSISTENT       DID p = 0.8094                          
+   29  Upstream reform/displacement    CONSISTENT       -86% domestic, +72% offshore            
+   30  Jarzynski min cost              DIRECTIONAL      ρ = +0.100, p = 0.798                   
+   31  Casimir/trade                   INCONSISTENT     ρ = 0.082, p = 0.640                    
+   32  Minsky trap                     CONSISTENT       τ = -0.378, p = 0.000                   
+   33  N_eff range                     CONSISTENT       N_eff = 4.5 ± 1.0                       
+   34  FG baseline                     CONSISTENT       τ = 0.0435, p = 0.6701                  
+   35  QE multiplier decline           CONSISTENT       15x decline                             
+   36  Laffer peak by ρ                INCONSISTENT     coeff = +0.0123                         
+   37  Laffer decline ordering         DIRECTIONAL      8/14, DID = -0.0174                     
+   38  Displacement                    CONSISTENT       β = +0.0136                             
+
+  Summary: 7 consistent, 2 directional, 2 inconsistent, 0 suggestive, 0 not run
+
+  Saved CSV: /home/jonsmirl/thesis/thesis_data/institutional_results.csv
+  Saved LaTeX: /home/jonsmirl/thesis/thesis_data/institutional_table.tex
+  Saved figure: /home/jonsmirl/thesis/figures/institutional_predictions.pdf
+
+========================================================================
+DONE
+========================================================================

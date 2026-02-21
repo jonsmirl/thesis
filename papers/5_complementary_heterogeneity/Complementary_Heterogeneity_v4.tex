@@ -141,7 +141,7 @@ The system's activation is bottlenecked by its weakest cross-sector link.
 \noindent\textbf{Result 3: Hierarchical ceiling} (Section~\ref{sec:transition}).
 Each sector's output is bounded by the sector below it in the timescale hierarchy.
 The long-run growth rate equals the growth rate of the slowest sector (hardware).
-The Baumol cost disease and the Triffin dilemma are the same mathematical object---a slow-manifold constraint---at adjacent layers in the hierarchy.
+The Baumol cost disease and the Triffin dilemma are the same mathematical object---a quasi-equilibrium-surface constraint---at adjacent layers in the hierarchy.
 
 \medskip
 \noindent\textbf{Result 4: Welfare decomposition} (Section~\ref{sec:welfare}).
@@ -158,7 +158,7 @@ The transition from the low-activity to the high-activity equilibrium takes $O(1
 At current semiconductor improvement rates ($\approx 15\%$ annual cost decline), this yields an approximately 8-year transition window (Section~\ref{sec:transition}).
 
 The paper proceeds as follows.
-Section~\ref{sec:setup} establishes the hierarchical economy and the CES free energy.
+Section~\ref{sec:setup} establishes the hierarchical economy and the CES potential.
 Section~\ref{sec:topology} proves the Port Topology Theorem, the Moduli Space characterization, and the endogenous hierarchy depth result (the number of effective levels $N_{\mathrm{eff}}$ is determined by the technology's timescale structure, not assumed).
 Section~\ref{sec:threshold} derives the next-generation matrix and the spectral activation threshold.
 Section~\ref{sec:levels} applies the framework to the four economic levels of the current AI/crypto transition.
@@ -217,8 +217,8 @@ where each term has an economic interpretation:
 $K$ & $(1-\rho)(J-1)/J$ & Curvature parameter \\
 $\mathbf{K}$ & Next-generation matrix (bold) & Cross-sector amplification matrix \\
 $\rho(\mathbf{K})$ & Spectral radius of $\mathbf{K}$ & Activation threshold parameter \\
-$\Phi$ & $-\sum_n \log F_n$ & Production difficulty (free energy) \\
-$V$ & $\sum_n c_n\,D_{KL}(\mathbf{x}_n \| \mathbf{x}_n^*)$ & Welfare distance (Lyapunov function) \\
+$\Phi$ & $-\sum_n \log F_n$ & Production difficulty (CES potential) \\
+$V$ & $\sum_n c_n\,D_{KL}(\mathbf{x}_n \| \mathbf{x}_n^*)$ & Welfare distance (welfare loss function) \\
 $W$ & $\diag(W_{11}, \ldots, W_{NN})$ & Institutional quality matrix \\
 $\Pcycle$ & $\prod_n k_{n+1,n}$ & Cycle product \\
 \bottomrule
@@ -233,9 +233,9 @@ Throughout: (1)~$\rho < 1$, $\rho \neq 0$: inputs within each sector are not per
 (4)~positive depreciation $\sigma_n > 0$: without continued investment, capability erodes;
 (5)~monotone coupling $\phi_n : \mathbb{R}_+ \to \mathbb{R}_+$, $C^1$, $\phi_n(0) = 0$, $\phi_n' > 0$: more upstream output means more downstream demand; no output means no demand.
 
-\subsection{The Free Energy}\label{sec:freeenergy}
+\subsection{The CES Potential}\label{sec:freeenergy}
 
-Define the \textbf{production difficulty} (free energy) as
+Define the \textbf{production difficulty} (CES potential) as
 \begin{equation}\label{eq:Phi}
 \Phi = -\sum_{n=1}^{N} \log F_n.
 \end{equation}
@@ -299,7 +299,7 @@ By the time the downstream sector responds, the composition has already equilibr
 
 \medskip
 \noindent\textbf{Claim (ii): Directed coupling.}
-Consider a two-sector system on the slow manifold (scalar dynamics per sector).
+Consider a two-sector system on the quasi-equilibrium surface (scalar dynamics per sector).
 With bidirectional coupling, the Jacobian is
 $\mathcal{J}_{\text{bidir}} = \begin{psmallmatrix} -\sigma_1 & -c/J \\ c/J & -\sigma_2 \end{psmallmatrix}$
 with both eigenvalues having strictly negative real parts for all $c, \sigma_1, \sigma_2 > 0$.
@@ -330,7 +330,7 @@ Monetary economics determines $\phi_4$ (settlement demand).
 \medskip
 \noindent\textbf{Claim (iv): Nearest-neighbor topology.}
 Consider a three-level system with long-range coupling from level~1 to level~3.
-Level~1, being fastest ($\varepsilon_1 \ll \varepsilon_2$), equilibrates to $F_1^* = \beta_1/(\sigma_1 J)$, a constant on the slow manifold.
+Level~1, being fastest ($\varepsilon_1 \ll \varepsilon_2$), equilibrates to $F_1^* = \beta_1/(\sigma_1 J)$, a constant on the quasi-equilibrium surface.
 The long-range coupling becomes a constant, absorbed into a modified input to level~3.
 The reduced Jacobian is lower-triangular---independent of the long-range coupling strength.
 Induction extends to $N$ levels.
@@ -380,17 +380,17 @@ The \textbf{effective hierarchy depth} is
 \begin{equation}\label{eq:Neff}
 N_{\mathrm{eff}} = 1 + \#\{i : g_i > \log r^*\}
 \end{equation}
-where $r^* \geq 1$ is the minimum timescale ratio for the singular perturbation reduction to hold (the slow manifold exists and the $MJ \to N_{\mathrm{eff}}J$ dimensional reduction is valid).
+where $r^* \geq 1$ is the minimum timescale ratio for the singular perturbation reduction to hold (the quasi-equilibrium surface exists and the $MJ \to N_{\mathrm{eff}}J$ dimensional reduction is valid).
 
 \medskip
 \noindent\emph{Empirical calibration.}
 Continuous wavelet transform (Morlet) analysis of US industrial production (FRED INDPRO, 1919--2025) identifies spectral peaks at decade resolution with median adjacent-peak separation ratio $2.1$ (IQR~$[1.84, 2.63]$, maximum $5.5$).
 Setting $r^* = 2$ (one wavelet octave) yields $N_{\mathrm{eff}} = 4$--$5$ across all decades, with mean $4.5$ and standard deviation $1.0$.
-This calibration implies that the singular perturbation reduction underlying the nearest-neighbor topology is an $O(1/r^*) \approx O(0.5)$ approximation: the slow manifold exists but corrections from non-adjacent coupling are of order $50\%$, not negligible.
+This calibration implies that the singular perturbation reduction underlying the nearest-neighbor topology is an $O(1/r^*) \approx O(0.5)$ approximation: the quasi-equilibrium surface exists but corrections from non-adjacent coupling are of order $50\%$, not negligible.
 The hierarchy is better understood as a \emph{wavelet multiresolution}---a continuous spectrum organized into approximately octave-spaced bands---rather than a cleanly separated discrete ladder.
 \end{definition}
 
-Processes whose timescales are separated by less than $r^*$ collapse into a single effective level: their dynamics are entangled and cannot be reduced via the slow manifold.
+Processes whose timescales are separated by less than $r^*$ collapse into a single effective level: their dynamics are entangled and cannot be reduced via the quasi-equilibrium surface.
 Processes separated by more than $r^*$ define distinct levels with the nearest-neighbor topology of Theorem~\ref{thm:topology}(iv).
 
 \begin{theorem}[Endogenous hierarchy depth]\label{thm:endogenousN}
@@ -407,7 +407,7 @@ During maturation, adjacent timescales converge as processes standardize, closin
 More hierarchy levels means more places the activation cascade can break: the system requires stronger complementarity (lower $\rho$) or larger gain elasticities at each level to sustain $\rho(\mathbf{K}) > 1$.
 
 \item \emph{(Level crystallization.)} A new level ``crystallizes'' when a timescale gap $g_i$ crosses $\log r^*$ from below.
-This is a topological phase transition: the port-Hamiltonian system gains a node, the next-generation matrix gains a row and column, and the activation threshold changes discontinuously.
+This is a structural regime shift: the conservative-dissipative system gains a node, the next-generation matrix gains a row and column, and the activation threshold changes discontinuously.
 
 \item \emph{(Sequential waves.)} A single sector can undergo multiple lifecycle episodes.
 If a new technological paradigm opens timescale gaps that the previous maturation closed, $N_{\mathrm{eff}}$ rises again.
@@ -418,7 +418,7 @@ The signature is observable only when the new paradigm changes the \emph{product
 \end{theorem}
 
 \begin{proof}[Proof sketch]
-(i) Inspection of the proofs of Theorems~\ref{thm:topology}--\ref{thm:lyapunov} and Propositions~\ref{prop:damping}--\ref{thm:upstream}: $N$ enters only as the dimension of the slow-manifold system.
+(i) Inspection of the proofs of Theorems~\ref{thm:topology}--\ref{thm:lyapunov} and Propositions~\ref{prop:damping}--\ref{thm:upstream}: $N$ enters only as the dimension of the quasi-equilibrium-surface system.
 All arguments go through for $N_{\mathrm{eff}} \geq 2$.
 
 (ii) Innovation creates new processes (e.g., model training separating from hardware manufacturing circa 2017), opening spectral gaps.
@@ -429,7 +429,7 @@ For the lower-triangular structure of Theorem~\ref{thm:topology}(ii), $\rho(\mat
 Adding a level $N+1$ contributes a factor $(z - k_{N+2,N+1}/\sigma_{N+1})$ to the characteristic polynomial.
 Unless $k_{N+2,N+1}/\sigma_{N+1} \geq \rho(\mathbf{K})$, the spectral radius does not increase.
 
-(iv) At $g_i = \log r^*$, the slow manifold for the pair $(\tau_i, \tau_{i+1})$ bifurcates: below, the two processes share a manifold; above, they separate.
+(iv) At $g_i = \log r^*$, the quasi-equilibrium surface for the pair $(\tau_i, \tau_{i+1})$ bifurcates: below, the two processes share a manifold; above, they separate.
 The dimension of the reduced system jumps from $N_{\mathrm{eff}}$ to $N_{\mathrm{eff}}+1$.
 
 (v) A new paradigm (e.g., electric powertrains replacing internal combustion) introduces processes on timescales separated from the matured ones by more than $r^*$, re-opening spectral gaps via the same mechanism as~(ii).
@@ -518,17 +518,17 @@ This single number then enters all four parts of the Quadruple Role: superadditi
 
 \subsection{Reduction to $N$ Dimensions}\label{sec:reduction}
 
-On the slow manifold---where the fast sector equilibrates before the slow sector moves appreciably (Theorem~\ref{thm:topology}(i))---the $NJ$-dimensional system reduces to $N$ scalar equations.
+On the quasi-equilibrium surface---where the fast sector equilibrates before the slow sector moves appreciably (Theorem~\ref{thm:topology}(i))---the $NJ$-dimensional system reduces to $N$ scalar equations.
 
 \begin{proposition}[Reduced dynamics]\label{prop:reduced}
-On the slow manifold, the aggregate dynamics are
+On the quasi-equilibrium surface, the aggregate dynamics are
 \begin{equation}\label{eq:reduced}
 \varepsilon_n \dot{F}_n = \phi_n(F_{n-1})/J - \sigma_n F_n, \qquad n = 1, \ldots, N.
 \end{equation}
 \end{proposition}
 
 \begin{proof}
-By Theorem~\ref{thm:topology}(i), the slow manifold at each level is parameterized by $F_n$.
+By Theorem~\ref{thm:topology}(i), the quasi-equilibrium surface at each level is parameterized by $F_n$.
 Project the dynamics onto the aggregate: $\dot{F}_n = \nabla F_n \cdot \dot{\mathbf{x}}_n = (1/J)\mathbf{1} \cdot \dot{\mathbf{x}}_n$.
 Summing~\eqref{eq:dynamics} over $j$: $\varepsilon_n J \dot{F}_n = T_n - \sigma_n J F_n$, using $\sum_j \partial F_n/\partial x_{nj} = 1$ (Euler's theorem for degree-1 homogeneous functions) and $\sum_j x_{nj} = J F_n$ (symmetric allocation).
 Thus $\varepsilon_n \dot{F}_n = T_n/J - \sigma_n F_n = \phi_n(F_{n-1})/J - \sigma_n F_n$.
@@ -537,7 +537,7 @@ Thus $\varepsilon_n \dot{F}_n = T_n/J - \sigma_n F_n = \phi_n(F_{n-1})/J - \sigm
 \noindent\textbf{Economic interpretation.}
 Each sector's aggregate output evolves as a balance between incoming demand from the upstream sector ($\phi_n(F_{n-1})/J$) and depreciation ($\sigma_n F_n$).
 The $NJ$-dimensional system of individual components collapses to $N$ scalar equations in the sector aggregates.
-This reduction is not an approximation---it is exact on the slow manifold, with $O(\varepsilon)$ corrections from the fast dynamics.
+This reduction is not an approximation---it is exact on the quasi-equilibrium surface, with $O(\varepsilon)$ corrections from the fast dynamics.
 
 \subsection{The Next-Generation Matrix}\label{sec:NGM}
 
@@ -599,7 +599,7 @@ This is the fundamental mechanism: the hierarchical economy is activated by its 
 \section{The Four Economic Levels}\label{sec:levels}
 
 This section applies the general $N_{\mathrm{eff}}$-level framework (Theorem~\ref{thm:endogenousN}) to the four levels of the current AI/crypto transition ($N_{\mathrm{eff}} = 4$).
-For each level, we present the economic content, the gain function $\phi_n$, the relevant CES property from the Quadruple Role (Paper~A), and the ceiling from the slow manifold cascade.
+For each level, we present the economic content, the gain function $\phi_n$, the relevant CES property from the Quadruple Role (Paper~A), and the ceiling from the quasi-equilibrium surface cascade.
 The four-level structure reflects the 2020s-era timescale distribution; historical and future transitions may have different $N_{\mathrm{eff}}$ (Remark~\ref{rem:maturity}).
 
 \begin{table}[htbp]
@@ -690,7 +690,7 @@ The surviving channels---interest rate and lender-of-last-resort---operate throu
 \textbf{The Triffin squeeze.}
 Stablecoin demand pushes Treasury supply~$b$ upward while mesh participation makes the safety boundary~$\bar{b}(\phi)$ lower.
 The squeeze is self-reinforcing when $\dot{b} > 0$ and $\dot{\bar{b}} < 0$ simultaneously.
-This is the same mathematical object as the Baumol bottleneck at Level~3---a slow manifold constraint at an adjacent layer.
+This is the same mathematical object as the Baumol bottleneck at Level~3---a quasi-equilibrium surface constraint at an adjacent layer.
 
 \textbf{Ceiling.}
 Settlement is bounded by capability: $F_4 \leq \bar{S}(F_3)$.
@@ -705,7 +705,7 @@ Settlement infrastructure cannot grow faster than the capability layer that gene
 \subsection{The Non-Gradient Obstruction}\label{sec:nongradient}
 
 \begin{proposition}[Non-gradient structure]\label{prop:nongradient}
-The hierarchical CES economy is \emph{not} a gradient flow.
+The hierarchical CES economy does \emph{not} follow potential-based adjustment dynamics.
 The lower-triangular Jacobian (from directed coupling) is a topological obstruction---no coordinate transformation can symmetrize it.
 \end{proposition}
 
@@ -744,7 +744,7 @@ The decomposition identifies which sector is contributing most to total welfare 
 \subsection{The Bridge Equation}\label{sec:bridgeeq}
 
 \begin{theorem}[Eigenstructure Bridge]\label{thm:bridge}
-On the slow manifold:
+On the quasi-equilibrium surface:
 \begin{equation}\label{eq:bridge}
 \nabla^2\Phi\big|_{\text{slow}} = W^{-1} \cdot \nabla^2 V
 \end{equation}
@@ -756,7 +756,7 @@ and $\varepsilon_{T_n} = T_n'(\bar{F}_{n-1})\bar{F}_{n-1}/T_n(\bar{F}_{n-1})$ is
 \end{theorem}
 
 \begin{proof}[Proof sketch]
-On the slow manifold, $\Phi|_{\text{slow}} = -\sum_n \log F_n$ and $V = \sum_n c_n \bar{F}_n\,g(F_n/\bar{F}_n)$.
+On the quasi-equilibrium surface, $\Phi|_{\text{slow}} = -\sum_n \log F_n$ and $V = \sum_n c_n \bar{F}_n\,g(F_n/\bar{F}_n)$.
 Their Hessians at equilibrium are diagonal:
 $(\nabla^2\Phi|_{\text{slow}})_{nn} = 1/\bar{F}_n^2$ and $(\nabla^2 V)_{nn} = c_n/\bar{F}_n$.
 The ratio is $W_{nn}^{-1} = 1/(c_n \bar{F}_n)$.
@@ -840,7 +840,7 @@ Operating above the logistic inflection is destabilizing, not merely inefficient
 \subsection{The Damping-Speed Tradeoff}\label{sec:tradeoff}
 
 \begin{proposition}[Damping cancellation]\label{prop:damping}
-For the reduced system on the slow manifold:
+For the reduced system on the quasi-equilibrium surface:
 \begin{enumerate}[label=(\roman*)]
 \item The convergence speed at level~$n$ is $\sigma_n/\varepsilon_n$, strictly increasing in $\sigma_n$---more friction means faster convergence.
 \item The equilibrium output is $\bar{F}_n = \phi_n(\bar{F}_{n-1})/(\sigma_n J)$, strictly decreasing in $\sigma_n$---more friction means lower output.
@@ -932,7 +932,7 @@ The cascade of ceilings $F_1 \to F_2 \leq N^*(F_1) \to F_3 \leq (\phieff/\delta_
 The long-run growth rate equals the hardware improvement rate---the slowest-adapting sector.
 
 \noindent\textbf{Economic interpretation.}
-The Baumol cost disease and the Triffin squeeze are the same mathematical object---a slow manifold constraint---at adjacent layers.
+The Baumol cost disease and the Triffin squeeze are the same mathematical object---a quasi-equilibrium surface constraint---at adjacent layers.
 The Baumol bottleneck says: as the mesh automates inference, the remaining non-automated task (frontier training) becomes the binding constraint.
 The Triffin squeeze says: as stablecoin demand grows, Treasury supply must grow faster than the safety boundary shrinks.
 Both are instances of a faster sector being bounded by its slower parent.
@@ -999,7 +999,7 @@ At the structural transition, the spectral gap between diversity and aggregate m
 Within-sector heterogeneity stops being slaved to the aggregate.
 
 \textbf{Prediction:} cross-sectional variance of agent performance widens \emph{before} aggregate statistics move.
-The within-mesh Gini coefficient rises before the crossing and collapses after (as diversity modes re-equilibrate on the new slow manifold).
+The within-mesh Gini coefficient rises before the crossing and collapses after (as diversity modes re-equilibrate on the new quasi-equilibrium surface).
 
 
 % -------------------------------------------------------------------
@@ -1200,14 +1200,14 @@ Theorem~\ref{thm:topology}(iii) establishes this as a proved impossibility: the 
 Since $\phi_n$ determines the equilibrium cascade $\{\bar{F}_n\}$, the welfare weights $\{c_n\}$, and the institutional quality matrix $W$, this freedom propagates through the quantitative predictions.
 
 \item \emph{Timescale separation cannot be eliminated.}
-The fast sector equilibrates before the slow sector moves appreciably (Standing Assumption~3) is required for the slow manifold to exist and for the $NJ \to N$ dimensional reduction.
-Without it, the slow manifold need not exist, and the reduction is unjustified.
+The fast sector equilibrates before the slow sector moves appreciably (Standing Assumption~3) is required for the quasi-equilibrium surface to exist and for the $NJ \to N$ dimensional reduction.
+Without it, the quasi-equilibrium surface need not exist, and the reduction is unjustified.
 The nearest-neighbor topology (Theorem~\ref{thm:topology}(iv)) also requires timescale separation.
 Theorem~\ref{thm:endogenousN} makes the number of levels endogenous but does not weaken this requirement---it formalizes which process pairs have sufficient separation to constitute distinct levels.
 
-\item \emph{The system is not a gradient flow.}
+\item \emph{The system does not follow potential-based adjustment dynamics.}
 The lower-triangular Jacobian is a topological obstruction (Proposition~\ref{prop:nongradient}).
-No coordinate transformation can make the system a gradient flow while preserving directed coupling.
+No coordinate transformation can make the system follow potential-based adjustment dynamics while preserving directed coupling.
 Standard welfare theorems do not apply.
 
 \item \emph{Local stability only.}
@@ -1222,7 +1222,7 @@ The qualitative results are unchanged; bounds are less clean but remain computab
 The sufficient statistic property holds up to $O(\varepsilon)$ corrections.
 During crisis episodes, within-sector composition may matter.
 
-\item \emph{Canard duration is leading order.}
+\item \emph{Delayed-transition duration is leading order.}
 Correction terms involve $K$ through the quadratic coefficient~$b$; amplitude behavior is less precisely bounded.
 \end{enumerate}
 
@@ -1303,7 +1303,7 @@ Eleven predictions, spanning 2027--2040, test the theory.
 
 \bibitem{docarmo1992} do Carmo, M.~P. (1992). \emph{Riemannian Geometry}. Birkh\"auser.
 
-% Canard / delayed bifurcation
+% Delayed-transition / delayed bifurcation
 \bibitem{neishtadt1987} Neishtadt, A.~I. (1987). Persistence of stability loss for dynamical bifurcations, I. \emph{Differential Equations} 23, 1385--1391.
 
 \bibitem{neishtadt1988} Neishtadt, A.~I. (1988). Persistence of stability loss for dynamical bifurcations, II. \emph{Differential Equations} 24, 171--176.
@@ -1385,15 +1385,15 @@ The right side is independent of $j$.
 Since $\rho < 1$ implies $\rho - 2 < 0$, the map $x \mapsto x^{\rho-2}$ is injective on $\mathbb{R}_+$, so $x_{nj} = \bar{x}_n$ for all $j$.
 
 \emph{Step 2: Normal hyperbolicity.}
-Define the critical manifold $\mathcal{M}_n = \{x_{nj} = F_n / J^{1/\rho} \text{ for all } j\}$.
+Define the equilibrium manifold $\mathcal{M}_n = \{x_{nj} = F_n / J^{1/\rho} \text{ for all } j\}$.
 By Equation~\eqref{eq:jacobian}, the transverse eigenvalues (on $\mathbf{1}^{\perp}$) are $-\sigma_n(2-\rho)/\varepsilon_n$ and the tangential eigenvalue (on $\mathbf{1}$) is $-\sigma_n/\varepsilon_n$.
 The spectral gap is
 $\sigma_n(2-\rho)/\varepsilon_n - \sigma_n/\varepsilon_n = \sigma_n(1-\rho)/\varepsilon_n > 0$ for all $\rho < 1$.
 
 \emph{Step 3: Fenichel persistence.}
-By Fenichel's geometric singular perturbation theorem~\cite{fenichel1979}, the normally hyperbolic critical manifold $\mathcal{M}_n$ persists as a locally invariant slow manifold $\mathcal{M}_n^{\varepsilon}$ within $O(\varepsilon)$ of $\mathcal{M}_n$, smoothly parameterized by $F_n$.
+By Fenichel's geometric singular perturbation theorem~\cite{fenichel1979}, the normally hyperbolic equilibrium manifold $\mathcal{M}_n$ persists as a locally invariant quasi-equilibrium surface $\mathcal{M}_n^{\varepsilon}$ within $O(\varepsilon)$ of $\mathcal{M}_n$, smoothly parameterized by $F_n$.
 On $\mathcal{M}_n^{\varepsilon}$, the within-level state is determined by $F_n$ up to $O(\varepsilon)$ corrections.
-Consequently, $F_n$ is a sufficient statistic for level~$n$'s state on the slow manifold.
+Consequently, $F_n$ is a sufficient statistic for level~$n$'s state on the quasi-equilibrium surface.
 \end{proof}
 
 \subsection{Proof of Claim (ii): Directed Coupling}
@@ -1442,7 +1442,7 @@ The coefficients $a_n$ adjust to satisfy the equilibrium condition but depend on
 
 \begin{proof}
 Consider a three-level system with long-range coupling from level~1 to level~3.
-Level~1, being fastest ($\varepsilon_1 \ll \varepsilon_2$), equilibrates to $F_1^* = \beta_1/(\sigma_1 J)$, an algebraic constant on the slow manifold.
+Level~1, being fastest ($\varepsilon_1 \ll \varepsilon_2$), equilibrates to $F_1^* = \beta_1/(\sigma_1 J)$, an algebraic constant on the quasi-equilibrium surface.
 The long-range coupling $\phi_{31}(F_1^*) = \phi_{31}(\beta_1/(\sigma_1 J)) \equiv \tilde{\beta}_3$ becomes a constant, absorbed into the exogenous input to level~3.
 The effective dynamics become identical to a nearest-neighbor system with modified exogenous input.
 
@@ -1483,7 +1483,7 @@ For the 4-level cycle, there is exactly one spanning in-tree per root, and the s
 \section{Proof of the Eigenstructure Bridge}\label{app:bridge}
 
 \begin{proof}
-On the slow manifold, $\Phi|_{\text{slow}} = -\sum_n \log F_n$ and $V = \sum_n c_n \bar{F}_n\,g(F_n/\bar{F}_n)$.
+On the quasi-equilibrium surface, $\Phi|_{\text{slow}} = -\sum_n \log F_n$ and $V = \sum_n c_n \bar{F}_n\,g(F_n/\bar{F}_n)$.
 Their Hessians at equilibrium are diagonal:
 \[
 (\nabla^2\Phi|_{\text{slow}})_{nn} = \frac{1}{\bar{F}_n^2}, \qquad (\nabla^2 V)_{nn} = \frac{c_n}{\bar{F}_n}.
@@ -1501,7 +1501,7 @@ Special cases:
 \emph{Power-law coupling} ($\phi_n(z) = a_n z^{\beta_n}$): the elasticity is constant, $\varepsilon_{T_n} = \beta_n$, giving $W_{nn} = \Pcycle/(\beta_n|\sigma_n|)$.
 
 \emph{Linear coupling} ($\beta_n = 1$) with uniform damping ($\sigma_n = \sigma$): $W = (\Pcycle/\sigma)\,I$, so $\nabla^2\Phi|_{\text{slow}} = (\sigma/\Pcycle)\,\nabla^2 V$.
-This is the only case where the system is ``almost'' a gradient flow.
+This is the only case where the system ``almost'' follows potential-based adjustment dynamics.
 \end{proof}
 
 
@@ -1586,7 +1586,7 @@ The passage through zero eigenvalue creates a delay of $\pi$ time units in the r
 Converting back: $\Delta t = \pi/\sqrt{|a|\varepsilon_{\text{drift}}}$.
 This is the standard delayed loss of stability result for passage through a structural transition \cite{neishtadt1987,neishtadt1988,berglund2006}.
 
-The logarithmic correction accounts for the entry and exit from the $O(\delta)$-neighborhood, which depends on the initial distance from the slow manifold.
+The logarithmic correction accounts for the entry and exit from the $O(\delta)$-neighborhood, which depends on the initial distance from the quasi-equilibrium surface.
 
 At Wright's Law semiconductor improvement rates ($\varepsilon_{\text{drift}} \approx 0.15$):
 $\Delta t \approx \pi/\sqrt{0.15} \approx 8.1$ years.
@@ -1600,7 +1600,7 @@ In both cases, the crisis duration scales as $\varepsilon_{\text{drift}}^{-1/2}$
 From Theorem~\ref{thm:lyapunov}, $c_n = \Pcycle/k_{n,n-1}$ where $k_{n,n-1} = \phi_n'(\bar{F}_{n-1})\bar{F}_{n-1}/|\sigma_{n-1}|$.
 For power-law $\phi_n(z) = a_n z^{\beta_n}$: $\phi_n'(\bar{F}_{n-1})\cdot\bar{F}_{n-1} = \beta_n\,\phi_n(\bar{F}_{n-1}) = \beta_n\,\sigma_n\,J\,\bar{F}_n$ (using the equilibrium condition $\phi_n(\bar{F}_{n-1}) = \sigma_n J \bar{F}_n$).
 Thus $k_{n,n-1} = \beta_n\,\sigma_n\,J\,\bar{F}_n/\sigma_{n-1}$, giving $c_n = \Pcycle\,\sigma_{n-1}/(\beta_n\,\sigma_n\,J\,\bar{F}_n)$.
-On the slow manifold, $c_n D_{KL} = c_n \bar{F}_n g(F_n/\bar{F}_n) = \Pcycle\sigma_{n-1}/(\beta_n\sigma_n J)\,g(F_n/\bar{F}_n)$.
+On the quasi-equilibrium surface, $c_n D_{KL} = c_n \bar{F}_n g(F_n/\bar{F}_n) = \Pcycle\sigma_{n-1}/(\beta_n\sigma_n J)\,g(F_n/\bar{F}_n)$.
 \end{proof}
 
 \begin{proof}[Proof of Proposition~\ref{prop:damping}]

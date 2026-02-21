@@ -172,7 +172,7 @@ S = S_T + \frac{S_I}{N(r + \delta)}
 \end{equation}
 where $S_T$ represents the persistent training and model-licensing revenue that survives inference decentralization, $S_I = \bar{\pi}_I$ is the pre-crossing inference profit level, $r$ is the discount rate, and $\delta > 0$ is the post-crossing inference displacement rate.
 
-\textbf{Structural determination of $S_T$.} The persistence of training revenue is not a free parameter---it is determined by the production structure of training versus inference. In the companion free energy framework (Smirl 2026a,b), a production process with CES curvature parameter $K = (1-\rho)(J-1)/J$ operated at information temperature $T$ achieves effective curvature $K_{\text{eff}} = K \cdot (1 - T/T^*(\rho))^+$. Training has very low $\rho$ (near-Leontief complementarity: all gradient updates must synchronize) and an enormous temperature gap between centralized ($T_{\text{cent}} \approx 0$, nanosecond NVLink) and distributed ($T_{\text{dist}} \gg T^*$, millisecond WiFi) operation. The quasi-rent from centralization is therefore:
+\textbf{Structural determination of $S_T$.} The persistence of training revenue is not a free parameter---it is determined by the production structure of training versus inference. In the companion CES potential framework (Smirl 2026a,b), a production process with CES curvature parameter $K = (1-\rho)(J-1)/J$ operated at information friction $T$ achieves effective curvature $K_{\text{eff}} = K \cdot (1 - T/T^*(\rho))^+$. Training has very low $\rho$ (near-Leontief complementarity: all gradient updates must synchronize) and an enormous temperature gap between centralized ($T_{\text{cent}} \approx 0$, nanosecond NVLink) and distributed ($T_{\text{dist}} \gg T^*$, millisecond WiFi) operation. The quasi-rent from centralization is therefore:
 \begin{equation}\label{eq:ST_structural}
 S_T \propto K_{\text{eff}}^{\text{cent}} - K_{\text{eff}}^{\text{dist}} = K_{\text{train}} \cdot \frac{T_{\text{dist}} - T_{\text{cent}}}{T^*(\rho_{\text{train}})}
 \end{equation}
@@ -233,7 +233,7 @@ In the symmetric MPE, aggregate output $Q^N(x) = Nq^N(x)$ strictly exceeds coope
 \end{proof}
 
 \begin{remark}[Irreversibility]
-At $Q = \bar{Q}$, a new basin of attraction---the distributed inference equilibrium---becomes accessible. Reversing the crossing would require cumulative production to decrease---which contradicts monotonicity. Once $Q$ crosses $\bar{Q}$, the inference transition is topologically irreversible.
+At $Q = \bar{Q}$, a new equilibrium basin---the distributed inference equilibrium---becomes accessible. Reversing the crossing would require cumulative production to decrease---which contradicts monotonicity. Once $Q$ crosses $\bar{Q}$, the inference transition is structurally irreversible.
 \end{remark}
 
 \begin{remark}[Niche Persistence]
@@ -351,7 +351,7 @@ The adoption rate has a structural derivation from information-constrained choic
 \begin{equation}\label{eq:logit_adoption}
 P(\text{distributed}) = \frac{\exp(\Delta u / T_u)}{1 + \exp(\Delta u / T_u)}
 \end{equation}
-where $\Delta u = u_{\text{dist}} - u_{\text{cent}}$ is the utility differential and $T_u = 1/\kappa_u$ is the user's information temperature (how well they can evaluate the alternatives). The utility differential decomposes into cost and quality channels:
+where $\Delta u = u_{\text{dist}} - u_{\text{cent}}$ is the utility differential and $T_u = 1/\kappa_u$ is the user's information friction (how well they can evaluate the alternatives). The utility differential decomposes into cost and quality channels:
 \begin{equation}\label{eq:delta_u}
 \Delta u = \underbrace{\beta_0 (c^* - c(Q))}_{\text{cost advantage}} + \underbrace{\lambda(\ell_{\text{cent}} - \ell_{\text{dist}})}_{\text{latency advantage}}
 \end{equation}
@@ -361,7 +361,7 @@ For small adoption shares $s \ll 1$, the logit probability approximates the line
 \end{equation}
 with $\beta_0 = \tilde{\beta}_0/T_u$ and $\lambda = \tilde{\lambda}/T_u$, where tildes denote the primitive parameters.
 
-The rational inattention derivation provides three structural insights absent from the reduced form. First, $\beta_0$ and $\lambda$ are \emph{jointly determined} by the user's information capacity $\kappa_u$---they are not independent free parameters. Second, the coordination friction $\kappa$ in the adoption dynamics \eqref{eq:sdynamics} maps directly to $T_u$: confused users ($T_u$ high) adopt slowly because they cannot distinguish quality. Third, the ReLU $(\cdot)^+$ emerges from the phase transition in the companion free energy framework (Smirl 2026a): below cost parity, adoption is thermally activated (exponentially suppressed in $|\Delta u|/T_u$); above it, adoption is first-order in the cost advantage.
+The rational inattention derivation provides three structural insights absent from the reduced form. First, $\beta_0$ and $\lambda$ are \emph{jointly determined} by the user's information capacity $\kappa_u$---they are not independent free parameters. Second, the coordination friction $\kappa$ in the adoption dynamics \eqref{eq:sdynamics} maps directly to $T_u$: confused users ($T_u$ high) adopt slowly because they cannot distinguish quality. Third, the ReLU $(\cdot)^+$ emerges from the regime shift in the companion CES potential framework (Smirl 2026a): below cost parity, adoption is thermally activated (exponentially suppressed in $|\Delta u|/T_u$); above it, adoption is first-order in the cost advantage.
 
 At cost parity ($Q = \bar{Q}$, where $c(\bar{Q}) = c^*$), the cost-savings term vanishes:
 \begin{equation}\label{eq:r0parity}
@@ -485,10 +485,10 @@ Inference dominates both compute cycles (80--90\%) and ongoing revenue. The infe
 
 \subsection{Formal Derivation from the Effective Curvature Framework}
 
-The training-inference distinction---asserted above from architectural characteristics---can be derived as a theorem from the CES effective curvature framework developed in the companion papers (Smirl 2026a,b; Smirl 2026c). The key insight is that training and inference occupy opposite corners of the $(\rho, T)$ production phase diagram.
+The training-inference distinction---asserted above from architectural characteristics---can be derived as a theorem from the CES effective curvature framework developed in the companion papers (Smirl 2026a,b; Smirl 2026c). The key insight is that training and inference occupy opposite corners of the $(\rho, T)$ production regime diagram.
 
 \begin{proposition}[Training-Inference Bifurcation]\label{prop:bifurcation}
-Let $K_{\text{eff}}(\rho, T) = K \cdot (1 - T/T^*(\rho))^+$ be the effective curvature of a CES production technology with structural curvature $K = (1-\rho)(J-1)/J$ operated at information temperature $T$. Define:
+Let $K_{\text{eff}}(\rho, T) = K \cdot (1 - T/T^*(\rho))^+$ be the effective curvature of a CES production technology with structural curvature $K = (1-\rho)(J-1)/J$ operated at information friction $T$. Define:
 \begin{itemize}
 \item Training: $\rho_{\text{train}} \ll 0$ (near-Leontief complementarity), $T_{\text{cent}} \approx 0$ (datacenter synchronization), $T_{\text{dist}} \gg T^*(\rho_{\text{train}})$ (distributed latency).
 \item Inference: $\rho_{\text{inf}} \approx 1$ (independent queries), so $K_{\text{inf}} \approx 0$.
@@ -507,7 +507,7 @@ Part (a): Training is near-Leontief ($\rho \ll 0$, $K$ large) because all gradie
 Part (b): Inference queries are independent ($\rho \approx 1$), so $K = (1-\rho)(J-1)/J \approx 0$. With $K \approx 0$, effective curvature is $\approx 0$ regardless of $T$. Neither centralized nor distributed operation has a curvature advantage; competition occurs purely on cost and latency.
 \end{proof}
 
-The proposition formalizes the ``topological'' constraint as a statement about information temperature: the synchronization gap is not merely an engineering inconvenience but a fundamental $T$ barrier that makes the complementarity of training inputs unexploitable in a distributed setting. It also makes a falsifiable prediction about when the bifurcation could weaken: asynchronous training algorithms (gradient compression, local SGD, federated averaging) effectively raise the $\rho$ of training by tolerating partial desynchronization. If such methods reduce $K_{\text{train}}$ sufficiently, the temperature barrier $T^*(\rho_{\text{train}})$ rises, and $K_{\text{eff}}^{\text{dist}}$ becomes positive. The prediction is that distributed training becomes viable not when communication speeds improve (lowering $T_{\text{dist}}$) but when algorithmic tolerance for asynchrony increases (raising $\rho_{\text{train}}$).
+The proposition formalizes the ``topological'' constraint as a statement about information friction: the synchronization gap is not merely an engineering inconvenience but a fundamental $T$ barrier that makes the complementarity of training inputs unexploitable in a distributed setting. It also makes a falsifiable prediction about when the bifurcation could weaken: asynchronous training algorithms (gradient compression, local SGD, federated averaging) effectively raise the $\rho$ of training by tolerating partial desynchronization. If such methods reduce $K_{\text{train}}$ sufficiently, the temperature barrier $T^*(\rho_{\text{train}})$ rises, and $K_{\text{eff}}^{\text{dist}}$ becomes positive. The prediction is that distributed training becomes viable not when communication speeds improve (lowering $T_{\text{dist}}$) but when algorithmic tolerance for asynchrony increases (raising $\rho_{\text{train}}$).
 
 \subsection{Implications for the Model}
 
@@ -905,7 +905,7 @@ The mechanism operates through two convergence paths. Hardware cost decline from
 
 The 2025--26 DRAM supercycle illustrates both the mechanism's predictions and its non-monotonic short-run dynamics: the same concentrated investment that finances long-run packaging learning curves has temporarily reversed consumer cost trends by reallocating memory and packaging capacity to datacenter formats---exactly the boom-phase deviation Corollary~4 predicts. The advanced packaging capacity expansion this demand shock has triggered will, on historical precedent, produce overcapacity and below-trend consumer pricing within 2--3 years. The operative learning curve is the packaging process, not the die; and the capacity being expanded is packaging capacity that will pivot to consumer stacked memory formats.
 
-The training-inference bifurcation sharpens the mechanism's empirical scope. The post-crossing equilibrium is partial decentralization: inference distributes to edge devices while training persists in centralized clusters. This coexistence is stable because the architectural constraints on training are topological, not cost-based---formalized in Proposition~\ref{prop:bifurcation} as a consequence of the effective curvature theorem: training's near-Leontief complementarity ($\rho \ll 0$) is destroyed by the information temperature of distributed coordination ($T_{\text{dist}} \gg T^*$), while inference's near-perfect substitutability ($\rho \approx 1$) makes it indifferent to coordination quality. The generalized crossing condition ($R_0 > 1$) endogenizes the 3--5 year coordination layer lag observed in historical transitions and predicts compression to 2--3 years for the current AI transition. The rational inattention derivation of adoption dynamics provides structural foundations for the $R_0$ parameters: the adoption rate, coordination friction, and latency premium are jointly determined by user information capacity rather than independently calibrated.
+The training-inference bifurcation sharpens the mechanism's empirical scope. The post-crossing equilibrium is partial decentralization: inference distributes to edge devices while training persists in centralized clusters. This coexistence is stable because the architectural constraints on training are topological, not cost-based---formalized in Proposition~\ref{prop:bifurcation} as a consequence of the effective curvature theorem: training's near-Leontief complementarity ($\rho \ll 0$) is destroyed by the information friction of distributed coordination ($T_{\text{dist}} \gg T^*$), while inference's near-perfect substitutability ($\rho \approx 1$) makes it indifferent to coordination quality. The generalized crossing condition ($R_0 > 1$) endogenizes the 3--5 year coordination layer lag observed in historical transitions and predicts compression to 2--3 years for the current AI transition. The rational inattention derivation of adoption dynamics provides structural foundations for the $R_0$ parameters: the adoption rate, coordination friction, and latency premium are jointly determined by user information capacity rather than independently calibrated.
 
 What the mechanism predicts unambiguously is that concentrated investment endogenously produces inference decentralization, that this process accelerates with the number of competitors and is amplified by asymmetric players who benefit from crossing, and that training centralization and inference decentralization will coexist as stable features of the AI economic landscape. The companion effective curvature framework further predicts a \emph{gradient of decentralization} for intermediate tasks---federated fine-tuning, multi-agent evaluation, distributed RLHF---ordered by each task's CES complementarity parameter, with inference decentralizing first and training last.
 The endogenous decentralization mechanism is itself one episode in the technology lifecycle: the companion paper (Smirl 2026d) proves that the number of hierarchy levels is endogenously determined by the timescale distribution of the underlying technology and follows a lifecycle from nascent to innovating to mature.
@@ -1031,7 +1031,7 @@ Two features are relevant. First, the bookend regimes yield $\alpha = 0.38$--$0.
 
 \bibitem{smirl2026free} Smirl, J. (2026b). Free energy economics: A unified framework from CES aggregation and Tsallis entropy. Working Paper.
 
-\bibitem{smirl2026prod} Smirl, J. (2026c). Production under information frictions: A CES free energy theory of the firm. Working Paper.
+\bibitem{smirl2026prod} Smirl, J. (2026c). Production under information frictions: A CES potential theory of the firm. Working Paper.
 
 \bibitem{smirl2026ch} Smirl, J. (2026d). Complementary heterogeneity in hierarchical economies. Working Paper.
 

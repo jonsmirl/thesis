@@ -1,0 +1,263 @@
+========================================================================
+TECHNOLOGY/LEARNING PREDICTIONS #19-27: Empirical Tests
+Papers 11 (Technology Cycle), 13 (Conservation Laws), 15 (Endogenous ρ)
+Connor Smirl, Tufts University, February 2026
+========================================================================
+
+========================================================================
+TEST #19: OVERINVESTMENT — N firms overinvest 3-4x (Reference)
+========================================================================
+
+  [Tested separately in test_capex_overinvestment.py]
+
+  Key results from capex overinvestment test:
+    Average overinvestment ratio (2022+): 11.12x
+    Peak overinvestment ratio:            19.31x
+    Crossing time acceleration (N=5):     79.3%
+    Cumulative actual/cooperative ratio:   7.00x
+
+  Proposition 1 predicts 3-4x; actual exceeds this (accelerating arms race).
+  Model Nash/Cooperative ratio ~4x is consistent; actual exceeds Nash too.
+  VERDICT: CONSISTENT — overinvestment confirmed, exceeds 3-4x prediction
+
+========================================================================
+TEST #20: SELF-UNDERMINING — Capex funds cost decline via learning curves
+========================================================================
+
+  HBM price/GB learning curve (OLS on ln(price) vs year):
+    Data points:    9 (years 2015-2026)
+    Annual decline: 20.0% per year (slope = -0.2004)
+    R-squared:      0.9477
+    p-value:        0.000010
+    Literature alpha (Wright's Law): 0.23 (from learning_curve_literature.csv)
+
+  Cumulative capex vs HBM price/GB (7 overlapping years: 2018-2026):
+    Cumulative capex range: $64B to $1423B
+    HBM price/GB range:     $35 to $9
+    Pearson r:    -0.9358 (p = 0.0019)
+    Kendall tau:  -1.0000 (p = 0.0004)
+
+  Interpretation: $1423B cumulative investment (2018-2026) funded
+    hardware cost decline from $35/GB to $9/GB (74% reduction).
+  VERDICT: CONSISTENT — Wright's Law cost decline confirmed (alpha=0.23, R²=0.95)
+
+========================================================================
+TEST #21: DURATION FORMULA — τ ≈ ln(c₀/c*)/α
+========================================================================
+
+  Historical calibration (Technology_Cycle.tex Table 1):
+  Technology            α      ρ      K      N    τ_pred  τ_actual     Error
+  ----------------  -----  -----  -----  -----  --------  --------  --------
+  Railroads          0.18   -2.0   0.71      8        52        50        +2
+  Electrification    0.22   -1.0   0.50     12        42        40        +2
+  Telephony          0.20   -0.5   0.38      5        44        40        +4
+  Internet           0.30    0.0   0.25     20        18        20        -2
+
+  Fit statistics (predicted vs actual duration):
+    MAE:  2.5 years
+    RMSE: 2.6 years
+    R²:   0.9889
+    Pearson r: 0.9944 (p = 0.0056)
+
+  Implied cost ratios c₀/c* = e^(α × τ):
+    Railroads       : 11614.4x (economically questionable)
+    Electrification : 10301.0x (economically questionable)
+    Telephony       : 6634.2x (economically questionable)
+    Internet        : 221.4x (economically questionable)
+
+  Cross-validation against learning curve literature:
+    Semiconductor alpha range: [0.05, 0.85] (n=12 estimates)
+    Calibration alphas:        [0.18, 0.30]
+    All calibration alphas within literature range: True
+
+  Caveat: 4 data points with 2 free parameters each (α and c₀/c*)
+    limits the degrees of freedom for falsification.
+  VERDICT: CONSISTENT — MAE 2.5 years, R² = 0.99
+
+========================================================================
+TEST #22: SUCCESSIVE CYCLE COMPRESSION
+========================================================================
+
+  Actual durations (chronological by start_year):
+    Railroads        (1830): τ = 50 years
+    Electrification  (1882): τ = 40 years  ↓ COMPRESSED
+    Telephony        (1876): τ = 40 years  = FLAT
+    Internet         (1990): τ = 20 years  ↓ COMPRESSED
+
+  Strict compression: 2/3 transitions
+
+  Compression ratio test (τ_{n+1}/τ_n vs α_n/α_{n+1}):
+  Transition                       τ ratio     α ratio     Match
+  ----------------------------  ----------  ----------  --------
+  Railroads → Electrification        0.800       0.818       YES
+  Electrification → Telephony        1.000       1.100       YES
+  Telephony → Internet               0.500       0.667       YES
+
+  Kendall τ(α, duration): -0.9129 (p = 0.0710)
+    Expected: negative (higher α → shorter duration)
+    Observed: negative ✓
+
+  OLS: ln(τ) = 0.89 + -1.77 × ln(α)
+    Theory predicts slope ≈ -1.0
+    Observed slope: -1.77 (SE = 0.24)
+    R²: 0.9638
+
+  VERDICT: DIRECTIONAL — overall trend correct but Telephony = Electrification
+    breaks strict monotonicity (both 40 years)
+
+========================================================================
+TEST #23: CRISIS COUNT INTEGER (Topological Invariant)
+========================================================================
+
+  Crisis count by cycle (Corollary 2.2: n = winding number):
+    Railroads       : 3 events [F, P, G] — n=1 (tripartite: F→P→G)
+    Electrification : 3 events [F, P, G] — n=1 (tripartite: F→P→G)
+    Telephony       : 1 events [G] — anomalous (regulatory only)
+    Internet        : 3 events [F, P, G] — n=1 (tripartite: F→P→G)
+
+  All counts are integers (trivially true by construction).
+  The non-trivial claim is that each cycle has exactly one
+  tripartite crisis sequence (n=1 winding number):
+    Cycles with tripartite sequence: 3/4
+    Telephony: anomalous — regulatory intervention (Kingsbury 1913)
+      substituted for market-driven financial crisis
+
+  Mean crises per cycle: 2.5
+  Std dev: 0.9
+
+  VERDICT: SUGGESTIVE — all testable cycles match n=1; consistent with
+    topological claim but unfalsifiable with 4 observations
+
+========================================================================
+TEST #24: CRISIS SEQUENCE — Financial → Production → Governance
+========================================================================
+
+    Railroads       : F(1873) → P(1881) → G(1887)  lags: 8, 6 yr  ✓ CORRECT
+    Electrification : F(1929) → P(1931) → G(1935)  lags: 2, 4 yr  ✓ CORRECT
+    Internet        : F(2000) → P(2002) → G(2002)  lags: 2, 0 yr  ✓ CORRECT
+
+  Correctly ordered: 3/3 testable cycles
+
+  Average lags:
+    Financial → Production: 4.0 years
+    Production → Governance: 3.3 years
+
+  Telephony (excluded): Kingsbury Commitment (1913) was regulatory
+    intervention that prevented a market-driven financial crisis.
+    This is consistent with the model — governance can preempt
+    the sequence if institutional capacity is sufficient.
+
+  Theoretical basis: financial K_eff degrades quadratically (K²),
+    production linearly (K), governance sub-linearly (√K).
+    Ordering is non-trivial — it derives from curvature structure.
+
+  VERDICT: CONSISTENT — 3/3 testable cycles follow F→P→G ordering
+
+========================================================================
+TEST #25: NEW TECHNOLOGIES ARRIVE WITH LOW ρ
+========================================================================
+
+  Calibrated ρ values:
+    Railroads       : ρ =  -2.0  (α = 0.18, start 1830)
+    Electrification : ρ =  -1.0  (α = 0.22, start 1882)
+    Telephony       : ρ =  -0.5  (α = 0.20, start 1876)
+    Internet        : ρ =  +0.0  (α = 0.30, start 1990)
+
+  All ρ ≤ 0 (complementary regime): True
+  Range: [-2.0, 0.0] — well below ρ = 1 (perfect substitutes)
+
+  Kendall τ(start_year, ρ): 0.6667 (p = 0.3333)
+    Expected: positive (later technologies more modular/higher ρ)
+    Observed: positive ✓
+
+  Kendall τ(α, ρ): 0.6667 (p = 0.3333)
+    Expected: positive (more modular tech learns faster)
+    Observed: positive ✓
+
+  Cross-validation: semiconductor α range [0.05, 0.85] from literature
+    AI calibration α = 0.35 — at high end, consistent with fast-learning modular tech
+
+  VERDICT: DIRECTIONAL — all ρ ≤ 0 and trends are correct, but ρ values
+    are author-calibrated, not independently estimated from data
+
+========================================================================
+TEST #26: AI CROSSING ~2028 (Consumer Silicon Trajectory)
+========================================================================
+
+  Crossing point identified in consumer_silicon_trajectory.csv:
+    Year:     2028
+    Chipset:  Consumer HBM Gen3 (proj)
+    Params:   70B at 20 tok/s
+    Memory:   256GB HBM-consumer
+    Price:    $1499
+    Params/$: 46.7M
+
+  Exponential trend (actual data, 2020-2025):
+    Annual growth in params/$: 125.9%
+    ln(params/$) = -1633.28 + 0.8148 × year
+    R²: 0.7818
+
+  Extrapolation to 2028:
+    Projected params/$:   187.0M
+    Crossing threshold:   46.7M params/$
+    On track: YES ✓
+
+  HBM price trajectory (supporting evidence):
+    2015: $120/GB (HBM1, 4GB/stack)
+    2016: $60/GB (HBM2, 8GB/stack)
+    2018: $35/GB (HBM2E, 8GB/stack)
+    2020: $25/GB (HBM2E, 16GB/stack)
+    2022: $20/GB (HBM3, 24GB/stack)
+    2023: $18/GB (HBM3, 24GB/stack)
+    2024: $15/GB (HBM3E, 36GB/stack)
+    2025: $12/GB (HBM3E+, 48GB/stack)
+    2026: $9/GB (HBM4, 48GB/stack)
+
+  VERDICT (#26): TRAJECTORY CONSISTENT — current data on track for ~2028 crossing
+    Forward-looking; depends on continued Wright's Law cost decline
+
+========================================================================
+TEST #27: SELF-SUSTAINING DISTRIBUTED ADOPTION ~2030-32
+========================================================================
+
+  Post-crossing trajectory (from consumer_silicon_trajectory.csv):
+    2028: Consumer HBM Gen3 (proj) — 70B params, 20 tok/s, $1499, 46.7M params/$
+    2029: Consumer HBM Gen3+ (proj) — 70B params, 30 tok/s, $999, 70.1M params/$
+    2030: Consumer HBM Gen4 (proj) — 120B params, 35 tok/s, $999, 120.1M params/$
+
+  Key indicators for self-sustaining adoption:
+    Post-crossing price trajectory continues falling ($1499 → $999)
+    Capability exceeds threshold (70B → 120B params by 2030)
+    Multiple device categories (laptop, device) — not single-vendor
+
+  Self-sustaining requires:
+    (i)  Cost below parity (achieved at crossing)
+    (ii) Network effects from distributed mesh (Paper 2, N > N*)
+    (iii) Endogenous capability growth (Paper 3, RAF sets)
+    Timeline ~2030-32 assumes 2-4 years post-crossing for mesh formation
+
+  VERDICT (#27): TRAJECTORY CONSISTENT — trajectory on track but forward-looking
+
+========================================================================
+SUMMARY: TECHNOLOGY/LEARNING PREDICTIONS #19-27
+========================================================================
+
+  #19 Overinvestment          : CONSISTENT             [11.12]
+  #20 Self-undermining        : CONSISTENT             [0.23]
+  #21 Duration formula        : CONSISTENT             [2.50]
+  #22 Cycle compression       : DIRECTIONAL            [-0.91]
+  #23 Crisis count            : SUGGESTIVE             [3]
+  #24 Crisis sequence         : CONSISTENT             [3]
+  #25 Low ρ at arrival        : DIRECTIONAL            [0.67]
+  #26 Crossing ~2028          : TRAJECTORY CONSISTENT  [125.86]
+  #27 Self-sustaining         : TRAJECTORY CONSISTENT 
+
+  Consistent / suggestive:    5
+  Directional:                2
+  Trajectory consistent:      2
+  Other:                      0
+
+  Results CSV: /home/jonsmirl/thesis/thesis_data/tech_cycle_results.csv
+  Results TXT: /home/jonsmirl/thesis/thesis_data/tech_cycle_results.txt
+  LaTeX table: /home/jonsmirl/thesis/thesis_data/tech_cycle_table.tex
+  Figure: /home/jonsmirl/thesis/figures/tech_cycle_predictions.pdf

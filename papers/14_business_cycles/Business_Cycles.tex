@@ -34,7 +34,7 @@
 \newcommand{\calS}{\mathcal{S}}
 \newcommand{\bone}{\mathbf{1}}
 
-\title{Business Cycles as Port-Hamiltonian Oscillations\\in a Heterogeneous-Complementarity Economy}
+\title{Business Cycles as Conservative-Dissipative Oscillations\\in a Heterogeneous-Complementarity Economy}
 \author{Jon Smirl}
 \date{February 2026 \\ \smallskip \textit{Working Paper}}
 
@@ -42,12 +42,12 @@
 \maketitle
 
 \begin{abstract}
-This paper derives business cycles from the port-Hamiltonian structure of an economy with heterogeneous sectoral complementarities.  Each sector $n$ has a CES aggregation parameter $\rho_n$ determining the complementarity of its inputs, an associated critical information temperature $T^*(\rho_n)$ at which efficient allocation breaks down, and dissipative within-sector adjustment governed by a damping matrix $\mathbf{R}$.  Cross-sector coupling through directed input-output linkages introduces an antisymmetric matrix $\mathbf{J}$, so the full dynamics take the port-Hamiltonian form $\dot{\mathbf{x}} = (\mathbf{J} - \mathbf{R})\nabla \calF$.  The antisymmetric coupling generates oscillatory modes---business cycles---whose periods equal the geometric means of adjacent sectoral timescales.  Five main results follow.  First, sectors enter recession in order of increasing $\rho$ (most complementary first) and recover in reverse order, because low-$\rho$ sectors have the lowest critical temperature (\emph{$\rho$-ordering theorem}).  Second, the expansion-contraction asymmetry observed in all post-war business cycles (long expansions, short contractions) emerges from the \emph{relaxation oscillation} structure of the dynamics near the slow-manifold fold, with the asymmetry ratio scaling as $1/\varepsilon$ where $\varepsilon$ is the financial-to-real timescale ratio.  Third, monetary policy operates on $T$ but endogenously lowers $T^*$ by enabling more complementary production structures, formalizing Minsky's instability hypothesis as a theorem in $(\rho, T)$ space (\emph{Minsky trap}).  Fourth, regulation increases the damping ratio $\zeta = r/\omega$ without changing the equilibrium, explaining the Great Moderation as a shift from underdamped to critically-damped dynamics and predicting its catastrophic termination.  Fifth, the classical hierarchy of cycle frequencies---Kitchin, Juglar, Kuznets, Kondratiev---corresponds to the eigenspectrum of $\mathbf{J}$, unifying inventory cycles, business cycles, construction supercycles, and technology waves as harmonics of a single Hamiltonian system.
+This paper derives business cycles from the conservative-dissipative structure of an economy with heterogeneous sectoral complementarities.  Each sector $n$ has a CES aggregation parameter $\rho_n$ determining the complementarity of its inputs, an associated breakdown threshold $T^*(\rho_n)$ at which efficient allocation breaks down, and frictional within-sector adjustment governed by a damping matrix $\mathbf{R}$.  Cross-sector coupling through directed input-output linkages introduces an antisymmetric matrix $\mathbf{J}$, so the full dynamics take the conservative-dissipative form $\dot{\mathbf{x}} = (\mathbf{J} - \mathbf{R})\nabla \calF$.  The antisymmetric coupling generates oscillatory modes---business cycles---whose periods equal the geometric means of adjacent sectoral timescales.  Five main results follow.  First, sectors enter recession in order of increasing $\rho$ (most complementary first) and recover in reverse order, because low-$\rho$ sectors have the lowest breakdown threshold (\emph{$\rho$-ordering theorem}).  Second, the expansion-contraction asymmetry observed in all post-war business cycles (long expansions, short contractions) emerges from the \emph{slow-fast oscillation} structure of the dynamics near the quasi-equilibrium-surface fold, with the asymmetry ratio scaling as $1/\varepsilon$ where $\varepsilon$ is the financial-to-real timescale ratio.  Third, monetary policy operates on $T$ but endogenously lowers $T^*$ by enabling more complementary production structures, formalizing Minsky's instability hypothesis as a theorem in $(\rho, T)$ space (\emph{Minsky trap}).  Fourth, regulation increases the damping ratio $\zeta = r/\omega$ without changing the equilibrium, explaining the Great Moderation as a shift from underdamped to critically-damped dynamics and predicting its catastrophic termination.  Fifth, the classical hierarchy of cycle frequencies---Kitchin, Juglar, Kuznets, Kondratiev---corresponds to the eigenspectrum of $\mathbf{J}$, unifying inventory cycles, business cycles, construction supercycles, and technology waves as harmonics of a single conservative-dissipative system.
 \end{abstract}
 
 \textbf{JEL Codes:} E32, E44, C62, D57, L16
 
-\textbf{Keywords:} business cycles, port-Hamiltonian systems, CES complementarity, relaxation oscillations, Minsky instability, input-output networks, sectoral heterogeneity, Great Moderation
+\textbf{Keywords:} business cycles, conservative-dissipative systems, CES complementarity, slow-fast oscillations, Minsky instability, input-output networks, sectoral heterogeneity, Great Moderation
 
 %=============================================================================
 \section{Introduction}\label{sec:intro}
@@ -55,35 +55,35 @@ This paper derives business cycles from the port-Hamiltonian structure of an eco
 
 Business cycle theory has long struggled with a fundamental tension.  Real business cycle models \citep{kydland1982} treat fluctuations as efficient responses to exogenous technology shocks, requiring implausibly large and frequent disturbances to match observed volatility.  New Keynesian models \citep{gali2015} introduce nominal rigidities that generate inefficient fluctuations, but rely on representative-agent aggregation that obscures the sectoral heterogeneity visible in every recession.  Financial cycle theories \citep{minsky1986,borio2014} capture the credit dynamics that empirically dominate cycle amplitude, but lack the mathematical structure to make precise predictions about timing, duration, and cross-sector propagation.
 
-This paper proposes that business cycles are \emph{intrinsic oscillatory modes} of a production economy with heterogeneous complementarities.  The mathematical framework is the port-Hamiltonian system
+This paper proposes that business cycles are \emph{intrinsic oscillatory modes} of a production economy with heterogeneous complementarities.  The mathematical framework is the conservative-dissipative system
 \begin{equation}\label{eq:port-ham}
 \dot{\mathbf{x}} = (\mathbf{J} - \mathbf{R})\nabla \calF(\mathbf{x}),
 \end{equation}
-where $\calF_q = \Phi_{\mathrm{CES}}(\rho) - T \cdot S_q$ (with $q = \rho$) is the Tsallis economic free energy \citep{smirl2026free,smirl2026tsallis}, $\mathbf{J} = -\mathbf{J}^\top$ is the antisymmetric matrix encoding directed input-output linkages between sectors, and $\mathbf{R} = \mathbf{R}^\top \succeq 0$ is the symmetric dissipation matrix encoding within-sector adjustment frictions.
+where $\calF_q = \Phi_{\mathrm{CES}}(\rho) - T \cdot S_q$ (with $q = \rho$) is the Tsallis economic CES potential \citep{smirl2026free,smirl2026tsallis}, $\mathbf{J} = -\mathbf{J}^\top$ is the antisymmetric matrix encoding directed input-output linkages between sectors, and $\mathbf{R} = \mathbf{R}^\top \succeq 0$ is the symmetric friction matrix encoding within-sector adjustment frictions.
 
-The key departure from existing theory is \emph{sectoral $\rho$-heterogeneity}.  Different sectors of the economy have fundamentally different complementarity structures: software production combines largely substitutable inputs ($\rho$ near 1), while construction requires land, permits, labor, materials, and financing that are essentially non-substitutable ($\rho$ near or below 0).  Each sector has a critical information temperature $T^*(\rho_n) \propto K_n = (1 - \rho_n)(J_n - 1)/J_n$ at which efficient allocation breaks down \citep{smirl2026ces}.  When the economy-wide information friction $T$ rises during an expansion---through credit-quality deterioration, complexity growth, and declining signal-to-noise ratios---sectors breach their critical thresholds in order of increasing $\rho$: the most complementary sectors fail first.
+The key departure from existing theory is \emph{sectoral $\rho$-heterogeneity}.  Different sectors of the economy have fundamentally different complementarity structures: software production combines largely substitutable inputs ($\rho$ near 1), while construction requires land, permits, labor, materials, and financing that are essentially non-substitutable ($\rho$ near or below 0).  Each sector has a breakdown threshold $T^*(\rho_n) \propto K_n = (1 - \rho_n)(J_n - 1)/J_n$ at which efficient allocation breaks down \citep{smirl2026ces}.  When the economy-wide information friction $T$ rises during an expansion---through credit-quality deterioration, complexity growth, and declining signal-to-noise ratios---sectors breach their critical thresholds in order of increasing $\rho$: the most complementary sectors fail first.
 
 This mechanism generates five results that connect directly to empirical regularities.
 
 \emph{First}, the $\rho$-ordering of sectoral entry into and exit from recession (\cref{sec:rho-ordering}).  In every post-war US recession, housing and financial services lead the downturn while consumer services lag \citep{leamer2007}.  The framework derives this ordering from the complementarity parameters of the production technology rather than assuming it.
 
-\emph{Second}, the asymmetry between expansions and contractions (\cref{sec:relaxation}).  NBER data show average post-war expansions of 58 months and contractions of 11 months, a 5:1 ratio.  The port-Hamiltonian system with a fold in the slow manifold produces relaxation oscillations whose asymmetry scales as $1/\varepsilon$, where $\varepsilon$ is the timescale separation between financial and real adjustment.
+\emph{Second}, the asymmetry between expansions and contractions (\cref{sec:relaxation}).  NBER data show average post-war expansions of 58 months and contractions of 11 months, a 5:1 ratio.  The conservative-dissipative system with a fold in the quasi-equilibrium surface produces slow-fast oscillations whose asymmetry scales as $1/\varepsilon$, where $\varepsilon$ is the timescale separation between financial and real adjustment.
 
 \emph{Third}, the Minsky instability as a theorem (\cref{sec:minsky}).  Expansionary monetary policy lowers $T$ but simultaneously enables more complementary (lower-$\rho$) production structures, which have lower $T^*$.  The stability margin $T^* - T$ may shrink even as measured volatility falls.  This formalizes the ``stability breeds instability'' intuition with a precise comparative static in $(\rho, T)$ space.
 
-\emph{Fourth}, the Great Moderation and its termination (\cref{sec:great-moderation}).  Financial deregulation and globalization increased the dissipation rate $r$ without altering the antisymmetric coupling $\omega$, pushing the system from underdamped to critically damped.  Oscillation amplitude fell, but the fold structure remained.  When the Minsky mechanism finally drove $T$ through $T^*$, the crisis was faster and sharper than in the underdamped regime---the transition from oscillatory instability to catastrophic instability.
+\emph{Fourth}, the Great Moderation and its termination (\cref{sec:great-moderation}).  Financial deregulation and globalization increased the friction rate $r$ without altering the antisymmetric coupling $\omega$, pushing the system from underdamped to critically damped.  Oscillation amplitude fell, but the fold structure remained.  When the Minsky mechanism finally drove $T$ through $T^*$, the crisis was faster and sharper than in the underdamped regime---the transition from oscillatory instability to catastrophic instability.
 
-\emph{Fifth}, the hierarchy of cycle frequencies (\cref{sec:hierarchy}).  The eigenspectrum of $\mathbf{J}$ contains multiple oscillatory modes corresponding to different pairs of coupled timescales: Kitchin inventory cycles ($\sim$3--5 years), Juglar investment cycles ($\sim$7--11 years), Kuznets construction swings ($\sim$15--25 years), and Kondratiev technology waves ($\sim$40--60 years).  These are not separate phenomena requiring separate theories---they are harmonics of the same Hamiltonian system.
+\emph{Fifth}, the hierarchy of cycle frequencies (\cref{sec:hierarchy}).  The eigenspectrum of $\mathbf{J}$ contains multiple oscillatory modes corresponding to different pairs of coupled timescales: Kitchin inventory cycles ($\sim$3--5 years), Juglar investment cycles ($\sim$7--11 years), Kuznets construction swings ($\sim$15--25 years), and Kondratiev technology waves ($\sim$40--60 years).  These are not separate phenomena requiring separate theories---they are harmonics of the same conservative-dissipative system.
 
 \paragraph{Related literature.}
-The oscillatory interpretation of business cycles has deep roots.  \citet{goodwin1967} modeled cycles as predator-prey dynamics between labor share and employment, producing limit cycles.  \citet{kaldor1940} proposed nonlinear investment functions that generate relaxation oscillations.  \citet{metzler1941} derived inventory cycles from stock-flow lags.  The present paper's contribution is identifying the \emph{source} of the antisymmetric coupling (directed input-output linkages), the \emph{control parameter} governing oscillation behavior (the damping ratio $\zeta = r/\omega$, itself determined by complementarity $\rho$ and information friction $T$), and the \emph{sectoral propagation mechanism} ($\rho$-ordering through heterogeneous critical temperatures).
+The oscillatory interpretation of business cycles has deep roots.  \citet{goodwin1967} modeled cycles as predator-prey dynamics between labor share and employment, producing endogenous cycles.  \citet{kaldor1940} proposed nonlinear investment functions that generate slow-fast oscillations.  \citet{metzler1941} derived inventory cycles from stock-flow lags.  The present paper's contribution is identifying the \emph{source} of the antisymmetric coupling (directed input-output linkages), the \emph{control parameter} governing oscillation behavior (the damping ratio $\zeta = r/\omega$, itself determined by complementarity $\rho$ and information friction $T$), and the \emph{sectoral propagation mechanism} ($\rho$-ordering through heterogeneous breakdown thresholds).
 
 The input-output structure draws on \citet{acemoglu2012}, who showed that network topology determines whether idiosyncratic shocks aggregate or cancel.  The present paper adds that the \emph{direction} of linkages matters: the antisymmetric component of the input-output matrix generates oscillations that the symmetric component cannot.
 
-The Minsky formalization connects to \citet{brunnermeier2014}, who model endogenous risk in continuous time, and to \citet{he2013}, who study intermediary asset pricing with leverage constraints.  The port-Hamiltonian structure provides a unified framework that nests these models as special cases corresponding to particular $\rho$ configurations.
+The Minsky formalization connects to \citet{brunnermeier2014}, who model endogenous risk in continuous time, and to \citet{he2013}, who study intermediary asset pricing with leverage constraints.  The conservative-dissipative structure provides a unified framework that nests these models as special cases corresponding to particular $\rho$ configurations.
 
 \paragraph{Outline.}
-\Cref{sec:model} sets up the model.  \Cref{sec:antisymmetric} derives the antisymmetric coupling from input-output tables.  \Cref{sec:eigenstructure} characterizes the eigenspectrum and oscillation modes.  \Cref{sec:rho-ordering} proves the $\rho$-ordering theorem.  \Cref{sec:relaxation} derives the relaxation oscillation structure.  \Cref{sec:minsky} formalizes the Minsky trap.  \Cref{sec:great-moderation} applies the framework to the Great Moderation.  \Cref{sec:hierarchy} unifies the cycle hierarchy.  \Cref{sec:phillips} derives the Phillips curve as a $(\rho, T)$ phenomenon.  \Cref{sec:predictions} summarizes testable predictions.  \Cref{sec:conclusion} concludes.
+\Cref{sec:model} sets up the model.  \Cref{sec:antisymmetric} derives the antisymmetric coupling from input-output tables.  \Cref{sec:eigenstructure} characterizes the eigenspectrum and oscillation modes.  \Cref{sec:rho-ordering} proves the $\rho$-ordering theorem.  \Cref{sec:relaxation} derives the slow-fast oscillation structure.  \Cref{sec:minsky} formalizes the Minsky trap.  \Cref{sec:great-moderation} applies the framework to the Great Moderation.  \Cref{sec:hierarchy} unifies the cycle hierarchy.  \Cref{sec:phillips} derives the Phillips curve as a $(\rho, T)$ phenomenon.  \Cref{sec:predictions} summarizes testable predictions.  \Cref{sec:conclusion} concludes.
 
 %=============================================================================
 \section{The Model}\label{sec:model}
@@ -118,27 +118,27 @@ Information/software & Tech, media, communications & $0.8$ & $5.0$ \\
 \end{center}
 \end{example}
 
-\subsection{Information friction and free energy}\label{sec:free-energy}
+\subsection{Information friction and CES potential}\label{sec:free-energy}
 
-Agents face information capacity constraints on processing information about input quality and allocation \citep{sims2003}.  The capacity constraint imposes an information temperature $T = 1/\kappa$, where $\kappa$ is the channel capacity in nats.  The equilibrium allocation maximizes the \emph{Tsallis economic free energy}:
+Agents face information capacity constraints on processing information about input quality and allocation \citep{sims2003}.  The capacity constraint imposes an information friction $T = 1/\kappa$, where $\kappa$ is the channel capacity in nats.  The equilibrium allocation maximizes the \emph{Tsallis economic CES potential}:
 \begin{equation}\label{eq:free-energy}
 \calF_q = \Phi_{\mathrm{CES}} - T \cdot S_q, \qquad q = \rho,
 \end{equation}
 where $\Phi_{\mathrm{CES}} = -\sum_{n=1}^N \log F_n$ is the CES potential and $S_q = (1 - \sum_{n,j} p_{nj}^q)/(q-1)$ is the Tsallis entropy of the allocation with $q = \rho$ locked by the emergence theorem \citep{smirl2026tsallis}.
 
-\begin{definition}[Critical temperature]\label{def:T-star}
-The critical temperature of sector $n$ is
+\begin{definition}[Breakdown threshold]\label{def:T-star}
+The breakdown threshold of sector $n$ is
 \begin{equation}\label{eq:T-star}
 T^*_n = \frac{K_n}{\lambda_{\max}(-\nabla^2 \Phi_n|_{\mathrm{sym}})},
 \end{equation}
 where $\lambda_{\max}$ is the largest eigenvalue of the negative Hessian of the CES potential at the symmetric allocation.  For large $J_n$, $T^*_n \approx K_n = (1 - \rho_n)(J_n - 1)/J_n$.
 \end{definition}
 
-When $T < T^*_n$, sector $n$ can sustain efficient allocation.  When $T > T^*_n$, the free energy landscape flattens and allocation degrades.  Since $T^*_n$ is decreasing in $\rho_n$, \emph{more complementary sectors have lower critical temperatures and are more fragile}.
+When $T < T^*_n$, sector $n$ can sustain efficient allocation.  When $T > T^*_n$, the CES potential landscape flattens and allocation degrades.  Since $T^*_n$ is decreasing in $\rho_n$, \emph{more complementary sectors have lower breakdown thresholds and are more fragile}.
 
 \subsection{Sectoral adjustment dynamics}\label{sec:dynamics}
 
-Each sector adjusts toward its free-energy minimum at a rate determined by its adjustment friction.  Define the sectoral timescale $\tau_n$ and the within-sector dissipation rate $r_n = 1/\tau_n$.  The \emph{within-sector} dynamics are gradient flow:
+Each sector adjusts toward its CES-potential minimum at a rate determined by its adjustment friction.  Define the sectoral timescale $\tau_n$ and the within-sector friction rate $r_n = 1/\tau_n$.  The \emph{within-sector} dynamics are adjustment dynamics:
 \begin{equation}\label{eq:gradient-flow}
 \dot{x}_{nj} = -r_n \frac{\partial \calF}{\partial x_{nj}}.
 \end{equation}
@@ -159,9 +159,9 @@ Decompose:
 \end{equation}
 
 \begin{proposition}[Antisymmetric coupling from directed linkages]\label{prop:antisymmetric}
-The symmetric component $\mathbf{S}$ contributes to the dissipation matrix $\mathbf{R}$ (it generates mutual adjustment between sectors that trade symmetrically).  The antisymmetric component $\mathbf{J}_A$ contributes to the conservative coupling matrix $\mathbf{J}$ (it generates oscillatory energy transfer between sectors linked by directed supply chains).
+The symmetric component $\mathbf{S}$ contributes to the friction matrix $\mathbf{R}$ (it generates mutual adjustment between sectors that trade symmetrically).  The antisymmetric component $\mathbf{J}_A$ contributes to the conservative coupling matrix $\mathbf{J}$ (it generates oscillatory energy transfer between sectors linked by directed supply chains).
 
-The full port-Hamiltonian dynamics are:
+The full conservative-dissipative dynamics are:
 \begin{equation}\label{eq:full-dynamics}
 \dot{\mathbf{x}} = (\mathbf{J} - \mathbf{R})\nabla \calF,
 \end{equation}
@@ -174,11 +174,11 @@ with $\omega > 0$ the coupling strength and $\mu > 0$ the symmetric friction coe
 \end{proposition}
 
 \begin{proof}
-The energy balance for the port-Hamiltonian system is:
+The energy balance for the conservative-dissipative system is:
 \begin{equation}
 \frac{d\calF}{dt} = \nabla \calF^\top \dot{\mathbf{x}} = \nabla \calF^\top (\mathbf{J} - \mathbf{R}) \nabla \calF = -\nabla \calF^\top \mathbf{R} \nabla \calF \leq 0,
 \end{equation}
-since $\nabla \calF^\top \mathbf{J} \nabla \calF = 0$ (antisymmetry of $\mathbf{J}$) and $\mathbf{R} \succeq 0$.  The antisymmetric part does not dissipate energy---it transfers energy between sectors conservatively, generating oscillations.  The symmetric part strictly dissipates energy, generating convergence.  The decomposition \eqref{eq:io-decomp} maps the directed (asymmetric) component of trade into conservative coupling and the undirected (symmetric) component into dissipative coupling.
+since $\nabla \calF^\top \mathbf{J} \nabla \calF = 0$ (antisymmetry of $\mathbf{J}$) and $\mathbf{R} \succeq 0$.  The antisymmetric part does not absorb energy---it transfers energy between sectors conservatively, generating oscillations.  The symmetric part strictly absorbs energy, generating convergence.  The decomposition \eqref{eq:io-decomp} maps the directed (asymmetric) component of trade into conservative coupling and the undirected (symmetric) component into frictional coupling.
 \end{proof}
 
 \subsection{Empirical magnitude of asymmetry}\label{sec:empirical-asymmetry}
@@ -213,16 +213,16 @@ The loop closure $j_{N1}$ (savings from consumption feed back into investment in
 \section{Eigenstructure and Oscillation Modes}\label{sec:eigenstructure}
 %=============================================================================
 
-\subsection{Eigenvalues of the port-Hamiltonian system}\label{sec:eigenvalues}
+\subsection{Eigenvalues of the conservative-dissipative system}\label{sec:eigenvalues}
 
 \begin{theorem}[Oscillation spectrum]\label{thm:eigenvalues}
-Consider the linearized port-Hamiltonian system \eqref{eq:full-dynamics} around an equilibrium $\mathbf{x}^*$.  Let $\mathbf{H} = \nabla^2 \calF|_{\mathbf{x}^*}$ be the Hessian.  The eigenvalues of $(\mathbf{J} - \mathbf{R})\mathbf{H}$ come in complex conjugate pairs:
+Consider the linearized conservative-dissipative system \eqref{eq:full-dynamics} around an equilibrium $\mathbf{x}^*$.  Let $\mathbf{H} = \nabla^2 \calF|_{\mathbf{x}^*}$ be the Hessian.  The eigenvalues of $(\mathbf{J} - \mathbf{R})\mathbf{H}$ come in complex conjugate pairs:
 \begin{equation}\label{eq:eigenvalues}
 \lambda_k = -r_k \pm i\omega_k, \qquad k = 1, \ldots, \lfloor N/2 \rfloor,
 \end{equation}
 where:
 \begin{itemize}[nosep]
-\item $r_k > 0$ is the effective dissipation rate for mode $k$, determined by $\mathbf{R}$ and $\mathbf{H}$;
+\item $r_k > 0$ is the effective friction rate for mode $k$, determined by $\mathbf{R}$ and $\mathbf{H}$;
 \item $\omega_k$ is the oscillation frequency for mode $k$, determined by $\mathbf{J}$ and $\mathbf{H}$.
 \end{itemize}
 
@@ -242,7 +242,7 @@ Mode $k$ is underdamped (oscillatory) if $\zeta_k < 1$, critically damped if $\z
 \begin{proof}
 The linearized dynamics are $\dot{\mathbf{y}} = \mathbf{M}\mathbf{y}$ where $\mathbf{y} = \mathbf{x} - \mathbf{x}^*$ and $\mathbf{M} = (\mathbf{J} - \mathbf{R})\mathbf{H}$.  Since $\mathbf{J}$ is antisymmetric and $\mathbf{R}, \mathbf{H}$ are symmetric positive semidefinite, the matrix $\mathbf{M}$ has eigenvalues with non-positive real parts (stability) and generically non-zero imaginary parts (oscillation).
 
-To see the pairing, note that $\mathbf{J}\mathbf{H}$ is similar to a skew-symmetric matrix when $\mathbf{H}$ is positive definite (via the transformation $\mathbf{H}^{1/2}\mathbf{J}\mathbf{H}^{1/2}$), so its eigenvalues are purely imaginary: $\pm i\omega_k$.  The dissipation $\mathbf{R}\mathbf{H}$ shifts the real parts to $-r_k$.  The complex conjugate pairing follows from the real-valuedness of $\mathbf{M}$.
+To see the pairing, note that $\mathbf{J}\mathbf{H}$ is similar to a skew-symmetric matrix when $\mathbf{H}$ is positive definite (via the transformation $\mathbf{H}^{1/2}\mathbf{J}\mathbf{H}^{1/2}$), so its eigenvalues are purely imaginary: $\pm i\omega_k$.  The friction $\mathbf{R}\mathbf{H}$ shifts the real parts to $-r_k$.  The complex conjugate pairing follows from the real-valuedness of $\mathbf{M}$.
 \end{proof}
 
 \subsection{Period formula for adjacent-sector coupling}\label{sec:period-formula}
@@ -271,7 +271,7 @@ This is the key quantitative prediction.  Two sectors with timescales of 1 year 
 \subsection{Sectoral crisis thresholds}\label{sec:crisis-thresholds}
 
 \begin{theorem}[$\rho$-ordering of sectoral crises]\label{thm:rho-ordering}
-Let sectors be $\rho$-ordered: $\rho_1 \leq \rho_2 \leq \cdots \leq \rho_N$.  Suppose the aggregate information temperature $T(t)$ rises monotonically during an expansion.  Then sectors breach their critical thresholds in order:
+Let sectors be $\rho$-ordered: $\rho_1 \leq \rho_2 \leq \cdots \leq \rho_N$.  Suppose the aggregate information friction $T(t)$ rises monotonically during an expansion.  Then sectors breach their critical thresholds in order:
 \begin{equation}
 T(t_1^*) = T^*_1, \quad T(t_2^*) = T^*_2, \quad \ldots, \quad T(t_N^*) = T^*_N,
 \end{equation}
@@ -300,7 +300,7 @@ The $\rho$-ordering prediction aligns with the universal pattern of US recession
 \item \textbf{Services lag} (highest $\rho$).  Consumer services (restaurants, entertainment, software) are last to decline and first to recover, consistent with high input substitutability.
 \end{enumerate}
 
-The recovery ordering is the mirror image: services first, housing last.  The 2008--2009 recession illustrates this starkly: housing peaked in Q1 2006 (10 quarters before the NBER peak in December 2007), financial stress emerged in mid-2007, GDP peaked in Q4 2007, and the service sector contracted only in 2009.  Housing did not recover to pre-crisis levels until 2017---a decade after its peak and seven years after GDP recovery.  The $\rho$-ordering is not merely parametric: sectors with different $\rho$ are in different \emph{universality classes} under the aggregation renormalization group \citep{smirl2026emergent}, so their distinct crisis responses reflect structural necessity rather than happenstance of functional form.
+The recovery ordering is the mirror image: services first, housing last.  The 2008--2009 recession illustrates this starkly: housing peaked in Q1 2006 (10 quarters before the NBER peak in December 2007), financial stress emerged in mid-2007, GDP peaked in Q4 2007, and the service sector contracted only in 2009.  Housing did not recover to pre-crisis levels until 2017---a decade after its peak and seven years after GDP recovery.  The $\rho$-ordering is not merely parametric: sectors with different $\rho$ are in different \emph{aggregation-invariant classes} under the multi-scale aggregation \citep{smirl2026emergent}, so their distinct crisis responses reflect structural necessity rather than happenstance of functional form.
 
 \subsection{The crisis sequence within sectors}\label{sec:within-sector}
 
@@ -320,37 +320,37 @@ As $T$ rises through $[T^*_1, T^*_N]$:
 The 2008 crisis followed this cascade precisely: subprime mortgage correlation failure (2007 Q2), housing starts collapse (2007 Q4), corporate credit correlation failure (2008 Q1), Bear Stearns/Lehman coordination collapse (2008 Q1, Q3), manufacturing contraction (2008 Q3), services contraction (2009 Q1).
 
 %=============================================================================
-\section{Relaxation Oscillations and Asymmetry}\label{sec:relaxation}
+\section{Slow-Fast Oscillations and Asymmetry}\label{sec:relaxation}
 %=============================================================================
 
 \subsection{The slow-fast structure}\label{sec:slow-fast}
 
-The port-Hamiltonian system \eqref{eq:full-dynamics} has a natural slow-fast decomposition.  Define:
+The conservative-dissipative system \eqref{eq:full-dynamics} has a natural slow-fast decomposition.  Define:
 \begin{itemize}[nosep]
 \item \textbf{Fast variables}: financial quantities (credit conditions, asset prices, spreads) with timescale $\tau_{\mathrm{fast}} \sim$ months;
 \item \textbf{Slow variables}: real quantities (capital stock, employment, technology) with timescale $\tau_{\mathrm{slow}} \sim$ years.
 \end{itemize}
 
-The timescale ratio $\varepsilon = \tau_{\mathrm{fast}}/\tau_{\mathrm{slow}} \ll 1$ gives a singular perturbation parameter.  In the limit $\varepsilon \to 0$, the fast variables instantaneously equilibrate on the \emph{slow manifold}---the set of financial equilibria consistent with the current real state.
+The timescale ratio $\varepsilon = \tau_{\mathrm{fast}}/\tau_{\mathrm{slow}} \ll 1$ gives a singular perturbation parameter.  In the limit $\varepsilon \to 0$, the fast variables instantaneously equilibrate on the \emph{quasi-equilibrium surface}---the set of financial equilibria consistent with the current real state.
 
-\begin{definition}[Slow manifold]\label{def:slow-manifold}
-The slow manifold $\calS$ is the set of states where fast variables are in equilibrium:
+\begin{definition}[Quasi-equilibrium surface]\label{def:slow-manifold}
+The quasi-equilibrium surface $\calS$ is the set of states where fast variables are in equilibrium:
 \begin{equation}\label{eq:slow-manifold}
 \calS = \{(\mathbf{x}_{\mathrm{slow}}, \mathbf{x}_{\mathrm{fast}}) : \dot{\mathbf{x}}_{\mathrm{fast}} = 0\}.
 \end{equation}
-For the CES free energy, this manifold is parameterized by the real state and satisfies:
+For the CES potential, this manifold is parameterized by the real state and satisfies:
 \begin{equation}
 \nabla_{\mathrm{fast}} \calF(\mathbf{x}_{\mathrm{slow}}, \mathbf{x}_{\mathrm{fast}}) = 0.
 \end{equation}
 \end{definition}
 
-\subsection{The fold and the canard}\label{sec:fold}
+\subsection{The fold and the delayed-transition}\label{sec:fold}
 
-\begin{theorem}[Relaxation oscillation asymmetry]\label{thm:asymmetry}
-Suppose the slow manifold $\calS$ has a fold at some critical value $\mathbf{x}_{\mathrm{slow}}^c$ (i.e., the Hessian $\nabla^2_{\mathrm{fast}} \calF$ has a zero eigenvalue at $\mathbf{x}_{\mathrm{slow}}^c$).  Then the port-Hamiltonian dynamics exhibit relaxation oscillations with:
+\begin{theorem}[Slow-fast oscillation asymmetry]\label{thm:asymmetry}
+Suppose the quasi-equilibrium surface $\calS$ has a fold at some critical value $\mathbf{x}_{\mathrm{slow}}^c$ (i.e., the Hessian $\nabla^2_{\mathrm{fast}} \calF$ has a zero eigenvalue at $\mathbf{x}_{\mathrm{slow}}^c$).  Then the conservative-dissipative dynamics exhibit slow-fast oscillations with:
 \begin{enumerate}[nosep]
 \item \textbf{Slow phase} (expansion): the system drifts along the stable branch of $\calS$, with velocity $O(\varepsilon)$.  Duration: $\tau_{\mathrm{expansion}} \sim \tau_{\mathrm{slow}}$.
-\item \textbf{Fast phase} (contraction): the system reaches the fold, the slow manifold loses stability, and the system jumps to the other stable branch with velocity $O(1)$.  Duration: $\tau_{\mathrm{contraction}} \sim \tau_{\mathrm{fast}}$.
+\item \textbf{Fast phase} (contraction): the system reaches the fold, the quasi-equilibrium surface loses stability, and the system jumps to the other stable branch with velocity $O(1)$.  Duration: $\tau_{\mathrm{contraction}} \sim \tau_{\mathrm{fast}}$.
 \end{enumerate}
 The asymmetry ratio is:
 \begin{equation}\label{eq:asymmetry}
@@ -370,11 +370,11 @@ With $\tau_{\mathrm{fast}} \approx 6$ months (financial adjustment) and $\tau_{\
 The NBER post-war average is $58/11 \approx 5.3$.  The factor-of-two discrepancy reflects the crude calibration; the \emph{order of magnitude} and the qualitative prediction of strong asymmetry are correct.
 \end{corollary}
 
-\subsection{Canard dynamics and delayed transitions}\label{sec:canard}
+\subsection{Delayed-transition dynamics}\label{sec:canard}
 
-Near the fold, the system can follow a \emph{canard trajectory}---tracking the \emph{unstable} branch of the slow manifold for a time $O(1/\sqrt{\varepsilon})$ before jumping.  This produces the characteristic pattern of late-cycle expansions: leading indicators deteriorate (the system has crossed the fold) but output continues to grow (the system tracks the unstable branch).
+Near the fold, the system can follow a \emph{delayed-transition trajectory}---tracking the \emph{unstable} branch of the quasi-equilibrium surface for a time $O(1/\sqrt{\varepsilon})$ before jumping.  This produces the characteristic pattern of late-cycle expansions: leading indicators deteriorate (the system has crossed the fold) but output continues to grow (the system tracks the unstable branch).
 
-\begin{proposition}[Canard delay]\label{prop:canard}
+\begin{proposition}[Delayed-transition lag]\label{prop:canard}
 The delay between the first observable stress signal (fold crossing) and the actual contraction onset scales as:
 \begin{equation}\label{eq:canard-delay}
 \tau_{\mathrm{delay}} \sim \frac{1}{\sqrt{\varepsilon \cdot \dot{T}|_{T^*}}}
@@ -382,7 +382,7 @@ The delay between the first observable stress signal (fold crossing) and the act
 where $\dot{T}|_{T^*}$ is the rate at which $T$ crosses the critical threshold.
 \end{proposition}
 
-This explains the oft-noted phenomenon that financial stress indicators lead recessions by a variable and sometimes long lag.  The lag is not constant---it depends on how quickly information frictions are deteriorating at the threshold crossing.  The 2008 crisis had an unusually long canard delay (subprime distress visible in Q1 2007, recession only in Q4 2007) because $\dot{T}$ was moderate; the 2020 crisis had essentially zero canard delay because the COVID shock pushed $T$ through $T^*$ instantaneously.
+This explains the oft-noted phenomenon that financial stress indicators lead recessions by a variable and sometimes long lag.  The lag is not constant---it depends on how quickly information frictions are deteriorating at the threshold crossing.  The 2008 crisis had an unusually long delayed-transition lag (subprime distress visible in Q1 2007, recession only in Q4 2007) because $\dot{T}$ was moderate; the 2020 crisis had essentially zero delayed-transition lag because the COVID shock pushed $T$ through $T^*$ instantaneously.
 
 %=============================================================================
 \section{The Minsky Trap}\label{sec:minsky}
@@ -403,7 +403,7 @@ The Federal Reserve's primary instruments operate on $T$:
 When $T$ falls, activities with lower $\rho$ become viable (their $T^*$ is now above $T$).  Profit-maximizing firms respond by shifting toward more complementary production structures that offer higher returns when information is cheap.
 
 \begin{lemma}[Endogenous complementarity]\label{lem:endogenous-rho}
-Let $\rho^*_{\min}(T)$ denote the lowest viable complementarity parameter at temperature $T$:
+Let $\rho^*_{\min}(T)$ denote the lowest viable complementarity parameter at friction level $T$:
 \begin{equation}\label{eq:rho-min}
 \rho^*_{\min}(T) = \inf\{\rho : T^*(\rho) > T\}.
 \end{equation}
@@ -411,7 +411,7 @@ Since $T^*(\rho)$ is decreasing in $\rho$, the function $\rho^*_{\min}(T)$ is in
 \end{lemma}
 
 \begin{theorem}[The Minsky trap]\label{thm:minsky}
-Define the stability margin as $\Delta(T) = T^*_{\mathrm{eff}}(T) - T$, where $T^*_{\mathrm{eff}}(T) = T^*(\rho^*_{\min}(T))$ is the critical temperature of the \emph{most complementary active sector}.  Then:
+Define the stability margin as $\Delta(T) = T^*_{\mathrm{eff}}(T) - T$, where $T^*_{\mathrm{eff}}(T) = T^*(\rho^*_{\min}(T))$ is the breakdown threshold of the \emph{most complementary active sector}.  Then:
 \begin{equation}\label{eq:minsky}
 \frac{d\Delta}{dT} = \frac{dT^*_{\mathrm{eff}}}{dT} - 1 = \frac{dT^*}{d\rho}\bigg|_{\rho^*_{\min}} \cdot \frac{d\rho^*_{\min}}{dT} - 1.
 \end{equation}
@@ -454,10 +454,10 @@ By 2006, the stability margin $\Delta = T^* - T$ was minimal despite historicall
 
 \subsection{The moderation as a damping ratio shift}\label{sec:damping-shift}
 
-Between 1984 and 2007, the standard deviation of US quarterly GDP growth fell by approximately half---the ``Great Moderation'' \citep{stock2003}.  Three explanations have been proposed: better monetary policy, good luck (smaller shocks), and structural change.  The port-Hamiltonian framework offers a fourth: a \emph{damping ratio shift}.
+Between 1984 and 2007, the standard deviation of US quarterly GDP growth fell by approximately half---the ``Great Moderation'' \citep{stock2003}.  Three explanations have been proposed: better monetary policy, good luck (smaller shocks), and structural change.  The conservative-dissipative framework offers a fourth: a \emph{damping ratio shift}.
 
 \begin{proposition}[Great Moderation mechanism]\label{prop:great-mod}
-Financial deregulation (1980s--2000s) and globalization increased the effective dissipation rate $r$ through:
+Financial deregulation (1980s--2000s) and globalization increased the effective friction rate $r$ through:
 \begin{enumerate}[nosep]
 \item Deeper financial markets enabling faster price discovery;
 \item Financial innovation improving risk distribution;
@@ -498,7 +498,7 @@ The 2008 crisis combined both effects of \cref{thm:moderation-catastrophe}:
 \end{enumerate}
 
 \begin{remark}[Policy implication]
-The framework suggests that monitoring volatility is \emph{counter-productive} as a stability indicator.  Low volatility in a critically-damped system is not a sign of resilience but of approaching catastrophe.  The relevant indicator is the damping ratio $\zeta$ itself, which requires measuring both the dissipation rate $r$ (from the half-life of perturbation responses) and the coupling frequency $\omega$ (from the cross-spectral coherence of linked sectors).  When $\zeta$ is near 1, the system is maximally dangerous: stable-appearing but catastrophe-prone.
+The framework suggests that monitoring volatility is \emph{counter-productive} as a stability indicator.  Low volatility in a critically-damped system is not a sign of resilience but of approaching catastrophe.  The relevant indicator is the damping ratio $\zeta$ itself, which requires measuring both the friction rate $r$ (from the half-life of perturbation responses) and the coupling frequency $\omega$ (from the cross-spectral coherence of linked sectors).  When $\zeta$ is near 1, the system is maximally dangerous: stable-appearing but catastrophe-prone.
 \end{remark}
 
 %=============================================================================
@@ -510,7 +510,7 @@ The framework suggests that monitoring volatility is \emph{counter-productive} a
 The eigenspectrum of $\mathbf{J}\mathbf{H}$ contains $\lfloor N/2 \rfloor$ oscillatory modes, each corresponding to a pair of antisymmetrically coupled sectors.  With heterogeneous sectoral timescales, these modes have distinct frequencies.
 
 \begin{theorem}[Cycle hierarchy as eigenspectrum]\label{thm:hierarchy}
-In an economy with $N$ sectors spanning timescales from $\tau_{\min}$ to $\tau_{\max}$, the port-Hamiltonian system has oscillatory modes with periods:
+In an economy with $N$ sectors spanning timescales from $\tau_{\min}$ to $\tau_{\max}$, the conservative-dissipative system has oscillatory modes with periods:
 \begin{equation}\label{eq:hierarchy}
 T_k^{\mathrm{osc}} \sim 2\pi\sqrt{\tau_{n(k)} \cdot \tau_{m(k)}}, \qquad k = 1, \ldots, \lfloor N/2 \rfloor,
 \end{equation}
@@ -535,7 +535,7 @@ Kondratiev & 40--60 yr & 10 yr & 50 yr & Technology (R\&D, innovation) $\leftrig
 \end{center}
 
 \begin{corollary}[Unified cycle theory]\label{cor:unified}
-The four classical cycle types are not separate phenomena requiring separate models.  They are the four leading eigenfrequencies of the same port-Hamiltonian operator $(\mathbf{J} - \mathbf{R})\mathbf{H}$, distinguished by which pairs of sectors are most strongly coupled antisymmetrically.  The cycle hierarchy is to the economic eigenspectrum what the harmonic series is to a vibrating string.
+The four classical cycle types are not separate phenomena requiring separate models.  They are the four leading eigenfrequencies of the same conservative-dissipative operator $(\mathbf{J} - \mathbf{R})\mathbf{H}$, distinguished by which pairs of sectors are most strongly coupled antisymmetrically.  The cycle hierarchy is to the economic eigenspectrum what the harmonic series is to a vibrating string.
 \end{corollary}
 
 \subsection{Mode interactions and frequency locking}\label{sec:mode-interaction}
@@ -565,7 +565,7 @@ The deepest recessions in historical data tend to occur when multiple cycle mode
 At $T = 0$ (perfect information), the economy operates on the CES production frontier.  Output is maximized, and resources are allocated efficiently.  At $T > 0$, the economy operates \emph{inside} the frontier: misallocation reduces effective output.
 
 \begin{definition}[Efficiency gap]\label{def:efficiency-gap}
-The efficiency gap at temperature $T$ and complementarity $\rho$ is:
+The efficiency gap at friction level $T$ and complementarity $\rho$ is:
 \begin{equation}\label{eq:efficiency-gap}
 G(\rho, T) = \frac{F(\mathbf{x}^*(\rho, 0)) - F(\mathbf{x}^*(\rho, T))}{F(\mathbf{x}^*(\rho, 0))} \approx \frac{K T}{2T^*} \quad \text{for } T \ll T^*.
 \end{equation}
@@ -586,7 +586,7 @@ In the $(\rho, T)$ framework, the Phillips curve relationship emerges from the j
 y - y^* &= -\alpha_y \cdot (T - T_0), \label{eq:output-gap} \\
 \pi - \pi_0 &= +\alpha_\pi \cdot (T - T_0), \label{eq:inflation}
 \end{align}
-where $\alpha_y > 0$ (higher $T$ reduces output) and $\alpha_\pi > 0$ (higher $T$ increases inflation), and $T_0$ is the steady-state information temperature.
+where $\alpha_y > 0$ (higher $T$ reduces output) and $\alpha_\pi > 0$ (higher $T$ increases inflation), and $T_0$ is the steady-state information friction.
 
 Eliminating $T$:
 \begin{equation}\label{eq:phillips}
@@ -668,7 +668,7 @@ Using 12 post-war NBER recession dates, we compute expansion durations (previous
 \subsection{Prediction 3: Pre-crisis $T$ measurement}\label{sec:pred-T}
 
 \begin{quote}
-\emph{The information temperature $T = \sigma^2/\chi$ (from the fluctuation-dissipation theorem) rises systematically during expansions and can serve as a leading indicator.}
+\emph{The information friction $T = \sigma^2/\chi$ (from the Variance-Response Identity) rises systematically during expansions and can serve as a leading indicator.}
 \end{quote}
 
 \textbf{Data:} Firm-level productivity from the Census of Manufactures or Compustat, following \citet{syverson2004}, plus aggregate productivity responses to identified shocks (for $\chi$).
@@ -712,17 +712,17 @@ measuring the composition-weighted shift in average $\rho$ during the expansion.
 A negative $\Delta\rho_{\mathrm{shift}}$ (shift toward lower $\rho$) should predict deeper recessions ($\beta > 0$ when depth is measured as GDP decline).
 
 %=============================================================================
-\section{Limit Cycles and Self-Sustaining Oscillations}\label{sec:limit-cycles}
+\section{Endogenous Cycles and Self-Sustaining Oscillations}\label{sec:limit-cycles}
 %=============================================================================
 
 \subsection{Conditions for endogenous cycles}\label{sec:endogenous-cycles}
 
-The linear analysis of \cref{sec:eigenstructure} characterizes oscillation frequencies and damping near equilibrium.  But the nonlinear structure of the CES free energy---specifically the concavity of Wright's Law gain functions and the fold structure of the slow manifold---can generate \emph{limit cycles}: self-sustaining oscillations that persist without external shocks.
+The linear analysis of \cref{sec:eigenstructure} characterizes oscillation frequencies and damping near equilibrium.  But the nonlinear structure of the CES potential---specifically the concavity of Wright's Law gain functions and the fold structure of the quasi-equilibrium surface---can generate \emph{endogenous cycles}: self-sustaining oscillations that persist without external shocks.
 
 \begin{theorem}[Limit cycle existence]\label{thm:limit-cycle}
-Consider the port-Hamiltonian system \eqref{eq:full-dynamics} with nonlinear CES free energy and Wright's Law gain functions $\phi_n(x_n) = \alpha_n \log x_n$.  A stable limit cycle exists if:
+Consider the conservative-dissipative system \eqref{eq:full-dynamics} with nonlinear CES potential and Wright's Law gain functions $\phi_n(x_n) = \alpha_n \log x_n$.  A stable endogenous cycle exists if:
 \begin{enumerate}[nosep]
-\item \textbf{Loop gain condition:} The product of antisymmetric coupling strengths around any cycle in the $\mathbf{J}$ graph exceeds the product of dissipation rates:
+\item \textbf{Loop gain condition:} The product of antisymmetric coupling strengths around any cycle in the $\mathbf{J}$ graph exceeds the product of friction rates:
 \begin{equation}\label{eq:loop-gain}
 \prod_{(n,m) \in \text{cycle}} |j_{nm}| > \prod_{n \in \text{cycle}} r_n;
 \end{equation}
@@ -734,39 +734,39 @@ Consider the port-Hamiltonian system \eqref{eq:full-dynamics} with nonlinear CES
 \begin{proof}[Proof sketch]
 The proof proceeds in three steps.
 
-\emph{Step 1: Hopf bifurcation.}  At the equilibrium, the eigenvalues of $(\mathbf{J} - \mathbf{R})\mathbf{H}$ have negative real parts (stability) and nonzero imaginary parts (oscillation).  As the loop gain increases (or dissipation decreases), a pair of complex eigenvalues crosses the imaginary axis, producing a Hopf bifurcation and a small-amplitude limit cycle.
+\emph{Step 1: Hopf bifurcation.}  At the equilibrium, the eigenvalues of $(\mathbf{J} - \mathbf{R})\mathbf{H}$ have negative real parts (stability) and nonzero imaginary parts (oscillation).  As the loop gain increases (or friction decreases), a pair of complex eigenvalues crosses the imaginary axis, producing a Hopf bifurcation and a small-amplitude endogenous cycle.
 
-\emph{Step 2: Amplitude stabilization.}  The concavity of the gain functions ensures that the amplitude saturates: at large displacement, the effective gain decreases below the dissipation rate, preventing unbounded growth.  This is the economic analogue of the van der Pol mechanism---Wright's Law learning curves provide decreasing marginal returns at large cumulative output.
+\emph{Step 2: Amplitude stabilization.}  The concavity of the gain functions ensures that the amplitude saturates: at large displacement, the effective gain decreases below the friction rate, preventing unbounded growth.  This is the economic analogue of the van der Pol mechanism---Wright's Law learning curves provide decreasing marginal returns at large cumulative output.
 
-\emph{Step 3: Global existence.}  The slow manifold fold (\cref{sec:fold}) provides a global return mechanism: trajectories that leave the neighborhood of the equilibrium are captured by the slow manifold and returned.  By the Poincar\'{e}--Bendixson theorem applied to the reduced two-dimensional slow-manifold dynamics, a limit cycle exists if no equilibria are present in the annular trapping region.
+\emph{Step 3: Global existence.}  The quasi-equilibrium surface fold (\cref{sec:fold}) provides a global return mechanism: trajectories that leave the neighborhood of the equilibrium are captured by the quasi-equilibrium surface and returned.  By the Poincar\'{e}--Bendixson theorem applied to the reduced two-dimensional quasi-equilibrium-surface dynamics, an endogenous cycle exists if no equilibria are present in the annular trapping region.
 \end{proof}
 
 \begin{remark}[Endogenous vs.\ exogenous cycles]
-The existence of limit cycles means that business cycles can be \emph{endogenous}---the economy generates its own fluctuations without requiring exogenous shock processes.  This does not mean exogenous shocks are irrelevant; they perturb the limit cycle, modulating amplitude and timing.  But the basic oscillation arises from the internal structure of the economy: directed input-output linkages (antisymmetric coupling) combined with nonlinear production (amplitude saturation) and heterogeneous timescales (slow-fast structure).
+The existence of endogenous cycles means that business cycles can be \emph{endogenous}---the economy generates its own fluctuations without requiring exogenous shock processes.  This does not mean exogenous shocks are irrelevant; they perturb the endogenous cycle, modulating amplitude and timing.  But the basic oscillation arises from the internal structure of the economy: directed input-output linkages (antisymmetric coupling) combined with nonlinear production (amplitude saturation) and heterogeneous timescales (slow-fast structure).
 
-This resolves the long-standing debate between exogenous and endogenous cycle theories: both are partly right.  The limit cycle provides the carrier wave; exogenous shocks modulate the signal.
+This resolves the long-standing debate between exogenous and endogenous cycle theories: both are partly right.  The endogenous cycle provides the carrier wave; exogenous shocks modulate the signal.
 \end{remark}
 
 %=============================================================================
 \section{Conservation of Circulation}\label{sec:circulation}
 %=============================================================================
 
-The antisymmetric matrix $\mathbf{J}$ generates a conserved quantity via the Hamiltonian structure \citep{smirl2026conservation}.
+The antisymmetric matrix $\mathbf{J}$ generates a conserved quantity via the conservative-dissipative structure \citep{smirl2026conservation}.
 
 \begin{theorem}[Conservation of economic circulation]\label{thm:circulation}
 Define the \emph{circulation} as:
 \begin{equation}\label{eq:circulation}
 \calL = \sum_{(n,m): j_{nm} > 0} j_{nm} \cdot x_n \cdot x_m.
 \end{equation}
-Under the port-Hamiltonian dynamics \eqref{eq:full-dynamics}:
+Under the conservative-dissipative dynamics \eqref{eq:full-dynamics}:
 \begin{equation}\label{eq:dL-dt}
 \frac{d\calL}{dt} = -2\sum_{(n,m)} j_{nm} x_m \cdot r_n \frac{\partial \calF}{\partial x_n} + O(\mathbf{J}^2).
 \end{equation}
-In the conservative limit ($\mathbf{R} \to 0$), circulation is exactly conserved: $d\calL/dt = 0$.  With dissipation, circulation decays at rate $O(r/\omega)$, and in the underdamped regime ($\zeta < 1$), circulation is an approximate adiabatic invariant.
+In the conservative limit ($\mathbf{R} \to 0$), circulation is exactly conserved: $d\calL/dt = 0$.  With friction, circulation decays at rate $O(r/\omega)$, and in the underdamped regime ($\zeta < 1$), circulation is an approximate adiabatic invariant.
 \end{theorem}
 
 \begin{remark}[Economic interpretation]
-Circulation conservation means that when one sector is growing (absorbing resources), another must be declining (releasing resources).  The total throughput of the economic loop is approximately conserved on timescales short relative to the dissipation time $1/r$.  This explains the empirical observation that total economic ``energy'' remains roughly constant across technology cycles even as the specific technologies change.
+Circulation conservation means that when one sector is growing (absorbing resources), another must be declining (releasing resources).  The total throughput of the economic loop is approximately conserved on timescales short relative to the friction time $1/r$.  This explains the empirical observation that total economic ``energy'' remains roughly constant across technology cycles even as the specific technologies change.
 
 The conservation breaks when new trade linkages are created (changing $\mathbf{J}$) or when large exogenous resource injections occur (fiscal stimulus, QE).  Both of these \emph{change the conserved quantity}, creating or destroying oscillatory modes.  The fiscal multiplier debate acquires a structural interpretation: stimulus that merely shifts resources along existing $\mathbf{J}$ linkages preserves the oscillatory mode and is temporary; stimulus that creates \emph{new} linkages (infrastructure investment that changes the input-output topology) permanently alters the eigenspectrum.
 \end{remark}
@@ -775,27 +775,27 @@ The conservation breaks when new trade linkages are created (changing $\mathbf{J
 \section{Conclusion}\label{sec:conclusion}
 %=============================================================================
 
-This paper has shown that business cycles emerge naturally from the port-Hamiltonian structure of an economy with heterogeneous sectoral complementarities.  The key insight is that the directed input-output structure of the economy generates antisymmetric coupling between sectors, and this coupling produces oscillatory modes---business cycles---whose frequencies are determined by the geometric means of adjacent sectoral timescales.
+This paper has shown that business cycles emerge naturally from the conservative-dissipative structure of an economy with heterogeneous sectoral complementarities.  The key insight is that the directed input-output structure of the economy generates antisymmetric coupling between sectors, and this coupling produces oscillatory modes---business cycles---whose frequencies are determined by the geometric means of adjacent sectoral timescales.
 
 Five main results follow from this structure:
 
 \begin{enumerate}
 \item \textbf{$\rho$-ordering} (\cref{thm:rho-ordering}): Sectors enter recession in order of their complementarity parameters, with the most complementary sectors (housing, finance) leading and the most substitutable sectors (software, services) lagging.  This is the universal empirical pattern of post-war recessions, now derived from production technology.
 
-\item \textbf{Relaxation oscillation asymmetry} (\cref{thm:asymmetry}): The slow-fast structure of financial and real adjustment produces the characteristic 5:1 ratio of expansion to contraction duration, arising from the timescale separation parameter $\varepsilon$.
+\item \textbf{Slow-fast oscillation asymmetry} (\cref{thm:asymmetry}): The slow-fast structure of financial and real adjustment produces the characteristic 5:1 ratio of expansion to contraction duration, arising from the timescale separation parameter $\varepsilon$.
 
-\item \textbf{The Minsky trap} (\cref{thm:minsky}): Monetary policy operates on $T$ but endogenously shifts the production structure toward lower $\rho$, reducing $T^*$.  The stability margin $T^* - T$ is less responsive to policy than the temperature $T$ itself.
+\item \textbf{The Minsky trap} (\cref{thm:minsky}): Monetary policy operates on $T$ but endogenously shifts the production structure toward lower $\rho$, reducing $T^*$.  The stability margin $T^* - T$ is less responsive to policy than the friction level $T$ itself.
 
 \item \textbf{The Great Moderation and its end} (\cref{thm:moderation-catastrophe}): Financial deregulation increased the damping ratio $\zeta$, suppressing oscillations but eliminating the oscillatory precursors that warn of approaching instability.
 
-\item \textbf{The cycle hierarchy} (\cref{thm:hierarchy}): Kitchin, Juglar, Kuznets, and Kondratiev cycles are eigenfrequencies of the same Hamiltonian operator, distinguished by which sectoral timescale pairs are most strongly coupled.
+\item \textbf{The cycle hierarchy} (\cref{thm:hierarchy}): Kitchin, Juglar, Kuznets, and Kondratiev cycles are eigenfrequencies of the same conservative-dissipative operator, distinguished by which sectoral timescale pairs are most strongly coupled.
 \end{enumerate}
 
-The framework also generates a structural Phillips curve (\cref{prop:phillips}), explains its recent flattening as a composition effect (\cref{cor:flat-phillips}), derives conditions for self-sustaining limit cycles (\cref{thm:limit-cycle}), and identifies an approximate conservation law (economic circulation, \cref{thm:circulation}) that constrains the dynamics.
+The framework also generates a structural Phillips curve (\cref{prop:phillips}), explains its recent flattening as a composition effect (\cref{cor:flat-phillips}), derives conditions for self-sustaining endogenous cycles (\cref{thm:limit-cycle}), and identifies an approximate conservation law (economic circulation, \cref{thm:circulation}) that constrains the dynamics.
 
-Perhaps the deepest implication is for economic methodology.  The standard approach models business cycles either as efficient responses to exogenous shocks (RBC) or as inefficient deviations due to nominal rigidities (New Keynesian), using representative-agent frameworks that suppress sectoral heterogeneity.  The port-Hamiltonian framework suggests that both the oscillations and their sectoral propagation patterns are intrinsic to the production structure---arising from the interaction of heterogeneous complementarities with directed input-output linkages.  The economy is not a particle buffeted by shocks; it is a coupled oscillator whose normal modes are the business cycles we observe.
+Perhaps the deepest implication is for economic methodology.  The standard approach models business cycles either as efficient responses to exogenous shocks (RBC) or as inefficient deviations due to nominal rigidities (New Keynesian), using representative-agent frameworks that suppress sectoral heterogeneity.  The conservative-dissipative framework suggests that both the oscillations and their sectoral propagation patterns are intrinsic to the production structure---arising from the interaction of heterogeneous complementarities with directed input-output linkages.  The economy is not a particle buffeted by shocks; it is a coupled oscillator whose normal modes are the business cycles we observe.
 
-\paragraph{Limitations and extensions.}  The present framework takes $\rho_n$ as fixed within each cycle.  \cref{thm:minsky} allows the \emph{mix} of active sectors to shift endogenously, but the parameters themselves are static.  A fuller treatment would endogenize $\rho_n$ through technological change and institutional evolution, connecting to the companion paper on technology cycles \citep{smirl2026technology}.  The empirical predictions in \cref{sec:predictions} require sectoral $\rho_n$ estimates, which are obtainable from production function estimation \citep{oberfield2014} but have not yet been assembled into the panel needed for the cross-recession tests.  Finally, the welfare analysis---whether oscillations are efficient or whether policy should attempt to suppress them---requires extending the Hamiltonian framework to include welfare functions, following the eigenstructure bridge of \citet{smirl2026complementary}.
+\paragraph{Limitations and extensions.}  The present framework takes $\rho_n$ as fixed within each cycle.  \cref{thm:minsky} allows the \emph{mix} of active sectors to shift endogenously, but the parameters themselves are static.  A fuller treatment would endogenize $\rho_n$ through technological change and institutional evolution, connecting to the companion paper on technology cycles \citep{smirl2026technology}.  The empirical predictions in \cref{sec:predictions} require sectoral $\rho_n$ estimates, which are obtainable from production function estimation \citep{oberfield2014} but have not yet been assembled into the panel needed for the cross-recession tests.  Finally, the welfare analysis---whether oscillations are efficient or whether policy should attempt to suppress them---requires extending the conservative-dissipative framework to include welfare functions, following the eigenstructure bridge of \citet{smirl2026complementary}.
 
 %=============================================================================
 % Bibliography

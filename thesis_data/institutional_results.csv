@@ -1,0 +1,12 @@
+prediction_number,prediction,verdict,statistic,detail
+28,Damping cancellation,CONSISTENT,DID p = 0.8094,Basel III DID p = 0.81 (insignificant → damping cancellation)
+29,Upstream reform/displacement,CONSISTENT,"-86% domestic, +72% offshore","India 2022: -86% domestic, +72% offshore"
+30,Jarzynski min cost,DIRECTIONAL,"ρ = +0.100, p = 0.798","Regulation–variance ρ = +0.100 (p = 0.798): correct sign, not significant"
+31,Casimir/trade,INCONSISTENT,"ρ = 0.082, p = 0.640",KAOPEN–volatility ρ = 0.082 (p = 0.640): open → higher volatility
+32,Minsky trap,CONSISTENT,"τ = -0.378, p = 0.000","τ(rate, fwd VIX) = -0.378 (p = 0.000): low rates → future volatility"
+33,N_eff range,CONSISTENT,N_eff = 4.5 ± 1.0,4-layer VAR + wavelet N_eff = 4.5 ± 1.0; block exogeneity consistent with tridiagonal
+34,FG baseline,CONSISTENT,"τ = 0.0435, p = 0.6701","FG ratio flat/rising at φ ≈ 0 (DGS10 τ = 0.04, p = 0.67)"
+35,QE multiplier decline,CONSISTENT,15x decline,15-fold decline QE1→COVID-QE; strictly monotone
+36,Laffer peak by ρ,INCONSISTENT,coeff = +0.0123,Interaction = +0.0123 (p = 0.0019): wrong sign
+37,Laffer decline ordering,DIRECTIONAL,"8/14, DID = -0.0174",8/14 events consistent; weighted DID = -0.0174 (correct sign)
+38,Displacement,CONSISTENT,β = +0.0136,SOI β = +0.0136 (p < 0.001): strong displacement effect

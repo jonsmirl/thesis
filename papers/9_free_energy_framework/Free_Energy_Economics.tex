@@ -35,7 +35,7 @@
 \DeclareMathOperator{\argmax}{arg\,max}
 \DeclareMathOperator{\argmin}{arg\,min}
 
-\title{\textbf{The Free Energy Principle in Economics:\\CES Aggregation and Tsallis Entropy\\as Generating Functions of Economic Theory}}
+\title{\textbf{The CES Potential Principle in Economics:\\CES Aggregation and Tsallis Entropy\\as Generating Functions of Economic Theory}}
 
 \author{Jon Smirl\thanks{Email: \texttt{jonsmirl@gmail.com}.}}
 
@@ -46,12 +46,12 @@
 \maketitle
 
 \begin{abstract}
-This paper proposes a structural framework connecting two canonical functions through a free energy principle. The CES (Constant Elasticity of Substitution) aggregate $\Phi = -\sum \log F_n$ with curvature parameter $\rho$ governs aggregation and allocation: production, trade, growth, network formation, and market structure. The Tsallis entropy $S_q = (1 - \sum p_i^q)/(q-1)$ with $q = \rho$ and temperature parameter $T$ governs information and incentives: adverse selection, search frictions, mechanism design, contractual incompleteness, social choice, and bounded rationality. The identification $q = \rho$ follows from the companion emergence theorem: CES production with parameter $\rho$ is the sufficient statistic for R\'enyi/Tsallis entropy of the same order, so the entropy is locked to the production technology with no free parameter. The Tsallis free energy $\mathcal{F}_q = \Phi - T \cdot S_q$ connects them; Shannon entropy ($q \to 1$) is recovered as the special case of perfect substitutes. Standard economics is the $T = 0$ (perfect information) limit, and six major areas of economic theory emerge as specific manifestations of information friction degrading a CES aggregate, with severity controlled by $\rho$. Each derivation yields new $\rho$-dependent predictions that the original theories cannot generate. The framework suggests that several apparently independent bodies of economic theory share a common two-parameter structure governing how information friction degrades aggregation.
+This paper proposes a structural framework connecting two canonical functions through a CES potential principle. The CES (Constant Elasticity of Substitution) aggregate $\Phi = -\sum \log F_n$ with curvature parameter $\rho$ governs aggregation and allocation: production, trade, growth, network formation, and market structure. The Tsallis entropy $S_q = (1 - \sum p_i^q)/(q-1)$ with $q = \rho$ and temperature parameter $T$ governs information and incentives: adverse selection, search frictions, mechanism design, contractual incompleteness, social choice, and bounded rationality. The identification $q = \rho$ follows from the companion emergence theorem: CES production with parameter $\rho$ is the sufficient statistic for R\'enyi/Tsallis entropy of the same order, so the entropy is locked to the production technology with no free parameter. The Tsallis CES potential $\mathcal{F}_q = \Phi - T \cdot S_q$ connects them; Shannon entropy ($q \to 1$) is recovered as the special case of perfect substitutes. Standard economics is the $T = 0$ (perfect information) limit, and six major areas of economic theory emerge as specific manifestations of information friction degrading a CES aggregate, with severity controlled by $\rho$. Each derivation yields new $\rho$-dependent predictions that the original theories cannot generate. The framework suggests that several apparently independent bodies of economic theory share a common two-parameter structure governing how information friction degrades aggregation.
 \end{abstract}
 
 \medskip
 \noindent\textbf{JEL Classification:} B41, C60, D80, D82, D83, D90\\
-\textbf{Keywords:} CES aggregation, Tsallis entropy, free energy, information economics, mechanism design, behavioral economics, unified economic theory
+\textbf{Keywords:} CES aggregation, Tsallis entropy, CES potential, information economics, mechanism design, behavioral economics, unified economic theory
 
 \newpage
 \tableofcontents
@@ -70,15 +70,15 @@ This paper proposes a unification. The argument is that economic theory is gener
     \item The \textbf{CES generating function} $\Phi(\rho)$, governing aggregation, allocation, and market structure;
     \item The \textbf{Tsallis entropy} $S_q$ with $q = \rho$, governing information, incentives, and bounded rationality;
 \end{enumerate}
-connected through the \textbf{free energy principle}:
+connected through the \textbf{CES potential principle}:
 \begin{equation}\label{eq:free_energy}
     \boxed{\mathcal{F}_q = \Phi_{\text{CES}}(\rho) - T \cdot S_q, \qquad q = \rho}
 \end{equation}
-where $\rho \in (-\infty, 1]$ is the CES curvature parameter (equivalently, $\sigma = 1/(1-\rho)$ is the elasticity of substitution), $T \geq 0$ is the information temperature, and $S_q = (1 - \sum p_j^q)/(q-1)$ is the Tsallis entropy with $q = \rho$ locked by the emergence theorem.  Shannon entropy is the $q \to 1$ limit, applicable to perfect substitutes.
+where $\rho \in (-\infty, 1]$ is the CES curvature parameter (equivalently, $\sigma = 1/(1-\rho)$ is the elasticity of substitution), $T \geq 0$ is the information friction, and $S_q = (1 - \sum p_j^q)/(q-1)$ is the Tsallis entropy with $q = \rho$ locked by the emergence theorem.  Shannon entropy is the $q \to 1$ limit, applicable to perfect substitutes.
 
 Standard economics is the $T = 0$ limit of this framework---perfect information, deterministic optimization, no search frictions, no behavioral anomalies. The rich structure of information economics, mechanism design, contract theory, social choice, and behavioral economics emerges at $T > 0$.
 
-The CES aggregate is not an arbitrary functional form. It is the \emph{unique} constant-elasticity aggregator, and its curvature parameter $\rho$ simultaneously controls at least four distinct economic properties (\Cref{sec:quadruple}). The Tsallis entropy $S_q$ with $q = \rho$ is not an arbitrary information measure---it is the \emph{unique} entropy satisfying continuity, maximality, and pseudo-additivity \citep{tsallis1988,santos1997}, where pseudo-additivity replaces the Shannon chain rule to capture the non-additive information costs inherent in complementary production ($\rho < 1$). The identification $q = \rho$ is forced by the emergence theorem \citep{smirl2026emergent}, not fitted as a free parameter. Free energy is the canonical connector between energy and entropy in statistical mechanics, the most empirically validated framework in all of physics. The framework is not a modeling choice---it is the only framework consistent with constant elasticity, axiomatic information measurement matched to production complementarity, and thermodynamic consistency simultaneously.
+The CES aggregate is not an arbitrary functional form. It is the \emph{unique} constant-elasticity aggregator, and its curvature parameter $\rho$ simultaneously controls at least four distinct economic properties (\Cref{sec:quadruple}). The Tsallis entropy $S_q$ with $q = \rho$ is not an arbitrary information measure---it is the \emph{unique} entropy satisfying continuity, maximality, and pseudo-additivity \citep{tsallis1988,santos1997}, where pseudo-additivity replaces the Shannon chain rule to capture the non-additive information costs inherent in complementary production ($\rho < 1$). The identification $q = \rho$ is forced by the emergence theorem \citep{smirl2026emergent}, not fitted as a free parameter. The CES potential is the economic analogue of the free energy connector between energy and entropy in statistical mechanics, the most empirically validated framework in all of physics. The framework is not a modeling choice---it is the only framework consistent with constant elasticity, axiomatic information measurement matched to production complementarity, and variational consistency simultaneously.
 
 \subsection{Summary of Results}
 
@@ -87,10 +87,10 @@ The framework is demonstrated by deriving key results from three areas of econom
 \begin{enumerate}
     \item \textbf{Information Economics} (\Cref{sec:akerlof}): Akerlof's market-for-lemons result \citep{akerlof1970} emerges as a CES aggregate degrading under positive temperature. The market unraveling is the progressive loss of high-quality participants from the CES aggregate as information friction increases. \emph{New prediction:} the critical information cost above which the market collapses is increasing in both $v$ and $K = (1-\rho)(J-1)/J$ (CES curvature), with the exact form derived in \Cref{sec:akerlof}. Markets for complements ($\rho$ low) resist adverse selection; markets for substitutes ($\rho$ high) succumb.
 
-    \item \textbf{Mechanism Design} (\Cref{sec:mechanism}): Myerson's virtual valuation \citep{myerson1981} is identified as the free energy gradient---the CES marginal value minus the Tsallis entropy gradient. The revelation principle is a thermodynamic equilibrium statement: truth-telling minimizes free energy. \emph{New prediction:} the price of incentive compatibility $\text{PoIC}(\rho)$ increases as $\rho$ decreases; optimal mechanism format (auction vs.\ scored evaluation) is determined by $\rho$.
+    \item \textbf{Mechanism Design} (\Cref{sec:mechanism}): Myerson's virtual valuation \citep{myerson1981} is identified as the CES potential gradient---the CES marginal value minus the Tsallis entropy gradient. The revelation principle is a variational equilibrium statement: truth-telling minimizes the CES potential. \emph{New prediction:} the price of incentive compatibility $\text{PoIC}(\rho)$ increases as $\rho$ decreases; optimal mechanism format (auction vs.\ scored evaluation) is determined by $\rho$.
 
-    \item \textbf{Social Choice} (\Cref{sec:arrow}): Arrow's impossibility theorem \citep{arrow1951} applies to ordinal aggregation and stands unchanged. The free energy framework characterizes what becomes possible when cardinal information is available: at $T > 0$ (probabilistic preferences, bounded rationality), non-dictatorial CES aggregation can approximate ordinal IIA with controlled error. \emph{New prediction:} democratic robustness to noise depends on $\rho$ in the social welfare function---majoritarian systems (high $\rho$) tolerate high noise, consensus systems (low $\rho$) are fragile. This correctly predicts which political institutions are currently gridlocked.
-    \item \textbf{Search and Matching} (\Cref{sec:search}): The Diamond-Mortensen-Pissarides framework \citep{diamond1982,mortensen1982,pissarides1985} emerges from the free energy principle: search is entropy reduction over the match-quality distribution, and acceptance is a free energy threshold. \emph{New prediction:} search duration $n^* = (K/T) \cdot Q(\rho)$---occupations with more complementary skill requirements (low $\rho$) have longer search durations and steeper Beveridge curves.
+    \item \textbf{Social Choice} (\Cref{sec:arrow}): Arrow's impossibility theorem \citep{arrow1951} applies to ordinal aggregation and stands unchanged. The CES potential framework characterizes what becomes possible when cardinal information is available: at $T > 0$ (probabilistic preferences, bounded rationality), non-dictatorial CES aggregation can approximate ordinal IIA with controlled error. \emph{New prediction:} democratic robustness to noise depends on $\rho$ in the social welfare function---majoritarian systems (high $\rho$) tolerate high noise, consensus systems (low $\rho$) are fragile. This correctly predicts which political institutions are currently gridlocked.
+    \item \textbf{Search and Matching} (\Cref{sec:search}): The Diamond-Mortensen-Pissarides framework \citep{diamond1982,mortensen1982,pissarides1985} emerges from the CES potential principle: search is entropy reduction over the match-quality distribution, and acceptance is a CES potential threshold. \emph{New prediction:} search duration $n^* = (K/T) \cdot Q(\rho)$---occupations with more complementary skill requirements (low $\rho$) have longer search durations and steeper Beveridge curves.
 
     \item \textbf{Contract Theory} (\Cref{sec:contracts}): The hold-up problem \citep{grossman1986,hart1990} and the vertical integration boundary \citep{williamson1979} are unified through $\rho$. Asset specificity IS low $\rho$: complementary inputs cannot be redeployed, creating the non-contractible surplus that drives underinvestment. \emph{New prediction:} the hold-up distortion $D(\rho, \tau) = \tau(1-R(\rho))/2$, where $R(\rho)$ is the marginal redeployability ratio, is jointly monotone in complementarity and contractual incompleteness, yielding a sharp integration boundary in $(\rho, \tau)$ space.
 
@@ -101,7 +101,7 @@ Two empirical tests confirm the framework's predictions in different domains: a 
 
 \subsection{Related Literature}
 
-The components of this framework---CES aggregation, Tsallis entropy, and the free energy connection---exist independently across disparate literatures. The contribution is recognizing their unity: that CES and Tsallis entropy are the two generating functions of economics, connected through free energy $F = \Phi_{\text{CES}}(\rho) - T \cdot S_q$, with the entire edifice parameterized by $(\rho, T)$. This subsection maps each body of existing work into the $(\rho, T)$ parameter space to show that canonical results in each field are special cases of the framework.
+The components of this framework---CES aggregation, Tsallis entropy, and the CES potential connection---exist independently across disparate literatures. The contribution is recognizing their unity: that CES and Tsallis entropy are the two generating functions of economics, connected through CES potential $F = \Phi_{\text{CES}}(\rho) - T \cdot S_q$, with the entire edifice parameterized by $(\rho, T)$. This subsection maps each body of existing work into the $(\rho, T)$ parameter space to show that canonical results in each field are special cases of the framework.
 
 \paragraph{CES as a generating function across fields.}
 The CES aggregate has appeared independently in production theory \citep{arrow1961}, trade \citep{armington1969,ethier1982}, industrial organization \citep{dixit1977}, and economic geography \citep{krugman1991}. \citet{sato1967} showed that nested CES enables multi-level aggregation with different $\rho$ at each tier---anticipating the hierarchical structure exploited here. \citet{anderson1992} established the formal duality between the CES demand system and the logit choice model, providing the micro-foundation connecting the two generating functions of this paper.
@@ -110,38 +110,38 @@ The CES aggregate has appeared independently in production theory \citep{arrow19
 \citet{theil1967} first imported Shannon entropy into economics for inequality and demand analysis. \citet{cover2006} formalized rate-distortion theory, providing the mathematical basis for entropy-constrained optimization. The rational inattention program initiated by \citet{sims2003} derives logit choice from Shannon capacity constraints, interpreting $T$ as the shadow price of attention. \citet{matejka2015} proved that the logit form is the unique solution to rational inattention problems with unrestricted prior, making $T > 0$ the canonical model of bounded rationality. \citet{woodford2009} embedded rational inattention in New Keynesian models with CES product aggregation, working implicitly in the $(\rho, T)$ space that this paper makes explicit.
 
 \paragraph{Statistical mechanics and economic equilibrium.}
-\citet{jaynes1957} showed that the Boltzmann distribution maximizes entropy subject to an energy constraint---the direct physical analogue of the economic free energy minimization derived in \Cref{sec:free_energy}. \citet{foley1994} introduced statistical equilibrium into general equilibrium theory, interpreting prices as free energy gradients. \citet{smith2008} established the formal correspondence between the Helmholtz free energy in thermodynamics and economic general equilibrium, deriving welfare theorems from entropy maximization.
+\citet{jaynes1957} showed that the logit equilibrium distribution maximizes entropy subject to an energy constraint---the direct physical analogue of the economic CES potential minimization derived in \Cref{sec:free_energy}. \citet{foley1994} introduced statistical equilibrium into general equilibrium theory, interpreting prices as CES potential gradients. \citet{smith2008} established the formal correspondence between the Helmholtz free energy in thermodynamics and economic general equilibrium, deriving welfare theorems from entropy maximization.
 
-The econophysics program, surveyed by \citet{yakovenko2009}, applies statistical mechanics directly to economic exchange. The foundational result is \citet{dragulescu2000}: random pairwise money transfers with conservation of the total stock yield a Boltzmann-Gibbs exponential distribution for money holdings, while multiplicative dynamics generate Pareto tails for wealth. This is a powerful demonstration that equilibrium statistical mechanics governs economic exchange, but it operates entirely on what the present framework identifies as the $T$-axis: entropy and randomness determine the distribution of a conserved quantity among agents treated as identical particles. There is no production structure, no heterogeneity parameter, and no aggregation function---the ``energy'' being conserved is money itself, not output from combining differentiated inputs. The present paper adds the $\rho$-axis: CES complementarity makes agent heterogeneity structural rather than statistical noise, so that the equilibrium distribution depends not only on temperature but on the curvature of the aggregation technology. \citet{bouchaud2000} showed that wealth condensation occurs as a phase transition when multiplicative returns exceed a critical threshold---a result that parallels the bistability in \Cref{prop:bistability}. In the $(\rho, T)$ framework, the condensation threshold depends on complementarity: high-$\rho$ economies (substitutable agents) condense more easily because no structural diversity premium resists concentration, while low-$\rho$ economies sustain distributed equilibria at higher temperatures. \citet{gabaix2009} documented power-law regularities in firm sizes, stock returns, and city sizes; these emerge naturally when the CES aggregate operates near $\rho \to 0$ (Cobb-Douglas), where multiplicative shocks to individual components produce log-normal and Pareto distributions in the aggregate. In summary, econophysics demonstrates that statistical mechanics tools apply to economic systems; the present paper's contribution is identifying the CES aggregation structure that determines \emph{which} equilibrium the entropy dynamics select.
+The econophysics program, surveyed by \citet{yakovenko2009}, applies statistical mechanics directly to economic exchange. The foundational result is \citet{dragulescu2000}: random pairwise money transfers with conservation of the total stock yield a Boltzmann-Gibbs exponential distribution for money holdings, while multiplicative dynamics generate Pareto tails for wealth. This is a powerful demonstration that equilibrium statistical mechanics governs economic exchange, but it operates entirely on what the present framework identifies as the $T$-axis: entropy and randomness determine the distribution of a conserved quantity among agents treated as identical particles. There is no production structure, no heterogeneity parameter, and no aggregation function---the ``energy'' being conserved is money itself, not output from combining differentiated inputs. The present paper adds the $\rho$-axis: CES complementarity makes agent heterogeneity structural rather than statistical noise, so that the equilibrium distribution depends not only on temperature but on the curvature of the aggregation technology. \citet{bouchaud2000} showed that wealth condensation occurs as a regime shift when multiplicative returns exceed a critical threshold---a result that parallels the bistability in \Cref{prop:bistability}. In the $(\rho, T)$ framework, the condensation threshold depends on complementarity: high-$\rho$ economies (substitutable agents) condense more easily because no structural diversity premium resists concentration, while low-$\rho$ economies sustain distributed equilibria at higher temperatures. \citet{gabaix2009} documented power-law regularities in firm sizes, stock returns, and city sizes; these emerge naturally when the CES aggregate operates near $\rho \to 0$ (Cobb-Douglas), where multiplicative shocks to individual components produce log-normal and Pareto distributions in the aggregate. In summary, econophysics demonstrates that statistical mechanics tools apply to economic systems; the present paper's contribution is identifying the CES aggregation structure that determines \emph{which} equilibrium the entropy dynamics select.
 
-\paragraph{Active inference and the free energy principle.}
-\citet{friston2010} introduced the free energy principle (FEP) in neuroscience: biological agents minimize variational free energy $\mathcal{F} = \mathbb{E}_q[\log q(s) - \log p(o,s)]$, which bounds sensory surprise. Perception updates beliefs ($q \to p$); action changes observations ($o$). \citet{ramstead2018} extended the FEP to social and economic systems, modeling institutions as shared generative models that coordinate expectations across agents. The present paper shares the ``free energy'' label and the conviction that a single variational principle organizes complex adaptive behavior, but the two frameworks minimize free energy over different state spaces with different economic content. Friston's $\mathcal{F}$ governs \emph{inference}: given a generative model, what should the agent believe about hidden states? The economic free energy $F = \Phi_{\text{CES}}(\rho) - T \cdot H$ governs \emph{allocation}: how are heterogeneous inputs combined under information constraints? Friston's temperature is inverse sensory precision (noisier senses $\Rightarrow$ higher $T$); this paper's $T$ is the shadow price of Shannon capacity (scarcer attention $\Rightarrow$ higher $T$).
+\paragraph{Active inference and Friston's CES potential principle.}
+\citet{friston2010} introduced the free energy principle (FEP) in neuroscience: biological agents minimize variational free energy $\mathcal{F} = \mathbb{E}_q[\log q(s) - \log p(o,s)]$, which bounds sensory surprise. Perception updates beliefs ($q \to p$); action changes observations ($o$). \citet{ramstead2018} extended the FEP to social and economic systems, modeling institutions as shared generative models that coordinate expectations across agents. The present paper shares the ``free energy'' label and the conviction that a single variational principle organizes complex adaptive behavior, but the two frameworks minimize their respective potentials over different state spaces with different economic content. Friston's $\mathcal{F}$ governs \emph{inference}: given a generative model, what should the agent believe about hidden states? The economic CES potential $F = \Phi_{\text{CES}}(\rho) - T \cdot H$ governs \emph{allocation}: how are heterogeneous inputs combined under information constraints? Friston's temperature is inverse sensory precision (noisier senses $\Rightarrow$ higher $T$); this paper's $T$ is the shadow price of Shannon capacity (scarcer attention $\Rightarrow$ higher $T$).
 
-The bridge between the two is rational inattention. \citet{sims2003} showed that Shannon mutual information constraints yield logit choice---which is both the optimal response under capacity constraints \emph{and} consistent with free-energy-minimizing perception in Friston's sense, since the posterior over actions that minimizes $\mathcal{F}$ under a capacity constraint is precisely the Gibbs distribution at temperature $T = 1/\kappa$. The present paper extends this connection from individual choice to aggregation across heterogeneous agents, where the CES structure determines how individual free-energy-minimizing behavior compounds into market outcomes. The key object that active inference lacks is the $\rho$ parameter. Active inference treats the generative model as given; this paper shows that the \emph{aggregation structure}---complementarity versus substitutability among inputs---determines which information frictions matter and how severely they degrade welfare. Two economies with identical sensory precision (identical Fristonian $T$) but different $\rho$ will exhibit qualitatively different equilibria, phase transitions, and welfare losses. The $(\rho, T)$ parameterization thus absorbs active inference as the $\rho$-independent special case while adding the production-theoretic content that economic applications require.
+The bridge between the two is rational inattention. \citet{sims2003} showed that Shannon mutual information constraints yield logit choice---which is both the optimal response under capacity constraints \emph{and} consistent with potential-minimizing perception in Friston's sense, since the posterior over actions that minimizes $\mathcal{F}$ under a capacity constraint is precisely the Gibbs distribution at temperature $T = 1/\kappa$. The present paper extends this connection from individual choice to aggregation across heterogeneous agents, where the CES structure determines how individual potential-minimizing behavior compounds into market outcomes. The key object that active inference lacks is the $\rho$ parameter. Active inference treats the generative model as given; this paper shows that the \emph{aggregation structure}---complementarity versus substitutability among inputs---determines which information frictions matter and how severely they degrade welfare. Two economies with identical sensory precision (identical Fristonian $T$) but different $\rho$ will exhibit qualitatively different equilibria, regime shifts, and welfare losses. The $(\rho, T)$ parameterization thus absorbs active inference as the $\rho$-independent special case while adding the production-theoretic content that economic applications require.
 
 \paragraph{Information economics.}
-The information economics literature initiated by \citet{akerlof1970} studies markets where agents have private information. \citet{rothschild1976} showed that screening---inducing agents to self-sort through menu design---is profitable when types are sufficiently differentiated; in the present framework, screening reduces $T$ below the critical temperature $T^*(\rho)$. \citet{spence1973} showed that signaling is a costly entropy reduction: the informed party pays to lower $T$. \citet{milgrom1981} established the monotone likelihood ratio property as the condition under which signals preserve the quality ordering of the CES aggregate as $T$ rises. \citet{stiglitz2000} surveyed the field's applications, each of which occupies a specific region of $(\rho, T)$ space.
+The information economics literature initiated by \citet{akerlof1970} studies markets where agents have private information. \citet{rothschild1976} showed that screening---inducing agents to self-sort through menu design---is profitable when types are sufficiently differentiated; in the present framework, screening reduces $T$ below the breakdown threshold $T^*(\rho)$. \citet{spence1973} showed that signaling is a costly entropy reduction: the informed party pays to lower $T$. \citet{milgrom1981} established the monotone likelihood ratio property as the condition under which signals preserve the quality ordering of the CES aggregate as $T$ rises. \citet{stiglitz2000} surveyed the field's applications, each of which occupies a specific region of $(\rho, T)$ space.
 
 \paragraph{Mechanism design.}
-\citet{vickrey1961} showed that second-price auctions achieve efficient allocation for independent private values---the free-energy-minimizing mechanism at $\rho = 1$ (perfect substitutes). \citet{clarke1971} extended this to public goods via the VCG mechanism, where truth-telling minimizes free energy by aligning individual reports with the social planner's information. \citet{cremer1988} demonstrated that correlated types allow the principal to extract full surplus---interpreted here as reducing $T$ via cross-agent signal extraction. \citet{rochet1998} solved the multidimensional screening problem by characterizing the set of implementable allocations geometrically, a construction that corresponds to the Maxwell construction on the free energy surface in the present framework. These results, together with \citet{myerson1981} and information-theoretic mechanism design \citep{bergemann2019}, span the mechanism design frontier in $(\rho, T)$ space.
+\citet{vickrey1961} showed that second-price auctions achieve efficient allocation for independent private values---the CES-potential-minimizing mechanism at $\rho = 1$ (perfect substitutes). \citet{clarke1971} extended this to public goods via the VCG mechanism, where truth-telling minimizes CES potential by aligning individual reports with the social planner's information. \citet{cremer1988} demonstrated that correlated types allow the principal to extract full surplus---interpreted here as reducing $T$ via cross-agent signal extraction. \citet{rochet1998} solved the multidimensional screening problem by characterizing the set of implementable allocations geometrically, a construction that corresponds to the Maxwell construction on the CES potential surface in the present framework. These results, together with \citet{myerson1981} and information-theoretic mechanism design \citep{bergemann2019}, span the mechanism design frontier in $(\rho, T)$ space.
 
 \paragraph{Social choice.}
-\citet{gibbard1973} proved that any non-dictatorial social choice function with three or more alternatives is manipulable---a result that, in the present framework, corresponds to $T = 0$ on the strategic dimension: when agents process strategic information perfectly, they can exploit any aggregation rule. \citet{sen1970} demonstrated the impossibility of a Paretian liberal, which maps to the failure of low-$\rho$ CES aggregation (high complementarity) when $T = 0$ forces binary resolution. \citet{moulin1980} showed that restricting preferences to single-peaked domains restores strategy-proofness, which corresponds to reducing the effective $T$ below the critical threshold $T^*(\rho = 1)$. \citet{list2002} extended impossibility results to judgment aggregation over logically connected propositions, generalizing the phase transition from preference aggregation to logic-CES aggregation.
+\citet{gibbard1973} proved that any non-dictatorial social choice function with three or more alternatives is manipulable---a result that, in the present framework, corresponds to $T = 0$ on the strategic dimension: when agents process strategic information perfectly, they can exploit any aggregation rule. \citet{sen1970} demonstrated the impossibility of a Paretian liberal, which maps to the failure of low-$\rho$ CES aggregation (high complementarity) when $T = 0$ forces binary resolution. \citet{moulin1980} showed that restricting preferences to single-peaked domains restores strategy-proofness, which corresponds to reducing the effective $T$ below the critical threshold $T^*(\rho = 1)$. \citet{list2002} extended impossibility results to judgment aggregation over logically connected propositions, generalizing the regime shift from preference aggregation to logic-CES aggregation.
 
 \paragraph{Search and matching.}
-The matching function literature \citep{diamond1982,mortensen1982,pissarides1985} specifies aggregate matching as a function of unemployment and vacancies. \citet{petrongolo2001} showed that CES provides the best fit to sectoral matching data, with estimated $\rho$ varying across labor markets. \citet{shimer2005} identified the volatility puzzle---standard models generate insufficient vacancy-unemployment volatility---which maps to countercyclical $\rho$ in the CES matching function. \citet{hosios1990} derived the efficiency condition for search equilibrium, which corresponds to the first-order condition of the free energy in the $(\rho, T)$ matching problem. \citet{lagos2005} modeled monetary exchange with alternating centralized and decentralized markets, a structure that corresponds to periodic $T$-switching in the present framework.
+The matching function literature \citep{diamond1982,mortensen1982,pissarides1985} specifies aggregate matching as a function of unemployment and vacancies. \citet{petrongolo2001} showed that CES provides the best fit to sectoral matching data, with estimated $\rho$ varying across labor markets. \citet{shimer2005} identified the volatility puzzle---standard models generate insufficient vacancy-unemployment volatility---which maps to countercyclical $\rho$ in the CES matching function. \citet{hosios1990} derived the efficiency condition for search equilibrium, which corresponds to the first-order condition of the CES potential in the $(\rho, T)$ matching problem. \citet{lagos2005} modeled monetary exchange with alternating centralized and decentralized markets, a structure that corresponds to periodic $T$-switching in the present framework.
 
 \paragraph{Contract theory.}
-\citet{grossman1986} showed that ownership should be allocated to the party whose non-contractible investment has the highest marginal product---a result derived here from free energy maximization over contractible dimensions. \citet{holmstrom1991} modeled multitask incentives as a CES aggregate over effort dimensions: when tasks are complements (low $\rho$), high-powered incentives on one task distort effort allocation across all tasks. \citet{tirole1999} argued that contractual incompleteness varies continuously rather than discretely, which maps to a continuous temperature $T$ measuring the fraction of relevant states that are non-verifiable. \citet{williamson1979} introduced the governance structures framework, partitioning transactions by asset specificity and uncertainty---a partition that corresponds to regions of the $(\rho, T)$ plane.
+\citet{grossman1986} showed that ownership should be allocated to the party whose non-contractible investment has the highest marginal product---a result derived here from CES potential maximization over contractible dimensions. \citet{holmstrom1991} modeled multitask incentives as a CES aggregate over effort dimensions: when tasks are complements (low $\rho$), high-powered incentives on one task distort effort allocation across all tasks. \citet{tirole1999} argued that contractual incompleteness varies continuously rather than discretely, which maps to a continuous temperature $T$ measuring the fraction of relevant states that are non-verifiable. \citet{williamson1979} introduced the governance structures framework, partitioning transactions by asset specificity and uncertainty---a partition that corresponds to regions of the $(\rho, T)$ plane.
 
 \paragraph{Behavioral economics.}
-\citet{tversky1992} introduced cumulative prospect theory with probability weighting, which arises in the entropy framework from incomplete processing of extreme probabilities at the simplex boundary. \citet{rabin2000} demonstrated the calibration paradox for expected utility: modest risk aversion over small stakes implies absurd risk aversion over large stakes. The $(\rho, T)$ framework resolves this by separating $\rho$ (governing stakes via the CES curvature of the consumption aggregate) from $T$ (governing risk processing). \citet{laibson1997} modeled hyperbolic discounting with quasi-geometric preferences; in the free energy framework, this corresponds to exponential discounting plus an entropy penalty that grows sub-linearly with temporal distance. \citet{camerer2004} cataloged behavioral phenomena, which the present framework organizes as effects of $T > 0$ on choice. \citet{gabaix2014} introduced the sparsity parameter $m \in [0,1]$ governing the degree to which agents simplify their models; the present framework identifies $m = 1 - T/T_{\max}$, providing a micro-foundation for sparsity as incomplete entropy reduction. Quantal response equilibria \citep{mckelvey1995} introduce temperature into game theory but without CES structure; the present framework supplies that structure.
+\citet{tversky1992} introduced cumulative prospect theory with probability weighting, which arises in the entropy framework from incomplete processing of extreme probabilities at the simplex boundary. \citet{rabin2000} demonstrated the calibration paradox for expected utility: modest risk aversion over small stakes implies absurd risk aversion over large stakes. The $(\rho, T)$ framework resolves this by separating $\rho$ (governing stakes via the CES curvature of the consumption aggregate) from $T$ (governing risk processing). \citet{laibson1997} modeled hyperbolic discounting with quasi-geometric preferences; in the CES potential framework, this corresponds to exponential discounting plus an entropy penalty that grows sub-linearly with temporal distance. \citet{camerer2004} cataloged behavioral phenomena, which the present framework organizes as effects of $T > 0$ on choice. \citet{gabaix2014} introduced the sparsity parameter $m \in [0,1]$ governing the degree to which agents simplify their models; the present framework identifies $m = 1 - T/T_{\max}$, providing a micro-foundation for sparsity as incomplete entropy reduction. Quantal response equilibria \citep{mckelvey1995} introduce temperature into game theory but without CES structure; the present framework supplies that structure.
 
 \paragraph{Closest antecedents.}
-Two research programs come closest to the present unification, each formalizing one axis of the $(\rho, T)$ plane. \citet{caplin2015} provided the axiomatic foundations for the $T$ axis: they showed that posterior-separable stochastic choice---the signature of rational inattention---is fully characterized by a ``no improving action switches'' axiom, giving revealed-preference content to the information temperature $T = 1/\kappa$ used throughout this paper. Their subsequent work with Leahy \citep{caplin2019} derived consideration sets as optimal coarsening of the state space at finite $T$, yielding the status quo bias and choice overload results of \Cref{prop:behavioral_catalog} from purely decision-theoretic primitives rather than the thermodynamic route taken here. On the $\rho$ axis, \citet{costinot2009} showed that a single log-supermodularity condition on comparative advantage---mathematically equivalent to the CES complementarity condition $\rho < 1$---unifies Ricardian and Heckscher-Ohlin trade theory, predicting that countries sort to industries exactly as workers sort to firms in the search model of \Cref{sec:search}. \citet{costinot2010} extended this to matching with heterogeneous workers and tasks, deriving the Becker sorting result as a special case---the same $T = 0$ limit that appears in every derivation of this paper. What Caplin--Dean and Costinot leave separate, the free energy framework joins: the log-supermodularity driving Costinot's sorting \emph{is} the CES curvature $K = (1-\rho)(J-1)/J$, and the stochastic choice axiomatized by Caplin--Dean \emph{is} the $T > 0$ departure from deterministic optimization. The $(\rho, T)$ parameterization is the product of these two research programs.
+Two research programs come closest to the present unification, each formalizing one axis of the $(\rho, T)$ plane. \citet{caplin2015} provided the axiomatic foundations for the $T$ axis: they showed that posterior-separable stochastic choice---the signature of rational inattention---is fully characterized by a ``no improving action switches'' axiom, giving revealed-preference content to the information friction $T = 1/\kappa$ used throughout this paper. Their subsequent work with Leahy \citep{caplin2019} derived consideration sets as optimal coarsening of the state space at finite $T$, yielding the status quo bias and choice overload results of \Cref{prop:behavioral_catalog} from purely decision-theoretic primitives rather than the variational route taken here. On the $\rho$ axis, \citet{costinot2009} showed that a single log-supermodularity condition on comparative advantage---mathematically equivalent to the CES complementarity condition $\rho < 1$---unifies Ricardian and Heckscher-Ohlin trade theory, predicting that countries sort to industries exactly as workers sort to firms in the search model of \Cref{sec:search}. \citet{costinot2010} extended this to matching with heterogeneous workers and tasks, deriving the Becker sorting result as a special case---the same $T = 0$ limit that appears in every derivation of this paper. What Caplin--Dean and Costinot leave separate, the CES potential framework joins: the log-supermodularity driving Costinot's sorting \emph{is} the CES curvature $K = (1-\rho)(J-1)/J$, and the stochastic choice axiomatized by Caplin--Dean \emph{is} the $T > 0$ departure from deterministic optimization. The $(\rho, T)$ parameterization is the product of these two research programs.
 
 \smallskip
-Each of these references uses one piece of the framework: CES aggregation, entropy-based information costs, or informational friction degrading economic performance. The contribution of this paper is recognizing that these pieces are manifestations of a single object---the Tsallis free energy $\mathcal{F}_q = \Phi_{\text{CES}}(\rho) - T \cdot S_q$ with $q = \rho$---and that the $(\rho, T)$ parameterization organizes the entire landscape. The CES quadruple role theorem, establishing that $\rho$ simultaneously controls superadditivity, correlation robustness, strategic independence, and network scaling, is developed in the companion paper \citep{smirl2026ces}. The Tsallis generalization and its classification of dynamical results is developed in the companion paper \citep{smirl2026tsallis}.
+Each of these references uses one piece of the framework: CES aggregation, entropy-based information costs, or informational friction degrading economic performance. The contribution of this paper is recognizing that these pieces are manifestations of a single object---the Tsallis CES potential $\mathcal{F}_q = \Phi_{\text{CES}}(\rho) - T \cdot S_q$ with $q = \rho$---and that the $(\rho, T)$ parameterization organizes the entire landscape. The CES quadruple role theorem, establishing that $\rho$ simultaneously controls superadditivity, correlation robustness, strategic independence, and network scaling, is developed in the companion paper \citep{smirl2026ces}. The Tsallis generalization and its classification of dynamical results is developed in the companion paper \citep{smirl2026tsallis}.
 
 %=============================================================================
 \section{The CES Generating Function}\label{sec:ces}
@@ -160,7 +160,7 @@ The elasticity of substitution is $\sigma = 1/(1-\rho)$. The CES curvature at sy
     K = \frac{(1-\rho)(J-1)}{J}
 \end{equation}
 
-The CES free energy (the Hamiltonian of the associated port-Hamiltonian system) is:
+The CES potential (the generating function of the associated conservative-dissipative system) is:
 \begin{equation}\label{eq:ces_free_energy}
     \Phi = -\sum_{n} \log F_n
 \end{equation}
@@ -257,9 +257,9 @@ The three derivation sections below (Akerlof, Myerson, Arrow) therefore do not \
 \end{remark}
 
 \begin{remark}[CES as an emergent structure]\label{rem:emergent}
-The consistent-aggregation result (a) has a deeper interpretation: CES is the unique fixed point of the aggregation renormalization group \citep{smirl2026emergent}.  Non-CES production functions are ``irrelevant operators'' that vanish under coarse-graining---they may exist at the firm level but disappear at the sector and macro levels.  The parameter $\rho$ is preserved under coarse-graining (it is a ``marginal'' operator in RG terminology), making it the universality class label for economic aggregation.  This explains why CES fits aggregate data well despite being a parametric restriction: it is the only functional form that survives aggregation across scales.
+The consistent-aggregation result (a) has a deeper interpretation: CES is the unique fixed point of the multi-scale aggregation procedure \citep{smirl2026emergent}.  Non-CES production functions are ``irrelevant operators'' that vanish under aggregation---they may exist at the firm level but disappear at the sector and macro levels.  The parameter $\rho$ is preserved under aggregation (it is a ``marginal'' operator in multi-scale terminology), making it the aggregation-invariant class label for economic aggregation.  This explains why CES fits aggregate data well despite being a parametric restriction: it is the only functional form that survives aggregation across scales.
 
-The emergence result also locks the CES parameter to the entropy measure: CES with parameter $\rho$ is the sufficient statistic for R\'{e}nyi entropy of order $\rho$, yielding the Tsallis free energy $F_q = \Phi_{\text{CES}}(q) - T \cdot S_q$ with $q = \rho$.  For $\rho \to 0$ (Cobb-Douglas), this recovers the standard Helmholtz free energy with Shannon entropy.  For $\rho < 0$ (complementary production), the equilibrium distribution is a $q$-exponential with power-law tails whose Pareto exponent is $\zeta = \sigma = 1/(1-\rho)$---the elasticity of substitution.  Heavy-tailed firm size distributions thus emerge from the \emph{interaction} of complementary production ($\rho < 0$) and positive information temperature ($T > 0$): complementarity shapes the tail exponent $\zeta$, while the entropic term $T \cdot S_q$ disperses probability mass into the tail.  At $T = 0$ (perfect optimization), complementarity drives allocation toward equality, producing thin-tailed distributions \citep[Remark~4.5]{smirl2026emergent}.  Since real economies always operate at $T > 0$, the heavy-tail prediction applies, connecting the production technology to the distributional regularities documented by \citet{gabaix2009}.
+The emergence result also locks the CES parameter to the entropy measure: CES with parameter $\rho$ is the sufficient statistic for R\'{e}nyi entropy of order $\rho$, yielding the Tsallis CES potential $F_q = \Phi_{\text{CES}}(q) - T \cdot S_q$ with $q = \rho$.  For $\rho \to 0$ (Cobb-Douglas), this recovers the standard Helmholtz free energy with Shannon entropy.  For $\rho < 0$ (complementary production), the equilibrium distribution is a $q$-exponential with power-law tails whose Pareto exponent is $\zeta = \sigma = 1/(1-\rho)$---the elasticity of substitution.  Heavy-tailed firm size distributions thus emerge from the \emph{interaction} of complementary production ($\rho < 0$) and positive information friction ($T > 0$): complementarity shapes the tail exponent $\zeta$, while the entropic term $T \cdot S_q$ disperses probability mass into the tail.  At $T = 0$ (perfect optimization), complementarity drives allocation toward equality, producing thin-tailed distributions \citep[Remark~4.5]{smirl2026emergent}.  Since real economies always operate at $T > 0$, the heavy-tail prediction applies, connecting the production technology to the distributional regularities documented by \citet{gabaix2009}.
 \end{remark}
 
 %=============================================================================
@@ -279,7 +279,7 @@ Replacing the chain rule with \emph{pseudo-additivity}---$S(A \cup B) = S(A) + S
 \begin{equation}\label{eq:tsallis}
     S_q(p) = \frac{1 - \sum_{i=1}^{N} p_i^q}{q - 1}
 \end{equation}
-with $S_q \to H$ (Shannon) as $q \to 1$.  The companion emergence theorem \citep{smirl2026emergent} proves that CES with parameter $\rho$ is the sufficient statistic for R\'enyi/Tsallis entropy of order $\rho$, identifying $q = \rho$ with no free parameter.  The companion paper \citep{smirl2026tsallis} develops the full Tsallis free energy framework and classifies all dynamical results.
+with $S_q \to H$ (Shannon) as $q \to 1$.  The companion emergence theorem \citep{smirl2026emergent} proves that CES with parameter $\rho$ is the sufficient statistic for R\'enyi/Tsallis entropy of order $\rho$, identifying $q = \rho$ with no free parameter.  The companion paper \citep{smirl2026tsallis} develops the full Tsallis potential framework and classifies all dynamical results.
 
 \subsection{Mutual Information and the Cost of Knowledge}
 
@@ -295,9 +295,9 @@ The Kullback-Leibler divergence between distributions $p$ and $q$ is:
 \end{equation}
 This measures the entropy cost of using distribution $q$ when the true distribution is $p$. In economic terms: $\KL$ is the cost of misrepresentation.
 
-\subsection{The Information Temperature}
+\subsection{The Information Friction}
 
-Following the rational inattention literature \citep{sims2003}, the information temperature $T$ is defined as the shadow price of information processing capacity. An agent with processing capacity $\kappa$ who faces a decision problem with entropy $H$ has:
+Following the rational inattention literature \citep{sims2003}, the information friction $T$ is defined as the shadow price of information processing capacity. An agent with processing capacity $\kappa$ who faces a decision problem with entropy $H$ has:
 \begin{equation}
     T = \frac{\partial \text{(expected loss)}}{\partial \kappa}
 \end{equation}
@@ -307,19 +307,19 @@ The agent's choice probability follows the $q$-exponential form:
 \begin{equation}\label{eq:logit}
     P(\text{choose } a_i) = \frac{\exp_q(u(a_i)/T)}{\sum_k \exp_q(u(a_k)/T)}
 \end{equation}
-where $\exp_q(x) = [1 + (1-q)x]_+^{1/(1-q)}$ is the $q$-exponential and $q = \rho$.  At $T = 0$: deterministic choice of the best action. At $T \to \infty$: uniform random choice.  For $q \to 1$ (perfect substitutes), this recovers the standard Boltzmann/logit form $P \propto \exp(u/T)$.  For $q < 1$ (complements), the distribution has compact support---agents entirely ignore options beyond a cost threshold $T/(1-q)$, producing the ``all-or-nothing'' patterns observed in complementary team production \citep{kremer1993}.  For $q > 1$ (substitutes), the distribution has power-law tails with exponent $\sigma = 1/(1-\rho)$.
+where $\exp_q(x) = [1 + (1-q)x]_+^{1/(1-q)}$ is the $q$-exponential and $q = \rho$.  At $T = 0$: deterministic choice of the best action. At $T \to \infty$: uniform random choice.  For $q \to 1$ (perfect substitutes), this recovers the standard logit form $P \propto \exp(u/T)$.  For $q < 1$ (complements), the distribution has compact support---agents entirely ignore options beyond a cost threshold $T/(1-q)$, producing the ``all-or-nothing'' patterns observed in complementary team production \citep{kremer1993}.  For $q > 1$ (substitutes), the distribution has power-law tails with exponent $\sigma = 1/(1-\rho)$.
 
 %=============================================================================
-\section{The Free Energy Connection}\label{sec:free_energy}
+\section{The CES Potential Connection}\label{sec:free_energy}
 %=============================================================================
 
-\subsection{The Free Energy of an Economic System}
+\subsection{The CES Potential of an Economic System}
 
-In statistical mechanics, the Helmholtz free energy connects the energy of a system to its entropy:
+In statistical mechanics, the Helmholtz free energy (the physical analogue of the CES potential) connects the energy of a system to its entropy:
 \begin{equation}
     F = E - T \cdot S
 \end{equation}
-Equilibrium minimizes free energy, trading off low energy (ordered, efficient states) against high entropy (disordered, robust states). The temperature $T$ governs the tradeoff.
+Equilibrium minimizes the potential, trading off low energy (ordered, efficient states) against high entropy (disordered, robust states). The temperature $T$ governs the tradeoff.
 
 The economic analogue is:
 \begin{equation}\label{eq:economic_free_energy}
@@ -327,9 +327,9 @@ The economic analogue is:
 \end{equation}
 where:
 \begin{itemize}
-    \item $\Phi_{\text{CES}}$ is the CES free energy \eqref{eq:ces_free_energy}, measuring the quality of aggregation and allocation (the ``energy'' of the economic system);
+    \item $\Phi_{\text{CES}}$ is the CES potential \eqref{eq:ces_free_energy}, measuring the quality of aggregation and allocation (the ``energy'' of the economic system);
     \item $S_q$ is the Tsallis entropy \eqref{eq:tsallis} with $q = \rho$, the information cost functional matched to the production technology's complementarity.  In the rational inattention framework \citep{sims2003}, this generalizes the mutual information constraint; the pseudo-additive information interaction captures the non-additive learning costs inherent in complementary production.  The application sections specify the relevant information cost in each context;
-    \item $T$ is the information temperature (the shadow price of information processing).
+    \item $T$ is the information friction (the shadow price of information processing).
 \end{itemize}
 
 Economic equilibrium minimizes $\mathcal{F}_q$, trading off efficient allocation (low $\Phi$, requiring precise information) against information costs (low $T \cdot S_q$, requiring coarse decisions).
@@ -342,15 +342,15 @@ Economic equilibrium minimizes $\mathcal{F}_q$, trading off efficient allocation
     \item[$T > 0$ (Information friction):] The entropy term degrades the CES aggregate. Higher $T$ means costlier information, which means coarser decisions, which means worse allocation. The \emph{severity} of degradation depends on $\rho$: CES aggregates with low $\rho$ (high complementarity, high curvature $K$) are more robust because the value of precise allocation is higher, justifying greater information expenditure.
 \end{description}
 
-\subsection{The Critical Temperature}
+\subsection{The Breakdown Threshold}
 
-For each economic institution or market, there exists a critical temperature $T^*$ above which the institution fails.  The critical surface $T^* = T^*(v, \rho)$ satisfies:
+For each economic institution or market, there exists a breakdown threshold $T^*$ above which the institution fails.  The critical surface $T^* = T^*(v, \rho)$ satisfies:
 \begin{equation}\label{eq:critical_temp}
     \frac{\partial T^*}{\partial v} > 0, \qquad \frac{\partial T^*}{\partial K} > 0 \qquad \text{where}\;\; K = \frac{(1-\rho)(J-1)}{J}
 \end{equation}
 Higher aggregate value $v$ (willingness to pay, productivity, gains from trade) and higher CES curvature $K$ (greater complementarity) both raise the failure threshold.  The exact functional form is application-specific; in the Akerlof derivation (\Cref{sec:akerlof}), $T^* = (v/\psi(\rho) - 1)\bar{q}/\gamma^*$ where $\gamma^* \approx 2.456$ is a universal constant.  Below $T^*$: the institution functions, information is worth acquiring, equilibrium is sustained.  Above $T^*$: information costs exceed the value of precise allocation, the institution degrades or collapses.
 
-This critical temperature governs:
+This breakdown threshold governs:
 \begin{itemize}
     \item Whether a market sustains trade or unravels (Akerlof);
     \item How long agents search before matching (\Cref{sec:search});
@@ -360,7 +360,7 @@ This critical temperature governs:
 
 In each case, the same structure appears: information friction on a CES aggregate, with $\rho$ controlling severity.
 
-\subsection{Uniqueness of the Free Energy Framework}\label{sec:uniqueness}
+\subsection{Uniqueness of the CES Potential Framework}\label{sec:uniqueness}
 
 The equation $\mathcal{F}_q = \Phi_{\text{CES}}(\rho) - T \cdot S_q$ with $q = \rho$ is not a modeling choice.  It is the \emph{only} framework consistent with three axiomatic requirements.  This subsection proves that result.
 
@@ -386,7 +386,7 @@ The proof has four steps.
 
 \medskip
 \emph{Step 1: (A1) forces CES.}
-By the functional equation theorem of Acz\'{e}l \citep{aczel1966}, the CES family is the unique class of linearly homogeneous aggregators with constant elasticity of substitution.\footnote{Specifically: if $F: \mathbb{R}_+^J \to \mathbb{R}_+$ is continuous, linearly homogeneous, symmetric at the margin, and has constant $\sigma_{ij}$ for all pairs, then $F(\mathbf{x}) = (\sum a_j x_j^\rho)^{1/\rho}$ for some $\rho \leq 1$ and weights $a_j > 0$ summing to 1, with Cobb-Douglas ($\rho = 0$) and Leontief ($\rho \to -\infty$) as limits.}  The CES free energy is therefore $\Phi = -\sum_n \log F_n$.
+By the functional equation theorem of Acz\'{e}l \citep{aczel1966}, the CES family is the unique class of linearly homogeneous aggregators with constant elasticity of substitution.\footnote{Specifically: if $F: \mathbb{R}_+^J \to \mathbb{R}_+$ is continuous, linearly homogeneous, symmetric at the margin, and has constant $\sigma_{ij}$ for all pairs, then $F(\mathbf{x}) = (\sum a_j x_j^\rho)^{1/\rho}$ for some $\rho \leq 1$ and weights $a_j > 0$ summing to 1, with Cobb-Douglas ($\rho = 0$) and Leontief ($\rho \to -\infty$) as limits.}  The CES potential is therefore $\Phi = -\sum_n \log F_n$.
 
 \medskip
 \emph{Step 2: (A2) forces Tsallis entropy.}
@@ -412,7 +412,7 @@ where $T \geq 0$ is the Lagrange multiplier on the capacity constraint.  Since $
 \begin{equation}\label{eq:dual}
     \min_{T \geq 0} \max_{\mathbf{x}, \mathbf{p}} \; \Phi(\mathbf{x}) - T \cdot S_q(\mathbf{p})
 \end{equation}
-The additive structure $\Phi - T \cdot S_q$ is forced by Lagrangian duality.  No alternative connector (multiplicative, nonlinear, or otherwise) is consistent with constrained optimization.  The equilibrium distribution is $q$-exponential: $p_j^* \propto [1 - (1-q)\beta\varepsilon_j]_+^{1/(1-q)}$, which reduces to the Boltzmann/logit form $p_j^* \propto e^{-\beta\varepsilon_j}$ as $q \to 1$.
+The additive structure $\Phi - T \cdot S_q$ is forced by Lagrangian duality.  No alternative connector (multiplicative, nonlinear, or otherwise) is consistent with constrained optimization.  The equilibrium distribution is $q$-exponential: $p_j^* \propto [1 - (1-q)\beta\varepsilon_j]_+^{1/(1-q)}$, which reduces to the logit form $p_j^* \propto e^{-\beta\varepsilon_j}$ as $q \to 1$.
 \end{proof}
 
 \begin{remark}[What each axiom excludes]\label{rem:exclusions}
@@ -421,7 +421,7 @@ The theorem is strengthened by examining what happens when each axiom is relaxed
     \item \emph{Drop (A1):} Non-constant elasticity aggregators (translog, generalized Leontief) produce frameworks where ``$\rho$'' varies with the allocation, preventing clean separation between structure and friction.
     \item \emph{Drop (A2):} Without pseudo-additivity, only Shannon ($q = 1$) survives as information measure.  This is exact for perfect substitutes ($\rho = 1$) but misses the non-additive information costs inherent in complementary production ($\rho < 1$).  The FDT acquires a systematic bias of $1/(2-\rho)$ when Shannon is used for complements \citep{smirl2026tsallis}.
     \item \emph{Drop (A4):} Without self-consistency, $q$ becomes a free parameter independent of $\rho$, producing a three-parameter framework $(\rho, T, q)$ that loses parsimony and the structural link between production complementarity and information non-additivity.
-    \item \emph{Drop (A3):} Without the variational principle, no connector is forced.  The free energy structure is precisely the content of requiring equilibrium to arise from constrained optimization.
+    \item \emph{Drop (A3):} Without the variational principle, no connector is forced.  The CES potential structure is precisely the content of requiring equilibrium to arise from constrained optimization.
 \end{itemize}
 \end{remark}
 
@@ -433,7 +433,7 @@ In physics, the Helmholtz free energy $F = E - TS$ arises from exactly the same 
 \section{Derivation I: Akerlof's Market for Lemons}\label{sec:akerlof}
 %=============================================================================
 
-The market-for-lemons result \citep{akerlof1970} is derived from the free energy framework, showing that $\rho$ determines market robustness to adverse selection.
+The market-for-lemons result \citep{akerlof1970} is derived from the CES potential framework, showing that $\rho$ determines market robustness to adverse selection.
 
 \subsection{Setup}
 
@@ -515,17 +515,17 @@ $A(\rho) > 0$ requires $v > \psi(\rho)$.  Since $\psi(1) = 2$, this is $v > 2$ a
 \begin{proposition}[Market Robustness]\label{prop:market_robustness}
 Consider the buyer's rational inattention problem~\eqref{eq:akerlof_free_energy} with $J$ sellers, qualities uniform on $[0, \bar{q}]$, buyer valuation rate $v > \psi(\rho)$ (so $A(\rho) > 0$), and CES parameter $\rho \in (-1, 1)$. Define $K = (1-\rho)(J-1)/J$.
 
-There exists a unique critical information temperature
+There exists a unique critical information friction
 \begin{equation}\label{eq:tstar_closed}
     T^* = \frac{A(\rho)\,\bar{q}}{\gamma^*} = \frac{(v - \psi(\rho))\,\bar{q}}{\gamma^*\,\psi(\rho)}
 \end{equation}
-where $\gamma^* > 0$ is a universal constant (the unique positive root of a transcendental equation defined in the proof, $\gamma^* \approx 2.456$ in natural logarithms), such that for $T < T^*$ the free energy is positive at all interior $\pi$, permitting smooth screening adjustment; while for $T > T^*$ the free energy develops a negative barrier, forcing a first-order transition to boundary behavior.  When additionally $v < 2\psi(\rho)$, the pooling equilibrium ($\pi = 1$) is unprofitable and $T > T^*$ produces market collapse ($q^* = 0$).
+where $\gamma^* > 0$ is a universal constant (the unique positive root of a transcendental equation defined in the proof, $\gamma^* \approx 2.456$ in natural logarithms), such that for $T < T^*$ the CES potential is positive at all interior $\pi$, permitting smooth screening adjustment; while for $T > T^*$ the CES potential develops a negative barrier, forcing a first-order transition to boundary behavior.  When additionally $v < 2\psi(\rho)$, the pooling equilibrium ($\pi = 1$) is unprofitable and $T > T^*$ produces market collapse ($q^* = 0$).
 
 Since $\psi(\rho)$ is strictly decreasing in $\rho$, $T^*$ is strictly increasing in $(1-\rho)$ for fixed $v$: markets with lower $\rho$ (higher complementarity) are more robust to adverse selection.
 \end{proposition}
 
 \begin{proof}
-The proof proceeds in six steps: (1)~state the Lagrangian; (2)~derive first-order conditions; (3)~verify the second-order condition; (4)~solve for the critical temperature; (5)~connect to CES curvature $K$; (6)~prove monotonicity.
+The proof proceeds in six steps: (1)~state the Lagrangian; (2)~derive first-order conditions; (3)~verify the second-order condition; (4)~solve for the breakdown threshold; (5)~connect to CES curvature $K$; (6)~prove monotonicity.
 
 \medskip
 \textit{Step 1: The buyer's Lagrangian.}
@@ -535,7 +535,7 @@ The buyer solves the rational inattention problem in its Lagrangian dual form. F
 \end{equation}
 where $A(\rho) = v/\psi(\rho) - 1 > 0$ is the CES net value rate, $T \geq 0$ is the Lagrange multiplier on the information constraint (equivalently, the unit cost of information), and $h(\pi) = -\pi \log \pi - (1-\pi)\log(1-\pi)$ is the binary entropy function with $\pi = q^*/\bar{q}$.
 
-The first term is the expected gains from trade: the participation rate $\pi$ times the per-trade net surplus $A(\rho) q^*$. The second term is the information cost of the binary screening signal. The objective $\mathcal{F}$ is the free energy: expected surplus (``energy'') minus information cost (``temperature $\times$ entropy'').
+The first term is the expected gains from trade: the participation rate $\pi$ times the per-trade net surplus $A(\rho) q^*$. The second term is the information cost of the binary screening signal. The objective $\mathcal{F}$ is the CES potential: expected surplus (``energy'') minus information cost (``temperature $\times$ entropy'').
 
 \medskip
 \textit{Step 2: First-order condition.}
@@ -561,19 +561,19 @@ The second derivative is:
 \begin{equation}\label{eq:d2F}
     \frac{d^2\mathcal{F}}{d\pi^2} = 2A(\rho)\,\bar{q} + \frac{T}{\pi(1-\pi)}
 \end{equation}
-Since both terms are positive, $d^2\mathcal{F}/d\pi^2 > 0$ for all $\pi \in (0,1)$: the free energy is strictly convex.  Any interior critical point satisfying~\eqref{eq:akerlof_foc} is therefore a \emph{minimum}, not a maximum.  The boundary values $\mathcal{F}(0) = 0$ and $\mathcal{F}(1) = A(\rho)\bar{q} > 0$ show that $\pi = 1$ (full participation without screening) always yields positive free energy.
+Since both terms are positive, $d^2\mathcal{F}/d\pi^2 > 0$ for all $\pi \in (0,1)$: the CES potential is strictly convex.  Any interior critical point satisfying~\eqref{eq:akerlof_foc} is therefore a \emph{minimum}, not a maximum.  The boundary values $\mathcal{F}(0) = 0$ and $\mathcal{F}(1) = A(\rho)\bar{q} > 0$ show that $\pi = 1$ (full participation without screening) always yields positive CES potential.
 
-The economic content emerges from the \emph{value} of $\mathcal{F}$ at the interior minimum $\pi_0$.  For small $T$, $\mathcal{F}(\pi_0) > 0$: the free energy is positive everywhere on $(0,1)$, so the buyer can smoothly adjust the screening threshold---information acquisition is valuable and the market functions efficiently.  For large $T$, $\mathcal{F}(\pi_0) < 0$: the free energy dips below zero near $\pi_0$, creating a barrier between $\pi = 0$ (no market) and $\pi = 1$ (unscreened pooling).  The market undergoes a \emph{first-order phase transition}: screening intensity jumps discontinuously from the efficient interior level to a boundary solution.
+The economic content emerges from the \emph{value} of $\mathcal{F}$ at the interior minimum $\pi_0$.  For small $T$, $\mathcal{F}(\pi_0) > 0$: the CES potential is positive everywhere on $(0,1)$, so the buyer can smoothly adjust the screening threshold---information acquisition is valuable and the market functions efficiently.  For large $T$, $\mathcal{F}(\pi_0) < 0$: the CES potential dips below zero near $\pi_0$, creating a barrier between $\pi = 0$ (no market) and $\pi = 1$ (unscreened pooling).  The market undergoes a \emph{first-order regime shift}: screening intensity jumps discontinuously from the efficient interior level to a boundary solution.
 
-The critical temperature $T^*$ is defined by the transition between these regimes---the value of $T$ at which $\mathcal{F}(\pi_0) = 0$.  When $v > 2\psi(\rho)$, the pooling equilibrium ($\pi = 1$) remains viable above $T^*$, and the market continues to function (albeit inefficiently, with adverse selection).  When $\psi(\rho) < v < 2\psi(\rho)$, the pooling equilibrium is itself unprofitable, and $T > T^*$ produces market collapse to $\pi = 0$.
+The breakdown threshold $T^*$ is defined by the transition between these regimes---the value of $T$ at which $\mathcal{F}(\pi_0) = 0$.  When $v > 2\psi(\rho)$, the pooling equilibrium ($\pi = 1$) remains viable above $T^*$, and the market continues to function (albeit inefficiently, with adverse selection).  When $\psi(\rho) < v < 2\psi(\rho)$, the pooling equilibrium is itself unprofitable, and $T > T^*$ produces market collapse to $\pi = 0$.
 
 \medskip
-\textit{Step 4: Solving for the critical temperature.}
-Define the dimensionless ratio $\tau \equiv T/(A(\rho)\bar{q})$.  In terms of $\tau$, the free energy becomes:
+\textit{Step 4: Solving for the breakdown threshold.}
+Define the dimensionless ratio $\tau \equiv T/(A(\rho)\bar{q})$.  In terms of $\tau$, the CES potential becomes:
 \begin{equation}
     \frac{\mathcal{F}(\pi)}{A(\rho)\bar{q}} = \pi^2 - \tau\,h(\pi) \;\equiv\; \Psi(\pi, \tau)
 \end{equation}
-The first-order condition is $2\pi = \tau \log[(1-\pi)/\pi]$, and the critical temperature $\tau^*$ is the value of $\tau$ at which the interior minimum of $\Psi$ first touches zero---i.e., the $\tau$ at which the free energy barrier appears.
+The first-order condition is $2\pi = \tau \log[(1-\pi)/\pi]$, and the breakdown threshold $\tau^*$ is the value of $\tau$ at which the interior minimum of $\Psi$ first touches zero---i.e., the $\tau$ at which the CES potential barrier appears.
 
 At the critical point, two conditions hold simultaneously:
 \begin{align}
@@ -612,7 +612,7 @@ Once $\pi_0$ is determined (numerically, $\pi_0 \approx 0.217$), the critical di
 \end{equation}
 defining the universal constant $\gamma^* = h(\pi_0)/\pi_0^2$.  Numerically, $\gamma^* \approx 2.456$ (using natural logarithms).
 
-The critical temperature in original units is therefore:
+The breakdown threshold in original units is therefore:
 \begin{equation}
     T^* = \tau^* \cdot A(\rho)\,\bar{q} = \frac{A(\rho)\,\bar{q}}{\gamma^*} = \frac{\bar{q}}{\gamma^*}\left(\frac{v}{\psi(\rho)} - 1\right)
 \end{equation}
@@ -648,7 +648,7 @@ Observe $g(0) = 0$, and:
 \end{equation}
 For $\rho \in (-1, 0)$: $g'(\rho) > 0$, so $g$ is strictly increasing toward $g(0) = 0$, hence $g(\rho) < 0$.  For $\rho \in (0, 1)$: $g'(\rho) < 0$, so $g$ is strictly decreasing from $g(0) = 0$, hence $g(\rho) < 0$.
 
-Therefore $d\log\psi/d\rho < 0$ for all $\rho \in (-1,1)\setminus\{0\}$, which means $\psi(\rho)$ is strictly decreasing in $\rho$, so $1/\psi(\rho)$ is strictly increasing in $\rho$ (equivalently, increasing in $(1-\rho)$ as $\rho$ decreases).  Since $T^* \propto v/\psi(\rho) - 1$ and $v/\psi$ is increasing as $\rho$ decreases, $T^*$ is strictly increasing in $(1-\rho)$.  Lower $\rho$ (higher complementarity, higher CES curvature $K$) implies higher critical temperature, and hence greater robustness to adverse selection.
+Therefore $d\log\psi/d\rho < 0$ for all $\rho \in (-1,1)\setminus\{0\}$, which means $\psi(\rho)$ is strictly decreasing in $\rho$, so $1/\psi(\rho)$ is strictly increasing in $\rho$ (equivalently, increasing in $(1-\rho)$ as $\rho$ decreases).  Since $T^* \propto v/\psi(\rho) - 1$ and $v/\psi$ is increasing as $\rho$ decreases, $T^*$ is strictly increasing in $(1-\rho)$.  Lower $\rho$ (higher complementarity, higher CES curvature $K$) implies higher breakdown threshold, and hence greater robustness to adverse selection.
 \end{proof}
 
 \begin{remark}
@@ -684,7 +684,7 @@ where $\Phi(T)$ is the CES market quality from \Cref{prop:market_robustness}, $\
 \begin{enumerate}[label=(\roman*)]
     \item For $T(0) < T^*(\rho)$: the market functions, generating information.  $\Phi(T) > 0$, so $\dot{T} < 0$: information quality improves, driving $T$ toward a stable low-$T$ steady state $T_L$ where information production balances depreciation.
     \item For $T(0) > T^*(\rho)$: adverse selection dominates, good sellers exit, and information degrades.  $\Phi(T) < 0$ (or $= 0$ post-collapse), so $\dot{T} \geq 0$: the market converges to the collapsed steady state $T_H \gg T^*$.
-    \item $T^*(\rho)$ is an unstable fixed point separating the two basins of attraction.
+    \item $T^*(\rho)$ is an unstable fixed point separating the two equilibrium basins.
 \end{enumerate}
 \end{proposition}
 
@@ -703,7 +703,7 @@ The dynamics capture three empirical regularities:
 \begin{itemize}
     \item \emph{Market bootstrapping is hard}: a market starting above $T^*$ cannot self-correct---it requires an exogenous information injection (regulation, certification, guarantees) to push $T$ below the threshold.  This explains why new markets for complex goods (health insurance, financial derivatives) require institutional scaffolding.
     \item \emph{Established markets are resilient}: once $T < T^*$, the virtuous cycle of trade $\to$ information $\to$ lower $T$ creates a buffer.  Temporary information shocks (scandals, crises) are absorbed unless they push $T$ above the threshold.
-    \item \emph{Low-$\rho$ markets are more robust dynamically}: since $T^*(\rho)$ is increasing in $(1-\rho)$, specialized markets have a larger basin of attraction for the functioning equilibrium.  They can absorb larger information shocks before collapsing---consistent with the static prediction but now with a dynamic mechanism.
+    \item \emph{Low-$\rho$ markets are more robust dynamically}: since $T^*(\rho)$ is increasing in $(1-\rho)$, specialized markets have a larger equilibrium basin for the functioning equilibrium.  They can absorb larger information shocks before collapsing---consistent with the static prediction but now with a dynamic mechanism.
 \end{itemize}
 The static $T^*(\rho)$ surface from \Cref{prop:market_robustness} is thus reinterpreted as the \emph{separatrix} of a bistable dynamical system.  The framework's other derivations admit analogous dynamics: in mechanism design (\Cref{sec:mechanism}), $T$ evolves as agents learn to report truthfully; in social choice (\Cref{sec:arrow}), $T$ evolves with institutional trust.  These extensions connect the static framework to the dynamic models in the companion papers on endogenous decentralization and mesh equilibrium.
 \end{remark}
@@ -712,7 +712,7 @@ The static $T^*(\rho)$ surface from \Cref{prop:market_robustness} is thus reinte
 \section{Derivation II: Myerson's Optimal Mechanism}\label{sec:mechanism}
 %=============================================================================
 
-Myerson's virtual valuation \citep{myerson1981} is shown to be the free energy gradient, and $\rho$ determines optimal mechanism structure.
+Myerson's virtual valuation \citep{myerson1981} is shown to be the CES potential gradient, and $\rho$ determines optimal mechanism structure.
 
 \subsection{Setup}
 
@@ -722,7 +722,7 @@ A principal allocates resources among $J$ agents with private types $\theta_j$ d
 \end{equation}
 where $x_j(\theta_j)$ is the allocation to agent $j$ given their type. By Proposition~\ref{prop:ces_forced}(a), consistent sub-aggregation and homogeneity force the principal's objective to be CES: the principal can evaluate sub-groups independently and scale results proportionally only if the aggregator is a power mean. The parameter $\rho$ measures how much the principal values balance across agents versus total output.
 
-\subsection{The Virtual Valuation as Free Energy Gradient}
+\subsection{The Virtual Valuation as CES Potential Gradient}
 
 Myerson's virtual valuation for type $\theta$ is:
 \begin{equation}\label{eq:virtual_valuation}
@@ -732,7 +732,7 @@ Myerson's virtual valuation for type $\theta$ is:
 The optimal mechanism allocates to agents with $\varphi(\theta) \geq 0$ and excludes those with $\varphi(\theta) < 0$.
 
 \begin{proposition}[Virtual Valuation Identification]\label{prop:virtual}
-The virtual valuation \eqref{eq:virtual_valuation} is the free energy gradient:
+The virtual valuation \eqref{eq:virtual_valuation} is the CES potential gradient:
 \begin{equation}
     \varphi(\theta) = \underbrace{\theta\vphantom{\frac{1-F}{f}}}_{\partial \Phi / \partial \theta} - \underbrace{\frac{1 - F(\theta)}{f(\theta)}}_{T \cdot \partial H / \partial \theta}
 \end{equation}
@@ -740,7 +740,7 @@ The first term is the marginal CES contribution of type $\theta$. The second ter
 \end{proposition}
 
 \begin{proof}
-The proof proceeds in four steps: formulating the mechanism design problem, deriving the information rent via the IC constraint, identifying the rent as an entropy gradient, and assembling the virtual valuation as the free energy gradient.
+The proof proceeds in four steps: formulating the mechanism design problem, deriving the information rent via the IC constraint, identifying the rent as an entropy gradient, and assembling the virtual valuation as the CES potential gradient.
 
 \medskip
 \emph{Step 1: The mechanism design problem.}
@@ -826,12 +826,12 @@ Setting the ``temperature'' $T = 1$ (natural units where one unit of information
 \end{equation}
 
 \medskip
-\emph{Step 4: Assembly as the free energy gradient.}
+\emph{Step 4: Assembly as the CES potential gradient.}
 From Step 2, the principal's pointwise objective is to maximize (over each agent's allocation separately, given CES separability at the margin):
 \begin{equation}
     \mathcal{F}(\theta) = \underbrace{\theta \cdot x(\theta)}_{\text{CES marginal contribution }\partial\Phi/\partial\theta} - \underbrace{\frac{1-F(\theta)}{f(\theta)} \cdot x(\theta)}_{\text{entropy cost }T \cdot \partial\mathcal{H}/\partial\theta}
 \end{equation}
-The free energy gradient with respect to $\theta$ is therefore:
+The CES potential gradient with respect to $\theta$ is therefore:
 \begin{equation}
     \frac{\partial \mathcal{F}}{\partial \theta} = \theta - \frac{1 - F(\theta)}{f(\theta)} = \varphi(\theta)
 \end{equation}
@@ -852,17 +852,17 @@ This is non-negative iff $\theta \geq \bar{\theta}/2$---so the optimal mechanism
 The conditional entropy of the uniform distribution above $\theta$ is $H_\theta = \log(\bar{\theta} - \theta)$, and $dH_\theta/d\theta = 1/(\bar{\theta} - \theta)$.  The entropy cost per density is $(1/f) \cdot (dH_\theta/d\theta)^{-1} \cdot f = \bar{\theta} - \theta$, confirming the identification.
 \end{proof}
 
-\subsection{The Revelation Principle as Thermodynamic Equilibrium}
+\subsection{The Revelation Principle as Variational Equilibrium}
 
-\begin{proposition}[Thermodynamic Revelation]\label{prop:revelation}
-A mechanism is incentive-compatible if and only if truth-telling minimizes each agent's free energy:
+\begin{proposition}[Optimality of Revelation]\label{prop:revelation}
+A mechanism is incentive-compatible if and only if truth-telling minimizes each agent's CES potential:
 \begin{equation}
     \mathcal{F}_j(\text{report } \theta') = -u_j(\theta, x(\theta')) + t(\theta') + T \cdot \KL(\theta' \| \theta)
 \end{equation}
-where $\KL(\theta' \| \theta)$ is the Kullback-Leibler divergence measuring the entropy cost of reporting $\theta'$ when the true type is $\theta$. The VCG mechanism sets transfers $t(\cdot)$ so that truth-telling ($\theta' = \theta$, $\KL = 0$) is the global free energy minimum.
+where $\KL(\theta' \| \theta)$ is the Kullback-Leibler divergence measuring the entropy cost of reporting $\theta'$ when the true type is $\theta$. The VCG mechanism sets transfers $t(\cdot)$ so that truth-telling ($\theta' = \theta$, $\KL = 0$) is the global CES potential minimum.
 \end{proposition}
 
-The revelation principle---that any implementable outcome can be achieved through truthful direct revelation---is the economic analogue of the thermodynamic statement that equilibrium minimizes free energy at the point of maximum order (zero entropy of misrepresentation).
+The revelation principle---that any implementable outcome can be achieved through truthful direct revelation---is the economic analogue of the variational statement that equilibrium minimizes the CES potential at the point of maximum order (zero entropy of misrepresentation).
 
 \subsection{$\rho$-Dependent Mechanism Structure}
 
@@ -1035,7 +1035,7 @@ For a general regular distribution (i.e., $\varphi(\theta)$ non-decreasing), the
 \section{Derivation III: Arrow's Impossibility Theorem}\label{sec:arrow}
 %=============================================================================
 
-Arrow's impossibility \citep{arrow1951} is an ordinal result: no aggregation of ordinal preferences can satisfy Pareto, IIA, and non-dictatorship.  The free energy framework does not dissolve this impossibility but rather characterizes what becomes possible when cardinal utility information is available and agents optimize under finite processing capacity ($T > 0$).  The CES family requires cardinal input---this is the price of non-dictatorial aggregation---and $\rho$ determines which democratic institutions are robust to informational noise.
+Arrow's impossibility \citep{arrow1951} is an ordinal result: no aggregation of ordinal preferences can satisfy Pareto, IIA, and non-dictatorship.  The CES potential framework does not dissolve this impossibility but rather characterizes what becomes possible when cardinal utility information is available and agents optimize under finite processing capacity ($T > 0$).  The CES family requires cardinal input---this is the price of non-dictatorial aggregation---and $\rho$ determines which democratic institutions are robust to informational noise.
 
 \subsection{Arrow's Conditions}
 
@@ -1058,7 +1058,7 @@ uses cardinal utilities. For $\rho = 1$: utilitarian (sum). For $\rho \to -\inft
 
 CES social welfare violates Arrow's \emph{ordinal} IIA: since it uses cardinal utility levels (not just ordinal rankings), two profiles that agree on every agent's ranking of $A$ vs.\ $B$ but differ in cardinal magnitudes can produce different social rankings.  Arrow's theorem states that at $T = 0$ (deterministic, ordinal preferences), no aggregation satisfying ordinal IIA and Pareto can be non-dictatorial.  The CES family sidesteps this by requiring cardinal information---the price paid is measured by the parameter $1 - \rho$.
 
-\subsection{$T > 0$: The Phase Transition}
+\subsection{$T > 0$: The Regime Shift}
 
 At $T > 0$, agents have probabilistic preferences. Instead of the deterministic ordering $A >_j B$, agent $j$ has:
 \begin{equation}\label{eq:logit_probs}
@@ -1175,7 +1175,7 @@ Since $E(T) \to \lambda \cdot V(0) > 0$ as $T \to 0$ and $E(T) \to \infty$ as $T
 \subsection{$\rho$-Dependent Democratic Robustness}
 
 \begin{proposition}[Robustness of Political Institutions]\label{prop:democracy}
-The critical temperature $T^*_{\text{democracy}}$ above which democratic aggregation fails depends on $\rho$:
+The breakdown threshold $T^*_{\text{democracy}}$ above which democratic aggregation fails depends on $\rho$:
 \begin{equation}
     T^*_{\text{democracy}}(\rho) \text{ is increasing in } \rho
 \end{equation}
@@ -1224,9 +1224,9 @@ where $z_\alpha = \Phi^{-1}(1-\alpha)$.  Since $J_{\text{eff}}(\rho) = J/\mathca
 \medskip
 \emph{Step 4: Verification at the limits.}
 \begin{itemize}
-    \item \emph{$\rho = 1$ (utilitarian):} $\mathcal{C}(1) = 1$, $J_{\text{eff}} = J$.  The critical temperature scales as $\sqrt{J}$---standard $\sqrt{n}$ convergence of the sample mean.  The system tolerates substantial noise.
+    \item \emph{$\rho = 1$ (utilitarian):} $\mathcal{C}(1) = 1$, $J_{\text{eff}} = J$.  The breakdown threshold scales as $\sqrt{J}$---standard $\sqrt{n}$ convergence of the sample mean.  The system tolerates substantial noise.
     \item \emph{$\rho \to 0$ (Nash welfare):} $\mathcal{C}(0) = J^{-1}\sum(u_k/W)^{-2}$.  For heterogeneous utilities with $\min u_k \ll W$, this can be large, reducing $J_{\text{eff}}$.
-    \item \emph{$\rho \to -\infty$ (Rawlsian):} $\mathcal{C} \to J$, $J_{\text{eff}} \to 1$.  The critical temperature is $O(1)$---independent of the number of voters.  Even a large electorate cannot overcome noise when the aggregation rule depends on a single agent's report.
+    \item \emph{$\rho \to -\infty$ (Rawlsian):} $\mathcal{C} \to J$, $J_{\text{eff}} \to 1$.  The breakdown threshold is $O(1)$---independent of the number of voters.  Even a large electorate cannot overcome noise when the aggregation rule depends on a single agent's report.
 \end{itemize}
 The monotonicity of $T^*_{\text{democracy}}$ in $\rho$ follows from the monotonicity of $\mathcal{C}(\rho)$ in $\rho$, which in turn follows from the convexity of $x \mapsto x^{2(\rho-1)}$ for $\rho < 1$ combined with Jensen's inequality: as $\rho$ decreases, the exponent $2(\rho - 1)$ becomes more negative, amplifying the contribution of below-average utilities.
 \end{proof}
@@ -1260,7 +1260,7 @@ The CES extension: voters with \emph{heterogeneous} expertise across issues are 
 \section{Derivation IV: Search and Matching}\label{sec:search}
 %=============================================================================
 
-The Diamond-Mortensen-Pissarides search framework \citep{diamond1982,mortensen1982,pissarides1985} is derived from the free energy principle, showing that $\rho$ determines search duration, match quality, and the slope of the Beveridge curve.
+The Diamond-Mortensen-Pissarides search framework \citep{diamond1982,mortensen1982,pissarides1985} is derived from the CES potential principle, showing that $\rho$ determines search duration, match quality, and the slope of the Beveridge curve.
 
 \subsection{Setup}
 
@@ -1288,7 +1288,7 @@ where $\Pi_J$ is the set of permutations. For $\rho < 1$, the CES superadditivit
 
 Workers and firms cannot observe match quality without meeting. Each meeting reveals mutual information $I = H_{\text{prior}} - H_{\text{posterior}}$ about the quality of a specific pairing.
 
-A worker begins with $H_0 = \log J$ bits of uncertainty about which firm is the best match. After $n$ meetings, expected residual entropy is $H_0 - n \cdot \Delta H$, where $\Delta H$ is the information per meeting. The free energy of a search strategy with $n$ meetings is:
+A worker begins with $H_0 = \log J$ bits of uncertainty about which firm is the best match. After $n$ meetings, expected residual entropy is $H_0 - n \cdot \Delta H$, where $\Delta H$ is the information per meeting. The CES potential of a search strategy with $n$ meetings is:
 \begin{equation}\label{eq:search_free_energy}
     \mathcal{F}(n) = \mathbb{E}\!\left[\max_{k \leq n} m(i, j_k)\right] - T \cdot \bigl[H_0 - n \cdot \Delta H\bigr]
 \end{equation}
@@ -1315,7 +1315,7 @@ The proof proceeds in three steps.
 
 \medskip
 \emph{Step 1: Reservation quality.}
-From the free energy first-order condition~\eqref{eq:reservation_foc}, the reservation quality $q^*$ equates the marginal benefit of continued search to the marginal information cost. For match qualities drawn from the CES distribution~\eqref{eq:match_quality}, the probability of exceeding $q^*$ in a single meeting is $P(m > q^*) = 1 - G(q^*)$, where $G$ is the CDF of match quality.
+From the CES potential first-order condition~\eqref{eq:reservation_foc}, the reservation quality $q^*$ equates the marginal benefit of continued search to the marginal information cost. For match qualities drawn from the CES distribution~\eqref{eq:match_quality}, the probability of exceeding $q^*$ in a single meeting is $P(m > q^*) = 1 - G(q^*)$, where $G$ is the CDF of match quality.
 
 The expected improvement conditional on exceeding $q^*$ is $\mathbb{E}[m - q^* \mid m > q^*]$. The FOC becomes:
 \begin{equation}
@@ -1353,7 +1353,7 @@ At $K = 0$: $n^*_0 = 1/[1-G(q^*_0)]$ is the standard DMP duration, which depends
 The result has a clean economic interpretation: workers in complementary labor markets (low $\rho$, high $K$) hold out longer because the CES diversity premium makes a good match disproportionately more valuable than a mediocre one. This is the search-theoretic consequence of the quadruple role: the same curvature $K$ that generates superadditivity in production also generates longer optimal search.
 \end{remark}
 
-\subsection{The Beveridge Curve as Free Energy Surface}\label{sec:beveridge}
+\subsection{The Beveridge Curve as CES Potential Surface}\label{sec:beveridge}
 
 \begin{proposition}[Beveridge Curve Slope]\label{prop:beveridge}
 In the $(U, V)$ plane, the equilibrium Beveridge curve slope receives a CES correction from the acceptance channel:
@@ -1376,12 +1376,12 @@ The CES matching function is:
 where $\theta = V/U$ is market tightness and $\rho$ parameterizes the substitutability between unemployment and vacancies in the matching technology. At $\rho \to 0$, this reduces to the standard Cobb-Douglas $M = A\theta^\alpha$. The job-finding rate is $f(\theta) = M(\theta)/U = A(\alpha\theta^\rho + 1 - \alpha)^{1/\rho}/U$, which depends on $\rho$ through the CES elasticity.
 
 \medskip
-\emph{Step 2: Free energy balance at steady state.}
+\emph{Step 2: CES potential balance at steady state.}
 Unemployment evolves as $\dot{u} = s(1-u) - f(\theta) \cdot u$, where $s$ is the separation rate. At steady state:
 \begin{equation}\label{eq:ss_unemployment}
     u = \frac{s}{s + f(\theta)}
 \end{equation}
-The vacancy rate is $v = \theta \cdot u$. The Beveridge locus traces $(u(\theta), v(\theta))$ as $\theta$ varies. The steady-state condition~\eqref{eq:ss_unemployment} is a free energy balance: the entropy production from separations ($s$) equals the entropy reduction from matching ($f(\theta) \cdot u$).
+The vacancy rate is $v = \theta \cdot u$. The Beveridge locus traces $(u(\theta), v(\theta))$ as $\theta$ varies. The steady-state condition~\eqref{eq:ss_unemployment} is a CES potential balance: the entropy production from separations ($s$) equals the entropy reduction from matching ($f(\theta) \cdot u$).
 
 \medskip
 \emph{Step 3: Acceptance probability and effective matching rate.}
@@ -1444,7 +1444,7 @@ The Beveridge curve slope~\eqref{eq:beveridge_slope} cleanly separates two chann
 \section{Derivation V: Contract Theory}\label{sec:contracts}
 %=============================================================================
 
-The hold-up problem \citep{grossman1986,hart1990} and the vertical integration boundary \citep{williamson1979,williamson1985} are derived from the free energy framework, showing that $\rho$ simultaneously controls asset specificity, hold-up severity, and the optimal governance boundary.
+The hold-up problem \citep{grossman1986,hart1990} and the vertical integration boundary \citep{williamson1979,williamson1985} are derived from the CES potential framework, showing that $\rho$ simultaneously controls asset specificity, hold-up severity, and the optimal governance boundary.
 
 \subsection{Setup}
 
@@ -1456,7 +1456,7 @@ where $x_A, x_B \geq 0$ are relationship-specific investments by each party, $\a
 
 Investments are costly: $c_A(x_A) = x_A^2/2$ and $c_B(x_B) = x_B^2/2$ (quadratic adjustment costs).
 
-A fraction $\tau \in [0,1]$ of the output dimensions are \emph{non-contractible}---they cannot be specified ex ante or verified ex post. The parameter $\tau$ plays the role of information temperature: $\tau = 0$ is complete contracts, $\tau = 1$ is fully incomplete. The free energy of the relationship is:
+A fraction $\tau \in [0,1]$ of the output dimensions are \emph{non-contractible}---they cannot be specified ex ante or verified ex post. The parameter $\tau$ plays the role of information friction: $\tau = 0$ is complete contracts, $\tau = 1$ is fully incomplete. The CES potential of the relationship is:
 \begin{equation}\label{eq:contract_free_energy}
     \mathcal{F} = y(x_A, x_B) - \tau \cdot H(\text{non-contractible dimensions})
 \end{equation}
@@ -1649,11 +1649,11 @@ The two frameworks---\citet{grossman1986} and \citet{hart1990} on property right
 \section{Derivation VI: Behavioral Economics}\label{sec:behavioral}
 %=============================================================================
 
-The behavioral revolution \citep{kahneman1979,tversky1992,thaler2008} catalogs systematic deviations from rational choice: probability weighting, loss aversion, status quo bias, choice overload, context dependence. In the free energy framework, these are not separate ``biases'' but the \emph{complete characterization} of economic behavior at $T > 0$. The key insight is a duality: logit choice under rational inattention IS CES demand in log-utility space.
+The behavioral revolution \citep{kahneman1979,tversky1992,thaler2008} catalogs systematic deviations from rational choice: probability weighting, loss aversion, status quo bias, choice overload, context dependence. In the CES potential framework, these are not separate ``biases'' but the \emph{complete characterization} of economic behavior at $T > 0$. The key insight is a duality: logit choice under rational inattention IS CES demand in log-utility space.
 
 \subsection{Setup: Rational Inattention and the Logit-CES Duality}
 
-An agent chooses among $J$ alternatives with utilities $u_1, \ldots, u_J$. Under rational inattention \citep{sims2003}, the agent processes information subject to a Tsallis capacity constraint $S_q(\text{choice}; \text{utility}) \leq \kappa$ with $q = \rho$. Define the information temperature $T = 1/\kappa$: higher $T$ means less processing capacity, more ``behavioral.''
+An agent chooses among $J$ alternatives with utilities $u_1, \ldots, u_J$. Under rational inattention \citep{sims2003}, the agent processes information subject to a Tsallis capacity constraint $S_q(\text{choice}; \text{utility}) \leq \kappa$ with $q = \rho$. Define the information friction $T = 1/\kappa$: higher $T$ means less processing capacity, more ``behavioral.''
 
 \citet{matejka2015} (building on \citet{anderson1992}) proved that optimal choice probabilities under the capacity constraint are multinomial logit:
 \begin{equation}\label{eq:logit_choice}
@@ -1662,7 +1662,7 @@ An agent chooses among $J$ alternatives with utilities $u_1, \ldots, u_J$. Under
 
 This is \emph{identical} to CES demand shares in log-utility space. The CES share with parameter $\rho$ is $s_j = x_j^\rho / \sum_k x_k^\rho = \exp(\rho \log x_j) / \sum_k \exp(\rho \log x_k)$, which matches \eqref{eq:logit_choice} under the identification $u_j = \rho \log x_j$ and $T = 1$. The behavioral ``temperature'' and the CES ``substitutability'' are two views of the same parameter---the connection exploited throughout \Cref{sec:akerlof_ri}.
 
-The agent's value of having the menu is the free energy:
+The agent's value of having the menu is the CES potential:
 \begin{equation}\label{eq:behavioral_free_energy}
     \mathcal{F} = \max_{P} \left[\sum_{j} P(j) \, u_j - T \sum_{j} P(j) \log P(j)\right] = T \log \sum_{j=1}^{J} \exp(u_j / T)
 \end{equation}
@@ -1674,7 +1674,7 @@ As $T \to 0$ (infinite processing capacity), the logit probabilities collapse:
 \begin{equation}
     P(j) \;\to\; \begin{cases} 1 & \text{if } j = \argmax_k u_k \\ 0 & \text{otherwise} \end{cases}
 \end{equation}
-Choice is deterministic. The free energy converges to $\mathcal{F} \to \max_j u_j$. There are no framing effects, no context dependence, no probability weighting anomalies. This is the standard economic agent: a perfect optimizer over fully processed information.
+Choice is deterministic. The CES potential converges to $\mathcal{F} \to \max_j u_j$. There are no framing effects, no context dependence, no probability weighting anomalies. This is the standard economic agent: a perfect optimizer over fully processed information.
 
 \subsection{$T > 0$: The Behavioral Catalog}
 
@@ -1685,20 +1685,20 @@ At $T > 0$, the following behavioral phenomena emerge as necessary consequences 
     \item \textbf{Context dependence}: Adding alternative $k$ with $u_k < \max_j u_j$ changes $P(j)$ for all existing alternatives. At $T = 0$, irrelevant alternatives are irrelevant.
     \item \textbf{Probability weighting}: Objective probability $p$ is processed as $w(p) = p^{\rho}/[p^{\rho} + (1-p)^{\rho}]$---the \citet{tversky1992} probability weighting function. This IS the CES share function applied to binary outcomes.
     \item \textbf{Status quo bias}: The current state has entropy cost zero (no information processing required); switching requires $\Delta H > 0$ bits. At $T > 0$, the switching cost is $T \cdot \Delta H > 0$ even when the alternative is objectively better.
-    \item \textbf{Choice overload}: With $J$ alternatives, maximum entropy is $H = \log J$. The free energy $\mathcal{F} \leq u_{\max} - T \log J$; for large $J$, the entropy cost dominates and the agent prefers the outside option.
+    \item \textbf{Choice overload}: With $J$ alternatives, maximum entropy is $H = \log J$. The CES potential $\mathcal{F} \leq u_{\max} - T \log J$; for large $J$, the entropy cost dominates and the agent prefers the outside option.
 \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-Each phenomenon is derived from the free energy \eqref{eq:behavioral_free_energy}.
+Each phenomenon is derived from the CES potential \eqref{eq:behavioral_free_energy}.
 
 \medskip
 \emph{Step 1: Choice stochasticity.}
-From \eqref{eq:logit_choice}, $P(j) = \exp(u_j/T) / Z$ where $Z = \sum_k \exp(u_k/T)$ is the partition function. For any $T > 0$, $P(j) \in (0,1)$ for all $j$---no alternative is chosen with certainty. The variance of choice around the best alternative scales as $\Var(j^*) \sim T$: higher temperature produces noisier choice, exactly the quantal response equilibrium of \citet{mckelvey1995}.
+From \eqref{eq:logit_choice}, $P(j) = \exp(u_j/T) / Z$ where $Z = \sum_k \exp(u_k/T)$ is the inclusive value. For any $T > 0$, $P(j) \in (0,1)$ for all $j$---no alternative is chosen with certainty. The variance of choice around the best alternative scales as $\Var(j^*) \sim T$: higher temperature produces noisier choice, exactly the quantal response equilibrium of \citet{mckelvey1995}.
 
 \medskip
 \emph{Step 2: Context dependence.}
-Adding alternative $k$ changes the partition function from $Z$ to $Z' = Z + \exp(u_k/T) > Z$. For every existing alternative $j$:
+Adding alternative $k$ changes the inclusive value from $Z$ to $Z' = Z + \exp(u_k/T) > Z$. For every existing alternative $j$:
 \begin{equation}
     P'(j) = \frac{\exp(u_j/T)}{Z'} < \frac{\exp(u_j/T)}{Z} = P(j)
 \end{equation}
@@ -1741,7 +1741,7 @@ The agent maintains the status quo whenever $u_1 - u_0 < T \cdot \Delta H$. Sinc
 
 \medskip
 \emph{Step 5: Choice overload.}
-Suppose the agent can choose from a menu of $J$ alternatives or take an outside option with utility $u_0$. The free energy of the menu is $\mathcal{F}_J = T \log \sum_j \exp(u_j/T)$. In the full rational inattention problem with capacity $\kappa = 1/T$, the net value of menu engagement is:
+Suppose the agent can choose from a menu of $J$ alternatives or take an outside option with utility $u_0$. The CES potential of the menu is $\mathcal{F}_J = T \log \sum_j \exp(u_j/T)$. In the full rational inattention problem with capacity $\kappa = 1/T$, the net value of menu engagement is:
 \begin{equation}
     V_{\text{menu}} = \mathcal{F}_J - u_0 - T \cdot H_{\text{menu}}
 \end{equation}
@@ -1768,7 +1768,7 @@ Rabin's setup: an agent rejects a 50-50 gamble of lose \$100 / gain \$110 at all
 
 \medskip
 \emph{Step 2: The two-parameter resolution.}
-In the free energy framework, the agent's value of a binary gamble with outcomes $w + g$ (gain) and $w - \ell$ (loss), each with probability $1/2$, is:
+In the CES potential framework, the agent's value of a binary gamble with outcomes $w + g$ (gain) and $w - \ell$ (loss), each with probability $1/2$, is:
 \begin{equation}\label{eq:rabin_free_energy}
     \mathcal{F} = T \log\!\left[\tfrac{1}{2}\exp(u(w+g)/T) + \tfrac{1}{2}\exp(u(w-\ell)/T)\right]
 \end{equation}
@@ -1816,7 +1816,7 @@ The $(\rho, T)$ decomposition subsumes several behavioral models as special case
 \Cref{prop:behavioral_catalog} and \Cref{prop:rabin} yield testable predictions that go beyond the existing behavioral catalog:
 
 \begin{enumerate}
-    \item \textbf{Response times measure $T$.} The information temperature $T = 1/\kappa$ is inversely proportional to processing capacity, which is observable via choice reaction times. High-$T$ decisions (fast, noisy) should exhibit more behavioral anomalies than low-$T$ decisions (slow, deliberate). \emph{Observed:} fast responders exhibit more framing effects and more violations of expected utility than slow responders, consistent with higher effective $T$.
+    \item \textbf{Response times measure $T$.} The information friction $T = 1/\kappa$ is inversely proportional to processing capacity, which is observable via choice reaction times. High-$T$ decisions (fast, noisy) should exhibit more behavioral anomalies than low-$T$ decisions (slow, deliberate). \emph{Observed:} fast responders exhibit more framing effects and more violations of expected utility than slow responders, consistent with higher effective $T$.
 
     \item \textbf{Expertise reduces $T$.} Domain experts have lower effective $T$ (greater capacity from training). The framework predicts that behavioral anomalies decrease monotonically with expertise within a domain but not across domains. \emph{Observed:} professional traders exhibit less loss aversion and less status quo bias in financial decisions but not in health or consumption decisions.
 
@@ -1837,7 +1837,7 @@ The theoretical derivations above produce a sharp cross-sectional prediction: ma
 
 \citet{barth2006} constructed indices of banking regulation from the World Bank's Bank Regulation and Supervision Survey (BRSS) and documented a paradox: countries with stricter \emph{activity restrictions}---limiting banks to traditional lending and prohibiting securities, insurance, and real estate activities---experienced \emph{worse} financial outcomes, not better. This finding was robust across specifications and contradicted the regulatory intuition that restricting bank activities should reduce risk.
 
-The free energy framework resolves this puzzle. Activity restrictions force banks into commodity lending---standardized, substitutable products. In the CES framework, this corresponds to high $\rho$ (high substitutability, low curvature $K$), which lowers the critical temperature $T^* \propto K$. Banks restricted to commodity lending operate closer to the collapse boundary and are more vulnerable to any deterioration in information quality.
+The CES potential framework resolves this puzzle. Activity restrictions force banks into commodity lending---standardized, substitutable products. In the CES framework, this corresponds to high $\rho$ (high substitutability, low curvature $K$), which lowers the breakdown threshold $T^* \propto K$. Banks restricted to commodity lending operate closer to the collapse boundary and are more vulnerable to any deterioration in information quality.
 
 Crucially, the framework predicts that the effect is \emph{mediated}: activity restrictions should increase crisis severity only when information quality is poor. When private monitoring is strong (low $T$), high activity restrictions are tolerable because $T$ remains below the (reduced) $T^*$. The specific testable prediction is that the \emph{interaction} between activity restrictions and private monitoring should predict crisis severity.
 
@@ -1897,7 +1897,7 @@ This is exactly the framework's prediction: $T^*(\sigma)$ is low when $\sigma$ i
 
 If the result reflects the framework's $\sigma \times T$ mechanism rather than a generic regulation effect, then \emph{only} the ARI~$\times$~PMI interaction should be significant. The other BCL indices---Capital Stringency (CSI), Supervisory Power (SPI), and Entry Barriers (EBI)---do not correspond to product substitutability in the framework and should not interact with PMI to predict crisis severity.
 
-Replacing ARI with each alternative index in the interaction model confirms this prediction. None of the placebo interactions is significant at conventional levels: CSI~$\times$~PMI ($\beta = -0.09$, $p = 0.51$), SPI~$\times$~PMI ($\beta = -0.26$, $p = 0.07$), EBI~$\times$~PMI ($\beta = -0.24$, $p = 0.31$). The specificity to activity restrictions is consistent with the framework: only ARI maps to product substitutability ($\sigma$), the dimension that controls the critical temperature.
+Replacing ARI with each alternative index in the interaction model confirms this prediction. None of the placebo interactions is significant at conventional levels: CSI~$\times$~PMI ($\beta = -0.09$, $p = 0.51$), SPI~$\times$~PMI ($\beta = -0.26$, $p = 0.07$), EBI~$\times$~PMI ($\beta = -0.24$, $p = 0.31$). The specificity to activity restrictions is consistent with the framework: only ARI maps to product substitutability ($\sigma$), the dimension that controls the breakdown threshold.
 
 \begin{figure}[htbp]
     \centering
@@ -1910,7 +1910,7 @@ Replacing ARI with each alternative index in the interaction model confirms this
 
 \subsection{Interpretation}
 
-The result provides empirical content to the critical temperature prediction $T^* \propto K$. Activity restrictions ($\sigma$) lower the critical threshold; private monitoring ($T^{-1}$) keeps information quality above it. The BCL puzzle---why do restrictions increase risk?---is resolved by recognizing that restrictions reduce CES curvature, making the system more fragile to information shocks. The interaction term captures the \emph{shape} of the $T^*(\sigma)$ surface.
+The result provides empirical content to the breakdown threshold prediction $T^* \propto K$. Activity restrictions ($\sigma$) lower the critical threshold; private monitoring ($T^{-1}$) keeps information quality above it. The BCL puzzle---why do restrictions increase risk?---is resolved by recognizing that restrictions reduce CES curvature, making the system more fragile to information shocks. The interaction term captures the \emph{shape} of the $T^*(\sigma)$ surface.
 
 Three caveats apply. First, the regression is cross-sectional with modest $R^2 = 0.14$; much of the variation in crisis severity is driven by factors outside the framework (trade exposure, fiscal space, contagion). Second, ARI and PMI are imperfect proxies for $\sigma$ and $T$---they measure regulatory intent, not market-level substitutability and information quality. Third, the BCL indices may partially proxy for institutional quality more broadly. The placebo tests mitigate the third concern: if the result reflected generic institutional quality, the other BCL indices should show similar interactions.
 
@@ -2011,7 +2011,7 @@ The conditional coefficients exhibit a non-monotonicity: MEDIUM exceeds LOW in c
 
 \subsection{What Is Unified}
 
-\Cref{tab:unified} summarizes the unification. Six areas of economic theory emerge as specific instances of the free energy framework \eqref{eq:economic_free_energy}.
+\Cref{tab:unified} summarizes the unification. Six areas of economic theory emerge as specific instances of the CES potential framework \eqref{eq:economic_free_energy}.
 
 \begin{table}[htbp]
 \centering
@@ -2022,13 +2022,13 @@ The conditional coefficients exhibit a non-monotonicity: MEDIUM exceeds LOW in c
 \midrule
 Information economics & Unraveling = CES degrading under entropy & $T^* \propto K$: complements resist adverse selection \emph{(tested: \S\ref{sec:gfc})} \\[6pt]
 Search / matching & Matching function = CES; search = entropy reduction & $\rho$ explains duration heterogeneity, Beveridge shift \\[6pt]
-Mechanism design & Virtual valuation = free energy gradient & PoIC$(\rho)$; mechanism format from $\rho$ \emph{(tested: \S\ref{sec:poic})} \\[6pt]
+Mechanism design & Virtual valuation = CES potential gradient & PoIC$(\rho)$; mechanism format from $\rho$ \emph{(tested: \S\ref{sec:poic})} \\[6pt]
 Contract theory & Hold-up, integration from $\rho$; asset specificity = low $\rho$ & Property rights and transaction costs unified through $\rho$ \\[6pt]
 Social choice & Cardinal aggregation at $T{>}0$ bypasses ordinal impossibility & Democratic robustness depends on $\rho$ \\[6pt]
 Behavioral economics & Behavioral catalog = $T{>}0$ phenomena & $T_{\text{gain}}/T_{\text{loss}}$ unifies loss aversion family \\
 \bottomrule
 \end{tabular}
-\caption{Unification of six areas of economic theory through the free energy framework $\mathcal{F} = \Phi_{\text{CES}}(\rho) - T \cdot H$. Each area emerges as information friction degrading a CES aggregate, with severity controlled by $\rho$.}
+\caption{Unification of six areas of economic theory through the CES potential framework $\mathcal{F} = \Phi_{\text{CES}}(\rho) - T \cdot H$. Each area emerges as information friction degrading a CES aggregate, with severity controlled by $\rho$.}
 \label{tab:unified}
 \end{table}
 
@@ -2039,10 +2039,10 @@ The two parameters have clean domains:
 \begin{itemize}
     \item $\rho$ (CES curvature) determines \textbf{structure}: whether markets are competitive or monopolistic, whether networks have strong or weak effects, whether assets are specific or generic, whether mechanisms require complex screening or simple auctions, whether political systems tolerate noise or gridlock.
 
-    \item $T$ (information temperature) determines \textbf{friction}: how precisely agents optimize, how quickly markets clear, how much information rent mechanisms must concede, how well democratic aggregation approximates the social optimum, how large behavioral deviations are.
+    \item $T$ (information friction) determines \textbf{friction}: how precisely agents optimize, how quickly markets clear, how much information rent mechanisms must concede, how well democratic aggregation approximates the social optimum, how large behavioral deviations are.
 \end{itemize}
 
-The interaction $\rho \times T$ determines \textbf{institutional viability}: whether a given institution (market, contract, mechanism, political system) functions or fails. The critical temperature $T^* \propto K(\rho)$ is the institutional failure boundary.
+The interaction $\rho \times T$ determines \textbf{institutional viability}: whether a given institution (market, contract, mechanism, political system) functions or fails. The breakdown threshold $T^* \propto K(\rho)$ is the institutional failure boundary.
 
 \subsection{What Remains Separate}
 
@@ -2064,7 +2064,7 @@ These are legitimate extensions, not contradictions. The framework provides the 
 
 \subsection{Why Wasn't This Seen Before?}
 
-The components of this framework are not new. CES aggregates have been used since \citet{arrow1961}. Tsallis entropy has been applied to complex systems since \citet{tsallis1988}. Free energy principles are standard in physics. Each component is textbook material.
+The components of this framework are not new. CES aggregates have been used since \citet{arrow1961}. Tsallis entropy has been applied to complex systems since \citet{tsallis1988}. Free energy principles (the physical analogue of the CES potential) are standard in physics. Each component is textbook material.
 
 The unity was obscured by the structure of the economics profession. Trade economists use CES for Armington elasticities. Macro economists use CES for production functions. Information economists use entropy for adverse selection. Mechanism designers use entropy for incentive constraints. Behavioral economists use noise models for bounded rationality. Each group uses its piece of the framework without recognizing it as a piece.
 
@@ -2088,11 +2088,11 @@ The first two predictions are tested directly: the Akerlof prediction in \Cref{s
 
 If the framework is correct, several methodological implications follow:
 \begin{enumerate}
-    \item The division of economics into ``micro'' and ``macro,'' or ``rational'' and ``behavioral,'' reflects the two terms of the free energy, not a fundamental disciplinary boundary.
+    \item The division of economics into ``micro'' and ``macro,'' or ``rational'' and ``behavioral,'' reflects the two terms of the CES potential, not a fundamental disciplinary boundary.
 
     \item The assumption of ``perfect rationality'' is not wrong---it is the $T = 0$ limit of a more general theory, valid when information costs are negligible relative to stakes.
 
-    \item The ``biases'' documented by behavioral economics are not failures of rationality but the thermodynamically inevitable consequences of finite information processing capacity.
+    \item The ``biases'' documented by behavioral economics are not failures of rationality but the variationally inevitable consequences of finite information processing capacity.
 
     \item Arrow's impossibility theorem is an exact result about ordinal aggregation.  It does not preclude non-dictatorial welfare judgments---it demonstrates that such judgments require cardinal information, which noisy optimization at $T > 0$ provides.  The cardinal CES family is the unique aggregation satisfying Pareto, anonymity, and homotheticity; its departure from ordinal IIA is the measurable price of non-dictatorship.
 \end{enumerate}
@@ -2101,7 +2101,7 @@ If the framework is correct, several methodological implications follow:
 \section{Conclusion}\label{sec:conclusion}
 %=============================================================================
 
-This paper has proposed that economic theory is generated by two canonical functions---the CES aggregate and Tsallis entropy with $q = \rho$---connected through the free energy principle. The framework is parameterized by $\rho$ (controlling both aggregation structure and information non-additivity) and $T$ (controlling information friction), with the interaction determining institutional viability.
+This paper has proposed that economic theory is generated by two canonical functions---the CES aggregate and Tsallis entropy with $q = \rho$---connected through the CES potential principle. The framework is parameterized by $\rho$ (controlling both aggregation structure and information non-additivity) and $T$ (controlling information friction), with the interaction determining institutional viability.
 
 Six detailed derivations demonstrate that six major areas of economic theory emerge as specific instances of this framework. Each derivation produces new $\rho$-dependent predictions that the original theories cannot generate. Two empirical tests in different domains confirm the central mechanism. First, pre-crisis banking regulation data from 147~countries shows that the interaction between product substitutability and information quality predicts 2007--2009 crisis severity ($p = 0.016$), while placebo indices do not---resolving a longstanding puzzle in the banking regulation literature. Second, 1{,}172 US federal procurement contracts show that differentiated goods (low $\rho$) exhibit systematically higher information rents than commodity goods ($p = 0.003$), as the mechanism design derivation predicts.
 

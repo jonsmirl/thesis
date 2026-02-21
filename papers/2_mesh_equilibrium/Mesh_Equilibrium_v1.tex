@@ -70,12 +70,12 @@
 \begin{abstract}
 \noindent Smirl (2026a) models how concentrated AI infrastructure investment finances the learning curves that enable distributed inference. That paper ends at the crossing point---the moment the distributed architecture becomes cost-competitive. This paper answers: what happens after the crossing? The answer is not billions of isolated devices running local inference. It is a self-organizing mesh of heterogeneous specialized agents whose collective capability exceeds centralized provision once the mesh reaches critical mass.
 
-Four contributions are new. First, I formalize the mesh equilibrium as a three-layer model---percolation-based critical mass, CES-aggregated heterogeneous specialization, and Laplacian knowledge diffusion---and prove the existence, uniqueness, and local asymptotic stability of the mesh equilibrium (Theorem~1). Second, I show that the phase transition from centralized to distributed provision is \emph{first-order} (discontinuous) when the number of specialization types exceeds two, using the Fortuin-Kasteleyn representation of the $q$-state Potts model. The mesh does not form gradually---it crystallizes. Third, I connect the crossing point $x(t) = 0$ from the predecessor paper to an inverse Bose-Einstein condensation in the Bianconi-Barab\'{a}si network fitness model: the packaging learning curve broadens the fitness distribution, dissolving the centralized condensate. Fourth, I derive that the mesh's routing and compensation requirements endogenously generate the need for a programmable settlement layer---connecting to a separate analysis of monetary infrastructure (Smirl 2026b, forthcoming). The model generates six falsifiable predictions with timing and failure conditions.
+Four contributions are new. First, I formalize the mesh equilibrium as a three-layer model---network-formation-based critical mass, CES-aggregated heterogeneous specialization, and Laplacian knowledge diffusion---and prove the existence, uniqueness, and local asymptotic stability of the mesh equilibrium (Theorem~1). Second, I show that the regime shift from centralized to distributed provision is \emph{first-order} (discontinuous) when the number of specialization types exceeds two, using the Fortuin-Kasteleyn representation of the $q$-state Potts model. The mesh does not form gradually---it crystallizes. Third, I connect the crossing point $x(t) = 0$ from the predecessor paper to an inverse capability concentration (Bose-Einstein condensation) in the Bianconi-Barab\'{a}si network fitness model: the packaging learning curve broadens the fitness distribution, dissolving the centralized condensate. Fourth, I derive that the mesh's routing and compensation requirements endogenously generate the need for a programmable settlement layer---connecting to a separate analysis of monetary infrastructure (Smirl 2026b, forthcoming). The model generates six falsifiable predictions with timing and failure conditions.
 
 \end{abstract}
 
 \vspace{0.5cm}
-\noindent\textbf{Keywords:} mesh equilibrium, phase transition, Bose-Einstein condensation, heterogeneous specialization, CES aggregation, Potts model, percolation, self-organizing networks, distributed AI inference
+\noindent\textbf{Keywords:} mesh equilibrium, regime shift, capability concentration, heterogeneous specialization, CES aggregation, Potts model, network formation, self-organizing networks, distributed AI inference
 
 \vspace{0.3cm}
 \noindent\textbf{JEL:} D85, L14, O33, C62, C73
@@ -100,15 +100,15 @@ The central theorem (Section~6) unifies the three layers: for $\Rz > 1$ and CES 
 
 Three mathematical results from network science, statistical mechanics, and theoretical ecology provide the formal foundations.
 
-The first is the Bianconi-Barab\'{a}si (2001) fitness model, which exhibits two phases depending on the shape of the node fitness distribution $\rho(\eta)$: a winner-takes-all Bose-Einstein condensation when $\rho(\eta)$ is sharply peaked (the centralized equilibrium), and a fit-get-rich distributed phase when $\rho(\eta)$ is broad (the mesh equilibrium). The predecessor paper's packaging learning curve broadens the fitness distribution by enabling edge devices to achieve fitness levels previously restricted to datacenter-scale nodes. The crossing point $x(t) = 0$ corresponds to the system reaching the BEC phase boundary. This is \emph{inverse} Bose-Einstein condensation: the condensate dissolves as the technology parameter $\theta$ improves.
+The first is the Bianconi-Barab\'{a}si (2001) fitness model, which exhibits two regimes depending on the shape of the node fitness distribution $\rho(\eta)$: winner-takes-all capability concentration (Bose-Einstein condensation in the network fitness literature) when $\rho(\eta)$ is sharply peaked (the centralized equilibrium), and a fit-get-rich distributed regime when $\rho(\eta)$ is broad (the mesh equilibrium). The predecessor paper's packaging learning curve broadens the fitness distribution by enabling edge devices to achieve fitness levels previously restricted to datacenter-scale nodes. The crossing point $x(t) = 0$ corresponds to the system reaching the BEC regime boundary. This is \emph{inverse} capability concentration: the condensate dissolves as the technology parameter $\theta$ improves.
 
-The second is the Fortuin-Kasteleyn (1972) representation, which reveals that percolation and specialization are the same mathematical object evaluated at different values of the Potts model state parameter $q$. For $q > 2$ specialization types, the phase transition is first-order (discontinuous). The mesh does not form gradually---it crystallizes abruptly once conditions are met. This is a testable prediction distinguishable from smooth adoption curves.
+The second is the Fortuin-Kasteleyn (1972) representation, which reveals that network formation and specialization are the same mathematical object evaluated at different values of the Potts model state parameter $q$. For $q > 2$ specialization types, the regime shift is first-order (discontinuous). The mesh does not form gradually---it crystallizes abruptly once conditions are met. This is a testable prediction distinguishable from smooth adoption curves.
 
 The third is the Pastor-Satorras--Vespignani (2001) result: on scale-free networks with degree exponent $\gamma \leq 3$, the epidemic threshold vanishes. Any nonzero rate of knowledge sharing sustains itself indefinitely on a heterogeneous network, because $\langle k^2 \rangle$ diverges and $\lambda_c = \langle k \rangle / \langle k^2 \rangle \to 0$. The topology does the work.
 
-A methodological observation unifies these results. The self-consistency equations across percolation, epidemiology, Ising/Potts models, ecology, and network economics all reduce to the same form: $m = f(m; \lambda)$ with a transcritical bifurcation at the critical parameter value. The $R_0$ from the predecessor paper \emph{is} the percolation threshold \emph{is} the Ising critical temperature. One equation, six notations. The crossing point $x(t) = 0$ is the moment $\Rz$ crosses unity.
+A methodological observation unifies these results. The self-consistency equations across percolation, epidemiology, Ising/Potts models, ecology, and network economics all reduce to the same form: $m = f(m; \lambda)$ with a transcritical bifurcation at the critical parameter value. The $R_0$ from the predecessor paper \emph{is} the network formation threshold \emph{is} the critical coupling threshold. One equation, six notations. The crossing point $x(t) = 0$ is the moment $\Rz$ crosses unity.
 
-The paper proceeds as follows. Section~2 reviews the predecessor paper's terminal conditions. Section~3 develops the percolation layer. Section~4 develops heterogeneous specialization. Section~5 develops knowledge diffusion. Section~6 states and proves the central theorem. Section~7 characterizes the post-crossing dynamics in three phases. Section~8 derives the settlement layer requirement. Section~9 discusses frameworks considered and rejected. Section~10 presents falsifiable predictions. Section~11 concludes. Appendix~A provides a remark on renormalization group universality that justifies the mean-field modeling approach.
+The paper proceeds as follows. Section~2 reviews the predecessor paper's terminal conditions. Section~3 develops the network formation layer. Section~4 develops heterogeneous specialization. Section~5 develops knowledge diffusion. Section~6 states and proves the central theorem. Section~7 characterizes the post-crossing dynamics in three phases. Section~8 derives the settlement layer requirement. Section~9 discusses frameworks considered and rejected. Section~10 presents falsifiable predictions. Section~11 concludes. Appendix~A provides a remark on multi-scale aggregation universality that justifies the mean-field modeling approach.
 
 
 % -------------------------------------------------------------------
@@ -135,13 +135,13 @@ At $T^*$, the following conditions hold:
 
 At $t = T^*$, the ``mesh'' consists of a population of heterogeneous devices capable of running inference workloads locally but not yet organized into a connected network with routing, specialization, or coordination. The number of capable devices $N(T^*)$ is positive but below critical mass. The predecessor paper's $R_0 > 1$ condition ensures that the population grows; the present paper characterizes what it grows \emph{into}.
 
-The technology parameter $\theta(t)$ continues to evolve after the crossing. As $\theta$ increases, additional device types become inference-capable, broadening the fitness distribution---the mechanism that drives inverse BEC condensation in Layer~1.
+The technology parameter $\theta(t)$ continues to evolve after the crossing. As $\theta$ increases, additional device types become inference-capable, broadening the fitness distribution---the mechanism that drives inverse capability concentration in Layer~1.
 
 
 % -------------------------------------------------------------------
-% 3. LAYER 1: PHASE TRANSITION AND CRITICAL MASS
+% 3. LAYER 1: REGIME SHIFT AND CRITICAL MASS
 % -------------------------------------------------------------------
-\section{Layer 1: Phase Transition and Critical Mass}
+\section{Layer 1: Regime Shift and Critical Mass}
 
 \subsection{The $\Rz$ Framework}
 
@@ -179,23 +179,23 @@ For stability: the iteration map $h(s) = 1 - \exp(-\Rz s)$ satisfies $h'(\Sinf^*
 
 The giant component result establishes \emph{connectivity}. The question of whether the mesh develops \emph{specialization}---a division of labor among heterogeneous agents---might appear to require a separate model. The Fortuin-Kasteleyn (1972) representation reveals that these are the same mathematical object.
 
-The partition function of the $q$-state Potts model on graph $G = (V, E)$ has the exact cluster expansion:
+The inclusive value (partition function) of the $q$-state Potts model on graph $G = (V, E)$ has the exact cluster expansion:
 \begin{equation}\label{eq:FK}
 Z_{\text{Potts}} = \sum_{A \subseteq E} p^{|A|}(1-p)^{|E|-|A|} \cdot q^{c(A)}
 \end{equation}
-where $p = 1 - e^{-\beta_T J}$ is the bond occupation probability (with $\beta_T$ the inverse temperature and $J$ the coupling), $A$ is a subset of edges, and $c(A)$ is the number of connected components in the subgraph $(V, A)$.
+where $p = 1 - e^{-\beta_T J}$ is the bond occupation probability (with $\beta_T$ the coordination intensity and $J$ the coupling strength), $A$ is a subset of edges, and $c(A)$ is the number of connected components in the subgraph $(V, A)$.
 
 At $q = 1$, this reduces to the generating function for bond percolation. The Potts model at general $q$ describes a system in which nodes adopt one of $q$ states (specializations) and prefer to match their neighbors. The FK representation shows that percolation and specialization are controlled by the same cluster structure evaluated at different $q$.
 
-\begin{proposition}[First-Order Crystallization]\label{prop:firstorder}
-For $q > 2$ specialization types on a graph with mean degree $\langle k \rangle > 1$, the specialization transition is first-order: the order parameter (fraction of nodes in the dominant specialization cluster) jumps discontinuously from zero to a positive value at the critical coupling $\beta_T J = \beta_c(q)$.
+\begin{proposition}[First-Order Discrete Adoption Transition]\label{prop:firstorder}
+For $q > 2$ specialization types on a graph with mean degree $\langle k \rangle > 1$, the specialization transition is first-order: the regime indicator (fraction of nodes in the dominant specialization cluster) jumps discontinuously from zero to a positive value at the critical coupling $\beta_T J = \beta_c(q)$.
 \end{proposition}
 
 This is a classical result in statistical mechanics (Baxter 1982; Wu 1982). The economic content is that the mesh does not form gradually. When the parameter $p$ (interpretable as the probability that two neighboring agents successfully coordinate on a task division) crosses the threshold, division of labor crystallizes abruptly. Early mesh growth appears stochastic and fragile; the crystallization event is sudden.
 
-For $q = 2$ (two specialization types), the transition is second-order (continuous)---the standard Ising universality class. This means the first-order prediction is specific to settings with $q \geq 3$ distinct specialization roles, which is the empirically relevant case for AI inference (coding, creative writing, mathematical reasoning, multimodal processing, domain-specific knowledge, real-time translation, etc.).
+For $q = 2$ (two specialization types), the transition is second-order (continuous)---the standard Ising aggregation-invariant class. This means the first-order prediction is specific to settings with $q \geq 3$ distinct specialization roles, which is the empirically relevant case for AI inference (coding, creative writing, mathematical reasoning, multimodal processing, domain-specific knowledge, real-time translation, etc.).
 
-\subsection{Inverse Bose-Einstein Condensation}
+\subsection{Inverse Capability Concentration (Bose-Einstein)}
 
 The Bianconi-Barab\'{a}si (2001) model assigns each node $i$ a fitness $\eta_i$ drawn from distribution $\rho(\eta)$. The degree (number of connections) of node $i$ evolves as:
 \begin{equation}\label{eq:BB}
@@ -207,19 +207,19 @@ where $t_i$ is the node's arrival time and $C$ satisfies the self-consistency eq
 \end{equation}
 This has the identical mathematical structure to the Bose gas number equation, with $C$ playing the role of the fugacity.
 
-The phase structure depends on $\rho(\eta)$ near its maximum $\eta_{\max}$. If $\rho(\eta) \sim (\eta_{\max} - \eta)^{\alpha_B}$ as $\eta \to \eta_{\max}$:
+The regime structure depends on $\rho(\eta)$ near its maximum $\eta_{\max}$. If $\rho(\eta) \sim (\eta_{\max} - \eta)^{\alpha_B}$ as $\eta \to \eta_{\max}$:
 
 \begin{itemize}
-\item $\alpha_B \leq 0$ (sharply peaked): \emph{Bose-Einstein condensation}. The single fittest node captures a macroscopic fraction of all connections. This is the centralized equilibrium---AWS, Google Cloud, and Azure dominate because they are the only nodes with high fitness (massive compute, low latency via CDN, broad model coverage).
-\item $\alpha_B > 0$ (broad distribution): \emph{Fit-get-rich} phase. Many nodes share traffic proportional to their fitness. No single node dominates. This is the mesh equilibrium.
+\item $\alpha_B \leq 0$ (sharply peaked): \emph{Capability concentration} (BEC regime). The single fittest node captures a macroscopic fraction of all connections. This is the centralized equilibrium---AWS, Google Cloud, and Azure dominate because they are the only nodes with high fitness (massive compute, low latency via CDN, broad model coverage).
+\item $\alpha_B > 0$ (broad distribution): \emph{Fit-get-rich} regime. Many nodes share traffic proportional to their fitness. No single node dominates. This is the mesh equilibrium.
 \end{itemize}
 
-\begin{proposition}[Learning-Curve-Driven Phase Transition]\label{prop:BEC}
-Let the technology parameter $\theta(t)$ index the packaging learning curve output from Smirl (2026a). Suppose the fitness of an edge device of type $j$ is $\eta_j(\theta) = \eta_j^0 + g_j(\theta)$, where $g_j$ is increasing in $\theta$ and $g_j(0) = 0$. If $\theta(0)$ produces a fitness distribution $\rho_0(\eta)$ with $\alpha_B \leq 0$, and $\theta(\bar{t})$ produces $\rho_{\bar{t}}(\eta)$ with $\alpha_B > 0$ for some finite $\bar{t}$, then the system undergoes a BEC-to-FGR phase transition at the critical $\theta^*$ where $\alpha_B$ crosses zero. This is inverse Bose-Einstein condensation: the centralized condensate dissolves.
+\begin{proposition}[Learning-Curve-Driven Regime Shift]\label{prop:BEC}
+Let the technology parameter $\theta(t)$ index the packaging learning curve output from Smirl (2026a). Suppose the fitness of an edge device of type $j$ is $\eta_j(\theta) = \eta_j^0 + g_j(\theta)$, where $g_j$ is increasing in $\theta$ and $g_j(0) = 0$. If $\theta(0)$ produces a fitness distribution $\rho_0(\eta)$ with $\alpha_B \leq 0$, and $\theta(\bar{t})$ produces $\rho_{\bar{t}}(\eta)$ with $\alpha_B > 0$ for some finite $\bar{t}$, then the system undergoes a BEC-to-FGR regime shift at the critical $\theta^*$ where $\alpha_B$ crosses zero. This is inverse capability concentration: the centralized condensate dissolves.
 \end{proposition}
 
 \begin{proof}
-The learning curve increases the fitness of previously low-fitness edge devices. Initially, only datacenter nodes have $\eta$ near $\eta_{\max}$, so $\rho(\eta)$ is sharply peaked at the maximum---the BEC phase. As $\theta$ increases, the support of $\rho$ broadens: more device types achieve fitness levels closer to $\eta_{\max}$. The exponent $\alpha_B$ characterizing the behavior of $\rho$ near $\eta_{\max}$ transitions from $\leq 0$ to $> 0$ at $\theta = \theta^*$. By the Bianconi-Barab\'{a}si classification, this is the BEC phase boundary.
+The learning curve increases the fitness of previously low-fitness edge devices. Initially, only datacenter nodes have $\eta$ near $\eta_{\max}$, so $\rho(\eta)$ is sharply peaked at the maximum---the BEC regime. As $\theta$ increases, the support of $\rho$ broadens: more device types achieve fitness levels closer to $\eta_{\max}$. The exponent $\alpha_B$ characterizing the behavior of $\rho$ near $\eta_{\max}$ transitions from $\leq 0$ to $> 0$ at $\theta = \theta^*$. By the Bianconi-Barab\'{a}si classification, this is the BEC regime boundary.
 
 The mapping to the predecessor paper is direct: $\theta^*$ corresponds to $x(t) = 0$. At $T^*$, the fitness distribution has broadened sufficiently that the centralized condensate---the macroscopic concentration of traffic at a single node---dissolves. Traffic distributes across the mesh proportional to fitness.
 \end{proof}
@@ -288,8 +288,8 @@ Under the threshold dynamics \eqref{eq:threshold_dynamics} with heterogeneous in
 
 The proof follows from the reinforcement dynamics: an agent that performs task $j$ frequently sees $\theta_{ij}$ decrease, making it more responsive to future demand for $j$, which further increases frequency of performance---a positive feedback loop. Simultaneously, thresholds for other tasks rise. The dynamics converge to a fixed point where each agent responds primarily to one task type. This is the Becker-Murphy division of labor emerging from local interactions without central coordination.
 
-\begin{remark}[Connection to Potts Crystallization]
-The specialization dynamics of Proposition~\ref{prop:specialization} are the micro-level mechanism underlying the Potts model crystallization of Proposition~\ref{prop:firstorder}. The Potts ``state'' of each node is its dominant specialization $j^*(i)$. The ``coupling'' $J$ in the Potts Hamiltonian corresponds to the task-sharing benefit between neighboring agents with compatible specializations. The first-order crystallization at $q > 2$ means that when the number of specialization types exceeds two, the transition from unspecialized to specialized is abrupt---consistent with the reinforcement dynamics exhibiting a bifurcation from mixed to specialized response profiles.
+\begin{remark}[Connection to Discrete Adoption Transition]
+The specialization dynamics of Proposition~\ref{prop:specialization} are the micro-level mechanism underlying the Potts model discrete adoption transition of Proposition~\ref{prop:firstorder}. The Potts ``state'' of each node is its dominant specialization $j^*(i)$. The ``coupling'' $J$ in the Potts energy function corresponds to the task-sharing benefit between neighboring agents with compatible specializations. The first-order adoption transition at $q > 2$ means that when the number of specialization types exceeds two, the transition from unspecialized to specialized is abrupt---consistent with the reinforcement dynamics exhibiting a bifurcation from mixed to specialized response profiles.
 \end{remark}
 
 
@@ -329,7 +329,7 @@ Pastor-Satorras and Vespignani (2001) established that the SIS epidemic threshol
 \lambda_c = \frac{\langle k \rangle}{\langle k^2 \rangle}
 \end{equation}
 
-For scale-free networks with $\gamma \leq 3$: $\langle k^2 \rangle$ diverges in the thermodynamic limit, so $\lambda_c \to 0$.
+For scale-free networks with $\gamma \leq 3$: $\langle k^2 \rangle$ diverges in the large-network limit, so $\lambda_c \to 0$.
 
 \begin{proposition}[Self-Sustaining Knowledge Propagation]\label{prop:epidemic}
 If the mesh has a scale-free degree distribution with $\gamma \leq 3$---which MoE routing produces endogenously through preferential specialization---then any nonzero rate of knowledge sharing sustains itself indefinitely. The topology ensures propagation without requiring a minimum transmission rate.
@@ -381,11 +381,11 @@ This exceeds $\Ccent = J^{(1-\rho)/\rho} \cdot M\bar{c}_{\text{cent}}$ when $\Si
 \end{proof}
 
 \begin{corollary}[Centralized Market Share Decline]\label{cor:decline}
-For $N > N^*$, the centralized provider's market share is strictly decreasing in $N$. In the Bianconi-Barab\'{a}si framework, the centralized ``condensate'' fraction declines continuously as the fitness distribution broadens, transitioning from the BEC phase (macroscopic condensate) to the FGR phase (distributed traffic).
+For $N > N^*$, the centralized provider's market share is strictly decreasing in $N$. In the Bianconi-Barab\'{a}si framework, the centralized ``condensate'' fraction declines continuously as the fitness distribution broadens, transitioning from the BEC regime (capability concentration) to the FGR regime (distributed traffic).
 \end{corollary}
 
 \begin{remark}[Self-Consistency Across Fields]\label{rem:unification}
-The critical condition $\Rz = 1$ in Theorem~\ref{thm:main} is a universal transcritical bifurcation. Table~\ref{tab:unification} shows the correspondence across fields. All produce the same self-consistency equation $m = f(m; \lambda)$ with the identical phase structure.
+The critical condition $\Rz = 1$ in Theorem~\ref{thm:main} is a universal transcritical bifurcation. Table~\ref{tab:unification} shows the correspondence across fields. All produce the same self-consistency equation $m = f(m; \lambda)$ with the identical regime structure.
 \end{remark}
 
 \begin{table}[htbp]
@@ -395,7 +395,7 @@ The critical condition $\Rz = 1$ in Theorem~\ref{thm:main} is a universal transc
 \small
 \begin{tabular}{@{}lllll@{}}
 \toprule
-Field & Order parameter $m$ & Control parameter $\lambda$ & Critical condition & Source \\
+Field & Regime indicator $m$ & Control parameter $\lambda$ & Critical condition & Source \\
 \midrule
 Percolation & Giant component $\Sinf$ & Mean degree $\langle k \rangle$ & $\langle k \rangle = 1$ & Erd\H{o}s-R\'{e}nyi (1960) \\
 Epidemiology & Infected fraction & $R_0$ & $R_0 = 1$ & Kermack-McKendrick (1927) \\
@@ -427,7 +427,7 @@ This is the Christensen (1997) pattern: disruption begins in markets the incumbe
 
 As additional device types become inference-capable (driven by the continuing packaging learning curve) and coordination infrastructure matures ($\kappa$ declines), $\Rz$ accelerates well above unity. Network effects dominate. Each new specialist joining the mesh increases $\Ceff$ superlinearly (by the CES diversity premium) and increases the Fiedler eigenvalue $\lambda_2(L)$ (by adding connectivity), which accelerates knowledge diffusion to subsequent entrants.
 
-In this phase, the Potts crystallization occurs: the division of labor among mesh agents transitions from fragmented proto-specialization to a structured, self-reinforcing configuration. By Proposition~\ref{prop:firstorder}, this transition is first-order for $q > 2$ specialization types. The crystallization is observable as a sudden increase in the concentration of agent capabilities around distinct specialization types, accompanied by the emergence of routing hub agents that handle disproportionate query traffic.
+In this phase, the discrete adoption transition occurs: the division of labor among mesh agents transitions from fragmented proto-specialization to a structured, self-reinforcing configuration. By Proposition~\ref{prop:firstorder}, this transition is first-order for $q > 2$ specialization types. The adoption transition is observable as a sudden increase in the concentration of agent capabilities around distinct specialization types, accompanied by the emergence of routing hub agents that handle disproportionate query traffic.
 
 Centralized providers lose market share in progressively more mainstream query types, beginning with the long-tail niches of Phase~1 and expanding to higher-volume categories as mesh coverage broadens.
 
@@ -506,13 +506,13 @@ Several candidate frameworks were evaluated for the formal model and rejected fo
 
 The model generates six predictions with timing and failure conditions, extending the predecessor paper's predictions into the post-crossing regime. If these fail, the mesh equilibrium theory is wrong.
 
-\textbf{Prediction 1: First-Order Crystallization, Not Gradual Adoption.} Mesh formation exhibits a discontinuous jump in adoption metrics---distributed inference share, number of active mesh participants, routing volume---rather than smooth logistic growth. Specifically, the transition from $<$5\% to $>$25\% distributed inference share occurs within 18 months, a pace inconsistent with Bass diffusion ($p + q < 0.5$) but consistent with first-order Potts crystallization. \emph{Timing:} 2030--2033, following the hardware crossing and $R_0 > 1$ events predicted in Smirl (2026a). \emph{Evidence against:} distributed inference share growing smoothly at $<$5 percentage points per year through 2035.
+\textbf{Prediction 1: First-Order Discrete Adoption Transition, Not Gradual Adoption.} Mesh formation exhibits a discontinuous jump in adoption metrics---distributed inference share, number of active mesh participants, routing volume---rather than smooth logistic growth. Specifically, the transition from $<$5\% to $>$25\% distributed inference share occurs within 18 months, a pace inconsistent with Bass diffusion ($p + q < 0.5$) but consistent with a first-order discrete adoption transition (Potts model with $q > 2$). \emph{Timing:} 2030--2033, following the hardware crossing and $R_0 > 1$ events predicted in Smirl (2026a). \emph{Evidence against:} distributed inference share growing smoothly at $<$5 percentage points per year through 2035.
 
 \textbf{Prediction 2: Specialization Precedes Generalization.} Early mesh agents are narrow specialists (fine-tuned for specific domains: legal reasoning, medical coding, code review in specific languages). General-purpose mesh capability---matching centralized providers on breadth---emerges only after the specialization structure crystallizes and routing infrastructure connects specialists. \emph{Evidence against:} early mesh participants predominantly running general-purpose base models without fine-tuning.
 
 \textbf{Prediction 3: Long-Tail Niche Dominance First.} The mesh achieves capability dominance first on long-tail queries (rare languages, domain-specific technical problems, real-time edge processing) before competing on mainstream tasks (general chat, standard code generation, summarization). Market share data should show distributed inference share exceeding 50\% for long-tail categories while remaining below 20\% for high-volume mainstream categories. \emph{Timing:} within 2 years of $R_0 > 1$ crossing. \emph{Evidence against:} mesh competing first on mainstream query types.
 
-\textbf{Prediction 4: Endogenous Hub Emergence.} The mesh's degree distribution becomes fat-tailed ($\gamma \leq 3$) within 3 years of crystallization, with $<$1\% of nodes handling $>$30\% of routing traffic. These hub agents emerge from the Bianconi-Barab\'{a}si preferential attachment dynamics, not from central design. \emph{Evidence against:} the degree distribution remaining thin-tailed (exponential or Gaussian) through 2036.
+\textbf{Prediction 4: Endogenous Hub Emergence.} The mesh's degree distribution becomes fat-tailed ($\gamma \leq 3$) within 3 years of the adoption transition, with $<$1\% of nodes handling $>$30\% of routing traffic. These hub agents emerge from the Bianconi-Barab\'{a}si preferential attachment dynamics, not from central design. \emph{Evidence against:} the degree distribution remaining thin-tailed (exponential or Gaussian) through 2036.
 
 \textbf{Prediction 5: Nonlinear Knowledge Acceleration.} The rate of capability improvement across the mesh (measured by benchmark scores, task coverage, or response quality) accelerates nonlinearly once the degree distribution becomes fat-tailed, consistent with the vanishing epidemic threshold (Proposition~\ref{prop:epidemic}). Specifically, the time between successive capability doublings decreases, rather than remaining constant as in standard learning curves. \emph{Evidence against:} capability improvement following a constant exponential rate through 2036.
 
@@ -528,9 +528,9 @@ This paper has formalized what happens after the crossing point identified in Sm
 
 The mesh equilibrium emerges from three composable mechanisms. Percolation theory establishes that a connected mesh forms when $\Rz > 1$. CES aggregation with $\rho < 1$ ensures that heterogeneous specialists collectively outperform homogeneous centralized provision---the diversity premium. Laplacian knowledge diffusion with a vanishing epidemic threshold on scale-free topologies ensures that capability improvements propagate self-sustainingly across the mesh.
 
-Three results distinguish this analysis from standard network economics. First, the Fortuin-Kasteleyn unification reveals that connectivity and specialization are the same mathematical object at different Potts parameter values, and predicts first-order (discontinuous) crystallization for $q > 2$ specialization types. Second, the Bianconi-Barab\'{a}si framework connects the predecessor paper's learning curve to an inverse Bose-Einstein condensation: the packaging learning curve broadens the fitness distribution, dissolving the centralized condensate. Third, the model endogenously derives the need for a programmable settlement layer from the routing incentive structure, connecting to the monetary infrastructure analysis of Smirl (2026b).
+Three results distinguish this analysis from standard network economics. First, the Fortuin-Kasteleyn unification reveals that connectivity and specialization are the same mathematical object at different Potts parameter values, and predicts a first-order (discontinuous) discrete adoption transition for $q > 2$ specialization types. Second, the Bianconi-Barab\'{a}si framework connects the predecessor paper's learning curve to inverse capability concentration: the packaging learning curve broadens the fitness distribution, dissolving the centralized condensate. Third, the model endogenously derives the need for a programmable settlement layer from the routing incentive structure, connecting to the monetary infrastructure analysis of Smirl (2026b).
 
-The central theorem establishes that the mesh equilibrium exists, is unique, is stable, and dominates centralized provision above a finite critical mass $N^*$ that decreases with population diversity. The post-crossing dynamics proceed through three phases: slow nucleation on long-tail niches, rapid crystallization with first-order specialization, and maturity with centralized coexistence on training and frontier inference.
+The central theorem establishes that the mesh equilibrium exists, is unique, is stable, and dominates centralized provision above a finite critical mass $N^*$ that decreases with population diversity. The post-crossing dynamics proceed through three phases: slow nucleation on long-tail niches, rapid adoption transition with first-order specialization, and maturity with centralized coexistence on training and frontier inference.
 
 What the model predicts unambiguously is that the distributed ecosystem does not remain a collection of isolated devices. The same economic forces that drive specialization and trade in human economies---comparative advantage, network effects, complementary capabilities---drive the formation of a mesh whose collective intelligence exceeds what any centralized system can provide. The organizational form is not designed; it is the equilibrium.
 
@@ -543,14 +543,14 @@ The companion paper (Smirl 2026d) proves that the four-level structure assumed a
 % -------------------------------------------------------------------
 \appendix
 
-\section{Renormalization Group Universality}
+\section{Multi-Scale Aggregation Universality}
 
-The modeling choices in this paper---supermodular game theory for equilibrium existence, mean-field percolation for the giant component, CES production functions for capability aggregation---may appear to be convenient approximations rather than rigorous characterizations. The renormalization group (RG) provides a justification.
+The modeling choices in this paper---supermodular game theory for equilibrium existence, mean-field percolation for the giant component, CES production functions for capability aggregation---may appear to be convenient approximations rather than rigorous characterizations. Multi-scale aggregation theory (RG; known in the physics literature as the renormalization group) provides a justification.
 
 \begin{remark}[Mean-Field Exactness Above the Upper Critical Dimension]\label{rem:RG}
 For systems on networks with spectral dimension $d_s > 4$, mean-field theory is exact---not an approximation, but a rigorous result (see e.g.\ Dorogovtsev et al.\ 2008 for a review). Real-world networks, including the internet, social networks, and infrastructure graphs, generically have $d_s > 4$ due to the small-world property (high clustering with short path lengths).
 
-This means that the mean-field percolation result (Proposition~\ref{prop:gc}), the mean-field Potts transition (Proposition~\ref{prop:firstorder}), and the Katz-Shapiro network goods model that underlies the supermodular game are not approximations for the mesh. They are exact characterizations of the phase structure. Corrections to mean-field scaling are suppressed by powers of $1/(d_s - 4)$ and are negligible.
+This means that the mean-field percolation result (Proposition~\ref{prop:gc}), the mean-field Potts transition (Proposition~\ref{prop:firstorder}), and the Katz-Shapiro network goods model that underlies the supermodular game are not approximations for the mesh. They are exact characterizations of the regime structure. Corrections to mean-field scaling are suppressed by powers of $1/(d_s - 4)$ and are negligible.
 
 The practical implication is that the paper's use of mean-field models requires no apology. The RG result licenses the framework.
 \end{remark}

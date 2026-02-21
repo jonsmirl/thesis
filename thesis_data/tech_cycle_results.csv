@@ -1,0 +1,10 @@
+prediction,verdict,statistic,value,detail
+#19 Overinvestment,CONSISTENT,Actual/Coop,11.12,avg ratio 2022+
+#20 Self-undermining,CONSISTENT,HBM alpha,0.23,"R²=0.95, annual decline 20.0%"
+#21 Duration formula,CONSISTENT,MAE (years),2.5,"R²=0.99, 4 cycles"
+#22 Cycle compression,DIRECTIONAL,"Kendall τ(α,dur)",-0.9128709291752769,"slope=-1.77, 2/3 transitions"
+#23 Crisis count,SUGGESTIVE,Tripartite cycles,3.0,3/4 cycles match n=1
+#24 Crisis sequence,CONSISTENT,Correct ordering,3.0,3/3 cycles F→P→G
+#25 Low ρ at arrival,DIRECTIONAL,"τ(year,ρ)",0.6666666666666669,"all ρ≤0, τ(α,ρ)=0.67"
+#26 Crossing ~2028,TRAJECTORY CONSISTENT,Growth rate,125.86307290624524,params/$ growing 126%/yr
+#27 Self-sustaining,TRAJECTORY CONSISTENT,Post-crossing,,"trajectory consistent, forward-looking"

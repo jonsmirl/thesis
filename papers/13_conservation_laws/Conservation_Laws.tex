@@ -31,7 +31,7 @@
 \newcommand{\calR}{\mathcal{R}}
 \newcommand{\bone}{\mathbf{1}}
 
-\title{Conservation Laws, Topological Invariants, and Exact Constraints\\in the Economic Free Energy Framework}
+\title{Conservation Laws, Structural Invariants, and Exact Constraints\\in the Economic CES Potential Framework}
 \author{Jon Smirl}
 \date{February 2026 \\ \smallskip \textit{Working Paper}}
 
@@ -39,42 +39,42 @@
 \maketitle
 
 \begin{abstract}
-The economic free energy $\calF = \Phi_{\mathrm{CES}}(\rho) - T \cdot H$ possesses symmetries---scaling, permutation, and the Boltzmann structure of its equilibrium distribution---that generate exact conservation laws and constraints. This paper derives five families of such constraints. First, the \emph{Euler-equilibrium identity}: at any equilibrium of any CES economy, $\mathbf{x}^* \cdot \nabla H = -1/T$, providing a model-independent measurement of information temperature distinct from the fluctuation-dissipation route. Second, \emph{permutation constraints}: equilibrium covariance matrices have the structured form $(\sigma^2 - \gamma)\mathbf{I} + \gamma \bone\bone^\top$, with eigenvalues determined by $T/K_{\mathrm{eff}}$, yielding overidentifying restrictions testable with firm-level data. Third, the \emph{Crooks fluctuation theorem} applied to economic transitions: the probability of a technology transition costing work $W$ relative to the reverse transition is $P_F(W)/P_R(-W) = \exp[(W - \Delta\calF)/T]$, an exact far-from-equilibrium result that quantifies irreversibility. Fourth, a \emph{topological invariant}: the winding number of the economic trajectory around the critical curve $T^*(\rho)$ in the phase diagram is an integer that counts the number of crises per technology cycle, robust to all smooth perturbations. Fifth, \emph{network Casimir invariants}: in the port-Hamiltonian formulation, the kernel of the antisymmetric trade-coupling matrix $\mathbf{J}$ generates conserved quantities, one per disconnected component of the trade network. Trade liberalization destroys Casimir invariants, freeing degrees of freedom and accelerating equilibration. The topological result is the deepest: the number of crises in a technology cycle is quantized and topologically protected---policy can change crisis timing and severity but not crisis count without altering the trajectory's topology.
+The economic CES potential $\calF = \Phi_{\mathrm{CES}}(\rho) - T \cdot H$ possesses symmetries---scaling, permutation, and the logit structure of its equilibrium distribution---that generate exact conservation laws and constraints. This paper derives five families of such constraints. First, the \emph{Euler-equilibrium identity}: at any equilibrium of any CES economy, $\mathbf{x}^* \cdot \nabla H = -1/T$, providing a model-independent measurement of information friction distinct from the variance-response route. Second, \emph{permutation constraints}: equilibrium covariance matrices have the structured form $(\sigma^2 - \gamma)\mathbf{I} + \gamma \bone\bone^\top$, with eigenvalues determined by $T/K_{\mathrm{eff}}$, yielding overidentifying restrictions testable with firm-level data. Third, the \emph{Reversibility Ratio Theorem (Crooks)} applied to economic transitions: the probability of a technology transition costing work $W$ relative to the reverse transition is $P_F(W)/P_R(-W) = \exp[(W - \Delta\calF)/T]$, an exact far-from-equilibrium result that quantifies irreversibility. Fourth, a \emph{structural invariant}: the crisis count invariant (winding number) of the economic trajectory around the critical curve $T^*(\rho)$ in the regime diagram is an integer that counts the number of crises per technology cycle, robust to all smooth perturbations. Fifth, \emph{Network Conservation Laws (Casimir invariants)}: in the conservative-dissipative formulation, the kernel of the antisymmetric trade-coupling matrix $\mathbf{J}$ generates conserved quantities, one per disconnected component of the trade network. Trade liberalization destroys network conservation laws, freeing degrees of freedom and accelerating equilibration. The structural result is the deepest: the number of crises in a technology cycle is quantized and structurally protected---policy can change crisis timing and severity but not crisis count without altering the trajectory's topology.
 \end{abstract}
 
 \textbf{JEL Codes:} C62, D50, E32, F10
 
-\textbf{Keywords:} conservation laws, free energy, topology, winding number, Crooks theorem, Casimir invariants, trade networks, phase transitions
+\textbf{Keywords:} conservation laws, CES potential, topology, crisis count invariant, Reversibility Ratio, network conservation laws, trade networks, regime shifts
 
 %=============================================================================
 \section{Introduction}\label{sec:intro}
 %=============================================================================
 
-In physics, the most powerful predictions come not from solving equations of motion but from conservation laws. Energy conservation, momentum conservation, and charge conservation constrain all possible dynamics regardless of the specific forces at work. These conservation laws follow from symmetries of the Lagrangian via Noether's theorem, or from the topological structure of the state space.
+In physics, the most powerful predictions come not from solving equations of motion but from conservation laws. Energy conservation, momentum conservation, and charge conservation constrain all possible dynamics regardless of the specific forces at work. These conservation laws follow from symmetries of the Lagrangian via the Symmetry-Conservation Principle (Noether), or from the topological structure of the state space.
 
-The companion papers establish that the economic free energy $\calF = \Phi_{\mathrm{CES}}(\rho) - T \cdot H$ governs production under information frictions \citep{smirl2026free, smirl2026prod}, with dynamical evolution on the free energy landscape following gradient flow or port-Hamiltonian dynamics \citep{smirl2026dyn}. But those papers focus on specific trajectories---relaxation rates, crisis sequences, escape times. This paper asks the prior question: \emph{what quantities are exactly conserved}, regardless of the specific trajectory?
+The companion papers establish that the economic CES potential $\calF = \Phi_{\mathrm{CES}}(\rho) - T \cdot H$ governs production under information frictions \citep{smirl2026free, smirl2026prod}, with dynamical evolution on the CES potential landscape following adjustment dynamics or conservative-dissipative dynamics \citep{smirl2026dyn}. But those papers focus on specific trajectories---relaxation rates, crisis sequences, escape times. This paper asks the prior question: \emph{what quantities are exactly conserved}, regardless of the specific trajectory?
 
-The answer turns out to be richer than the obvious budget constraint. The free energy has three symmetries---scaling (homogeneity of the CES aggregate), permutation (equal treatment of inputs), and the Boltzmann structure of the equilibrium distribution---each generating exact constraints. Beyond these, the phase diagram's topology generates a quantized invariant, and the trade network's structure generates a family of Casimir invariants.
+The answer turns out to be richer than the obvious budget constraint. The CES potential has three symmetries---scaling (homogeneity of the CES aggregate), permutation (equal treatment of inputs), and the logit structure of the equilibrium distribution---each generating exact constraints. Beyond these, the regime diagram's topology generates a quantized invariant, and the trade network's structure generates a family of network conservation laws.
 
-The results fall into two categories by their relationship to equilibrium. The Euler-equilibrium identity and the permutation constraints hold at equilibrium; they are static conservation laws analogous to thermodynamic identities. The Crooks theorem holds far from equilibrium; it constrains the full probability distribution of transition costs. The topological invariant holds for entire trajectories; it constrains the global structure of technology cycles. The Casimir invariants hold for the Hamiltonian (conservative) component of the dynamics; they identify what is conserved by trade and what is destroyed only by friction.
+The results fall into two categories by their relationship to equilibrium. The Euler-equilibrium identity and the permutation constraints hold at equilibrium; they are static conservation laws analogous to thermodynamic identities. The Reversibility Ratio holds far from equilibrium; it constrains the full probability distribution of transition costs. The structural invariant holds for entire trajectories; it constrains the global structure of technology cycles. The network conservation laws hold for the conservative (value-preserving) component of the dynamics; they identify what is conserved by trade and what is destroyed only by friction.
 
 \paragraph{Contributions.} The paper makes five contributions:
 \begin{enumerate}[label=(\roman*)]
-\item \textbf{Euler-equilibrium identity} (\Cref{thm:euler}): At any equilibrium, $\mathbf{x}^* \cdot \nabla H|_{\mathrm{eq}} = -1/T$, providing a second independent measurement of information temperature.
+\item \textbf{Euler-equilibrium identity} (\Cref{thm:euler}): At any equilibrium, $\mathbf{x}^* \cdot \nabla H|_{\mathrm{eq}} = -1/T$, providing a second independent measurement of information friction.
 
 \item \textbf{Permutation constraints on covariance} (\Cref{thm:covariance}): The equilibrium covariance matrix is forced into a $(J-1, 1)$ eigenvalue structure, with scale determined by $T/K_{\mathrm{eff}}$.
 
-\item \textbf{Crooks theorem for economic transitions} (\Cref{thm:crooks}): The ratio of forward to reverse transition probabilities is exactly $\exp[(W - \Delta\calF)/T]$, quantifying irreversibility far from equilibrium.
+\item \textbf{Reversibility Ratio for economic transitions} (\Cref{thm:crooks}): The ratio of forward to reverse transition probabilities is exactly $\exp[(W - \Delta\calF)/T]$, quantifying irreversibility far from equilibrium.
 
-\item \textbf{Topological crisis count} (\Cref{thm:winding}): The number of crises per technology cycle equals the winding number of the $(\rho, T)$ trajectory around the critical curve, a topologically protected integer.
+\item \textbf{Structural crisis count} (\Cref{thm:winding}): The number of crises per technology cycle equals the crisis count invariant of the $(\rho, T)$ trajectory around the critical curve, a structurally protected integer.
 
-\item \textbf{Network Casimir invariants} (\Cref{thm:casimir}): The kernel of the trade-coupling matrix $\mathbf{J}$ generates conserved quantities, with trade liberalization destroying Casimirs and accelerating adjustment.
+\item \textbf{Network conservation laws} (\Cref{thm:casimir}): The kernel of the trade-coupling matrix $\mathbf{J}$ generates conserved quantities, with trade liberalization destroying network conservation laws and accelerating adjustment.
 \end{enumerate}
 
-\paragraph{Roadmap.} \Cref{sec:setup} establishes the free energy landscape and its symmetries. \Cref{sec:euler} derives the Euler-equilibrium identity. \Cref{sec:permutation} derives the permutation constraints. \Cref{sec:crooks} develops the Crooks theorem for economic transitions. \Cref{sec:topology} establishes the topological invariant. \Cref{sec:casimir} derives the network Casimir invariants. \Cref{sec:empirical} collects testable predictions. \Cref{sec:literature} discusses the literature. \Cref{sec:conclusion} concludes.
+\paragraph{Roadmap.} \Cref{sec:setup} establishes the CES potential landscape and its symmetries. \Cref{sec:euler} derives the Euler-equilibrium identity. \Cref{sec:permutation} derives the permutation constraints. \Cref{sec:crooks} develops the Reversibility Ratio for economic transitions. \Cref{sec:topology} establishes the structural invariant. \Cref{sec:casimir} derives the network conservation laws. \Cref{sec:empirical} collects testable predictions. \Cref{sec:literature} discusses the literature. \Cref{sec:conclusion} concludes.
 
 %=============================================================================
-\section{The Free Energy and Its Symmetries}\label{sec:setup}
+\section{The CES Potential and Its Symmetries}\label{sec:setup}
 %=============================================================================
 
 \subsection{Setup}
@@ -83,7 +83,7 @@ Consider an economy with $N$ sectors, each employing a CES production technology
 \begin{equation}\label{eq:ces}
 F_n(\mathbf{x}_n) = \left(\frac{1}{J_n}\sum_{j=1}^{J_n} x_{nj}^{\rho_n}\right)^{1/\rho_n}
 \end{equation}
-with curvature $K_n = (1-\rho_n)(J_n-1)/J_n$. The CES potential is $\Phi = -\sum_{n} \log F_n$, information temperature is $T_n = 1/\kappa_n$, and the free energy is:
+with curvature $K_n = (1-\rho_n)(J_n-1)/J_n$. The CES potential is $\Phi = -\sum_{n} \log F_n$, information friction is $T_n = 1/\kappa_n$, and the CES potential is:
 \begin{equation}\label{eq:free_energy}
 \calF_q(\mathbf{x}; \boldsymbol{\rho}, \mathbf{T}) = \Phi(\mathbf{x}; \boldsymbol{\rho}) - \sum_{n=1}^{N} T_n \cdot S_{q_n}(\mathbf{x}_n)
 \end{equation}
@@ -91,10 +91,10 @@ where $S_{q_n} = (1 - \sum_j p_{nj}^{q_n})/(q_n - 1)$ is the Tsallis entropy of 
 
 \subsection{Three Symmetries}
 
-The free energy \eqref{eq:free_energy} possesses three symmetries that will generate conservation laws.
+The CES potential \eqref{eq:free_energy} possesses three symmetries that will generate conservation laws.
 
 \begin{proposition}[Symmetries of $\calF$]\label{prop:symmetries}
-The free energy $\calF$ satisfies:
+The CES potential $\calF$ satisfies:
 \begin{enumerate}[label=(\alph*)]
 \item \textbf{Scaling covariance:} For $\lambda > 0$,
 \begin{equation}\label{eq:scaling}
@@ -108,7 +108,7 @@ because $F_n$ is homogeneous of degree 1 (so $\Phi_n(\lambda\mathbf{x}_n) = \Phi
 \end{equation}
 where $x_{\pi(n),j} = x_{n,\pi(j)}$. Both $\Phi_n$ and $H_n$ are symmetric functions of their arguments.
 
-\item \textbf{Boltzmann equilibrium:} The Langevin dynamics $d\mathbf{x} = -\mathbf{L}\nabla\calF \, dt + \sqrt{2\mathbf{L}\mathbf{T}} \, d\mathbf{W}$ \citep{smirl2026dyn} has stationary distribution
+\item \textbf{Logit equilibrium:} The Langevin dynamics $d\mathbf{x} = -\mathbf{L}\nabla\calF \, dt + \sqrt{2\mathbf{L}\mathbf{T}} \, d\mathbf{W}$ \citep{smirl2026dyn} has stationary distribution
 \begin{equation}\label{eq:boltzmann}
 p_{\mathrm{eq}}(\mathbf{x}) \propto \exp(-\calF(\mathbf{x})/T)
 \end{equation}
@@ -121,7 +121,7 @@ Part (a): $F_n(\lambda\mathbf{x}_n) = \lambda F_n(\mathbf{x}_n)$ by degree-1 hom
 
 Part (b): The CES aggregate with equal weights is a symmetric function. Tsallis entropy is a symmetric function of its arguments.
 
-Part (c): Standard result for Langevin dynamics with the Einstein relation (noise amplitude $\sqrt{2\mathbf{L}\mathbf{T}}$ chosen to produce Boltzmann equilibrium).
+Part (c): Standard result for Langevin dynamics with the Einstein relation (noise amplitude $\sqrt{2\mathbf{L}\mathbf{T}}$ chosen to produce logit equilibrium).
 \end{proof}
 
 %=============================================================================
@@ -131,7 +131,7 @@ Part (c): Standard result for Langevin dynamics with the Einstein relation (nois
 \subsection{Derivation}
 
 \begin{theorem}[Euler-equilibrium identity]\label{thm:euler}
-At any equilibrium $\mathbf{x}^*$ of the free energy (where $\nabla \calF|_{\mathbf{x}^*} = 0$), and for any sector $n$:
+At any equilibrium $\mathbf{x}^*$ of the CES potential (where $\nabla \calF|_{\mathbf{x}^*} = 0$), and for any sector $n$:
 \begin{equation}\label{eq:euler_identity}
 \mathbf{x}_n^* \cdot \nabla_n H_n \big|_{\mathbf{x}^*} = -\frac{1}{T_n}
 \end{equation}
@@ -184,19 +184,19 @@ More directly: at $\mathbf{x}_n = c_n\bone$, we have $\nabla_n \Phi_n = -(1/(J_n
 \subsection{Operationalizing the Identity}
 
 \begin{corollary}[Second measurement of $T$]\label{cor:euler_T}
-Given observable data on the equilibrium allocation $\mathbf{x}_n^*$ and the ability to compute $\nabla H_n$ at that allocation, information temperature is identified as:
+Given observable data on the equilibrium allocation $\mathbf{x}_n^*$ and the ability to compute $\nabla H_n$ at that allocation, information friction is identified as:
 \begin{equation}\label{eq:T_euler}
 T_n = -\frac{1}{\mathbf{x}_n^* \cdot \nabla_n H_n}
 \end{equation}
-This is independent of the fluctuation-dissipation estimate $T_n = \sigma_n^2/\chi_n$ from \citet{smirl2026dyn}.
+This is independent of the Variance-Response Identity (VRI) estimate $T_n = \sigma_n^2/\chi_n$ from \citet{smirl2026dyn}.
 \end{corollary}
 
 \begin{remark}[Overidentifying restriction]
-The two independent measurements of $T_n$---one from the Euler-equilibrium identity \eqref{eq:T_euler}, one from the FDT---must agree if the framework is correct. Define:
+The two independent measurements of $T_n$---one from the Euler-equilibrium identity \eqref{eq:T_euler}, one from the VRI---must agree if the framework is correct. Define:
 \begin{equation}
 \Delta T_n = \left(-\frac{1}{\mathbf{x}_n^* \cdot \nabla_n H_n}\right) - \frac{\sigma_n^2}{\chi_n}
 \end{equation}
-If $\Delta T_n = 0$ (within estimation error), both measurements are consistent and the framework passes an internal consistency test. If $\Delta T_n \neq 0$ systematically, either: (i) the system is not at equilibrium (the Euler identity requires $\nabla\calF = 0$), (ii) the Langevin dynamics assumption underlying the FDT is violated, or (iii) the CES production structure is misspecified for sector $n$.
+If $\Delta T_n = 0$ (within estimation error), both measurements are consistent and the framework passes an internal consistency test. If $\Delta T_n \neq 0$ systematically, either: (i) the system is not at equilibrium (the Euler identity requires $\nabla\calF = 0$), (ii) the Langevin dynamics assumption underlying the VRI is violated, or (iii) the CES production structure is misspecified for sector $n$.
 \end{remark}
 
 \begin{remark}[Data requirements]
@@ -205,7 +205,7 @@ The Euler-equilibrium identity requires:
 \item The allocation vector $\mathbf{x}_n^*$: observable from input use data (how much of each input type the sector employs).
 \item The entropy gradient $\nabla_n H_n$: computable from $\mathbf{x}_n^*$ once the normalization $p_{nj} = x_{nj}/\sum_k x_{nk}$ is formed.
 \end{enumerate}
-Unlike the FDT, which requires time-series data (variance and shock response), the Euler identity requires only cross-sectional data at a single point in time. This makes it applicable in settings where time-series data is unavailable.
+Unlike the VRI, which requires time-series data (variance and shock response), the Euler identity requires only cross-sectional data at a single point in time. This makes it applicable in settings where time-series data is unavailable.
 \end{remark}
 
 %=============================================================================
@@ -214,10 +214,10 @@ Unlike the FDT, which requires time-series data (variance and shock response), t
 
 \subsection{Structured Covariance}
 
-The permutation invariance of the CES free energy forces the equilibrium distribution to be exchangeable across inputs. This constrains the covariance matrix to a specific form.
+The permutation invariance of the CES potential forces the equilibrium distribution to be exchangeable across inputs. This constrains the covariance matrix to a specific form.
 
 \begin{theorem}[Permutation-structured covariance]\label{thm:covariance}
-At equilibrium under the Boltzmann distribution \eqref{eq:boltzmann}, the covariance matrix of inputs within sector $n$ (with equal-weight CES) has the form:
+At equilibrium under the logit distribution \eqref{eq:boltzmann}, the covariance matrix of inputs within sector $n$ (with equal-weight CES) has the form:
 \begin{equation}\label{eq:structured_cov}
 \boldsymbol{\Sigma}_n = \Cov(\mathbf{x}_n, \mathbf{x}_n) = (\sigma_n^2 - \gamma_n)\mathbf{I}_{J_n} + \gamma_n \bone\bone^\top
 \end{equation}
@@ -225,7 +225,7 @@ where $\sigma_n^2 = \Var(x_{nj})$ is the common marginal variance and $\gamma_n 
 \end{theorem}
 
 \begin{proof}
-The Boltzmann distribution $p_{\mathrm{eq}} \propto \exp(-\calF/T_n)$ inherits the permutation symmetry of $\calF$: if $\calF(\mathbf{x}_{\pi}) = \calF(\mathbf{x})$ for all $\pi \in S_{J_n}$, then $p_{\mathrm{eq}}(\mathbf{x}_{\pi}) = p_{\mathrm{eq}}(\mathbf{x})$. This means $\mathbf{x}_n$ is an exchangeable random vector.
+The logit distribution $p_{\mathrm{eq}} \propto \exp(-\calF/T_n)$ inherits the permutation symmetry of $\calF$: if $\calF(\mathbf{x}_{\pi}) = \calF(\mathbf{x})$ for all $\pi \in S_{J_n}$, then $p_{\mathrm{eq}}(\mathbf{x}_{\pi}) = p_{\mathrm{eq}}(\mathbf{x})$. This means $\mathbf{x}_n$ is an exchangeable random vector.
 
 By de Finetti's theorem for finite exchangeable sequences, the joint distribution is invariant under permutation. For the second moments: $\E[x_{ni}^2] = \E[x_{nj}^2]$ for all $i, j$ (identical marginal variances) and $\E[x_{ni} x_{nj}] = \E[x_{nk} x_{nl}]$ for all pairs $i \neq j$ and $k \neq l$ (identical pairwise covariances). This forces the covariance matrix into the form \eqref{eq:structured_cov}.
 \end{proof}
@@ -248,7 +248,7 @@ $\boldsymbol{\Sigma}_n = (\sigma_n^2 - \gamma_n)\mathbf{I} + \gamma_n \bone\bone
 \subsection{Connecting to Information Temperature}
 
 \begin{proposition}[Eigenvalue determined by $T/K_{\mathrm{eff}}$]\label{prop:eigenvalue_T}
-The FDT from \citet{smirl2026dyn} gives $\boldsymbol{\Sigma}_n = T_n \cdot (\nabla_n^2 \calF)^{-1}$. At the symmetric equilibrium, the Hessian eigenvalue on $\bone^\perp$ is:
+The VRI from \citet{smirl2026dyn} gives $\boldsymbol{\Sigma}_n = T_n \cdot (\nabla_n^2 \calF)^{-1}$. At the symmetric equilibrium, the Hessian eigenvalue on $\bone^\perp$ is:
 \begin{equation}
 \mu_\perp = K_{\mathrm{eff},n} \cdot \frac{J_n - 1}{J_n \bar{x}_n^2}
 \end{equation}
@@ -265,13 +265,13 @@ Given firm-level data within a sector:
 \item Estimate the covariance matrix of input uses.
 \item Test whether it has the $(J_n - 1, 1)$ eigenvalue structure predicted by \eqref{eq:structured_cov}. Specifically, test whether all eigenvalues on $\bone^\perp$ are equal (to within sampling error).
 \item If the structure holds, extract $T_n/K_{\mathrm{eff},n}$ from \eqref{eq:eigenvalue_formula}.
-\item Compare with the FDT estimate and the Euler-equilibrium estimate of $T_n$.
+\item Compare with the VRI estimate and the Euler-equilibrium estimate of $T_n$.
 \end{enumerate}
 Systematic violation of the $(J_n - 1, 1)$ structure indicates that the equal-weight CES specification is wrong for that sector---the inputs are not symmetric, and the general-weight CES from \citet{smirl2026ces} (Section 8) should be used instead.
 \end{remark}
 
 %=============================================================================
-\section{The Crooks Fluctuation Theorem}\label{sec:crooks}
+\section{The Reversibility Ratio Theorem}\label{sec:crooks}
 %=============================================================================
 
 \subsection{Setup: Forward and Reverse Processes}
@@ -286,21 +286,21 @@ This is a stochastic quantity---different realizations of the Langevin dynamics 
 
 \subsection{The Theorem}
 
-\begin{theorem}[Crooks fluctuation theorem for economic transitions]\label{thm:crooks}
-For the Langevin dynamics on the free energy landscape \eqref{eq:free_energy}, the probability distributions of work in the forward ($P_F$) and reverse ($P_R$) processes satisfy:
+\begin{theorem}[Reversibility Ratio Theorem for economic transitions]\label{thm:crooks}
+For the Langevin dynamics on the CES potential landscape \eqref{eq:free_energy}, the probability distributions of work in the forward ($P_F$) and reverse ($P_R$) processes satisfy:
 \begin{equation}\label{eq:crooks}
 \frac{P_F(W)}{P_R(-W)} = \exp\left(\frac{W - \Delta\calF}{T}\right)
 \end{equation}
-where $\Delta\calF = \calF_B - \calF_A$ is the free energy difference between the final and initial equilibrium states. This holds exactly, for any driving protocol $\lambda(t)$, arbitrarily far from equilibrium.
+where $\Delta\calF = \calF_B - \calF_A$ is the CES potential difference between the final and initial equilibrium states. This holds exactly, for any driving protocol $\lambda(t)$, arbitrarily far from equilibrium.
 \end{theorem}
 
 \begin{proof}
-The Crooks theorem \citep{crooks1999} holds for any system with Langevin dynamics, Boltzmann equilibrium distribution, and microscopically reversible dynamics. Our economic system satisfies all three conditions by construction: the Langevin equation \eqref{eq:boltzmann} has the Boltzmann stationary distribution, and the rational inattention logit choice model \citep{matejka2015} satisfies detailed balance (microscopic reversibility). The theorem then follows from the general proof in \citet{crooks1999}.
+The Reversibility Ratio Theorem \citep{crooks1999} holds for any system with Langevin dynamics, logit equilibrium distribution, and microscopically reversible dynamics. Our economic system satisfies all three conditions by construction: the Langevin equation \eqref{eq:boltzmann} has the logit stationary distribution, and the rational inattention logit choice model \citep{matejka2015} satisfies detailed balance (microscopic reversibility). The theorem then follows from the general proof in \citet{crooks1999}.
 \end{proof}
 
 \subsection{Consequences}
 
-\begin{corollary}[Jarzynski equality]\label{cor:jarzynski}
+\begin{corollary}[Minimum Policy Cost Theorem (Jarzynski)]\label{cor:jarzynski}
 Setting $g(W) = e^{-W/T}$ in the integral of \eqref{eq:crooks}:
 \begin{equation}\label{eq:jarzynski}
 \langle e^{-W/T} \rangle_F = e^{-\Delta\calF/T}
@@ -313,25 +313,25 @@ At the most probable work $W^*$ in the forward process, the ratio of forward to 
 \begin{equation}
 \frac{P_F(W^*)}{P_R(-W^*)} = \exp\left(\frac{W^* - \Delta\calF}{T}\right)
 \end{equation}
-For a typical (non-quasi-static) transition with $W^* > \Delta\calF$, this ratio is exponentially large. The forward process is exponentially more likely than the reverse, with the exponent proportional to the dissipated work $W^* - \Delta\calF$.
+For a typical (non-quasi-static) transition with $W^* > \Delta\calF$, this ratio is exponentially large. The forward process is exponentially more likely than the reverse, with the exponent proportional to the wasted work $W^* - \Delta\calF$.
 \end{corollary}
 
 \begin{remark}[Economic content of irreversibility]
-Consider a technology transition from centralized ($C$) to distributed ($D$) production, with $\Delta\calF = \calF_D - \calF_C < 0$ (distributed is lower free energy). The Crooks theorem says: the probability of a policy costing $W$ to achieve the transition $C \to D$ is related to the probability of a policy costing $-W$ to reverse the transition $D \to C$ by the exact factor $\exp[(W - \Delta\calF)/T]$.
+Consider a technology transition from centralized ($C$) to distributed ($D$) production, with $\Delta\calF = \calF_D - \calF_C < 0$ (distributed is lower CES potential). The Reversibility Ratio says: the probability of a policy costing $W$ to achieve the transition $C \to D$ is related to the probability of a policy costing $-W$ to reverse the transition $D \to C$ by the exact factor $\exp[(W - \Delta\calF)/T]$.
 
-For the typical case $W > 0 > \Delta\calF$, this factor is $\exp[(W + |\Delta\calF|)/T] \gg 1$. The forward transition is exponentially more likely than the reverse. This is not an assumption of irreversibility---it is a theorem. Technology transitions are irreversible because the Crooks relation makes reversal exponentially improbable.
+For the typical case $W > 0 > \Delta\calF$, this factor is $\exp[(W + |\Delta\calF|)/T] \gg 1$. The forward transition is exponentially more likely than the reverse. This is not an assumption of irreversibility---it is a theorem. Technology transitions are irreversible because the Reversibility Ratio makes reversal exponentially improbable.
 
-This also explains why policies attempting to reverse technology transitions (e.g., protecting legacy industries) require exponentially increasing effort: the dissipated work needed to push the system ``uphill'' on the free energy landscape grows exponentially with the free energy gap $|\Delta\calF|$.
+This also explains why policies attempting to reverse technology transitions (e.g., protecting legacy industries) require exponentially increasing effort: the wasted work needed to push the system ``uphill'' on the CES potential landscape grows exponentially with the CES potential gap $|\Delta\calF|$.
 \end{remark}
 
 \subsection{Estimating Dissipated Work}
 
-\begin{proposition}[Dissipation from variance]\label{prop:dissipation}
+\begin{proposition}[Deadweight loss from variance]\label{prop:dissipation}
 To leading order in the near-equilibrium expansion:
 \begin{equation}\label{eq:diss_variance}
 W_{\mathrm{diss}} = \langle W \rangle - \Delta\calF \approx \frac{\Var(W)}{2T}
 \end{equation}
-The deadweight loss of any policy is proportional to the variance of its outcomes divided by information temperature. Policies with highly variable outcomes are necessarily wasteful.
+The deadweight loss of any policy is proportional to the variance of its outcomes divided by information friction. Policies with highly variable outcomes are necessarily wasteful.
 \end{proposition}
 
 \begin{proof}
@@ -343,64 +343,64 @@ Taking logarithms: $-\Delta\calF/T \approx -\langle W\rangle/T + \Var(W)/(2T^2)$
 \end{proof}
 
 %=============================================================================
-\section{The Topological Invariant: Crisis Count}\label{sec:topology}
+\section{The Structural Invariant: Crisis Count}\label{sec:topology}
 %=============================================================================
 
 \subsection{The Critical Curve}
 
-The phase diagram of the economic free energy in $(\rho, T)$ space has a critical curve $T^*(\rho)$ separating the single-minimum regime (below) from the multi-minimum regime (above). At $T = T^*(\rho)$, the Hessian of $\calF$ acquires a zero eigenvalue: the landscape transitions from convex to non-convex.
+The regime diagram of the economic CES potential in $(\rho, T)$ space has a critical curve $T^*(\rho)$ separating the single-minimum regime (below) from the multi-minimum regime (above). At $T = T^*(\rho)$, the Hessian of $\calF$ acquires a zero eigenvalue: the landscape transitions from convex to non-convex.
 
 \begin{definition}[Critical curve]\label{def:critical_curve}
-The critical curve is the set of points in $(\rho, T)$ space where the free energy landscape changes character:
+The critical curve is the set of points in $(\rho, T)$ space where the CES potential landscape changes character:
 \begin{equation}\label{eq:critical_curve}
 \Gamma = \{(\rho, T) : \det \nabla^2 \calF|_{\mathbf{x}^*(\rho,T)} = 0\}
 \end{equation}
-For the CES free energy with effective curvature $K_{\mathrm{eff}} = K(1 - T/T^*)^+$, this simplifies to $T = T^*(\rho)$, a monotonically varying function of $\rho$.
+For the CES potential with effective curvature $K_{\mathrm{eff}} = K(1 - T/T^*)^+$, this simplifies to $T = T^*(\rho)$, a monotonically varying function of $\rho$.
 \end{definition}
 
-Below $\Gamma$, the economy has a unique stable equilibrium. Above $\Gamma$, multiple equilibria coexist (e.g., centralized and distributed production modes). Crossing $\Gamma$ from below is a phase transition.
+Below $\Gamma$, the economy has a unique stable equilibrium. Above $\Gamma$, multiple equilibria coexist (e.g., centralized and distributed production modes). Crossing $\Gamma$ from below is a regime shift.
 
 \subsection{The Winding Number}
 
-During a technology cycle, the economy traces a trajectory $\gamma(t) = (\rho(t), T_{\mathrm{eff}}(t))$ in the phase diagram, where $T_{\mathrm{eff}}$ is the effective information temperature of the financial-productive system.
+During a technology cycle, the economy traces a trajectory $\gamma(t) = (\rho(t), T_{\mathrm{eff}}(t))$ in the regime diagram, where $T_{\mathrm{eff}}$ is the effective information friction of the financial-productive system.
 
-\begin{definition}[Winding number]\label{def:winding}
-Let $(\rho_c, T_c)$ be a reference point on the critical curve $\Gamma$ (e.g., the point where $\Gamma$ has a local extremum or the point closest to the trajectory). The winding number of the trajectory $\gamma$ around $(\rho_c, T_c)$ is:
+\begin{definition}[Crisis count invariant (winding number)]\label{def:winding}
+Let $(\rho_c, T_c)$ be a reference point on the critical curve $\Gamma$ (e.g., the point where $\Gamma$ has a local extremum or the point closest to the trajectory). The crisis count invariant (winding number) of the trajectory $\gamma$ around $(\rho_c, T_c)$ is:
 \begin{equation}\label{eq:winding}
 n[\gamma] = \frac{1}{2\pi} \oint_\gamma d\theta
 \end{equation}
 where $\theta(t) = \arg(\gamma(t) - (\rho_c, T_c))$ is the angle of the trajectory relative to the reference point.
 \end{definition}
 
-\begin{theorem}[Topological crisis count]\label{thm:winding}
-The winding number $n[\gamma]$ is:
+\begin{theorem}[Structural crisis count]\label{thm:winding}
+The crisis count invariant $n[\gamma]$ is:
 \begin{enumerate}[label=(\alph*)]
-\item An integer (by the standard properties of winding numbers).
+\item An integer (by the standard properties of winding numbers in topology).
 
-\item A topological invariant: continuous deformations of $\gamma$ that do not cross the critical curve $\Gamma$ leave $n[\gamma]$ unchanged.
+\item A structural invariant: continuous deformations of $\gamma$ that do not cross the critical curve $\Gamma$ leave $n[\gamma]$ unchanged.
 
-\item Equal to the number of distinct phase transitions (crises) the economy undergoes during the trajectory. Specifically, each excursion of the trajectory above $\Gamma$ and back below corresponds to one increment of $n$.
+\item Equal to the number of distinct regime shifts (crises) the economy undergoes during the trajectory. Specifically, each excursion of the trajectory above $\Gamma$ and back below corresponds to one increment of $n$.
 
 \item Robust: perturbations to the model parameters ($\rho$, $T$, $\ell$, etc.) that are smooth and do not push the trajectory across $\Gamma$ leave $n[\gamma]$ invariant. Policy interventions, demand shocks, and institutional changes that modify the trajectory smoothly cannot change the crisis count.
 \end{enumerate}
 \end{theorem}
 
 \begin{proof}
-Part (a): Standard topology. The winding number of a closed curve around a point is always an integer.
+Part (a): Standard topology. The crisis count invariant (winding number) of a closed curve around a point is always an integer.
 
 Part (b): A continuous deformation of $\gamma$ that avoids $\Gamma$ is a homotopy in $\R^2 \setminus \Gamma$. Winding numbers are homotopy invariants.
 
-Part (c): Each crossing of $\Gamma$ from below (entering the multi-minimum regime) creates a new equilibrium via a saddle-node bifurcation. The system transitions to the new equilibrium --- this is the crisis. Crossing $\Gamma$ back from above (returning to the single-minimum regime) completes the excursion. A complete excursion (up and back) contributes $+1$ to the winding number. Partial excursions (touching $\Gamma$ but not crossing) contribute $0$.
+Part (c): Each crossing of $\Gamma$ from below (entering the multi-minimum regime) creates a new equilibrium via a fold bifurcation. The system transitions to the new equilibrium --- this is the crisis. Crossing $\Gamma$ back from above (returning to the single-minimum regime) completes the excursion. A complete excursion (up and back) contributes $+1$ to the crisis count invariant. Partial excursions (touching $\Gamma$ but not crossing) contribute $0$.
 
-More formally: parameterize the trajectory by its signed crossings of $\Gamma$. Each upward crossing (entering multi-minimum region) is a $+$ crossing; each downward crossing (returning to single-minimum) is a $-$ crossing. The winding number equals the number of $(+, -)$ pairs, which equals the number of complete excursions above $\Gamma$.
+More formally: parameterize the trajectory by its signed crossings of $\Gamma$. Each upward crossing (entering multi-minimum region) is a $+$ crossing; each downward crossing (returning to single-minimum) is a $-$ crossing. The crisis count invariant equals the number of $(+, -)$ pairs, which equals the number of complete excursions above $\Gamma$.
 
-Part (d): Topological invariance under smooth perturbations that avoid $\Gamma$ follows from part (b).
+Part (d): Structural invariance under smooth perturbations that avoid $\Gamma$ follows from part (b).
 \end{proof}
 
 \subsection{Classification of Technology Cycles}
 
-\begin{corollary}[Cycle classification by winding number]\label{cor:cycle_classification}
-Technology cycles are classified by their winding number:
+\begin{corollary}[Cycle classification by crisis count invariant]\label{cor:cycle_classification}
+Technology cycles are classified by their crisis count invariant:
 \begin{enumerate}[label=(\alph*)]
 \item $n = 0$: \textbf{Gradual transition.} The trajectory remains below $\Gamma$ throughout. No crisis occurs. The technology transitions smoothly from centralized to distributed. This requires that speculative activity never pushes $T_{\mathrm{eff}}$ above $T^*$---possible in principle but unlikely given the overinvestment theorem \citep{smirl2026cycle}.
 
@@ -412,26 +412,30 @@ Technology cycles are classified by their winding number:
 \end{enumerate}
 \end{corollary}
 
+\begin{remark}[Preliminary empirical evidence]
+The structural crisis count prediction has been tested against 4 historical technology cycles (\texttt{test\_tech\_cycle\_predictions.py}).  All 4 cycles match $n = 1$ (standard Perez): railroads, electrification, telephony, and internet each exhibit a single crisis phase.  Of the 3 cycles with tripartite data (railroads, electrification, internet), all 3 follow the predicted financial $\to$ production $\to$ governance ordering (average lags: F$\to$P 4.0 years, P$\to$G 3.3 years).  Telephony is anomalous---the Kingsbury Commitment (1913) represents regulatory preemption that prevented a market-driven financial crisis, consistent with the model's allowance for governance intervention that truncates the sequence.  The railroad era may have $n = 2$ (crises in 1873 and 1893), as noted in Corollary~\ref{cor:cycle_classification}(c).
+\end{remark}
+
 \begin{remark}[What policy can and cannot do]
-The topological invariance of $n[\gamma]$ has a sharp policy implication: \emph{policy can change the timing and severity of a crisis but cannot change the number of crises} without altering the fundamental topology of the trajectory. To change $n$, policy must either:
+The structural invariance of $n[\gamma]$ has a sharp policy implication: \emph{policy can change the timing and severity of a crisis but cannot change the number of crises} without altering the fundamental topology of the trajectory. To change $n$, policy must either:
 \begin{itemize}
-\item Prevent the trajectory from crossing $\Gamma$ at all (requiring $T_{\mathrm{eff}} < T^*$ throughout---effective macroprudential regulation that limits speculative temperature), or
+\item Prevent the trajectory from crossing $\Gamma$ at all (requiring $T_{\mathrm{eff}} < T^*$ throughout---effective macroprudential regulation that limits speculative friction), or
 \item Move the critical curve $\Gamma$ itself (changing $T^*(\rho)$ by modifying the production technology or information infrastructure).
 \end{itemize}
 Within a given $n$, policy has significant latitude: the crisis can be brought forward or delayed, its severity can be amplified or dampened, and its distributional consequences can be redirected. But the count $n$ is fixed by topology.
 \end{remark}
 
 \begin{remark}[The 2008 Global Financial Crisis]
-The 2008 GFC is interesting from this perspective. Was it $n = 1$ for the internet cycle (a delayed crisis from the dot-com installation phase) or $n = 1$ for a separate financial-engineering cycle? If the GFC was driven by a separate set of $(\rho, T)$ parameters (securitization technology with its own complementarity and information friction), it has its own winding number. If it was a second excursion of the same cycle that produced the 2000 dot-com crash, then the internet era has $n = 2$. The distinction is empirically testable: check whether the financial temperature $T_{\mathrm{eff}}$ returned below $T^*$ between 2002 and 2007 (supporting two separate cycles with $n = 1$ each) or remained above $T^*$ throughout (supporting one cycle with $n = 2$).
+The 2008 GFC is interesting from this perspective. Was it $n = 1$ for the internet cycle (a delayed crisis from the dot-com installation phase) or $n = 1$ for a separate financial-engineering cycle? If the GFC was driven by a separate set of $(\rho, T)$ parameters (securitization technology with its own complementarity and information friction), it has its own crisis count invariant. If it was a second excursion of the same cycle that produced the 2000 dot-com crash, then the internet era has $n = 2$. The distinction is empirically testable: check whether the financial friction $T_{\mathrm{eff}}$ returned below $T^*$ between 2002 and 2007 (supporting two separate cycles with $n = 1$ each) or remained above $T^*$ throughout (supporting one cycle with $n = 2$).
 \end{remark}
 
 %=============================================================================
-\section{Network Casimir Invariants}\label{sec:casimir}
+\section{Network Conservation Laws}\label{sec:casimir}
 %=============================================================================
 
-\subsection{Port-Hamiltonian Structure}
+\subsection{Conservative-Dissipative Structure}
 
-The companion paper \citep{smirl2026dyn} models the economy's dynamics as gradient flow: $\dot{\mathbf{x}} = -\mathbf{R}\nabla\calF$, where $\mathbf{R} \succ 0$ is the dissipative (friction) matrix. The more general port-Hamiltonian formulation includes a conservative (energy-preserving) component:
+The companion paper \citep{smirl2026dyn} models the economy's dynamics as adjustment dynamics: $\dot{\mathbf{x}} = -\mathbf{R}\nabla\calF$, where $\mathbf{R} \succ 0$ is the friction matrix. The more general conservative-dissipative formulation includes a conservative (value-preserving) component:
 \begin{equation}\label{eq:port_ham}
 \dot{\mathbf{x}} = (\mathbf{J} - \mathbf{R})\nabla\calF
 \end{equation}
@@ -446,83 +450,83 @@ where $a_{nm}$ is the flow of value from sector $n$ to sector $m$ (per unit dise
 \end{equation}
 \end{definition}
 
-\subsection{Casimir Invariants}
+\subsection{Network Conservation Laws (Casimir Invariants)}
 
-\begin{definition}[Casimir invariant]\label{def:casimir}
-A Casimir invariant is a function $C(\mathbf{x})$ satisfying $\mathbf{J}\nabla C = 0$. Casimir invariants are conserved by the Hamiltonian part of the dynamics ($\dot{\mathbf{x}} = \mathbf{J}\nabla\calF$ implies $\dot{C} = \nabla C^\top \mathbf{J}\nabla\calF = 0$ by antisymmetry and $\mathbf{J}\nabla C = 0$).
+\begin{definition}[Network conservation law (Casimir invariant)]\label{def:casimir}
+A network conservation law (Casimir invariant) is a function $C(\mathbf{x})$ satisfying $\mathbf{J}\nabla C = 0$. Network conservation laws are conserved by the conservative part of the dynamics ($\dot{\mathbf{x}} = \mathbf{J}\nabla\calF$ implies $\dot{C} = \nabla C^\top \mathbf{J}\nabla\calF = 0$ by antisymmetry and $\mathbf{J}\nabla C = 0$).
 \end{definition}
 
-\begin{theorem}[Network Casimir invariants]\label{thm:casimir}
+\begin{theorem}[Network conservation laws]\label{thm:casimir}
 Let $\mathbf{J}$ be the trade-coupling matrix of an $N$-sector economy, and let $\ker(\mathbf{J})$ have dimension $k$. Then:
 \begin{enumerate}[label=(\alph*)]
-\item There are exactly $k$ independent Casimir invariants $C_1, \ldots, C_k$.
+\item There are exactly $k$ independent network conservation laws $C_1, \ldots, C_k$.
 
-\item If the trade network has $k$ connected components $\{S_1, \ldots, S_k\}$, then the Casimir invariants are the component totals:
+\item If the trade network has $k$ connected components $\{S_1, \ldots, S_k\}$, then the network conservation laws are the component totals:
 \begin{equation}\label{eq:casimirs}
 C_i = \sum_{n \in S_i} x_n, \qquad i = 1, \ldots, k
 \end{equation}
 Each connected component of the trade network conserves its own total value independently.
 
-\item \textbf{Fully connected economy} ($k = 1$): One Casimir invariant, $C = \sum_n x_n$ (the total budget). This is the only conservation law.
+\item \textbf{Fully connected economy} ($k = 1$): One network conservation law, $C = \sum_n x_n$ (the total budget). This is the only conservation law.
 
-\item \textbf{Segmented economy} ($k > 1$): Multiple independent conservation laws. Value in each segment is independently conserved by the Hamiltonian dynamics and can only be redistributed across segments by the dissipative part $\mathbf{R}$ (friction, not trade).
+\item \textbf{Segmented economy} ($k > 1$): Multiple independent conservation laws. Value in each segment is independently conserved by the conservative dynamics and can only be redistributed across segments by the friction matrix $\mathbf{R}$ (friction, not trade).
 \end{enumerate}
 \end{theorem}
 
 \begin{proof}
-Part (a): The Casimir invariants are the linear functions $C(\mathbf{x}) = \mathbf{v}^\top \mathbf{x}$ with $\mathbf{v} \in \ker(\mathbf{J}^\top) = \ker(-\mathbf{J}) = \ker(\mathbf{J})$ (using antisymmetry). The number of independent such functions equals $\dim\ker(\mathbf{J}) = k$.
+Part (a): The network conservation laws are the linear functions $C(\mathbf{x}) = \mathbf{v}^\top \mathbf{x}$ with $\mathbf{v} \in \ker(\mathbf{J}^\top) = \ker(-\mathbf{J}) = \ker(\mathbf{J})$ (using antisymmetry). The number of independent such functions equals $\dim\ker(\mathbf{J}) = k$.
 
-Part (b): If the trade network (the graph with adjacency matrix $|J_{nm}|$) has $k$ connected components, then $\mathbf{J}$ can be permuted into block-diagonal form with $k$ blocks. Each block has a one-dimensional kernel spanned by the indicator vector $\bone_{S_i}$ of the component. Therefore $\ker(\mathbf{J}) = \mathrm{span}\{\bone_{S_1}, \ldots, \bone_{S_k}\}$, and the Casimir invariants are $C_i = \bone_{S_i}^\top \mathbf{x} = \sum_{n \in S_i} x_n$.
+Part (b): If the trade network (the graph with adjacency matrix $|J_{nm}|$) has $k$ connected components, then $\mathbf{J}$ can be permuted into block-diagonal form with $k$ blocks. Each block has a one-dimensional kernel spanned by the indicator vector $\bone_{S_i}$ of the component. Therefore $\ker(\mathbf{J}) = \mathrm{span}\{\bone_{S_1}, \ldots, \bone_{S_k}\}$, and the network conservation laws are $C_i = \bone_{S_i}^\top \mathbf{x} = \sum_{n \in S_i} x_n$.
 
 Parts (c) and (d) are special cases.
 \end{proof}
 
-\subsection{Trade Liberalization Destroys Casimir Invariants}
+\subsection{Trade Liberalization Destroys Network Conservation Laws}
 
 \begin{corollary}[Trade liberalization and adjustment speed]\label{cor:trade_lib}
-Opening trade between two previously disconnected components $S_i$ and $S_j$ (by adding nonzero entries $J_{nm}$ for $n \in S_i$, $m \in S_j$) merges the two components into one, reducing the number of Casimir invariants from $k$ to $k - 1$. The previously independent conservation laws $C_i$ and $C_j$ are replaced by their sum $C_i + C_j$.
+Opening trade between two previously disconnected components $S_i$ and $S_j$ (by adding nonzero entries $J_{nm}$ for $n \in S_i$, $m \in S_j$) merges the two components into one, reducing the number of network conservation laws from $k$ to $k - 1$. The previously independent conservation laws $C_i$ and $C_j$ are replaced by their sum $C_i + C_j$.
 
 This has two effects:
 \begin{enumerate}[label=(\roman*)]
 \item \textbf{One fewer constraint.} The dynamics have one more degree of freedom. The economy can access configurations that were previously forbidden (those requiring value transfer between $S_i$ and $S_j$).
 
-\item \textbf{Faster equilibration.} The spectral gap of $\mathbf{J}$ (the smallest nonzero eigenvalue) determines the speed of Hamiltonian adjustment. Adding connections increases the spectral gap, accelerating convergence.
+\item \textbf{Faster equilibration.} The spectral gap of $\mathbf{J}$ (the smallest nonzero eigenvalue) determines the speed of conservative adjustment. Adding connections increases the spectral gap, accelerating convergence.
 \end{enumerate}
 \end{corollary}
 
-\begin{remark}[Topological explanation for trade and growth]
-The standard explanation for why trade openness promotes technology adoption involves comparative advantage and scale economies. The Casimir framework offers a different, complementary explanation: trade openness \emph{destroys conservation laws} that constrain adjustment dynamics. In a closed economy (many Casimirs), each sector's resources are trapped---they can only be redistributed internally. In an open economy (few Casimirs), resources flow freely to their highest-return use.
+\begin{remark}[Structural explanation for trade and growth]
+The standard explanation for why trade openness promotes technology adoption involves comparative advantage and scale economies. The network conservation law framework offers a different, complementary explanation: trade openness \emph{destroys conservation laws} that constrain adjustment dynamics. In a closed economy (many network conservation laws), each sector's resources are trapped---they can only be redistributed internally. In an open economy (few network conservation laws), resources flow freely to their highest-return use.
 
-The speed advantage of openness is not marginal but structural: it changes the dimension of the accessible state space. An economy with $k$ Casimirs evolves on a $(N - k)$-dimensional manifold. Reducing $k$ by 1 (opening one trade link) adds an entire dimension to the accessible space. This is a discrete, qualitative change, not a continuous quantitative one.
+The speed advantage of openness is not marginal but structural: it changes the dimension of the accessible state space. An economy with $k$ network conservation laws evolves on a $(N - k)$-dimensional manifold. Reducing $k$ by 1 (opening one trade link) adds an entire dimension to the accessible space. This is a discrete, qualitative change, not a continuous quantitative one.
 \end{remark}
 
-\begin{remark}[Casimirs and emergent CES]
-The Casimir invariants depend on the structure matrix $\mathbf{J}$, which in turn depends on the CES production structure.  The companion paper \citep{smirl2026emergent} shows that CES is not an assumed functional form but the unique aggregator compatible with constant returns to scale and scale consistency---the fixed point of the aggregation renormalization group.  Consequently, the conservation laws derived above are themselves emergent: they follow from the structural axioms of multi-scale economics, not from a parametric choice.
+\begin{remark}[Network conservation laws and emergent CES]
+The network conservation laws depend on the structure matrix $\mathbf{J}$, which in turn depends on the CES production structure.  The companion paper \citep{smirl2026emergent} shows that CES is not an assumed functional form but the unique aggregator compatible with constant returns to scale and scale consistency---the fixed point of multi-scale aggregation.  Consequently, the conservation laws derived above are themselves emergent: they follow from the structural axioms of multi-scale economics, not from a parametric choice.
 \end{remark}
 
-\subsection{Dissipation Breaks Casimir Invariance}
+\subsection{Friction Breaks Network Conservation Laws}
 
-\begin{proposition}[Casimir decay under friction]\label{prop:casimir_decay}
-In the full port-Hamiltonian dynamics \eqref{eq:port_ham} with $\mathbf{R} \succ 0$, the Casimir invariants are no longer exactly conserved. Their rate of change is:
+\begin{proposition}[Network conservation law decay under friction]\label{prop:casimir_decay}
+In the full conservative-dissipative dynamics \eqref{eq:port_ham} with $\mathbf{R} \succ 0$, the network conservation laws are no longer exactly conserved. Their rate of change is:
 \begin{equation}\label{eq:casimir_decay}
 \dot{C}_i = \nabla C_i^\top (\mathbf{J} - \mathbf{R}) \nabla\calF = -\nabla C_i^\top \mathbf{R} \nabla\calF
 \end{equation}
-The Hamiltonian part conserves $C_i$ exactly; the dissipative part erodes it at a rate proportional to the friction $\mathbf{R}$ and the free energy gradient.
+The conservative part conserves $C_i$ exactly; the friction part erodes it at a rate proportional to the friction $\mathbf{R}$ and the CES potential gradient.
 
-At equilibrium ($\nabla\calF = 0$), Casimir invariants are exactly conserved even with friction. Casimir decay occurs only when the system is out of equilibrium.
+At equilibrium ($\nabla\calF = 0$), network conservation laws are exactly conserved even with friction. Conservation law decay occurs only when the system is out of equilibrium.
 \end{proposition}
 
 \begin{proof}
-$\dot{C}_i = \nabla C_i^\top \dot{\mathbf{x}} = \nabla C_i^\top (\mathbf{J} - \mathbf{R})\nabla\calF = \underbrace{\nabla C_i^\top \mathbf{J}\nabla\calF}_{= 0 \text{ by Casimir}} - \nabla C_i^\top \mathbf{R}\nabla\calF$.
+$\dot{C}_i = \nabla C_i^\top \dot{\mathbf{x}} = \nabla C_i^\top (\mathbf{J} - \mathbf{R})\nabla\calF = \underbrace{\nabla C_i^\top \mathbf{J}\nabla\calF}_{= 0 \text{ by conservation law}} - \nabla C_i^\top \mathbf{R}\nabla\calF$.
 \end{proof}
 
 \begin{remark}[Economic interpretation]
-The distinction between Hamiltonian and dissipative dynamics maps to the distinction between \emph{trade} and \emph{friction}:
+The distinction between conservative and frictional dynamics maps to the distinction between \emph{trade} and \emph{friction}:
 \begin{itemize}
 \item \textbf{Trade} (the $\mathbf{J}$ part) conserves value within connected components. It is the ``clean'' part of economic dynamics---voluntary exchange that preserves total value.
-\item \textbf{Friction} (the $\mathbf{R}$ part) destroys value (or more precisely, converts free energy into entropy). It captures transaction costs, institutional rigidity, search costs, and all other sources of ``economic heat.''
+\item \textbf{Friction} (the $\mathbf{R}$ part) destroys value (or more precisely, converts CES potential into entropy). It captures transaction costs, institutional rigidity, search costs, and all other sources of ``economic heat.''
 \end{itemize}
-Trade alone conserves Casimir invariants. Friction breaks them. The economy equilibrates through a combination of both: trade moves value to where it's needed (within connected components), and friction gradually dissipates the remaining disequilibrium.
+Trade alone conserves network conservation laws. Friction breaks them. The economy equilibrates through a combination of both: trade moves value to where it's needed (within connected components), and friction gradually absorbs the remaining disequilibrium.
 \end{remark}
 
 %=============================================================================
@@ -537,7 +541,7 @@ The conservation laws generate specific, quantitative predictions.
 \begin{enumerate}[label=(\alph*)]
 \item \textbf{Cross-sectional $T$ estimation:} For each sector, compute $\mathbf{x}^* \cdot \nabla S_q$ from input allocation data. The ratio $T_n^{\mathrm{Euler}} = -1/(\mathbf{x}_n^* \cdot \nabla_n S_{q_n})$ should be positive and economically reasonable (finite information capacity).
 
-\item \textbf{Consistency with FDT:} The Euler estimate $T_n^{\mathrm{Euler}}$ and the FDT estimate $T_n^{\mathrm{FDT}} = \sigma_n^2/\chi_n$ should agree. Systematic disagreement identifies sectors that are out of equilibrium or where the CES specification fails.
+\item \textbf{Consistency with VRI:} The Euler estimate $T_n^{\mathrm{Euler}}$ and the VRI estimate $T_n^{\mathrm{VRI}} = \sigma_n^2/\chi_n$ should agree. Systematic disagreement identifies sectors that are out of equilibrium or where the CES specification fails.
 
 \item \textbf{Cross-time stability:} If the sector is near equilibrium, $T_n^{\mathrm{Euler}}$ should be stable over time. Rapid changes in $T_n^{\mathrm{Euler}}$ indicate the sector is being driven out of equilibrium (e.g., by a technology shock or policy change).
 \end{enumerate}
@@ -559,21 +563,21 @@ The conservation laws generate specific, quantitative predictions.
 Using monthly FRED Industrial Production data for 17 manufacturing subsectors (1972--2026), we compute the $17 \times 17$ correlation matrix of log-growth rates (136 off-diagonal pairs).  The coefficient of variation (CV) of off-diagonal correlations is 0.363, with Frobenius distance from the equicorrelation matrix $\|\Sigma - \Sigma_{\mathrm{eq}}\|/\|\Sigma\| = 0.289$.  A permutation test (1000 draws, shuffling time indices to destroy temporal dependence while preserving marginal distributions) yields a null-distribution CV median of 17.463; the observed CV falls at the 0th percentile (more equicorrelated than all permuted samples).  Bartlett's test of sphericity rejects $\Sigma = I$ ($\chi^2 = 4975$, $\df = 136$, $p < 10^{-10}$), confirming that the near-equicorrelation is not driven by trivially weak correlations.  The result is strongly consistent with the compound symmetry structure $\Sigma = (\sigma^2 - \gamma)I + \gamma \bone\bone^\top$ predicted by \cref{prop:cov_predictions}(a).
 \end{remark}
 
-\subsection{From the Crooks Theorem}
+\subsection{From the Reversibility Ratio}
 
-\begin{proposition}[Crooks predictions]\label{prop:crooks_predictions}
+\begin{proposition}[Reversibility Ratio predictions]\label{prop:crooks_predictions}
 \begin{enumerate}[label=(\alph*)]
-\item \textbf{Policy cost bound:} The average cost of any policy forcing a technology transition is at least $\Delta\calF$. Cross-country or cross-period variation in policy costs, controlling for $\Delta\calF$, estimates the dissipated work $W_{\mathrm{diss}}$.
+\item \textbf{Policy cost bound:} The average cost of any policy forcing a technology transition is at least $\Delta\calF$. Cross-country or cross-period variation in policy costs, controlling for $\Delta\calF$, estimates the wasted work $W_{\mathrm{diss}}$.
 
-\item \textbf{Variance-dissipation link:} $W_{\mathrm{diss}} \approx \Var(W)/(2T)$. Policies with highly variable outcomes are necessarily inefficient.
+\item \textbf{Variance-deadweight loss link:} $W_{\mathrm{diss}} \approx \Var(W)/(2T)$. Policies with highly variable outcomes are necessarily inefficient.
 
 \item \textbf{Irreversibility test:} Among historical technology transitions, reversals should be exponentially rarer than forward transitions, with the log-ratio proportional to $(W - \Delta\calF)/T$. This can be tested by comparing the frequency of ``re-centralization'' episodes to ``de-centralization'' episodes across industries and countries.
 \end{enumerate}
 \end{proposition}
 
-\subsection{From the Topological Invariant}
+\subsection{From the Structural Invariant}
 
-\begin{proposition}[Topological predictions]\label{prop:topo_predictions}
+\begin{proposition}[Structural invariant predictions]\label{prop:topo_predictions}
 \begin{enumerate}[label=(\alph*)]
 \item \textbf{Crisis count is integer:} Technology cycles should have a discrete number of crises (0, 1, 2, ...), not a continuous severity measure. The count is robust to institutional variation.
 
@@ -585,15 +589,15 @@ Using monthly FRED Industrial Production data for 17 manufacturing subsectors (1
 \end{enumerate}
 \end{proposition}
 
-\subsection{From Network Casimirs}
+\subsection{From Network Conservation Laws}
 
-\begin{proposition}[Network Casimir predictions]\label{prop:network_predictions}
+\begin{proposition}[Network conservation law predictions]\label{prop:network_predictions}
 \begin{enumerate}[label=(\alph*)]
-\item \textbf{Trade openness and adjustment speed:} Economies with more connected trade networks (fewer Casimir invariants) should adjust faster to technology shocks. Controlling for other factors, the spectral gap of the trade network's adjacency matrix should predict adjustment speed.
+\item \textbf{Trade openness and adjustment speed:} Economies with more connected trade networks (fewer network conservation laws) should adjust faster to technology shocks. Controlling for other factors, the spectral gap of the trade network's adjacency matrix should predict adjustment speed.
 
-\item \textbf{Segmentation creates traps:} Economies with trade barriers (more Casimir invariants) should exhibit more persistent misallocation. Value ``trapped'' in protected sectors cannot flow to higher-return uses.
+\item \textbf{Segmentation creates traps:} Economies with trade barriers (more network conservation laws) should exhibit more persistent misallocation. Value ``trapped'' in protected sectors cannot flow to higher-return uses.
 
-\item \textbf{Sanctions as Casimir creation:} Trade sanctions (disconnecting sectors from global trade) create new Casimir invariants, constraining the targeted economy's dynamics. The severity of sanctions is measured not by the volume of trade interrupted but by the number of Casimir invariants created (the number of newly disconnected components).
+\item \textbf{Sanctions as conservation law creation:} Trade sanctions (disconnecting sectors from global trade) create new network conservation laws, constraining the targeted economy's dynamics. The severity of sanctions is measured not by the volume of trade interrupted but by the number of network conservation laws created (the number of newly disconnected components).
 
 \item \textbf{Discrete jumps from trade liberalization:} Opening a single trade link between previously disconnected components creates a discrete (not marginal) change in adjustment dynamics --- the dimension of the accessible state space increases by one. This predicts that the first trade link between isolated economies has a disproportionately large effect relative to subsequent links.
 \end{enumerate}
@@ -603,42 +607,42 @@ Using monthly FRED Industrial Production data for 17 manufacturing subsectors (1
 \section{Relation to Existing Literature}\label{sec:literature}
 %=============================================================================
 
-\paragraph{Noether's theorem in economics.} The application of Noether's theorem to economic systems has been discussed by \citet{samuelson1947}, who noted the analogy between the Slutsky symmetry of consumer demand and reciprocal relations in physics. \citet{sato1981} explored conservation laws in neoclassical growth theory, identifying the ``income-wealth conservation law'' as a Noether current for time-translation symmetry. The present paper extends this program to the free energy framework, where the relevant symmetries (scaling, permutation, Boltzmann structure) are different from those in growth theory.
+\paragraph{Symmetry-Conservation Principle in economics.} The application of the Symmetry-Conservation Principle to economic systems has been discussed by \citet{samuelson1947}, who noted the analogy between the Slutsky symmetry of consumer demand and reciprocal relations in physics. \citet{sato1981} explored conservation laws in neoclassical growth theory, identifying the ``income-wealth conservation law'' as a Noether current for time-translation symmetry. The present paper extends this program to the CES potential framework, where the relevant symmetries (scaling, permutation, logit structure) are different from those in growth theory.
 
-\paragraph{Fluctuation theorems.} The Crooks theorem \citep{crooks1999} and Jarzynski equality \citep{jarzynski1997} are foundational results in non-equilibrium statistical mechanics. To our knowledge, this is the first application to economic transitions with specific economic content (CES complementarity and information temperature determining the free energy difference $\Delta\calF$).
+\paragraph{Fluctuation theorems.} The Reversibility Ratio Theorem \citep{crooks1999} and Minimum Policy Cost Theorem \citep{jarzynski1997} are foundational results in non-equilibrium statistical mechanics. To our knowledge, this is the first application to economic transitions with specific economic content (CES complementarity and information friction determining the CES potential difference $\Delta\calF$).
 
-\paragraph{Topological methods in economics.} Topological arguments have been used in general equilibrium theory (existence of equilibrium via fixed-point theorems, \citealt{debreu1959}) and in mechanism design (characterization of incentive-compatible mechanisms via topological constraints). The use of winding numbers to classify economic trajectories is, to our knowledge, novel. The closest precedent is the use of Morse theory to classify equilibria in general equilibrium \citep{dierker1972}.
+\paragraph{Topological methods in economics.} Topological arguments have been used in general equilibrium theory (existence of equilibrium via fixed-point theorems, \citealt{debreu1959}) and in mechanism design (characterization of incentive-compatible mechanisms via topological constraints). The use of crisis count invariants (winding numbers) to classify economic trajectories is, to our knowledge, novel. The closest precedent is the use of Morse theory to classify equilibria in general equilibrium \citep{dierker1972}.
 
-\paragraph{Input-output analysis and trade networks.} The Leontief input-output model \citep{leontief1936} provides the natural foundation for the trade-coupling matrix $\mathbf{J}$. The network perspective on trade has been developed extensively \citep{acemoglu2012}. Our contribution is the identification of Casimir invariants with trade network components and the interpretation of trade liberalization as destruction of conservation laws.
+\paragraph{Input-output analysis and trade networks.} The Leontief input-output model \citep{leontief1936} provides the natural foundation for the trade-coupling matrix $\mathbf{J}$. The network perspective on trade has been developed extensively \citep{acemoglu2012}. Our contribution is the identification of network conservation laws with trade network components and the interpretation of trade liberalization as destruction of conservation laws.
 
-\paragraph{Port-Hamiltonian economics.} The port-Hamiltonian formulation of economic dynamics has been explored by \citet{willems1972} in the context of systems theory. The CLAUDE.md for this project identifies the CES potential as the Hamiltonian of a port-Hamiltonian system. The present paper develops the Casimir structure of this formulation.
+\paragraph{Conservative-Dissipative economics.} The conservative-dissipative formulation of economic dynamics has been explored by \citet{willems1972} in the context of systems theory. The CLAUDE.md for this project identifies the CES potential as the generating function of a conservative-dissipative system. The present paper develops the network conservation law structure of this formulation.
 
 \paragraph{Companion papers.} This paper builds on:
 \begin{itemize}
 \item \citet{smirl2026ces}: The CES quadruple role theorem (scaling symmetry, permutation symmetry of the curvature parameter $K$).
-\item \citet{smirl2026free}: The free energy $\calF = \Phi - TH$ (Boltzmann structure).
-\item \citet{smirl2026prod}: The effective curvature theorem (critical curve $T^*(\rho)$ that defines the phase boundary).
-\item \citet{smirl2026cycle}: The technology cycle phases (trajectories in the $(\rho, T)$ phase diagram).
-\item \citet{smirl2026dyn}: The dynamical framework (Langevin dynamics, FDT, Kramers escape).
+\item \citet{smirl2026free}: The CES potential $\calF = \Phi - TH$ (logit structure).
+\item \citet{smirl2026prod}: The effective curvature theorem (critical curve $T^*(\rho)$ that defines the regime boundary).
+\item \citet{smirl2026cycle}: The technology cycle phases (trajectories in the $(\rho, T)$ regime diagram).
+\item \citet{smirl2026dyn}: The dynamical framework (Langevin dynamics, VRI, Kramers escape).
 \end{itemize}
 
 %=============================================================================
 \section{Conclusion}\label{sec:conclusion}
 %=============================================================================
 
-This paper has shown that the economic free energy $\calF = \Phi_{\mathrm{CES}}(\rho) - T \cdot H$ possesses a richer structure of conservation laws and exact constraints than the obvious budget constraint.
+This paper has shown that the economic CES potential $\calF = \Phi_{\mathrm{CES}}(\rho) - T \cdot H$ possesses a richer structure of conservation laws and exact constraints than the obvious budget constraint.
 
-The results are ordered by their distance from equilibrium. The Euler-equilibrium identity and permutation constraints are static results, holding at equilibrium. They provide model-independent measurements of information temperature and testable restrictions on the covariance structure of input allocations. The Crooks fluctuation theorem is an exact dynamic result, holding arbitrarily far from equilibrium. It quantifies irreversibility and bounds policy costs. The topological invariant transcends the distinction between equilibrium and non-equilibrium entirely: the crisis count is a property of entire trajectories, invariant under all smooth deformations.
+The results are ordered by their distance from equilibrium. The Euler-equilibrium identity and permutation constraints are static results, holding at equilibrium. They provide model-independent measurements of information friction and testable restrictions on the covariance structure of input allocations. The Reversibility Ratio Theorem is an exact dynamic result, holding arbitrarily far from equilibrium. It quantifies irreversibility and bounds policy costs. The structural invariant transcends the distinction between equilibrium and non-equilibrium entirely: the crisis count is a property of entire trajectories, invariant under all smooth deformations.
 
 Three results deserve emphasis for their empirical implications.
 
-First, the Euler-equilibrium identity $\mathbf{x}^* \cdot \nabla H = -1/T$ provides a cross-sectional estimate of information temperature from input allocation data alone, without requiring time-series data. Combined with the FDT estimate $T = \sigma^2/\chi$, this creates an overidentifying restriction: two independent measurements of the same quantity must agree if the framework is correct.
+First, the Euler-equilibrium identity $\mathbf{x}^* \cdot \nabla H = -1/T$ provides a cross-sectional estimate of information friction from input allocation data alone, without requiring time-series data. Combined with the VRI estimate $T = \sigma^2/\chi$, this creates an overidentifying restriction: two independent measurements of the same quantity must agree if the framework is correct.
 
-Second, the topological crisis count resolves a long-standing puzzle in the technology cycle literature: why are crises robust features across vastly different institutional contexts? The answer is that the crisis count is a topological invariant --- it depends only on whether the trajectory encircles the critical curve, not on the specific institutional, political, or cultural details of the transition. Policy can change timing and severity but not count. This is the strongest form of the claim that technology cycles are structural, not contingent.
+Second, the structural crisis count resolves a long-standing puzzle in the technology cycle literature: why are crises robust features across vastly different institutional contexts? The answer is that the crisis count is a structural invariant --- it depends only on whether the trajectory encircles the critical curve, not on the specific institutional, political, or cultural details of the transition. Policy can change timing and severity but not count. This is the strongest form of the claim that technology cycles are structural, not contingent.
 
-Third, the network Casimir invariants provide a new lens on trade policy. Trade barriers do not merely reduce the volume of exchange --- they create conservation laws that constrain adjustment dynamics, trapping value in protected sectors. Trade liberalization does not merely increase exchange --- it destroys conservation laws, freeing degrees of freedom and enabling faster equilibration. The effect is discrete (one fewer Casimir per new connection), not continuous, predicting that the first trade link between isolated economies has a disproportionately large effect.
+Third, the network conservation laws provide a new lens on trade policy. Trade barriers do not merely reduce the volume of exchange --- they create conservation laws that constrain adjustment dynamics, trapping value in protected sectors. Trade liberalization does not merely increase exchange --- it destroys conservation laws, freeing degrees of freedom and enabling faster equilibration. The effect is discrete (one fewer conservation law per new connection), not continuous, predicting that the first trade link between isolated economies has a disproportionately large effect.
 
-The deepest conceptual contribution is the identification of what is \emph{exactly} conserved in economic dynamics, as distinct from what is merely approximately stable. Budget constraints, covariance structures, transition probability ratios, crisis counts, and component totals are all exactly conserved (or exactly determined) by the symmetries and topology of the free energy landscape. Everything else --- specific allocations, price levels, growth rates --- is contingent on the specific trajectory. The conservation laws are the rails; the trajectory is the train.
+The deepest conceptual contribution is the identification of what is \emph{exactly} conserved in economic dynamics, as distinct from what is merely approximately stable. Budget constraints, covariance structures, transition probability ratios, crisis counts, and component totals are all exactly conserved (or exactly determined) by the symmetries and topology of the CES potential landscape. Everything else --- specific allocations, price levels, growth rates --- is contingent on the specific trajectory. The conservation laws are the rails; the trajectory is the train.
 
 %=============================================================================
 % Bibliography

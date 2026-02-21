@@ -1,0 +1,360 @@
+[11:49:17] ========================================================================
+[11:49:17]   STRUCTURAL ESTIMATION OF rho
+[11:49:17]   2026-02-21 11:49:17
+[11:49:17] ========================================================================
+[11:49:17] Fetching 30 FRED IP series...
+[11:49:17]   Loaded 30 series.
+[11:49:17] 
+  Found 6 aggregation events across 4 depth levels.
+[11:49:17] 
+========================================================================
+[11:49:17] SECTION 1: ENHANCED CES NLS WITH BLOCK BOOTSTRAP
+[11:49:17] ========================================================================
+[11:49:17] 
+  --- Total IP (J=3, T=649) ---
+[11:49:42]     rho = -0.0730 (sigma = 0.932)
+[11:49:42]     Asymptotic SE: 0.0315, CI: [-0.135, -0.011]
+[11:49:42]     Bootstrap  SE: 0.1196, CI: [-0.254, 0.201]
+[11:49:42]     SE ratio (boot/asym): 3.80
+[11:49:42]     R² = 0.999857, n_boot_valid = 1000
+[11:49:43]     Profile likelihood CI: [-0.124, -0.024]
+[11:49:43]     Sub-period: pre=0.2887, post=-0.0444, diff=-0.3330
+[11:49:43] 
+  --- Manufacturing (J=2, T=649) ---
+[11:49:55]     rho = -0.2994 (sigma = 0.770)
+[11:49:55]     Asymptotic SE: 0.0068, CI: [-0.313, -0.286]
+[11:49:55]     Bootstrap  SE: 0.0329, CI: [-0.366, -0.235]
+[11:49:55]     SE ratio (boot/asym): 4.85
+[11:49:55]     R² = 0.999978, n_boot_valid = 1000
+[11:49:55]     Profile likelihood CI: [-0.310, -0.296]
+[11:49:55]     Sub-period: pre=-0.1644, post=-0.6579, diff=-0.4935
+[11:49:55] 
+  --- Durable Goods (J=8, T=649) ---
+[11:52:26]     rho = 0.1518 (sigma = 1.179)
+[11:52:26]     Asymptotic SE: 0.0070, CI: [0.138, 0.166]
+[11:52:26]     Bootstrap  SE: 0.0175, CI: [0.116, 0.185]
+[11:52:26]     SE ratio (boot/asym): 2.49
+[11:52:26]     R² = 0.999245, n_boot_valid = 1000
+[11:52:28]     Profile likelihood CI: [0.148, 0.162]
+[11:52:28]     Sub-period: pre=0.3897, post=-0.1844, diff=-0.5741
+[11:52:28] 
+  --- Computer/Electronics (J=5, T=649) ---
+[11:53:12]     rho = -0.1909 (sigma = 0.840)
+[11:53:12]     Asymptotic SE: 0.0044, CI: [-0.199, -0.182]
+[11:53:12]     Bootstrap  SE: 0.0164, CI: [-0.215, -0.154]
+[11:53:12]     SE ratio (boot/asym): 3.77
+[11:53:12]     R² = 0.999852, n_boot_valid = 1000
+[11:53:14]     Profile likelihood CI: [-0.196, -0.181]
+[11:53:14]     Sub-period: pre=0.3468, post=-0.2811, diff=-0.6280
+[11:53:14] 
+  --- Transport Equipment (J=2, T=649) ---
+[11:53:27]     rho = 0.6733 (sigma = 3.061)
+[11:53:27]     Asymptotic SE: 0.0378, CI: [0.599, 0.747]
+[11:53:27]     Bootstrap  SE: 0.1297, CI: [0.388, 0.893]
+[11:53:27]     SE ratio (boot/asym): 3.43
+[11:53:27]     R² = 0.998370, n_boot_valid = 1000
+[11:53:27]     Profile likelihood CI: [0.606, 0.735]
+[11:53:27]     Sub-period: pre=0.9900, post=0.9796, diff=-0.0104
+[11:53:27] 
+  --- Nondurable Goods (J=9, T=649) ---
+[11:54:46]     rho = 0.9900 (sigma = 100.000)
+[11:54:46]     Asymptotic SE: 0.0531, CI: [0.886, 1.094]
+[11:54:46]     Bootstrap  SE: 0.0145, CI: [0.977, 0.990]
+[11:54:46]     SE ratio (boot/asym): 0.27
+[11:54:46]     R² = 0.999709, n_boot_valid = 1000
+[11:54:49]     Profile likelihood CI: [0.950, 0.950]
+[11:54:49]     Sub-period: pre=0.8849, post=0.9900, diff=+0.1051
+[11:54:49] 
+========================================================================
+[11:54:49] SECTION 2: VARIANCE FILTER INVERSION
+[11:54:49] ========================================================================
+[11:54:49] 
+  --- Total IP (J=3) ---
+[11:54:49]     rho_raw = 1.2747, rho_corrected = 0.7822
+[11:54:49]     var(idio)/var(agg) = 1.9010, avg_corr = 0.0209
+[11:54:49]     Bootstrap CI (raw): [1.256, 1.590]
+[11:54:49] 
+  --- Manufacturing (J=2) ---
+[11:54:50]     rho_raw = -0.1219, rho_corrected = 0.6000
+[11:54:50]     var(idio)/var(agg) = 0.2221, avg_corr = 0.6425
+[11:54:50]     Bootstrap CI (raw): [-0.047, 0.450]
+[11:54:50] 
+  --- Durable Goods (J=8) ---
+[11:54:51]     rho_raw = 1.0530, rho_corrected = 0.9818
+[11:54:51]     var(idio)/var(agg) = 1.1151, avg_corr = 0.4253
+[11:54:51]     Bootstrap CI (raw): [1.022, 1.302]
+[11:54:51] 
+  --- Computer/Electronics (J=5) ---
+[11:54:51]     rho_raw = 1.7326, rho_corrected = 1.5740
+[11:54:51]     var(idio)/var(agg) = 13.9854, avg_corr = 0.1624
+[11:54:51]     Bootstrap CI (raw): [1.678, 1.787]
+[11:54:51] 
+  --- Transport Equipment (J=2) ---
+[11:54:52]     rho_raw = 0.7713, rho_corrected = 0.7279
+[11:54:52]     var(idio)/var(agg) = 0.6624, avg_corr = 0.3021
+[11:54:52]     Bootstrap CI (raw): [0.784, 1.007]
+[11:54:52] 
+  --- Nondurable Goods (J=9) ---
+[11:54:52]     rho_raw = 1.3426, rho_corrected = 1.1398
+[11:54:52]     var(idio)/var(agg) = 2.3140, avg_corr = 0.3211
+[11:54:52]     Bootstrap CI (raw): [1.337, 1.494]
+[11:54:52] 
+========================================================================
+[11:54:52] SECTION 3: EQUICORRELATION INVERSION
+[11:54:52] ========================================================================
+[11:54:52] 
+  --- Total IP (J=3) ---
+[11:54:53]     R²_common = 0.4918, avg_corr = 0.0209
+[11:54:53]     rho = -0.0514 (sigma = 0.951)
+[11:54:53]     Bootstrap CI: [-0.414, 0.229]
+[11:54:53]     Equicorrelation test: chi²=28.04, p=0.0000 (FAIL)
+[11:54:53] 
+  --- Manufacturing (J=2) ---
+[11:54:53]     R²_common = 0.8212, avg_corr = 0.6425
+[11:54:53]     rho = 0.7524 (sigma = 4.039)
+[11:54:53]     Bootstrap CI: [0.469, 0.863]
+[11:54:53] 
+  --- Durable Goods (J=8) ---
+[11:54:53]     R²_common = 0.5044, avg_corr = 0.4253
+[11:54:53]     rho = 0.4814 (sigma = 1.928)
+[11:54:53]     Bootstrap CI: [0.065, 0.636]
+[11:54:53]     Equicorrelation test: chi²=289.63, p=0.0000 (FAIL)
+[11:54:53] 
+  --- Computer/Electronics (J=5) ---
+[11:54:53]     R²_common = 0.3413, avg_corr = 0.1624
+[11:54:53]     rho = -0.3793 (sigma = 0.725)
+[11:54:53]     Bootstrap CI: [-0.782, -0.067]
+[11:54:53]     Equicorrelation test: chi²=38.81, p=0.0000 (FAIL)
+[11:54:53] 
+  --- Transport Equipment (J=2) ---
+[11:54:53]     R²_common = 0.6511, avg_corr = 0.3021
+[11:54:53]     rho = 0.1806 (sigma = 1.220)
+[11:54:53]     Bootstrap CI: [-8.929, 0.577]
+[11:54:53] 
+  --- Nondurable Goods (J=9) ---
+[11:54:53]     R²_common = 0.4073, avg_corr = 0.3211
+[11:54:53]     rho = 0.2675 (sigma = 1.365)
+[11:54:53]     Bootstrap CI: [-0.382, 0.521]
+[11:54:53]     Equicorrelation test: chi²=396.41, p=0.0000 (FAIL)
+[11:54:53] 
+  --- WSTS Semiconductor Segments ---
+[11:54:53]     J=6, T=99
+[11:54:53]     R²_common = 0.8815, avg_corr = 0.8556
+[11:54:53]     rho = 0.9203 (sigma = 12.547)
+[11:54:53]     Bootstrap CI: [0.890, 0.940]
+[11:54:53] 
+========================================================================
+[11:54:53] SECTION 4: LITERATURE COMPILATION
+[11:54:53] ========================================================================
+[11:54:53]   Gechert et al. (2022): sigma=[0.3, 0.7], rho=[-0.43, -2.33]  (Capital-labor (corrected))
+[11:54:53]   Oberfield \& Raval (2021): sigma=[0.5, 0.7], rho=[-0.43, -1.00]  (Capital-labor (micro))
+[11:54:53]   Chirinko (2008): sigma=[0.4, 0.6], rho=[-0.67, -1.50]  (Capital-labor)
+[11:54:53]   Atalay (2017): sigma=[0.0, 0.2], rho=[-4.00, -999.00]  (Input-input (sectors))
+[11:54:53]   Peter \& Ruane (2023): sigma=[3.5, 5.9], rho=[0.83, 0.71]  (Within-sector variety)
+[11:54:53]   Broda \& Weinstein (2006): sigma=[3.0, 10.0], rho=[0.90, 0.67]  (Dixit-Stiglitz variety)
+[11:54:53]   Herrendorf et al. (2015): sigma=[0.0, 0.5], rho=[-1.00, -inf]  (Cross-sector (structural change))
+[11:54:53] 
+  Saved: /home/jonsmirl/thesis/thesis_data/literature_rho_table.tex
+[11:54:53] 
+========================================================================
+[11:54:53] SECTION 4B: FORMAL BENCHMARK TESTS AGAINST MICRO-DATA LITERATURE
+[11:54:53] ========================================================================
+[11:54:53]   Tests whether NLS structural estimates are consistent with
+[11:54:53]   published micro-data substitution elasticities.
+
+[11:54:53]   --- Atalay (2017): Cross-sector intermediate input substitution ---
+[11:54:53]       sigma range: [0.001, 0.200]
+[11:54:53]       implied rho range: [-5.00, -4.00]
+[11:54:53]       Total IP: rho=-0.073, distance=3.927 (above), OUTSIDE (P(in range)=0.000)
+[11:54:53]       Manufacturing: rho=-0.299, distance=3.701 (above), OUTSIDE (P(in range)=0.000)
+[11:54:53] 
+[11:54:53]   --- Oberfield & Raval (2021): Plant-level capital-labor (corrected for aggregation bias) ---
+[11:54:53]       sigma range: [0.500, 0.700]
+[11:54:53]       implied rho range: [-1.00, -0.43]
+[11:54:53]       Durable Goods: rho=0.152, distance=0.582 (above), OUTSIDE (P(in range)=0.000)
+[11:54:53]       Computer/Electronics: rho=-0.191, distance=0.239 (above), OUTSIDE (P(in range)=0.000)
+[11:54:53]       Manufacturing: rho=-0.299, distance=0.131 (above), OUTSIDE (P(in range)=0.000)
+[11:54:53] 
+[11:54:53]   --- Gechert et al. (2022): Capital-labor meta-analysis (corrected for publication bias) ---
+[11:54:53]       sigma range: [0.300, 0.700]
+[11:54:53]       implied rho range: [-2.33, -0.43]
+[11:54:53]       Durable Goods: rho=0.152, distance=0.582 (above), OUTSIDE (P(in range)=0.000)
+[11:54:53]       Computer/Electronics: rho=-0.191, distance=0.239 (above), OUTSIDE (P(in range)=0.000)
+[11:54:53]       Manufacturing: rho=-0.299, distance=0.131 (above), OUTSIDE (P(in range)=0.000)
+[11:54:53] 
+[11:54:53]   --- Herrendorf et al. (2015): Cross-sector structural change (agriculture/manufacturing/services) ---
+[11:54:53]       sigma range: [0.001, 0.500]
+[11:54:53]       implied rho range: [-5.00, -1.00]
+[11:54:53]       Total IP: rho=-0.073, distance=0.927 (above), OUTSIDE (P(in range)=0.000)
+[11:54:53] 
+[11:54:53]   --- Peter & Ruane (2023): Within-sector firm variety (Dixit-Stiglitz) ---
+[11:54:53]       sigma range: [3.500, 5.900]
+[11:54:53]       implied rho range: [0.71, 0.83]
+[11:54:53]       Nondurable Goods: rho=0.990, distance=0.160 (above), OUTSIDE (P(in range)=0.000)
+[11:54:53]       Transport Equipment: rho=0.673, distance=0.037 (below), OVERLAPS (P(in range)=0.275)
+[11:54:53] 
+[11:54:53]   ====================================================================
+[11:54:53]   SUMMARY: NLS estimates vs micro-data benchmarks
+[11:54:53]   ====================================================================
+[11:54:53]   Benchmark                  Aggregate               rho_NLS            Range   Verdict
+[11:54:53]   ─────────────────────────  ──────────────────────  ───────  ───────────────  ────────
+[11:54:53]   Atalay (2017)              Total IP                 -0.073    [-5.00,-4.00]   OUTSIDE
+[11:54:53]   Atalay (2017)              Manufacturing            -0.299    [-5.00,-4.00]   OUTSIDE
+[11:54:53]   Oberfield & Raval (2021)   Durable Goods             0.152    [-1.00,-0.43]   OUTSIDE
+[11:54:53]   Oberfield & Raval (2021)   Computer/Electronics     -0.191    [-1.00,-0.43]   OUTSIDE
+[11:54:53]   Oberfield & Raval (2021)   Manufacturing            -0.299    [-1.00,-0.43]   OUTSIDE
+[11:54:53]   Gechert et al. (2022)      Durable Goods             0.152    [-2.33,-0.43]   OUTSIDE
+[11:54:53]   Gechert et al. (2022)      Computer/Electronics     -0.191    [-2.33,-0.43]   OUTSIDE
+[11:54:53]   Gechert et al. (2022)      Manufacturing            -0.299    [-2.33,-0.43]   OUTSIDE
+[11:54:53]   Herrendorf et al. (2015)   Total IP                 -0.073    [-5.00,-1.00]   OUTSIDE
+[11:54:53]   Peter & Ruane (2023)       Nondurable Goods          0.990      [0.71,0.83]   OUTSIDE
+[11:54:53]   Peter & Ruane (2023)       Transport Equipment       0.673      [0.71,0.83]  OVERLAPS
+[11:54:53] 
+  Inside benchmark range:  0/11
+[11:54:53]   CI overlaps range:       1/11
+[11:54:53]   Outside (no overlap):    10/11
+[11:54:53] 
+  INTERPRETATION:
+[11:54:53]   All NLS estimates are ABOVE the cross-sector input-input range
+[11:54:53]   (Atalay 2017, Herrendorf et al. 2015).
+[11:54:53]   This is expected: FRED IP subsectors aggregate both capital and labor
+[11:54:53]   components within each subsector, yielding higher substitutability
+[11:54:53]   than pure intermediate-input substitution.
+[11:54:53] 
+  Saved: /home/jonsmirl/thesis/thesis_data/rho_benchmark_tests.csv
+[11:54:53]   Saved: /home/jonsmirl/thesis/thesis_data/rho_benchmark_table.tex
+[11:54:53] 
+========================================================================
+[11:54:53] SECTION 4C: ADOPTED rho — LITERATURE AS PRIMARY, NLS AS VALIDATION
+[11:54:53] ========================================================================
+[11:54:53]   Strategy: map each thesis level to the closest published micro-data
+[11:54:53]   estimate; adopt that range; cross-validate with FRED NLS estimates.
+
+[11:54:53]   === Level 1: Hardware (semiconductor production) ===
+[11:54:53]   Paper: Paper 1: Endogenous Decentralization
+[11:54:53]   Aggregation: CES over heterogeneous semiconductor segments (logic, memory, analog, discrete, ...
+[11:54:53]   Source: Oberfield & Raval (2021)
+[11:54:53]   Adopted: sigma=[0.5, 0.7]  =>  rho=[-1.00, -0.43]
+[11:54:53]   NLS cross-validation: Computer/Electronics
+[11:54:53]     rho_NLS = -0.191, position = above (distance = 0.239)
+[11:54:53]     Bootstrap CI: [-0.215, -0.154], overlaps adopted range: False
+[11:54:53]     NLS rho=-0.19 (sigma=0.84) is above range; expected because IP index aggregates finished products, not plant-level K-L
+[11:54:53]     Verdict: ABOVE_NEAR
+[11:54:53]   WSTS cross-validation: rho_equicorr = 0.920
+[11:54:53]     Equicorr rho=0.92 (sigma=12.5) reflects revenue comovement, not production function substitutability
+[11:54:53] 
+[11:54:53]   === Level 2: Mesh (heterogeneous AI agents) ===
+[11:54:53]   Paper: Paper 2: Mesh Equilibrium
+[11:54:53]   Aggregation: CES over J heterogeneous AI agents with complementary specializations. Each agen...
+[11:54:53]   Source: Atalay (2017)
+[11:54:53]   Adopted: sigma=[0.1, 0.5]  =>  rho=[-9.00, -1.00]
+[11:54:53]   NLS cross-validation: Manufacturing (durable+nondurable)
+[11:54:53]     rho_NLS = -0.299, position = above (distance = 0.701)
+[11:54:53]     Bootstrap CI: [-0.366, -0.235], overlaps adopted range: False
+[11:54:53]     NLS rho=-0.30 (sigma=0.77) is above range; Manufacturing subsectors share more common inputs than fully specialized agents
+[11:54:53]     Verdict: ABOVE_FAR
+[11:54:53] 
+[11:54:53]   === Level 3: Training (data and capability) ===
+[11:54:53]   Paper: Paper 3: Autocatalytic Mesh
+[11:54:53]   Aggregation: CES over heterogeneous training data sources and methods. Model collapse prevent...
+[11:54:53]   Source: Oberfield & Raval (2021) + Gechert et al. (2022)
+[11:54:53]   Adopted: sigma=[0.5, 0.8]  =>  rho=[-1.00, -0.25]
+[11:54:53]   NLS cross-validation: Durable Goods
+[11:54:53]     rho_NLS = 0.152, position = above (distance = 0.402)
+[11:54:53]     Bootstrap CI: [0.116, 0.185], overlaps adopted range: False
+[11:54:53]     NLS rho=0.15 (sigma=1.18) is above range; durable goods subsectors are more substitutable than training data types
+[11:54:53]     Verdict: ABOVE_NEAR
+[11:54:53] 
+[11:54:53]   === Level 4: Settlement (stablecoin infrastructure) ===
+[11:54:53]   Paper: Paper 4: Settlement Feedback
+[11:54:53]   Aggregation: CES over heterogeneous settlement channels and financial instruments. Traditiona...
+[11:54:53]   Source: No direct micro-data estimate
+[11:54:53]   Adopted: sigma=[2.0, 5.0]  =>  rho=[0.50, 0.80]
+[11:54:53]   NLS cross-validation: Transport Equipment
+[11:54:53]     rho_NLS = 0.673, position = inside (distance = 0.000)
+[11:54:53]     Bootstrap CI: [0.388, 0.893], overlaps adopted range: True
+[11:54:53]     NLS rho=0.67 (sigma=3.1) is inside range; transport equipment (motor vehicles vs aerospace) has similar variety structure
+[11:54:53]     Verdict: INSIDE
+[11:54:53] 
+[11:54:53]   ========================================================================
+[11:54:53]   ADOPTED rho BY THESIS LEVEL
+[11:54:53]   ========================================================================
+[11:54:53]   Lvl  Level.......................   sigma range       rho range   NLS rho          CV
+[11:54:53]   ───  ────────────────────────────  ────────────  ──────────────  ────────  ──────────
+[11:54:53]     1  Hardware (semiconductor production)    [0.5, 0.7]  [-1.00, -0.43]    -0.191  ABOVE_NEAR
+[11:54:53]     2  Mesh (heterogeneous AI agents)    [0.1, 0.5]  [-9.00, -1.00]    -0.299   ABOVE_FAR
+[11:54:53]     3  Training (data and capability)    [0.5, 0.8]  [-1.00, -0.25]     0.152  ABOVE_NEAR
+[11:54:53]     4  Settlement (stablecoin infrastructure)    [2.0, 5.0]    [0.50, 0.80]     0.673      INSIDE
+[11:54:53] 
+  KEY FINDING:
+[11:54:53]   NLS estimates above adopted range: 3/4
+[11:54:53]   NLS estimates inside adopted range: 1/4
+[11:54:53]   NLS estimates are systematically above the micro-data ranges.
+[11:54:53]   This is expected: FRED IP indices aggregate more broadly than
+[11:54:53]   plant-level production functions, mixing K-L and input-input
+[11:54:53]   margins. The systematic upward shift is itself evidence that
+[11:54:53]   rho occupies the correct position in the substitution hierarchy.
+[11:54:53] 
+[11:54:53]   The adopted values from published micro-data provide the primary
+[11:54:53]   identification of rho at each thesis level. The NLS estimates
+[11:54:53]   cross-validate the ordering and approximate magnitude.
+[11:54:53] 
+  Saved: /home/jonsmirl/thesis/thesis_data/structural_rho_adopted.csv
+[11:54:53]   Saved: /home/jonsmirl/thesis/thesis_data/adopted_rho_table.tex
+[11:54:53] 
+========================================================================
+[11:54:53] SECTION 5: CROSS-METHOD CONSISTENCY
+[11:54:53] ========================================================================
+[11:54:53] 
+  Cross-method comparison for 7 aggregation nodes:
+
+[11:54:53]   Label                           NLS   VarFilter   Equicorr   Range
+[11:54:53]   ─────────────────────────  ────────  ──────────  ─────────  ──────
+[11:54:53]   Total IP                     -0.073       0.782     -0.051   0.855
+[11:54:53]   Durable Goods                 0.152       0.982      0.481   0.830
+[11:54:53]   Computer/Electronics         -0.191       1.574     -0.379   1.953
+[11:54:53]   Transport Equipment           0.673       0.728      0.181   0.547
+[11:54:53]   Manufacturing                -0.299       0.600      0.752   1.052
+[11:54:53]   Nondurable Goods              0.990       1.140      0.267   0.872
+[11:54:53]   WSTS_SEMI                       ---         ---      0.920     ---
+[11:54:53] 
+  Paired t-test (NLS vs VarFilter): t=-3.005, p=0.0299
+[11:54:53]   Methods differ significantly (p=0.030)
+[11:54:53] 
+========================================================================
+[11:54:53] SECTION 6: OVERIDENTIFICATION TESTS
+[11:54:53] ========================================================================
+[11:54:53] 
+  --- Test A: NLS rho predicts equicorrelation R²_common ---
+[11:54:53]   Theory: R²_common = 1/J + (J-1)/J * 1/(2-rho)²
+[11:54:53]     Total IP: R²_pred=0.4885, R²_obs=0.4918, error=+0.0033
+[11:54:53]     Manufacturing: R²_pred=0.5946, R²_obs=0.8212, error=+0.2267
+[11:54:53]     Durable Goods: R²_pred=0.3811, R²_obs=0.5044, error=+0.1233
+[11:54:53]     Computer/Electronics: R²_pred=0.3667, R²_obs=0.3413, error=-0.0253
+[11:54:53]     Transport Equipment: R²_pred=0.7841, R²_obs=0.6511, error=-0.1330
+[11:54:53]     Nondurable Goods: R²_pred=0.9825, R²_obs=0.4073, error=-0.5752
+[11:54:53] 
+    Overidentification: chi²=6.369 (df=5), p=0.2719
+[11:54:53]     PASS: Cannot reject NLS rho as structural parameter
+[11:54:53] 
+  --- Test B: NLS rho predicts variance filter ratio ---
+[11:54:53]   Theory: ratio = 1/(2-rho)²
+[11:54:53]     Total IP: ratio_pred=0.2327, ratio_obs=1.9010, error=+1.6683
+[11:54:53]     Manufacturing: ratio_pred=0.1891, ratio_obs=0.2221, error=+0.0330
+[11:54:53]     Durable Goods: ratio_pred=0.2927, ratio_obs=1.1151, error=+0.8224
+[11:54:53]     Computer/Electronics: ratio_pred=0.2083, ratio_obs=13.9854, error=+13.7771
+[11:54:53]     Transport Equipment: ratio_pred=0.5682, ratio_obs=0.6624, error=+0.0942
+[11:54:53]     Nondurable Goods: ratio_pred=0.9803, ratio_obs=2.3140, error=+1.3337
+[11:54:53] 
+  --- Test C: Structural rho vs calibrated rho (business cycle script) ---
+[11:54:53]     Computer/Electronics: structural=-0.191, calibrated=0.6, diff=-0.791
+[11:54:53]     Transport Equipment: structural=0.673, calibrated=0.3, diff=+0.373
+[11:54:53] 
+========================================================================
+[11:54:53] SECTION 7: SAVING OUTPUTS
+[11:54:53] ========================================================================
+[11:54:53]   Saved: /home/jonsmirl/thesis/thesis_data/structural_rho_estimates.csv
+[11:54:53]   Saved: /home/jonsmirl/thesis/thesis_data/rho_overidentification.csv
+[11:54:53]   Saved: /home/jonsmirl/thesis/thesis_data/structural_rho_table.tex
+[11:54:54]   Saved: /home/jonsmirl/thesis/figures/rho_structural_forest.pdf
+[11:54:54]   Saved: /home/jonsmirl/thesis/figures/rho_cross_validation.pdf

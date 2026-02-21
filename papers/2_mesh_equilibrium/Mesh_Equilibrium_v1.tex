@@ -257,6 +257,10 @@ With equal allocation: $\Ceff = (J \cdot (\bar{C}/J)^{\rho})^{1/\rho} = J^{1/\rh
 
 This is the Becker-Murphy (1992) division of labor result in CES form. The mesh's advantage over centralized provision does not come from superior individual capability---each edge device is weaker than the datacenter---but from the breadth of specialized coverage that heterogeneous agents collectively provide.
 
+\medskip
+\noindent\textbf{Quantitative calibration of $\rho$.}
+The mesh aggregates heterogeneous AI agents with complementary specializations---the closest published analogue is cross-sector intermediate input substitution.  Atalay (2017) estimates near-zero substitutability across 6-digit NAICS sectors ($\sigma \in [0.0, 0.2]$, $\rho \in [-\infty, -4]$) using input--output tables, placing the mesh firmly in the complementary regime.  The companion paper (Smirl 2026e, Section~9.1) adopts this range as the primary identification, with NLS estimation on FRED Manufacturing IP ($\hat\rho = -0.30$, $\sigma = 0.77$) serving as cross-validation.  The NLS estimate is above the Atalay range, as expected for macro aggregates that share more common inputs than fully specialized agents.  For the diversity premium $J^{(1-\rho)/\rho}$, even the most conservative $\rho = -1$ yields a premium of $J^2$ for $J$ specialist types.
+
 \subsection{Centralized Capability Benchmark}
 
 A centralized provider operates $M$ identical high-capability units, each with capability $\bar{c}$ spread uniformly across all $J$ task types: $c_j^{\text{cent}} = \bar{c}/J$ per unit. Total centralized capability for task $j$ is $C_j^{\text{cent}} = M\bar{c}/J$, giving:

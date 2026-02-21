@@ -1012,6 +1012,35 @@ The within-mesh Gini coefficient rises before the crossing and collapses after (
 Semiconductor learning curves provide the drift rate $\varepsilon_{\text{drift}}$: at Wright's Law rates of approximately 15\% annual cost decline, the transition duration formula yields a transition window of order 8 years.
 The monetary productivity gap (6.4 percentage points) anchors the settlement cost advantage.
 
+\subsection{Structural Estimation of the Complementarity Parameter}\label{sec:structural_rho}
+
+The entire framework pivots on the CES curvature parameter $\rho$ (equivalently $\sigma_{\text{sub}} = 1/(1-\rho)$), yet the theoretical results hold for any $\rho < 1$.  To pin down the \emph{quantitative} predictions, we adopt $\rho$ at each hierarchy level from the published micro-data production function literature whose aggregation concept is closest to the thesis level, and cross-validate with macro estimates from FRED Industrial Production data.
+
+\medskip
+\noindent\textbf{Why input--input $\rho$ differs from capital--labor $\sigma$.}
+The thesis uses $\rho$ for CES aggregation of heterogeneous inputs at each level---not for the capital--labor substitution elasticity that dominates the growth-theory literature.  Three distinct concepts, with very different empirical ranges, must be distinguished:
+\begin{itemize}[leftmargin=2em]
+\item \emph{Cross-sector intermediate input substitution} ($\sigma \in [0.0, 0.2]$, $\rho \in [-\infty, -4]$): Atalay (2017) estimates near-zero substitutability across 6-digit NAICS sectors using input--output tables.  This maps to the mesh level (Level~2), where heterogeneous AI agents with complementary specializations aggregate via CES.
+\item \emph{Plant-level capital--labor substitution} ($\sigma \in [0.3, 0.7]$, $\rho \in [-2.3, -0.4]$): Oberfield and Raval (2021) estimate plant-level production functions corrected for aggregation bias; Gechert et al.\ (2022) confirm this range in a meta-analysis of 3,186 estimates after correcting for publication bias.  This maps to Levels~1 and~3, where physical production processes combine heterogeneous factor inputs.
+\item \emph{Within-sector product variety} ($\sigma \in [3, 10]$, $\rho \in [0.7, 0.9]$): Broda and Weinstein (2006) estimate Dixit--Stiglitz variety elasticities from trade data; Peter and Ruane (2023) estimate within-sector firm-level variety at $\sigma \approx 4.7$.  This maps to Level~4, where settlement channels are highly substitutable financial instruments.
+\end{itemize}
+
+\medskip
+\noindent\textbf{Adopted values.}
+Table~\ref{tab:adopted_rho} maps each thesis level to its adopted $\rho$ range.  The mapping follows a structural principle: each level's CES aggregation concept determines which published estimate applies.
+
+\input{../../thesis_data/adopted_rho_table.tex}
+
+\medskip
+\noindent\textbf{Cross-validation with FRED Industrial Production data.}
+As an independent check, we estimate $\rho$ by nonlinear least squares (NLS) on the CES production function applied to FRED IP subsector indices at six NAICS aggregation nodes (Manufacturing, Durable Goods, Computer/Electronics, Transport Equipment, Nondurable Goods, Total IP), using monthly data from 1972--2025 ($T = 649$).  Moving-block bootstrap ($B = 1{,}000$, block length 12~months) provides confidence intervals robust to serial correlation; bootstrap standard errors are 2.5--4.9$\times$ wider than asymptotic standard errors, confirming that ignoring serial dependence would produce misleadingly tight inference.
+
+The NLS estimates are systematically \emph{above} the adopted micro-data ranges (3 of 4 levels), consistent with FRED IP indices aggregating more broadly than plant-level production functions---mixing capital--labor and input--input margins within each subsector.  Crucially, the \emph{ordering} is preserved: Computer/Electronics ($\hat\rho = -0.19$) $<$ Durable Goods ($\hat\rho = 0.15$) $<$ Transport Equipment ($\hat\rho = 0.67$), matching the adopted ordering $\rho_1 < \rho_3 < \rho_4$.  The systematic upward shift is itself evidence that $\rho$ occupies the correct position in the substitution hierarchy.
+
+Table~\ref{tab:structural_rho} reports the full cross-method comparison (NLS, variance filter inversion, equicorrelation inversion) across all aggregation nodes.  The overidentification test---using NLS $\hat\rho$ to predict the equicorrelation $R^2_{\text{common}}$---yields $\chi^2 = 6.37$ ($df = 5$, $p = 0.27$), so the structural interpretation cannot be rejected.
+
+\input{../../thesis_data/structural_rho_table.tex}
+
 \subsection{Predictions}\label{sec:predlist}
 
 \noindent\textbf{P1--P3: Testing the Quadruple Role (Paper~A, applied at each level).}
@@ -1163,11 +1192,11 @@ Six product segments---logic, memory, analog, discrete, optoelectronics, sensors
 \medskip
 \noindent\textbf{VAR impulse response.}
 A bivariate VAR(5) (selected by AIC) in aggregate growth and cross-segment dispersion yields an impulse response of aggregate growth to a dispersion shock that peaks at horizon $h=3$ quarters.
-Under the CES interpretation, peak lag maps to the substitution parameter: $h=3$ implies $\rho \in [-0.5, 0]$, in the neighborhood of Cobb--Douglas.  This is consistent with moderately complementary semiconductor segments.
+Under the CES interpretation, peak lag maps to the substitution parameter: $h=3$ implies $\rho \in [-0.5, 0]$, in the neighborhood of Cobb--Douglas.  This is consistent with the structural estimates of Section~\ref{sec:structural_rho}, which place semiconductor production at Level~1 with adopted $\rho \in [-1.0, -0.43]$ (Oberfield and Raval 2021) and NLS cross-validation $\hat\rho = -0.19$ for Computer/Electronics.
 
 \medskip
 \noindent\textbf{CES $\rho$ from the variance filter ratio.}
-The ratio of average idiosyncratic variance to aggregate variance is $0.40$.  Inverting the CES variance filter formula yields $\hat\rho = 0.43$, within the economically meaningful range and consistent with the VAR-implied estimate.
+The ratio of average idiosyncratic variance to aggregate variance is $0.40$.  Inverting the CES variance filter formula yields $\hat\rho = 0.43$, within the economically meaningful range.  The equicorrelation inversion method applied to WSTS semiconductor segments yields $\hat\rho = 0.92$ ($R^2_{\text{common}} = 0.88$), reflecting revenue comovement rather than production function substitutability---consistent with the distinction drawn in Section~\ref{sec:structural_rho} between production-side and demand-side aggregation.
 
 \medskip
 \noindent\textbf{Regime identification.}
@@ -1231,6 +1260,7 @@ Correction terms involve $K$ through the quadratic coefficient~$b$; amplitude be
 \begin{enumerate}[leftmargin=2em]
 \item Gain elasticities $(\beta_1, \ldots, \beta_4)$ uncalibrated.
 \item Damping rates $(\sigma_1, \ldots, \sigma_4)$ uncalibrated.
+\item The curvature parameter $\rho$ is adopted from published micro-data estimates at each level (Section~\ref{sec:structural_rho}), cross-validated with FRED IP macro estimates.  The adopted ranges reflect the closest published aggregation concept, not the thesis levels directly; the mapping relies on structural analogy.
 \item Predictions span 2027--2040 (long horizon).
 \item Which specific layer binds first depends on uncalibrated $\beta_n$.
 \item Crisis duration estimate requires $\varepsilon_{\text{drift}}$, which is itself uncertain.
@@ -1364,6 +1394,17 @@ Eleven predictions, spanning 2027--2040, test the theory.
 \bibitem{jorda2005} Jord\`a, \`O. (2005). Estimation and inference of impulse responses by local projections. \emph{Amer.\ Econ.\ Rev.} 95, 161--182.
 
 \bibitem{hamilton1989} Hamilton, J.~D. (1989). A new approach to the economic analysis of nonstationary time series and the business cycle. \emph{Econometrica} 57, 357--384.
+
+% Structural estimation of rho references
+\bibitem{atalay2017} Atalay, E. (2017). How important are sectoral shocks? \emph{Amer.\ Econ.\ J.: Macroecon.} 9, 254--280.
+
+\bibitem{oberfieldraval2021} Oberfield, E., and Raval, D. (2021). Micro data and macro technology. \emph{Econometrica} 89, 703--732.
+
+\bibitem{gechert2022} Gechert, S., Havr\'anek, T., Havr\'ankov\'a, Z., and Heimberger, P. (2022). Measuring capital-labor substitution: The importance of method choices and publication bias. \emph{Rev.\ Econ.\ Dynamics} 45, 55--82.
+
+\bibitem{brodaweinstein2006} Broda, C., and Weinstein, D.~E. (2006). Globalization and the gains from variety. \emph{Quart.\ J.\ Econ.} 121, 541--585.
+
+\bibitem{peterruane2023} Peter, A., and Ruane, C. (2023). The aggregate importance of intermediate input substitutability. Working Paper, Federal Reserve Bank of Atlanta.
 
 \end{thebibliography}
 

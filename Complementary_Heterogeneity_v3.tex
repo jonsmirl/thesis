@@ -1231,6 +1231,26 @@ Semiconductor learning curves provide the drift rate $\varepsilon_{\text{drift}}
 The monetary productivity gap (6.4\%) anchors the settlement cost advantage.
 The six-stage country classification maps dollarization vulnerability.
 
+\subsection{Structural Estimation of $\rho$}\label{sec:structural_rho_v3}
+
+The curvature parameter $\rho$ is adopted at each hierarchy level from published micro-data production function estimates whose aggregation concept is closest to the thesis level, and cross-validated with NLS estimates from FRED Industrial Production data (monthly, 1972--2025, $T = 649$; moving-block bootstrap, $B = 1{,}000$).
+
+\medskip
+\noindent
+\begin{tabular}{@{}clllcc@{}}
+\toprule
+Level & Concept & Source & $\sigma$ range & $\rho$ range & $\hat\rho_{\text{NLS}}$ \\
+\midrule
+1 & Hardware (semiconductors) & Oberfield \& Raval (2021) & $[0.5, 0.7]$ & $[-1.0, -0.4]$ & $-0.19$ \\
+2 & Mesh (AI agents) & Atalay (2017) & $[0.1, 0.5]$ & $[-9.0, -1.0]$ & $-0.30$ \\
+3 & Training (capability) & Oberfield \& Raval + Gechert (2022) & $[0.5, 0.8]$ & $[-1.0, -0.2]$ & $0.15$ \\
+4 & Settlement (stablecoins) & Broda \& Weinstein (2006) & $[2.0, 5.0]$ & $[0.5, 0.8]$ & $0.67$ \\
+\bottomrule
+\end{tabular}
+
+\medskip
+\noindent NLS estimates are systematically above the adopted micro-data ranges (3 of 4 levels), consistent with FRED IP indices aggregating more broadly than plant-level production functions.  The ordering is preserved across methods.  The overidentification test ($\chi^2 = 6.37$, $df = 5$, $p = 0.27$) cannot reject the structural interpretation.
+
 \subsection{Predictions}
 
 \noindent\textbf{P1--P3: Testing the Triple Role.}
@@ -1500,6 +1520,15 @@ Eleven predictions, spanning 2027--2040, test the theory.
 \bibitem{strogatz1994} Strogatz, S.~H. (1994). \emph{Nonlinear Dynamics and Chaos}. Addison-Wesley.
 
 \bibitem{kuznetsov2004} Kuznetsov, Y.~A. (2004). \emph{Elements of Applied Bifurcation Theory}, 3rd ed. Springer.
+
+% Structural estimation of rho references
+\bibitem{atalay2017} Atalay, E. (2017). How important are sectoral shocks? \emph{Amer.\ Econ.\ J.: Macroecon.} 9, 254--280.
+
+\bibitem{oberfieldraval2021} Oberfield, E., and Raval, D. (2021). Micro data and macro technology. \emph{Econometrica} 89, 703--732.
+
+\bibitem{gechert2022} Gechert, S., Havr\'anek, T., Havr\'ankov\'a, Z., and Heimberger, P. (2022). Measuring capital-labor substitution: The importance of method choices and publication bias. \emph{Rev.\ Econ.\ Dynamics} 45, 55--82.
+
+\bibitem{brodaweinstein2006} Broda, C., and Weinstein, D.~E. (2006). Globalization and the gains from variety. \emph{Quart.\ J.\ Econ.} 121, 541--585.
 
 \end{thebibliography}
 

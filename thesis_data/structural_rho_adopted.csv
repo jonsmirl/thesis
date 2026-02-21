@@ -1,0 +1,5 @@
+level,level_name,paper,literature_source,sigma_adopted_low,sigma_adopted_high,rho_adopted_low,rho_adopted_high,nls_parent,nls_label,rho_nls,cv_verdict,rho_wsts
+1,Hardware (semiconductor production),Paper 1: Endogenous Decentralization,Oberfield & Raval (2021),0.5000,0.7000,-1.0000,-0.4300,IPG334S,Computer/Electronics,-0.1909,ABOVE_NEAR,0.9203
+2,Mesh (heterogeneous AI agents),Paper 2: Mesh Equilibrium,Atalay (2017),0.1000,0.5000,-9.0000,-1.0000,IPMAN,Manufacturing (durable+nondurable),-0.2994,ABOVE_FAR,
+3,Training (data and capability),Paper 3: Autocatalytic Mesh,Oberfield & Raval (2021) + Gechert et al. (2022),0.5000,0.8000,-1.0000,-0.2500,IPDMAN,Durable Goods,0.1518,ABOVE_NEAR,
+4,Settlement (stablecoin infrastructure),Paper 4: Settlement Feedback,No direct micro-data estimate,2.0000,5.0000,0.5000,0.8000,IPG336S,Transport Equipment,0.6733,INSIDE,

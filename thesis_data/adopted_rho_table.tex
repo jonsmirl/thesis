@@ -1,0 +1,20 @@
+\begin{table}[htbp]
+\centering
+\caption{Adopted complementarity parameter $\rho$ by thesis level: micro-data identification with macro cross-validation}
+\label{tab:adopted_rho}
+\small
+\begin{tabular}{clllccl}
+\toprule
+Level & Aggregation concept & Source & $\sigma$ range & $\rho$ range & $\hat\rho_{\text{NLS}}$ & CV \\
+\midrule
+1 & Hardware (semiconductors) & Oberfield \& Raval & [0.5, 0.7] & [-1.0, -0.4] & -0.19 & $\nearrow$ \\
+2 & Mesh (AI agents) & Atalay (2017) & [0.1, 0.5] & [-9.0, -1.0] & -0.30 & $\uparrow$ \\
+3 & Training (capability) & Oberfield \& Raval + Gechert & [0.5, 0.8] & [-1.0, -0.2] & 0.15 & $\nearrow$ \\
+4 & Settlement (stablecoins) & \textit{Broda \& Weinstein} & [2.0, 5.0] & [0.5, 0.8] & 0.67 & $\checkmark$ \\
+\bottomrule
+\end{tabular}
+\begin{minipage}{0.95\textwidth}
+\vspace{0.5em}
+\footnotesize\textit{Notes:} Each thesis level aggregates heterogeneous inputs via CES with curvature $\rho$. The $\sigma$ and $\rho$ ranges are adopted from the published micro-data estimate whose aggregation concept is closest to the thesis level. $\hat\rho_{\text{NLS}}$ is the FRED IP macro cross-validation estimate (moving-block bootstrap, $B\!=\!1000$). CV column: $\checkmark$ = NLS inside range; $\nearrow$ = NLS above range by $<\!0.5$ (expected for macro aggregates); $\uparrow$ = NLS above by $>\!0.5$; $\sim$ = NLS below but CI overlaps. Level 1: Oberfield \& Raval (2021) plant-level manufacturing. Level 2: Atalay (2017) cross-sector intermediate input substitution. Level 3: Oberfield \& Raval + Gechert et al.\ (2022) meta-analysis. Level 4: no direct production function estimate; range from Broda \& Weinstein (2006) product variety elasticities and Paper 6 remittance cost data.
+\end{minipage}
+\end{table}

@@ -1,0 +1,27 @@
+\begin{table}[htbp]
+\centering
+\caption{Structural $\rho$ estimates tested against micro-data benchmarks}
+\label{tab:rho_benchmarks}
+\small
+\begin{tabular}{llccccl}
+\toprule
+Benchmark & Aggregate & $\sigma$ range & $\rho$ range & $\hat\rho}_{\text{NLS}}$ & 95\% CI & Verdict \\
+\midrule
+Atalay (2017) & Total IP & [0.0, 0.2] & [-5.0, -4.0] & -0.073 & [-0.25, 0.20] & $\times$ \\
+ & Manufacturing & [0.0, 0.2] & [-5.0, -4.0] & -0.299 & [-0.37, -0.23] & $\times$ \\
+Oberfield & Raval (2021) & Durable Goods & [0.5, 0.7] & [-1.0, -0.4] & 0.152 & [0.12, 0.18] & $\times$ \\
+ & Computer/Electronics & [0.5, 0.7] & [-1.0, -0.4] & -0.191 & [-0.21, -0.15] & $\times$ \\
+ & Manufacturing & [0.5, 0.7] & [-1.0, -0.4] & -0.299 & [-0.37, -0.23] & $\times$ \\
+Gechert et al. (2022) & Durable Goods & [0.3, 0.7] & [-2.3, -0.4] & 0.152 & [0.12, 0.18] & $\times$ \\
+ & Computer/Electronics & [0.3, 0.7] & [-2.3, -0.4] & -0.191 & [-0.21, -0.15] & $\times$ \\
+ & Manufacturing & [0.3, 0.7] & [-2.3, -0.4] & -0.299 & [-0.37, -0.23] & $\times$ \\
+Herrendorf et al. (2015) & Total IP & [0.0, 0.5] & [-5.0, -1.0] & -0.073 & [-0.25, 0.20] & $\times$ \\
+Peter & Ruane (2023) & Nondurable Goods & [3.5, 5.9] & [0.7, 0.8] & 0.990 & [0.98, 0.99] & $\times$ \\
+ & Transport Equipment & [3.5, 5.9] & [0.7, 0.8] & 0.673 & [0.39, 0.89] & $\sim$ \\
+\bottomrule
+\end{tabular}
+\begin{minipage}{0.95\textwidth}
+\vspace{0.5em}
+\footnotesize\textit{Notes:} Each row tests whether the NLS structural estimate $\hat\rho$ from FRED IP data is consistent with the published micro-data substitution elasticity range. $\checkmark$ = point estimate inside range; $\sim$ = point estimate outside but bootstrap 95\% CI overlaps range; $\times$ = no overlap. The thesis $\rho$ captures within-NAICS subsector aggregation, which mixes both capital--labor and input--input substitution margins, so estimates are expected to fall between the pure K--L range (Oberfield \& Raval 2021; Gechert et al.\ 2022) and the cross-sector near-Leontief range (Atalay 2017; Herrendorf et al.\ 2015).
+\end{minipage}
+\end{table}

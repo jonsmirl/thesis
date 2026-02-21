@@ -493,6 +493,10 @@ This is finite for $\rho < 1$ and decreasing in $\rho$ (more complementary speci
 The CES parameter $\rho$ now does double duty. In the mesh paper, $\rho < 1$ generates the \emph{diversity premium}: heterogeneous specialists collectively outperform a homogeneous centralized provider because the CES aggregate rewards breadth (Lemma~1 of Smirl 2026). In this paper, $\rho < 1$ generates \emph{collapse protection}: heterogeneous specialists generate informationally diverse training data that prevents model collapse even when external data is scarce. The same force---agent heterogeneity, measured by $\rho$---drives both capability aggregation and informational robustness. This dual role is not a coincidence; it reflects the structural identity between production complementarity and distributional diversity in the CES framework.
 \end{remark}
 
+\medskip
+\noindent\textbf{Quantitative calibration.}
+For training data and capability aggregation, the companion paper (Smirl 2026e, Section~9.1) adopts $\rho \in [-1.0, -0.25]$ ($\sigma \in [0.5, 0.8]$) from plant-level estimates (Oberfield and Raval 2021; Gechert et al.\ 2022).  NLS cross-validation on FRED Durable Goods IP yields $\hat\rho = 0.15$ ($\sigma = 1.18$), above the adopted range as expected for macro aggregates.  At the conservative bound $\rho = -0.25$: the minimum $J$ for collapse avoidance (equation~\ref{eq:Jmin}) is modest---fewer than 10 specialist types suffice for $\alpha_{\text{ext}}$ as low as 0.3, well within the range of current open-weight model ecosystems.
+
 
 % -------------------------------------------------------------------
 % 6. THE CENTRAL THEOREM: GROWTH REGIMES

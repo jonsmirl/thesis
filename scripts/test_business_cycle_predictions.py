@@ -110,6 +110,9 @@ RECESSIONS = [
 
 # Broad sectors (Tier 1): state-level GDP series
 # Suffix pattern: {ST}{SUFFIX}NQGSP
+# Format: suffix: (name, rho_calibrated, K_calibrated)
+# Note: rho values are calibrated for recession-entry ordering, not structural
+# estimates of CES curvature. See estimate_rho_structural.py for the latter.
 BROAD_SECTORS = {
     "CONSTNQGSP":     ("Construction",       -0.5, 0.67),
     "FININSNQGSP":    ("Finance/Insurance",    0.0, 0.50),
@@ -120,6 +123,14 @@ BROAD_SECTORS = {
 }
 
 # Manufacturing subsectors (Tier 2): FRED IP series
+# Format: series_id: (name, rho_calibrated, K_calibrated)
+# Note: rho values are author-calibrated for recession ordering (ordinal ranking).
+# Structural NLS estimates from estimate_rho_structural.py give rho at the
+# aggregation level (e.g., Manufacturing=-0.30, Computer/Electronics=-0.19),
+# which measures input complementarity *within* these aggregates.
+# The sector-level rho here captures each sector's own cyclical sensitivity,
+# a distinct concept. The ordinal ranking is validated against structural
+# estimates in the overidentification tests (Section 6 of that script).
 MFG_SECTORS = {
     "IPG331S": ("Primary Metals",      -0.2, 0.56),
     "IPG333S": ("Machinery",            0.2, 0.40),

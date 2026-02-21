@@ -509,6 +509,10 @@ Part (b): Inference queries are independent ($\rho \approx 1$), so $K = (1-\rho)
 
 The proposition formalizes the ``topological'' constraint as a statement about information friction: the synchronization gap is not merely an engineering inconvenience but a fundamental $T$ barrier that makes the complementarity of training inputs unexploitable in a distributed setting. It also makes a falsifiable prediction about when the bifurcation could weaken: asynchronous training algorithms (gradient compression, local SGD, federated averaging) effectively raise the $\rho$ of training by tolerating partial desynchronization. If such methods reduce $K_{\text{train}}$ sufficiently, the temperature barrier $T^*(\rho_{\text{train}})$ rises, and $K_{\text{eff}}^{\text{dist}}$ becomes positive. The prediction is that distributed training becomes viable not when communication speeds improve (lowering $T_{\text{dist}}$) but when algorithmic tolerance for asynchrony increases (raising $\rho_{\text{train}}$).
 
+\medskip
+\noindent\textbf{Quantitative calibration of $\rho$.}
+The companion paper (Smirl 2026e, Section~9.1) adopts $\rho$ at this level from Oberfield and Raval (2021), who estimate plant-level manufacturing production functions corrected for aggregation bias: $\sigma \in [0.5, 0.7]$, implying $\rho \in [-1.0, -0.43]$.  NLS estimation on FRED Computer/Electronics IP subsectors yields $\hat\rho = -0.19$ ($\sigma = 0.84$), systematically above the micro-data range as expected for macro aggregates that mix capital--labor and input--input margins.  The qualitative bifurcation---$\rho_{\text{train}} \ll 0$ (strong complementarity) versus $\rho_{\text{inf}} \approx 1$ (independence)---is robust to calibration within these ranges: the effective curvature gap $K_{\text{eff}}^{\text{cent}} - K_{\text{eff}}^{\text{dist}} \gg 0$ for training holds for any $\rho < -0.4$.
+
 \subsection{Implications for the Model}
 
 The effective curvature framework provides three refinements to the formal model of Section~3.

@@ -155,7 +155,7 @@ Three assumptions carry forward from the preceding papers:
 \begin{enumerate}[label=(\roman*)]
 \item \emph{Training persistence:} Frontier model training remains centralized. The mesh fine-tunes and adapts base models; it does not train frontier models from scratch. This is the exogenous input (``food set'') whose growth rate $g_Z$ bounds the mesh through the Baumol bottleneck.
 
-\item \emph{CES structure:} The aggregate capability function retains the CES form $\Ceff = (\sum_j C_j^\rho)^{1/\rho}$ with $\rho < 1$, ensuring complementarity across task types and providing model collapse protection ($\alphaeff > \alphacrit$).
+\item \emph{CES structure:} The aggregate capability function retains the CES form $\Ceff = (\sum_j C_j^\rho)^{1/\rho}$ with $\rho < 1$, ensuring complementarity across task types and providing model collapse protection ($\alphaeff > \alphacrit$).  At the settlement level, heterogeneous financial instruments (traditional rails, stablecoins, tokenized securities) are more substitutable than production inputs, placing $\rho \in [0.5, 0.8]$ ($\sigma \in [2, 5]$) based on Dixit--Stiglitz product variety elasticities (Broda and Weinstein 2006).  NLS cross-validation on FRED Transport Equipment IP---which aggregates motor vehicles and aerospace, a structurally analogous variety aggregation---yields $\hat\rho = 0.67$ ($\sigma = 3.1$), inside the adopted range (Smirl 2026e, Section~9.1).
 
 \item \emph{Scale-free topology:} The mesh's degree distribution follows a power law with $\gamma \leq 3$, ensuring a vanishing epidemic threshold for information propagation and the preferential attachment dynamics that drive specialization.
 \end{enumerate}

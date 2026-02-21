@@ -1,0 +1,42 @@
+\begin{table}[htbp]
+\centering
+\caption{Structural estimates of the complementarity parameter $\rho$}
+\label{tab:structural_rho}
+\small
+\begin{tabular}{llccccc}
+\toprule
+Aggregate & $J$ & Method & $\hat\rho$ & 95\% CI (bootstrap) & $\hat\sigma$ & $R^2$ \\
+\midrule
+Total IP & 3 & NLS & -0.073 & [-0.25, 0.20] & 0.93 & 0.9999 \\
+ &  & VarFilter & 0.782 & [1.26, 1.59] & 4.59 & --- \\
+ &  & Equicorr & -0.051 & [-0.41, 0.23] & 0.95 & 0.4918 \\
+\addlinespace
+Durable Goods & 8 & NLS & 0.152 & [0.12, 0.18] & 1.18 & 0.9992 \\
+ &  & VarFilter & 0.982 & [1.02, 1.30] & 54.81 & --- \\
+ &  & Equicorr & 0.481 & [0.06, 0.64] & 1.93 & 0.5044 \\
+\addlinespace
+Computer/Electronics & 5 & NLS & -0.191 & [-0.21, -0.15] & 0.84 & 0.9999 \\
+ &  & VarFilter & 1.574 & [1.68, 1.79] & -1.74 & --- \\
+ &  & Equicorr & -0.379 & [-0.78, -0.07] & 0.73 & 0.3413 \\
+\addlinespace
+Transport Equipment & 2 & NLS & 0.673 & [0.39, 0.89] & 3.06 & 0.9984 \\
+ &  & VarFilter & 0.728 & [0.78, 1.01] & 3.67 & --- \\
+ &  & Equicorr & 0.181 & [-8.93, 0.58] & 1.22 & 0.6511 \\
+\addlinespace
+Manufacturing & 2 & NLS & -0.299 & [-0.37, -0.23] & 0.77 & 1.0000 \\
+ &  & VarFilter & 0.600 & [-0.05, 0.45] & 2.50 & --- \\
+ &  & Equicorr & 0.752 & [0.47, 0.86] & 4.04 & 0.8212 \\
+\addlinespace
+Nondurable Goods & 9 & NLS & 0.990 & [0.98, 0.99] & 100.00 & 0.9997 \\
+ &  & VarFilter & 1.140 & [1.34, 1.49] & -7.15 & --- \\
+ &  & Equicorr & 0.267 & [-0.38, 0.52] & 1.37 & 0.4073 \\
+\addlinespace
+WSTS_SEMI & 6 & Equicorr & 0.920 & [0.89, 0.94] & 12.55 & 0.8815 \\
+\addlinespace
+\bottomrule
+\end{tabular}
+\begin{minipage}{0.95\textwidth}
+\vspace{0.5em}
+\footnotesize\textit{Notes:} Three independent estimation methods: NLS = nonlinear least squares on CES production function; VarFilter = inversion of the variance filter ratio $\text{Var}(\text{idiosyncratic})/\text{Var}(\text{aggregate}) = 1/(2-\rho)^2$; Equicorr = inversion from common-factor $R^2$ structure. All CIs use moving-block bootstrap ($B=1000$, block length = 12 months) to account for serial correlation. $\sigma = 1/(1-\rho)$ is the elasticity of substitution. Data: FRED Industrial Production indices (monthly, 1972--2025) and WSTS semiconductor revenue (quarterly, 2000--2024).
+\end{minipage}
+\end{table}

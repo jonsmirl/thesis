@@ -1,0 +1,21 @@
+\begin{table}[htbp]
+\centering
+\caption{CES emergence in NBER-CES Manufacturing data under NAICS aggregation}
+\label{tab:nber_ces}
+\small
+\begin{tabular}{@{}lccccccc@{}}
+\toprule
+NAICS & $n$ & $R^2_{\text{CES}}$ & $R^2_{\text{TL}}$ & $\|\beta\|/\|\alpha\|$ & \% $F$-rej. & $\tilde{\rho}$ & IQR($\rho$) \\
+\midrule
+6-digit & 364 & 0.944 & 0.970 & 0.137 & 71\% & -2.70 & 1.63 \\
+5-digit & 180 & 0.950 & 0.977 & 0.125 & 79\% & -2.74 & 1.49 \\
+4-digit & 86 & 0.953 & 0.980 & 0.112 & 83\% & -2.75 & 1.10 \\
+3-digit & 21 & 0.971 & 0.990 & 0.087 & 95\% & -2.87 & 1.13 \\
+2-digit & 3 & 0.975 & 0.993 & 0.068 & 100\% & -2.49 & 0.07 \\
+\bottomrule
+\end{tabular}
+\begin{minipage}{0.95\textwidth}
+\vspace{0.5em}
+\footnotesize\textit{Notes:} NBER-CES Manufacturing Industry Database (1977--2018, 2012 NAICS). Value added regressed on capital stock and production hours. Each industry estimated by time series; medians reported across industries at each aggregation level. $\|\beta\|/\|\alpha\|$: translog interaction ratio. $\tilde{\rho}$: median CES curvature. IQR: interquartile range of $\hat{\rho}$ across industries.
+\end{minipage}
+\end{table}

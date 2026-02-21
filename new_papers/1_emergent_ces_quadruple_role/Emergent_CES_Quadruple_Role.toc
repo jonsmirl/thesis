@@ -1,0 +1,57 @@
+\contentsline {section}{\numberline {1}Introduction}{4}{section.1}%
+\contentsline {section}{\numberline {2}Preliminaries: CES, Power Means, and Entropy}{6}{section.2}%
+\contentsline {subsection}{\numberline {2.1}The CES Aggregate}{6}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}The Curvature Parameter}{7}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Quasi-Arithmetic Means}{7}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}R\'enyi and Tsallis Entropies}{7}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Argument 1: Multi-Scale Aggregation Fixed Point}{8}{section.3}%
+\contentsline {subsection}{\numberline {3.1}The Aggregation Operator}{8}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}CES as the Unique Fixed Point}{8}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Stability: What the Aggregation Framework Adds}{9}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}The $\rho $ Eigenvalue}{16}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Argument 2: Functional Equations}{16}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Acz\'el's Characterization}{16}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}What the Functional Equation Argument Adds}{17}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Argument 3: Maximum Entropy Self-Consistency}{17}{section.5}%
+\contentsline {subsection}{\numberline {5.1}The Entropy-Allocation Loop}{17}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}The Matching of Exponents}{21}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}The Economic Potential Decomposition}{21}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Convergence of the Three Arguments}{22}{section.6}%
+\contentsline {section}{\numberline {7}The $\rho $ Aggregation-Invariant Class}{22}{section.7}%
+\contentsline {subsection}{\numberline {7.1}$\rho $ as an Aggregation-Invariant Exponent}{22}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Connection to Tsallis Non-Extensive Economics}{23}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}The $(\rho , T)$ Regime Diagram}{24}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Implications for the Framework}{24}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Normalization and Cross-Economy Comparison}{25}{subsection.7.5}%
+\contentsline {section}{\numberline {8}The Curvature Lemma}{26}{section.8}%
+\contentsline {subsection}{\numberline {8.1}The Symmetric Point}{26}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Gradient and Hessian at the Symmetric Point}{26}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Isoquant Curvature}{27}{subsection.8.3}%
+\contentsline {section}{\numberline {9}Superadditivity}{27}{section.9}%
+\contentsline {section}{\numberline {10}Correlation Robustness}{28}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Setup}{28}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}The Theorem}{28}{subsection.10.2}%
+\contentsline {section}{\numberline {11}Strategic Independence}{30}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Setup}{30}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}The Theorem}{31}{subsection.11.2}%
+\contentsline {section}{\numberline {12}Network Scaling}{31}{section.12}%
+\contentsline {section}{\numberline {13}The Unified Theorem}{32}{section.13}%
+\contentsline {subsection}{\numberline {13.1}The Geometric Intuition}{32}{subsection.13.1}%
+\contentsline {subsection}{\numberline {13.2}Unified Scaling: All Three Are $\Theta (K)$}{33}{subsection.13.2}%
+\contentsline {section}{\numberline {14}General Weights and the Secular Equation}{33}{section.14}%
+\contentsline {subsection}{\numberline {14.1}Effective Shares and the Cost-Minimizing Point}{33}{subsection.14.1}%
+\contentsline {subsection}{\numberline {14.2}The Hessian at General Weights}{34}{subsection.14.2}%
+\contentsline {subsection}{\numberline {14.3}The Secular Equation}{34}{subsection.14.3}%
+\contentsline {subsection}{\numberline {14.4}The Generalized Curvature Parameter}{34}{subsection.14.4}%
+\contentsline {subsection}{\numberline {14.5}General-Weight Quadruple Role}{34}{subsection.14.5}%
+\contentsline {section}{\numberline {15}Empirical Predictions}{35}{section.15}%
+\contentsline {subsection}{\numberline {15.1}Monte Carlo: CES Emerges from Non-CES Micro Data}{35}{subsection.15.1}%
+\contentsline {subsection}{\numberline {15.2}NBER-CES Manufacturing Database}{36}{subsection.15.2}%
+\contentsline {subsection}{\numberline {15.3}FRED Industrial Production Hierarchy}{36}{subsection.15.3}%
+\contentsline {section}{\numberline {16}Extensions and Discussion}{37}{section.16}%
+\contentsline {subsection}{\numberline {16.1}Nested CES and Multi-Scale Structure}{37}{subsection.16.1}%
+\contentsline {subsection}{\numberline {16.2}Weighted CES and Asymmetric Inputs}{38}{subsection.16.2}%
+\contentsline {subsection}{\numberline {16.3}The Translog as an Irrelevant Perturbation}{38}{subsection.16.3}%
+\contentsline {subsection}{\numberline {16.4}Tightness of the Quadruple Role Bounds}{39}{subsection.16.4}%
+\contentsline {subsection}{\numberline {16.5}What This Paper Does Not Cover}{39}{subsection.16.5}%
+\contentsline {section}{\numberline {17}Conclusion}{39}{section.17}%

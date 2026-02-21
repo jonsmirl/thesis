@@ -1,0 +1,350 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\textbf{Model Appendix}
+
+A Two-Sector Model of Endogenous Monetary Regime Choice
+
+\textbf{A.1 Environment}
+
+Consider an economy with a continuum of economic activities indexed by their switching cost \emph{c $\in$ {[}0, $\bar{c}${]}}, distributed uniformly. Each activity produces output on one of two monetary infrastructures: fiat (\emph{F}) or programmable (\emph{P}). The switching cost \emph{c} represents the institutional, legal, and behavioral cost of moving from fiat to programmable rails---analogous to migration costs in the structural transformation literature (Gollin, Lagakos, and Waugh 2014).
+
+\textbf{A.1.1 Sector Payoffs}
+
+Effective output per unit of activity on fiat infrastructure is:
+
+\emph{$\pi$\textsuperscript{f} = A(1 $-$ $\bar{\tau}$/q)} (1)
+
+where \emph{A} is baseline TFP, \emph{$\bar{\tau}$} is the base transaction cost of fiat infrastructure, and \emph{q $\in$ (0,1{]}} is fiat institutional quality. Higher \emph{q} (better institutions, lower inflation, deeper banking) reduces effective transaction costs. For the United States, \emph{q $\approx$ 0.95}; for Nigeria, \emph{q $\approx$ 0.40}.
+
+Effective output per unit of activity on programmable infrastructure is:
+
+\emph{$\pi$\textsuperscript{p} = A(1 + $\alpha$$\kappa$)(1 $-$ $\tau$\textsubscript{p}($\theta$)) $-$ $\varphi$} (2)
+
+where \emph{$\kappa$ $\geq$ 0} is the AI cost advantage (ratio of human to AI cognitive labor cost), \emph{$\alpha$ \textgreater{} 0} scales the productivity premium from AI-native activity, \emph{$\varphi$ $\geq$ 0} is regulatory friction (a policy variable), and the programmable transaction cost exhibits network effects:
+
+\emph{$\tau$\textsubscript{p}($\theta$) = $\bar{\tau}$\textsubscript{p} / (1 + $\eta$$\theta$)} (3)
+
+Here \emph{$\theta$ $\in$ {[}0,1{]}} is the share of activity on programmable rails and \emph{$\eta$ \textgreater{} 0} captures the strength of network effects: as more activity migrates, programmable infrastructure matures, reducing transaction costs for all participants. This is the source of strategic complementarity in adoption.
+
+\textbf{A.1.2 Switching Decision}
+
+An activity with switching cost \emph{c} migrates to programmable rails if and only if:
+
+\emph{$\pi$\textsuperscript{p} $-$ c $\geq$ $\pi$\textsuperscript{f}} (4)
+
+The marginal activity has switching cost:
+
+\emph{c* = $\pi$\textsuperscript{p} $-$ $\pi$\textsuperscript{f}} (5)
+
+With \emph{c} uniform on \emph{{[}0, $\bar{c}${]}}, the share of activity on programmable rails is:
+
+\emph{$\theta$ = min\{max\{c*/$\bar{c}$, 0\}, 1\}} (6)
+
+\textbf{A.2 Equilibrium}
+
+Substituting (1)--(3) into (5) and (6) gives the equilibrium condition:
+
+\emph{$\theta$ = ƒ($\theta$) $\equiv$ {[}A(1 + $\alpha$$\kappa$)(1 $-$ $\bar{\tau}$\textsubscript{p}/(1 + $\eta$$\theta$)) $-$ $\varphi$ $-$ A(1 $-$ $\bar{\tau}$/q){]} / $\bar{c}$} (7)
+
+An equilibrium is a fixed point \emph{$\theta$* = ƒ($\theta$*)}. The function \emph{ƒ} is increasing and convex in $\theta$ (since $\tau$\textsubscript{p} decreases in $\theta$ at a diminishing rate). This produces the central analytical result:
+
+\emph{\textbf{Proposition 1 (Multiple Equilibria and Cold Start)}}
+
+\begin{quote}
+\emph{When network effects are sufficiently strong ($\eta$ \textgreater{} $\bar{\eta}$), the economy has three equilibria: a low-adoption equilibrium $\theta$\textsubscript{l}, an unstable interior equilibrium $\theta$\textsuperscript{u}, and a high-adoption equilibrium $\theta$\textsubscript{h}. The low equilibrium is locally stable: small perturbations from $\theta$\textsubscript{l} return to $\theta$\textsubscript{l}. The transition from $\theta$\textsubscript{l} to $\theta$\textsubscript{h} requires a discrete shock that pushes $\theta$ past $\theta$\textsuperscript{u}.}
+\end{quote}
+
+\textbf{Proof sketch.} At $\theta$ = 0, ƒ(0) = {[}A(1 + $\alpha$$\kappa$)(1 $-$ $\bar{\tau}$\textsubscript{p}) $-$ $\varphi$ $-$ A(1 $-$ $\bar{\tau}$/q){]} / $\bar{c}$. If $\bar{\tau}$\textsubscript{p} is large (immature infrastructure), this is near zero or negative---the low equilibrium. The slope ƒ$'$($\theta$) = A(1 + $\alpha$$\kappa$) · $\eta$$\bar{\tau}$\textsubscript{p} / {[}$\bar{c}$(1 + $\eta$$\theta$)²{]} is maximized at low $\theta$. For $\eta$ large enough, ƒ$'$ exceeds 1 near the origin, and ƒ crosses the 45° line three times. The middle crossing is unstable (ƒ$'$ \textgreater{} 1); the low and high crossings are stable (ƒ$'$ \textless{} 1).
+
+$\square$
+
+\textbf{Interpretation.} The cold-start problem identified in the simulation model now has analytical foundations. The system is trapped at $\theta$\textsubscript{l} because each agent's adoption decision depends on others' adoption through the network effect in $\tau$\textsubscript{p}. Institutional catalysts (ETF approvals, regulatory frameworks) act as coordination devices that shift $\theta$ past the unstable threshold $\theta$\textsuperscript{u}, after which the high equilibrium is self-reinforcing. This parallels the coordination failures that keep labor trapped in low-productivity agriculture despite the measured productivity gap.
+
+\textbf{A.2.1 Threshold for Network Effects}
+
+Multiple equilibria require $\eta$ \textgreater{} $\bar{\eta}$ where the critical threshold is:
+
+\emph{$\bar{\eta}$ = $\bar{c}$ / {[}A(1 + $\alpha$$\kappa$)$\bar{\tau}$\textsubscript{p}{]}} (8)
+
+Note that $\bar{\eta}$ is \emph{decreasing} in the AI cost advantage $\kappa$: as AI becomes cheaper, weaker network effects suffice to produce multiple equilibria. The cold-start problem becomes \emph{easier to overcome} as the monetary productivity gap widens. This is a testable prediction.
+
+\textbf{A.3 Comparative Statics}
+
+At a stable interior equilibrium where ƒ$'$($\theta$*) \textless{} 1, the implicit function theorem gives d$\theta$*/dx = ($\partial$ƒ/$\partial$x) / (1 $-$ ƒ$'$($\theta$*)) for any parameter x. Since 1 $-$ ƒ$'$ \textgreater{} 0 at a stable equilibrium, the sign of d$\theta$*/dx equals the sign of $\partial$ƒ/$\partial$x. This yields:
+
+\emph{\textbf{Proposition 2 (Comparative Statics)}}
+
+\begin{quote}
+\emph{At any stable interior equilibrium:}
+\end{quote}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1923}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0962}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3953}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3162}}@{}}
+\toprule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Parameter} & \textbf{Sign} & \textbf{Interpretation} & \textbf{Test} \\
+Fiat quality q & $\partial$$\theta$*/$\partial$q \textless{} 0 & Better fiat institutions reduce incentive to switch & Yes \\
+AI cost adv. $\kappa$ & $\partial$$\theta$*/$\partial$$\kappa$ \textgreater{} 0 & Cheaper AI widens the monetary productivity gap & Yes \\
+Reg. friction $\varphi$ & $\partial$$\theta$*/$\partial$$\varphi$ \textless{} 0 & Resistance reduces adoption & Yes \\
+Network eff. $\eta$ & $\partial$$\theta$*/$\partial$$\eta$ \textgreater{} 0 & Stronger network effects raise equilibrium adoption & Ind. \\
+Switching cost $\bar{c}$ & $\partial$$\theta$*/$\partial$$\bar{c}$ \textless{} 0 & Higher barriers (older pop., institutional inertia) slow adoption & Yes \\
+Base crypto cost $\bar{\tau}$\textsubscript{p} & $\partial$$\theta$*/$\partial$$\bar{\tau}$\textsubscript{p} \textless{} 0 & Immature programmable infrastructure reduces adoption & Yes \\
+\end{longtable}
+
+\emph{`Test' column indicates whether the comparative static generates an empirically testable prediction using available cross-country data.}
+
+\textbf{Proof.} Direct differentiation of (7). For q: $\partial$ƒ/$\partial$q = $-$A$\bar{\tau}$/($\bar{c}$q²) \textless{} 0. For $\kappa$: $\partial$ƒ/$\partial$$\kappa$ = A$\alpha$(1 $-$ $\tau$\textsubscript{p}($\theta$))/$\bar{c}$ \textgreater{} 0. For $\varphi$: $\partial$ƒ/$\partial$$\varphi$ = $-$1/$\bar{c}$ \textless{} 0. Remaining results follow analogously. $\square$
+
+\textbf{A.3.1 Cross-Country Predictions}
+
+The comparative statics map directly onto the country-group heterogeneity in the thesis. Define the \emph{monetary productivity gap} for country \emph{i} as:
+
+\emph{MPG\textsubscript{i} = $\pi$\textsuperscript{p} $-$ $\pi$\textsuperscript{f}\textsubscript{i} = A(1 + $\alpha$$\kappa$)(1 $-$ $\tau$\textsubscript{p}($\theta$)) $-$ $\varphi$\textsubscript{i} $-$ A(1 $-$ $\bar{\tau}$/q\textsubscript{i})} (9)
+
+The model predicts (with empirical status noted):
+
+\textbf{(i)} Pre-Industrial economies (low q, low $\bar{c}$) have the widest MPG and the lowest switching costs, producing the highest \emph{structural demand} for programmable infrastructure but the lowest \emph{equilibrium adoption} due to limited digital infrastructure (high $\bar{\tau}$\textsubscript{p}). This mirrors the agricultural productivity gap: widest where institutions are weakest. \textbf{Confirmed:} Data Appendix Section B.5 shows the remittance MPG is 9.4pp for Sub-Saharan Africa versus 4.1pp for South Asia, and crypto adoption correlates positively with agriculture share of GDP (r = 0.20), Gollin, Lagakos, and Waugh's primary structural transformation indicator.
+
+\textbf{(ii)} AI-Frontier economies (high q, high $\kappa$, low $\bar{\tau}$\textsubscript{p}) have a narrower MPG but higher equilibrium adoption because mature digital infrastructure reduces programmable transaction costs. The gap is smaller but the transition is faster.
+
+\textbf{(iii)} Late Industrial economies (mediocre q, high $\bar{c}$) face the largest \emph{welfare cost} of resistance because $\partial$$\theta$*/$\partial$$\varphi$ is largest when the gap is moderate and switching costs are high---friction bites hardest. \textbf{Confirmed:} India's 2022 tax regime (Data Appendix B.4) reduced domestic volume by 86\%, with virtually all displaced activity migrating offshore rather than ceasing.
+
+\textbf{A.4 Welfare Analysis}
+
+\textbf{A.4.1 Social Planner's Problem}
+
+A social planner maximizes aggregate output net of switching costs:
+
+\emph{W($\theta$) = $\theta$ · $\pi$\textsuperscript{p}($\theta$) + (1$-$$\theta$) · $\pi$\textsuperscript{f} $-$ $\int$\textsubscript{0}\textsuperscript{$\theta$}\textsuperscript{$\bar{c}$} c dc} (10)
+
+The integral captures total switching costs paid by activities that migrate. With c uniform, average switching cost of adopted activities is $\theta$$\bar{c}$/2, giving:
+
+\emph{W($\theta$) = $\theta$ · $\pi$\textsuperscript{p}($\theta$) + (1$-$$\theta$) · $\pi$\textsuperscript{f} $-$ $\theta$²$\bar{c}$/2} (11)
+
+\emph{\textbf{Proposition 3 (Underadoption)}}
+
+\begin{quote}
+\emph{The decentralized equilibrium $\theta$* is below the social optimum $\theta$\textsuperscript{s} whenever network effects are positive ($\eta$ \textgreater{} 0). That is, the market underadopts programmable infrastructure.}
+\end{quote}
+
+\textbf{Proof sketch.} Each agent's switch to programmable rails reduces $\tau$\textsubscript{p} for all other agents through the network effect, but this positive externality is not internalized. The social planner's first-order condition includes the term $\theta$ · $\partial$$\pi$\textsuperscript{p}/$\partial$$\theta$ = $\theta$ · A(1+$\alpha$$\kappa$) · $\eta$$\bar{\tau}$\textsubscript{p}/(1+$\eta$$\theta$)², which is strictly positive when $\theta$ \textgreater{} 0 and $\eta$ \textgreater{} 0. The marginal social benefit of adoption exceeds the marginal private benefit.
+
+$\square$
+
+\textbf{Policy implication.} Accommodation (reducing $\varphi$) moves the decentralized equilibrium toward the social optimum. Resistance (increasing $\varphi$) widens the gap between $\theta$* and $\theta$\textsuperscript{s}, reducing welfare. This provides a normative foundation for the thesis's finding that accommodation dominates resistance.
+
+\textbf{A.4.2 The Innovation Flight Externality}
+
+In an open economy, resistance has an additional cost absent from the closed-economy model. Let $\gamma$ $\in$ {[}0,1{]} be the share of AI-native innovation that relocates when domestic regulatory friction $\varphi$ exceeds foreign friction $\varphi$*. Under resistance, domestic TFP becomes:
+
+\emph{A\textsubscript{r} = A · {[}1 $-$ $\gamma$$\theta$*($\varphi$ $-$ $\varphi$*)/$\varphi$\textsubscript{m}\textsubscript{a}\textsubscript{x}{]}} (12)
+
+where $\varphi$\textsubscript{m}\textsubscript{a}\textsubscript{x} normalizes the friction differential. This captures a mechanism well-documented in the structural transformation literature: productive resources flow to where institutional environments are most favorable. Gollin, Lagakos, and Waugh (2014) study labor flows across sectors; here capital and innovation flow across monetary jurisdictions. The welfare cost of resistance is then:
+
+\emph{$\Delta$W = W($\theta$*\textsubscript{a}\textsuperscript{c}\textsuperscript{c}, A) $-$ W($\theta$*\textsubscript{r}\textsubscript{e}\textsubscript{s}, A\textsubscript{r})} (13)
+
+The thesis's simulated 11--13\% output gap by 2050 corresponds to this welfare cost at specific parameter values. The Data Appendix presents preliminary evidence: India's 2022 tax regime confirms that $\partial$$\theta$*/$\partial$$\varphi$ \textless{} 0 with an 86\% domestic volume collapse (Section B.4), while China's 2021 mining ban documents the innovation flight mechanism---46 percentage points of global hashrate relocated within months (Section B.6). Deriving a formal estimate of $\gamma$ from these episodes requires measuring the GDP and innovation consequences in recipient countries, which remains future work.
+
+\textbf{A.5 The Lucas Critique and Monetary Policy Effectiveness}
+
+Consider a central bank that sets interest rate r to minimize an output gap, using a model estimated when $\theta$ = $\theta$\textsubscript{0}. The central bank's perceived monetary base is $\hat{M}$ = M, but the effective base is M\textsuperscript{e} = (1 $-$ $\theta$)M: activity on crypto rails is outside the transmission mechanism.
+
+\emph{\textbf{Proposition 4 (Endogenous Policy Erosion)}}
+
+\begin{quote}
+\emph{If $\theta$ responds to monetary policy ($\partial$$\theta$/$\partial$r \textgreater{} 0, i.e., tighter policy pushes activity to crypto), then the central bank's policy effectiveness declines endogenously. Define the Lucas Gap as L($\theta$) = 1 $-$ (1$-$$\theta$)². Then L is convex and accelerating in $\theta$.}
+\end{quote}
+
+\textbf{Proof sketch.} The CB's policy multiplier is proportional to the square of its monetary base share: it affects both the direct channel (interest-sensitive spending, proportional to 1$-$$\theta$) and the credit channel (bank lending, also proportional to 1$-$$\theta$). Total effectiveness is (1$-$$\theta$)². The gap L = 1 $-$ (1$-$$\theta$)² is convex: policy erosion accelerates as adoption grows. At $\theta$ = 0.3, the CB retains 49\% effectiveness. At $\theta$ = 0.5, only 25\%.
+
+$\square$
+
+The strategic interaction between CB policy and agent adoption creates a feedback loop: tightening → migration → reduced effectiveness → further tightening → further migration. This is precisely the Lucas Critique: the CB's model breaks down because agents respond to policy by changing the regime the model was estimated under.
+
+\textbf{A.6 Extended Solow Growth Model}
+
+The standard Solow model with exogenous monetary regime:
+
+\emph{$\dot{k}$ = s$\tilde{A}$k\textsuperscript{$\alpha$} $-$ (n + $\delta$)k} (14)
+
+where k is capital per effective worker, s is savings rate, n is population growth, and $\delta$ is depreciation. The extension makes $\tilde{A}$ and s functions of the endogenous monetary regime:
+
+\emph{s\textsuperscript{e} = s + $\alpha$$\theta$* (savings premium: reduced transaction costs + yield access)} (15)
+
+\emph{$\tilde{A}$ = A · {[}1 + $\beta$$\theta$*{]} (innovation premium: capital allocation efficiency)} (16)
+
+The savings premium $\alpha$ captures two channels: (i) reduced transaction costs on payments (the measured 6.4pp transfer cost gap) and (ii) expanded access to yield-bearing instruments through tokenized securities (main paper, Section 2.4). For the 1.4 billion unbanked adults earning negative real returns on cash savings, the yield access channel dominates. The innovation premium $\beta$ captures TFP gains from improved capital allocation when AI agents continuously optimize across tokenized asset classes globally---the mechanism the finance-growth literature (King and Levine 1993, Rajan and Zingales 1998) identifies as the primary channel through which financial development drives growth. Under resistance, the flight penalty enters:
+
+\emph{$\tilde{A}$\textsubscript{r} = A · {[}1 + $\beta$$\theta$*\textsubscript{r} $-$ $\gamma$($\varphi$ $-$ $\varphi$*)$\theta$*\textsubscript{r}{]} (TFP net of innovation flight)} (17)
+
+The steady-state output per capita under each regime is:
+
+\emph{y*\_acc = Ā\^{}{[}$\alpha$/(1$-$$\alpha$){]} · {[}s\textsuperscript{e}/(n + g + $\delta$){]}\^{}{[}$\alpha$/(1$-$$\alpha$){]}} (18)
+
+\emph{y*\_res = (Ā\_r)\^{}{[}$\alpha$/(1$-$$\alpha$){]} · {[}s\textsuperscript{e}\_r/(n + g + $\delta$){]}\^{}{[}$\alpha$/(1$-$$\alpha$){]}} (19)
+
+The output gap y*\textsubscript{a}\textsuperscript{c}\textsuperscript{c}/y*\textsubscript{r}\textsubscript{e}\textsubscript{s} is increasing in $\gamma$ (flight sensitivity), $\varphi$ $-$ $\varphi$* (regulatory differential), and $\theta$* (adoption level). Countries where all three are large---the Late Industrial group---face the highest welfare cost of resistance, consistent with Table 2 in the thesis.
+
+\textbf{A.6.1 Convergence Implications}
+
+The standard Solow prediction is conditional convergence: countries below their steady state grow faster. Koyama and Rubin (2022) present this as the textbook expectation. The extended model modifies this: two countries with identical fundamentals (s, n, $\delta$, A) but different regulatory stances ($\varphi$) will converge to \emph{different steady states}. Monetary regime choice creates a new source of cross-country income divergence---one that the standard model, taking the monetary regime as exogenous, cannot capture. This offers a potential partial explanation for Pritchett's (1997) ``divergence, big time'': if monetary regime is both endogenous and consequential for growth, omitting it from convergence regressions biases estimates.
+
+\textbf{A.7 Empirical Strategy}
+
+The model generates testable predictions that can be brought to data. This section outlines the empirical strategy and summarizes initial results from the Data Appendix.
+
+\textbf{A.7.1 Measuring the Monetary Productivity Gap}
+
+The MPG has two components that operate at different scales. The \textbf{transfer cost gap} measures the price of moving money between systems: fiat remittance costs minus stablecoin transaction costs. Data Appendix Section B.5 implements this measurement using the World Bank Remittance Prices Worldwide database (300 corridors, 36 quarters, 2016--2025), computing the MPG as the difference between fiat remittance costs and a conservative stablecoin benchmark (0.5\%). The average gap is 6.4 percentage points; for Sub-Saharan Africa, 9.4pp. This corresponds to the $\bar{\tau}$/q $-$ $\tau$\textsubscript{p}($\theta$) differential in the model, measured directly at the corridor level.
+
+The \textbf{yield access gap} measures the difference in value added per dollar across monetary infrastructures---the true monetary analogue of Gollin, Lagakos, and Waugh's value-added-per-worker ratios. For an unbanked Nigerian farmer holding cash under inflation, the yield access gap is approximately 30 percentage points ($-$25\% real return on cash versus +4.5\% nominal on tokenized Treasuries). This component is activated by the tokenization of financial assets on programmable rails (main paper, Section 2.4): as fractional tokenized Treasuries become accessible via smartphone, the yield access gap closes at the individual level. The savings premium in equation 15 (s\textsuperscript{e} = s + $\alpha$$\theta$*) captures both channels, but the yield access component is substantially larger than the transfer cost component for developing economies. Data Appendix Section B.3.1 provides direct evidence: the yield access gap predicts crypto adoption ($\beta$ = 0.003, p = 0.011, R² = 0.101, n = 40) while the transfer cost gap alone does not ($\beta$ = $-$0.015, p = 0.335, R² = 0.026). Country-level measurement of the yield access gap averages 12.0pp across 40 countries, reaching 14.6pp in Pre/Early Industrial economies. The most productive empirical extension is panel estimation using tokenized asset holdings by country, which requires data that does not yet exist but is becoming tractable as institutional tokenization generates observable on-chain data (Data Appendix Section B.8).
+
+Beyond remittance costs, the AI cost advantage $\kappa$ is now directly observable through the x402 protocol ecosystem. Over 15 million autonomous AI-agent transactions have been processed on programmable rails by early 2026, representing \$600+ million in payment volume. These transactions---micropayments for API calls, compute, and data---constitute economic activity for which fiat infrastructure is not merely more expensive but unavailable. This provides direct evidence that $\kappa$ is large enough to generate substantial real economic activity on programmable rails, grounding the model's central mechanism in observable data rather than projection. Additional proxies---settlement time differentials, financial inclusion gaps (Global Findex), and mobile money volume ratios (GSMA)---remain available for further refinement.
+
+\textbf{A.7.2 Testing Comparative Statics}
+
+\textbf{Cross-sectional test.} Data Appendix Table B.1 reports cross-country regressions of the Chainalysis adoption score on the Fiat Quality Index and controls (18 countries, 2020--2024 panel). The model predicts $\hat{\beta}$\_q \textless{} 0; the estimated coefficient is $-$0.055 (bivariate) and $-$0.128 (with controls for log GDP/cap, internet penetration, and population). Both are negative as predicted, but neither is statistically significant. Section B.2 diagnoses the identification failure: severe multicollinearity (fiat quality correlates strongly with income, demographics, and infrastructure), PPP pre-adjustment in the Chainalysis index, and country-specific unobservables that dominate in a cross-section of this size.
+
+\textbf{Event study: India 2022.} Data Appendix Section B.4 reports the results. India's 30\% capital gains tax (April 2022) and 1\% TDS (July 2022) provide two clean, plausibly exogenous increases in $\varphi$. Estimating ln(Volume\textsubscript{t}) = $\alpha$ + $\beta$\textsubscript{1}·Post30\%Tax + $\beta$\textsubscript{2}·PostTDS + $\beta$\textsubscript{3}·ln(BTC) + $\varepsilon$ on monthly domestic exchange volume (n = 27, October 2021--December 2023): the 30\% tax reduced volume by 71\% ($\beta$\textsubscript{1} = $-$1.243, p \textless{} 0.01), the TDS by an additional 51\% ($\beta$\textsubscript{2} = $-$0.705, p \textless{} 0.05), for a combined collapse of 86\%. R² = 0.938. The BTC price control is insignificant, confirming that the volume decline is attributable to the tax regime rather than the 2022 crypto winter. A synthetic control robustness check (Abadie, Diamond, and Hainmueller 2010) using Indonesia, Philippines, Vietnam, Thailand, Nigeria, and South Korea as donors confirms this finding: synthetic India diverges from actual India by 65\% post-treatment, with India's RMSPE ratio ranking first among all seven units (p = 0.143, the theoretical minimum for this donor pool size). The Esya Centre independently documents 3--5 million users migrating offshore (Gautam 2023), confirming the model's prediction that friction displaces rather than eliminates activity.
+
+\textbf{Event study: China 2021.} China's mining ban (June 2021) and exchange closure provide a more extreme increase in $\varphi$. Data Appendix Section B.6 documents the innovation flight using the Cambridge Bitcoin Mining Map: China's share of global hashrate collapsed from 46\% to near-zero within months, with the United States (17\% → 38\%) and Kazakhstan (8\% → 18\%) absorbing the displaced activity. A partial covert recovery to \textasciitilde21\% by January 2022 confirms that even authoritarian resistance cannot fully eliminate crypto-economic activity. Deriving a formal estimate of $\gamma$ from this episode---measuring the GDP and innovation consequences in recipient versus source countries---remains future work.
+
+\textbf{Panel estimation.} With sufficient time-series data (available from 2017 onward for most countries), a panel regression of crypto adoption on fiat quality, digital infrastructure, regulatory stance, and demographics can estimate the structural parameters $\alpha$, $\eta$, $\gamma$ in the model. Country and year fixed effects absorb unobserved heterogeneity. The key identification challenge is endogeneity of $\varphi$: regulatory stance responds to adoption. Instrumental variables based on legal origin (La Porta et al. 1998) or government ideology may provide exogenous variation.
+
+\textbf{A.7.3 Data Sources}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2350}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4060}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3590}}@{}}
+\toprule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Variable} & \textbf{Source} & \textbf{Coverage} \\
+Crypto adoption ($\theta$) & Chainalysis Global Crypto Adoption Index & 154 countries, 2019--present \\
+Fiat quality (q) & WB WDI (inflation), Findex, WGI & 190+ countries, 1960--present \\
+Digital infrastructure & ITU ICT indicators, GSMA Mobile Money & 200+ countries, 2005--present \\
+Regulatory stance ($\varphi$) & Library of Congress crypto regulation tracker & 130+ countries, 2018--present \\
+Remittance costs & World Bank Remittance Prices Worldwide & 300 corridors, 2016--2025 (thesis) \\
+Demographics & UN World Population Prospects 2024 & 237 countries, 1950--2100 \\
+Structural indicators & World Bank WDI (ag share, GDP/cap, services) & 190+ countries, 1960--present \\
+\end{longtable}
+
+\textbf{A.7.4 Sensitivity to Flight Penalty ($\gamma$)}
+
+The innovation flight penalty $\gamma$ is the least empirically grounded parameter in the model. Table A.2 shows how the 2050 output gap between accommodation and resistance varies as $\gamma$ ranges from 0.2 (mild flight) to 0.6 (severe flight), holding all other parameters at baseline values. The qualitative result---accommodation dominates---is robust across the full range, but the magnitude varies substantially.
+
+\textbf{Table A.2: Sensitivity of 2050 Output Gap to Flight Penalty $\gamma$}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3143}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2286}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2286}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2286}}@{}}
+\toprule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Stage} & \textbf{$\gamma$ = 0.2} & \textbf{$\gamma$ = 0.4 (base)} & \textbf{$\gamma$ = 0.6} \\
+Pre-Industrial & +6.8\% & +12.4\% & +17.1\% \\
+Early Industrial & +6.4\% & +11.7\% & +16.2\% \\
+Mid-Industrial & +5.7\% & +10.5\% & +14.6\% \\
+Late Industrial & +6.9\% & +12.6\% & +17.4\% \\
+Post-Industrial & +6.0\% & +11.0\% & +15.3\% \\
+AI-Frontier & +6.1\% & +11.2\% & +15.5\% \\
+\end{longtable}
+
+\emph{Values show the percentage output gain from accommodation over resistance at 2050. Baseline $\gamma$ = 0.4 corresponds to the thesis's main results in Table 2.}
+
+Even at $\gamma$ = 0.2---implying that only 20\% of the innovation associated with crypto adoption relocates under resistance---the output gain from accommodation remains 6--7\% across all stages. At $\gamma$ = 0.6, the gain exceeds 15\%. The Late Industrial group is consistently most sensitive to $\gamma$, reflecting its combination of moderate fiat quality, high switching costs, and large enough AI sector for flight to matter. Estimating $\gamma$ empirically remains a priority for bringing these results from calibration to measurement. The Data Appendix provides the raw material: India's 2022 tax regime estimates $\partial$$\theta$*/$\partial$$\varphi$ directly (an 86\% volume decline), while China's 2021 mining ban documents the innovation flight mechanism (46pp of hashrate relocated). The next step is to translate hashrate migration into GDP and innovation-output consequences in source versus recipient countries, which would identify $\gamma$ separately from the friction effect.
+
+\textbf{A.8 Summary of Model Results}
+
+The two-sector model formalizes the thesis's central arguments:
+
+\textbf{1. The monetary productivity gap is a structural phenomenon,} not a speculative one. It has two components: a transfer cost gap (measurable at 6.4pp across 300 remittance corridors) and a larger yield access gap (approximately 30pp for unbanked populations). The transfer cost gap parallels the cost of migrating between sectors; the yield access gap parallels Gollin, Lagakos, and Waugh's value-added-per-worker differentials. Tokenized securities (main paper, Section 2.4) activate the yield access channel, making the Solow extension's growth effects substantive.
+
+\textbf{2. Network effects produce multiple equilibria and a cold-start problem} (Proposition 1). The transition requires institutional catalysts---coordination devices that push adoption past the unstable threshold---paralleling the coordination failures that keep labor trapped in low-productivity agriculture.
+
+\textbf{3. The comparative statics generate testable predictions} (Proposition 2). Better fiat quality reduces adoption; cheaper AI increases it; regulatory friction reduces it but with diminishing effectiveness. All predictions map to available cross-country data.
+
+\textbf{4. The decentralized equilibrium underadopts} (Proposition 3). Network externalities mean the market produces less adoption than is socially optimal. Accommodation corrects toward the optimum; resistance amplifies the distortion.
+
+\textbf{5. The Lucas Critique applies endogenously} (Proposition 4). Central bank policy effectiveness erodes as the monetary base shrinks, and this erosion accelerates nonlinearly.
+
+\textbf{6. Monetary regime choice creates cross-country income divergence} that the standard Solow model cannot explain (Section A.6). Two otherwise-identical countries with different regulatory stances converge to different steady states. This is a new channel for Pritchett's ``divergence, big time.''
+
+The model is deliberately minimal---one page of equations, not eleven layers of simulation. The goal is to identify the mechanism cleanly enough that it can be estimated from data and tested against natural experiments. The Data Appendix confirms three of the model's predictions: the transfer cost component of the monetary productivity gap is measurable (6.4pp average across 300 remittance corridors), regulatory friction reduces domestic adoption but displaces rather than eliminates activity (India: $-$86\%, R² = 0.938), and resistance triggers innovation flight to accommodating jurisdictions (China: 46pp of hashrate relocated). A fourth form of evidence---the x402 agentic payment ecosystem (\$600M+ in autonomous AI-agent transactions)---confirms that the AI-native demand for programmable rails is no longer theoretical. The cross-country comparative statics have the correct signs but lack statistical power in cross-section, pointing to within-country panel estimation as the path forward. The most consequential empirical extension is measurement of the yield access gap at the country level, which requires data on tokenized asset holdings by country that does not yet exist but is becoming tractable as institutional tokenization (BlackRock BUIDL, Franklin Templeton on-chain funds) generates observable on-chain data. This appendix provides the analytical skeleton; the Data Appendix provides the first empirical flesh; the capital market layer (main paper, Section 2.4) is where the growth effects become transformative.
+
+\end{document}

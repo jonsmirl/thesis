@@ -1,0 +1,135 @@
+\contentsline {section}{\numberline {1}Introduction}{7}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Summary of Results}{8}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Organization}{9}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Related Literature}{9}{subsection.1.3}%
+\contentsline {paragraph}{CES as a generating function across fields.}{9}{section*.2}%
+\contentsline {paragraph}{Entropy and information theory in economics.}{10}{section*.3}%
+\contentsline {paragraph}{Statistical mechanics and economic equilibrium.}{10}{section*.4}%
+\contentsline {paragraph}{Active inference and the free energy principle.}{10}{section*.5}%
+\contentsline {paragraph}{Closest antecedents.}{10}{section*.6}%
+\contentsline {paragraph}{The O-ring theory.}{11}{section*.7}%
+\contentsline {paragraph}{Endogenous growth and CES.}{11}{section*.8}%
+\contentsline {section}{\numberline {2}Preliminaries: The CES Framework}{11}{section.2}%
+\contentsline {subsection}{\numberline {2.1}CES Production Technology}{12}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}The Quadruple Role of $\rho $}{12}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Micro-Foundations: Why CES Is Forced}{13}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Nested CES and Multi-Level Aggregation}{13}{subsection.2.4}%
+\contentsline {section}{\numberline {3}The CES Potential and Tsallis Entropy}{15}{section.3}%
+\contentsline {subsection}{\numberline {3.1}From Shannon to Tsallis: Why Complementarity Breaks Extensivity}{15}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}The Information Friction}{16}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Construction of the CES Potential}{16}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}The $q$-Exponential and $q$-Logarithm}{17}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}The $q$-Exponential Equilibrium}{18}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}The Two Limits and the Breakdown Threshold}{19}{subsection.3.6}%
+\contentsline {paragraph}{The breakdown threshold.}{20}{section*.9}%
+\contentsline {paragraph}{Domain-specific breakdown thresholds.}{20}{section*.10}%
+\contentsline {section}{\numberline {4}Effective Curvature Under Information Friction}{20}{section.4}%
+\contentsline {subsection}{\numberline {4.1}The Firm's Problem}{21}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Output Loss Under Friction}{21}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}The Effective Curvature Theorem}{22}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Non-Uniform Degradation and the Crisis Sequence}{23}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Pre-Crisis Deceleration}{24}{subsection.4.5}%
+\contentsline {section}{\numberline {5}$q$-Generalized Dynamical Results}{25}{section.5}%
+\contentsline {subsection}{\numberline {5.1}$q$-Variance-Response Identity}{25}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}$q$-Covariance Structure}{25}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}$q$-Crooks Fluctuation Theorem and Jarzynski Equality}{26}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}The $q$-Log-Sum-Exp Dual}{27}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}$q$-Dissipation Bound}{28}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}Euler Identity Survival}{28}{subsection.5.6}%
+\contentsline {subsection}{\numberline {5.7}$q$-Onsager Reciprocal Relations}{29}{subsection.5.7}%
+\contentsline {subsection}{\numberline {5.8}$q$-Kramers Escape Rate}{30}{subsection.5.8}%
+\contentsline {subsection}{\numberline {5.9}Classification of Results}{30}{subsection.5.9}%
+\contentsline {paragraph}{Why the three categories exist.}{30}{section*.11}%
+\contentsline {section}{\numberline {6}Derivation I: Akerlof's Market for Lemons}{32}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Setup}{32}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}The $\rho $-Dependent Robustness Result}{32}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}The Informational Interpretation}{36}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Empirical Implications}{37}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Dynamic Extension: Bistability}{38}{subsection.6.5}%
+\contentsline {section}{\numberline {7}Derivation II: Myerson's Optimal Mechanism}{39}{section.7}%
+\contentsline {subsection}{\numberline {7.1}The Virtual Valuation as CES Potential Gradient}{39}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}The Optimal Mechanism Format}{41}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}The Revelation Principle as Variational Equilibrium}{42}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}$\rho $-Dependent Price of Incentive Compatibility}{42}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Empirical Implications}{44}{subsection.7.5}%
+\contentsline {section}{\numberline {8}Derivation III: Arrow's Impossibility Theorem}{44}{section.8}%
+\contentsline {subsection}{\numberline {8.1}$\rho $-Dependent Democratic Robustness}{46}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Empirical Implications}{47}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}The Democratic Error Function}{48}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Connection to the Condorcet Jury Theorem}{49}{subsection.8.4}%
+\contentsline {section}{\numberline {9}Derivation IV: Search and Matching}{50}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Setup}{50}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}The $\rho $-Dependent Search Duration}{51}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}The Beveridge Curve}{52}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}Sorting and Assignment}{53}{subsection.9.4}%
+\contentsline {subsection}{\numberline {9.5}Empirical Implications}{53}{subsection.9.5}%
+\contentsline {subsection}{\numberline {9.6}Resolution of the Shimer Volatility Puzzle}{54}{subsection.9.6}%
+\contentsline {section}{\numberline {10}Derivation V: Contract Theory}{55}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Setup}{55}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}The Hold-Up Problem}{55}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}The Integration Boundary}{56}{subsection.10.3}%
+\contentsline {subsection}{\numberline {10.4}The Fundamental Transformation in $(\rho , T)$ Space}{57}{subsection.10.4}%
+\contentsline {subsection}{\numberline {10.5}Empirical Implications}{57}{subsection.10.5}%
+\contentsline {subsection}{\numberline {10.6}Dynamic Contracting}{58}{subsection.10.6}%
+\contentsline {section}{\numberline {11}Derivation VI: Behavioral Economics}{59}{section.11}%
+\contentsline {subsection}{\numberline {11.1}The Logit-CES Duality}{59}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}The Behavioral Catalog}{60}{subsection.11.2}%
+\contentsline {subsection}{\numberline {11.3}The Attention Allocation Problem}{61}{subsection.11.3}%
+\contentsline {subsection}{\numberline {11.4}The Rabin Calibration Resolution}{62}{subsection.11.4}%
+\contentsline {subsection}{\numberline {11.5}Empirical Implications}{63}{subsection.11.5}%
+\contentsline {section}{\numberline {12}Optimal Firm Scope and Integration Boundary}{64}{section.12}%
+\contentsline {subsection}{\numberline {12.1}The Variety--Coordination Tradeoff}{64}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}The Phase Diagram for Integration}{66}{subsection.12.2}%
+\contentsline {subsection}{\numberline {12.3}Supply Chain Architecture}{68}{subsection.12.3}%
+\contentsline {subsection}{\numberline {12.4}Cross-Tier Information Spillovers}{69}{subsection.12.4}%
+\contentsline {subsection}{\numberline {12.5}Aggregate Supply Chain CES Potential}{69}{subsection.12.5}%
+\contentsline {section}{\numberline {13}Empirical Predictions}{70}{section.13}%
+\contentsline {subsection}{\numberline {13.1}Management--Technology Complementarity}{70}{subsection.13.1}%
+\contentsline {subsection}{\numberline {13.2}Within-Industry Productivity Dispersion}{71}{subsection.13.2}%
+\contentsline {subsection}{\numberline {13.3}AI Adoption Priority}{71}{subsection.13.3}%
+\contentsline {subsection}{\numberline {13.4}Crisis Dynamics Prediction}{72}{subsection.13.4}%
+\contentsline {section}{\numberline {14}Empirical Tests}{72}{section.14}%
+\contentsline {subsection}{\numberline {14.1}Banking Regulation and the Global Financial Crisis}{72}{subsection.14.1}%
+\contentsline {paragraph}{The BCL Puzzle.}{73}{section*.12}%
+\contentsline {paragraph}{Mechanism.}{73}{section*.13}%
+\contentsline {paragraph}{Data.}{73}{section*.14}%
+\contentsline {paragraph}{Interpretation.}{73}{section*.15}%
+\contentsline {paragraph}{Companion Test: Financial Development Panel.}{74}{section*.16}%
+\contentsline {subsection}{\numberline {14.2}Manufacturing Tail Distributions (Tsallis Test)}{75}{subsection.14.2}%
+\contentsline {paragraph}{Data.}{75}{section*.17}%
+\contentsline {paragraph}{Identification strategy.}{75}{section*.18}%
+\contentsline {paragraph}{GARCH control.}{75}{section*.19}%
+\contentsline {paragraph}{Results.}{75}{section*.20}%
+\contentsline {subsection}{\numberline {14.3}Price of Incentive Compatibility in Procurement}{76}{subsection.14.3}%
+\contentsline {paragraph}{NAICS classification methodology.}{76}{section*.21}%
+\contentsline {paragraph}{Robustness.}{76}{section*.22}%
+\contentsline {section}{\numberline {15}Six Derivations Revisited Under Tsallis}{77}{section.15}%
+\contentsline {subsection}{\numberline {15.1}Akerlof Adverse Selection}{77}{subsection.15.1}%
+\contentsline {subsection}{\numberline {15.2}Myerson Mechanism Design}{77}{subsection.15.2}%
+\contentsline {subsection}{\numberline {15.3}Arrow Social Choice}{78}{subsection.15.3}%
+\contentsline {subsection}{\numberline {15.4}DMP Search and Matching}{78}{subsection.15.4}%
+\contentsline {subsection}{\numberline {15.5}Contract Theory}{78}{subsection.15.5}%
+\contentsline {subsection}{\numberline {15.6}Behavioral Economics}{79}{subsection.15.6}%
+\contentsline {section}{\numberline {16}The CES Potential as a Welfare Loss Function}{79}{section.16}%
+\contentsline {section}{\numberline {17}The Architecture}{81}{section.17}%
+\contentsline {subsection}{\numberline {17.1}Welfare Implications of the Architecture}{81}{subsection.17.1}%
+\contentsline {subsection}{\numberline {17.2}The $(\rho , T)$ Classification of Economic Theories}{82}{subsection.17.2}%
+\contentsline {section}{\numberline {18}Discussion}{82}{section.18}%
+\contentsline {subsection}{\numberline {18.1}Why Wasn't This Seen Before?}{82}{subsection.18.1}%
+\contentsline {subsection}{\numberline {18.2}Resolution of the Tsallis Debate}{83}{subsection.18.2}%
+\contentsline {subsection}{\numberline {18.3}The $(\rho , T)$ Phase Diagram as a Unifying Framework}{84}{subsection.18.3}%
+\contentsline {subsection}{\numberline {18.4}Superstatistics and the Hierarchical Interpretation}{85}{subsection.18.4}%
+\contentsline {subsection}{\numberline {18.5}Two-Parameter Parsimony}{85}{subsection.18.5}%
+\contentsline {subsection}{\numberline {18.6}Testability}{86}{subsection.18.6}%
+\contentsline {paragraph}{Hierarchy of tests.}{86}{section*.23}%
+\contentsline {subsection}{\numberline {18.7}Endogenous Technology Choice}{87}{subsection.18.7}%
+\contentsline {subsection}{\numberline {18.8}Implications for Economic Methodology}{87}{subsection.18.8}%
+\contentsline {subsection}{\numberline {18.9}Related Literature on Industrial Organization}{88}{subsection.18.9}%
+\contentsline {paragraph}{Transaction cost economics.}{88}{section*.24}%
+\contentsline {paragraph}{Organizational economics.}{88}{section*.25}%
+\contentsline {paragraph}{Rational inattention in production.}{88}{section*.26}%
+\contentsline {paragraph}{Growth theory.}{88}{section*.27}%
+\contentsline {paragraph}{Trade theory.}{89}{section*.28}%
+\contentsline {paragraph}{Sparsity-based bounded rationality.}{89}{section*.29}%
+\contentsline {section}{\numberline {19}Conclusion}{89}{section.19}%
+\contentsline {section}{\numberline {A}Technical Lemmas}{94}{appendix.A}%

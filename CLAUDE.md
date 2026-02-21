@@ -46,20 +46,30 @@ The deepest result connects technology to welfare: `nabla^2 Phi|_slow = W^{-1} *
 - **Damping cancellation theorem**: increasing local regulation sigma_n speeds convergence but lowers equilibrium output; effects exactly cancel. To accelerate adjustment at level n, reform upstream (reduce sigma_{n-1} or increase gain elasticity beta_n).
 - **Crisis duration**: ~8 years at Wright's Law semiconductor rates, via canard bifurcation dynamics. Duration scales as O(1/sqrt(epsilon_drift)).
 
-### Papers
+### Papers (Reorganized 9-Paper Structure)
 
-**Working papers (unified by CES framework):**
-1. **Endogenous Decentralization** — Continuous-time differential game with exact closed-form Nash MPE. Key result: N firms overinvest 3-4x (Proposition 1), accelerating crossing 79%. Generalized R_0 crossing condition extends pure cost parity to include coordination dynamics. Training-inference bifurcation explains partial decentralization. Natural experiment: US-China export controls distinguish mechanism from standard Arrow learning. Predicts hardware crossing ~2028, self-sustaining distributed adoption ~2030-2032.
-2. **The Mesh Equilibrium** — Post-crossing dynamics. Giant component via percolation (R_0^mesh > 1), CES diversity premium from complementary specialization (rho < 1), knowledge diffusion via graph Laplacian. Key result: mesh dominance above N* (Theorem 1), with first-order phase transition (Fortuin-Kasteleyn/Potts, not smooth logistic). Inverse Bose-Einstein condensation at crossing point.
-3. **The Autocatalytic Mesh** — Endogenous capability growth via RAF (reflexively autocatalytic and food-generated) sets. Effective training productivity phi_eff = phi_0/(1 - beta_auto * phi_0) can exceed 1 with sufficient automation. Three growth regimes (convergence/exponential/singularity); convergence most likely due to Lotka-Volterra saturation + Baumol bottleneck. CES heterogeneity prevents model collapse (Theorem 2): effective external data fraction alpha_eff > alpha_crit even when actual external data is below threshold.
-4. **The Settlement Feedback** — Coupled 4-ODE system (mesh participation phi, stablecoin size S, debt ratio b, financial capitalization eta). Monetary policy degrades in sequence: forward guidance first, then QE, then financial repression. Bistable equilibrium (low-mesh vs high-mesh) with transcritical bifurcation at R_settle > 1. High-mesh equilibrium = synthetic gold standard with continuous market discipline. Kyle's lambda non-monotonic in phi.
-5. **Complementary Heterogeneity** (unifying paper) — Proves CES triple role theorem, derives network architecture from CES geometry (port topology theorem: aggregate coupling, directed feed-forward, nearest-neighbor forced by timescale separation). Eigenstructure bridge connects technology Hessian to welfare Hessian. Damping cancellation and upstream reform principle. Moduli space theorem: rho determines qualitative dynamics; timescales, damping, and gain functions are free parameters.
+Papers reorganized from 19 to 9 (Feb 2026). Theory-first presentation: CES foundations come before applications. New papers in `new_papers/` directory; old papers preserved in `papers/`.
 
-**Empirical thesis:**
-6. **Monetary Productivity Gap** (EC118 thesis) — Constructs Fiat Quality Index (FQI: inflation stability, banking access, ATM density, government effectiveness, internet penetration). Key finding: 13:1 remittance cost ratio fiat vs stablecoin in Sub-Saharan Africa. India 2022 tax natural experiment shows -86% domestic volume but 72% displacement offshore (not suppression). Yield Access Gap (YAG) regression: within-country beta = +0.248 (p < 0.001), sign flip from cross-section confirms precautionary savings motive. Provides micro-level evidence for settlement layer demand (Paper 4). 41-country panel, data from World Bank WDI/Findex/RPW, CBECI, Chainalysis.
+**Theory papers (Papers 1-3):**
+1. **Emergent CES and the Quadruple Role of Curvature** (old 17+8) — Proves CES is not an assumption but a theorem: the unique aggregation function compatible with constant returns + scale consistency, via three proofs (multi-scale aggregation fixed point, Aczél functional equation, maximum entropy self-consistency). Then proves K = (1-ρ)(J-1)/J simultaneously controls superadditivity, correlation robustness, strategic independence, and network scaling. General weights via secular equation. Target: *Econometrica*.
+2. **The CES Potential: Information Friction and Complementary Production** (old 9+18+10) — The (ρ,T) regime diagram: CES potential Φ_q = Φ_CES(ρ) − T·S_q with q = ρ. Effective curvature K_eff = K·(1−T/T*)⁺. Six derivations: Akerlof, Myerson, Arrow, DMP, Hart, behavioral. Optimal firm scope. Target: *Review of Economic Studies*.
+3. **Dynamics on the CES Potential Landscape** (old 12+13+14+15) — Conservative-dissipative dynamics: variance-response identity, early warning, Onsager reciprocity, Kramers escape, Jarzynski equality, multi-scale aggregation. Conservation laws. Business cycles ordered by ρ. Endogenous ρ via four channels. Target: *JPE*.
 
-**Policy paper:**
-7. **Fair Inheritance** — Recipient-based inheritance tax replacing estate tax. Treats inheritance as ordinary income; eliminates trust recognition. Creates binary choice: pay tax (concentrated transfer) or disperse widely (zero-tax pathway). Revenue projection $85-135B/year (5x current estate tax). Addresses automation-era wealth concentration. Connected to Papers 1-5 via the distributional consequences of technological transitions.
+**Applied papers (Papers 4-5):**
+4. **Endogenous Decentralization and the AI Transition** (old 1+2+3+11) — Complete story: concentrated investment → learning curves → crossing → mesh formation → autocatalytic growth → Baumol ceiling. N-firm differential game, overinvestment 3-4x, R₀ crossing, training-inference bifurcation, US-China natural experiment, Potts regime shift, CES diversity premium, RAF sets, model collapse protection. Target: *AER*.
+5. **Settlement Feedback and Monetary Policy in a Mesh Economy** (old 4, revised) — 4-ODE system, bistable equilibrium, transcritical bifurcation, Kyle's lambda. Monetary policy degradation sequence. Added CBDC/digital dollar section. Target: *J Monetary Economics*.
+
+**Architecture paper (Paper 6):**
+6. **Complementary Heterogeneity in Hierarchical Economies** (old 5+16) — The architectural spine. Six axioms, port topology theorem, moduli space theorem, eigenstructure bridge, damping cancellation, upstream reform principle. Four economic levels. Complete regime diagram, concordance table, prediction inventory. Target: *Review of Economic Studies*.
+
+**Empirical paper (Paper 7):**
+7. **Empirical Tests of the CES Hierarchy** (old 19 + ρ estimation + damping/dispersion tests) — EMD timescale discovery (r*=2.19, N_eff=5), structural ρ estimation, damping cancellation (158-country panel, Basel III DID p=0.9462), dispersion leading indicator (WSTS VAR). Target: *J Applied Econometrics*.
+
+**Empirical thesis (Paper 8, unchanged):**
+8. **Monetary Productivity Gap** (EC118 thesis) — Constructs Fiat Quality Index. 13:1 remittance cost ratio. India 2022 tax natural experiment: -86% domestic volume but 72% displacement offshore. YAG regression: within-country β = +0.248 (p < 0.001). 41-country panel.
+
+**Policy paper (Paper 9):**
+9. **Fair Inheritance** — Recipient-based inheritance tax. Binary choice: pay tax or disperse. Revenue $85-135B/year. Addresses automation-era wealth concentration.
 
 ## Environment Setup
 
@@ -137,15 +147,37 @@ thesis/
 ├── thesis_data/                  # Output CSVs (70+ files), packaged xlsx, test results
 ├── brss_data/                    # Input BRSS Excel files (waves 1-5)
 │
-├── papers/                       # Paper drafts organized by paper
-│   ├── 1_endogenous_decentralization/  # ED paper (latest: v7_4.tex, v7.3.pdf, v6.md)
-│   │   └── archive/                    # Older versions (v7-v7.3 .tex/.pdf, v3-v4 .md)
-│   ├── 2_mesh_equilibrium/             # ME paper (v1.tex)
-│   ├── 3_autocatalytic_mesh/           # AM paper (.tex, .pdf)
-│   ├── 4_settlement_feedback/          # SF paper (.tex, .pdf)
-│   ├── 5_complementary_heterogeneity/  # CH compiled PDF + archive
-│   ├── 6_mpg_thesis/                   # MPG thesis docs, tables, appendices
-│   └── 7_fair_inheritance/             # FI paper (v71.docx, act_v2.docx)
+├── new_papers/                   # REORGANIZED 9-paper structure (active)
+│   ├── 1_emergent_ces_quadruple_role/  # Paper 1: CES emergence + quadruple role (old 17+8)
+│   ├── 2_ces_potential/                # Paper 2: CES potential framework (old 9+18+10)
+│   ├── 3_dynamics_ces_landscape/       # Paper 3: Dynamics (old 12+13+14+15)
+│   ├── 4_ai_transition/               # Paper 4: AI transition (old 1+2+3+11)
+│   ├── 5_settlement_feedback/          # Paper 5: Settlement feedback (old 4, revised)
+│   ├── 6_hierarchical_architecture/    # Paper 6: Hierarchical spine (old 5+16)
+│   ├── 7_empirical_tests/             # Paper 7: Empirical tests (old 19+tests)
+│   ├── 8_mpg_thesis/                  # Paper 8: MPG (unchanged from old 6)
+│   └── 9_fair_inheritance/            # Paper 9: Fair Inheritance (old 7)
+│
+├── papers/                       # OLD 19-paper structure (preserved for reference)
+│   ├── 1_endogenous_decentralization/  # → now part of new Paper 4
+│   ├── 2_mesh_equilibrium/             # → now part of new Paper 4
+│   ├── 3_autocatalytic_mesh/           # → now part of new Paper 4
+│   ├── 4_settlement_feedback/          # → now new Paper 5
+│   ├── 5_complementary_heterogeneity/  # → now part of new Paper 6
+│   ├── 6_mpg_thesis/                   # → now new Paper 8 (unchanged)
+│   ├── 7_fair_inheritance/             # → now new Paper 9
+│   ├── 8_ces_triple_role/              # → now part of new Paper 1
+│   ├── 9_free_energy_framework/        # → now part of new Paper 2
+│   ├── 10_industrial_production/       # → now part of new Paper 2
+│   ├── 11_technology_cycle/            # → now part of new Papers 3+4
+│   ├── 12_dynamical_free_energy/       # → now part of new Paper 3
+│   ├── 13_conservation_laws/           # → now part of new Paper 3
+│   ├── 14_business_cycles/             # → now part of new Paper 3
+│   ├── 15_endogenous_rho/              # → now part of new Paper 3
+│   ├── 16_unified_theory/              # → now part of new Paper 6
+│   ├── 17_emergent_ces/                # → now part of new Paper 1
+│   ├── 18_tsallis_free_energy/         # → now part of new Paper 2
+│   └── 19_emd_timescale_discovery/     # → now part of new Paper 7
 │
 ├── scripts/                      # Analysis scripts (not main pipeline)
 │   ├── solve_model.py            # Paper 1: ED differential game solver (Nash MPE + cooperative)

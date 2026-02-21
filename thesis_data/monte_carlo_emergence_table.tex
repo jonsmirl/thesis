@@ -1,0 +1,26 @@
+\begin{table}[htbp]
+\centering
+\caption{Monte Carlo: CES emergence under hierarchical aggregation}
+\label{tab:monte_carlo}
+\small
+\begin{tabular}{@{}llcccccc@{}}
+\toprule
+Simulation & Level & $n$ & $\|\beta\|/\|\alpha\|$ & $R^2_{\text{CES}}$ & $R^2_{\text{TL}}$ & \% $F$-rej. & $\hat{\rho}$ \\
+\midrule
+Houthakker & 1 & 40 & 0.106 & 0.9734 & 1.0000 & 80\% & -0.05 \\
+ & 2 & 8 & 0.175 & 0.9732 & 1.0000 & 96\% & 0.02 \\
+ & 3 & 2 & 0.229 & 0.9731 & 1.0000 & 100\% & 0.08 \\
+ & 4 & 1 & 0.245 & 0.9732 & 1.0000 & 100\% & 0.10 \\
+\addlinespace
+Translog decay & 1 & 24 & 0.351 & 0.5547 & 0.8046 & 68\% & 0.14 \\
+ & 2 & 6 & 0.294 & 0.4866 & 0.8211 & 73\% & 0.30 \\
+ & 3 & 2 & 0.173 & 0.4312 & 0.8444 & 90\% & 0.57 \\
+ & 4 & 1 & 0.164 & 0.4121 & 0.8613 & 90\% & 0.54 \\
+\addlinespace
+\bottomrule
+\end{tabular}
+\begin{minipage}{0.95\textwidth}
+\vspace{0.5em}
+\footnotesize\textit{Notes:} 30 Monte Carlo replications. Houthakker: 200 DRS Cobb-Douglas firms ($\nu=0.85$) with heterogeneous capital shares $\alpha_j \sim \text{Beta}(2,3)$, profit-maximizing at common factor prices. Translog decay: 120 firms with heterogeneous translog production (interaction scale $= 0.15$), common-factor inputs. $T = 500$. Aggregation by summation. $\|\beta\|/\|\alpha\|$: translog interaction ratio. $R^2_{\text{CES}}$: one-parameter CES. $R^2_{\text{TL}}$: full translog. \% $F$-rej.: CES restriction rejected at 5\%.
+\end{minipage}
+\end{table}

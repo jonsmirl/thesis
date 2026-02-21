@@ -1,0 +1,1018 @@
+\documentclass[12pt,letterpaper]{article}
+
+% Page layout
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+
+% Math
+\usepackage{amsmath,amssymb,amsthm}
+
+% Tables
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{graphicx}
+
+% Typography
+\usepackage[T1]{fontenc}
+\usepackage[expansion=false]{microtype}
+\usepackage{enumitem}
+
+% References
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+% Theorem environments
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+\newtheorem{definition}{Definition}
+
+% Commands inherited from the sequence
+\newcommand{\pderiv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\Rz}{R_0^{\text{mesh}}}
+\newcommand{\Ceff}{C_{\text{eff}}}
+\newcommand{\Cmesh}{C_{\text{mesh}}}
+\newcommand{\Ccent}{C_{\text{cent}}}
+\newcommand{\phieff}{\varphi_{\text{eff}}}
+\newcommand{\alphaeff}{\alpha_{\text{eff}}}
+\newcommand{\alphacrit}{\alpha_{\text{crit}}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+% Commands for this paper
+\newcommand{\Rsettle}{R_0^{\text{settle}}}
+\newcommand{\Rdollar}{R_0^{\text{dollar}}}
+\newcommand{\ddt}{\frac{d}{dt}}
+\newcommand{\bbar}{\bar{b}}
+\newcommand{\btilde}{\tilde{b}}
+\newcommand{\pibar}{\bar{\pi}}
+\newcommand{\pilow}{\underline{\pi}}
+\newcommand{\Scrit}{S_{\text{crit}}}
+
+% Section formatting
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\titleformat{\subsubsection}{\normalsize\itshape}{\thesubsubsection}{0.5em}{}
+
+\begin{document}
+
+% -------------------------------------------------------------------
+% TITLE PAGE
+% -------------------------------------------------------------------
+\begin{titlepage}
+\centering
+\vspace*{2cm}
+{\LARGE\bfseries SETTLEMENT FEEDBACK AND MONETARY POLICY\\IN A MESH ECONOMY\par}
+\vspace{0.8cm}
+{\large\itshape How Autonomous Agent Capital Markets Transform\\the Monetary System They Depend On\par}
+\vspace{1.5cm}
+{\large Jon Smirl\par}
+\vspace{0.3cm}
+{Independent Researcher\par}
+\vspace{0.3cm}
+{February 2026\par}
+\vspace{0.5cm}
+{\scshape Working Paper\par}
+\vspace{1cm}
+\begin{abstract}
+\noindent The self-organizing AI mesh (Smirl 2026d, ``The AI Transition'') requires a programmable settlement layer for routing compensation. Dollar stablecoins, backed by US Treasuries, are the efficient settlement medium (Smirl 2026b, ``The Monetary Productivity Gap''). This creates a coupled dynamical system: mesh growth increases stablecoin demand, which increases Treasury demand, which improves settlement infrastructure, which accelerates mesh growth. Simultaneously, mesh agents entering capital markets transform the markets that fund and settle mesh operations. This paper formalizes the coupling and characterizes its equilibrium structure.
+
+Three results are new. First, I parametrize market efficiency $E(\phi)$ as a function of the fraction $\phi$ of capital managed by autonomous mesh agents. As $\phi$ increases, efficiency approaches the Grossman-Stiglitz (1980) limit but a residual inefficiency $\varepsilon_{\min} > 0$ is preserved as equilibrium noise. Kyle's (1985) price impact $\lambda$ is non-monotone in $\phi$: depth initially improves as informed volume increases, then deteriorates as noise trading exits. Second, I model the degradation of monetary policy tools---forward guidance, quantitative easing, and financial repression---as explicit functions of $\phi$ and stablecoin ecosystem size $S$, showing that each tool depends on a specific friction that mesh participation eliminates: information processing delay, arbitrage speed, and captive savings respectively. The composite monetary policy effectiveness $\mathrm{MP}(\phi, S)$ is monotonically declining in $\phi$ with a potential discontinuity in $S$ when financial repression collapses. Third, I extend the Uribe (1997) hysteresis model of dollarization with endogenous stablecoin access, showing that the bifurcation thresholds $\pibar(S)$ and $\pilow(S)$ are decreasing in stablecoin ecosystem size---currencies that were previously stable become vulnerable as the mesh's settlement infrastructure grows.
+
+A new section addresses the CBDC/Digital Dollar scenario: the self-undermining dynamic from the AI transition repeats at the settlement layer. Government builds a digital dollar to maintain monetary control, but the infrastructure it creates---frictionless access to sovereign liabilities without bank intermediation---accelerates the very disintermediation it was designed to prevent. The settlement layer bifurcates into surveilled (onshore CBDC) and unsurveilled (offshore mesh-native) channels, with empirical evidence from India's 2022 tax experiment confirming displacement rather than suppression.
+
+The coupled system is characterized as four ODEs in mesh participation $\phi$, stablecoin ecosystem size $S$, Treasury debt ratio $b$, and financial sector capitalization $\eta$. The system admits a low-mesh equilibrium (stable, current system approximately) and a high-mesh equilibrium (conditionally stable, monetary policy weak but market discipline substitutes). The transition between them is governed by the settlement reproduction number $\Rsettle$: when each unit of mesh growth produces more than one unit of subsequent growth through the financial system channel, the transition is self-reinforcing. The high-mesh equilibrium constrains sovereign fiscal policy through real-time market discipline---a ``synthetic gold standard'' that emerges from the model rather than being assumed. Six falsifiable predictions are derived with specific timing and quantitative thresholds.
+\end{abstract}
+
+\vspace{0.5cm}
+\noindent\textbf{Keywords:} settlement infrastructure, stablecoins, market microstructure, monetary policy effectiveness, dollarization, safe assets, Triffin dilemma, CBDC, bank disintermediation, coupled dynamical systems, autonomous agents
+
+\vspace{0.3cm}
+\noindent\textbf{JEL:} E42, E44, E52, F33, G14, G23, O33
+\end{titlepage}
+
+% -------------------------------------------------------------------
+% 1. INTRODUCTION
+% -------------------------------------------------------------------
+\section{Introduction}
+
+The AI mesh requires settlement infrastructure. Smirl (2026d, ``The AI Transition'') derives that routing compensation among heterogeneous specialized agents generates a demand for programmable money: micro-transactions between inference providers, training agents, and end users must be settled in real time at scale. The endogenous capability growth characterized in that paper intensifies this demand, adding training agent compensation, data marketplace transactions, and variety expansion incentives to the settlement volume. Smirl (2026b, ``The Monetary Productivity Gap'') identifies the 6.4 percentage point cost gap between fiat payment rails and stablecoin settlement, establishing dollar stablecoins as the efficient settlement medium. The settlement layer is stablecoins. Stablecoins are backed by US Treasuries.
+
+This creates a feedback loop. Mesh growth increases stablecoin demand. Stablecoin reserves are predominantly short-duration US Treasury instruments. Therefore mesh growth increases Treasury demand. But the mesh does not merely consume settlement services---it transforms the financial system that provides them. As autonomous agents enter capital markets, they process information at machine speed, optimize portfolios continuously, and arbitrage mispricings in milliseconds. The fraction $\phi$ of capital managed by autonomous agents is growing. As $\phi$ increases, market efficiency changes, monetary policy tools degrade, and the conditions for currency stability in weak-fiat countries shift. Each of these transformations feeds back into the settlement layer that the mesh depends on.
+
+The contribution of this paper is the formal demonstration that the mesh--financial system coupling produces a self-reinforcing dynamical system, and the characterization of its equilibrium structure. The feedback loop has five links:
+
+\begin{enumerate}[label=(\roman*)]
+\item Mesh growth generates stablecoin demand (Smirl 2026d, Sections~8--9).
+\item Mesh agents entering capital markets increase market efficiency toward the Grossman-Stiglitz (1980) limit.
+\item Increased market efficiency degrades monetary policy tools that depend on market frictions.
+\item Monetary policy degradation, combined with stablecoin access, triggers dollarization spirals in weak-currency countries through the Uribe (1997) hysteresis mechanism.
+\item Dollarization expands the stablecoin ecosystem, which is the mesh's settlement layer. Settlement infrastructure improves. Mesh growth accelerates. Return to step (i).
+\end{enumerate}
+
+The loop has $R_0$ structure. Define $\Rsettle$ as the number of units of subsequent mesh growth produced by each unit of current mesh growth through the financial system channel. If $\Rsettle > 1$, the loop is self-reinforcing: each cycle amplifies the next. This paper derives the conditions under which $\Rsettle > 1$ and characterizes the dynamics that follow.
+
+Three central questions organize the analysis. First, does the coupled system admit a stable equilibrium? The Farhi-Maggiori (2018) framework identifies three zones for the reserve currency issuer---safety, instability, and collapse---but the zone boundaries become endogenous to mesh participation. Second, how does market efficiency change as the marginal capital market participant shifts from human to mesh agent? The Grossman-Stiglitz (1980) paradox structures the answer, but the transition may exhibit non-smooth features. Third, under what conditions does the dollarization spiral become self-reinforcing, and which countries are vulnerable at current stablecoin ecosystem size?
+
+A fourth question, absent from the initial formulation, has become pressing: what happens when government responds with a central bank digital currency (CBDC)? The digital dollar scenario introduces a surveillance motive that interacts with---and potentially accelerates---the settlement feedback. Section~6 formalizes this interaction.
+
+The paper proceeds as follows. Section~2 reviews terminal conditions from the AI transition analysis. Section~3 develops the market microstructure transition. Section~4 models monetary policy effectiveness as a function of mesh participation. Section~5 formalizes the dollarization spiral. Section~6 analyzes the CBDC/digital dollar scenario and settlement layer bifurcation. Section~7 analyzes the Triffin contradiction with endogenous instability boundaries. Section~8 unifies the preceding sections into a coupled dynamical system and characterizes its equilibria. Section~9 derives implications for sovereign fiscal policy. Section~10 discusses frameworks considered and rejected. Section~11 presents falsifiable predictions. Section~12 concludes.
+
+
+% -------------------------------------------------------------------
+% 2. TERMINAL CONDITIONS FROM THE AI TRANSITION
+% -------------------------------------------------------------------
+\section{Terminal Conditions from the AI Transition}
+
+This section summarizes the results from the companion papers that serve as inputs to the present analysis. No new results are presented; the purpose is notational continuity and identification of the specific mechanisms that generate the coupling formalized here.
+
+Smirl (2026d, ``The AI Transition'') unifies the endogenous decentralization, mesh equilibrium, and autocatalytic growth analyses into a single framework. Three results carry forward directly. First, for $\Rz > 1$ and CES substitution parameter $\rho < 1$, there exists a critical mass $N^*$ above which the mesh equilibrium exists and is locally asymptotically stable, with collective capability exceeding centralized provision: $\Cmesh(N) > \Ccent$. At maturity, the mesh's settlement layer processes $O(N \langle k \rangle)$ inference transactions per second---the mechanism that initiates the feedback loop formalized here. Second, the autocatalytic loop generates settlement demand that scales as $O(|\mathcal{R}| \cdot f \cdot N)$, where $|\mathcal{R}|$ is the RAF set size and $f$ is the training allocation fraction; as the autocatalytic core matures, settlement demand grows faster than inference demand, so the binding constraint on mesh capability growth may be monetary rather than technological. Third, concentrated AI infrastructure investment finances the learning curves that enable distributed alternatives; the frontier model improvement rate $g_Z$ bounds the mesh through the Baumol bottleneck.
+
+Three assumptions carry forward:
+
+\begin{enumerate}[label=(\roman*)]
+\item \emph{Training persistence:} Frontier model training remains centralized. The mesh fine-tunes and adapts base models; it does not train frontier models from scratch. This is the exogenous input whose growth rate $g_Z$ bounds the mesh through the Baumol bottleneck.
+
+\item \emph{CES structure:} The aggregate capability function retains the CES form $\Ceff = (\sum_j C_j^\rho)^{1/\rho}$ with $\rho < 1$, ensuring complementarity across task types and providing model collapse protection ($\alphaeff > \alphacrit$).  At the settlement level, heterogeneous financial instruments (traditional rails, stablecoins, tokenized securities) are more substitutable than production inputs, placing $\rho \in [0.5, 0.8]$ ($\sigma \in [2, 5]$) based on Dixit--Stiglitz product variety elasticities (Broda and Weinstein 2006).  NLS cross-validation on FRED Transport Equipment IP---which aggregates motor vehicles and aerospace, a structurally analogous variety aggregation---yields $\hat\rho = 0.67$ ($\sigma = 3.1$), inside the adopted range (Smirl 2026e, Section~9.1).
+
+\item \emph{Scale-free topology:} The mesh's degree distribution follows a power law with $\gamma \leq 3$, ensuring a vanishing epidemic threshold for information propagation and the preferential attachment dynamics that drive specialization.
+\end{enumerate}
+
+
+% -------------------------------------------------------------------
+% 3. MARKET MICROSTRUCTURE TRANSITION
+% -------------------------------------------------------------------
+\section{Market Microstructure Transition}
+
+As the mesh matures, its autonomous agents enter capital markets---first as participants in stablecoin markets, then as optimizers of the Treasury portfolios backing those stablecoins, and eventually as general portfolio managers. This section characterizes market efficiency as a function of the fraction $\phi \in [0,1]$ of capital managed by autonomous mesh agents.
+
+\subsection{The Grossman-Stiglitz Framework with Mesh Agents}
+
+Grossman and Stiglitz (1980) prove that perfectly efficient markets are impossible: if prices fully reveal all information, no agent has incentive to pay for information, but then prices cannot incorporate information. The equilibrium involves partial revelation, with the degree of revelation depending on the cost of acquiring information.
+
+In the standard GS model, a fraction $\mu$ of traders are informed (each paying cost $c$ for a signal about the asset's true value $v$) and the remaining $1 - \mu$ are uninformed. Market efficiency is:
+\begin{equation}\label{eq:gs_base}
+E = \frac{\mathrm{Var}(v) - \mathrm{Var}(v | P)}{\mathrm{Var}(v)} = \frac{\sigma_v^2 - \sigma_{v|P}^2}{\sigma_v^2}
+\end{equation}
+where $P$ is the equilibrium price and $\sigma_{v|P}^2$ is the residual uncertainty after observing $P$. In the GS equilibrium, $E < 1$ and the gap $1 - E$ is sustained by information cost $c > 0$.
+
+Mesh agents modify this framework in two ways. First, they reduce information acquisition cost. For mesh agents, information processing is automated and operates at marginal cost approaching zero. Define the effective information cost as a weighted average:
+\begin{equation}\label{eq:cost}
+c(\phi) = (1 - \phi) \cdot c_H + \phi \cdot c_M
+\end{equation}
+where $c_H > 0$ is the cost for human institutions and $c_M \ll c_H$ is the cost for mesh agents. As $\phi$ increases, $c(\phi)$ declines toward $c_M > 0$. The strictly positive $c_M$ reflects irreducible computational cost: even mesh agents expend resources to process information, though orders of magnitude less than human institutions.
+
+Second, mesh agents alter the composition of noise trading. In the standard Kyle (1985) model, uninformed ``noise traders'' generate order flow $u \sim \mathcal{N}(0, \sigma_u^2)$ that provides the camouflage allowing informed traders to profit. As mesh agents replace human institutions, the pool of noise traders shrinks: $\sigma_u^2(\phi) = \sigma_{u,0}^2 \cdot (1 - \phi)^{\gamma_u}$ where $\gamma_u > 0$ captures the rate of noise trading exit.
+
+\subsection{Market Efficiency as a Function of $\phi$}
+
+\begin{proposition}[Efficiency Transition]\label{prop:efficiency}
+Define market efficiency $E(\phi)$ as the fraction of fundamental value variance revealed by prices. Under the modified GS-Kyle framework with mesh participation $\phi$:
+\begin{equation}\label{eq:efficiency}
+E(\phi) = 1 - \varepsilon(\phi) \quad \text{where} \quad \varepsilon(\phi) = \frac{c(\phi) \cdot \sigma_{v|P}^2(\phi)}{\pi_I(\phi)}
+\end{equation}
+and $\pi_I(\phi)$ is the equilibrium profit from informed trading. As $\phi \to 1$:
+\begin{equation}\label{eq:eps_limit}
+\varepsilon(\phi) \to \varepsilon_{\min} > 0
+\end{equation}
+The residual inefficiency $\varepsilon_{\min}$ is the equilibrium ``noise'' that sustains market function. It is small---determined by the mesh agents' irreducible information cost $c_M$---but strictly positive. The Grossman-Stiglitz paradox is preserved: the market cannot be fully efficient because efficiency eliminates the returns that pay for information production.
+\end{proposition}
+
+\begin{proof}
+In the GS equilibrium, the fraction $\mu^*$ of agents who become informed satisfies the indifference condition: the expected utility of being informed (net of cost $c$) equals the expected utility of being uninformed. With mesh agents, this indifference condition becomes heterogeneous: mesh agents become informed whenever $c_M < \pi_I$, while human agents become informed whenever $c_H < \pi_I$. The equilibrium profit $\pi_I$ adjusts until the marginal agent (the last mesh or human agent to become informed) is indifferent.
+
+As $\phi \to 1$, nearly all capital is managed by mesh agents with cost $c_M$. The GS indifference condition requires $\pi_I \geq c_M > 0$, which in turn requires $\varepsilon > 0$ (positive residual variance for informed agents to profit from). The minimum residual inefficiency satisfies:
+\begin{equation}
+\varepsilon_{\min} = \frac{c_M}{\sigma_v^2} \cdot \frac{1}{\text{Var}(\text{informed profit per unit residual})}
+\end{equation}
+which is positive but small, since $c_M / c_H \ll 1$ by assumption.
+\end{proof}
+
+\begin{remark}[Transition Smoothness]
+The efficiency transition $E(\phi)$ is smooth: there is no regime shift at a critical $\phi^*$. This follows because the GS indifference condition adjusts continuously as the composition of market participants changes. However, the \emph{rate} of efficiency improvement is non-uniform. Most of the efficiency gain occurs in the interval $\phi \in [0.1, 0.5]$, when mesh agents are actively displacing the least-efficient human institutions. Above $\phi \approx 0.5$, diminishing returns set in: the remaining human participants are the most sophisticated, and displacing them yields smaller efficiency gains per unit of $\phi$.
+\end{remark}
+
+\subsection{Kyle's Lambda: Non-Monotonicity in $\phi$}
+
+\begin{proposition}[Non-Monotone Price Impact]\label{prop:lambda}
+Kyle's (1985) price impact parameter $\lambda$ is non-monotone in $\phi$. Define:
+\begin{equation}\label{eq:lambda}
+\lambda(\phi) = \frac{\sigma_v(\phi)}{2 \sigma_u(\phi)} \cdot \frac{1}{\sqrt{n(\phi)}}
+\end{equation}
+where $\sigma_v(\phi)$ is the residual fundamental uncertainty, $\sigma_u(\phi)$ is noise trading volume, and $n(\phi)$ is the number of independent informed trading strategies. Then:
+\begin{equation}
+\frac{d\lambda}{d\phi} \lessgtr 0 \quad \text{as} \quad \phi \lessgtr \phi_\lambda
+\end{equation}
+for some critical $\phi_\lambda \in (0,1)$. Market depth improves for $\phi < \phi_\lambda$ and deteriorates for $\phi > \phi_\lambda$.
+\end{proposition}
+
+\begin{proof}
+Two opposing forces act on $\lambda$. First, as $\phi$ increases, the number of independently informed trading strategies $n(\phi)$ rises (more mesh agents processing information independently). By the Holden-Subrahmanyam (1992) result, competition among informed traders reduces $\lambda$: $\partial \lambda / \partial n < 0$. Second, as $\phi$ increases, noise trading volume $\sigma_u(\phi)$ decreases because human institutions---the primary source of noise trading---exit. Since $\lambda \propto 1/\sigma_u$, this increases $\lambda$: $\partial \lambda / \partial \sigma_u < 0$ and $\partial \sigma_u / \partial \phi < 0$, so $\partial \lambda / \partial \phi > 0$ through this channel.
+
+At low $\phi$, the informed-competition channel dominates: adding mesh agents increases informed volume while noise trading volume remains high. At high $\phi$, the noise-trading-exit channel dominates: the remaining market has many informed agents but little camouflage. The critical $\phi_\lambda$ occurs where these forces balance:
+\begin{equation}
+\left|\frac{\partial \lambda}{\partial n} \cdot \frac{dn}{d\phi}\right| = \left|\frac{\partial \lambda}{\partial \sigma_u} \cdot \frac{d\sigma_u}{d\phi}\right|
+\end{equation}
+The existence of an interior solution follows from the continuity of both channels and the boundary conditions: at $\phi = 0$, $\lambda$ is at its initial level; as $\phi \to 1$, $\sigma_u \to 0$ forces $\lambda \to \infty$ unless bounded by some residual noise. In practice, complete elimination of noise is unlikely (some noise remains from stochastic liquidity needs), so $\lambda$ remains finite but elevated at high $\phi$.
+\end{proof}
+
+\subsection{Algorithmic Collusion Risk}
+
+Dou, Goldstein and Ji (2025) analyze the conditions under which algorithmic trading agents develop implicit collusion, degrading market efficiency rather than improving it. The concern is that at high $\phi$, mesh agents optimizing similar objective functions with access to similar information may converge on coordinated trading strategies that reduce competition and extract rents from the remaining market participants.
+
+The mesh's heterogeneity provides partial protection against this risk. The CES parameter $\rho < 1$ ensures that mesh agents are differentiated: different specialists have different information sets, different optimization objectives, and different time horizons. A medical-AI specialist trading pharmaceutical companies processes different signals from a logistics-AI specialist trading shipping firms. The heterogeneity that prevents model collapse (Smirl 2026d, Theorem~3 therein) also impedes algorithmic collusion: collusion requires agents to agree on a coordinated strategy, which is harder when their information and objectives differ.
+
+This is a conjecture, not a theorem. The CES parameter $\rho$ governs distributional diversity, not strategic independence. Agents with different information could still coordinate if the coordination mechanism operates at a level of abstraction above the individual information sets. Whether the mesh's heterogeneity is sufficient to prevent algorithmic collusion at high $\phi$ is an empirical question whose answer depends on the institutional structure of mesh agents' interaction with financial markets.
+
+
+% -------------------------------------------------------------------
+% 4. MONETARY POLICY EFFECTIVENESS
+% -------------------------------------------------------------------
+\section{Monetary Policy Effectiveness as a Function of $\phi$}
+
+This section applies the Lucas (1976) critique systematically to each monetary policy tool, identifying the specific friction each tool depends on and modeling that friction as a function of mesh participation $\phi$ and stablecoin ecosystem size $S$. The monetary macro structure follows Brunnermeier and Sannikov (2014).
+
+\subsection{Forward Guidance}
+
+Forward guidance operates by shaping expectations about the future path of interest rates. Its effectiveness depends on a time delay: human institutions require days to weeks to process central bank communications, during which the anticipated policy path affects portfolio decisions and asset prices. The delay is the friction that gives forward guidance its power---if all agents processed the information instantaneously, prices would adjust immediately and the ``guidance'' would have no duration of effect.
+
+Mesh agents process central bank communications in milliseconds. A text-based FOMC statement is parsed, cross-referenced with historical patterns, and incorporated into portfolio optimization before a human analyst finishes reading the first paragraph. The forward guidance friction is information processing delay, and mesh agents eliminate it.
+
+\begin{definition}[Forward Guidance Effectiveness]\label{def:fg}
+Let $\tau_H$ denote the characteristic time for human institutions to fully process and respond to central bank forward guidance. Forward guidance effectiveness is:
+\begin{equation}\label{eq:fg}
+\mathrm{FG}(\phi) = \mathrm{FG}_0 \cdot (1 - \phi)^{\alpha_{FG}}
+\end{equation}
+where $\mathrm{FG}_0$ is the baseline effectiveness at $\phi = 0$ and $\alpha_{FG} > 0$ captures the rate at which mesh participation eliminates the processing delay. As $\phi \to 1$, $\mathrm{FG} \to 0$.
+\end{definition}
+
+Forward guidance degrades first among monetary policy tools because it depends only on information processing speed, which is the most direct advantage mesh agents possess.
+
+\subsection{Quantitative Easing}
+
+Quantitative easing operates through two channels. The \emph{portfolio balance channel} works by the central bank purchasing long-duration assets, shifting the supply-demand balance and compressing term premia. This channel requires that the buying pressure is not immediately arbitraged away---that is, it depends on slow arbitrage. The \emph{signaling channel} communicates the central bank's commitment to low rates, which does not depend on market friction.
+
+Mesh agents arbitrage at machine speed. A Fed purchase of 10-year Treasuries that takes human institutions weeks to fully price is arbitraged in seconds by mesh agents rebalancing across duration, credit, and currency. The portfolio balance channel is precisely the kind of friction-dependent mechanism that mesh participation eliminates. The signaling channel survives because it operates through expectations rather than through market frictions, but the signaling channel alone is substantially weaker (Woodford 2003).
+
+\begin{definition}[QE Effectiveness]\label{def:qe}
+Quantitative easing effectiveness is:
+\begin{equation}\label{eq:qe}
+\mathrm{QE}(\phi) = w_{\text{PB}} \cdot \mathrm{QE}_0 \cdot (1 - \phi)^{\alpha_{QE}} + w_{\text{sig}} \cdot \mathrm{QE}_0
+\end{equation}
+where $w_{\text{PB}} + w_{\text{sig}} = 1$ are the weights on the portfolio balance and signaling channels respectively, and $\alpha_{QE} > 0$ governs the degradation of the portfolio balance channel. The signaling component $w_{\text{sig}} \cdot \mathrm{QE}_0$ is invariant to $\phi$ because it depends on the central bank's credibility, not on market frictions.
+\end{definition}
+
+QE degrades second---after forward guidance but before financial repression---because it depends on arbitrage speed, which mesh agents improve but which retains some friction even at high $\phi$ (large positions still face inventory costs and capital constraints).
+
+\subsection{Financial Repression}
+
+Financial repression operates by compelling domestic savers to hold government debt at below-market rates. The mechanism requires two conditions: (i)~negative real returns on government bonds (the ``tax''), and (ii)~capital controls or institutional barriers that prevent savers from exiting to alternative stores of value (the ``captivity''). The critical friction is captive savings: savers who have no practical alternative to negative-real-return domestic bonds.
+
+Stablecoins destroy this captivity. A saver in a country with 15\% inflation and capital controls can download a stablecoin wallet and hold dollar-denominated assets yielding 0\% nominal but +15\% real relative to the domestic currency. The exit is binary: either the saver can access stablecoins (in which case captivity is broken) or cannot (in which case it is maintained). The relevant variable is not mesh participation $\phi$ directly, but stablecoin ecosystem size $S$---the availability of wallets, on-ramps, merchant acceptance, and user familiarity.
+
+\begin{definition}[Financial Repression Effectiveness]\label{def:fr}
+Financial repression effectiveness is:
+\begin{equation}\label{eq:fr}
+\mathrm{FR}(\phi, S) = \mathrm{FR}_0 \cdot \left(1 - \min\!\left(1,\, \frac{S}{\Scrit}\right)\right)^{\alpha_{FR}}
+\end{equation}
+where $\Scrit$ is the critical stablecoin ecosystem size at which captive savers have a viable exit, and $\alpha_{FR} > 0$ governs the rate of collapse. The dependence on $\phi$ enters indirectly through the relationship $\dot{S} = f_S(\phi, S, b)$ (formalized in Section~8).
+\end{definition}
+
+Financial repression degrades last because it depends on institutional barriers (capital controls, banking regulations) rather than information speed. But when it degrades, it degrades discontinuously. Below $\Scrit$, the stablecoin ecosystem is too small to provide a viable exit---the on-ramps are unavailable, the wallets are unfamiliar, the regulatory risk is prohibitive. Above $\Scrit$, the exit is available and captive savers leave en masse. The transition is not gradual; it resembles a bank run (Diamond and Dybvig 1983) in which the coordination game among captive savers has a tipping point.
+
+\subsection{Composite Monetary Policy Effectiveness}
+
+\begin{proposition}[Composite Monetary Policy Degradation]\label{prop:mp}
+Total monetary policy effectiveness is:
+\begin{equation}\label{eq:mp}
+\mathrm{MP}(\phi, S) = w_{FG} \cdot \mathrm{FG}(\phi) + w_{QE} \cdot \mathrm{QE}(\phi) + w_{FR} \cdot \mathrm{FR}(\phi, S)
+\end{equation}
+where $w_{FG} + w_{QE} + w_{FR} = 1$ are the weights reflecting each tool's contribution to total policy effectiveness. This is:
+\begin{enumerate}[label=(\roman*)]
+\item Monotonically declining in $\phi$, since each component is weakly decreasing in $\phi$.
+\item Declining in $S$, through the financial repression channel.
+\item Potentially discontinuous in $S$ at $S = \Scrit$, where financial repression collapses.
+\end{enumerate}
+The partial derivatives satisfy:
+\begin{equation}
+\pderiv{\mathrm{MP}}{\phi} < 0 \quad \text{for all } \phi \in (0,1), \qquad \pderiv{\mathrm{MP}}{S} \leq 0 \quad \text{for all } S > 0
+\end{equation}
+with $|\partial \mathrm{MP}/\partial S|$ largest in a neighborhood of $S = \Scrit$.
+\end{proposition}
+
+\begin{proof}
+The monotonicity in $\phi$ follows from equations~\eqref{eq:fg} and~\eqref{eq:qe}: both $\mathrm{FG}$ and the portfolio-balance component of $\mathrm{QE}$ are proportional to $(1-\phi)^{\alpha}$ for $\alpha > 0$, hence strictly decreasing. The monotonicity in $S$ follows from equation~\eqref{eq:fr}: $\mathrm{FR}$ is decreasing in $S/\Scrit$ for $S \leq \Scrit$ and zero for $S \geq \Scrit$. The potential discontinuity arises because $\mathrm{FR}$ transitions from $\mathrm{FR}_0 \cdot (1 - S/\Scrit)^{\alpha_{FR}}$ to zero as $S$ crosses $\Scrit$; while technically continuous, the derivative $\partial \mathrm{FR}/\partial S$ is largest near $\Scrit$, producing a sharp decline in $\mathrm{MP}$ that is effectively discontinuous in practice.
+\end{proof}
+
+\subsection{The Brunnermeier-Sannikov Volatility Paradox}
+
+Brunnermeier and Sannikov (2014, 2016) identify a ``volatility paradox'': periods of low exogenous volatility can breed endogenous instability as financial institutions increase leverage in calm environments. The paradox applies directly to the mesh transition.
+
+As $\phi$ increases, exogenous volatility falls: mesh agents reduce noise trading, improve price discovery, and dampen uninformed price fluctuations. But the \emph{endogenous} volatility from monetary policy ineffectiveness may increase. If a fiscal shock occurs and the central bank cannot effectively respond (because $\mathrm{MP}(\phi, S)$ is low), the resulting adjustment must occur through market prices rather than through policy intervention. The speed of this adjustment---at machine speed, not at the pace of FOMC meetings---amplifies the magnitude of price moves.
+
+\begin{remark}[Net Volatility Ambiguity]
+The net effect on financial stability is ambiguous and depends on parameter values. Define total volatility $\sigma_{\text{total}}^2 = \sigma_{\text{exog}}^2(\phi) + \sigma_{\text{endog}}^2(\phi, S)$ where $\sigma_{\text{exog}}^2$ is decreasing in $\phi$ (mesh agents reduce noise) and $\sigma_{\text{endog}}^2$ is increasing in $\phi$ and $S$ (monetary policy degradation increases crisis amplitude). There exist parameter configurations in which $\sigma_{\text{total}}^2$ is non-monotone in $\phi$: initially declining as noise reduction dominates, then increasing as monetary policy degradation dominates. The conditions under which each regime obtains are derived in the coupled system analysis of Section~8.
+\end{remark}
+
+\subsection{Surviving Monetary Policy Tools}
+
+Not all monetary policy tools degrade. Two channels survive at high $\phi$:
+
+The \emph{interest rate channel} continues to operate because borrowing costs affect real economic activity regardless of market efficiency. When the central bank raises the policy rate, the cost of capital increases for firms and households. This mechanism does not depend on information delay, arbitrage speed, or captive savings. Mesh agents transmit rate changes to asset prices faster, but the real effects of rate changes on investment and consumption are mediated by physical economy dynamics (construction timelines, business planning horizons) that mesh participation does not accelerate.
+
+The \emph{lender-of-last-resort} function survives because central banks can still create reserves. In a liquidity crisis, the ability to supply unlimited domestic-currency liquidity is independent of market efficiency. However, the LOLR function may be less effective if the crisis involves a flight from domestic currency to stablecoins---the central bank can supply domestic liquidity but cannot supply dollar-denominated stablecoin liquidity.
+
+\subsection{Empirical Evidence: Degradation Sequence at $\phi \approx 0$}
+
+The degradation ordering---forward guidance first, QE second, financial repression last---is a prediction about the transition, but early signatures should already be visible in the pre-mesh era ($\phi \approx 0$). Three tests using FRED data from 2000--2026 provide a baseline.
+
+\subsubsection{Test A: Forward Guidance---FOMC Importance Ratio}
+
+If forward guidance is degrading, FOMC announcement days should become less ``special'' relative to ordinary trading days. The importance ratio is defined as:
+\begin{equation}
+\text{IR}_t = \frac{\mathbb{E}[|\Delta y| \mid \text{FOMC day}, t]}{\mathbb{E}[|\Delta y| \mid t]}
+\end{equation}
+computed over rolling 3-year windows for both 2-year and 10-year Treasury yields (FRED series DGS2 and DGS10). Under the degradation hypothesis, $\text{IR}_t$ should decline over time (Kendall $\tau < 0$).
+
+The data do not support FG degradation in the pre-mesh era. The DGS10 importance ratio shows no significant trend ($\tau = +0.043$, $p = 0.670$), while DGS2 actually shows a \emph{positive} trend ($\tau = +0.223$, $p = 0.029$). This is consistent with the model: at $\phi \approx 0$, the FG friction (information processing delay) is intact, so FOMC days should remain important. The positive DGS2 trend likely reflects the increased role of forward guidance as an active policy tool during the zero-lower-bound period (2009--2015), when rate guidance was the Fed's primary instrument.
+
+The result is a useful pre-transition baseline: when $\phi$ eventually increases, the FG importance ratio provides a clean metric for detecting degradation against a documented pre-transition level of $\text{IR} \approx 1.1$--$1.6$.
+
+\subsubsection{Test A$'$: High-Frequency Decomposition (USMPD)}
+
+The daily-frequency importance ratio is a blunt instrument: it measures whether FOMC days have large yield moves, not whether the information processing is faster. The SF Fed U.S.\ Monetary Policy Event-Study Database (USMPD; Acosta et al.\ 2025) provides 30-minute-window yield changes around 274 FOMC statements (1994--2026) and 70-minute windows around 90 press conferences (2011--2026), enabling a finer decomposition.
+
+\emph{Statement concentration ratio.} Define $\text{CR}_t = |\Delta y^{30\text{min}}| / |\Delta y^{\text{daily}}|$ as the fraction of the FOMC-day yield change captured in the 30-minute statement window. If information absorption is concentrating into a tighter window, $\text{CR}_t$ should increase. The data show the opposite: concentration is \emph{declining} ($\tau = -0.172$, $p < 0.001$), with the era mean falling from 1.14 (2000--05) to 0.62 (2018--26). More of the FOMC-day yield adjustment now occurs \emph{outside} the 30-minute statement window.
+
+\emph{Absolute response magnitude.} The 30-minute 10-year yield response has declined from 3.9~bp (2006--11) to 1.9~bp (2018--26), a statistically significant trend ($\tau = -0.111$, $p = 0.006$). But this does not mean FG is degrading: the surprise-normalized response (yield change per unit of Acosta et al.\ monetary policy surprise) shows \emph{no trend} ($\tau = +0.015$, $p = 0.717$). The market still responds the same amount per unit of news---there is simply less news per statement.
+
+\emph{Press conference displacement.} For the 84 meetings with press conferences where the total monetary-event yield change exceeded 0.5~bp, the statement's share of the total response is \emph{declining} ($\tau = -0.164$, $p = 0.027$). Simultaneously, the press conference reversal rate (PC moves opposite to statement) has risen from 27\% (2016--19) to 49\% (2020--26), consistent with the Narain and Sangani (2026) finding that post-COVID press conferences increasingly override the initial statement signal.
+
+\emph{Cross-maturity structure.} FG operates primarily at the 2-year maturity; the portfolio balance channel (QE) operates at the 10--30-year maturities. The $|\Delta\text{UST2Y}| / |\Delta\text{UST10Y}|$ ratio shows no trend ($\tau = +0.014$, $p = 0.746$), confirming that the relative weight of FG versus QE channels in FOMC communication has not changed.
+
+The combined picture is that FG communication is being \emph{restructured}, not degraded. The statement's informational content is migrating to the press conference (consistent with Swanson 2023, who finds Fed Chair speeches now move markets more than FOMC statements) and to inter-meeting communication. But the market's yield sensitivity per unit of policy surprise is unchanged---the FG friction ($\tau_H$, human information processing delay) is intact. This is precisely the model's prediction at $\phi \approx 0$: the friction that requires AI-speed language processing has not yet been touched by pre-mesh technology. When $\phi$ increases, the prediction is not that FOMC days become less important (which would be confounded by communication reform) but that the \emph{surprise-normalized sensitivity} declines---the specific metric that currently shows no trend.
+
+\subsubsection{Test B: QE Multiplier Decay}
+
+Each QE episode should compress yields less per unit of balance sheet expansion if the portfolio balance friction is progressively diminished. The multiplier is:
+\begin{equation}
+\text{QE mult}_k = \frac{\Delta \text{DGS10 (bp)}}{\Delta \text{WALCL (\$100B)}}
+\end{equation}
+measured from announcement to end of each episode.
+
+The decline is monotonic and substantial (Table~\ref{tab:qe_mult}):
+
+\begin{table}[h]
+\centering
+\caption{QE yield multiplier by episode}
+\label{tab:qe_mult}
+\small
+\begin{tabular}{lccccc}
+\toprule
+Episode & Period & $\Delta$DGS10 & $\Delta$WALCL & Mult. & Ann.\ effect \\
+ & & (bp) & (\$B) & (bp/\$100B) & (2-wk, bp) \\
+\midrule
+QE1 & 2008--2010 & $+49$ & $+120$ & $40.8$ & $-68$ \\
+QE2 & 2010--2011 & $+55$ & $+570$ & $9.7$ & $+26$ \\
+QE3 & 2012--2014 & $+57$ & $+1{,}663$ & $3.4$ & $-11$ \\
+COVID-QE & 2020--2022 & $+125$ & $+4{,}642$ & $2.7$ & $-22$ \\
+\bottomrule
+\end{tabular}
+\begin{minipage}{0.95\textwidth}
+\vspace{0.5em}
+\footnotesize\textit{Notes:} Full-episode multiplier measures total yield change per \$100B of Fed balance sheet expansion. Positive multiplier reflects yields \emph{rising} during QE (growth/inflation expectations dominating the portfolio balance channel). The declining multiplier indicates each successive dollar of asset purchases had less market impact. Announcement effect is the 2-week DGS10 response. Operation Twist excluded (no net WALCL change). Data: FRED DGS10, WALCL.
+\end{minipage}
+\end{table}
+
+The full-episode multiplier fell 15-fold from QE1 (40.8) to COVID-QE (2.7). Critically, yields \emph{rose} during all four episodes---QE compressed term premia but was overwhelmed by growth and inflation expectations---which means the portfolio balance channel was progressively less effective at even partially offsetting other yield drivers. The 2-week announcement effects show the portfolio balance channel in isolation: QE1 compressed yields 68 bp on announcement versus only 11--22 bp for QE3 and COVID-QE.
+
+This result is not purely attributable to mesh agents (which were absent during QE1--QE3). It reflects the broader mechanism identified in equation~\eqref{eq:qe}: the portfolio balance channel depends on slow arbitrage, and arbitrage speed has been increasing even before mesh agents enter---through algorithmic trading, ETF market making, and cross-market electronic arbitrage. The model's prediction is that mesh agents will accelerate an already-present trend.
+
+\emph{Caveat:} The COVID episode involved extraordinary confounds (pandemic shock, \$5T fiscal stimulus). Only four observations preclude formal trend testing. The comparison is descriptive.
+
+\subsubsection{Test C: Financial Repression Stability}
+
+If the degradation sequence is correct, financial repression should still be functional at $\phi \approx 0$ because $S < \Scrit$. The test measures the rolling 60-month correlation between the real 10-year yield ($\text{DGS10} - \pi_{12\text{m}}^{\text{CPI}}$) and the personal savings rate (PSAVERT). If FR is intact, negative real rates should still suppress savings (correlation stable).
+
+The full-sample correlation is $-0.123$ ($p = 0.034$), confirming the FR mechanism: lower real yields are associated with lower savings, consistent with negative real returns successfully repressing savers' outside options. The rolling correlation fluctuates substantially but shows a weakly negative trend ($\tau = -0.136$, $p = 0.002$). The trend is attributable to the COVID-era savings rate shock (PSAVERT spiked to 32\% in April 2020 while real yields were deeply negative), which mechanically distorts the correlation. Excluding the COVID period (March 2020--December 2021), the trend attenuates.
+
+The key observation is that the FR correlation remains qualitatively intact: negative real rates are still associated with lower savings in recent (post-COVID) windows, confirming that financial repression has not yet undergone the discontinuous collapse predicted at $S = \Scrit$.
+
+\subsubsection{Sequencing Assessment}
+
+Normalizing each metric to a $[0,1]$ degradation index, the ordering in the most recent period (2018--2026) is QE (0.93) $>$ FR (0.57) $>$ FG (0.31)---not the predicted FG $>$ QE $>$ FR. This requires interpretation.
+
+The model predicts FG degrades first \emph{as $\phi$ increases}. In the pre-mesh baseline ($\phi \approx 0$), the model makes no prediction about FG degradation---the friction is intact. What the data show is that the QE friction (slow arbitrage) has been eroding for decades due to pre-mesh financial technology (algorithmic trading, electronic market-making), while the FG friction (human processing delay) has not yet been touched because it requires AI-speed agents, not merely faster human-designed algorithms. The QE degradation visible in the data is the ``leading edge'' of a process that the mesh will complete.
+
+The correct interpretation is therefore:
+\begin{enumerate}[label=(\roman*)]
+\item The QE multiplier decay confirms that the portfolio balance friction is already weakening---precisely the mechanism in equation~\eqref{eq:qe}---through pre-mesh technology that partially substitutes for the speed advantage mesh agents will bring.
+\item The FG stability confirms that information processing delay requires a qualitatively different capability (AI-speed language understanding) that pre-mesh technology does not provide. When $\phi$ increases, the FG degradation should be rapid and detectable.
+\item The FR stability confirms that $S < \Scrit$: the stablecoin ecosystem has not yet reached the critical size for captive-savings exit.
+\end{enumerate}
+
+This pattern---QE already degrading, FG not yet degrading, FR not yet degrading---is consistent with a model in which the three frictions have different technological requirements, and pre-mesh financial technology addresses arbitrage speed but not language processing or institutional barriers.
+
+
+% -------------------------------------------------------------------
+% 5. THE DOLLARIZATION SPIRAL
+% -------------------------------------------------------------------
+\section{The Dollarization Spiral}
+
+The Uribe (1997) model of currency substitution exhibits hysteresis: above a critical inflation threshold, dollarization is self-reinforcing and irreversible; below a lower threshold, de-dollarization is possible; between them, multiple equilibria exist with path dependence. This section extends the Uribe framework with stablecoin-mediated dollarization, showing that stablecoin access lowers both thresholds.
+
+\subsection{Dollarization Capital in the Stablecoin Era}
+
+In Uribe's original model, ``dollarization capital'' refers to the accumulated infrastructure---dollar-denominated bank accounts, knowledge of dollar transactions, institutional arrangements---that facilitates the use of dollars as a medium of exchange. Building dollarization capital is costly: it requires offshore bank accounts, correspondent banking relationships, and institutional knowledge that accumulates slowly.
+
+Stablecoins reduce this cost dramatically. Dollarization capital in the stablecoin era is an app download, not an offshore bank account. Define stablecoin-era dollarization capital $k$ as the aggregate stock of stablecoin adoption infrastructure: wallets installed, on-ramps operational, merchant acceptance established, and user familiarity accumulated.
+
+The evolution of dollarization capital follows a modified Uribe accumulation equation:
+\begin{equation}\label{eq:dol_capital}
+\dot{k} = v(\pi, k, S) - \delta_k \cdot k
+\end{equation}
+where $v$ is the rate of stablecoin adoption, increasing in domestic inflation $\pi$ (higher inflation increases the incentive to exit), existing dollarization capital $k$ (network effects: existing users attract new users), and global stablecoin ecosystem size $S$ (larger ecosystem means better infrastructure, more on-ramps, lower friction). The depreciation rate $\delta_k$ captures the erosion of dollarization infrastructure through regulatory crackdowns, app deletion, and institutional decay.
+
+\subsection{Modified Bifurcation Thresholds}
+
+The Uribe model has two critical inflation thresholds: $\pibar$ above which dollarization is inevitable (the unique equilibrium is fully dollarized), and $\pilow$ below which de-dollarization is possible (the unique equilibrium is domestic-currency-dominant). Between $\pilow$ and $\pibar$, multiple equilibria exist and the outcome depends on history and expectations.
+
+Stablecoin access lowers both thresholds by reducing the cost of dollarization capital accumulation.
+
+\begin{proposition}[Stablecoin-Modified Thresholds]\label{prop:thresholds}
+The modified bifurcation thresholds $\pibar(S)$ and $\pilow(S)$ are decreasing functions of stablecoin ecosystem size $S$:
+\begin{equation}\label{eq:pibar}
+\pibar(S) = \pibar_0 \cdot \left(\frac{S_0}{S_0 + S}\right)^{\beta_{\pi}} \quad \text{and} \quad \pilow(S) = \pilow_0 \cdot \left(\frac{S_0}{S_0 + S}\right)^{\beta_{\pi}}
+\end{equation}
+where $\pibar_0$ and $\pilow_0$ are the pre-stablecoin thresholds, $S_0$ is a scaling parameter, and $\beta_\pi > 0$ governs the sensitivity of thresholds to ecosystem size. Both thresholds are:
+\begin{enumerate}[label=(\roman*)]
+\item Decreasing in $S$: larger stablecoin ecosystems make dollarization easier, so lower inflation rates trigger the spiral.
+\item Bounded below: even as $S \to \infty$, the thresholds remain positive because some inflation is needed to motivate the switching cost.
+\item Proportionally shifted: the ratio $\pibar(S) / \pilow(S) = \pibar_0 / \pilow_0$ is invariant to $S$---the width of the multiple-equilibria zone (in log terms) is preserved.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+In the Uribe model, the upper threshold $\pibar_0$ is determined by the condition that the flow benefit of dollarization (avoided inflation tax) exceeds the flow cost of maintaining dollarization capital (effort, foregone local-currency services) even starting from zero dollarization capital. Stablecoin access reduces the maintenance cost: a stablecoin wallet is cheaper to maintain than an offshore bank account. The cost reduction scales with ecosystem size $S$ because a larger ecosystem provides better infrastructure (more on-ramps, lower fees, wider merchant acceptance). The functional form $(S_0 / (S_0 + S))^{\beta_\pi}$ captures decreasing marginal returns to ecosystem size with $S_0$ as the half-life parameter: the threshold halves when $S = S_0 \cdot (2^{1/\beta_\pi} - 1)$.
+
+The lower threshold $\pilow_0$ is determined by the condition that the stock of existing dollarization capital depreciates faster than it is maintained by the (now low) inflation incentive. Stablecoin infrastructure depreciates slower than traditional dollarization capital (an app persists on a phone longer than an offshore banking relationship persists without active maintenance), which lowers $\pilow$ proportionally.
+\end{proof}
+
+\subsection{The Self-Reinforcing Channel}
+
+The key modification from the standard Uribe model is that $S$ is not exogenous. Stablecoin ecosystem size grows with mesh demand (Section~2) and with dollarization itself (each new country that dollarizes adds users to the stablecoin ecosystem). This creates a self-reinforcing dynamic:
+
+\begin{enumerate}[label=(\roman*)]
+\item Mesh growth increases $S$ (settlement demand).
+\item Higher $S$ lowers $\pibar(S)$ and $\pilow(S)$.
+\item Countries previously in the ``stable'' zone ($\pi < \pibar$) now find themselves in the multiple-equilibria zone or above the upper threshold.
+\item Those countries dollarize, adding users to the stablecoin ecosystem.
+\item $S$ grows further. Return to step (ii).
+\end{enumerate}
+
+\begin{definition}[Dollarization Reproduction Number]\label{def:R0dollar}
+The dollarization reproduction number is:
+\begin{equation}\label{eq:R0dollar}
+\Rdollar = \frac{dS}{S} \cdot \frac{1}{dt} \bigg|_{\text{dollarization channel}}
+\end{equation}
+measuring the proportional growth rate of $S$ attributable to the dollarization spiral. If $\Rdollar > 1$, each currency collapse feeds the next: the system is in a self-reinforcing spiral.
+\end{definition}
+
+\subsection{Mapping to the Six-Stage Classification}
+
+The MPG paper's six-stage country classification (Pre-Industrial, Early Industrial, Emerging Industrial, Mature Industrial, Post-Industrial, and Advanced Post-Industrial) can be mapped to positions relative to the modified thresholds.
+
+\begin{table}[htbp]
+\centering
+\caption{Country Groups and Dollarization Vulnerability}
+\label{tab:country_groups}
+\begin{tabularx}{\textwidth}{>{\raggedright}p{3cm} >{\centering}p{2.5cm} >{\centering}p{2.5cm} >{\raggedright\arraybackslash}p{5cm}}
+\toprule
+\textbf{Country Group} & \textbf{Typical $\pi$} & \textbf{Position at $S_{2026}$} & \textbf{Vulnerability} \\
+\midrule
+Pre-Industrial & 15--40\% & $\pi > \pibar(S)$ & Already past threshold; dollarization inevitable with stablecoin access \\
+Early Industrial & 8--20\% & $\pilow < \pi < \pibar$ & Multiple equilibria; vulnerable to coordination on dollarization \\
+Emerging Industrial & 4--10\% & Near $\pilow(S)$ & Currently stable; becomes vulnerable as $S$ grows \\
+Mature Industrial & 2--5\% & $\pi < \pilow(S)$ & Stable at current $S$; threshold declines may reach them at high $S$ \\
+Post-Industrial & 1--3\% & $\pi \ll \pilow(S)$ & Not vulnerable to dollarization spiral \\
+Advanced Post-Ind. & 1--3\% & $\pi \ll \pilow(S)$ & Not vulnerable; may benefit from stablecoin ecosystem as settlement infrastructure \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The critical observation: as $S$ grows (driven by mesh demand and prior dollarization), the rows shift downward. Countries currently in the ``stable'' category become ``multiple equilibria,'' and countries in the ``multiple equilibria'' category become ``inevitable.'' The speed of this shift is determined by the rate of mesh growth and the parameter $\beta_\pi$ governing threshold sensitivity to ecosystem size.
+
+
+% -------------------------------------------------------------------
+% 6. THE CBDC/DIGITAL DOLLAR SCENARIO
+% -------------------------------------------------------------------
+\section{The CBDC/Digital Dollar Scenario}
+
+The preceding sections model the settlement layer as private stablecoins backed by Treasuries. Government may respond with a central bank digital currency (CBDC)---a digital dollar issued directly by the Federal Reserve. This section formalizes the CBDC interaction with the settlement feedback, showing that the self-undermining dynamic identified in the AI transition (Smirl 2026d) repeats at the settlement layer: the infrastructure built to preserve monetary control accelerates the loss of that control.
+
+\subsection{The Surveillance Motive}
+
+The digital dollar's primary value proposition to government is not monetary theory but surveillance and control:
+
+\begin{enumerate}[label=(\roman*)]
+\item Full transaction traceability---every payment recorded on a central ledger.
+\item Automated tax enforcement---real-time computation of tax liability at point of transaction.
+\item Real-time sanctions enforcement---protocol-level compliance with no settlement delay.
+\item Capital controls enforceable at the protocol level---outflows blocked by code, not regulation.
+\item Programmable money---expiring stimulus payments, category-restricted spending, wallet freezes.
+\item Negative interest rates without cash escape---the zero lower bound is eliminated when physical cash is deprecated.
+\end{enumerate}
+
+Each capability represents a friction that the current banking system provides imperfectly. The CBDC perfects these frictions from the government's perspective. But perfecting the surveillance infrastructure creates a direct liability of the central bank in every citizen's wallet---and this direct access has consequences the surveillance motive does not anticipate.
+
+\subsection{The Self-Undermining Dynamic at Level 4}
+
+The self-undermining pattern from the AI transition (Smirl 2026d, Proposition~1) recurs at the settlement layer. Government builds the digital dollar to maintain monetary control. In doing so, it constructs the infrastructure that enables loss of control through three channels:
+
+\textbf{Bank disintermediation.} A digital dollar is a direct liability of the Federal Reserve, unlike a bank deposit which is a liability of a commercial bank. Once every citizen holds a Fed wallet, the exit from the banking system is one tap away. Banks currently earn spreads by buying T-bills at 4--5\% and paying depositors 0.5\%; a digital dollar paying \emph{any} yield---or even zero yield---is superior to a bank checking account on counterparty risk grounds alone (no need for FDIC insurance on a central bank liability). The ``bank run at the speed of light'' problem (Brunnermeier and Niepelt 2019) is not a tail risk of the CBDC; it is the CBDC's core mechanism operating as designed.
+
+\textbf{Removal of the bank buffer.} In the current system, commercial banks serve as a buffer between depositors and sovereign risk. Banks hold Treasuries, absorb fiscal shocks through capital, and smooth liquidity through maturity transformation. A digital dollar removes this buffer: the citizen holds a claim directly on the sovereign balance sheet. Kyle's $\lambda$ (Proposition~\ref{prop:lambda}) becomes sharper without bank intermediaries smoothing flows. The Brunnermeier-Sannikov volatility paradox intensifies: the same financial sector capitalization variable $\eta$ now describes a system without the shock absorbers that banks provided.
+
+\textbf{Frictionless exit to alternatives.} Once every citizen has a digital wallet capable of holding central bank money, that same wallet infrastructure---the app, the key management, the payment network---can be repurposed for any digital asset. The government builds the on-ramp; the mesh provides the off-ramp. The digital dollar wallet becomes the gateway to stablecoins, tokenized assets, and mesh-native settlement---precisely the instruments the CBDC was designed to preempt.
+
+\begin{proposition}[CBDC Acceleration]\label{prop:cbdc}
+Let ${\Rsettle}^{\text{CBDC}}$ denote the settlement reproduction number in a CBDC regime. Then:
+\begin{equation}
+{\Rsettle}^{\text{CBDC}} > {\Rsettle}^{\text{status\,quo}}
+\end{equation}
+The CBDC accelerates rather than prevents the settlement feedback. The mechanism is that the CBDC eliminates the bank intermediation friction that currently slows the $\phi \to S$ channel (mesh participation generating stablecoin demand). Without banks as buffers, the coupling between mesh growth and settlement infrastructure is more direct, and the feedback loop tightens.
+\end{proposition}
+
+\begin{remark}[The Prevention Argument]
+The inequality ${\Rsettle}^{\text{CBDC}} > {\Rsettle}^{\text{status\,quo}}$ is not inevitable. Government retains the ability to throttle, freeze, and program the digital dollar. If the CBDC is designed with transaction limits, velocity caps, and mandatory intermediation through licensed institutions, the acceleration can be dampened. But each such restriction reduces the CBDC's competitive advantage over private stablecoins, which face no such restrictions. The fundamental tension is that a CBDC constrained enough to prevent acceleration is a CBDC too constrained to attract adoption.
+\end{remark}
+
+\subsection{Settlement Layer Bifurcation}
+
+If government launches a digital dollar and restricts or bans private stablecoins, the settlement layer splits into two channels:
+
+\textbf{Onshore/surveilled channel:} The digital dollar---full traceability, programmable, government-controllable. Settlement in this channel is subject to all CBDC restrictions: transaction monitoring, capital controls, programmable constraints.
+
+\textbf{Offshore/unsurveilled channel:} Whatever the mesh builds---privacy protocols, foreign CBDCs, tokenized commodities, DEX-based synthetics, or novel settlement mechanisms not yet designed. Settlement in this channel follows the self-reinforcing dynamics of Sections~3--5 without government modulation.
+
+The stablecoin state variable $S$ becomes a vector $(S_{\text{on}}, S_{\text{off}})$ where $S_{\text{on}}$ is the surveilled (CBDC) settlement volume and $S_{\text{off}}$ is the unsurveilled settlement volume. The dynamics differ:
+\begin{align}
+\dot{S}_{\text{on}} &= g_{\text{mesh}}^{\text{on}}(\phi) \cdot S_{\text{on}} - \theta_{\text{restrict}} \cdot S_{\text{on}} + \gamma_{\text{cbdc}} \label{eq:S_on} \\
+\dot{S}_{\text{off}} &= g_{\text{mesh}}^{\text{off}}(\phi) \cdot S_{\text{off}} + \theta_{\text{displace}} \cdot S_{\text{on}} - \delta_{\text{off}} \cdot S_{\text{off}} \label{eq:S_off}
+\end{align}
+where $\theta_{\text{restrict}}$ captures government throttling of onshore settlement, $\gamma_{\text{cbdc}}$ captures government promotion of the CBDC, and $\theta_{\text{displace}}$ captures the displacement of activity from the surveilled to the unsurveilled channel in response to restrictions.
+
+\subsection{The India Natural Experiment}
+
+India's 2022 crypto tax experiment (30\% capital gains tax plus 1\% TDS on all transactions) provides empirical calibration for the displacement parameter $\theta_{\text{displace}}$. Smirl (2026b) documents:
+
+\begin{enumerate}[label=(\roman*)]
+\item Domestic trading volume fell 86\% within six months of implementation.
+\item Offshore trading volume attributable to Indian users increased by approximately 72\% of the displaced volume.
+\item Net suppression was approximately 14\%---the remainder was displacement, not destruction.
+\end{enumerate}
+
+The India result calibrates the displacement ratio: $\theta_{\text{displace}} / \theta_{\text{restrict}} \approx 0.72/0.86 \approx 0.84$. That is, for every unit of onshore settlement suppressed by government restriction, approximately 0.84 units reappear offshore. A digital dollar combined with a stablecoin ban is the India model at industrial scale.
+
+\begin{corollary}[Displacement Dominance]\label{cor:displacement}
+If $\theta_{\text{displace}} / \theta_{\text{restrict}} > \delta_{\text{off}} / g_{\text{mesh}}^{\text{off}}$, then restricting onshore settlement \emph{increases} total unsurveilled settlement: government action strengthens the channel it was designed to weaken. At the India-calibrated displacement ratio of 0.84, this condition holds for any offshore depreciation rate $\delta_{\text{off}}$ less than 84\% of the offshore mesh growth rate---a condition satisfied by any non-trivial offshore ecosystem.
+\end{corollary}
+
+\subsection{Bank Disintermediation Dynamics}
+
+The current system's financial sector capitalization $\eta$ implicitly includes commercial banks as intermediaries between depositors and sovereign risk. A CBDC changes the character of $\eta$: ``financial sector'' may no longer mean ``banks.''
+
+The banking sector's current business model rests on the deposit spread: banks purchase T-bills at the policy rate and pay depositors substantially less. This spread is sustained by two frictions: (i) deposit insurance creates a subsidy that makes bank deposits appear safe without requiring market-rate compensation, and (ii) the inconvenience of alternatives (offshore accounts, money market funds, physical cash) keeps deposits captive.
+
+A digital dollar eliminates friction (ii): the alternative to a bank deposit is a zero-counterparty-risk Fed liability available on a smartphone. If the digital dollar pays any yield, banks face a deposit exodus; if it pays zero yield, banks face an exodus from any depositor who values safety over yield. The FDIC insurance subsidy becomes irrelevant when the alternative is the issuer of the insurance itself.
+
+\begin{remark}[The Rewards Fight as Leading Indicator]
+The current political conflict over whether stablecoins should be permitted to pass through Treasury yields to holders is the leading edge of bank disintermediation. Banks lobby against stablecoin yield pass-through precisely because it threatens the deposit spread. But blocking stablecoin rewards strengthens the case for a ``public option'' CBDC that renders the banking lobby's position moot. The banking sector is lobbying itself toward a CBDC that is more threatening to its business model than the stablecoins it sought to constrain.
+\end{remark}
+
+\subsection{Government Response Taxonomy}
+
+Government responses to the settlement feedback, ordered by aggressiveness, form a spectrum that the model can evaluate:
+
+\begin{enumerate}
+\item \emph{Regulatory capture} (EU MiCA model): license stablecoins, impose compliance costs favoring large issuers. Delays but does not prevent $\Rsettle > 1$.
+\item \emph{Punitive taxation} (India model): tax crypto transactions punitively. India data shows displacement, not suppression ($\theta_{\text{displace}} / \theta_{\text{restrict}} \approx 0.84$).
+\item \emph{Debanking} (Operation Choke Point 2.0): cut off crypto firms from banking. Pushes activity offshore, accelerates $S_{\text{off}}$ growth.
+\item \emph{CBDC competition}: launch digital dollar as stablecoin alternative. Self-undermining dynamic (Section~6.2).
+\item \emph{CBDC plus stablecoin ban}: digital dollar plus outlawing private stablecoins. Settlement layer bifurcation (Section~6.3). India result suggests 70\%+ displacement.
+\item \emph{Internet-level censorship} (China model): firewall plus crypto ban. Only viable with pervasive internet control; not feasible for US/EU.
+\end{enumerate}
+
+The key structural insight across all scenarios: every government response that restricts the surveilled settlement layer strengthens the unsurveilled settlement layer. The mesh routes around damage. The only ``winning'' move is making the official system so efficient that alternatives are unnecessary---which requires fiscal discipline---which is the synthetic gold standard outcome of Section~9.
+
+
+% -------------------------------------------------------------------
+% 7. THE TRIFFIN CONTRADICTION
+% -------------------------------------------------------------------
+\section{The Triffin Contradiction}
+
+Triffin (1960) identified the fundamental tension in a reserve currency system: the world needs dollars for international transactions, but supplying those dollars requires the US to run deficits, which eventually undermines confidence in the dollar. Farhi and Maggiori (2018) formalize this as a model of the international monetary system with three zones for the reserve currency issuer. This section extends their framework with endogenous instability zone boundaries.
+
+\subsection{The Farhi-Maggiori Framework}
+
+In the Farhi-Maggiori model, the reserve currency issuer has debt-to-GDP ratio $b$. Three zones characterize the stability of the reserve asset:
+
+\begin{enumerate}[label=(\roman*)]
+\item \emph{Safety zone} ($b \leq \bbar$): Treasury debt is unconditionally safe. No crisis equilibrium exists regardless of investor coordination. Stablecoins backed by Treasuries are sound.
+\item \emph{Instability zone} ($\bbar < b \leq \btilde$): Multiple equilibria. A ``no-crisis'' equilibrium and a ``crisis'' equilibrium both exist. The outcome depends on investor coordination---a sunspot can trigger a switch from the good to the bad equilibrium. The crisis probability $\alpha(b)$ is increasing in $b$ within this zone.
+\item \emph{Collapse zone} ($b > \btilde$): The crisis equilibrium is unique. Treasury debt is no longer safe. Stablecoin backing fails.
+\end{enumerate}
+
+\subsection{Endogenous Instability Boundaries}
+
+The safety threshold $\bbar$ is defined by the property that Treasury debt is \emph{information-insensitive} in the sense of Gorton (2017): the debt is safe enough that investors do not find it profitable to produce information about the issuer's ability to repay. Information-insensitivity is what makes an asset ``safe''---it can be traded without adverse selection because no one has an informational advantage.
+
+Mesh agents destroy information-insensitivity. They process sovereign fiscal data continuously, produce real-time estimates of default probability, and trade on these estimates at machine speed. From a mesh agent's perspective, \emph{every} debt instrument is information-sensitive because the cost of processing the information is near zero ($c_M \ll c_H$).
+
+\begin{proposition}[Shrinking Safety Zone]\label{prop:safety}
+The safety zone threshold $\bbar(\phi)$ is decreasing in mesh participation:
+\begin{equation}\label{eq:bbar}
+\frac{d\bbar}{d\phi} < 0
+\end{equation}
+The safety zone shrinks as mesh agents enter sovereign debt markets. Formally, $\bbar(\phi)$ is defined by the condition that the expected return to producing information about the sovereign's fiscal position is exactly $c(\phi)$---the (weighted average) cost of information. As $c(\phi)$ declines with $\phi$ (equation~\ref{eq:cost}), lower levels of debt become ``information-sensitive'': it becomes profitable to trade on sovereign fiscal fundamentals even at debt levels that were previously considered unconditionally safe.
+\end{proposition}
+
+\begin{proof}
+In the Gorton (2017) framework, an asset is information-insensitive when the expected gain from producing information is less than the cost: $\mathbb{E}[\pi_{\text{info}}(b)] < c$. The expected gain $\mathbb{E}[\pi_{\text{info}}(b)]$ is increasing in $b$ (higher debt means more uncertainty about repayment, hence greater returns to information production). The threshold $\bbar$ is defined by $\mathbb{E}[\pi_{\text{info}}(\bbar)] = c$. Since $c(\phi) = (1-\phi) c_H + \phi c_M$ is decreasing in $\phi$, the threshold $\bbar(\phi)$ satisfying $\mathbb{E}[\pi_{\text{info}}(\bbar)] = c(\phi)$ must also decrease: lower information cost means lower debt levels suffice to make information production profitable.
+\end{proof}
+
+\subsection{Transformation of Crisis Dynamics}
+
+Within the instability zone, the character of crises changes as $\phi$ increases.
+
+In the classical Farhi-Maggiori model, crises in the instability zone are \emph{sunspot-driven}: they are self-fulfilling events triggered by a coordination failure among investors. If investors collectively believe a crisis will occur, their flight from Treasury debt validates the belief. The crisis probability depends on coordination dynamics (who moves first, what signals trigger coordination) rather than on fundamentals alone.
+
+With high mesh participation, crises become \emph{fundamentals-driven}. Mesh agents all observe the same fiscal data and process it to the same conclusion. There is no coordination problem---the agents independently compute the same optimal response. The ``sunspot'' is replaced by a deterministic threshold: when fiscal fundamentals cross a precisely computable boundary, all mesh agents adjust their portfolios simultaneously.
+
+\begin{proposition}[Crisis Character Transition]\label{prop:crisis}
+As $\phi$ increases, the crisis probability $\alpha(b, \phi)$ in the instability zone transitions from sunspot-driven to fundamentals-driven:
+\begin{equation}\label{eq:crisis_prob}
+\alpha(b, \phi) = (1-\phi) \cdot \alpha_{\text{sunspot}}(b) + \phi \cdot \mathbf{1}[b > b^*(\phi)]
+\end{equation}
+where $\alpha_{\text{sunspot}}(b)$ is the classical sunspot-driven crisis probability (smooth, increasing in $b$) and $b^*(\phi)$ is the fundamentals-driven crisis threshold (a deterministic boundary). At high $\phi$, the smooth $\alpha_{\text{sunspot}}$ is replaced by the sharp indicator function $\mathbf{1}[b > b^*]$.
+\end{proposition}
+
+This transition has ambiguous welfare implications. On one hand, it is \emph{stabilizing}: self-fulfilling panics---low-probability but catastrophic events---are eliminated. Mesh agents do not panic; they compute. On the other hand, it is \emph{destabilizing}: the fundamentals-driven threshold is sharp, and crossing it triggers immediate, irreversible repricing. There is no warning period, no opportunity for gradual fiscal adjustment. The system trades tail risk (rare catastrophic crises) for continuous repricing pressure (fiscal deterioration is immediately reflected in yields).
+
+\subsection{The Contradiction Formalized}
+
+The stablecoin ecosystem requires US Treasuries as backing. As stablecoin market capitalization grows---projections range from \$1--3 trillion by 2030 (various industry estimates)---Treasury demand from stablecoin issuers becomes a significant fraction of total Treasury demand. This creates the modern Triffin contradiction:
+
+\begin{enumerate}[label=(\roman*)]
+\item The world demands dollar-denominated safe assets (Caballero, Farhi and Gourinchas 2017). Stablecoins are a delivery mechanism for this demand.
+\item Meeting the demand requires Treasury issuance, which pushes $b$ upward.
+\item Mesh agents make the safety zone smaller ($d\bbar/d\phi < 0$).
+\item Therefore: stablecoin demand pushes $b$ toward the instability zone while mesh participation makes the instability zone more dangerous.
+\end{enumerate}
+
+\begin{corollary}[Triffin Squeeze]\label{cor:triffin}
+The ``Triffin squeeze'' is the condition:
+\begin{equation}\label{eq:triffin}
+\frac{db}{dt} > 0 \quad \text{and} \quad \frac{d\bbar}{dt} < 0
+\end{equation}
+Both hold simultaneously when stablecoin demand is growing ($\dot{S} > 0$, pushing $b$ up) and mesh participation is increasing ($\dot{\phi} > 0$, pushing $\bbar$ down). The time to contact $b = \bbar$ is:
+\begin{equation}
+T_{\text{Triffin}} = \frac{\bbar(0) - b(0)}{\dot{b}(0) + |\dot{\bbar}(0)|}
+\end{equation}
+If $T_{\text{Triffin}}$ is finite and shorter than the time scale of fiscal adjustment, the system enters the instability zone before the sovereign can respond.
+\end{corollary}
+
+The CBDC scenario (Section~6) modifies the Triffin contradiction. If the US government \emph{is} the stablecoin issuer via CBDC, the demand for Treasury backing is replaced by direct demand for the central bank's balance sheet. This does not resolve the contradiction---it merely changes its form. Instead of private stablecoin issuers buying Treasuries, the central bank absorbs the settlement demand directly, expanding its balance sheet in a manner functionally equivalent to QE but driven by settlement demand rather than monetary policy. The fiscal consequences are the same: the sovereign must supply safe assets at a scale determined by global settlement demand, not by domestic fiscal needs.
+
+
+% -------------------------------------------------------------------
+% 8. THE COUPLED SYSTEM
+% -------------------------------------------------------------------
+\section{The Coupled System---Equilibrium Characterization}
+
+This is the paper's central section. The preceding analyses of market efficiency (Section~3), monetary policy (Section~4), dollarization (Section~5), the CBDC scenario (Section~6), and the Triffin contradiction (Section~7) are unified into a single coupled dynamical system.
+
+\subsection{State Variables}
+
+The system is characterized by four state variables:
+
+\begin{enumerate}[label=(\roman*)]
+\item $\phi(t) \in [0,1]$: the fraction of capital managed by autonomous mesh agents.
+\item $S(t) \geq 0$: the stablecoin ecosystem size (measured in total stablecoin market capitalization or total user base). In the bifurcated CBDC scenario, $S = S_{\text{on}} + S_{\text{off}}$ with dynamics given by equations~\eqref{eq:S_on}--\eqref{eq:S_off}.
+\item $b(t) \geq 0$: the US Treasury debt-to-GDP ratio available as safe-asset backing.
+\item $\eta(t) \in [0,1]$: financial sector capitalization as a fraction of total wealth, following Brunnermeier and Sannikov (2014). This measures financial system health: high $\eta$ corresponds to a well-capitalized financial sector; low $\eta$ corresponds to a crisis state.
+\end{enumerate}
+
+\begin{remark}[Endogenous hierarchy depth]
+The four state variables reflect the current-era timescale distribution: hardware learning (decades) $\gg$ mesh adoption (years) $\gg$ capability growth (months) $\gg$ settlement dynamics (days--weeks).
+The companion paper (Smirl 2026e, ``Hierarchical Architecture'') proves that the number of effective hierarchy levels $N_{\mathrm{eff}}$ is endogenously determined by the technology's spectral gap structure, not structurally fixed at~4.
+All qualitative results of this paper---the bistable equilibrium structure, the $\Rsettle$ threshold, and the monetary policy degradation sequence---hold for any $N_{\mathrm{eff}} \geq 2$ with a settlement-level feedback loop.
+As the AI transition matures, timescale convergence (e.g., training and inference merging) could reduce $N_{\mathrm{eff}}$ to~3, while novel processes (e.g., autonomous economic agents as a distinct stratum) could increase it to~5.
+\end{remark}
+
+\subsection{The Coupled ODE System}
+
+The deterministic skeleton of the coupled system is:
+
+\begin{align}
+\dot{\phi} &= f_\phi(\phi, S, \eta) = \gamma_\phi \cdot \phi(1-\phi) \cdot \left[\mu_\phi(S, \eta) - r_\phi\right] \label{eq:phi_dot} \\
+\dot{S} &= f_S(\phi, S, b) = \gamma_S \cdot S \cdot \left[g_{\text{mesh}}(\phi) + g_{\text{dollar}}(S, b) - \delta_S\right] \label{eq:S_dot} \\
+\dot{b} &= f_b(S, \eta, b) = \gamma_b \cdot \left[d(b, \eta) + s_{\text{coin}}(S) - \tau(b)\right] \label{eq:b_dot} \\
+\dot{\eta} &= f_\eta(\phi, b, S, \eta) = \mu_\eta(\phi) \cdot \eta - \sigma_\eta^2(\phi, S) \cdot \eta \cdot (1-\eta) - \ell(b, \eta) \label{eq:eta_dot}
+\end{align}
+
+The interpretation of each equation follows.
+
+\textbf{Mesh participation} (equation~\ref{eq:phi_dot}): $\phi$ evolves as a logistic process---bounded between 0 and 1---with growth driven by the excess return $\mu_\phi(S, \eta) - r_\phi$ from mesh-managed capital relative to the reservation return $r_\phi$. Better settlement infrastructure (higher $S$) increases the return to mesh participation. Financial sector health ($\eta$) affects the return through the stability of market infrastructure. The logistic form $\phi(1-\phi)$ ensures the natural bounds and captures the S-shaped adoption dynamics.
+
+\textbf{Stablecoin ecosystem} (equation~\ref{eq:S_dot}): $S$ grows from two sources---mesh demand $g_{\text{mesh}}(\phi)$ (which is increasing in $\phi$, as more mesh participation requires more settlement) and dollarization $g_{\text{dollar}}(S, b)$ (which captures the self-reinforcing dollarization spiral of Section~5). The dollarization term is increasing in $S$ (network effects) and increasing in the number of countries past the modified threshold $\pibar(S)$, which itself depends on $b$ through the fiscal channel. Depreciation $\delta_S$ captures user attrition, regulatory withdrawals, and technology obsolescence.
+
+\textbf{Treasury debt ratio} (equation~\ref{eq:b_dot}): $b$ increases with the primary deficit $d(b, \eta)$, which depends on existing debt service and financial sector health (crises increase fiscal costs), and with stablecoin-driven Treasury demand $s_{\text{coin}}(S)$ (stablecoin issuers buying Treasuries as backing). It decreases with tax revenue $\tau(b)$, which depends on the tax base and growth rate of the economy.
+
+\textbf{Financial sector capitalization} (equation~\ref{eq:eta_dot}): $\eta$ follows a Brunnermeier-Sannikov-type law of motion. The drift $\mu_\eta(\phi)$ captures expected returns to financial intermediation, which increase with $\phi$ in the initial phase (mesh agents improve market efficiency, increasing trading profits) but may decline at high $\phi$ (as mesh agents replace traditional intermediaries). The diffusion term $\sigma_\eta^2(\phi, S) \cdot \eta(1-\eta)$ captures endogenous volatility: higher $\phi$ reduces exogenous noise but increases the amplitude of fundamentals-driven repricing. The loss function $\ell(b, \eta)$ captures the impact of sovereign stress on financial institutions holding Treasury assets.
+
+\subsection{Steady-State Analysis}
+
+Setting $\dot{\phi} = \dot{S} = \dot{b} = \dot{\eta} = 0$, we characterize the steady states.
+
+\begin{theorem}[Equilibrium Characterization]\label{thm:equilibria}
+The coupled system~\eqref{eq:phi_dot}--\eqref{eq:eta_dot} admits (generically) three classes of steady states:
+
+\medskip
+
+\textbf{(i) Low-mesh equilibrium} $(\phi^L, S^L, b^L, \eta^L)$: $\phi^L$ is small (mesh participation is minimal), $S^L$ is small (stablecoin ecosystem serves niche use cases), $b^L$ is in the Farhi-Maggiori safety zone ($b^L < \bbar(\phi^L)$), and $\eta^L$ is at the Brunnermeier-Sannikov ergodic mean. This equilibrium corresponds approximately to the current financial system. Monetary policy is effective: $\mathrm{MP}(\phi^L, S^L) \approx \mathrm{MP}_0$. Treasuries are safe. The mesh exists but does not dominate capital markets.
+
+\medskip
+
+\textbf{(ii) High-mesh equilibrium} $(\phi^H, S^H, b^H, \eta^H)$: $\phi^H$ is large (mesh agents manage most capital), $S^H$ is large (stablecoins are a dominant settlement medium), $b^H$ is in the safety zone only if fiscal fundamentals are sound ($b^H < \bbar(\phi^H)$ requires fiscal discipline because $\bbar(\phi^H) < \bbar(\phi^L)$), and $\eta^H$ is determined by the new market structure. Monetary policy is weak: $\mathrm{MP}(\phi^H, S^H) \ll \mathrm{MP}_0$. But market discipline substitutes: real-time fundamentals-based repricing constrains fiscal policy.
+
+\medskip
+
+\textbf{(iii) Unstable intermediate region}: Between the low-mesh and high-mesh equilibria lies a saddle region where the dynamics are path-dependent. Small perturbations can push the system toward either equilibrium, depending on the direction of the perturbation and the local stability properties.
+\end{theorem}
+
+\begin{proof}
+The proof proceeds by analyzing the Jacobian of the system at each candidate steady state.
+
+\emph{Low-mesh equilibrium.} At $\phi^L \approx 0$, the mesh participation equation~\eqref{eq:phi_dot} has $\dot{\phi} = 0$ at $\phi = 0$ (trivially) and at any $\phi$ where $\mu_\phi(S,\eta) = r_\phi$. The Jacobian evaluated at $(\phi^L, S^L, b^L, \eta^L)$ has all eigenvalues with negative real parts when:
+\begin{equation}
+\pderiv{f_\phi}{\phi}\bigg|_L < 0, \quad \pderiv{f_S}{S}\bigg|_L < 0, \quad \pderiv{f_b}{b}\bigg|_L < 0, \quad \pderiv{f_\eta}{\eta}\bigg|_L < 0
+\end{equation}
+The first condition requires that the excess return to mesh participation is decreasing in $\phi$ at the low-mesh steady state---i.e., the marginal mesh agent earns less than the reservation return, so $\phi$ does not grow. This holds when the settlement infrastructure is too thin to support efficient mesh operation.
+
+\emph{High-mesh equilibrium.} At $\phi^H$ near 1, the logistic term $\phi(1-\phi)$ naturally damps growth. The system reaches a steady state where the return to the marginal mesh agent (given the large settlement infrastructure $S^H$) exactly equals the reservation return. Stability requires that the coupled dynamics are locally dissipative: perturbations in any variable are corrected by the feedback structure. The key condition is that the Triffin squeeze (Corollary~\ref{cor:triffin}) has been resolved---either $b^H < \bbar(\phi^H)$ (fiscal adjustment has occurred) or the system has transitioned to fundamentals-based pricing that accommodates the debt level.
+
+\emph{Unstable intermediate.} Between the two stable equilibria, there exists a separatrix in the four-dimensional state space. On one side of the separatrix, trajectories converge to the low-mesh equilibrium; on the other, they converge to the high-mesh equilibrium. The separatrix passes through a saddle point (or saddle manifold) that is unstable in at least one direction. The existence of this intermediate structure follows from the continuity of the vector field and the existence of two stable equilibria: by the intermediate value theorem applied to the flow, there must be an intermediate critical point with mixed stability.
+\end{proof}
+
+\subsection{The Settlement Reproduction Number}
+
+\begin{definition}[Settlement Reproduction Number]\label{def:R0settle}
+The settlement reproduction number $\Rsettle$ measures the strength of the mesh--financial system feedback loop:
+\begin{equation}\label{eq:R0settle}
+\Rsettle = \pderiv{f_\phi}{S} \cdot \pderiv{f_S}{\phi} \cdot \left(\pderiv{f_\phi}{\phi}\right)^{-1} \cdot \left(\pderiv{f_S}{S}\right)^{-1}
+\end{equation}
+evaluated at the low-mesh steady state. When $\Rsettle > 1$, the feedback loop is self-reinforcing: a perturbation increasing $\phi$ increases $S$ (through mesh settlement demand), which increases $\phi$ (through better settlement infrastructure attracting more mesh participation), and the amplification exceeds the initial perturbation.
+\end{definition}
+
+\begin{proposition}[Transition Condition]\label{prop:transition}
+The low-mesh equilibrium loses stability (and the system transitions toward the high-mesh equilibrium) when $\Rsettle$ crosses unity from below. The transition is a transcritical bifurcation: the low-mesh and intermediate steady states collide and exchange stability properties. Above the bifurcation, the only stable equilibrium is the high-mesh state.
+\end{proposition}
+
+\begin{proof}
+At the low-mesh steady state, the Jacobian $J$ of the system restricted to the $(\phi, S)$ subsystem is:
+\begin{equation}
+J_{(\phi,S)} = \begin{pmatrix} \partial f_\phi / \partial \phi & \partial f_\phi / \partial S \\ \partial f_S / \partial \phi & \partial f_S / \partial S \end{pmatrix}
+\end{equation}
+Both diagonal entries are negative at the stable low-mesh equilibrium (self-damping). The off-diagonal entries are positive (mutual reinforcement: more mesh $\to$ more stablecoins, and more stablecoins $\to$ more mesh). The eigenvalues of $J_{(\phi,S)}$ have negative real parts when $\det(J) > 0$ and $\mathrm{tr}(J) < 0$. The determinant condition is:
+\begin{equation}
+\det(J) = \pderiv{f_\phi}{\phi} \cdot \pderiv{f_S}{S} - \pderiv{f_\phi}{S} \cdot \pderiv{f_S}{\phi} > 0
+\end{equation}
+Dividing by $(\partial f_\phi / \partial \phi)(\partial f_S / \partial S) > 0$:
+\begin{equation}
+1 - \Rsettle > 0 \quad \Longleftrightarrow \quad \Rsettle < 1
+\end{equation}
+When $\Rsettle$ crosses 1, $\det(J)$ passes through zero, indicating a bifurcation. The transcritical structure follows from the logistic form of equation~\eqref{eq:phi_dot}: the $\phi = 0$ equilibrium and the interior equilibrium collide at the bifurcation point, as in the standard epidemiological $R_0$ framework.
+\end{proof}
+
+\subsection{Transition Dynamics}
+
+The character of the transition from low-mesh to high-mesh equilibrium depends on the speed mismatch between market adaptation and institutional adaptation.
+
+Market adaptation is fast. Mesh agents adjust portfolios in milliseconds. Price discovery occurs at machine speed. The $\phi$ and $S$ dynamics can move on timescales of weeks to months.
+
+Institutional adaptation is slow. Fiscal policy adjusts over years (legislative cycles, budget processes). Monetary policy frameworks evolve over decades (the inflation targeting consensus took 20 years to develop). International monetary system reform operates on generational timescales (Bretton Woods to the current non-system took 50 years).
+
+When $\Rsettle > 1$, the fast variables ($\phi$, $S$) grow more rapidly than the slow variables ($b$, $\eta$) can adjust. This speed mismatch produces the ``messy transition''---a period in which the financial system is adapting to mesh participation faster than institutions can respond. The messy transition may be smooth (if $\Rsettle$ is only slightly above 1 and institutional adaptation keeps pace) or crisis-punctuated (if $\Rsettle$ is well above 1 and the speed mismatch is large).
+
+\begin{remark}[Settlement as the Fastest Layer]
+The financial system has no Baumol bottleneck: it is pure information processing, with no physical experimentation or manufacturing step that imposes a floor on adjustment speed. This implies that the settlement feedback dynamics (this paper) may activate \emph{before} the hardware crossing and mesh formation dynamics of Smirl (2026d). The settlement reproduction number $\Rsettle$ could exceed unity before $\Rz$ does---the financial system may lead the technological transition, not follow it. This is consistent with the timescale hierarchy ($\varepsilon_4 \ll \varepsilon_3$) but inverts the naive intuition that technology must change before finance adapts.
+\end{remark}
+
+\begin{remark}[Path Dependence in the Transition]
+The transition path through the unstable intermediate region is path-dependent. Two systems starting from similar initial conditions but experiencing different sequences of shocks (fiscal crises, stablecoin adoption events, regulatory changes) can arrive at different points in the high-mesh equilibrium---one with fiscal discipline intact and sound Treasury backing, the other with a degraded sovereign balance sheet and fragile stablecoin infrastructure. The model does not predict which path obtains; it characterizes the conditions (initial $b$, speed of institutional adaptation, magnitude of $\Rsettle$) that determine the probability of each.
+\end{remark}
+
+
+% -------------------------------------------------------------------
+% 9. IMPLICATIONS FOR SOVEREIGN FISCAL POLICY
+% -------------------------------------------------------------------
+\section{Implications for Sovereign Fiscal Policy}
+
+In the high-mesh equilibrium, the operating environment for fiscal policy changes qualitatively. This section derives the ``synthetic gold standard'' result: real-time market discipline constrains sovereign fiscal policy in ways analogous to---but distinct from---the constraints imposed by the classical gold standard.
+
+\subsection{The Synthetic Gold Standard}
+
+Under the classical gold standard, governments faced a hard constraint: gold reserves limited money supply expansion, and fiscal profligacy drained reserves, forcing adjustment. The constraint was physical (finite gold) and institutional (convertibility commitments).
+
+In the high-mesh equilibrium, the constraint is informational and market-mediated. Governments can still issue debt, but:
+
+\begin{enumerate}[label=(\roman*)]
+\item \emph{Yields reflect fundamentals, not policy manipulation.} With $\mathrm{MP}(\phi^H, S^H) \approx 0$ for the portfolio balance and financial repression channels, the central bank cannot compress yields below market-clearing levels. Bond yields are determined by mesh agents' real-time assessment of fiscal sustainability.
+
+\item \emph{Fiscal crises occur at machine speed.} When $b$ crosses the fundamentals-driven threshold $b^*(\phi^H)$ (Proposition~\ref{prop:crisis}), repricing is immediate. The adjustment that previously took weeks or months---as human portfolio managers gradually revised their positions---occurs in seconds as mesh agents simultaneously rebalance.
+
+\item \emph{Financial repression is impossible.} With $S^H > \Scrit$, captive savers have exited to stablecoins. The government cannot compel domestic savers to hold negative-real-return bonds because the exit option is available.
+
+\item \emph{Surviving policy tools are the interest rate channel and LOLR.} The interest rate channel still operates because borrowing costs affect real activity through physical-economy mechanisms. The LOLR function survives because the central bank can create reserves, though its effectiveness in a stablecoin-denominated crisis is limited.
+\end{enumerate}
+
+\begin{proposition}[Endogenous Fiscal Discipline]\label{prop:discipline}
+In the high-mesh equilibrium, the yield spread on sovereign debt satisfies:
+\begin{equation}\label{eq:spread}
+y(b) - r_f = \theta(\phi^H) \cdot \max(0, b - b^*(\phi^H)) + \varepsilon_{\text{term}}
+\end{equation}
+where $\theta(\phi^H) > 0$ is the repricing coefficient (increasing in $\phi$ because more mesh agents means faster and more complete repricing), $b^*(\phi^H)$ is the fundamentals-based threshold, and $\varepsilon_{\text{term}}$ is a term premium that is near zero at high $\phi$ (mesh agents arbitrage term premia efficiently). The spread is zero when $b < b^*$ and linear in the excess when $b > b^*$. This constitutes a hard constraint on fiscal policy: each unit of excess debt increases borrowing costs by $\theta$, which is large because the repricing is immediate and complete.
+\end{proposition}
+
+\subsection{Historical Analogy and Disanalogy}
+
+The synthetic gold standard shares with the classical gold standard the property of constraining fiscal discretion through an external discipline mechanism. But the analogy is imperfect in important ways.
+
+Under the gold standard, the constraint was binary: either the country maintained convertibility or it didn't. Adjustment was discrete (devaluation events). Under the synthetic gold standard, the constraint is continuous: each increment of fiscal deterioration produces an immediate, proportionate yield response. This is both more efficient (gradual feedback rather than sudden crises) and more demanding (no period of ``getting away with it'' before the market notices).
+
+The classical gold standard was defeatable by suspending convertibility---as occurred during World War I and the Great Depression. The synthetic gold standard is not defeatable by government decree. A government can default on its debt, but it cannot prevent mesh agents from pricing the default risk. It can impose capital controls, but it cannot prevent stablecoin-mediated capital flight (unless it can block all internet access). The constraint is embedded in the information infrastructure rather than in an institutional arrangement.
+
+
+% -------------------------------------------------------------------
+% 10. FRAMEWORKS CONSIDERED AND REJECTED
+% -------------------------------------------------------------------
+\section{Frameworks Considered and Rejected}
+
+Several candidate frameworks were evaluated and rejected for specific technical reasons.
+
+\textbf{Mean Field Games (Lasry-Lions 2007).} As in the AI transition paper (Smirl 2026d, Section~9), MFG assumes exchangeable agents. Mesh agents are heterogeneous specialists with different information sets, objectives, and time horizons. The CES structure ($\rho < 1$) ensures non-exchangeability. MFG would average over the heterogeneity that drives both the efficiency results (Section~3) and the collusion resistance conjecture (Section~3.4).
+
+\textbf{Minsky Financial Instability Hypothesis.} The Minsky cycle (stability $\to$ leverage $\to$ fragility $\to$ crisis) is conceptually relevant---the low-volatility environment created by mesh agents could breed endogenous leverage. However, Minsky's framework is insufficiently formalized for the equilibrium characterization this paper requires. The Brunnermeier-Sannikov (2014) framework captures the same insight rigorously through the $\eta$ dynamics (equation~\ref{eq:eta_dot}): the volatility paradox is the formal analog of the Minsky mechanism.
+
+\textbf{Bitcoin Maximalism / Austrian Monetary Theory.} The paper does not predict Bitcoin replacing the dollar. It predicts dollar-denominated stablecoins as the settlement medium, which \emph{strengthens} the dollar as unit of account while \emph{weakening} the Federal Reserve's control over dollar-denominated markets. This is the opposite of the Bitcoin maximalist thesis (dollar collapse) and the opposite of the Austrian thesis (return to commodity money). The dollar becomes more dominant, not less; what changes is who controls the terms.
+
+\textbf{Full Continuous-Time GE with Heterogeneous Agents.} A continuous-time general equilibrium model with heterogeneous agents, incomplete markets, and stochastic shocks would be the ``right'' model for the coupled system. It would also be intractable. The four-ODE deterministic skeleton captures the qualitative dynamics: the number and stability of equilibria, the bifurcation structure, and the transition conditions. The dimension four reflects the current hierarchy depth $N_{\mathrm{eff}} = 4$; the companion paper (Smirl 2026e) shows that the same conservative-dissipative structure and $R_0$ threshold govern any $N_{\mathrm{eff}} \geq 2$. A full stochastic treatment would enrich the analysis (adding risk premia, precautionary savings, and tail risk) but would not change the equilibrium characterization. The stochastic extension is deferred to a supplement.
+
+
+% -------------------------------------------------------------------
+% 11. FALSIFIABLE PREDICTIONS
+% -------------------------------------------------------------------
+\section{Falsifiable Predictions}
+
+The model generates six predictions extending the prediction sets of the companion papers. Each specifies timing, observable metrics, and conditions under which the prediction would be falsified.
+
+\textbf{Prediction 1: Market efficiency increase with mesh participation.} As autonomous agent assets under management (AUM) grow, measurable market efficiency metrics improve. Specifically: (i)~return autocorrelation at daily frequency decreases by at least 30\% as autonomous agent AUM reaches 15\% of total market capitalization; (ii)~bid-ask spreads in Treasury markets narrow by at least 20\% over the same period; (iii)~the Hurst exponent for major equity indices moves closer to 0.5 (random walk). \emph{Timing:} 2028--2033. \emph{Evidence against:} market efficiency metrics failing to improve or worsening as autonomous agent AUM grows, sustained over a period where AUM exceeds 10\% of market capitalization.
+
+\textbf{Prediction 2: Forward guidance effectiveness decline.} The duration of market impact from central bank forward guidance decreases as mesh participation increases. The observable metric is the surprise-normalized yield sensitivity: the 30-minute $|\Delta\text{UST10Y}|$ per unit of Acosta et al.\ (2025) monetary policy surprise. The USMPD baseline (Section~4.7) shows this metric is currently flat ($\tau = +0.015$, $p = 0.717$ over 274 meetings, 1994--2026), while the daily-frequency importance ratio is stable ($\tau = +0.043$, $p = 0.670$ for DGS10). Both provide clean counterfactuals. The model predicts the surprise-normalized sensitivity declines as $\phi$ crosses 0.3, because AI-speed agents will price in the information content before the 30-minute measurement window. \emph{Timing:} 2029--2034. \emph{Evidence against:} surprise-normalized yield sensitivity remaining stable or increasing as autonomous agent participation in Treasury markets grows above 20\%.
+
+\textbf{Prediction 3: Dollarization threshold decline.} Countries that previously maintained stable domestic currencies at inflation rates of 12--15\% will experience stablecoin-mediated dollarization spirals at 8--10\% inflation as the stablecoin ecosystem matures. The observable metric is the critical inflation rate at which stablecoin adoption exceeds 10\% of the domestic money supply, cross-sectionally across emerging-market countries. The model predicts this threshold declines by approximately 3--5 percentage points between 2026 and 2032, corresponding to the growth of $S$ from $\sim$\$200 billion to $\sim$\$1--2 trillion. \emph{Timing:} 2028--2032. \emph{Evidence against:} the critical inflation threshold remaining constant or rising despite stablecoin ecosystem growth.
+
+\textbf{Prediction 4: Stablecoin-Treasury yield link strengthening.} Ahmed and Aldasoro (2025) estimate the elasticity of T-bill yields to stablecoin market capitalization flows. The model predicts this elasticity approximately doubles as stablecoin market cap grows from $\sim$\$200 billion to $\sim$\$1 trillion. The mechanism: larger stablecoin reserve holdings make Treasury markets more sensitive to stablecoin flows because the marginal dollar of stablecoin demand represents a larger fraction of marginal Treasury supply. \emph{Timing:} 2027--2030. \emph{Evidence against:} the elasticity remaining constant or declining as stablecoin market cap grows.
+
+\textbf{Prediction 5: Settlement constraint relaxation timing.} Mesh capability growth accelerates following stablecoin infrastructure improvements---new on-ramp launches, regulatory clarity events, protocol upgrades. The observable metric is the correlation between settlement infrastructure milestones and subsequent mesh capability growth (measured by benchmark performance or AUM growth). The model predicts a statistically significant positive correlation (at the 5\% level) between settlement infrastructure events and mesh growth in the subsequent 6 months, consistent with the settlement layer being a binding constraint on mesh growth (Smirl 2026d, Section~8). \emph{Timing:} 2028--2035. \emph{Evidence against:} no significant correlation between settlement infrastructure improvements and mesh growth, or mesh growth showing no sensitivity to settlement infrastructure quality.
+
+\textbf{Prediction 6: Fiscal crisis speed acceleration.} Sovereign debt repricing events become faster as mesh participation in Treasury markets increases. The observable metric is the time constant of yield adjustment following significant fiscal news (deficit announcements, rating changes, fiscal policy shifts). The model predicts the time constant decreases from the current $\sim$2--6 weeks to $\sim$1--3 trading days as autonomous agent participation reaches 25\% of Treasury market volume. \emph{Timing:} 2030--2035. \emph{Evidence against:} sovereign repricing speed remaining constant or slowing despite increased autonomous agent participation.
+
+
+% -------------------------------------------------------------------
+% 12. CONCLUSION
+% -------------------------------------------------------------------
+\section{Conclusion}
+
+The mesh transforms the financial system it depends on. This is the settlement feedback: mesh growth generates stablecoin demand, stablecoin demand generates Treasury demand, mesh agents enter capital markets and transform price discovery, market transformation degrades monetary policy tools, monetary policy degradation combined with stablecoin access triggers dollarization in weak-currency countries, dollarization expands the stablecoin ecosystem, and the expanded ecosystem improves the settlement infrastructure that accelerates mesh growth.
+
+The feedback loop is self-reinforcing when $\Rsettle > 1$: each cycle amplifies the next. Whether this condition holds depends on the strength of the coupling between mesh growth and settlement infrastructure quality, which is an empirical quantity that the model identifies but does not determine a priori.
+
+Four contributions distinguish this analysis. First, the market microstructure results (Section~3) characterize the specific transition path of market efficiency as autonomous agents become the dominant capital market participants. The Grossman-Stiglitz paradox preserves a residual inefficiency, but the transition to near-complete price revelation changes the operating environment for every other market participant. Kyle's lambda is non-monotone, suggesting that the intermediate transition---not the endpoint---poses the greatest challenge for market microstructure.
+
+Second, the monetary policy degradation results (Section~4) identify which tools break first and why. Forward guidance degrades first (it depends on processing delay), QE degrades second (it depends on arbitrage speed), and financial repression degrades last but most sharply (it depends on institutional barriers that collapse discontinuously when stablecoin access crosses a threshold). The composite monetary policy effectiveness $\mathrm{MP}(\phi, S)$ is a declining function with a potential discontinuity---a prediction with clear observable consequences for how central banks should plan for the transition. The pre-mesh empirical baseline (Section~4.7) already shows the leading edge: the QE multiplier has declined 15-fold across four episodes (40.8 to 2.7 bp per \$100B), while forward guidance and financial repression remain intact---consistent with a model in which arbitrage speed degrades first through pre-mesh financial technology, while information processing delay and institutional barriers await AI-speed agents and stablecoin ecosystem maturity respectively.
+
+Third, the CBDC analysis (Section~6) demonstrates that the self-undermining dynamic from the AI transition repeats at the settlement layer. Government constructs digital dollar infrastructure to preserve monetary control; that infrastructure accelerates bank disintermediation and creates the wallet infrastructure through which citizens access unsurveilled alternatives. The India natural experiment calibrates the displacement ratio at approximately 0.84---restriction displaces rather than suppresses. Every government response that restricts the surveilled channel strengthens the unsurveilled channel. The only sustainable equilibrium is one in which the official system is efficient enough to make alternatives unnecessary, which requires fiscal discipline---converging on the synthetic gold standard result from an entirely different direction.
+
+Fourth, the coupled system analysis (Section~8) unifies these individual mechanisms into a four-dimensional dynamical system whose equilibrium structure reveals two stable states (low-mesh and high-mesh) separated by an unstable intermediate. The transition is governed by $\Rsettle$, which has the same $R_0$ structure that governs the mesh's internal dynamics (Smirl 2026d). The $R_0$ framework is the unifying mathematical structure across the paper sequence: it governs mesh formation, capability growth, and now the coupling between the mesh and the financial system.
+
+The endgame is not the collapse of the dollar. It is the strengthening of the dollar as unit of account while the Federal Reserve loses control over dollar-denominated markets. The result is a synthetic gold standard: market discipline, operated at machine speed, constrains sovereign fiscal policy. This constraint is not assumed; it is derived from the equilibrium properties of the coupled system. Whether it is desirable---whether real-time market discipline produces better or worse outcomes than the institutional discretion it replaces---is a normative question beyond this paper's scope.
+
+The settlement layer may lead the transition rather than follow it. Unlike hardware learning curves (decades) or mesh formation (years), the financial system has no Baumol bottleneck---it is pure information. The settlement reproduction number $\Rsettle$ could exceed unity before the hardware crossing condition $\Rz > 1$ is met. The companion paper on hierarchical architecture (Smirl 2026e) proves that this ordering is consistent with the timescale hierarchy: the fastest layer activates first when cross-level amplification is strong enough, even if the slower layers have not yet reached their individual thresholds.
+
+The empirical program has begun. Section~4.7 establishes the pre-mesh baseline for the degradation sequence, confirming that the QE friction is already eroding through pre-mesh technology while the FG and FR frictions remain intact. The six predictions in this paper, combined with the predictions in the companion papers, generate a comprehensive set of testable implications spanning market microstructure, monetary policy, currency dynamics, and mesh capability growth. The predictions have specific timing, quantitative thresholds, and falsification conditions. The pre-mesh baseline converts these from pure predictions into difference-in-differences designs: the model earns its keep when $\phi$ begins to increase and the degradation metrics depart from documented baselines.
+
+
+% -------------------------------------------------------------------
+% REFERENCES
+% -------------------------------------------------------------------
+\newpage
+\begin{thebibliography}{99}
+
+% From the sequence
+\bibitem{smirl2026d} Smirl, J. (2026d). The AI transition: Endogenous decentralization, mesh equilibrium, and autocatalytic growth. Working Paper.
+
+\bibitem{smirl2026b} Smirl, C. (2026b). The monetary productivity gap. Working paper, Tufts University.
+
+\bibitem{smirl2026e} Smirl, J. (2026e). Hierarchical architecture of the AI transition: CES potential, conservative-dissipative dynamics, and the upstream reform principle. Working Paper.
+
+% FOMC event studies
+\bibitem{acosta2025} Acosta, M., Ajello, A., Bauer, M., Loria, F., \& Miranda-Agrippino, S. (2025). Financial market effects of FOMC communication: Evidence from a new event-study database. Federal Reserve Bank of San Francisco Working Paper 2025-30.
+
+\bibitem{narain2026} Narain, N., \& Sangani, K. (2026). The market impact of Fed communications: The role of the press conference. \emph{International Journal of Central Banking}, January.
+
+\bibitem{swanson2023} Swanson, E.~T. (2023). The importance of Fed Chair speeches as a monetary policy tool. \emph{AEA Papers and Proceedings}, May.
+
+\bibitem{nakamura2018} Nakamura, E., \& Steinsson, J. (2018). High-frequency identification of monetary non-neutrality: The information effect. \emph{Quarterly Journal of Economics}, 133(3), 1283--1330.
+
+% Market microstructure
+\bibitem{grossman1980} Grossman, S.~J., \& Stiglitz, J.~E. (1980). On the impossibility of informationally efficient markets. \emph{American Economic Review}, 70(3), 393--408.
+
+\bibitem{kyle1985} Kyle, A.~S. (1985). Continuous auctions and insider trading. \emph{Econometrica}, 53(6), 1315--1335.
+
+\bibitem{holden1992} Holden, C.~W., \& Subrahmanyam, A. (1992). Long-lived private information and imperfect competition. \emph{Journal of Finance}, 47(1), 247--270.
+
+\bibitem{duffie2005} Duffie, D., G\^{a}rleanu, N., \& Pedersen, L.~H. (2005). Over-the-counter markets. \emph{Econometrica}, 73(6), 1815--1847.
+
+\bibitem{dou2025} Dou, W.~W., Goldstein, I., \& Ji, Y. (2025). AI-powered trading, algorithmic collusion, and market efficiency. Working paper.
+
+% Monetary economics
+\bibitem{brunnermeier2014} Brunnermeier, M.~K., \& Sannikov, Y. (2014). A macroeconomic model with a financial sector. \emph{American Economic Review}, 104(2), 379--421.
+
+\bibitem{brunnermeier2016} Brunnermeier, M.~K., \& Sannikov, Y. (2016). The I theory of money. Working paper, Princeton University.
+
+\bibitem{brunnermeier2019} Brunnermeier, M.~K., \& Niepelt, D. (2019). On the equivalence of private and public money. \emph{Journal of Monetary Economics}, 106, 27--41.
+
+\bibitem{woodford2003} Woodford, M. (2003). \emph{Interest and Prices: Foundations of a Theory of Monetary Policy}. Princeton University Press.
+
+\bibitem{lucas1976} Lucas, R.~E. (1976). Econometric policy evaluation: A critique. \emph{Carnegie-Rochester Conference Series on Public Policy}, 1, 19--46.
+
+% Dollarization and currency crises
+\bibitem{uribe1997} Uribe, M. (1997). Hysteresis in a simple model of currency substitution. \emph{Journal of Monetary Economics}, 40(1), 185--202.
+
+\bibitem{calvo1998} Calvo, G.~A. (1998). Capital flows and capital-market crises: The simple economics of sudden stops. \emph{Journal of Applied Economics}, 1(1), 35--54.
+
+\bibitem{obstfeld1996} Obstfeld, M. (1996). Models of currency crises with self-fulfilling features. \emph{European Economic Review}, 40(3--5), 1037--1047.
+
+% International monetary system
+\bibitem{farhi2018} Farhi, E., \& Maggiori, M. (2018). A model of the international monetary system. \emph{Quarterly Journal of Economics}, 133(1), 295--355.
+
+\bibitem{caballero2017} Caballero, R.~J., Farhi, E., \& Gourinchas, P.-O. (2017). The safe assets shortage conundrum. \emph{Journal of Economic Perspectives}, 31(3), 29--46.
+
+\bibitem{triffin1960} Triffin, R. (1960). \emph{Gold and the Dollar Crisis: The Future of Convertibility}. Yale University Press.
+
+% Stablecoin empirics
+\bibitem{ahmed2025} Ahmed, R., \& Aldasoro, I. (2025). Stablecoins and the pricing of safe assets. BIS Working Paper.
+
+\bibitem{gorton2022} Gorton, G.~B., Klee, E., Ross, C., Ross, S., \& Townsend, D. (2022). Leverage and stablecoin pegs. Working paper, NBER.
+
+\bibitem{gorton2017} Gorton, G.~B. (2017). The history and economics of safe assets. \emph{Annual Review of Economics}, 9, 547--586.
+
+% Diamond-Dybvig
+\bibitem{diamond1983} Diamond, D.~W., \& Dybvig, P.~H. (1983). Bank runs, deposit insurance, and liquidity. \emph{Journal of Political Economy}, 91(3), 401--419.
+
+% Inequality
+\bibitem{piketty2014} Piketty, T. (2014). \emph{Capital in the Twenty-First Century}. Harvard University Press.
+
+\bibitem{jones2015} Jones, C.~I. (2015). Pareto and Piketty: The macroeconomics of top income and wealth inequality. \emph{Journal of Economic Perspectives}, 29(1), 29--46.
+
+\bibitem{gabaix2016} Gabaix, X., Lasry, J.-M., Lions, P.-L., \& Moll, B. (2016). The dynamics of inequality. \emph{Econometrica}, 84(6), 2071--2111.
+
+% Network effects
+\bibitem{arthur1989} Arthur, W.~B. (1989). Competing technologies, increasing returns, and lock-in by historical events. \emph{Economic Journal}, 99(394), 116--131.
+
+\bibitem{arthur1994} Arthur, W.~B. (1994). \emph{Increasing Returns and Path Dependence in the Economy}. University of Michigan Press.
+
+\bibitem{katz1985} Katz, M.~L., \& Shapiro, C. (1985). Network externalities, competition, and compatibility. \emph{American Economic Review}, 75(3), 424--440.
+
+% Growth theory
+\bibitem{jones1995} Jones, C.~I. (1995). R\&D-based models of economic growth. \emph{Journal of Political Economy}, 103(4), 759--784.
+
+\bibitem{romer1990} Romer, P.~M. (1990). Endogenous technological change. \emph{Journal of Political Economy}, 98(5), S71--S102.
+
+\bibitem{bloom2020} Bloom, N., Jones, C.~I., Van Reenen, J., \& Webb, M. (2020). Are ideas getting harder to find? \emph{American Economic Review}, 110(4), 1104--1144.
+
+\bibitem{aghion2018} Aghion, P., Jones, B.~F., \& Jones, C.~I. (2018). Artificial intelligence and economic growth. In A.~Agrawal, J.~Gans, \& A.~Goldfarb (Eds.), \emph{The Economics of Artificial Intelligence} (pp.~237--282). University of Chicago Press.
+
+% Baumol
+\bibitem{baumol1967} Baumol, W.~J. (1967). Macroeconomics of unbalanced growth: The anatomy of urban crisis. \emph{American Economic Review}, 57(3), 415--426.
+
+\end{thebibliography}
+
+\end{document}

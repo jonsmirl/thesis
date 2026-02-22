@@ -1,0 +1,60 @@
+\contentsline {section}{\numberline {1}Introduction}{4}{section.1}%
+\contentsline {subsection}{\numberline {1.1}The Overidentification Argument}{4}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Logical Status of the Derivations}{5}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Summary of Results}{5}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Organization}{6}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Related Literature}{6}{subsection.1.5}%
+\contentsline {paragraph}{CES across fields.}{6}{section*.2}%
+\contentsline {paragraph}{Entropy in economics.}{7}{section*.3}%
+\contentsline {paragraph}{Closest antecedents.}{7}{section*.4}%
+\contentsline {section}{\numberline {2}Preliminaries: The CES Framework}{7}{section.2}%
+\contentsline {subsection}{\numberline {2.1}CES Production Technology}{7}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}The Quadruple Role of $\rho $}{7}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Why CES Is Forced}{8}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}The CES Potential}{8}{subsection.2.4}%
+\contentsline {paragraph}{Logical status of the six derivations.}{8}{section*.5}%
+\contentsline {subsection}{\numberline {2.5}Why One $\rho $ Governs All Six Domains}{9}{subsection.2.5}%
+\contentsline {paragraph}{Same inputs, same complementarity.}{9}{section*.6}%
+\contentsline {paragraph}{Fr\'{e}chet duality locks choice-side $\rho $ to production-side $\rho $.}{9}{section*.7}%
+\contentsline {paragraph}{Atkinson axioms lock welfare-side $\rho $.}{10}{section*.8}%
+\contentsline {section}{\numberline {3}Derivation I: Akerlof's Market for Lemons}{10}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Setup}{10}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}The $\rho $-Dependent Robustness Result}{11}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Derivation II: Myerson's Optimal Mechanism}{12}{section.4}%
+\contentsline {subsection}{\numberline {4.1}The Virtual Valuation as CES Potential Gradient}{13}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}The Optimal Mechanism Format}{14}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}The Revelation Principle as Variational Equilibrium}{15}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}$\rho $-Dependent Price of Incentive Compatibility}{15}{subsection.4.4}%
+\contentsline {section}{\numberline {5}Derivation III: Arrow's Impossibility Theorem}{17}{section.5}%
+\contentsline {subsection}{\numberline {5.1}$\rho $-Dependent Democratic Robustness}{19}{subsection.5.1}%
+\contentsline {section}{\numberline {6}Derivation IV: Search and Matching}{20}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Setup}{20}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}The $\rho $-Dependent Search Duration}{21}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}The Beveridge Curve}{22}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Derivation V: Contract Theory}{22}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Setup}{22}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}The Hold-Up Problem}{23}{subsection.7.2}%
+\contentsline {section}{\numberline {8}Derivation VI: Behavioral Economics}{23}{section.8}%
+\contentsline {subsection}{\numberline {8.1}The Logit-CES Duality}{24}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}The Behavioral Catalog}{24}{subsection.8.2}%
+\contentsline {section}{\numberline {9}Empirical Tests}{26}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Banking Regulation and the Global Financial Crisis}{26}{subsection.9.1}%
+\contentsline {paragraph}{The BCL Puzzle.}{26}{section*.9}%
+\contentsline {paragraph}{Mechanism.}{26}{section*.10}%
+\contentsline {paragraph}{Data.}{26}{section*.11}%
+\contentsline {subsection}{\numberline {9.2}Manufacturing Tail Distributions (Tsallis Test)}{27}{subsection.9.2}%
+\contentsline {paragraph}{Data.}{27}{section*.12}%
+\contentsline {paragraph}{Identification strategy.}{27}{section*.13}%
+\contentsline {paragraph}{Results.}{27}{section*.14}%
+\contentsline {subsection}{\numberline {9.3}Price of Incentive Compatibility in Procurement}{28}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}Cross-Domain Test Design}{28}{subsection.9.4}%
+\contentsline {paragraph}{Data.}{28}{section*.15}%
+\contentsline {paragraph}{Regression.}{29}{section*.16}%
+\contentsline {paragraph}{Rejection criterion.}{29}{section*.17}%
+\contentsline {paragraph}{Power.}{29}{section*.18}%
+\contentsline {section}{\numberline {10}Tsallis Corrections ($q = \rho $)}{29}{section.10}%
+\contentsline {section}{\numberline {11}Discussion}{30}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Overidentification as the Core Test}{30}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}Falsifiability and Limitations}{31}{subsection.11.2}%
+\contentsline {section}{\numberline {12}Conclusion}{31}{section.12}%
+\contentsline {section}{\numberline {A}Technical Lemmas}{32}{appendix.A}%

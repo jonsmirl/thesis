@@ -39,7 +39,7 @@ The papers form a cycle:
 
 The **master reproduction number R_0** governs each transition: nontrivial equilibrium exists iff rho(K) > 1 (spectral radius of next-generation matrix exceeds 1). Cross-level amplification can activate the entire system even when all individual levels are sub-threshold.
 
-### The Eigenstructure Bridge (Paper 5)
+### The Eigenstructure Bridge (Paper 7)
 
 The deepest result connects technology to welfare: `nabla^2 Phi|_slow = W^{-1} * nabla^2 V`, where Phi is the CES free energy (technology), V is the Lyapunov function (welfare loss), and W is the institutional supply-rate matrix (how efficiently adjustment occurs). This yields:
 
@@ -55,21 +55,24 @@ Papers reorganized from 19 to 9 (Feb 2026). Theory-first presentation: CES found
 2. **The CES Potential: Information Friction and Complementary Production** (old 9+18+10) — The (ρ,T) regime diagram: CES potential Φ_q = Φ_CES(ρ) − T·S_q with q = ρ. Effective curvature K_eff = K·(1−T/T*)⁺. Six derivations: Akerlof, Myerson, Arrow, DMP, Hart, behavioral. Optimal firm scope. Target: *Review of Economic Studies*.
 3. **Dynamics on the CES Potential Landscape** (old 12+13+14+15) — Conservative-dissipative dynamics: variance-response identity, early warning, Onsager reciprocity, Kramers escape, Jarzynski equality, multi-scale aggregation. Conservation laws. Business cycles ordered by ρ. Endogenous ρ via four channels. Target: *JPE*.
 
-**Applied papers (Papers 4-5):**
-4. **Endogenous Decentralization and the AI Transition** (old 1+2+3+11) — Complete story: concentrated investment → learning curves → crossing → mesh formation → autocatalytic growth → Baumol ceiling. N-firm differential game, overinvestment 3-4x, R₀ crossing, training-inference bifurcation, US-China natural experiment, Potts regime shift, CES diversity premium, RAF sets, model collapse protection. Target: *AER*.
-5. **Settlement Feedback and Monetary Policy in a Mesh Economy** (old 4, revised) — 4-ODE system, bistable equilibrium, transcritical bifurcation, Kyle's lambda. Monetary policy degradation sequence. Added CBDC/digital dollar section. Target: *J Monetary Economics*.
+**Empirical paper (Paper 4):**
+4. **Empirical Tests of the CES Hierarchy** (old 19 + ρ estimation + damping/dispersion tests) — EMD timescale discovery (r*=2.19, N_eff=5), structural ρ estimation, damping cancellation (158-country panel, Basel III DID p=0.9462), dispersion leading indicator (WSTS VAR). Target: *J Applied Econometrics*.
 
-**Architecture paper (Paper 6):**
-6. **Complementary Heterogeneity in Hierarchical Economies** (old 5+16) — The architectural spine. Six axioms, port topology theorem, moduli space theorem, eigenstructure bridge, damping cancellation, upstream reform principle. Four economic levels. Complete regime diagram, concordance table, prediction inventory. Target: *Review of Economic Studies*.
+**Applied papers (Papers 5-6):**
+5. **Endogenous Decentralization and the AI Transition** (old 1+2+3+11) — Complete story: concentrated investment → learning curves → crossing → mesh formation → autocatalytic growth → Baumol ceiling. N-firm differential game, overinvestment 3-4x, R₀ crossing, training-inference bifurcation, US-China natural experiment, Potts regime shift, CES diversity premium, RAF sets, model collapse protection. Target: *AER*.
+6. **Settlement Feedback and Monetary Policy in a Mesh Economy** (old 4, revised) — 4-ODE system, bistable equilibrium, transcritical bifurcation, Kyle's lambda. Monetary policy degradation sequence. Added CBDC/digital dollar section. Target: *J Monetary Economics*.
 
-**Empirical paper (Paper 7):**
-7. **Empirical Tests of the CES Hierarchy** (old 19 + ρ estimation + damping/dispersion tests) — EMD timescale discovery (r*=2.19, N_eff=5), structural ρ estimation, damping cancellation (158-country panel, Basel III DID p=0.9462), dispersion leading indicator (WSTS VAR). Target: *J Applied Econometrics*.
+**Architecture paper (Paper 7):**
+7. **Complementary Heterogeneity in Hierarchical Economies** (old 5+16) — The architectural spine. Six axioms, port topology theorem, moduli space theorem, eigenstructure bridge, damping cancellation, upstream reform principle. Four economic levels. Complete regime diagram, concordance table, prediction inventory. Target: *Review of Economic Studies*.
 
-**Empirical thesis (Paper 8, unchanged):**
+**Empirical thesis (Paper 8):**
 8. **Monetary Productivity Gap** (EC118 thesis) — Constructs Fiat Quality Index. 13:1 remittance cost ratio. India 2022 tax natural experiment: -86% domestic volume but 72% displacement offshore. YAG regression: within-country β = +0.248 (p < 0.001). 41-country panel.
 
 **Policy paper (Paper 9):**
 9. **Fair Inheritance** — Recipient-based inheritance tax. Binary choice: pay tax or disperse. Revenue $85-135B/year. Addresses automation-era wealth concentration.
+
+**Derivations paper (Paper 10):**
+10. **Six Derivations of the CES Potential** (old 2b) — Six independent derivations of the CES potential from different economic traditions: Akerlof, Myerson, Arrow, DMP, Hart, behavioral. Target: *Review of Economic Studies* (companion to Paper 2).
 
 ## Environment Setup
 
@@ -100,12 +103,12 @@ python filter_rpw.py
 
 The monolithic data pipeline. Contains 40+ functions organized into numbered sections, serving multiple papers:
 
-- **Sections 1-4**: API-fetched data (World Bank WDI, Findex, Remittance Prices Worldwide, CBECI mining map) — **Paper 6 (MPG)**
-- **Sections 5-13**: Constructed/compiled MPG thesis data (India volumes, Chainalysis adoption, regulatory panel, yield access gap, sovereign risk, stablecoin reserves, FQI improvement) — **Paper 6 (MPG)**
-- **Sections 14-21**: Learning curve and technology data (DRAM/HBM pricing, hyperscaler capex, consumer silicon, stablecoin volumes, tokenized securities, historical adoption curves, learning curve literature) — **Paper 1 (ED)**, feeds alpha estimates into Papers 2-5
-- **Sections 22-22b**: Publishability upgrades (DRAM diagnostics, alpha resolution with piecewise/rolling/sensitivity analysis) — **Paper 1 (ED)**
-- **Sections 23-28**: Cross-layer heterogeneity data (FRED semiconductor IP, WSTS cross-segment, semiconductor dispersion, BCL bank regulation, IMF financial development, Fraser regulation) — **Paper 5 (CH)**, tests damping cancellation and dispersion predictions
-- **Sections 29-30**: Empirical tests (dispersion indicator test, damping cancellation test) — **Paper 5 (CH)**, require `statsmodels`/`scipy`
+- **Sections 1-4**: API-fetched data (World Bank WDI, Findex, Remittance Prices Worldwide, CBECI mining map) — **Paper 8 (MPG)**
+- **Sections 5-13**: Constructed/compiled MPG thesis data (India volumes, Chainalysis adoption, regulatory panel, yield access gap, sovereign risk, stablecoin reserves, FQI improvement) — **Paper 8 (MPG)**
+- **Sections 14-21**: Learning curve and technology data (DRAM/HBM pricing, hyperscaler capex, consumer silicon, stablecoin volumes, tokenized securities, historical adoption curves, learning curve literature) — **Paper 5 (AI Transition)**, feeds alpha estimates into Papers 5-7
+- **Sections 22-22b**: Publishability upgrades (DRAM diagnostics, alpha resolution with piecewise/rolling/sensitivity analysis) — **Paper 5 (AI Transition)**
+- **Sections 23-28**: Cross-layer heterogeneity data (FRED semiconductor IP, WSTS cross-segment, semiconductor dispersion, BCL bank regulation, IMF financial development, Fraser regulation) — **Paper 7 (CH)**, tests damping cancellation and dispersion predictions
+- **Sections 29-30**: Empirical tests (dispersion indicator test, damping cancellation test) — **Paper 4 (Empirical Tests)**, require `statsmodels`/`scipy`
 
 Key patterns:
 - Each `fetch_*` or `construct_*` function writes a CSV to `thesis_data/` and returns a DataFrame
@@ -151,44 +154,45 @@ thesis/
 │   ├── 1_emergent_ces_quadruple_role/  # Paper 1: CES emergence + quadruple role (old 17+8)
 │   ├── 2_ces_potential/                # Paper 2: CES potential framework (old 9+18+10)
 │   ├── 3_dynamics_ces_landscape/       # Paper 3: Dynamics (old 12+13+14+15)
-│   ├── 4_ai_transition/               # Paper 4: AI transition (old 1+2+3+11)
-│   ├── 5_settlement_feedback/          # Paper 5: Settlement feedback (old 4, revised)
-│   ├── 6_hierarchical_architecture/    # Paper 6: Hierarchical spine (old 5+16)
-│   ├── 7_empirical_tests/             # Paper 7: Empirical tests (old 19+tests)
+│   ├── 4_empirical_tests/             # Paper 4: Empirical tests (old 19+tests)
+│   ├── 5_ai_transition/               # Paper 5: AI transition (old 1+2+3+11)
+│   ├── 6_settlement_feedback/          # Paper 6: Settlement feedback (old 4, revised)
+│   ├── 7_hierarchical_architecture/    # Paper 7: Hierarchical spine (old 5+16)
 │   ├── 8_mpg_thesis/                  # Paper 8: MPG (unchanged from old 6)
-│   └── 9_fair_inheritance/            # Paper 9: Fair Inheritance (old 7)
+│   ├── 9_fair_inheritance/            # Paper 9: Fair Inheritance (old 7)
+│   └── 10_six_derivations/           # Paper 10: Six Derivations (old 2b)
 │
 ├── papers/                       # OLD 19-paper structure (preserved for reference)
-│   ├── 1_endogenous_decentralization/  # → now part of new Paper 4
-│   ├── 2_mesh_equilibrium/             # → now part of new Paper 4
-│   ├── 3_autocatalytic_mesh/           # → now part of new Paper 4
-│   ├── 4_settlement_feedback/          # → now new Paper 5
-│   ├── 5_complementary_heterogeneity/  # → now part of new Paper 6
+│   ├── 1_endogenous_decentralization/  # → now part of new Paper 5
+│   ├── 2_mesh_equilibrium/             # → now part of new Paper 5
+│   ├── 3_autocatalytic_mesh/           # → now part of new Paper 5
+│   ├── 4_settlement_feedback/          # → now new Paper 6
+│   ├── 5_complementary_heterogeneity/  # → now part of new Paper 7
 │   ├── 6_mpg_thesis/                   # → now new Paper 8 (unchanged)
 │   ├── 7_fair_inheritance/             # → now new Paper 9
 │   ├── 8_ces_triple_role/              # → now part of new Paper 1
 │   ├── 9_free_energy_framework/        # → now part of new Paper 2
 │   ├── 10_industrial_production/       # → now part of new Paper 2
-│   ├── 11_technology_cycle/            # → now part of new Papers 3+4
+│   ├── 11_technology_cycle/            # → now part of new Papers 3+5
 │   ├── 12_dynamical_free_energy/       # → now part of new Paper 3
 │   ├── 13_conservation_laws/           # → now part of new Paper 3
 │   ├── 14_business_cycles/             # → now part of new Paper 3
 │   ├── 15_endogenous_rho/              # → now part of new Paper 3
-│   ├── 16_unified_theory/              # → now part of new Paper 6
+│   ├── 16_unified_theory/              # → now part of new Paper 7
 │   ├── 17_emergent_ces/                # → now part of new Paper 1
 │   ├── 18_tsallis_free_energy/         # → now part of new Paper 2
-│   └── 19_emd_timescale_discovery/     # → now part of new Paper 7
+│   └── 19_emd_timescale_discovery/     # → now part of new Paper 4
 │
 ├── scripts/                      # Analysis scripts (not main pipeline)
-│   ├── solve_model.py            # Paper 1: ED differential game solver (Nash MPE + cooperative)
-│   ├── r0_analysis.py            # Paper 1: R0 open-weight adoption dynamics
-│   ├── monetary_schism_model.py  # Paper 4: monetary schism simulation
-│   ├── test_damping_cancellation.py  # Paper 5: CH damping cancellation empirical test
-│   ├── test_dispersion_indicator.py  # Paper 5: CH dispersion indicator empirical test
-│   ├── empirical_analysis.py     # Paper 6: MPG cross-country + event study regressions
-│   ├── yield_gap_and_synth.py    # Paper 6: synthetic control analysis
-│   ├── india_did.py              # Paper 6: India DID analysis
-│   └── AI_Crypto_Model_v2.py     # Paper 6: AI/crypto adoption simulation
+│   ├── solve_model.py            # Paper 5: ED differential game solver (Nash MPE + cooperative)
+│   ├── r0_analysis.py            # Paper 5: R0 open-weight adoption dynamics
+│   ├── monetary_schism_model.py  # Paper 6: monetary schism simulation
+│   ├── test_damping_cancellation.py  # Paper 4: CH damping cancellation empirical test
+│   ├── test_dispersion_indicator.py  # Paper 4: CH dispersion indicator empirical test
+│   ├── empirical_analysis.py     # Paper 8: MPG cross-country + event study regressions
+│   ├── yield_gap_and_synth.py    # Paper 8: synthetic control analysis
+│   ├── india_did.py              # Paper 8: India DID analysis
+│   └── AI_Crypto_Model_v2.py     # Paper 8: AI/crypto adoption simulation
 │
 ├── figures/                      # All generated figures
 │   ├── mpg/                      # MPG thesis figures (fig1-fig7, SCM, DID, etc.)

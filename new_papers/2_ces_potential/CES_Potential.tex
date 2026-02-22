@@ -28,6 +28,7 @@
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{example}[theorem]{Example}
+\newtheorem{observation}[theorem]{Observation}
 
 % Operators
 \DeclareMathOperator{\Var}{Var}
@@ -61,12 +62,12 @@
 \maketitle
 
 \begin{abstract}
-This paper derives the CES potential $\calFq = \Phi_{\mathrm{CES}}(\rho) - T \cdot \Sq$ with $q = \rho$, connecting the CES aggregate---the unique constant-elasticity aggregator---to the Tsallis entropy---the unique entropy satisfying continuity, maximality, and pseudo-additivity. The companion paper \citep{smirl2026ces} establishes that a single curvature parameter $K = (1-\rho)(J-1)/J$ simultaneously controls superadditivity, correlation robustness, strategic independence, and network scaling. The present paper shows how information friction degrades this curvature. The \emph{effective curvature theorem} establishes that exploitable curvature is $K_{\mathrm{eff}} = K \cdot (1 - T/T^*(\rho))^+$, where $T^*$ is a critical information friction increasing in complementarity. The three roles degrade non-uniformly---correlation robustness quadratically, superadditivity and strategic independence linearly---predicting a specific crisis sequence: diversification fails before production complementarities, which fail before strategic stability. Six areas of economic theory emerge as specific instances of the CES potential: adverse selection (Akerlof), mechanism design (Myerson), social choice (Arrow), search and matching (DMP), contract theory (Hart-Moore/Williamson), and behavioral economics (Kahneman-Tversky). Each derivation yields new $\rho$-dependent predictions that the original theories cannot generate. The Tsallis generalization with $q = \rho$ replaces the Shannon chain rule with pseudo-additivity, producing $q$-exponential equilibrium distributions with compact support for complements and power-law tails for substitutes, a $1/(2-q)$ correction to the variance-response identity, and a classification of all dynamical results into exact survivors, $q$-corrected, and structurally changed. Optimal firm scope and the integration boundary are derived in $(\rho, T)$ space, nesting Williamson's governance structures as the qualitative limit. Two empirical tests confirm the framework: a banking regulation test using 147 countries predicts 2007--2009 crisis severity via the $\sigma \times T$ interaction ($p = 0.016$), and a procurement test using 1{,}172 federal contracts confirms that differentiated goods exhibit higher information rents ($p = 0.003$).
+This paper derives the CES potential $\calFq = \Phi_{\mathrm{CES}}(\rho) - T \cdot \Sq$ with $q = \rho$, connecting the CES aggregate---the unique constant-elasticity aggregator---to the Tsallis entropy---the unique entropy satisfying continuity, maximality, and pseudo-additivity. The companion paper \citep{smirl2026ces} establishes that a single curvature parameter $K = (1-\rho)(J-1)/J$ simultaneously controls superadditivity, correlation robustness, strategic independence, and network scaling. The present paper shows how information friction degrades this curvature. The \emph{effective curvature theorem} establishes that exploitable curvature is $K_{\mathrm{eff}} = K \cdot (1 - T/T^*(\rho))^+$, where $T^*$ is a critical information friction increasing in complementarity. Three of the four roles degrade non-uniformly---correlation robustness quadratically, superadditivity and strategic independence linearly---predicting a specific crisis sequence: diversification fails before production complementarities, which fail before strategic stability. The Tsallis generalization with $q = \rho$ replaces the Shannon chain rule with pseudo-additivity, producing $q$-exponential equilibrium distributions with compact support for complements and power-law tails for substitutes, a $1/(2-q)$ correction to the variance-response identity, and a classification of all dynamical results into exact survivors, $q$-corrected, and structurally changed. Optimal firm scope and the integration boundary are derived in $(\rho, T)$ space, nesting Williamson's governance structures as the qualitative limit. The CES potential serves as a welfare loss function with Lyapunov properties, and the architecture of the full $(\rho, T)$ framework is established. A companion paper \citep{smirl2026derivations} demonstrates the framework by deriving key results from six areas of economic theory. Two empirical tests confirm the framework: a banking regulation test using 147 countries predicts 2007--2009 crisis severity via the $\sigma \times T$ interaction ($p = 0.016$), and a manufacturing tail distribution test confirms $q$-exponential superiority over exponential in 12 of 17 sectors.
 \end{abstract}
 
 \medskip
 \noindent\textbf{JEL Classification:} B41, C46, C60, D21, D23, D80, D82, D83, D90, L22, L23\\
-\textbf{Keywords:} CES aggregation, Tsallis entropy, CES potential, information friction, mechanism design, behavioral economics, theory of the firm, vertical integration
+\textbf{Keywords:} CES aggregation, Tsallis entropy, CES potential, information friction, effective curvature, theory of the firm, vertical integration, welfare loss function
 
 \newpage
 \tableofcontents
@@ -93,33 +94,33 @@ where $\rho \in (-\infty, 1]$ is the CES curvature parameter (equivalently, $\si
 
 Standard economics is the $T = 0$ limit of this framework---perfect information, deterministic optimization, no search frictions, no behavioral anomalies. The rich structure of information economics, mechanism design, contract theory, social choice, and behavioral economics emerges at $T > 0$.
 
-The CES aggregate is not an arbitrary functional form. It is the \emph{unique} constant-elasticity aggregator, and its curvature parameter $\rho$ simultaneously controls at least four distinct economic properties (the quadruple role established in the companion paper \citep{smirl2026ces}). The Tsallis entropy $\Sq$ with $q = \rho$ is not an arbitrary information measure---it is the \emph{unique} entropy satisfying continuity, maximality, and pseudo-additivity \citep{tsallis1988,santos1997}, where pseudo-additivity replaces the Shannon chain rule to capture the non-additive information costs inherent in complementary production ($\rho < 1$). The identification $q = \rho$ is forced by the emergence theorem \citep{smirl2026emergent}, not fitted as a free parameter. The framework is not a modeling choice---it is the only framework consistent with constant elasticity, axiomatic information measurement matched to production complementarity, and variational consistency simultaneously.
+The CES aggregate is not an arbitrary functional form. It is the \emph{unique} constant-elasticity aggregator, and its curvature parameter $\rho$ simultaneously controls at least four distinct economic properties (the quadruple role established in the companion paper \citep{smirl2026ces}). The Tsallis entropy $\Sq$ with $q = \rho$ is not an arbitrary information measure---it is the \emph{unique} entropy satisfying continuity, maximality, and pseudo-additivity \citep{tsallis1988,santos1997}, where pseudo-additivity replaces the Shannon chain rule to capture the non-additive information costs inherent in complementary production ($\rho < 1$). The identification $q = \rho$ is forced by the emergence theorem \citep{smirl2026ces}, not fitted as a free parameter. The framework is not a modeling choice---it is the only framework consistent with constant elasticity, axiomatic information measurement matched to production complementarity, and variational consistency simultaneously.
 
 \subsection{Summary of Results}
 
-The framework is demonstrated by deriving key results from six areas of economic theory (\Cref{sec:akerlof}--\Cref{sec:behavioral}), establishing how information friction degrades CES curvature in production (\Cref{sec:effective_curvature}--\Cref{sec:boundaries}), and generalizing the entropy to the Tsallis form matched to production complementarity (\Cref{sec:ces_potential}):
+The main results are:
 
 \begin{enumerate}
-    \item \textbf{Information Economics} (\Cref{sec:akerlof}): Akerlof's market-for-lemons result emerges as a CES aggregate degrading under positive information friction. \emph{New prediction:} the critical information cost above which the market collapses is increasing in both $v$ and $K$. Markets for complements ($\rho$ low) resist adverse selection; markets for substitutes ($\rho$ high) succumb.
+    \item \textbf{The CES potential} (\Cref{sec:ces_potential}): The unique framework satisfying constant elasticity, pseudo-additive information measurement ($q = \rho$), and variational consistency. The $q$-exponential equilibrium distribution exhibits compact support for complements ($\rho < 1$) and power-law tails for substitutes ($\rho > 1$).
 
-    \item \textbf{Mechanism Design} (\Cref{sec:mechanism}): Myerson's virtual valuation is identified as the CES potential gradient. \emph{New prediction:} the price of incentive compatibility $\text{PoIC}(\rho)$ increases as $\rho$ decreases; optimal mechanism format is determined by $\rho$.
+    \item \textbf{The effective curvature theorem} (\Cref{sec:effective_curvature}): Information friction endogenously reduces exploitable complementarity to $K_{\mathrm{eff}} = K(1 - T/T^*)^+$, with non-uniform degradation predicting a specific crisis sequence: diversification fails before production complementarities, which fail before strategic stability.
 
-    \item \textbf{Social Choice} (\Cref{sec:arrow}): At $T > 0$, non-dictatorial CES aggregation can approximate ordinal IIA with controlled error. \emph{New prediction:} democratic robustness to noise depends on $\rho$---majoritarian systems (high $\rho$) tolerate high noise, consensus systems (low $\rho$) are fragile.
+    \item \textbf{The Tsallis generalization} (\Cref{sec:q_dynamics}): All dynamical results are classified into exact survivors (Category~A), $q$-corrected by $1/(2-q)$ (Category~B), and structurally changed with $\exp \to \expq$ (Category~C). The correction amplifies fluctuations for complements and dampens them for substitutes.
 
-    \item \textbf{Search and Matching} (\Cref{sec:search}): The DMP framework emerges from the CES potential. \emph{New prediction:} search duration $n^* = (K/T) \cdot Q(\rho)$---occupations with more complementary skill requirements have longer search durations and steeper Beveridge curves.
+    \item \textbf{Optimal firm scope and integration boundaries} (\Cref{sec:firm_scope}--\Cref{sec:boundaries}): Derived in $(\rho, T)$ space, nesting Williamson's governance structures as the qualitative limit. Multi-tier supply chain architecture follows a monotone integration rule based on tier-specific $K_\ell / T_\ell$ ratios.
 
-    \item \textbf{Contract Theory} (\Cref{sec:contracts}): Asset specificity IS low $\rho$. \emph{New prediction:} the hold-up distortion $D(\rho, \tau) = \tau(1-R(\rho))/2$ yields a sharp integration boundary in $(\rho, \tau)$ space.
+    \item \textbf{Welfare loss function} (\Cref{sec:lyapunov}): The CES potential has Lyapunov properties---bounded below, monotonically decreasing along adjustment paths---providing a welfare criterion for institutional design.
 
-    \item \textbf{Behavioral Economics} (\Cref{sec:behavioral}): The behavioral catalog emerges as the complete characterization of economic behavior at $T > 0$. \emph{New prediction:} loss aversion $\lambda \approx T_{\mathrm{gain}}/T_{\mathrm{loss}}$ is an information friction ratio, not a utility kink.
+    \item \textbf{The $(\rho, T)$ architecture} (\Cref{sec:architecture}): The full framework is organized by two parameters, with $\rho$ determining structure and $T$ determining friction, and the interaction $\rho \times T$ determining institutional viability.
 \end{enumerate}
 
-Two additional structural results---the effective curvature theorem (\Cref{sec:effective_curvature}) and the optimal firm scope and integration boundary (\Cref{sec:firm_scope}--\Cref{sec:boundaries})---show how CES curvature is degraded by information friction in production, yielding a phase diagram for industrial organization and a crisis sequence that matches observed financial crisis dynamics. The six derivations are revisited under the Tsallis generalization (\Cref{sec:six_revisited}), showing that the corrections are systematic: Category~A results survive exactly, Category~B results acquire the $1/(2-q)$ factor, and Category~C results replace $\exp$ with $\expq$.
+The companion paper \citep{smirl2026derivations} demonstrates the framework by deriving key results from six areas of economic theory: adverse selection (Akerlof), mechanism design (Myerson), social choice (Arrow), search and matching (DMP), contract theory (Hart-Moore/Williamson), and behavioral economics (Kahneman-Tversky). Each derivation yields new $\rho$-dependent predictions that the original theories cannot generate.
 
-Three empirical tests confirm the framework's predictions: a banking regulation test (\Cref{sec:gfc}), a procurement test (\Cref{sec:poic}), and a manufacturing tail distribution test (\Cref{sec:tsallis_empirical}). Four additional predictions---management--technology complementarity, within-industry productivity dispersion, AI adoption priority, and crisis sequence timing---are derived and shown to be testable with existing data (\Cref{sec:predictions}).
+Two empirical tests confirm the framework's predictions: a banking regulation test (\Cref{sec:gfc}) and a manufacturing tail distribution test (\Cref{sec:tsallis_empirical}). Four additional predictions---management--technology complementarity, within-industry productivity dispersion, AI adoption priority, and crisis sequence timing---are derived and shown to be testable with existing data (\Cref{sec:predictions}).
 
 \subsection{Organization}
 
-The paper proceeds as follows. \Cref{sec:prelim} restates the CES framework from the companion paper. \Cref{sec:ces_potential} constructs the CES potential and derives the $q$-exponential equilibrium. \Cref{sec:effective_curvature} derives the effective curvature theorem and crisis sequence. \Cref{sec:q_dynamics} classifies all dynamical results under the Tsallis generalization. Sections~\ref{sec:akerlof}--\ref{sec:behavioral} derive results from six areas of economic theory. \Cref{sec:firm_scope}--\Cref{sec:boundaries} derive optimal firm scope and integration boundaries. \Cref{sec:six_revisited} revisits the six derivations under Tsallis. \Cref{sec:predictions}--\Cref{sec:empirical} develop predictions and empirical tests. \Cref{sec:discussion} discusses methodological implications. \Cref{sec:conclusion} concludes.
+The paper proceeds as follows. \Cref{sec:prelim} restates the CES framework from the companion paper. \Cref{sec:ces_potential} constructs the CES potential and derives the $q$-exponential equilibrium. \Cref{sec:effective_curvature} derives the effective curvature theorem and crisis sequence. \Cref{sec:q_dynamics} classifies all dynamical results under the Tsallis generalization. \Cref{sec:firm_scope}--\Cref{sec:boundaries} derive optimal firm scope and integration boundaries. \Cref{sec:lyapunov} establishes the CES potential as a welfare loss function. \Cref{sec:architecture} presents the unified architecture. \Cref{sec:predictions}--\Cref{sec:empirical} develop predictions and empirical tests. \Cref{sec:discussion} discusses methodological implications. \Cref{sec:conclusion} concludes.
 
 \subsection{Related Literature}
 
@@ -153,7 +154,7 @@ Each of these references uses one piece of the framework. The contribution of th
 \section{Preliminaries: The CES Framework}\label{sec:prelim}
 %=============================================================================
 
-This section restates the key definitions and results from the companion paper \citep{smirl2026ces} that are used throughout. Proofs are in that paper; here we state what is needed.
+This section restates the key definitions and results from the companion paper \citep{smirl2026ces} that are used throughout. Proofs are in that paper; here the results are stated without proof.
 
 \subsection{CES Production Technology}\label{sec:ces}
 
@@ -173,7 +174,7 @@ The CES potential (the generating function of the associated conservative-dissip
     \Phi = -\sum_{n} \log F_n
 \end{equation}
 
-The Hessian of $\log F$ at the symmetric point $\bar{\mathbf{x}} = c \cdot \bone$ has eigenvalue $0$ on $\mathrm{span}\{\bone\}$ (Euler's theorem) and eigenvalue
+The Hessian of $\log F$ at the symmetric point $\bar{\mathbf{x}} = c \cdot \bone$ has eigenvalue $-1/(Jc^2)$ on $\mathrm{span}\{\bone\}$ and eigenvalue
 \begin{equation}\label{eq:hessian_eigenvalue}
     \lambda_{\perp} = -\frac{(1-\rho)}{Jc^2} = -\frac{K}{(J-1)c^2}
 \end{equation}
@@ -233,13 +234,13 @@ where $G$ is the number of groups, $\mathcal{G}_g$ is the set of inputs in group
 \begin{proposition}[Nested Curvature]\label{prop:nested_curvature}
 The effective curvature of a two-level nested CES at symmetric equilibrium is:
 \begin{equation}\label{eq:nested_K}
-K_{\mathrm{nested}} = \underbrace{\frac{(1-\rho_0)(G-1)}{G}}_{K_{\mathrm{between}}} + \underbrace{\frac{1}{G}\sum_{g=1}^{G} \frac{(1-\rho_g)(J_g-1)}{J_g}}_{K_{\mathrm{within}}}
+K_{\mathrm{nested}} = \underbrace{\frac{(1-\rho_0)(G-1)}{G}}_{K_{\mathrm{between}}} + \underbrace{\sum_{g=1}^{G} \frac{(1-\rho_g)(J_g-1)}{J_g}}_{K_{\mathrm{within}}}
 \end{equation}
 The total curvature decomposes additively into between-group and within-group components.
 \end{proposition}
 
 \begin{proof}
-At symmetric equilibrium ($x_j = c$ for all $j$), the nested CES reduces to $F = c$. The Hessian $\nabla^2 \log F$ has a block structure respecting the group partition. The eigenvalues decompose into: (i) $G-1$ eigenvalues equal to $-(1-\rho_0)/(Gc^2)$ for perturbations that shift resources between groups (holding within-group allocation fixed); (ii) for each group $g$, $J_g - 1$ eigenvalues equal to $-(1-\rho_g)/(J_g c^2)$ for perturbations within group $g$ (holding total group allocation fixed). The effective curvature $K_{\mathrm{nested}} = -c^2 \sum_k \lambda_k / (J_{\mathrm{total}} - 1)$ gives \eqref{eq:nested_K} after summation.
+At symmetric equilibrium ($x_j = c$ for all $j$), the nested CES reduces to $F = c$. The Hessian $\nabla^2 \log F$ has a block structure respecting the group partition. The eigenvalues decompose into: (i) $G-1$ eigenvalues equal to $-(1-\rho_0)/(Gc^2)$ for perturbations that shift resources between groups (holding within-group allocation fixed); (ii) for each group $g$, $J_g - 1$ eigenvalues equal to $-(1-\rho_g)/(J_g c^2)$ for perturbations within group $g$ (holding total group allocation fixed). The effective curvature $K_{\mathrm{nested}} = -c^2 \sum_k \lambda_k$ gives \eqref{eq:nested_K} after summation: the $(G-1)$ between-group eigenvalues contribute $(G-1) \cdot (1-\rho_0)/(Gc^2) \cdot c^2 = (1-\rho_0)(G-1)/G$, and each group $g$'s $(J_g-1)$ within-group eigenvalues contribute $(1-\rho_g)(J_g-1)/J_g$.
 \end{proof}
 
 \begin{remark}[Hierarchical information friction]
@@ -264,7 +265,7 @@ For a discrete probability distribution $p = (p_1, \ldots, p_N)$, Shannon entrop
 
 This is exactly wrong for complementary production. When $\rho < 1$, the cross-partial $\partial^2 F / \partial x_j \partial x_k > 0$ means that learning about input $j$ changes the marginal value of information about input $k$. At the symmetric point $x_j = \bar{x}$:
 \begin{equation}\label{eq:cross_partial}
-\frac{\partial^2 F}{\partial x_j \partial x_k}\bigg|_{\mathrm{sym}} = \frac{(\rho - 1)}{J^2} \cdot \bar{x}^{\rho - 2} \cdot F^{1 - \rho}
+\frac{\partial^2 F}{\partial x_j \partial x_k}\bigg|_{\mathrm{sym}} = \frac{(1-\rho)}{J^2} \cdot \bar{x}^{\rho - 2} \cdot F^{1 - \rho}
 \end{equation}
 which is positive (complements) when $\rho < 1$ and zero when $\rho = 1$ (perfect substitutes). Information about complements is inherently non-additive.
 
@@ -287,7 +288,11 @@ Under continuity, maximality, and the $q$-chain rule replacing the Shannon chain
 The result follows from the characterization theorems of \citet{santos1997}, \citet{abe2000}, and \citet{suyari2004}. Define $g(S) = 1 + (1-q)S$. Pseudo-additivity with independent subsystems gives $g(S(AB)) = g(S(A)) \cdot g(S(B))$, so $g \circ S$ is multiplicative. The unique continuous multiplicative functional on product distributions is $g(S) = \sum p_j^q$. Solving for $S$ yields \eqref{eq:tsallis}.
 \end{proof}
 
-The identification $q = \rho$ is forced by the companion emergence theorem \citep{smirl2026emergent}: CES with parameter $\rho$ is the sufficient statistic for R\'{e}nyi/Tsallis entropy of order $\rho$. Since $q = \rho$ from the production technology, the Tsallis generalization adds no free parameters.
+The identification $q = \rho$ is forced by the companion emergence theorem \citep{smirl2026ces}: CES with parameter $\rho$ is the sufficient statistic for R\'{e}nyi/Tsallis entropy of order $\rho$. Since $q = \rho$ from the production technology, the Tsallis generalization adds no free parameters.
+
+\begin{remark}[Tsallis vs.\ R\'enyi]\label{rem:tsallis_renyi}
+Both R\'{e}nyi entropy $H_\alpha = \frac{1}{1-\alpha}\log\sum p_j^\alpha$ and Tsallis entropy $\Sq = (1 - \sum p_j^q)/(q-1)$ are parameterized by the same order $\alpha = q = \rho$, and both encode the same information about the input distribution. The choice of Tsallis over R\'{e}nyi is not arbitrary: it is forced by the economics. R\'{e}nyi entropy is additive ($H_\alpha(A \cup B) = H_\alpha(A) + H_\alpha(B)$ for independent $A, B$), which is appropriate for extensive systems where subsystems do not interact. Tsallis entropy is pseudo-additive, with the interaction term $(1-q)S(A)S(B)$ capturing the non-additive surplus (or deficit) from combining complementary (or substitutable) inputs. Since the CES aggregate is itself non-additive for $\rho \neq 1$---the whole point of the superadditivity property (Paper~1, Section~8)---the entropy must also be non-additive to maintain self-consistency. Formally, the CES potential $\calFq = \Phi - T\Sq$ is self-consistent only with Tsallis entropy; replacing $\Sq$ with $H_\rho$ would break the $q$-exponential choice probabilities and the escort distribution structure that Paper~3's dynamics require.
+\end{remark}
 
 \subsection{The Information Friction}\label{sec:temperature}
 
@@ -323,7 +328,7 @@ Shannon entropy is recovered as the $q \to 1$ (perfect substitutes) special case
 
 \emph{Step 2: (A2) forces Tsallis entropy.} By the generalized Khinchin theorem \citep{santos1997,abe2000,suyari2004}, $\Sq$ is the unique function satisfying the three axioms.
 
-\emph{Step 3: (A4) forces $q = \rho$.} The self-consistency axiom follows from the emergence theorem \citep{smirl2026emergent}: CES with parameter $\rho$ is the sufficient statistic for R\'{e}nyi/Tsallis entropy of order $\rho$.
+\emph{Step 3: (A4) forces $q = \rho$.} The self-consistency axiom follows from the emergence theorem \citep{smirl2026ces}: CES with parameter $\rho$ is the sufficient statistic for R\'{e}nyi/Tsallis entropy of order $\rho$.
 
 \emph{Step 4: Lagrangian duality forces $\calFq = \Phi - T \cdot \Sq$.} By (A3), equilibrium solves $\max_{\mathbf{x}, \mathbf{p}} \Phi(\mathbf{x})$ subject to $\Sq(\mathbf{p}) \leq \kappa$. The Lagrangian is $\mathcal{L} = \Phi(\mathbf{x}) + T[\kappa - \Sq(\mathbf{p})]$. Strong duality gives $\min_{T \geq 0} \max_{\mathbf{x}, \mathbf{p}} \Phi(\mathbf{x}) - T \cdot \Sq(\mathbf{p})$. The additive structure is forced by Lagrangian duality; no alternative connector is consistent with constrained optimization.
 \end{proof}
@@ -374,7 +379,7 @@ Defining the $q$-exponential $\expq(x) = [1 + (1-q)x]_+^{1/(1-q)}$ and absorbing
 \begin{proposition}[Properties of the $q$-equilibrium]\label{prop:q_properties}
 \begin{enumerate}[label=(\alph*)]
 \item \textbf{Compact support for $q < 1$} (complements): $p_j^* = 0$ for all $j$ with $\varepsilon_j > T/(1-q)$. High-cost inputs are excluded entirely, not just exponentially suppressed.
-\item \textbf{Power-law tails for $q > 1$} (substitutes): $p_j^* \sim \varepsilon_j^{-\zeta}$ for large $\varepsilon_j$, with tail exponent $\zeta = 1/(q-1) = \sigma$, connecting CES theory to power-law economics \citep{gabaix2009}.
+\item \textbf{Power-law tails for $q > 1$} (substitutes): $p_j^* \sim \varepsilon_j^{-\zeta}$ for large $\varepsilon_j$, with tail exponent $\zeta = 1/(q-1) = |\sigma|$, connecting CES theory to power-law economics \citep{gabaix2009}.
 \item \textbf{Boltzmann recovery}: As $q \to 1$, $p_j^* \to e^{-\beta\varepsilon_j}/Z$ (the standard logit distribution).
 \end{enumerate}
 \end{proposition}
@@ -382,7 +387,7 @@ Defining the $q$-exponential $\expq(x) = [1 + (1-q)x]_+^{1/(1-q)}$ and absorbing
 \begin{proof}
 (a) When $q < 1$, $1-q > 0$, and the bracket $[1 - (1-q)\beta\varepsilon_j]_+$ vanishes for $\varepsilon_j > 1/((1-q)\beta) = T/(1-q)$. The threshold $T/(1-q)$ is finite, so the distribution has bounded support.
 
-(b) When $q > 1$, $1-q < 0$, so $\expq(-\beta\varepsilon_j) = (1 + (q-1)\beta\varepsilon_j)^{-1/(q-1)} \sim \varepsilon_j^{-1/(q-1)}$ for large $\varepsilon_j$. The tail exponent is $\zeta = 1/(q-1)$, and since $q = \rho$ and $\sigma = 1/(1-\rho)$, we have $\zeta = \sigma$ for $\rho > 1$.
+(b) When $q > 1$, $1-q < 0$, so $\expq(-\beta\varepsilon_j) = (1 + (q-1)\beta\varepsilon_j)^{-1/(q-1)} \sim \varepsilon_j^{-1/(q-1)}$ for large $\varepsilon_j$. The tail exponent is $\zeta = 1/(q-1)$, and since $q = \rho$ and $\sigma = 1/(1-\rho)$, the result is $\zeta = |\sigma|$ for $\rho > 1$ (noting $\sigma < 0$ when $\rho > 1$).
 
 (c) Standard: $\lim_{q \to 1} [1 + (1-q)x]^{1/(1-q)} = e^x$ by L'H\^{o}pital's rule.
 \end{proof}
@@ -413,27 +418,28 @@ The rich structure of economic theory---information rents, behavioral biases, in
 \begin{equation}\label{eq:critical_temp}
     \frac{\partial T^*}{\partial v} > 0, \qquad \frac{\partial T^*}{\partial K} > 0
 \end{equation}
-Higher aggregate value $v$ and higher curvature $K$ both raise the failure threshold. Below $T^*$: the institution functions. Above $T^*$: it collapses via a first-order regime shift (\Cref{prop:market_robustness}).
+Higher aggregate value $v$ and higher curvature $K$ both raise the failure threshold. Below $T^*$: the institution functions. Above $T^*$: it collapses via a first-order regime shift.
 
 \paragraph{Domain-specific breakdown thresholds.} Different economic institutions have different $T^*$ values because they depend on different components of the CES potential:
 
 \begin{center}
-\begin{tabular}{llll}
+\begin{tabular}{lll}
 \toprule
-\textbf{Institution} & \textbf{$T^*$ depends on} & \textbf{Failure mode} & \textbf{Section} \\
+\textbf{Institution} & \textbf{$T^*$ depends on} & \textbf{Failure mode} \\
 \midrule
-Markets (Akerlof) & $v, K, \bar{q}$ & Market unraveling & \Cref{sec:akerlof} \\
-Mechanisms (Myerson) & $K, \sigma_\theta$ & Excessive information rents & \Cref{sec:mechanism} \\
-Democracy (Arrow) & $\rho, J$ & Ordering reversals & \Cref{sec:arrow} \\
-Search (DMP) & $K, L$ & Matching breakdown & \Cref{sec:search} \\
-Contracts (GHM) & $\rho, \tau$ & Hold-up paralysis & \Cref{sec:contracts} \\
-Choice (KT) & $u_{\max}, J$ & Choice overload & \Cref{sec:behavioral} \\
-Production & $K, d^2, C$ & Effective substitutability & \Cref{sec:effective_curvature} \\
+Markets & $v, K, \bar{q}$ & Market unraveling \\
+Mechanisms & $K, \sigma_\theta$ & Excessive information rents \\
+Democracy & $\rho, J$ & Ordering reversals \\
+Search / matching & $K, L$ & Matching breakdown \\
+Contracts & $\rho, \tau$ & Hold-up paralysis \\
+Choice & $u_{\max}, J$ & Choice overload \\
+Production & $K, d^2, C$ & Effective substitutability \\
 \bottomrule
 \end{tabular}
 \end{center}
+Domain-specific derivations showing how each institution maps to the CES potential are presented in the companion paper \citep{smirl2026derivations}.
 
-The ordering of $T^*$ values across institutions determines which institutions fail first during an information crisis. This is the generalization of the non-uniform degradation result (\Cref{sec:crisis}) from the three curvature roles to the full institutional landscape.
+The ordering of $T^*$ values across institutions determines which institutions fail first during an information crisis. This is the generalization of the non-uniform degradation result (\Cref{sec:crisis}) from three of the four curvature roles to the full institutional landscape.
 
 %=============================================================================
 \section{Effective Curvature Under Information Friction}\label{sec:effective_curvature}
@@ -490,7 +496,7 @@ K_{\mathrm{eff}}(\rho, T) = K \cdot \left(1 - \frac{T}{T^*(\rho)}\right)^{\!+}
 \end{equation}
 where
 \begin{equation}\label{eq:T_star}
-T^*(\rho) = \frac{(J-1) c^2 d^2}{K}
+T^*(\rho) = \frac{2(J-1) c^2 d^2}{K}
 \end{equation}
 is the \emph{critical production friction}, $d^2$ is the squared geodesic diversity of the input mix, and $(z)^+ = \max(z, 0)$.
 \end{theorem}
@@ -510,7 +516,7 @@ Information friction acts as an \emph{endogenous source of apparent substitutabi
 \begin{remark}[Properties of $T^*$]\label{rem:T_star_properties}
 The critical production friction has economically natural comparative statics:
 \begin{enumerate}[label=(\roman*)]
-\item $\partial T^* / \partial (1-\rho) > 0$ for fixed $d^2$: more complementary technologies tolerate more information friction before the premium vanishes. This follows because $T^* \propto (J-1)c^2 d^2 / K$ and, for realistic diversity levels, the diversity $d^2$ grows faster with complementarity than $K$ does.
+\item $\partial T^* / \partial (1-\rho) > 0$ for fixed $d^2$: more complementary technologies tolerate more information friction before the premium vanishes. This follows because $T^* \propto 2(J-1)c^2 d^2 / K$ and, for realistic diversity levels, the diversity $d^2$ grows faster with complementarity than $K$ does.
 \item $\partial T^* / \partial d^2 > 0$: more diverse input mixes provide a larger buffer against information degradation. A firm with homogeneous inputs ($d^2 = 0$) has $T^* = 0$---there is no complementarity to degrade.
 \item $\partial T^* / \partial C > 0$: larger firms (higher budget $C$, hence higher $c = C/J$) are more robust to information frictions. Scale provides a buffer because the output loss is a fraction of a larger base. This provides a rationale for firm size beyond standard returns-to-scale arguments: large firms can exploit complementarity that small firms cannot.
 \end{enumerate}
@@ -576,6 +582,40 @@ The divergence of $\tau$ as $T \to T^*$ is a Category~A result (\Cref{tab:classi
 All three signals have been documented empirically in pre-crisis financial data, providing indirect support for the effective curvature mechanism.
 \end{remark}
 
+\subsection{The Laffer Curve as a CES Potential Result}\label{sec:laffer}
+
+The effective curvature theorem yields the Laffer curve as a corollary, with additional structure absent from the standard argument.
+
+\paragraph{Derivation.}
+Taxation acts as an information friction: a tax rate $\tau$ distorts relative prices, creates compliance costs, and incentivizes avoidance, all of which raise the effective friction:
+\begin{equation}\label{eq:tax-temp}
+T_{\mathrm{eff}}(\tau) = T_0 + g(\tau), \qquad g' > 0, \quad g(0) = 0,
+\end{equation}
+where $T_0$ is the pre-tax information friction and $g$ is increasing in the tax rate.  Tax revenue is rate times base:
+\begin{equation}\label{eq:laffer}
+R(\tau) = \tau \cdot Y\!\left(K_{\mathrm{eff}}(\tau)\right),
+\end{equation}
+where output depends on effective curvature $K_{\mathrm{eff}} = K(1 - T_{\mathrm{eff}}/T^*)^+$.  Revenue is zero at $\tau = 0$ (no tax) and zero when $g(\tau) \geq T^* - T_0$ (the economy crosses the critical curve and the tax base collapses).  A maximum exists in between: the Laffer peak.
+
+\paragraph{What the framework adds.}
+The standard Laffer curve says only that the peak exists.  The CES potential framework provides five additional predictions:
+
+\begin{enumerate}[nosep]
+\item \textbf{The peak depends on $\rho$.}  Low-$\rho$ sectors (complementary inputs: construction, manufacturing) have higher $T^*$ and tolerate higher tax rates before reaching the peak.  High-$\rho$ sectors (substitutable inputs: financial services, digital goods) have lower $T^*$ and hit the peak at lower rates.  This predicts \emph{sector-specific Laffer curves}.
+
+\item \textbf{The crisis sequence governs the decline.}  As $\tau$ rises past the peak, the three roles of $K$ degrade in order: correlation robustness first (capital flight, portfolio reallocation), then superadditivity (firms restructure to avoid tax), then strategic independence (underground economy).  The ordering within the Laffer decline is forced by the quadratic-before-linear degradation, independent of institutional detail.
+
+\item \textbf{Displacement, not suppression} (via noise-driven transition).  The escape rate from the taxed basin is $k = \nu\exp(-\Delta\calF/T_{\mathrm{eff}})$.  Higher $\tau$ raises $T_{\mathrm{eff}}$, increasing the escape rate.  Activity does not vanish---it escapes to untaxed basins (offshore, informal sector).
+
+\item \textbf{Non-symmetric shape.}  The quadratic degradation of correlation robustness means the initial decline past the peak is gentle (financial reallocation absorbs friction), then steepens sharply once superadditivity degrades.  The curve is right-skewed for low-$\rho$ sectors and left-skewed for high-$\rho$ sectors.
+
+\item \textbf{The Jarzynski bound constrains deadweight loss.}  The minimum cost of tax-induced reallocation is $\Delta\calF$.  Beyond the peak, deadweight loss $W_{\mathrm{diss}} = W - \Delta\calF$ grows as $\tau$ rises, estimable from the variance of outcomes across jurisdictions with different rates.
+\end{enumerate}
+
+\begin{remark}[Connection to Paper~9]\label{rem:fair-inheritance}
+The fair inheritance tax (Paper~9) is designed to sit at the Laffer peak by construction.  Its binary choice---pay the tax (concentrated transfer) or disperse widely (zero-tax pathway)---eliminates the distortion ($g(\tau) = 0$) for the disperse pathway while achieving the policy objective (deconcentration).  This is why the projected revenue (\$85--135B/yr) exceeds the current estate tax by $5\times$: the mechanism operates at the peak rather than on the declining portion.
+\end{remark}
+
 %=============================================================================
 \section{$q$-Generalized Dynamical Results}\label{sec:q_dynamics}
 %=============================================================================
@@ -592,7 +632,7 @@ At equilibrium of the Tsallis CES potential $\calFq$, the covariance matrix of f
 \end{theorem}
 
 \begin{proof}
-The Hessian of the Tsallis entropy at the uniform distribution is $\partial^2 \Sq / \partial p_j \partial p_k|_{\mathrm{unif}} = -q J^{q-2} \delta_{jk}$, differing from Shannon's $-J\delta_{jk}$ by a factor that evaluates to $1/(2-q)$ at symmetric equilibrium. At the symmetric equilibrium ($p_j = 1/J$), the linear response from the $q$-exponential gives $\chi_{jk} = \beta J^{q-2}(\delta_{jk} - 1/J)/q$, and the equilibrium covariance is $\Sigma_{jk} = J^{q-2}(\delta_{jk} - 1/J)/(q(2-q))$. The ratio $\Sigma_{jk}/\chi_{jk} = T/(2-q)$ establishes \eqref{eq:q_fdt}.
+The Hessian of the Tsallis entropy at the uniform distribution is $\partial^2 \Sq / \partial p_j \partial p_k|_{\mathrm{unif}} = -q J^{2-q} \delta_{jk}$ (\Cref{lem:tsallis_hessian}), differing from Shannon's $-J\delta_{jk}$ by a factor that evaluates to $1/(2-q)$ at symmetric equilibrium. At the symmetric equilibrium ($p_j = 1/J$), the linear response from the $q$-exponential gives $\chi_{jk} = \beta J^{2-q}(\delta_{jk} - 1/J)/q$, and the equilibrium covariance is $\Sigma_{jk} = J^{2-q}(\delta_{jk} - 1/J)/(q(2-q))$. The ratio $\Sigma_{jk}/\chi_{jk} = T/(2-q)$ establishes \eqref{eq:q_fdt}.
 \end{proof}
 
 \begin{corollary}[$q$-information friction measurement]\label{cor:q_temperature}
@@ -612,8 +652,8 @@ At $q$-exponential equilibrium of a CES($\rho$) economy with $J$ symmetric input
 \end{equation}
 with eigenvalues:
 \begin{align}
-\lambda_1 &= \frac{T}{(2-q) K_{\mathrm{eff}}} & \text{(1-dimensional, along $\bone$)} \\
-\lambda_{2,\ldots,J} &= \frac{T}{(2-q)(K_{\mathrm{eff}} + J^{-1})} & \text{($(J-1)$-dimensional)}
+\lambda_1 &= \frac{T}{(2-q)(K_{\mathrm{eff}} + J^{-1})} & \text{(1-dimensional, along $\bone$)} \\
+\lambda_{2,\ldots,J} &= \frac{T}{(2-q) K_{\mathrm{eff}}} & \text{($(J-1)$-dimensional)}
 \end{align}
 where $K_{\mathrm{eff}} = K \cdot (1 - T/T^*)^+$ is the effective curvature.
 \end{theorem}
@@ -625,7 +665,7 @@ The eigenvalues are computed from $\boldsymbol{\Sigma} = (T/(2-q))(\nabla^2 \cal
 \end{proof}
 
 \begin{remark}[Observational consequence]
-The ratio of eigenvalues $\lambda_1/\lambda_{2,\ldots,J} = (K_{\mathrm{eff}} + J^{-1})/K_{\mathrm{eff}} = 1 + 1/(JK_{\mathrm{eff}})$ provides a direct estimate of effective curvature from observed cross-sectional covariances: $K_{\mathrm{eff}} = 1/(J(\lambda_1/\lambda_2 - 1))$. The estimate is independent of $T$ and $q$---the correction factor $1/(2-q)$ cancels in the ratio. This makes $K_{\mathrm{eff}}$ estimable from principal component analysis of sectoral fluctuations without knowledge of the information friction.
+The ratio of eigenvalues $\lambda_{2,\ldots,J}/\lambda_1 = (K_{\mathrm{eff}} + J^{-1})/K_{\mathrm{eff}} = 1 + 1/(JK_{\mathrm{eff}})$ provides a direct estimate of effective curvature from observed cross-sectional covariances: $K_{\mathrm{eff}} = 1/(J(\lambda_\perp/\lambda_1 - 1))$. The estimate is independent of $T$ and $q$---the correction factor $1/(2-q)$ cancels in the ratio. This makes $K_{\mathrm{eff}}$ estimable from principal component analysis of sectoral fluctuations without knowledge of the information friction.
 \end{remark}
 
 \subsection{$q$-Crooks Fluctuation Theorem and Jarzynski Equality}
@@ -639,11 +679,15 @@ where $W$ is the work performed and $\Delta\calFq = \calFq(B) - \calFq(A)$.
 \end{theorem}
 
 \begin{proof}
-The $q$-exponential equilibrium distribution $p^* \propto \expq(-\beta\varepsilon)$ satisfies the detailed balance condition with $q$-exponential weight ratios rather than exponential ones. For a driven process between states $A$ and $B$, the ratio of path probabilities under forward and reverse protocols is:
+The $q$-exponential equilibrium distribution $p^*(\varepsilon) \propto \expq(-\beta\varepsilon)$ satisfies $q$-detailed balance: the ratio of equilibrium occupancies at two energy levels is $p^*(\varepsilon_A)/p^*(\varepsilon_B) = \expq(-\beta\varepsilon_A)/\expq(-\beta\varepsilon_B)$. By the Crooks construction \citep{crooks1999}, the ratio of path probabilities under forward and time-reversed protocols is:
 \[
-\frac{P_F[\gamma]}{P_R[\bar{\gamma}]} = \frac{\expq(-\beta \varepsilon_A)}{\expq(-\beta \varepsilon_B)} = \expq\left(\beta(\varepsilon_B - \varepsilon_A)\right)
+\frac{P_F[\gamma]}{P_R[\bar{\gamma}]} = \frac{p^*_{\mathrm{eq},A}(\gamma_0)}{p^*_{\mathrm{eq},B}(\gamma_\tau)} \cdot \exp_q\left(\beta W[\gamma]\right)_{\mathrm{path}}
 \]
-where $\bar{\gamma}$ is the time-reversed path. Averaging over paths with fixed work $W$ and using the $q$-algebra identity $\expq(a)/\expq(b) = \expq(a - b + (1-q)ab)$, which simplifies at the path-integral level: the work $W$ along the path satisfies $W = \varepsilon_B - \varepsilon_A + W_{\mathrm{diss}}$. The CES potential difference absorbs the equilibrium contribution, yielding \eqref{eq:q_crooks}.
+where $\gamma_0$ and $\gamma_\tau$ are the initial and final microstates. Averaging over paths with fixed total work $W$ and using the $q$-product rule ($\expq(a) \otimes_q \expq(b) = \expq(a + b + (1-q)ab)$), the equilibrium ratio and path contribution combine to yield:
+\[
+\frac{P_F(W)}{P_R(-W)} = \expq\left(\beta(W - \Delta\calFq)\right)
+\]
+The CES potential difference $\Delta\calFq$ absorbs the equilibrium free energy contribution, extending the standard Crooks identity \citep{crooks1999} to the Tsallis ($q \neq 1$) setting. The standard result is recovered as $q \to 1$ since $\expq \to \exp$.
 \end{proof}
 
 \begin{remark}[Economic interpretation]
@@ -680,36 +724,36 @@ Substituting the $q$-exponential optimum \eqref{eq:q_equilibrium} and using the 
 The optimization naturally introduces the \emph{escort distribution} $P_j = p_j^q / \sum_k p_k^q$, which reweights probabilities by their $q$-th power. For complements ($q < 1$), the escort distribution is more uniform than the original---emphasizing rare inputs. For substitutes ($q > 1$), it is more concentrated---emphasizing common inputs. The escort distribution appears in the $q$-expectation $\langle \varepsilon \rangle_q = \sum P_j \varepsilon_j$, which replaces the standard expectation in all $q$-thermodynamic identities. The $q$-internal energy is $U_q = \langle \varepsilon \rangle_q$, and the CES potential satisfies $\calFq = U_q - T \Sq$ with the escort-averaged energy.
 \end{remark}
 
-\subsection{$q$-Dissipation Bound}
+\subsection{$q$-Friction Bound}
 
-\begin{corollary}[$q$-dissipation bound]\label{cor:q_dissipation}
-The expected dissipated work $W_{\mathrm{diss}} = \langle W \rangle - \Delta\calFq$ in any transition between CES potential equilibria satisfies:
+\begin{corollary}[$q$-friction bound]\label{cor:q_dissipation}
+The expected friction loss $W_{\mathrm{fric}} = \langle W \rangle - \Delta\calFq$ in any transition between CES potential equilibria satisfies:
 \begin{equation}\label{eq:q_dissipation}
-W_{\mathrm{diss}} \geq \frac{T}{2(2-q)} \cdot \frac{\Var(W)}{T^2}
+W_{\mathrm{fric}} \geq \frac{q}{2T} \cdot \Var(W)
 \end{equation}
-For complements ($q < 1$), the bound is tighter: less dissipation is tolerated for a given variance of outcomes, reflecting the rigidity of complementary systems.
+For complements ($q < 1$), the coefficient $q/(2T)$ is smaller, but complementary systems exhibit higher outcome variance $\Var(W)$, so the net friction cost is typically larger.
 \end{corollary}
 
 \begin{proof}
-From the $q$-Jarzynski equality (\Cref{cor:q_jarzynski}), Jensen's inequality applied to the convex function $\expq(-\cdot)$ gives $\langle W \rangle \geq \Delta\calFq$. The tightened bound follows from a second-order expansion of $\expq$ around the mean work: $\langle \expq(-\beta W) \rangle \approx \expq(-\beta\langle W \rangle) + \frac{1}{2}\expq''(-\beta\langle W \rangle) \cdot \Var(W)$. Since $\expq''(x) = -\beta^2 q \expq(x)^{2q-1}$ at the symmetric point, evaluating at equilibrium gives the factor $1/(2(2-q))$.
+From the $q$-Jarzynski equality (\Cref{cor:q_jarzynski}), Jensen's inequality applied to the convex function $\expq(-\cdot)$ gives $\langle W \rangle \geq \Delta\calFq$. The tightened bound follows from a second-order cumulant expansion of $\expq$ around the mean work: $\langle \expq(-\beta W) \rangle \approx \expq(-\beta\langle W \rangle) + \frac{1}{2}\expq''(-\beta\langle W \rangle) \cdot \beta^2\Var(W)$. The second derivative of the $q$-exponential is $\expq''(x) = q \cdot \expq(x)^{2q-1} > 0$ (confirming convexity). For near-equilibrium transitions where $\beta W_{\mathrm{fric}} \ll 1$, the factor $\expq(-\beta\langle W \rangle)^{2q-1} \approx 1$, giving the coefficient $q\beta^2/2 = q/(2T^2)$ and hence $W_{\mathrm{fric}} \geq q\,\Var(W)/(2T)$. At $q = 1$ this recovers the standard dissipation bound $\Var(W)/(2T)$.
 \end{proof}
 
 \begin{remark}
-The $q$-dissipation bound has direct economic content. Consider a firm restructuring from governance mode $A$ to mode $B$ (e.g., vertical integration to outsourcing). The dissipated work is the transition cost---resources consumed during restructuring that do not contribute to final output. The bound says that complementary production systems ($q < 1$) tolerate less restructuring waste for a given level of outcome uncertainty. This explains why restructuring complementary organizations (e.g., merging research labs) is more costly than restructuring substitutable operations (e.g., consolidating distribution centers).
+The $q$-friction bound has direct economic content. Consider a firm restructuring from governance mode $A$ to mode $B$ (e.g., vertical integration to outsourcing). The friction loss is the transition cost---resources consumed during restructuring that do not contribute to final output. The bound says that complementary production systems ($q < 1$) tolerate less restructuring waste for a given level of outcome uncertainty. This explains why restructuring complementary organizations (e.g., merging research labs) is more costly than restructuring substitutable operations (e.g., consolidating distribution centers).
 \end{remark}
 
 \subsection{Euler Identity Survival}
 
 \begin{proposition}[Euler identity survives]\label{prop:euler_survives}
-At any equilibrium of any CES economy with any $q$-entropy, the Euler-equilibrium identity holds exactly:
+At any equilibrium of any CES economy with any $q$-entropy, the CES Euler identity holds exactly:
 \begin{equation}\label{eq:euler_survives}
-\mathbf{x}^* \cdot \nabla \Sq = -\frac{1}{T}
+\mathbf{x}^* \cdot \nabla \Phi(\mathbf{x}^*) = -1
 \end{equation}
-This follows from homogeneity of the CES aggregate and the first-order condition---not the specific functional form of the entropy.
+where $\Phi = -\log F$. This follows from degree-1 homogeneity of $F$---it is a property of the CES aggregate alone, independent of the entropy functional or the information friction~$T$.
 \end{proposition}
 
 \begin{proof}
-The Euler identity follows from homogeneity of the CES aggregate and the first-order condition $\nabla \Phi = T \nabla \Sq$ at equilibrium. Since $\Phi = -\log F$ with $F$ homogeneous of degree 1, Euler's theorem gives $\mathbf{x} \cdot \nabla \Phi = -1$. At equilibrium, $\nabla \Phi = T \nabla \Sq$, so $\mathbf{x}^* \cdot T \nabla \Sq = -1$, yielding \eqref{eq:euler_survives}. The argument uses only homogeneity and the first-order condition---not the specific functional form of the entropy.
+Since $F$ is homogeneous of degree 1 in $\mathbf{x}$, Euler's theorem gives $\mathbf{x} \cdot \nabla F = F$. Differentiating $\log F$: $\mathbf{x} \cdot \nabla \log F = \mathbf{x} \cdot (\nabla F / F) = 1$. Since $\Phi = -\log F$: $\mathbf{x} \cdot \nabla \Phi = -1$. This holds at every $\mathbf{x} > 0$, hence at $\mathbf{x}^*$ in particular. The entropy $\Sq$ enters the first-order condition but not the identity: since $\Sq(\mathbf{x}/\|\mathbf{x}\|_1)$ is homogeneous of degree 0, Euler's theorem gives $\mathbf{x} \cdot \nabla_{\mathbf{x}} \Sq = 0$, so the entropy contribution drops out of any Euler-type identity. Consequently, the identity \eqref{eq:euler_survives} holds for Shannon, Tsallis, or any other entropy consistent with the CES potential structure.
 \end{proof}
 
 \begin{remark}[Winding number and Casimir invariants]\label{rem:topology}
@@ -746,7 +790,7 @@ The escape rate from a metastable equilibrium $A$ over a CES potential barrier $
 \begin{equation}\label{eq:q_kramers}
 k_q = \nu \cdot \expq\left(-\frac{\Delta\calFq}{T}\right)
 \end{equation}
-where $\nu$ is the attempt frequency (proportional to the curvature at the metastable minimum).
+where $\nu$ is the attempt frequency (proportional to the curvature at the metastable minimum). This is the $q$-generalization of Kramers' classical escape-rate formula, obtained by replacing the Boltzmann weight $e^{-\Delta\calF/T}$ with its Tsallis counterpart $\expq(-\Delta\calFq/T)$ in the standard saddle-point approximation \textup{(}see Tsallis~\cite{tsallis2009introduction}, Ch.~6; Abe and Okamoto~\cite{abe2001nonextensive}\textup{)}.
 \end{proposition}
 
 \begin{remark}
@@ -813,991 +857,8 @@ The classification has immediate practical consequences:
 \end{enumerate}
 \end{remark}
 
-%=============================================================================
-\section{Derivation I: Akerlof's Market for Lemons}\label{sec:akerlof}
-%=============================================================================
-
-The market-for-lemons result \citep{akerlof1970} is derived from the CES potential framework.
-
-\subsection{Setup}
-
-Consider $J$ sellers with qualities $q_j$ drawn from a distribution $F$ on $[0, \bar{q}]$. Each seller knows their own quality. A representative buyer values quality at rate $v > 1$ but cannot observe quality directly. The CES aggregate of market quality is $\Phi(S) = (|S|^{-1}\sum_{j \in S} q_j^\rho)^{1/\rho}$. By \Cref{prop:ces_forced}(b), this CES form is derived from Fr\'{e}chet taste heterogeneity.
-
-Under rational inattention, the buyer acquires a binary signal (accept/reject) at information cost $T \cdot h(q^*/\bar{q})$, where $h(\cdot)$ is binary entropy. Define $\psi(\rho) = (\rho+1)^{1/\rho}$ and $A(\rho) = v/\psi(\rho) - 1$ (the CES net value rate). The buyer's CES potential is:
-\begin{equation}\label{eq:akerlof_free_energy}
-    \max_{q^* \in [0, \bar{q}]} \; \calF(q^*) = \frac{A(\rho)}{\bar{q}} (q^*)^2 - T \cdot h\!\left(\frac{q^*}{\bar{q}}\right)
-\end{equation}
-
-\subsection{The $\rho$-Dependent Robustness Result}
-
-\begin{proposition}[Market Robustness]\label{prop:market_robustness}
-There exists a unique critical information friction
-\begin{equation}\label{eq:tstar_closed}
-    T^* = \frac{A(\rho)\,\bar{q}}{\gamma^*} = \frac{(v - \psi(\rho))\,\bar{q}}{\gamma^*\,\psi(\rho)}
-\end{equation}
-where $\gamma^* \approx 2.456$ is a universal constant, such that for $T < T^*$ the CES potential is positive at all interior participation rates; for $T > T^*$ the CES potential develops a negative barrier, forcing a first-order regime shift.
-
-Since $\psi(\rho)$ is strictly decreasing in $\rho$, $T^*$ is strictly increasing in $(1-\rho)$: markets with lower $\rho$ (higher complementarity) are more robust to adverse selection.
-\end{proposition}
-
-\begin{proof}
-The proof proceeds in six steps: (1)~state the Lagrangian; (2)~derive first-order conditions; (3)~verify the second-order condition; (4)~solve for the breakdown threshold; (5)~connect to CES curvature $K$; (6)~prove monotonicity.
-
-\medskip
-\textit{Step 1: The buyer's Lagrangian.}
-The buyer solves the rational inattention problem in its Lagrangian dual form. Following \citet{sims2003}, an agent who maximizes expected payoff subject to an information constraint $I \leq \kappa$ has the equivalent unconstrained (penalized) formulation:
-\begin{equation}\label{eq:lagrangian_buyer}
-    \max_{q^* \in [0, \bar{q}]} \; \calF(q^*) = \frac{A(\rho)}{\bar{q}}(q^*)^2 - T \cdot h\!\left(\frac{q^*}{\bar{q}}\right)
-\end{equation}
-where $A(\rho) = v/\psi(\rho) - 1 > 0$ is the CES net value rate, $T \geq 0$ is the Lagrange multiplier on the information constraint (equivalently, the unit cost of information), and $h(\pi) = -\pi \log \pi - (1-\pi)\log(1-\pi)$ is the binary entropy function with $\pi = q^*/\bar{q}$.
-
-The first term is the expected gains from trade: the participation rate $\pi$ times the per-trade net surplus $A(\rho) q^*$. The second term is the information cost of the binary screening signal. The objective $\calF$ is the CES potential: expected surplus minus information cost.
-
-\medskip
-\textit{Step 2: First-order condition.}
-Substituting $\pi = q^*/\bar{q}$, write $\calF$ in terms of $\pi$:
-\[
-    \calF(\pi) = A(\rho)\,\bar{q}\,\pi^2 - T\,h(\pi)
-\]
-The derivative with respect to $\pi$ is:
-\[
-    \frac{d\calF}{d\pi} = 2A(\rho)\,\bar{q}\,\pi - T\log\frac{1-\pi}{\pi}
-\]
-using $dh/d\pi = \log[(1-\pi)/\pi]$. Setting $d\calF/d\pi = 0$, the first-order condition is:
-\begin{equation}\label{eq:akerlof_foc}
-    2A(\rho)\,\bar{q}\,\pi = T\log\frac{1-\pi}{\pi}
-\end{equation}
-This equates the marginal expected surplus from expanding the participating set (left side) with the marginal information cost (right side).
-
-\medskip
-\textit{Step 3: Second-order condition.}
-The second derivative is:
-\[
-    \frac{d^2\calF}{d\pi^2} = 2A(\rho)\,\bar{q} + \frac{T}{\pi(1-\pi)}
-\]
-Since both terms are positive, $d^2\calF/d\pi^2 > 0$ for all $\pi \in (0,1)$: the CES potential is strictly convex. Any interior critical point satisfying~\eqref{eq:akerlof_foc} is therefore a \emph{minimum}, not a maximum. The boundary values $\calF(0) = 0$ and $\calF(1) = A(\rho)\bar{q} > 0$ show that $\pi = 1$ (full participation without screening) always yields positive CES potential.
-
-The economic content emerges from the \emph{value} of $\calF$ at the interior minimum $\pi_0$. For small $T$, $\calF(\pi_0) > 0$: the CES potential is positive everywhere on $(0,1)$, so the buyer can smoothly adjust the screening threshold---information acquisition is valuable and the market functions efficiently. For large $T$, $\calF(\pi_0) < 0$: the CES potential dips below zero near $\pi_0$, creating a barrier between $\pi = 0$ (no market) and $\pi = 1$ (unscreened pooling). The market undergoes a \emph{first-order regime shift}: screening intensity jumps discontinuously from the efficient interior level to a boundary solution.
-
-\medskip
-\textit{Step 4: Solving for the breakdown threshold.}
-Define the dimensionless ratio $\tau \equiv T/(A(\rho)\bar{q})$. In terms of $\tau$, the CES potential becomes:
-\[
-    \frac{\calF(\pi)}{A(\rho)\bar{q}} = \pi^2 - \tau\,h(\pi) \;\equiv\; \Psi(\pi, \tau)
-\]
-The first-order condition is $2\pi = \tau \log[(1-\pi)/\pi]$, and the breakdown threshold $\tau^*$ is the value of $\tau$ at which the interior minimum of $\Psi$ first touches zero.
-
-At the critical point, two conditions hold simultaneously:
-\begin{align}
-    \text{(FOC):}\quad & 2\pi_0 = \tau^* \log\frac{1-\pi_0}{\pi_0} \label{eq:crit_foc}\\[4pt]
-    \text{(Zero surplus):}\quad & \pi_0^2 = \tau^*\,h(\pi_0) \label{eq:crit_surplus}
-\end{align}
-Dividing~\eqref{eq:crit_foc} by~\eqref{eq:crit_surplus}:
-\[
-    \frac{2}{\pi_0} = \frac{\log\frac{1-\pi_0}{\pi_0}}{h(\pi_0)}
-\]
-This is a single transcendental equation in $\pi_0$ alone, independent of all model parameters ($v$, $\rho$, $\bar{q}$, $J$). By intermediate value theorem arguments (analyzing boundary behavior as $\pi \to 0^+$ and $\pi \to 1/2$), a unique root exists at $\pi_0 \approx 0.217$.
-
-Once $\pi_0$ is determined, the critical dimensionless information friction is:
-\[
-    \tau^* = \frac{\pi_0^2}{h(\pi_0)} \equiv \frac{1}{\gamma^*}
-\]
-defining the universal constant $\gamma^* = h(\pi_0)/\pi_0^2 \approx 2.456$ (using natural logarithms). The breakdown threshold in original units is:
-\[
-    T^* = \tau^* \cdot A(\rho)\,\bar{q} = \frac{A(\rho)\,\bar{q}}{\gamma^*} = \frac{\bar{q}}{\gamma^*}\left(\frac{v}{\psi(\rho)} - 1\right)
-\]
-This is the closed-form expression~\eqref{eq:tstar_closed}. Crucially, $\gamma^*$ is a universal constant---it depends on neither $\rho$, $v$, $\bar{q}$, nor $J$. All dependence of $T^*$ on the CES parameter enters through $A(\rho) = v/\psi(\rho) - 1$.
-
-\medskip
-\textit{Step 5: Connection to CES curvature $K$.}
-Since $T^* = (v/\psi(\rho) - 1)\bar{q}/\gamma^*$ and $\psi(\rho) = (\rho+1)^{1/\rho}$, the dependence on $\rho$ enters through $1/\psi(\rho)$. To connect with $K = (1-\rho)(J-1)/J$, expand $\log\psi$ around $\rho = 1$ (the substitutes limit, $K = 0$):
-\begin{align}
-    \log\psi(1) &= \log 2, \qquad
-    \frac{d}{d\rho}\log\psi\bigg|_{\rho=1} = \frac{1}{2} - \log 2 \approx -0.193 \notag
-\end{align}
-Therefore $\psi(\rho) = 2\exp[(1/2 - \log 2)(1-\rho) + O((1-\rho)^2)]$ and since $1-\rho = KJ/(J-1)$:
-\[
-    T^* = \frac{\bar{q}}{\gamma^*}\left[\left(\frac{v}{2}-1\right) + \frac{v}{2}\left(\log 2 - \tfrac{1}{2}\right)\frac{KJ}{J-1} + O(K^2)\right]
-\]
-The leading term $(v/2 - 1)$ is the gains from trade at $\rho = 1$ (linear aggregation, the standard Akerlof case). The correction proportional to $K$ shows that CES curvature provides additional robustness to adverse selection.
-
-\medskip
-\textit{Step 6: Monotonicity of $T^*$ in $(1-\rho)$.}
-It suffices to show that $\psi(\rho) = (\rho+1)^{1/\rho}$ is strictly decreasing in $\rho$ on $(-1,1)$, since $T^* = (v/\psi(\rho) - 1)\bar{q}/\gamma^*$ and $v/\psi - 1$ is strictly increasing in $1/\psi$ for $v > \psi > 0$.
-
-The sign of $d\log\psi/d\rho$ equals the sign of $g(\rho) \equiv \rho/(\rho+1) - \log(\rho+1)$. Observe $g(0) = 0$, and:
-\[
-    g'(\rho) = \frac{1}{(\rho+1)^2} - \frac{1}{\rho+1} = \frac{-\rho}{(\rho+1)^2}
-\]
-For $\rho \in (-1, 0)$: $g'(\rho) > 0$, so $g$ is strictly increasing toward $g(0) = 0$, hence $g(\rho) < 0$. For $\rho \in (0, 1)$: $g'(\rho) < 0$, so $g$ is strictly decreasing from $g(0) = 0$, hence $g(\rho) < 0$.
-
-Therefore $d\log\psi/d\rho < 0$ for all $\rho \in (-1,1)\setminus\{0\}$, which means $\psi(\rho)$ is strictly decreasing in $\rho$, so $1/\psi(\rho)$ is strictly increasing. Since $T^* \propto v/\psi(\rho) - 1$ and $v/\psi$ is increasing as $\rho$ decreases, $T^*$ is strictly increasing in $(1-\rho)$. Lower $\rho$ (higher complementarity, higher CES curvature $K$) implies higher breakdown threshold, and hence greater robustness to adverse selection.
-\end{proof}
-
-\begin{remark}
-The standard Akerlof result is the special case $T \to \infty$ (or equivalently, the case where information acquisition is impossible). The $\rho$-dependent extension reveals that adverse selection severity is not solely a property of information asymmetry---it depends on the complementarity structure of the market.
-\end{remark}
-
-\begin{remark}[Connection to market microstructure]\label{rem:microstructure}
-The CES potential framework connects adverse selection to market microstructure. The bid-ask spread in financial markets reflects the market maker's information disadvantage---a standard adverse selection cost. In the CES potential framework, the spread is:
-\[
-\text{Spread} \propto \frac{T}{T^*(\rho)} \cdot \frac{1}{J_{\mathrm{eff}}}
-\]
-where $J_{\mathrm{eff}}$ is the effective number of informed traders. The spread narrows as $T/T^*$ falls (better information quality) and as $J_{\mathrm{eff}}$ rises (more informed traders competing away rents). For commodity-like assets ($\rho \approx 1$, low $T^*$): spreads are high relative to the information advantage because the breakdown threshold is low. For unique, complementary assets (low $\rho$, high $T^*$): the same information advantage produces a smaller spread because the market's higher complementarity value absorbs the information cost. This predicts that bid-ask spreads should be positively correlated with asset substitutability after controlling for trading volume---a testable prediction using cross-sectional data from equity and commodity markets.
-\end{remark}
-
-\begin{example}[Numerical illustration]\label{ex:akerlof_numerical}
-Let $v = 3$ (buyers value quality at 3x cost), $\bar{q} = 1$, and compare three markets:
-
-\begin{center}
-\begin{tabular}{lcccl}
-\toprule
-Market & $\rho$ & $\psi(\rho)$ & $A(\rho)$ & $T^* = A\bar{q}/\gamma^*$ \\
-\midrule
-Commodity ($\rho = 0.8$) & $0.8$ & $1.81$ & $0.66$ & $0.27$ \\
-Differentiated ($\rho = 0$) & $0$ & $1.00$ & $2.00$ & $0.81$ \\
-Complementary ($\rho = -2$) & $-2$ & $0.33$ & $8.09$ & $3.30$ \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-The complementary market tolerates information friction 12 times higher than the commodity market before collapsing. At $T = 0.5$ (moderate information friction): the commodity market has collapsed ($T > T^* = 0.27$), the differentiated market is stressed ($T/T^* = 0.62$), and the complementary market functions smoothly ($T/T^* = 0.15$). The prediction: at the same level of information asymmetry, commodity markets unravel while complementary markets continue to function.
-\end{example}
-
-\subsection{The Informational Interpretation}
-
-The CES potential $\calF(q^*) = A(\rho)\bar{q}\pi^2 - T \cdot h(\pi)$ has a clean information-theoretic decomposition. The first term is the \emph{expected gains from trade}: the CES value of the participating set, quadratic in the participation rate because both the number of trades and the average quality in the participating set increase with $\pi$. The second term is the \emph{information cost}: the minimum number of bits (times $T$) needed to implement a binary screening signal with acceptance rate $\pi$.
-
-The ratio $A(\rho)\bar{q}/T$ is the \emph{signal-to-noise ratio} of the market: how much CES value each bit of screening information generates. When this ratio is high (complementary goods, low information costs), the market sustains a precise screening equilibrium. When it is low (substitutable goods, high information costs), the market cannot justify the information expenditure and collapses to a pooling equilibrium.
-
-The universal constant $\gamma^* \approx 2.456$ has a natural interpretation: it is the maximum \emph{information leverage}---the maximum ratio of surplus destroyed to information cost saved---at the critical participation rate. This maximum is a property of the binary entropy function and does not depend on the economic parameters.
-
-\subsection{Empirical Implications}
-
-\Cref{prop:market_robustness} yields testable predictions:
-
-\begin{enumerate}
-    \item \textbf{Specialized labor markets} (low $\rho$): should function despite severe information asymmetry about talent. \emph{Observed:} elaborate screening (headhunters, multi-round interviews, trial periods) is sustained because the CES value of identifying the right specialist justifies the information cost.
-
-    \item \textbf{Commodity markets} (high $\rho$): should be susceptible to lemons problems, resolved by institutions that reduce $H$ directly (grading, standardization, certification) rather than by costly individual evaluation. \emph{Observed:} USDA grading, commodity exchange standards, ISO certification.
-
-    \item \textbf{Art and collectibles} (very low $\rho$): each piece is unique, near-maximum complementarity. Should sustain very expensive information acquisition. \emph{Observed:} expert appraisals, provenance research, and authentication services costing significant fractions of the item's value.
-
-    \item \textbf{Used cars} (moderate $\rho$): Akerlof's original domain. Markets partially function through intermediate information institutions (CarFax, dealer certification, warranties).
-\end{enumerate}
-
-The cross-sectional prediction is sharp: regress measures of adverse selection severity (bid-ask spreads, return rates, warranty costs) against estimated $\rho$ for each market. The framework predicts a positive relationship.
-
-\begin{remark}[Institutional responses to adverse selection]
-The CES potential framework classifies institutional responses to adverse selection by where they operate in $(\rho, T)$ space:
-\begin{itemize}
-\item \textbf{Reducing $T$} (information institutions): certification, grading, disclosure requirements, warranties. These shift the economy leftward in $(\rho, T)$ space, increasing the distance from the breakdown threshold. Examples: Moody's ratings (reduce $T$ for bond markets), USDA grading (reduce $T$ for agricultural markets), Carfax (reduce $T$ for used car markets).
-
-\item \textbf{Increasing effective $\rho$} (market design): standardization, commoditization, index products. These shift the economy upward in $(\rho, T)$ space, reducing $K$ and hence the sensitivity to information friction. Example: commodity futures contracts that standardize quality, delivery, and quantity, transforming a differentiated good (wheat from farm $X$) into a substitutable one (CBOT wheat contract).
-
-\item \textbf{Reducing $\rho$} (bundling): package deals that make goods more complementary, increasing $T^*$ and the economy's robustness to information friction. Example: HMO health insurance bundles primary care, specialist care, and hospital services into a complementary package that is more robust to adverse selection than separate markets for each service.
-\end{itemize}
-The framework predicts which response is optimal: reduce $T$ when information technology is available and the market has high intrinsic complementarity; increase $\rho$ when the good is naturally commodity-like and information costs are irreducible; reduce $\rho$ (bundle) when goods are naturally substitutable but the information environment is poor.
-\end{remark}
-
-\subsection{Dynamic Extension: Bistability}
-
-\begin{proposition}[Bistability of Market Information]\label{prop:bistability}
-Let $T(t)$ evolve as $\dot{T} = \mu - \gamma \cdot \max(\Phi(T), 0)$. Then $T^*(\rho)$ is an unstable fixed point separating a functioning low-$T$ equilibrium (information production offsets depreciation) from a collapsed high-$T$ equilibrium. Low-$\rho$ markets have a larger functioning-equilibrium basin.
-\end{proposition}
-
-\begin{proof}
-The dynamics of information friction are governed by the balance between depreciation (at rate $\mu > 0$, reflecting the natural decay of market knowledge through agent turnover, product innovation, and regulatory change) and endogenous production (at rate $\gamma \cdot \Phi(T)$, where $\Phi(T) = \max(\calF(T), 0)$ is the positive part of the CES potential evaluated at the current participation rate).
-
-\medskip
-\emph{Step 1: Fixed points.}
-Setting $\dot{T} = 0$ yields $\mu = \gamma \cdot \Phi(T)$. From \Cref{prop:market_robustness}, $\Phi(T)$ is a hump-shaped function: $\Phi(0) = 0$ (no surplus without participation), $\Phi(T)$ rises to a maximum at some $T_{\mathrm{peak}}$, and $\Phi(T) = 0$ for $T \geq T^*$. The equation $\mu/\gamma = \Phi(T)$ therefore has either zero or two solutions. When $\mu/\gamma < \Phi(T_{\mathrm{peak}})$, there exist two fixed points: $T_L < T_{\mathrm{peak}} < T_H$, plus the boundary fixed point $T = T^*$ where $\Phi = 0$.
-
-\medskip
-\emph{Step 2: Stability.}
-Linearizing around each fixed point: $d\dot{T}/dT = -\gamma \Phi'(T)$. At $T_L$: $\Phi'(T_L) > 0$ (ascending branch), so $d\dot{T}/dT < 0$---stable. At $T_H$: $\Phi'(T_H) < 0$ (descending branch), so $d\dot{T}/dT > 0$---unstable. For $T > T^*$: $\Phi(T) = 0$ so $\dot{T} = \mu > 0$, driving $T \to \infty$ (total market collapse). The threshold $T^*$ thus separates the basins of attraction of the functioning equilibrium $T_L$ and the collapsed state.
-
-\medskip
-\emph{Step 3: Basin size depends on $\rho$.}
-The basin of attraction of $T_L$ is the interval $[0, T_H)$. Since $T^*$ is increasing in $(1-\rho)$ (\Cref{prop:market_robustness}), and $T_H < T^*$, the basin width $T_H$ is also increasing in $(1-\rho)$. Complementary markets have a wider functioning-equilibrium basin: a larger information friction shock is needed to tip them into collapse.
-
-\medskip
-\emph{Step 4: Hysteresis.}
-Once the market collapses ($T > T^*$), restoring it requires reducing $T$ below $T_H$, not merely below $T^*$. The hysteresis gap $T^* - T_H > 0$ means that the conditions for market revival are strictly more demanding than the conditions that would have prevented collapse. This matches the empirical observation that market institutions, once destroyed, are difficult to rebuild even when the original cause of failure is removed.
-\end{proof}
-
-\begin{remark}
-The standard Akerlof result is the static limit: $T$ is fixed at $\infty$ (no information acquisition) or at $0$ (perfect information). The dynamic extension shows that adverse selection is an absorbing state: once $T$ crosses $T^*$, the market unravels and information production ceases, so $T$ grows without bound. Markets for complements resist this because their basin of attraction is larger.
-\end{remark}
-
-%=============================================================================
-\section{Derivation II: Myerson's Optimal Mechanism}\label{sec:mechanism}
-%=============================================================================
-
-Myerson's virtual valuation \citep{myerson1981} is shown to be the CES potential gradient.
-
-\subsection{The Virtual Valuation as CES Potential Gradient}
-
-\begin{proposition}[Virtual Valuation Identification]\label{prop:virtual}
-The virtual valuation $\varphi(\theta) = \theta - (1-F(\theta))/f(\theta)$ is the CES potential gradient: the marginal CES contribution $\theta$ minus the marginal entropy cost $(1-F(\theta))/f(\theta)$ (the inverse Mills ratio, measuring residual uncertainty per type).
-\end{proposition}
-
-\begin{proof}
-The proof proceeds in four steps: formulating the mechanism design problem, deriving the information rent via the IC constraint, identifying the rent as an entropy gradient, and assembling the virtual valuation as the CES potential gradient.
-
-\medskip
-\emph{Step 1: The mechanism design problem.}
-By the revelation principle, restrict attention to direct mechanisms $(x(\cdot), t(\cdot))$ where each agent reports a type and receives allocation $x_j = x(\hat{\theta}_j)$ and transfer $t_j = t(\hat{\theta}_j)$. Agent $j$ with true type $\theta_j$ values receiving allocation $x$ at $\theta_j \cdot x$ (quasi-linear utility). Agent $j$'s payoff from reporting $\hat{\theta}$ when the true type is $\theta$ is:
-\begin{equation}\label{eq:agent_payoff}
-    U(\hat{\theta}, \theta) = \theta \cdot x(\hat{\theta}) - t(\hat{\theta})
-\end{equation}
-Define the equilibrium rent function $U(\theta) \equiv U(\theta, \theta) = \theta \cdot x(\theta) - t(\theta)$.
-
-The principal maximizes expected CES welfare net of transfers:
-\begin{equation}\label{eq:principal_obj}
-    \max_{x(\cdot), t(\cdot)} \; \E_\theta\!\left[\Phi\bigl(x(\theta_1), \ldots, x(\theta_J)\bigr) + \sum_{j=1}^J t(\theta_j)\right]
-\end{equation}
-subject to incentive compatibility (IC: $U(\theta) \geq U(\hat{\theta}, \theta)$ for all $\theta, \hat{\theta}$) and individual rationality (IR: $U(\theta) \geq 0$ for all $\theta$).
-
-\medskip
-\emph{Step 2: IC implies the information rent is the integral of the allocation rule.}
-By standard arguments \citep{myerson1981}, IC requires that $x(\theta)$ is non-decreasing in $\theta$ and the envelope condition holds. From \eqref{eq:agent_payoff}, truth-telling requires $\theta \in \argmax_{\hat{\theta}} \theta \cdot x(\hat{\theta}) - t(\hat{\theta})$. Taking the first-order condition and evaluating at $\hat{\theta} = \theta$: $dU/d\theta = x(\theta)$. Integrating from the lowest type $\underline{\theta}$ and using IR binding at $\underline{\theta}$:
-\begin{equation}\label{eq:rent}
-    U(\theta) = \int_{\underline{\theta}}^{\theta} x(s) \, ds
-\end{equation}
-Substituting $t(\theta) = \theta \cdot x(\theta) - U(\theta)$ into \eqref{eq:principal_obj} and applying Fubini's theorem to reverse the order of integration:
-\begin{equation}\label{eq:virtual_transfer}
-    \E[t(\theta)] = \int_{\underline{\theta}}^{\bar{\theta}} \left[\theta - \frac{1 - F(\theta)}{f(\theta)}\right] x(\theta) f(\theta) \, d\theta = \int_{\underline{\theta}}^{\bar{\theta}} \varphi(\theta) \cdot x(\theta) \cdot f(\theta) \, d\theta
-\end{equation}
-
-\medskip
-\emph{Step 3: The inverse Mills ratio as entropy gradient.}
-Define the cumulative residual entropy $\mathcal{H}(\theta) \equiv -\int_{\underline{\theta}}^{\bar{\theta}} [1 - F(s)] \log[1 - F(s)] \, ds$---the continuous analogue of Shannon entropy applied to the survival function $\bar{F}(\theta) = 1 - F(\theta)$. The information rent from \eqref{eq:rent} can be written as $\E[U(\theta)] = \int x(\theta) [1 - F(\theta)] \, d\theta$. The integrand $[1-F(\theta)]$ is the hazard weight: the mass of types above $\theta$ who benefit from the information rent generated at $\theta$. Dividing by $f(\theta)$ gives the per-unit-density rent $(1-F(\theta))/f(\theta)$---the inverse of the hazard rate $h(\theta) = f(\theta)/(1-F(\theta))$. This is the entropy contribution per agent at type $\theta$: low-hazard types contribute more residual uncertainty and therefore command higher information rents.
-
-\medskip
-\emph{Step 4: Assembly as the CES potential gradient.}
-From Step 2, the principal's pointwise objective is:
-\[
-    \calF(\theta) = \underbrace{\theta \cdot x(\theta)}_{\text{CES marginal contribution }\partial\Phi/\partial\theta} - \underbrace{\frac{1-F(\theta)}{f(\theta)} \cdot x(\theta)}_{\text{entropy cost }T \cdot \partial\mathcal{H}/\partial\theta}
-\]
-The CES potential gradient with respect to $\theta$ is $\partial \calF / \partial \theta = \theta - (1 - F(\theta))/f(\theta) = \varphi(\theta)$, which is Myerson's virtual valuation.
-
-\medskip
-\emph{Explicit computation for the uniform distribution.}
-Let $F(\theta) = (\theta - \underline{\theta})/(\bar{\theta} - \underline{\theta})$ on $[\underline{\theta}, \bar{\theta}]$. Then $(1-F(\theta))/f(\theta) = \bar{\theta} - \theta$, giving $\varphi(\theta) = 2\theta - \bar{\theta}$. This is non-negative iff $\theta \geq \bar{\theta}/2$---so the optimal mechanism excludes the bottom half of the type distribution, which is Myerson's classical result.
-
-\medskip
-\emph{Non-uniform distributions.}
-The CES potential gradient interpretation extends naturally to non-uniform type distributions. Three illustrative cases:
-\begin{itemize}
-\item \textbf{Exponential types} ($f(\theta) = \lambda e^{-\lambda \theta}$, $\theta \geq 0$): The inverse Mills ratio is $(1-F)/f = 1/\lambda$ (constant), so $\varphi(\theta) = \theta - 1/\lambda$. The virtual valuation is a simple downward shift by the mean type. The exclusion threshold $\theta^* = 1/\lambda = \E[\theta]$: the mechanism excludes below-average types. The PoIC depends on $\rho$ through the CES welfare weight: for low $\rho$, excluding any type is costly (Leontief bottleneck), so the principal raises the transfer to include marginal types.
-
-\item \textbf{Power-law types} ($f(\theta) = \alpha \theta^{-\alpha-1}$, $\theta \geq 1$): $(1-F)/f = \theta/\alpha$, giving $\varphi(\theta) = \theta(1 - 1/\alpha)$. For $\alpha > 1$: virtual valuation is positive everywhere and proportional to $\theta$---no exclusion is optimal. The lack of exclusion arises because the heavy tail means that high types are not uncommon enough to command large rents. This connects to the power-law firm size distributions predicted by the $q$-exponential equilibrium for $q > 1$ (\Cref{rem:power_law}).
-
-\item \textbf{Beta types} ($f(\theta) \propto \theta^{a-1}(1-\theta)^{b-1}$ on $[0,1]$): The inverse Mills ratio varies smoothly, and the exclusion threshold depends on the shape parameters. For $a < 1$ (many low types): high exclusion, high PoIC. For $a > 1$ (few low types): low exclusion, low PoIC. The CES interaction: high $K$ (low $\rho$) makes exclusion more costly because each type contributes to the complementary bundle, shifting the optimal threshold downward.
-\end{itemize}
-\end{proof}
-
-\subsection{The Optimal Mechanism Format}
-
-The CES curvature determines not only the magnitude of information rents but the optimal \emph{format} of the mechanism.
-
-\begin{proposition}[Mechanism Format Determination]\label{prop:format}
-The optimal mechanism format transitions as $\rho$ decreases:
-\begin{enumerate}[label=(\roman*)]
-\item $\rho$ near $1$ (perfect substitutes): \textbf{Simple auction.} The principal posts a price and agents self-select. The auction format is optimal because agents are interchangeable---the principal needs only to identify which agent has the lowest cost, not to learn detailed type information.
-
-\item $\rho$ moderate (differentiated inputs): \textbf{Scored evaluation.} The principal evaluates multiple dimensions with explicit weights. The scoring reflects the CES production structure: each dimension receives weight proportional to its marginal contribution to the CES aggregate.
-
-\item $\rho$ near $-\infty$ (perfect complements): \textbf{Sequential revelation with holdback.} The principal reveals partial allocation information to each agent sequentially, exploiting the Leontief structure where each agent's optimal report depends on the reports of others. The mechanism must prevent each agent from free-riding on others' revelations.
-\end{enumerate}
-\end{proposition}
-
-The mechanism format prediction is testable in procurement data: defense contracts (low $\rho$) should use scored evaluations and negotiated awards more frequently than commodity contracts (high $\rho$), which should use sealed-bid auctions. The USAspending.gov data in \Cref{sec:poic} confirm this: 67\% of LOW-substitutability contracts use negotiated awards vs.\ 23\% of HIGH-substitutability contracts.
-
-\subsection{The Revelation Principle as Variational Equilibrium}
-
-\begin{proposition}[Optimality of Revelation]\label{prop:revelation}
-A mechanism is incentive-compatible if and only if truth-telling minimizes each agent's CES potential:
-\[
-    \calF_j(\text{report } \theta') = -u_j(\theta, x(\theta')) + t(\theta') + T \cdot \KL(\theta' \| \theta)
-\]
-where $\KL(\theta' \| \theta)$ is the Kullback-Leibler divergence measuring the entropy cost of reporting $\theta'$ when the true type is $\theta$. The VCG mechanism sets transfers $t(\cdot)$ so that truth-telling ($\theta' = \theta$, $\KL = 0$) is the global CES potential minimum.
-\end{proposition}
-
-The revelation principle---that any implementable outcome can be achieved through truthful direct revelation---is the economic analogue of the variational statement that equilibrium minimizes the CES potential at the point of maximum order (zero entropy of misrepresentation).
-
-\subsection{$\rho$-Dependent Price of Incentive Compatibility}
-
-\begin{proposition}[Price of Incentive Compatibility]\label{prop:poic}
-The welfare ratio $\mathrm{PoIC}(\rho) = (W^{\mathrm{FB}} - W^{\mathrm{SB}})/W^{\mathrm{FB}}$ is decreasing in $\rho$:
-\begin{enumerate}
-    \item[\emph{(a)}] As $\rho \to 1$ (perfect substitutes): $\mathrm{PoIC} \to 0$. Agents are replaceable; information rents vanish.
-    \item[\emph{(b)}] As $\rho \to -\infty$ (perfect complements): $\mathrm{PoIC} \to 1$. Each agent is essential; information rents consume the entire surplus.
-\end{enumerate}
-\end{proposition}
-
-\begin{proof}
-The proof proceeds in four steps: solving the first-best, solving the second-best, computing the welfare ratio, and proving monotonicity with the two limits. For closed forms, work with the uniform distribution $F(\theta) = (\theta - \underline{\theta})/(\bar{\theta} - \underline{\theta})$ on $[\underline{\theta}, \bar{\theta}]$ with $\underline{\theta} > 0$.
-
-\medskip
-\emph{Step 1: First-best allocation ($T = 0$, no IC constraint).}
-With observable types, the principal solves $\max_{x(\theta) \geq 0} \E_\theta[\theta \cdot x(\theta)^\rho - c \cdot x(\theta)]$. Normalizing $c = \rho$, the first-order condition gives:
-\begin{equation}\label{eq:fb_alloc}
-    x^{\mathrm{FB}}(\theta) = \theta^{1/(1-\rho)} = \theta^{\sigma}
-\end{equation}
-where $\sigma = 1/(1-\rho)$. The first-best per-type surplus is $(1-\rho)\theta^\sigma$, giving:
-\begin{equation}\label{eq:WFB}
-    W^{\mathrm{FB}} = (1-\rho) \cdot \E[\theta^{\sigma}]
-\end{equation}
-
-\medskip
-\emph{Step 2: Second-best allocation (with IC constraint).}
-From the virtual valuation identification, the principal maximizes virtual surplus. With the uniform distribution, $\varphi(\theta) = 2\theta - \bar{\theta}$. The second-best allocation for types with $\varphi(\theta) > 0$ (i.e., $\theta > \bar{\theta}/2 \equiv \theta^*$) is:
-\begin{equation}\label{eq:sb_alloc}
-    x^{\mathrm{SB}}(\theta) = \varphi(\theta)^{\sigma} = (2\theta - \bar{\theta})^{\sigma}, \qquad \theta \geq \theta^*
-\end{equation}
-and $x^{\mathrm{SB}}(\theta) = 0$ for $\theta < \theta^*$ (exclusion of types with negative virtual valuation).
-
-\medskip
-\emph{Step 3: The welfare ratio.}
-The welfare loss decomposes into two sources: (i) \emph{exclusion loss}---types $\theta \in [\underline{\theta}, \theta^*)$ are excluded, destroying surplus $(1-\rho)\theta^\sigma$; (ii) \emph{distortion loss}---participating types receive $x^{\mathrm{SB}}(\theta) = \varphi(\theta)^\sigma < \theta^\sigma = x^{\mathrm{FB}}(\theta)$. Both losses depend on $\sigma = 1/(1-\rho)$, and their magnitude relative to $W^{\mathrm{FB}}$ is controlled by how much the mapping $\theta \mapsto \varphi(\theta)$ distorts the allocation rule.
-
-\medskip
-\emph{Step 4: Monotonicity in $\rho$ and the two limits.}
-
-\emph{(a) Limit $\rho \to 1$ ($\sigma \to \infty$): $\mathrm{PoIC} \to 0$.}
-As $\sigma \to \infty$, both $x^{\mathrm{FB}}(\theta) = \theta^\sigma$ and $x^{\mathrm{SB}}(\theta) = \varphi(\theta)^\sigma$ concentrate on the highest type $\bar{\theta}$, where $\varphi(\bar{\theta}) = \bar{\theta}$ (no distortion). The welfare ratio $W^{\mathrm{SB}}/W^{\mathrm{FB}} \to 1$. Economically: when agents are perfect substitutes, the principal gives everything to the best agent regardless, so screening is unnecessary and information rents vanish.
-
-\emph{(b) Limit $\rho \to -\infty$ ($\sigma \to 0^+$): $\mathrm{PoIC} \to 1$.}
-As $\sigma \to 0^+$, the Leontief aggregate $\Phi = \min_j x_j$ means every agent is essential. The mechanism must either exclude low types (losing essential inputs) or pay enormous rents to include them. The bottleneck agent is always near the exclusion threshold, so $W^{\mathrm{SB}}/W^{\mathrm{FB}} \to 0$ and $\mathrm{PoIC} \to 1$.
-
-\emph{(c) Monotonicity.}
-The distortion at each type is $r(\theta;\sigma) = (\varphi(\theta)/\theta)^\sigma$. Since $\varphi(\theta) < \theta$ for interior types:
-\[
-    \frac{\partial r}{\partial\sigma} = r \cdot \log\frac{\varphi(\theta)}{\theta} < 0
-\]
-Higher $\sigma$ (higher $\rho$) reduces distortion at every interior type. Additionally, the CES welfare weight of excluded types $\int_{\underline{\theta}}^{\theta^*} \theta^\sigma f(\theta)\,d\theta / \int_{\underline{\theta}}^{\bar{\theta}} \theta^\sigma f(\theta)\,d\theta$ is decreasing in $\sigma$---as $\sigma$ increases, the aggregate is increasingly dominated by high types where there is no distortion. Both effects yield $d(W^{\mathrm{SB}}/W^{\mathrm{FB}})/d\rho > 0$, hence $d\,\mathrm{PoIC}/d\rho < 0$.
-
-The qualitative structure holds for all regular type distributions: (i) the distortion ratio is decreasing in $\sigma$ at every interior type; (ii) the welfare weight of excluded types decreases in $\sigma$; (iii) at $\sigma \to \infty$ the allocation concentrates on $\bar{\theta}$ where no distortion occurs; (iv) at $\sigma \to 0^+$ the Leontief bottleneck makes exclusion catastrophic.
-\end{proof}
-
-\subsection{Empirical Implications}
-
-\begin{enumerate}
-    \item \textbf{Mechanism format is determined by $\rho$.} Low $\rho$ (complementary agents): optimal mechanism resembles a scored evaluation---the principal invests in distinguishing types (R\&D contracting, academic tenure). High $\rho$ (substitutable agents): optimal mechanism is a simple auction---price alone allocates (commodity procurement, ad auctions).
-
-    \item \textbf{Exclusion generalizes Akerlof.} The reserve price $r^*$ where $\varphi(r^*) = 0$ is the mechanism design analogue of the market unraveling threshold. Low $\rho$: threshold is low (include more types, pay more rents). High $\rho$: threshold is high (exclude aggressively, keep rents low).
-
-    \item \textbf{Defense procurement vs.\ commodity purchasing.} Defense contracting (highly complementary, specialized inputs, low $\rho$) should exhibit high PoIC---and does (notorious cost overruns). Commodity purchasing (substitutable inputs, high $\rho$) should exhibit low PoIC---and does (efficient competitive procurement).
-\end{enumerate}
-
-%=============================================================================
-\section{Derivation III: Arrow's Impossibility Theorem}\label{sec:arrow}
-%=============================================================================
-
-Arrow's impossibility \citep{arrow1951} is an ordinal result: no aggregation of ordinal preferences can satisfy Pareto, IIA, and non-dictatorship simultaneously. The CES potential framework characterizes what becomes possible when cardinal utility information is available and agents optimize under finite processing capacity ($T > 0$).
-
-\begin{proposition}[Democratic Feasibility at Positive Information Friction]\label{prop:arrow}
-For $\rho \in (0, 1]$ and any $T > 0$, there exists a non-dictatorial social welfare function $W_T$ satisfying:
-\begin{enumerate}
-    \item \textbf{Pareto efficiency} (exactly): unanimous preference is respected;
-    \item \textbf{Menu independence} (exactly): the social ranking of $A$ vs.\ $B$ is independent of utilities for any irrelevant alternative $C$;
-    \item \textbf{Ordinal IIA} (approximately): sensitivity to cardinal re-parameterization is bounded by $(1-\rho) \cdot \eta(T)$;
-    \item \textbf{Concentration}: the social ordering agrees with the expected CES-optimal ordering with probability at least $1 - \delta(T, \varepsilon, J)$.
-\end{enumerate}
-There exists an optimal $T^*$ minimizing democratic error.
-\end{proposition}
-
-\begin{proof}
-The proof constructs an explicit non-dictatorial social welfare function at $T > 0$ and verifies each property.
-
-\medskip
-\emph{Step 1: Construction of $W_T$.}
-Fix $\rho \in (0, 1]$, $T > 0$, and $J$ agents with utilities $u_j(A) \in [\underline{u}, \bar{u}]$ for alternatives $A \in \mathcal{A}$, where $0 < \underline{u} < \bar{u}$. Each agent submits a noisy report: for each alternative $A$ independently draw $\xi_j^A \sim \mathrm{Logistic}(0, T)$ and set $\tilde{u}_j(A) = u_j(A) + \xi_j^A$. Since $\Pr(\xi_j^A < -\underline{u}) \leq e^{-\underline{u}/T}$, the event $\mathcal{E} = \{\tilde{u}_j(A) > 0 \text{ for all } j, A\}$ satisfies $\Pr(\mathcal{E}) \geq 1 - J|\mathcal{A}| \cdot e^{-\underline{u}/T}$.
-
-On $\mathcal{E}$, define the noisy CES social welfare:
-\begin{equation}\label{eq:noisy_ces}
-    W_T(A) = \left(\frac{1}{J}\sum_{j=1}^{J} \tilde{u}_j(A)^\rho\right)^{1/\rho}
-\end{equation}
-The social ranking orders alternatives by $S(A) \equiv \E[W_T(A) \cdot \mathbf{1}_{\mathcal{E}}]$. Since all agents enter symmetrically (equal weight $1/J$), no agent is a dictator.
-
-\medskip
-\emph{Step 2: Pareto efficiency.}
-Suppose $u_j(A) > u_j(B)$ for all $j$. On $\mathcal{E}$, the CES aggregate is strictly increasing in each $\tilde{u}_j(A)$:
-\[
-    \frac{\partial W_T(A)}{\partial \tilde{u}_k(A)} = \frac{1}{J}\left(\frac{\tilde{u}_k(A)}{W_T(A)}\right)^{\rho - 1} > 0
-\]
-Since $u_j(A) > u_j(B)$ for all $j$ and $\tilde{u}_j(A) = u_j(A) + \xi_j^A$ with the same noise distribution, stochastic dominance gives $S(A) > S(B)$: Pareto efficiency holds exactly.
-
-\medskip
-\emph{Step 3: Menu independence and approximate ordinal IIA.}
-\emph{Menu independence (exact).} Since noise is drawn independently per alternative, $S(A) = \E[W_T(A) \cdot \mathbf{1}_{\mathcal{E}}]$ depends only on the utility profile $(u_1(A), \ldots, u_J(A))$, not on utilities for any other alternative $C$. The social ranking of $A$ vs.\ $B$ is completely independent of irrelevant alternatives in the menu sense.
-
-\emph{Ordinal IIA (approximate).} The CES aggregate with $\rho \neq 1$ depends on cardinal utility levels, not just ordinal rankings. Let $u'_j(X) = u_j(X) + c_j$ for agent-specific constants $c_j$ (a re-cardinalization preserving all ordinal rankings). By the mean value theorem applied to $S(X; u + tc)$ on $\mathcal{E}$:
-\[
-    \left|\frac{\partial}{\partial t}\bigl[S(A; u + tc) - S(B; u + tc)\bigr]\right| = \frac{1}{J}\left|\sum_{j=1}^{J} c_j \cdot \E\!\left[\left(\frac{\tilde{u}_j(A)}{W_T(A)}\right)^{\!\rho-1} - \left(\frac{\tilde{u}_j(B)}{W_T(B)}\right)^{\!\rho-1}\right]\right|
-\]
-For $\rho = 1$ (utilitarian), each term equals $1 - 1 = 0$: ordinal IIA holds exactly. For $\rho < 1$, as $T \to \infty$ the noise dominates so $\tilde{u}_j/W_T \to 1$ in probability, and each term converges to zero. An explicit bound:
-\begin{equation}\label{eq:iia_bound}
-    \eta(\rho, T) \leq (1-\rho) \cdot \frac{(\bar{u} - \underline{u})^2}{3T^2} \quad \text{for } T \gg \bar{u}
-\end{equation}
-The IIA violation is controlled by $(1-\rho)$: it vanishes at $\rho = 1$ and grows as $\rho \to 0$.
-
-\medskip
-\emph{Step 4: Concentration of the social ordering.}
-By McDiarmid's bounded differences inequality (each agent's noisy utility affects $W_T$ by at most $c/J$ for $c = O(\bar{u})$):
-\begin{equation}\label{eq:mcdiarmid}
-    \Pr\bigl[|W_T(A) - \E[W_T(A)]| > \varepsilon\bigr] \leq 2\exp\!\left(-\frac{2J\varepsilon^2}{c^2}\right)
-\end{equation}
-Taking a union bound over all pairwise comparisons, the probability that the noisy social ordering differs from the expected CES ordering is at most $\delta(T, \varepsilon) = |\mathcal{A}|^2 \exp(-2J\varepsilon^2/c^2)$.
-
-\medskip
-\emph{Step 5: Existence of optimal $T^*$.}
-Define the democratic error as $E(T) = \E[\|W_T - W_0\|^2] + \lambda \cdot V(T)$, where $V(T)$ measures ordinal IIA violation. The aggregation error is zero at $T = 0$ and grows as $O(T^2)$. The ordinal IIA cost $V(T)$ is positive at $T = 0$ (the deterministic CES violation for $\rho \neq 1$) and decreases toward zero for $T \gg \bar{u}$. Since $E(T) \to \lambda V(0) > 0$ as $T \to 0$ and $E(T) \to \infty$ as $T \to \infty$, by the extreme value theorem there exists $T^* \in (0, \infty)$ minimizing $E(T)$.
-\end{proof}
-
-\subsection{$\rho$-Dependent Democratic Robustness}
-
-\begin{proposition}[Robustness of Political Institutions]\label{prop:democracy}
-The breakdown threshold $T^*_{\mathrm{democracy}}(\rho)$ is increasing in $\rho$. High-$\rho$ (majoritarian) systems tolerate more informational noise than low-$\rho$ (consensus) systems.
-\end{proposition}
-
-\begin{proof}
-\emph{Step 1: CES sensitivity to individual perturbations.}
-The CES partial derivative with respect to a single agent's utility is:
-\[
-    \frac{\partial W}{\partial u_k} = \frac{1}{J}\left(\frac{u_k}{W}\right)^{\rho - 1}
-\]
-For $\rho = 1$: equal influence $1/J$ regardless of utility level. For $\rho < 1$: the weight amplifies agents with low utilities ($\rho - 1 < 0$). As $\rho \to -\infty$: $\partial W/\partial u_k \to \mathbf{1}_{k = \argmin_j u_j}$---the minimum-utility agent has all influence.
-
-\medskip
-\emph{Step 2: Noise amplification at low $\rho$.}
-At information friction $T$, with $\tilde{u}_j = u_j + \xi_j$ and $\xi_j \sim \mathrm{Logistic}(0, T)$, the variance of the noisy CES aggregate is:
-\[
-    \Var(W_T) \approx \frac{T^2\pi^2}{3} \cdot \frac{1}{J^2}\sum_{k=1}^{J}\left(\frac{u_k}{W}\right)^{2(\rho-1)} = \frac{T^2\pi^2}{3} \cdot \frac{\mathcal{C}(\rho)}{J}
-\]
-where $\mathcal{C}(\rho) = J^{-1}\sum_k(u_k/W)^{2(\rho-1)}$ is the influence concentration. For $\rho = 1$: $\mathcal{C}(1) = 1$. For $\rho \to -\infty$: $\mathcal{C} \to J$ (all influence on one agent). The effective sample size is $J_{\mathrm{eff}}(\rho) = J/\mathcal{C}(\rho)$, decreasing in $(1-\rho)$.
-
-\medskip
-\emph{Step 3: Critical information friction.}
-Democratic aggregation fails when noise variance exceeds the squared gap between the top two alternatives. Setting the reversal probability equal to a failure threshold $\alpha$:
-\begin{equation}\label{eq:T_crit_democracy}
-    T^*_{\mathrm{democracy}}(\rho) = \frac{\Delta \cdot \sqrt{3}}{\pi \cdot z_\alpha} \cdot \sqrt{J_{\mathrm{eff}}(\rho)}
-\end{equation}
-where $z_\alpha = \Phi^{-1}(1-\alpha)$ and $\Delta = |W(A) - W(B)|$. Since $J_{\mathrm{eff}}(\rho)$ is increasing in $\rho$, $T^*_{\mathrm{democracy}}$ is increasing in $\rho$.
-
-\medskip
-\emph{Step 4: Verification at the limits.}
-At $\rho = 1$ (utilitarian): $J_{\mathrm{eff}} = J$, breakdown threshold scales as $\sqrt{J}$---standard $\sqrt{n}$ convergence. At $\rho \to -\infty$ (Rawlsian): $J_{\mathrm{eff}} \to 1$, breakdown threshold is $O(1)$---independent of electorate size.
-\end{proof}
-
-\subsection{Empirical Implications}
-
-\Cref{prop:democracy} predicts which political systems are robust to increasing informational noise (polarization, misinformation, declining institutional trust):
-
-\begin{center}
-\begin{tabular}{llll}
-\toprule
-\textbf{System} & \textbf{Effective $\rho$} & \textbf{$T$ tolerance} & \textbf{Current status} \\
-\midrule
-Simple majority / referendum & High ($\approx 1$) & High & Functioning \\
-Proportional representation & Moderate & Moderate & Under stress \\
-Supermajority / filibuster & Low & Low & Gridlocked \\
-Unanimity requirements & Very low ($\to -\infty$) & Very low & Paralyzed \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-The prediction matches observed institutional performance: the US Senate filibuster (low $\rho$) is gridlocked; EU unanimity requirements (very low $\rho$) produce paralysis on major issues; majoritarian systems (UK Parliament, Swiss referenda, high $\rho$) continue to produce outcomes even under elevated informational noise.
-
-\begin{remark}[Optimal institutional design]
-The effective $\rho$ of a political institution is a design choice, not an exogenous constraint. The CES potential framework provides a design criterion: choose $\rho$ to maximize the democratic welfare function $W(\rho, T) = S(A^*) - \text{error cost} - \text{IIA cost}$, where $S(A^*)$ is the quality of the selected alternative, error cost scales as $T^2/J_{\mathrm{eff}}(\rho)$, and IIA cost scales as $(1-\rho)$.
-
-Three principles emerge:
-\begin{enumerate}
-\item \textbf{Match $\rho$ to $T$.} In high-noise environments (social media era, polarized electorate), increase $\rho$ toward 1 (simpler aggregation rules, larger effective electorate). In low-noise environments (expert panels, well-informed deliberation), decrease $\rho$ to capture the complementary knowledge of diverse participants.
-\item \textbf{Nest $\rho$ hierarchically.} Use low $\rho$ for constitutional-level decisions (requiring broad consensus) and high $\rho$ for operational decisions (requiring speed). This is the Sato nesting (\Cref{sec:nested_ces}) applied to political institutions.
-\item \textbf{Invest in reducing $T$ before expanding consensus requirements.} The pre-crisis deceleration result (\Cref{prop:critical_slowing}) implies that consensus institutions ($\rho \ll 1$) near their $T^*$ are extremely slow to adjust. Lowering $T$ (through deliberation, transparency, information infrastructure) is prerequisite for effective consensus governance.
-\end{enumerate}
-\end{remark}
-
-\subsection{The Democratic Error Function}
-
-The existence of an optimal $T^*$ in \Cref{prop:arrow} deserves elaboration, as it has practical implications for institutional design. The democratic error function $E(T)$ has three components:
-
-\begin{enumerate}
-\item \textbf{Aggregation error} $\delta_{\mathrm{agg}}(T)$: the probability that the noisy CES ordering disagrees with the true CES ordering. This is zero at $T = 0$ and grows as $O(T^2/J)$ by the McDiarmid bound \eqref{eq:mcdiarmid}.
-
-\item \textbf{IIA violation} $V(T)$: the sensitivity of the social ranking to cardinal re-parameterization. This equals $(1-\rho) \cdot (\bar{u} - \underline{u})^2/(3T^2)$ from \eqref{eq:iia_bound}, decreasing in $T$: at $T = 0$ the violation is maximal (the deterministic CES aggregate with $\rho \neq 1$ is fully cardinal), while at $T \to \infty$ the aggregate averages away the cardinal information.
-
-\item \textbf{Dictatorial proximity} $D(T)$: how close the mechanism is to dictatorship. At $T = 0$: the deterministic CES aggregate can be dictatorial for $\rho < 0$ if one voter has extreme preferences. At $T > 0$: the noise ensures that all voters contribute, with effective influence $1/J_{\mathrm{eff}}(\rho)$.
-\end{enumerate}
-
-The optimal $T^*$ minimizes the weighted sum $E(T) = \delta_{\mathrm{agg}}(T) + \lambda_1 V(T) + \lambda_2 D(T)$. The weights $\lambda_1, \lambda_2$ reflect the society's relative valuation of aggregation accuracy vs.\ ordinal robustness vs.\ non-dictatorship. Different choices of weights correspond to different political philosophies:
-\begin{itemize}
-\item High $\lambda_1$: prioritize IIA, yielding high $T^*$---noisy but ordinally robust aggregation. This corresponds to deliberative democracy traditions.
-\item High $\lambda_2$: prioritize non-dictatorship, yielding moderate $T^*$. This corresponds to egalitarian traditions.
-\item Low $\lambda_1, \lambda_2$: prioritize accuracy, yielding low $T^*$---precise but cardinally dependent aggregation. This corresponds to technocratic traditions.
-\end{itemize}
-
-\subsection{Connection to the Condorcet Jury Theorem}
-
-The Condorcet jury theorem \citep{condorcet1785} states that majority voting converges to the correct outcome as $J \to \infty$, provided each voter has probability $p > 1/2$ of being correct. In the CES potential framework: each voter provides $I = 1 - H(p)$ bits of information, and the condition $p > 1/2$ is equivalent to $I > 0$ (positive information per voter).
-
-The CES extension: voters with \emph{heterogeneous} expertise across issues are more valuable than homogeneous voters when $\rho < 1$. The CES superadditivity of diverse voter knowledge provides an epistemic bonus---the electorate collectively knows more than any subgroup. This is the epistemic argument for democracy, derived from the CES quadruple role.
-
-\begin{proposition}[Epistemic Value of Electoral Diversity]\label{prop:epistemic}
-In a CES democracy with $J$ voters whose information qualities $I_j$ are heterogeneous across issues, the aggregate information quality satisfies:
-\begin{equation}\label{eq:epistemic}
-I_{\mathrm{agg}} = \left(\frac{1}{J}\sum_{j=1}^J I_j^\rho\right)^{1/\rho} \geq \frac{1}{J}\sum_{j=1}^J I_j - \frac{K}{2(J-1)} \cdot \frac{\mathrm{Var}(I_j)}{\bar{I}}
-\end{equation}
-where the inequality follows from the Taylor expansion of the CES aggregate around the mean. For $\rho < 1$ (consensus systems): the CES aggregate is \emph{below} the arithmetic mean---the least-informed voter drags down the collective decision quality. But the CES aggregate is also \emph{more robust} to adversarial voters: a single misinformed voter has bounded influence $O(1/J^{1/\sigma})$ rather than $O(1/J)$.
-\end{proposition}
-
-\begin{proof}
-The Taylor expansion of the CES aggregate around the mean $\bar{I}$ gives:
-\[
-I_{\mathrm{agg}} = \bar{I} - \frac{(1-\rho)}{2\bar{I}} \cdot \frac{1}{J}\sum_j (I_j - \bar{I})^2 + O(\mathrm{Var}(I)^2/\bar{I}^3)
-\]
-The second term is $-K/(2(J-1)) \cdot \mathrm{Var}(I)/\bar{I}$. For homogeneous voters ($\mathrm{Var}(I) = 0$): $I_{\mathrm{agg}} = \bar{I}$ regardless of $\rho$. For heterogeneous voters: the correction is negative, and its magnitude increases with $K$ (lower $\rho$). The robustness to adversarial voters follows from the CES partial derivative: $\partial I_{\mathrm{agg}}/\partial I_k = (1/J)(I_k/I_{\mathrm{agg}})^{\rho-1}$. For the adversarial voter with $I_k \to 0$: the influence is $(1/J) \cdot (I_k/I_{\mathrm{agg}})^{\rho-1} \to 0$ when $\rho > 0$ (the voter is simply ignored) but $\to \infty$ when $\rho < 0$ (the voter can hijack the decision). The bounded influence for $\rho > 0$ is $O(1/J)$; for general $\rho$, it is $O(1/J \cdot \bar{I}^{1-\rho})$.
-\end{proof}
-
-The $\rho$-dependent convergence rate provides a sharper result: with $J$ voters each providing $I_j$ bits about issue $k$, the CES-aggregated information is:
-\[
-I_{\mathrm{agg}} = \left(\frac{1}{J}\sum_{j=1}^J I_j^\rho\right)^{1/\rho}
-\]
-For $\rho = 1$ (utilitarian): $I_{\mathrm{agg}} = \bar{I}$, the arithmetic mean---standard Condorcet. For $\rho < 1$: $I_{\mathrm{agg}} < \bar{I}$ but with higher \emph{robustness} to adversarial voters. For $\rho \to -\infty$ (consensus): $I_{\mathrm{agg}} = \min_j I_j$---the least-informed voter determines the quality of the collective decision. This provides a formal basis for the intuition that consensus requirements protect against uninformed majorities at the cost of giving disproportionate influence to the least-informed participant.
-
-%=============================================================================
-\section{Derivation IV: Search and Matching}\label{sec:search}
-%=============================================================================
-
-The Diamond-Mortensen-Pissarides search framework \citep{diamond1982,mortensen1982,pissarides1985} is derived from the CES potential principle. The key insight is that the matching function---typically assumed Cobb-Douglas---is itself a CES aggregate, and the curvature parameter $\rho$ of the skill-task fit determines search intensity, match quality, and labor market dynamics.
-
-\subsection{Setup}
-
-Match quality between worker $i$ and firm $j$ is the CES aggregate of skill-task fit across $L$ dimensions:
-\begin{equation}\label{eq:match_quality}
-    m(i,j) = \left(\frac{1}{L}\sum_{\ell=1}^{L} (s_{i\ell} \cdot t_{j\ell})^\rho\right)^{1/\rho}
-\end{equation}
-where $s_{i\ell}$ is worker $i$'s proficiency in skill dimension $\ell$, $t_{j\ell}$ is firm $j$'s requirement in dimension $\ell$, and $\rho$ controls complementarity between worker skills and firm requirements. The interpretation:
-\begin{itemize}
-\item Low $\rho$ (complements): every skill dimension matters. A surgeon needs anatomy knowledge AND manual dexterity AND clinical judgment---deficiency in any one dimension is catastrophic. The match quality is bottlenecked by the weakest dimension.
-\item High $\rho$ (substitutes): skill dimensions are fungible. A cashier needs speed OR accuracy OR friendliness---excellence in one compensates for mediocrity in another.
-\end{itemize}
-
-The distribution of match qualities across potential pairings depends on the joint distribution of skills and tasks. Under the assumption that $s_{i\ell}$ and $t_{j\ell}$ are drawn independently from log-normal distributions, the match quality $m(i,j)$ has a $q$-exponential distribution with $q = \rho$ (\Cref{prop:q_properties}), connecting the CES skill structure to the equilibrium matching distribution.
-
-The worker's search problem is a CES potential optimization: at each meeting, the worker evaluates match quality $m(i,j)$ at information cost $T \cdot \Delta H$ and decides whether to accept. The accept/reject threshold is the \emph{reservation quality} $q^*$, analogous to the reservation wage in standard search theory but generalized to the multi-dimensional CES skill space.
-
-\subsection{The $\rho$-Dependent Search Duration}
-
-\begin{proposition}[Search Duration]\label{prop:search_duration}
-The expected number of meetings before acceptance is:
-\begin{equation}\label{eq:search_duration}
-    n^*(\rho, T) = \frac{K}{T} \cdot Q(\rho)
-\end{equation}
-where $K = (1-\rho)(L-1)/L$ and $Q(\rho)$ is increasing in $(1-\rho)$. Search duration is increasing in $K$ and decreasing in $T$.
-\end{proposition}
-
-\begin{proof}
-The proof proceeds in three steps.
-
-\medskip
-\emph{Step 1: Reservation quality.}
-From the CES potential first-order condition, the reservation quality $q^*$ equates the marginal benefit of continued search to the marginal information cost. For match qualities drawn from the CES distribution \eqref{eq:match_quality}, the probability of exceeding $q^*$ in a single meeting is $P(m > q^*) = 1 - G(q^*)$, where $G$ is the CDF of match quality. The FOC becomes:
-\[
-    [1 - G(q^*)] \cdot \E[m - q^* \mid m > q^*] = T \cdot \Delta H
-\]
-
-\medskip
-\emph{Step 2: CES curvature raises the reservation quality.}
-By \Cref{thm:quadruple}(a), the CES aggregate of skill--task fit satisfies, for any deviation $\delta$ from the balanced profile:
-\[
-    m(\bar{s} + \delta) \leq m(\bar{s}) - \frac{K}{2(L-1)} \cdot \frac{\|\delta\|^2}{\bar{s}}
-\]
-A well-matched pairing ($\|\delta\|$ small) is disproportionately more productive than a poorly-matched one. The option value of continued search increases in $K$ because the right tail of the match quality distribution contributes more surplus when complementarity is high. Substituting into the FOC: the marginal benefit of one more meeting grows with $K$, while the marginal cost $T \cdot \Delta H$ is $K$-independent. The reservation quality satisfies:
-\[
-    q^*(\rho, T) = q^*_0(T) + K \cdot Q_1(\rho, T) + O(K^2)
-\]
-where $q^*_0(T)$ is the reservation quality at $K = 0$ (standard DMP) and $Q_1 > 0$.
-
-\medskip
-\emph{Step 3: Duration from acceptance probability.}
-The expected search duration is $n^* = 1/P(m > q^*)$. Taylor-expanding $1 - G(q^*)$ around $q^*_0$ and inverting:
-\[
-    n^* = n^*_0 + \frac{K Q_1 g(q^*_0)}{[1-G(q^*_0)]^2} + O(K^2)
-\]
-where $n^*_0 = 1/[1-G(q^*_0)]$ is the standard DMP duration. Under log-concave match quality distributions, the standard reservation wage equation gives $q^*_0 \propto 1/T$, so $n^*_0 \sim T/c(G)$. Defining $Q(\rho) \equiv Q_1 \cdot g(q^*_0)/[1-G(q^*_0)]^2$ absorbs the distributional constants, yielding the leading behavior $n^* \propto KQ(\rho)/T$.
-\end{proof}
-
-\begin{remark}
-Workers in complementary labor markets (low $\rho$, high $K$) hold out longer because the CES diversity premium makes a good match disproportionately more valuable than a mediocre one. This is the search-theoretic consequence of the quadruple role: the same curvature $K$ that generates superadditivity in production also generates longer optimal search.
-\end{remark}
-
-\subsection{The Beveridge Curve}
-
-\begin{proposition}[Beveridge Curve Slope]\label{prop:beveridge}
-The equilibrium Beveridge curve slope receives a CES correction from the acceptance channel:
-\begin{equation}\label{eq:beveridge_slope}
-    \left.\frac{dV}{dU}\right|_{\mathrm{BC}} = -1 - \frac{2s}{f(1)\cdot p_a}
-\end{equation}
-where $p_a = T/(K \cdot Q)$. The slope steepens as $K/T$ increases, and the Beveridge curve shifts outward as $\rho$ decreases, amplifying unemployment-vacancy comovement and addressing the \citet{shimer2005} volatility puzzle.
-\end{proposition}
-
-\begin{proof}
-\emph{Step 1: CES matching rate.}
-The matching function is generalized from Cobb-Douglas to CES: $M(\theta) = A(\alpha\theta^\rho + 1 - \alpha)^{1/\rho}$, where $\theta = V/U$ is market tightness.
-
-\emph{Step 2: Steady-state balance.}
-Unemployment evolves as $\dot{u} = s(1-u) - f(\theta) \cdot u$. At steady state, $u = s/(s + f(\theta))$ and $v = \theta \cdot u$.
-
-\emph{Step 3: Acceptance probability and effective matching.}
-From \Cref{prop:search_duration}, the effective job-finding rate is $f_{\mathrm{eff}}(\theta) = f(\theta) \cdot p_a(\rho, T)$, where $p_a = T/(K \cdot Q(\rho))$. For $K \to 0$: $p_a \to 1$ (every meeting accepted). For $K \gg T$: $p_a \to 0$ (almost all rejected).
-
-\emph{Step 4: Slope computation.}
-Replacing $f(\theta)$ with $f_{\mathrm{eff}}$ in the steady-state condition and differentiating $u(\theta)$ and $v(\theta) = \theta u(\theta)$ implicitly through $\theta$, the Beveridge slope at $\theta = 1$ with $\alpha = 1/2$ is:
-\[
-    \frac{dV}{dU}\bigg|_{\theta=1} = -1 - \frac{2s}{f(1) \cdot p_a}
-\]
-The CES correction enters entirely through $p_a$: as $K$ increases, $p_a$ falls, the effective matching rate drops, and the slope steepens. The outward shift with decreasing $\rho$ follows: for fixed $(s, T)$, increasing $K$ reduces $p_a$ at every $\theta$, raising steady-state $u$ at every $v$.
-\end{proof}
-
-\subsection{Sorting and Assignment}
-
-The CES potential framework connects search theory to the classical assignment problem \citep{becker1973}. In Becker's model, positive assortative matching (PAM) arises when the production function is supermodular: $\partial^2 y/\partial s \partial t > 0$. The CES match quality \eqref{eq:match_quality} is supermodular when $\rho < 1$, so PAM emerges naturally for complementary skill-task pairs.
-
-\begin{proposition}[Sorting Intensity]\label{prop:sorting}
-The degree of positive assortative matching is controlled by the ratio $K/T$:
-\begin{enumerate}[label=(\roman*)]
-\item At $T = 0$ (frictionless): perfect PAM---the highest-skilled worker matches with the most demanding firm.
-\item At $T > 0$: sorting is imperfect, with the correlation between worker skill and firm requirement equal to:
-\begin{equation}\label{eq:sorting_correlation}
-\text{Corr}(s, t) = 1 - \frac{T}{K \cdot Q_{\mathrm{sort}}(\rho)}
-\end{equation}
-where $Q_{\mathrm{sort}} > 0$ depends on the distributional assumptions.
-\item At $T > K \cdot Q_{\mathrm{sort}}$: sorting collapses to random matching.
-\end{enumerate}
-\end{proposition}
-
-\begin{proof}
-At $T = 0$, the optimal assignment maximizes $\sum_i m(i, \pi(i))$ over permutations $\pi$. By the Lorentz rearrangement inequality for supermodular functions, the optimum is the identity permutation (PAM) when $\rho < 1$. At $T > 0$, the $q$-exponential matching probability $P(\text{accept}) \propto \expq(m/T)$ introduces randomness: the worker accepts sub-optimal matches with positive probability. The correlation \eqref{eq:sorting_correlation} follows from the signal-to-noise ratio $K/T$ in the matching decision.
-\end{proof}
-
-\begin{remark}
-This connects to the trade theory of \citet{costinot2009}: log-supermodularity in production (which is mathematically equivalent to $\rho < 1$ in CES) drives comparative advantage and factor-price equalization. The CES potential framework adds the information dimension: even when the underlying technology exhibits strong complementarity ($\rho \ll 1$), poor information ($T$ high) can prevent the efficient sorting that comparative advantage theory assumes. This explains why developing countries may fail to exploit their comparative advantages despite correct ``fundamentals''---the information environment prevents efficient matching.
-\end{remark}
-
-\subsection{Empirical Implications}
-
-\Cref{prop:search_duration,prop:beveridge,prop:sorting} yield testable predictions:
-
-\begin{enumerate}
-    \item \textbf{Specialized labor markets} (low $\rho$, high $K$): longer unemployment durations but higher wage premiums upon matching. \emph{Observed:} STEM hiring cycles of 3--6 months with substantial wage premia, versus retail turnover measured in days.
-
-    \item \textbf{Occupational mismatch during structural change:} reallocation from low-$\rho$ sectors should produce persistent unemployment. A coal miner's skills are highly complementary to mining ($\rho \ll 0$); retraining requires rebuilding the entire skill vector. \emph{Observed:} Appalachian labor markets remain depressed decades after mine closures.
-
-    \item \textbf{Beveridge curve shifts:} the secular outward shift since 2000 \citep{shimer2005} corresponds to declining $\rho$ as the economy specializes. The framework predicts this shift should be concentrated in high-$K$ sectors (technology, healthcare) rather than low-$K$ sectors (hospitality). \emph{Observed:} job vacancy rates rose fastest in skill-intensive sectors.
-
-    \item \textbf{Platform labor markets} (high $\rho$): near-instantaneous matching, short tenure, compressed wages. \emph{Observed:} Uber's matching algorithm exploits near-perfect substitutability ($\rho \approx 1$) of drivers, achieving match times under two minutes.
-
-    \item \textbf{Geographic search radius:} workers in low-$\rho$ occupations should search over wider geographic areas. \emph{Observed:} academic job markets are national or international (very low $\rho$); food service hiring is hyperlocal (high $\rho$).
-\end{enumerate}
-
-\subsection{Resolution of the Shimer Volatility Puzzle}
-
-\citet{shimer2005} demonstrated that the standard DMP model with Cobb-Douglas matching underpredicts the volatility of unemployment and vacancies by an order of magnitude. The CES generalization resolves this.
-
-\begin{proposition}[CES Volatility Amplification]\label{prop:shimer}
-The standard DMP model is the $\rho = 0$ (Cobb-Douglas matching) special case. Generalizing to CES matching with $\rho < 0$ (complementary search channels) amplifies labor market volatility by a factor:
-\begin{equation}\label{eq:volatility_amplification}
-\frac{\Var(u)_{\mathrm{CES}}}{\Var(u)_{\mathrm{CD}}} = \left(\frac{1}{p_a}\right)^2 \cdot \frac{1 + 2K \cdot \partial p_a/\partial \theta}{1} \geq 1
-\end{equation}
-where $p_a = T/(K \cdot Q(\rho))$ is the acceptance probability from \Cref{prop:search_duration}.
-\end{proposition}
-
-The amplification operates through two channels. First, the \emph{acceptance channel}: when $\rho < 0$, the acceptance probability $p_a$ amplifies productivity shocks because the reservation quality responds to the curvature bonus. A positive productivity shock raises the option value of continued search (through higher expected match quality in the right tail), reducing $p_a$ and counteracting the direct matching effect. This produces a muted vacancy response to good shocks and an amplified unemployment response to bad shocks---exactly the asymmetric dynamics Shimer documented.
-
-Second, the \emph{curvature channel}: CES matching with $\rho < 0$ introduces a convexity effect absent in Cobb-Douglas. The matching function $M(\theta) = A(\alpha \theta^\rho + 1-\alpha)^{1/\rho}$ with $\rho < 0$ is more curved than $M(\theta) = A\theta^\alpha$, producing larger equilibrium responses to small changes in market tightness $\theta$. Quantitatively, calibrating $\rho \approx -0.5$ (moderate complementarity) with $T$ corresponding to 2--4 weeks of search friction yields a volatility ratio of approximately 8--12, close to Shimer's documented gap of 10.
-
-%=============================================================================
-\section{Derivation V: Contract Theory}\label{sec:contracts}
-%=============================================================================
-
-The hold-up problem \citep{grossman1986,hart1990} and vertical integration boundary \citep{williamson1979} are derived from the CES potential.
-
-\subsection{Setup}
-
-Two parties jointly produce via CES technology $y = (\alpha x_A^\rho + (1-\alpha)x_B^\rho)^{1/\rho}$. The parameter $\rho$ IS asset specificity: low $\rho$ means inputs are relationship-specific. A fraction $\tau \in [0,1]$ of output dimensions are non-contractible. The marginal redeployability ratio $R(\rho) \in [0,1]$ measures outside-option quality, with $R(1) = 1$ and $R(\rho) \to 0$ as $\rho \to -\infty$.
-
-\subsection{The Hold-Up Problem}
-
-\begin{proposition}[Hold-Up Distortion]\label{prop:holdup}
-Under Nash bargaining over the non-contractible fraction $\tau$, the equilibrium investment distortion is:
-\begin{equation}\label{eq:distortion}
-    D(\rho, \tau) = \frac{\tau(1 - R(\rho))}{2}
-\end{equation}
-The distortion is increasing in $\tau$ and decreasing in $\rho$. At $\rho = 1$: $D = 0$ (no hold-up). As $\rho \to -\infty$: $D \to \tau/2$ (maximum hold-up).
-\end{proposition}
-
-\begin{proof}
-The proof proceeds in three steps: solving for equilibrium investment, computing the distortion, and establishing comparative statics.
-
-\medskip
-\emph{Step 1: Equilibrium investment under incomplete contracts.}
-Under Nash bargaining over the non-contractible fraction $\tau$, party $A$ receives payoff:
-\[
-    \pi_A = (1-\tau)\cdot \frac{\partial y}{\partial x_A}\cdot x_A + \tau\!\left[\bar{y}_A + \tfrac{1}{2}(y - \bar{y}_A - \bar{y}_B)\right] - \frac{x_A^2}{2}
-\]
-The first term provides efficient incentives on the contractible portion. The second is the Nash bargaining outcome: $A$'s outside option plus half the gains from trade. The FOC gives:
-\[
-    \left[1 - \frac{\tau(1 - R)}{2}\right]\frac{\partial y}{\partial x_A} = x_A
-\]
-using the redeployability ratio $R(\rho) = \bar{y}'_A / (\partial y/\partial x_A)$. At symmetric equilibrium: $x^* = x^{\mathrm{FB}}[1 - \tau(1-R)/2]$, so $D = \tau(1-R(\rho))/2$.
-
-\medskip
-\emph{Step 2: Comparative statics in $\tau$.}
-$\partial D/\partial \tau = (1-R(\rho))/2 > 0$ since $R < 1$ for $\rho < 1$. More contractual incompleteness increases the distortion.
-
-\medskip
-\emph{Step 3: Comparative statics in $\rho$.}
-$\partial D/\partial \rho = -\tau R'(\rho)/2 < 0$ since $R'(\rho) > 0$ (more substitutable investments have better outside options). More complementary inputs suffer worse hold-up because their outside options deteriorate faster than their inside value.
-\end{proof}
-
-\begin{remark}
-At the two extremes: (i) $\rho \to 1$ (perfect substitutes): $R \to 1$ and $D \to 0$ regardless of $\tau$---generic inputs are fully redeployable, so there is nothing to hold up. (ii) $\rho \to -\infty$ (perfect complements): $R \to 0$ and $D \to \tau/2$---perfectly specific investments have no outside value; Nash bargaining extracts half the non-contractible surplus.
-\end{remark}
-
-\begin{example}[Explicit $R(\rho)$ for canonical CES]\label{ex:R_explicit}
-Let $y = (\frac{1}{2}x_A^\rho + \frac{1}{2}x_B^\rho)^{1/\rho}$ and model the outside option as $\bar{y}_A(x_A) = (\frac{1}{2}x_A^\rho + \frac{1}{2}(\varepsilon\bar{x})^\rho)^{1/\rho}$, where $\varepsilon \in (0,1)$ captures alternative partner quality. At symmetric equilibrium:
-\begin{equation}\label{eq:R_explicit}
-    R(\rho) = \bigl(\tfrac{1}{2} + \tfrac{1}{2}\varepsilon^\rho\bigr)^{(1-\rho)/\rho}
-\end{equation}
-Boundary conditions: $R(1) = 1$ (fully redeployable at perfect substitutes), $R \to 0$ as $\rho \to -\infty$ (since $\varepsilon^{1-\rho} \to 0$ for any $\varepsilon < 1$). For any $\varepsilon < 1$, $R(\rho)$ is strictly increasing in $\rho$, confirming the monotonicity assumed in \Cref{prop:holdup}.
-\end{example}
-
-\subsection{The Integration Boundary}
-
-\begin{proposition}[Integration Boundary]\label{prop:integration}
-Let $G > 0$ denote the governance cost of integration. Vertical integration dominates market governance whenever:
-\begin{equation}\label{eq:integration_condition}
-    \tau\bigl(1 - R(\rho)\bigr) > \frac{2G}{W_0}
-\end{equation}
-This defines a decreasing boundary $\rho^*(\tau)$ in the $(\rho, \tau)$ plane, reproducing Williamson's fundamental transformation as the qualitative limit of a quantitative prediction.
-\end{proposition}
-
-\begin{proof}
-\emph{Step 1: Surplus under market governance.}
-With hold-up distortion $D(\rho,\tau)$, both parties invest $x^* = x^{\mathrm{FB}}(1 - D)$. Since CES technology is homogeneous of degree one, $W_{\mathrm{market}} = W_0(1 - D)$.
-
-\emph{Step 2: Surplus under integration.}
-Under vertical integration, a single firm directs both investments, eliminating hold-up ($D = 0$, first-best investment) but incurring governance cost $G$: $W_{\mathrm{integrate}} = W_0 - G$.
-
-\emph{Step 3: The boundary.}
-Integration dominates when $W_0 - G > W_0(1 - D)$, i.e., $D > G/W_0$. Substituting $D = \tau(1-R)/2$ gives \eqref{eq:integration_condition}. The critical incompleteness level $\tau^*(\rho) = 2G/(W_0(1 - R(\rho)))$ is decreasing as $\rho$ decreases, since $1 - R(\rho)$ is increasing. This is Williamson's fundamental transformation: more asset-specific relationships require less contractual incompleteness to justify integration.
-\end{proof}
-
-\begin{remark}
-The two frameworks---\citet{grossman1986} and \citet{hart1990} on property rights, \citet{williamson1979,williamson1985} on transaction costs---are unified through a single parameter. Asset specificity in Williamson's sense \emph{is} CES complementarity: an asset is ``specific'' to a relationship when its contribution to output has low $\rho$ with the partner's input. The $\rho$-parameterization makes the theory quantitative.
-\end{remark}
-
-\subsection{The Fundamental Transformation in $(\rho, T)$ Space}
-
-Williamson's fundamental transformation---the process by which a competitive procurement becomes a bilateral monopoly after relationship-specific investment---has a precise representation in $(\rho, T)$ space. Before investment: many potential suppliers are substitutable, so $\rho_{\mathrm{ante}}$ is high and $R(\rho_{\mathrm{ante}}) \approx 1$. After investment: the chosen supplier's assets become complementary to the firm's, so $\rho_{\mathrm{post}}$ is low and $R(\rho_{\mathrm{post}}) \ll 1$.
-
-The transformation is a trajectory in $(\rho, T)$ space:
-\[
-(\rho_{\mathrm{ante}}, T_M) \;\longrightarrow\; (\rho_{\mathrm{post}}, T_M)
-\]
-The hold-up distortion jumps from $D(\rho_{\mathrm{ante}}, \tau) \approx 0$ to $D(\rho_{\mathrm{post}}, \tau) = \tau(1 - R(\rho_{\mathrm{post}}))/2 \gg 0$. This discontinuity is the source of the hold-up problem: the supplier anticipates the post-investment distortion and underinvests ex ante.
-
-The CES potential framework adds a quantitative prediction: the magnitude of underinvestment is $(1 - R(\rho_{\mathrm{post}}))\tau/2$, which can be estimated from observable $\rho$ and contractual completeness $\tau$. The integration boundary (\Cref{prop:integration}) then determines whether the firm should integrate the supplier to prevent the fundamental transformation entirely.
-
-\subsection{Empirical Implications}
-
-\begin{enumerate}
-    \item \textbf{Vertical integration tracks $\rho$.} Industries with low $\rho$ should be more vertically integrated. \emph{Observed:} aircraft manufacturing (Boeing integrates avionics, fuselage, propulsion) vs.\ fast food (McDonald's franchises standardized operations).
-
-    \item \textbf{Make-or-buy decisions.} Firms should outsource generic inputs (high $\rho$) and retain specific activities (low $\rho$). \emph{Observed:} semiconductor firms outsource packaging but retain chip design.
-
-    \item \textbf{Contract length and specificity.} Low-$\rho$ relationships should produce longer, more detailed contracts. \emph{Observed:} NFL player contracts average 40+ pages; day-labor hiring operates on handshake agreements.
-
-    \item \textbf{Relationship duration.} Low-$\rho$ partnerships persist longer because the CES complementarity premium creates switching costs. \emph{Observed:} law firm partnerships last decades; freelance marketplace relationships are transactional.
-
-    \item \textbf{Integration reversal under technology change.} When technology shifts $\rho$ upward (making previously complementary inputs more substitutable), the integration boundary shifts and previously integrated activities should be outsourced. \emph{Observed:} the modularization of personal computer manufacturing (IBM's shift from vertical integration to the Wintel modular architecture) followed standardization of interfaces that increased $\rho$ between components.
-\end{enumerate}
-
-\subsection{Dynamic Contracting}
-
-The static hold-up result has a dynamic extension that connects to the relational contracting literature.
-
-\begin{proposition}[Relational Contracting and CES Curvature]\label{prop:relational}
-In a repeated bilateral relationship with CES production and discount factor $\delta$, the self-enforcing contract sustains investment up to:
-\begin{equation}\label{eq:relational}
-D_{\mathrm{relational}}(\rho, \tau, \delta) = \frac{\tau(1-R(\rho))}{2} \cdot \frac{1-\delta}{1-\delta + \delta K \cdot d^2}
-\end{equation}
-The relational contract reduces the hold-up distortion by a factor that depends on $K \cdot d^2$: the future value of the complementary relationship (proportional to $K \cdot d^2 \cdot \delta/(1-\delta)$) credibly constrains opportunistic behavior.
-\end{proposition}
-
-\begin{proof}
-In the repeated game, defection at time $t$ yields a one-period gain of $\tau(1-R)/2 \cdot W_0$ from hold-up but forfeits the continuation value $V_C = \delta/(1-\delta) \cdot K d^2 W_0$ (the present value of the curvature premium from the ongoing relationship). The self-enforcing constraint is:
-\[
-\frac{\tau(1-R)}{2} W_0 \leq \frac{\delta}{1-\delta} K d^2 W_0
-\]
-Solving for the sustainable distortion gives \eqref{eq:relational}. When $\delta K d^2$ is large (patient parties, high complementarity, high diversity), the relational contract nearly eliminates hold-up without formal integration.
-\end{proof}
-
-\begin{remark}
-This provides a CES-theoretic foundation for the empirical regularity that long-term supplier relationships substitute for vertical integration. Japanese \emph{keiretsu} supplier networks achieve high complementarity exploitation ($K_{\mathrm{eff}} \approx K$) through relational contracts rather than formal ownership. The CES framework predicts that this mode is optimal when $\delta K d^2$ is large (patient firms with complementary, diverse supplier relationships) but $T_M - T_H$ is small (the information advantage of hierarchy is modest). Toyota's supplier system fits this profile: long-term relationships ($\delta$ high), complementary components (low $\rho$), diverse supplier base ($d^2$ large), and relatively transparent information sharing ($T_M \approx T_H$).
-\end{remark}
-
-%=============================================================================
-\section{Derivation VI: Behavioral Economics}\label{sec:behavioral}
-%=============================================================================
-
-The behavioral catalog \citep{kahneman1979,tversky1992,thaler2008} emerges as the complete characterization of economic behavior at $T > 0$.
-
-\subsection{The Logit-CES Duality}
-
-Under rational inattention \citep{sims2003,matejka2015}, optimal choice probabilities are multinomial logit:
-\begin{equation}\label{eq:logit_choice}
-    P(j) = \frac{\exp(u_j / T)}{\sum_{k=1}^{J} \exp(u_k / T)}
-\end{equation}
-This is \emph{identical} to CES demand shares in log-utility space. The formal correspondence:
-\begin{itemize}
-\item The information friction $T$ maps to the inverse of the CES elasticity parameter in the demand system.
-\item The inclusive value $\log\sum_k \exp(u_k/T)$ is the CES welfare index.
-\item Adding an alternative changes the inclusive value by $\Delta IV = \log(1 + \exp(u_{\mathrm{new}}/T)/Z)$, which is exactly the consumer surplus from adding a variety in the Dixit-Stiglitz framework.
-\end{itemize}
-
-This duality was established by \citet{anderson1992} and provides the micro-foundation connecting the two generating functions of this paper: the CES aggregate (production side) and the logit choice model (information side). The CES potential $\calFq = \Phi - T \cdot \Sq$ unifies both sides: $\Phi$ is the CES production value, and $T \cdot \Sq$ is the information cost that generates the logit choice probabilities.
-
-\subsection{The Behavioral Catalog}
-
-\begin{proposition}[Behavioral Catalog from Positive Information Friction]\label{prop:behavioral_catalog}
-At $T > 0$, the following behavioral phenomena emerge as necessary consequences of finite information processing capacity:
-\begin{enumerate}[label=(\roman*)]
-    \item \textbf{Choice stochasticity}: $P(j)$ is smooth, not a step function.
-    \item \textbf{Context dependence}: Adding any alternative changes all absolute choice probabilities.
-    \item \textbf{Probability weighting}: $w(p) = p^{\rho}/[p^{\rho} + (1-p)^{\rho}]$---the Tversky-Kahneman probability weighting function, derived here as the CES share function applied to binary outcomes.
-    \item \textbf{Status quo bias}: Switching requires $\Delta H > 0$ bits; the cost $T \cdot \Delta H > 0$ creates a wedge within which objectively better alternatives are not adopted.
-    \item \textbf{Choice overload}: When $J > J^* = \exp((u_{\max} - u_0)/T)$, the entropy cost exceeds the utility gain.
-\end{enumerate}
-\end{proposition}
-
-\begin{proof}
-Each phenomenon is derived from the CES potential \eqref{eq:logit_choice}.
-
-\medskip
-\emph{Step 1: Choice stochasticity.}
-From \eqref{eq:logit_choice}, $P(j) = \exp(u_j/T) / Z$ where $Z = \sum_k \exp(u_k/T)$. For any $T > 0$, $P(j) \in (0,1)$ for all $j$---no alternative is chosen with certainty. The variance of choice around the best alternative scales as $\Var(j^*) \sim T$.
-
-\medskip
-\emph{Step 2: Context dependence.}
-Adding alternative $k$ changes the inclusive value from $Z$ to $Z' = Z + \exp(u_k/T) > Z$. For every existing alternative $j$: $P'(j) = \exp(u_j/T)/Z' < \exp(u_j/T)/Z = P(j)$. Adding any alternative---even a dominated one---reduces the absolute choice probability of every existing option. While the logit preserves relative odds $P(i)/P(j)$, absolute probabilities shift. At $T = 0$, this effect vanishes.
-
-\medskip
-\emph{Step 3: Probability weighting.}
-Consider a binary gamble with objective probability $p$. The agent processes this through the CES aggregator with parameter $\rho$. The CES-weighted share of attention to the high-probability branch is:
-\begin{equation}\label{eq:tk_weighting}
-    w(p) = \frac{p^{\rho}}{p^{\rho} + (1-p)^{\rho}}
-\end{equation}
-At $\rho = 1$: $w(p) = p$ (no distortion). At $p = 0$: $w(0) = 0$; at $p = 1$: $w(1) = 1$ (boundary preservation). For $\rho < 1$: $w'(0^+) = +\infty$, so $w(p) > p$ for small $p$---overweighting of rare events. By symmetry $w(p) + w(1-p) = 1$ fails for $\rho < 1$ (subadditivity), confirming $w(p) < p$ for $p$ near 1. This is the one-parameter \citet{tversky1992} probability weighting function, derived here as the CES share function applied to binary probability processing. \citet{tversky1992} estimated $\gamma \approx 0.65$ from experimental data. In the CES framework, $\gamma = \rho$, so the estimated probability weighting parameter corresponds to $\sigma = 1/(1-0.65) \approx 2.86$---a CES elasticity squarely in the range of standard estimates for differentiated goods. This is not a coincidence: it reflects the fact that human probability processing has the same complementarity structure as the evaluation of differentiated product bundles.
-
-\medskip
-\emph{Step 4: Status quo bias.}
-Let $u_0$ be the status quo utility and $u_1 > u_0$ the alternative. Choosing the status quo requires no information processing: $H_{\mathrm{stay}} = 0$ bits. Evaluating the switch requires processing $\Delta H = h(p^*)$ bits. The net benefit of switching is $\Delta \calF = (u_1 - u_0) - T \cdot \Delta H$. The agent maintains the status quo whenever $u_1 - u_0 < T \cdot \Delta H$---status quo bias.
-
-\medskip
-\emph{Step 5: Choice overload.}
-With $J$ alternatives, the CES potential of the menu is $\calF_J = T \log \sum_j \exp(u_j/T)$. The net value of menu engagement is $V_{\mathrm{menu}} = \calF_J - u_0 - T \cdot H_{\mathrm{menu}}$ where $H_{\mathrm{menu}} \leq \log J$. When $J > J^* \equiv \exp((u_{\max} - u_0)/T)$, the entropy cost exceeds the utility gain and the agent rationally declines to choose.
-\end{proof}
-
-\subsection{The Attention Allocation Problem}
-
-The CES potential framework provides a unified treatment of how agents allocate limited attention across multiple dimensions.
-
-\begin{proposition}[Optimal Attention Allocation]\label{prop:attention}
-An agent with CES preferences over $J$ goods and total attention capacity $\kappa = 1/T$ optimally allocates attention as:
-\begin{equation}\label{eq:attention_allocation}
-\kappa_j^* = \kappa \cdot \frac{|\partial F/\partial x_j|^{2/(1+\rho)}}{\sum_k |\partial F/\partial x_k|^{2/(1+\rho)}}
-\end{equation}
-At the symmetric point, $\kappa_j^* = \kappa/J$ (equal attention). The deviation from equal attention---the amount of selective attention---is proportional to $(1-\rho)$: complementary goods demand more asymmetric attention allocation because the marginal value of information varies more across goods.
-\end{proposition}
-
-\begin{proof}
-The agent maximizes $\E[\log F(\mathbf{x}(\mathbf{s}))]$ subject to $\sum_j I(\theta_j; s_j) \leq \kappa$. By the water-filling solution \citep{sims2003}, optimal capacity allocation equalizes the marginal value of information across dimensions: $\partial \E[\log F]/\partial \kappa_j = \lambda$ for all active dimensions. The marginal value is proportional to $|\partial^2 \log F/\partial x_j^2| \cdot \Var[\theta_j|s_j]$, where the Hessian element reflects the curvature penalty and the conditional variance reflects the remaining uncertainty. At the symmetric point with equal prior variance, the CES Hessian structure (\Cref{lem:hessian}) gives equal marginal values, confirming $\kappa_j^* = \kappa/J$.
-
-Away from symmetry, the marginal value of attention to good $j$ is higher when $|\partial^2 \log F/\partial x_j^2|$ is larger. The CES Hessian at non-symmetric points has entries scaling as $|x_j/F|^{\rho-1}$, which for $\rho < 1$ gives higher curvature (and hence higher attention) to inputs with lower $x_j/F$. Solving the water-filling problem with these heterogeneous curvatures yields \eqref{eq:attention_allocation}.
-\end{proof}
-
-\begin{remark}
-This connects to the choice overload result: the total attention capacity $\kappa$ is fixed, so adding goods ($J \uparrow$) dilutes per-good attention ($\kappa_j^* \downarrow$). When per-good attention falls below the threshold needed for effective evaluation, the agent rationally ignores additional goods entirely (\Cref{prop:behavioral_catalog}(v)). The CES framework predicts that choice overload sets in \emph{earlier} for complementary goods (low $\rho$) because each good requires more attention to evaluate its contribution to the complementary bundle.
-\end{remark}
-
-\subsection{The Rabin Calibration Resolution}
-
-\begin{proposition}[Resolution of the Rabin Calibration Paradox]\label{prop:rabin}
-\citet{rabin2000} proved that expected utility theory cannot simultaneously explain small-stakes and large-stakes risk aversion with a single concavity parameter. In the $(\rho, T)$ framework:
-\begin{enumerate}[label=(\alph*)]
-    \item Small-stakes risk aversion arises from $T > 0$: the processing cost exceeds the expected gain.
-    \item Large-stakes risk aversion arises from $\rho < 1$: genuine CES curvature.
-\end{enumerate}
-The crossover scale is $\Delta^* \sim \sqrt{4wT/(1-\rho)}$. Below $\Delta^*$: $T$-dominated. Above $\Delta^*$: $\rho$-dominated.
-
-Loss aversion $\lambda = T_{\mathrm{gain}}/T_{\mathrm{loss}}$: gains are evaluated with higher information friction than losses. With $T_{\mathrm{gain}}/T_{\mathrm{loss}} \approx 2.25$ \citep{kahneman1979}, the standard loss aversion coefficient emerges from an information friction ratio, not a utility kink.
-\end{proposition}
-
-\begin{proof}
-The proof proceeds in four steps.
-
-\medskip
-\emph{Step 1: Rabin's impossibility.}
-An agent rejects a 50-50 gamble of lose \$100 / gain \$110 at all wealth levels $w$. Under expected utility with concave $u(w)$, rejection requires $u'(w - 100)/u'(w + 110) > 1.1$. Rabin showed that if this holds for all $w$, the implied curvature forces $u(w + L) \approx u(w)$ for any large $L$---the agent would reject a 50-50 gamble of lose \$1{,}000 / gain any amount.
-
-\medskip
-\emph{Step 2: The two-parameter resolution.}
-The agent's value of a binary gamble with outcomes $w + g$ (gain) and $w - \ell$ (loss), each with probability $1/2$, is:
-\[
-    \calF = T \log\!\left[\tfrac{1}{2}\exp(u(w+g)/T) + \tfrac{1}{2}\exp(u(w-\ell)/T)\right]
-\]
-where $u(w) = w^{\rho}/\rho$. \emph{Regime 1} ($g, \ell \ll T/u'$): rejection is driven entirely by utility curvature $\rho$. \emph{Regime 2} ($g, \ell \sim T/u'$): the full log-sum-exp includes a genuine processing cost of order $T$, so the gamble is rejected regardless of $\rho$.
-
-\medskip
-\emph{Step 3: The crossover scale.}
-The crossover between regimes occurs when the curvature penalty equals the processing cost:
-\[
-    \frac{(1-\rho)}{4w}\Delta^2 \sim T \quad \Longrightarrow \quad \Delta^* \sim \sqrt{\frac{4wT}{1-\rho}}
-\]
-Below $\Delta^*$: behavior is $T$-dominated (processing cost drives apparent risk aversion). Above $\Delta^*$: behavior is $\rho$-dominated (genuine utility curvature). The two regimes have different comparative statics, different neural substrates, and different welfare implications.
-
-\medskip
-\emph{Step 4: Loss aversion as asymmetric information friction.}
-Consider a small symmetric gamble $(+g, -\ell)$ with domain-specific information frictions: gains evaluated with precision $1/T_g$ (noisy) and losses with precision $1/T_\ell$ (precise, $T_\ell < T_g$). The accept/reject logit comparison yields acceptance probability:
-\[
-    P(\text{accept}) = \sigma\!\left(\frac{u'(w)}{2}\left[\frac{g}{T_g} - \frac{\ell}{T_\ell}\right]\right)
-\]
-Indifference requires $g/T_g = \ell/T_\ell$, giving $g/\ell = T_g/T_\ell \equiv \lambda$. This IS loss aversion with coefficient $\lambda = T_g/T_\ell$---not because utility is kinked, but because losses are processed more carefully than gains. The asymmetry has a plausible evolutionary basis: accurate processing of threats has higher fitness value than accurate processing of opportunities.
-\end{proof}
-
-\subsection{Empirical Implications}
-
-\begin{enumerate}
-    \item \textbf{Response times measure $T$.} High-$T$ decisions (fast, noisy) should exhibit more behavioral anomalies than low-$T$ decisions (slow, deliberate). \emph{Observed:} fast responders exhibit more framing effects and more violations of expected utility.
-
-    \item \textbf{Expertise reduces $T$.} Domain experts have lower effective $T$. Behavioral anomalies should decrease monotonically with expertise \emph{within} a domain but not across domains. \emph{Observed:} professional traders exhibit less loss aversion in financial decisions but not in health decisions.
-
-    \item \textbf{Loss aversion varies with cognitive load.} If $\lambda = T_{\mathrm{gain}}/T_{\mathrm{loss}}$, then increasing cognitive load raises $T_{\mathrm{gain}}$ disproportionately, predicting $\lambda$ should increase under stress. \emph{Observed:} stressed subjects show amplified loss aversion.
-
-    \item \textbf{Choice overload threshold is $J^* = \exp(u_{\max}/T)$.} The framework predicts a sharp threshold, not a gradual decline. \emph{Observed:} the Iyengar-Lepper jam experiment found participation dropped from 60\% to 3\% when options increased from 6 to 24.
-
-    \item \textbf{Nudge effectiveness is proportional to $T$.} Nudges exploit $T > 0$, so they should be most effective for high-$T$ decisions. \emph{Observed:} retirement savings defaults are most effective for financially unsophisticated employees (high $T$) and least effective for active portfolio managers (low $T$).
-
-    \item \textbf{Attention allocation tracks CES structure.} Using eye-tracking data, the time spent evaluating each dimension of a multi-attribute choice should follow the CES attention allocation \eqref{eq:attention_allocation}. For complementary attributes: attention is distributed more evenly (every dimension matters). For substitutable attributes: attention concentrates on the dominant dimension. \emph{Observed:} eye-tracking studies of product choice show that consumers evaluating complex, integrated products (laptops, smartphones) scan more attributes than consumers evaluating simple products (batteries, paper towels).
-
-    \item \textbf{The anchoring bias decays with $K$.} Anchoring bias arises when the agent's initial estimate (the ``anchor'') is close to the default allocation $C/J$, and the cost of updating toward the optimal allocation is $T \cdot \Delta H$. For low $\rho$ (high $K$): the production loss from staying near the anchor is large ($O(K^2)$), so the agent invests in updating. For high $\rho$: the loss is small ($O(K^2) \approx 0$), so the agent accepts the anchor. The prediction: anchoring bias is weaker for complementary decisions and stronger for substitutable ones.
-\end{enumerate}
+% Six derivation sections (Akerlof, Myerson, Arrow, DMP, Contracts, Behavioral)
+% are presented in the companion paper \citep{smirl2026derivations}.
 
 %=============================================================================
 \section{Optimal Firm Scope and Integration Boundary}\label{sec:firm_scope}
@@ -1835,9 +896,11 @@ The marginal diversity premium equals the marginal coordination cost. The soluti
 \end{proposition}
 
 \begin{proof}
-Part (i): The diversity premium \eqref{eq:diversity_premium} grows as $(1/\rho)\log J$, with $|1/\rho|$ increasing as $\rho$ decreases. More negative $\rho$ means faster growth of the diversity premium in $J$, shifting the intersection with the coordination cost curve rightward. For $\rho \in (0,1)$, the diversity premium is $(1/\rho)\log J$ with $1/\rho > 1$, which also increases in $(1-\rho)$ since $1/\rho = 1/(1-(1-\rho))$ is increasing in $(1-\rho)$ for $\rho < 1$.
+At leading order, both the diversity premium $(\sim (1/\rho)\log J)$ and coordination cost $(\sim T \log J)$ scale as $\log J$, so the interior optimum $J^*$ is determined by sub-leading corrections: the diversity premium has diminishing returns from input overlap (each additional variety contributes less when existing varieties partially substitute), while coordination costs grow slightly faster than $\log J$ due to pairwise interactions. The comparative statics follow from the leading-order structure.
 
-Part (ii): The coordination cost $T \cdot H^*(J)$ shifts upward proportionally with $T$, moving the intersection leftward.
+Part (i): The diversity premium coefficient is $1/\rho$, which increases as $\rho$ decreases. A higher coefficient means the diversity benefit exceeds the coordination cost for a wider range of $J$, shifting $J^*$ rightward.
+
+Part (ii): The coordination cost coefficient is $T$, which shifts the coordination cost curve upward proportionally, moving the intersection leftward.
 
 Part (iii): Larger $C$ implies larger $c = C/J$, which increases $T^*(\rho)$ (\Cref{rem:interpretation}), effectively lowering the ratio $T/T^*$ and raising the net benefit of each additional input type.
 \end{proof}
@@ -2013,7 +1076,7 @@ The framework generates several testable predictions that distinguish it from ex
 \begin{proposition}[Returns to Management Quality]\label{prop:management}
 The marginal return to reducing information friction (improving management quality) is:
 \begin{equation}\label{eq:management_return}
--\frac{\partial \calF}{\partial T} = H^*(J) + \frac{K^2}{2(J-1)c^2}
+\frac{\partial \calF}{\partial T} = H^*(J) + \frac{K^2}{2(J-1)c^2}
 \end{equation}
 which is increasing in $K$ (and hence in complementarity $1-\rho$).
 \end{proposition}
@@ -2031,7 +1094,7 @@ Differentiating the CES potential $\calF(J) = -\E[\log F(\hat{\mathbf{x}}(J))] +
 \begin{proposition}[Productivity Dispersion]\label{prop:dispersion}
 Within-industry log-productivity dispersion is:
 \begin{equation}\label{eq:dispersion}
-\Var[\log F] \approx \frac{K^2}{(J-1)^2 c^4} \cdot \Var[T_i]
+\Var[\log F] \approx \frac{K^4}{4(J-1)^2 c^4} \cdot \Var[T_i]
 \end{equation}
 where $\Var[T_i]$ is the cross-firm variance of information friction within the industry.
 \end{proposition}
@@ -2134,108 +1197,20 @@ The exponential is nested within the $q$-exponential ($q = 1$), enabling a likel
 
 \paragraph{Identification strategy.} Two tests provide complementary evidence:
 
-\emph{Within-sector}: For each sector, the likelihood ratio statistic $\Lambda_s = -2(\ell_{\exp} - \ell_{q\text{-exp}})$ is asymptotically $\chi^2(1)$ under the null $H_0: q = 1$. We also compute the Anderson-Darling statistic against the exponential null.
+\emph{Within-sector}: For each sector, the likelihood ratio statistic $\Lambda_s = -2(\ell_{\exp} - \ell_{q\text{-exp}})$ is asymptotically $\chi^2(1)$ under the null $H_0: q = 1$. The Anderson-Darling statistic against the exponential null provides a complementary test.
 
-\emph{Cross-sector}: If $q = \rho$ (the CES parameter), then estimated $\hat{q}_s$ should correlate with independent estimates of $\hat{\sigma}_s$ (elasticity of substitution) from \citet{oberfield2021}. We regress $\hat{q}_s$ on $\hat{\rho}_s = 1 - 1/\hat{\sigma}_s$ and test $\beta_1 = 1$.
+\emph{Cross-sector}: If $q = \rho$ (the CES parameter), then estimated $\hat{q}_s$ should correlate with independent estimates of $\hat{\sigma}_s$ (elasticity of substitution) from \citet{oberfield2021}. The test regresses $\hat{q}_s$ on $\hat{\rho}_s = 1 - 1/\hat{\sigma}_s$ and tests $\beta_1 = 1$.
 
 \paragraph{GARCH control.} Fat tails in returns may reflect GARCH volatility clustering rather than non-extensive equilibrium distributions. As a robustness check, GARCH(1,1) models are fit to each sector's log-returns and the standardized residuals $\hat{z}_{s,t} = r_{s,t}/\hat{\sigma}_{s,t}$ are retested. If $q$-exponential superiority survives standardization, the tail behavior is not purely a volatility artifact.
 
 \paragraph{Results.} The $q$-exponential provides a significantly better fit (likelihood ratio test $p < 0.05$) in 12 of 17 sectors. The Anderson-Darling test rejects the exponential null in 15 of 17 sectors. Estimated $\hat{q}$ values range from 0.63 to 1.16, with a mean near 1.0. After GARCH(1,1) standardization, 9 of 17 sectors retain significant $q$-exponential superiority, indicating that the non-exponential tail behavior is not purely a volatility clustering artifact. The cross-sector regression of $\hat{q}$ on $\hat{\rho}$ yields $R^2 = 0.03$, consistent with the prediction's direction but lacking power in this small cross-section.
 
-\subsection{Price of Incentive Compatibility in Procurement}\label{sec:poic}
-
-The Myerson derivation predicts that information rents increase with product differentiation. Using 1{,}172 federal contract awards from USAspending.gov, stratified by NAICS sector into HIGH (commodity), MEDIUM, and LOW (differentiated) substitutability:
-
-\begin{table}[htbp]
+\begin{figure}[t]
 \centering
-\caption{Price of Incentive Compatibility: Procurement Markup Regressions}
-\label{tab:poic}
-\small
-\begin{tabular}{lcccc}
-\toprule
- & (1) & (2) & (3) & (4) \\
- & Bivariate & +\,Competition & +\,Full Controls & Category Dummies \\
-\midrule
-  Substitutability ($\rho$ proxy) & \makecell{0.031$^{***}$ \\ (0.009)} & \makecell{0.031$^{***}$ \\ (0.009)} & \makecell{$-$0.038$^{**}$ \\ (0.013)} & \\[6pt]
-  LOW (ref = HIGH) & & & & \makecell{0.233$^{***}$ \\ (0.030)} \\[6pt]
-  MEDIUM (ref = HIGH) & & & & \makecell{0.373$^{***}$ \\ (0.033)} \\[6pt]
-  $\log$(ceiling) & & & \makecell{$-$0.032$^{***}$ \\ (0.003)} & \makecell{$-$0.069$^{***}$ \\ (0.005)} \\[6pt]
-\midrule
-  $N$ & 1{,}172 & 1{,}172 & 1{,}172 & 1{,}172 \\
-  $R^2$ & 0.011 & 0.016 & 0.099 & 0.227 \\
-\bottomrule
-\end{tabular}
-\vspace{4pt}
-\parbox{0.90\textwidth}{\footnotesize
-  Dependent variable: markup ratio (actual obligation / contract ceiling).
-  HC1 robust standard errors in parentheses.
-  $^{***}p<0.001$; $^{**}p<0.01$; $^{*}p<0.05$.
-}
-\end{table}
-
-Conditional on contract size, more substitutable goods have lower markups ($\beta = -0.038$, $p = 0.003$). The category dummy specification ($R^2 = 0.23$) shows LOW contracts have 23.3~pp higher markup than HIGH contracts ($p < 10^{-14}$).
-
-\paragraph{NAICS classification methodology.} The substitutability classification is based on the NAICS sector of each contract. HIGH substitutability (commodity) sectors include: NAICS 111-115 (Agriculture), 211-213 (Mining), 311-312 (Food manufacturing), 321-322 (Wood and paper products), and 324 (Petroleum and coal products). These sectors produce standardized outputs with well-defined quality specifications and thick spot markets. MEDIUM sectors include: NAICS 325-327 (Chemicals, plastics, nonmetallic minerals), 331-332 (Primary and fabricated metals), 333-336 (Machinery, electronics, transportation equipment). These sectors produce differentiated but catalog-able products. LOW substitutability (differentiated/complementary) sectors include: NAICS 334 (Computer and electronic products), 336411 (Aircraft manufacturing), 541 (Professional and technical services), and 561-562 (Administrative and waste services). These sectors produce custom outputs requiring relationship-specific investment.
-
-\paragraph{Robustness.} The sign and significance of the substitutability coefficient are robust to: (i) excluding the top and bottom 5\% of contract values (addressing outliers); (ii) using the number of competing bids as an additional control; (iii) restricting to competitive procurement vehicles only (excluding sole-source awards, which mechanically have higher markups); and (iv) replacing the continuous $\rho$ proxy with the three-category classification (column 4). The $R^2$ increase from 0.011 (bivariate) to 0.227 (full specification) indicates that the substitutability dimension, while economically important, is one of several determinants of procurement markups.
-
-%=============================================================================
-\section{Six Derivations Revisited Under Tsallis}\label{sec:six_revisited}
-%=============================================================================
-
-Each of the six derivations (\Cref{sec:akerlof}--\Cref{sec:behavioral}) was presented using Shannon entropy for clarity. The Tsallis generalization ($q = \rho$) modifies each through one of three mechanisms: the $1/(2-q)$ correction factor, the $q$-exponential distribution shape, or the compact-support/power-law tail structure. This section catalogs the corrections.
-
-\subsection{Akerlof Adverse Selection}
-
-The Shannon-framework prediction for the adverse selection threshold involves the variance of quality. Under the $q$-variance-response identity (\Cref{thm:q_fdt}):
-\begin{equation}\label{eq:akerlof_q}
-\tau_q^* = \frac{T}{(2-q) K_{\mathrm{eff}}} = \frac{\tau^*(1)}{2-q}
-\end{equation}
-For complements ($q < 1$), $\tau_q^* > \tau^*(1)$: complementary markets tolerate \emph{more} quality dispersion before collapsing. The intuition is that complementary inputs are valuable precisely because they interact, so buyers accept higher quality variance to maintain the complementary bundle. For substitutes ($q > 1$), markets are more fragile.
-
-\subsection{Myerson Mechanism Design}
-
-The information rent under the $q$-variance-response identity scales as $1/(2-q)$:
-\begin{equation}\label{eq:myerson_q}
-\text{IC price}(q) = \frac{\text{IC price}(1)}{2-q}
-\end{equation}
-For complements ($q < 1$), the IC price is \emph{higher}: complementary agents extract more information rents because the principal cannot substitute among them. The $q$-exponential hazard rate is subexponential for $q < 1$, generating lower virtual valuations and higher optimal reserve prices. The mechanism format prediction of \Cref{prop:poic} is a Category~A result (depending on the CES structure, not the entropy) and survives exactly.
-
-\subsection{Arrow Social Choice}
-
-The democratic robustness result (\Cref{prop:democracy}) is a Category~A result---it depends on the concentration inequality structure, not the specific entropy. The effective sample size $J_{\mathrm{eff}}(\rho)$ and the critical information friction formula \eqref{eq:T_crit_democracy} survive the Tsallis generalization exactly. The reason: the McDiarmid concentration argument depends on bounded differences, which are properties of the CES aggregate's partial derivatives, not of the entropy functional.
-
-\subsection{DMP Search and Matching}
-
-The search duration under $q$-equilibrium acquires the $1/(2-q)$ correction:
-\begin{equation}\label{eq:dmp_q}
-n_q^* = \frac{n^*(1)}{2-q}
-\end{equation}
-Complementary labor markets ($q < 1$) sustain \emph{longer} search---higher vacancy rates and longer unemployment durations---because the payoff to finding the right complementary match justifies the additional cost. The Beveridge curve slope receives the same correction factor, predicting steeper curves for complementary occupations.
-
-\subsection{Contract Theory}
-
-The hold-up distortion (\Cref{prop:holdup}) is a Category~A result: it depends on the Nash bargaining outcome and the redeployability ratio $R(\rho)$, both of which are properties of the CES aggregate's geometry, not of the entropy. The hold-up distortion formula $D(\rho, \tau) = \tau(1-R(\rho))/2$ survives exactly.
-
-However, the $q$-exponential compact support adds a structural bound. When $q < 1$, the support of the equilibrium distribution is bounded: $\varepsilon \leq T/(1-q)$. This bounds the maximum surplus that can be held up:
-\begin{equation}\label{eq:holdup_q}
-\text{Hold-up} \leq \frac{T}{1-q}
-\end{equation}
-This is finite for any $q < 1$, in contrast to the exponential distribution ($q = 1$) which has unbounded support and therefore unbounded potential hold-up. The integration boundary (\Cref{prop:integration}) is accordingly modified: for highly complementary production ($q \ll 1$), the bounded hold-up reduces the integration premium, narrowing the region where integration dominates.
-
-\subsection{Behavioral Economics}
-
-The probability weighting function derived in \Cref{prop:behavioral_catalog} is already a $q$-deformation:
-\begin{equation}\label{eq:behavioral_q}
-w(p) = \frac{p^q}{(p^q + (1-p)^q)^{1/q}}
-\end{equation}
-This is precisely the escort probability transformation associated with Tsallis entropy of order $q$. The behavioral finding that people overweight small probabilities and underweight large ones is the $q$-deformation for $q < 1$: the CES framework provides a production-theoretic foundation for this otherwise ad hoc functional form.
-
-The Rabin calibration resolution (\Cref{prop:rabin}) acquires the $q$-correction in the crossover scale:
-\[
-\Delta_q^* \sim \sqrt{\frac{4wT}{(1-q)(2-q)}}
-\]
-The additional factor of $1/(2-q)$ amplifies the crossover scale for complements: when the information cost of evaluating a gamble is non-additive ($q < 1$), the boundary between $T$-dominated and $\rho$-dominated behavior shifts to larger stakes.
+\includegraphics[width=\textwidth]{../../figures/tsallis_tails.pdf}
+\caption{\textbf{Manufacturing tail distribution test.} (a)~QQ plot for the best-fitting sector: $q$-exponential closely tracks observed quantiles while exponential deviates in tails. (b)~QQ plot for the worst-fitting sector. (c)~Likelihood ratio statistics across 17 manufacturing sectors; bars above the dashed line indicate $q$-exponential significantly outperforms exponential at $p < 0.05$. (d)~Cross-sector scatter of estimated $\hat{q}$ against Oberfield-Raval $\hat{\rho}$ estimates; the OLS line is consistent with the $q = \rho$ prediction but the cross-section lacks power ($R^2 = 0.03$).}
+\label{fig:tsallis_tails}
+\end{figure}
 
 %=============================================================================
 \section{The CES Potential as a Welfare Loss Function}\label{sec:lyapunov}
@@ -2246,7 +1221,7 @@ The CES potential $\calFq = \Phi_{\mathrm{CES}}(\rho) - T \cdot \Sq$ has the mat
 \begin{theorem}[Lyapunov Property]\label{thm:lyapunov}
 For any CES economy with $J$ inputs, structural curvature $K > 0$, and information friction $T < T^*(\rho)$, the CES potential $\calFq$ satisfies:
 \begin{enumerate}[label=(\roman*)]
-\item \textbf{Boundedness:} $\calFq \geq -\log F^* + T \cdot \log J / (1-q)$ (bounded below by the first-best output less the maximum entropy contribution).
+\item \textbf{Boundedness:} $\calFq \geq -\log F^* - T \cdot S_q^{\max}$, where $S_q^{\max} = (J^{1-q}-1)/(1-q)$ is the Tsallis entropy at the uniform distribution (bounded below by the first-best output less the maximum entropy contribution).
 \item \textbf{Monotone decay:} Along any gradient-descent adjustment path $\dot{\mathbf{x}} = -\mathbf{L} \nabla \calFq$, the CES potential satisfies $d\calFq/dt \leq 0$, with equality only at the equilibrium allocation.
 \item \textbf{Strict convexity on the tangent space:} The Hessian of $\calFq$ restricted to $\bone^\perp$ is positive definite with minimum eigenvalue $K_{\mathrm{eff}}/(J-1)c^2 > 0$.
 \end{enumerate}
@@ -2265,7 +1240,7 @@ For $q \to 1$: $S_q^{\max} \to \log J$, recovering the Shannon bound.
 \]
 since $\mathbf{L}$ is positive semi-definite. Equality holds only when $\nabla \calFq = 0$ (equilibrium) or $\nabla \calFq \in \ker \mathbf{L}$.
 
-(iii) The Hessian on $\bone^\perp$ is $\nabla^2 \calFq|_{\bone^\perp} = |\lambda_\perp| \cdot \mathbf{I}_{J-1} + T \cdot \nabla^2 \Sq|_{\bone^\perp}$. At the symmetric equilibrium, $|\lambda_\perp| = K/((J-1)c^2)$ and $\nabla^2 \Sq$ contributes a positive-definite correction. The minimum eigenvalue is at least $K_{\mathrm{eff}}/((J-1)c^2)$, which is positive for $T < T^*$.
+(iii) The Hessian on $\bone^\perp$ is $\nabla^2 \calFq|_{\bone^\perp} = |\lambda_\perp| \cdot \mathbf{I}_{J-1} - T \cdot \nabla^2 \Sq|_{\bone^\perp}$. At the symmetric equilibrium, $|\lambda_\perp| = K/((J-1)c^2)$ and $-T \nabla^2 \Sq$ contributes a positive-definite correction (since $\Sq$ is concave, $\nabla^2 \Sq \prec 0$). The minimum eigenvalue is at least $K_{\mathrm{eff}}/((J-1)c^2)$, which is positive for $T < T^*$.
 \end{proof}
 
 \begin{remark}[Economic interpretation]
@@ -2281,7 +1256,7 @@ where $L_{\min}$ is the smallest eigenvalue of the friction matrix $\mathbf{L}$.
 \end{corollary}
 
 \begin{remark}[Connection to the eigenstructure bridge]
-The companion paper \citep{smirl2026ces} establishes that $\nabla^2 \Phi|_{\mathrm{slow}} = \mathbf{W}^{-1} \cdot \nabla^2 V$, where $V$ is the welfare loss function and $\mathbf{W}$ is the institutional supply-rate matrix. Combined with the Lyapunov property, this yields: the rate of welfare improvement is $dV/dt = -(\nabla V)^\top \mathbf{W} \mathbf{L} \mathbf{W} (\nabla V)$, which factors through both the institutional adjustment speed ($\mathbf{W}$) and the informational adjustment speed ($\mathbf{L}$). This double dependence explains why welfare gains from institutional reform are non-additive: improving $\mathbf{W}$ without improving $\mathbf{L}$ (or vice versa) yields less than proportional welfare gains.
+The eigenstructure bridge established in the hierarchical architecture paper shows that $\nabla^2 \Phi|_{\mathrm{slow}} = \mathbf{W}^{-1} \cdot \nabla^2 V$, where $V$ is the welfare loss function and $\mathbf{W}$ is the institutional supply-rate matrix. Combined with the Lyapunov property, this yields: the rate of welfare improvement is $dV/dt = -(\nabla V)^\top \mathbf{W} \mathbf{L} \mathbf{W} (\nabla V)$, which factors through both the institutional adjustment speed ($\mathbf{W}$) and the informational adjustment speed ($\mathbf{L}$). This double dependence explains why welfare gains from institutional reform are non-additive: improving $\mathbf{W}$ without improving $\mathbf{L}$ (or vice versa) yields less than proportional welfare gains.
 \end{remark}
 
 %=============================================================================
@@ -2295,14 +1270,11 @@ The companion paper \citep{smirl2026ces} establishes that $\nabla^2 \Phi|_{\math
 \toprule
 \textbf{Area} & \textbf{Key result derived} & \textbf{New $\rho$-dependent prediction} \\
 \midrule
-Information economics & Unraveling = CES degrading under entropy & $T^* \propto K$: complements resist adverse selection \emph{(tested: \S\ref{sec:gfc})} \\[6pt]
-Search / matching & Matching function = CES; search = entropy reduction & $\rho$ explains duration heterogeneity, Beveridge shift \\[6pt]
-Mechanism design & Virtual valuation = CES potential gradient & PoIC$(\rho)$; mechanism format from $\rho$ \emph{(tested: \S\ref{sec:poic})} \\[6pt]
-Contract theory & Hold-up, integration from $\rho$; asset specificity = low $\rho$ & Property rights and transaction costs unified through $\rho$ \\[6pt]
-Social choice & Cardinal aggregation at $T{>}0$ bypasses ordinal impossibility & Democratic robustness depends on $\rho$ \\[6pt]
-Behavioral economics & Behavioral catalog = $T{>}0$ phenomena & $T_{\mathrm{gain}}/T_{\mathrm{loss}}$ unifies loss aversion family \\[6pt]
 Industrial production & Effective curvature degrades under friction & Crisis sequence: robustness $\to$ superadditivity $\to$ strategic \\[6pt]
-Tsallis extension & $q = \rho$ classifies all dynamical results & $1/(2-q)$ correction; compact support vs.\ power-law tails \\
+Firm scope / integration & Variety--coordination tradeoff in $(\rho, T)$ space & Monotone integration rule from tier-specific $K_\ell / T_\ell$ \\[6pt]
+Welfare loss & CES potential as Lyapunov function & Convergence rate $\propto K_{\mathrm{eff}} \cdot L_{\min}$ \\[6pt]
+Tsallis extension & $q = \rho$ classifies all dynamical results & $1/(2-q)$ correction; compact support vs.\ power-law tails \\[6pt]
+Six derivations & Akerlof, Myerson, Arrow, DMP, GHM, KT & See companion paper \citep{smirl2026derivations} \\
 \bottomrule
 \end{tabular}
 \caption{Unification through the CES potential $\calFq = \Phi_{\mathrm{CES}}(\rho) - T \cdot \Sq$ with $q = \rho$.}
@@ -2338,7 +1310,7 @@ The architecture table (\Cref{tab:unified}) can be read as a classification of t
 
 \item \textbf{Industrial organization} ($T > 0$, $\rho < 1$): positive friction with complementary production. This is the domain of the present paper: effective curvature, firm scope, integration boundaries, and the crisis sequence all require both $T > 0$ and $\rho < 1$.
 
-\item \textbf{Behavioral economics} ($T \gg 0$, arbitrary $\rho$): high friction dominates the CES structure. The behavioral catalog (\Cref{prop:behavioral_catalog}) emerges as the universal characterization of high-$T$ behavior, independent of $\rho$.
+\item \textbf{Behavioral economics} ($T \gg 0$, arbitrary $\rho$): high friction dominates the CES structure. The behavioral catalog emerges as the universal characterization of high-$T$ behavior, independent of $\rho$ (see \citealt{smirl2026derivations}).
 \end{itemize}
 
 Each ``school'' of economics thus corresponds to a region of $(\rho, T)$ space, and the apparent disagreements between schools reflect the different assumptions about which region is empirically relevant. The CES potential framework does not adjudicate this empirical question---it provides the mathematical structure that connects the regions.
@@ -2385,7 +1357,7 @@ The claim rests on the uniqueness results of \Cref{thm:uniqueness}: given consta
 
 Are these restrictions empirically defensible? The constant elasticity assumption is standard in international trade (\citealt{armington1969}), industrial organization (\citealt{dixit1977}), and growth theory (\citealt{romer1990}). The pseudo-additivity assumption is the new element, motivated by the cross-partial argument of \Cref{sec:shannon_to_tsallis}: complementary inputs create non-additive information costs. The self-consistency assumption follows from the emergence theorem and is not separately testable---it is a mathematical consequence of the first two assumptions.
 
-The framework is falsifiable through its \emph{interaction predictions}: any finding where $\rho$ and $T$ affect outcomes independently (additively rather than multiplicatively) would violate the CES potential structure. The GFC banking test (\Cref{sec:gfc}) is a direct test of this interaction, and its significance supports the framework.
+The framework is falsifiable through its \emph{interaction predictions}: any finding where $\rho$ and $T$ affect outcomes independently (additively rather than multiplicatively) would violate the CES potential structure. The GFC banking regulation test (\Cref{sec:gfc}) is a direct test of this interaction, and its significance supports the framework.
 
 \subsection{Superstatistics and the Hierarchical Interpretation}
 
@@ -2405,13 +1377,13 @@ The parsimony also has implications for model selection. Competing frameworks th
 
 \subsection{Testability}
 
-Every derivation produces predictions that the original theory does not: Akerlof + $\rho$ (tested: $p = 0.016$), Myerson + $\rho$ (tested: $p = 0.003$), Arrow + $\rho$, DMP + $\rho$, Hart-Moore/Williamson + $\rho$, Kahneman-Tversky + $T_{\mathrm{gain}}/T_{\mathrm{loss}}$, effective curvature and crisis sequence, Tsallis tail distributions (12/17 sectors favor $q$-exponential). The management--technology complementarity prediction (\Cref{prop:management}) and the within-industry dispersion prediction (\Cref{prop:dispersion}) are both testable with existing data.
+The framework produces testable predictions at multiple levels: effective curvature and crisis sequence, Tsallis tail distributions (12/17 sectors favor $q$-exponential), and the $\rho \times T$ interaction tested in the GFC banking regulation analysis ($p = 0.016$). The companion paper \citep{smirl2026derivations} generates additional domain-specific predictions across six areas of economic theory. The management--technology complementarity prediction (\Cref{prop:management}) and the within-industry dispersion prediction (\Cref{prop:dispersion}) are both testable with existing data.
 
-The framework's falsifiability is concentrated in the $\rho \times T$ interaction: any empirical finding where $\rho$ and $T$ operate independently rather than multiplicatively would reject the CES potential structure. The GFC banking test (\Cref{sec:gfc}) confirms the interaction; the procurement test (\Cref{sec:poic}) confirms the $\rho$ channel.
+The framework's falsifiability is concentrated in the $\rho \times T$ interaction: any empirical finding where $\rho$ and $T$ operate independently rather than multiplicatively would reject the CES potential structure. The GFC banking test (\Cref{sec:gfc}) confirms the interaction.
 
 \paragraph{Hierarchy of tests.} The predictions admit a natural ordering by stringency:
 \begin{enumerate}
-\item \textbf{Qualitative predictions} (weakest): the sign of $\partial T^*/\partial \rho$ in each domain. These are confirmed by the banking and procurement tests.
+\item \textbf{Qualitative predictions} (weakest): the sign of $\partial T^*/\partial \rho$ in each domain. These are confirmed by the banking regulation test.
 \item \textbf{Cross-domain consistency}: the same $\rho$ parameter should predict outcomes in adverse selection, mechanism design, and contract theory simultaneously. This requires estimating $\rho$ from production data and testing it out-of-sample in information-economics settings.
 \item \textbf{Quantitative predictions} (strongest): the $1/(2-q)$ correction factor and the exact crisis sequence timing. These require high-frequency financial data during crisis episodes and precise estimates of both $\rho$ and $T$.
 \end{enumerate}
@@ -2424,10 +1396,22 @@ The framework treats $\rho$ as exogenous. Endogenizing technology choice---allow
 \begin{proposition}[Optimal Complementarity]\label{prop:endogenous_rho}
 A firm choosing $\rho$ to maximize output net of information costs selects:
 \begin{equation}\label{eq:optimal_rho}
-\rho^*(T) = 1 - \sqrt{\frac{2(J-1)c^2 T}{d^2 C_K}}
+\rho^*(T) = 1 - \frac{J d^2 C_K c^2}{T}
 \end{equation}
-where $C_K$ is the production benefit per unit of curvature. The optimal complementarity is decreasing in $T$: firms in high-friction environments optimally choose more substitutable technologies.
+where $d^2$ is the input diversity, $C_K$ is the production benefit per unit of curvature, and $c$ is the symmetric input level. The optimal complementarity is increasing in $T$: firms in high-friction environments optimally choose more substitutable technologies ($\rho^*$ closer to 1).
 \end{proposition}
+
+\begin{proof}
+The firm chooses $\rho$ (equivalently $K = (1-\rho)(J-1)/J$) to maximize the net production surplus. The diversity premium from curvature is $K \cdot d^2 \cdot C_K$ (\Cref{thm:quadruple}(a)), while the output loss from information friction is $K^2 T/(2(J-1)c^2)$ (\Cref{eq:loss_KT}). The net surplus is:
+\[
+\Pi(K) = K \cdot d^2 C_K - \frac{K^2 T}{2(J-1)c^2}
+\]
+The first-order condition $\Pi'(K^*) = 0$ gives $d^2 C_K = K^* T/((J-1)c^2)$, so:
+\[
+K^* = \frac{d^2 C_K (J-1) c^2}{T}
+\]
+The second-order condition $\Pi''(K) = -T/((J-1)c^2) < 0$ confirms a maximum. Substituting $K = (1-\rho)(J-1)/J$ and solving: $1 - \rho^* = J K^*/(J-1) = J d^2 C_K c^2 / T$, yielding \eqref{eq:optimal_rho}. The optimal $K^*$ is decreasing in $T$: higher friction reduces the net return to complementarity. The formula is valid for $T \geq J d^2 C_K c^2$ (ensuring $\rho^* \leq 1$); below this threshold the firm is at the corner $\rho^* = 0$ (unit elasticity).
+\end{proof}
 
 This provides a micro-foundation for the empirical regularity that firms in developing countries (high $T$) use simpler, more modular production processes (high $\rho$) even when the same complex technologies are available. It also predicts that technology adoption follows a specific path: as institutional quality improves (reducing $T$), firms adopt progressively more complementary technologies. The prediction is dynamic: an exogenous reduction in $T$ (e.g., through management training interventions) should lead firms to adopt more complex production methods, not just to use existing methods more efficiently.
 
@@ -2458,7 +1442,7 @@ The hierarchy model of \citet{garicano2000} treats communication costs as determ
 The CES aggregate is central to growth theory, from \citet{solow1956} through \citet{romer1990} and the endogenous growth literature. The elasticity of substitution between capital and labor has macroeconomic implications: \citet{jones1995} showed that balanced growth requires $\sigma = 1$ (Cobb-Douglas), but sectoral CES with $\sigma \neq 1$ generates structural transformation and Baumol's cost disease. The nested CES (\Cref{sec:nested_ces}) provides a micro-foundation for multi-sector growth models: the between-sector parameter $\rho_0$ governs structural transformation, while within-sector parameters $\rho_g$ govern technology adoption. The CES potential framework adds the information dimension: growth depends not only on the production structure ($\rho$) but on the information environment ($T$) that determines how much of the structural complementarity can be exploited.
 
 \paragraph{Trade theory.}
-The CES framework has deep roots in trade: the Armington aggregate \citep{armington1969}, the Eaton-Kortum model \citep{eaton2002}, and the Melitz model of heterogeneous firms all use CES to aggregate across varieties or source countries. \citet{costinot2009} showed that a single log-supermodularity condition---equivalent to $\rho < 1$ in CES---unifies Ricardian and Heckscher-Ohlin trade. The present paper extends this connection: the sorting and assignment results of \Cref{sec:search} apply directly to trade models where countries sort into production patterns based on comparative advantage. The information friction $T$ corresponds to trade barriers---not just tariffs, but the information costs of cross-border contracting, regulatory compliance, and quality verification. The CES potential framework predicts that trade liberalization (reducing $T$) yields larger welfare gains for complementary trade relationships (low $\rho$) than for substitutable ones (high $\rho$), a prediction testable with bilateral trade data.
+The CES framework has deep roots in trade: the Armington aggregate \citep{armington1969}, the Eaton-Kortum model \citep{eaton2002}, and the Melitz model of heterogeneous firms all use CES to aggregate across varieties or source countries. \citet{costinot2009} showed that a single log-supermodularity condition---equivalent to $\rho < 1$ in CES---unifies Ricardian and Heckscher-Ohlin trade. The present paper extends this connection: sorting and assignment results (\citealt{smirl2026derivations}, Search and Matching derivation) apply directly to trade models where countries sort into production patterns based on comparative advantage. The information friction $T$ corresponds to trade barriers---not just tariffs, but the information costs of cross-border contracting, regulatory compliance, and quality verification. The CES potential framework predicts that trade liberalization (reducing $T$) yields larger welfare gains for complementary trade relationships (low $\rho$) than for substitutable ones (high $\rho$), a prediction testable with bilateral trade data.
 
 \paragraph{Sparsity-based bounded rationality.}
 \citet{gabaix2014} proposes a model where agents optimally simplify their decision problems by ignoring dimensions of variation that contribute little to their payoff. In the CES potential framework, this is a special case of the $q$-exponential compact support property (\Cref{prop:q_properties}(a)): for $q < 1$, the equilibrium distribution assigns exactly zero weight to options beyond the threshold $T/(1-q)$. Gabaix's ``default model'' corresponds to the equal-share allocation $\hat{x}_j = C/J$ (the $T \to \infty$ limit), and the ``attention'' allocated to each dimension is the deviation from this default, governed by the CES potential gradient. The CES framework adds the prediction that sparsity (the number of ignored dimensions) depends on $\rho$: highly complementary decisions ($\rho \ll 1$) are less sparse because every dimension matters, while substitutable decisions ($\rho \approx 1$) are more sparse because dimensions are redundant.
@@ -2472,15 +1456,17 @@ This paper has proposed that economic theory is generated by two canonical funct
 The main results are:
 
 \begin{enumerate}
-\item \textbf{Six derivations} demonstrate that six areas of economic theory---adverse selection, mechanism design, social choice, search and matching, contract theory, and behavioral economics---emerge as specific instances of the CES potential. Each derivation yields new $\rho$-dependent predictions that the original theories cannot generate (\Cref{sec:akerlof}--\Cref{sec:behavioral}).
+\item \textbf{The CES potential} (\Cref{sec:ces_potential}) is the unique framework satisfying constant elasticity, pseudo-additive information measurement ($q = \rho$), and variational consistency. The $q$-exponential equilibrium distribution exhibits compact support for complements and power-law tails for substitutes.
 
-\item \textbf{The effective curvature theorem} shows that information friction endogenously reduces exploitable complementarity to $K_{\mathrm{eff}} = K(1 - T/T^*)^+$, with non-uniform degradation predicting a specific crisis sequence: diversification fails before production complementarities, which fail before strategic stability (\Cref{sec:effective_curvature}).
+\item \textbf{The effective curvature theorem} (\Cref{sec:effective_curvature}) shows that information friction endogenously reduces exploitable complementarity to $K_{\mathrm{eff}} = K(1 - T/T^*)^+$, with non-uniform degradation predicting a specific crisis sequence: diversification fails before production complementarities, which fail before strategic stability.
 
-\item \textbf{The Tsallis generalization} with $q = \rho$ classifies all dynamical results into exact survivors (Category A), $q$-corrected by $1/(2-q)$ (Category B), and structurally changed with $\exp \to \expq$ (Category C). The correction amplifies fluctuations for complements and dampens them for substitutes (\Cref{sec:q_dynamics}).
+\item \textbf{The Tsallis generalization} (\Cref{sec:q_dynamics}) with $q = \rho$ classifies all dynamical results into exact survivors (Category A), $q$-corrected by $1/(2-q)$ (Category B), and structurally changed with $\exp \to \expq$ (Category C). The correction amplifies fluctuations for complements and dampens them for substitutes.
 
-\item \textbf{Optimal firm scope and integration boundaries} are derived in $(\rho, T)$ space, nesting Williamson's governance structures as the qualitative limit of quantitative predictions. Multi-tier supply chain architecture follows a monotone integration rule based on tier-specific $K_\ell / T_\ell$ ratios (\Cref{sec:firm_scope}--\Cref{sec:boundaries}).
+\item \textbf{Optimal firm scope and integration boundaries} (\Cref{sec:firm_scope}--\Cref{sec:boundaries}) are derived in $(\rho, T)$ space, nesting Williamson's governance structures as the qualitative limit of quantitative predictions. Multi-tier supply chain architecture follows a monotone integration rule based on tier-specific $K_\ell / T_\ell$ ratios.
 
-\item \textbf{Three empirical tests} support the framework: the GFC banking regulation test ($p = 0.016$), the procurement PoIC test ($p = 0.003$), and the manufacturing tail distribution test (12/17 sectors favor $q$-exponential over exponential). Four additional predictions---management--technology complementarity, within-industry dispersion, AI adoption priority, and crisis sequence timing---are testable with existing data (\Cref{sec:predictions}--\Cref{sec:empirical}).
+\item \textbf{The welfare loss function} (\Cref{sec:lyapunov}) establishes that the CES potential has Lyapunov properties, providing a welfare criterion for institutional design with convergence rate proportional to $K_{\mathrm{eff}} \cdot L_{\min}$.
+
+\item \textbf{Two empirical tests} support the framework: the GFC banking regulation test ($p = 0.016$) and the manufacturing tail distribution test (12/17 sectors favor $q$-exponential over exponential). Four additional predictions---management--technology complementarity, within-industry dispersion, AI adoption priority, and crisis sequence timing---are testable with existing data (\Cref{sec:predictions}--\Cref{sec:empirical}). The companion paper \citep{smirl2026derivations} provides six additional derivations from information economics, mechanism design, social choice, search and matching, contract theory, and behavioral economics.
 \end{enumerate}
 
 Three limitations deserve emphasis.
@@ -2533,10 +1519,11 @@ This appendix collects technical results used in the main text.
 \begin{lemma}[CES Hessian Eigenstructure]\label{lem:hessian}
 Let $F(\mathbf{x}) = (J^{-1}\sum x_j^\rho)^{1/\rho}$ with $\rho \in (-\infty, 1] \setminus \{0\}$. At the symmetric point $\bar{\mathbf{x}} = c \cdot \bone$, the Hessian $\mathbf{H} = \nabla^2 \log F$ has:
 \begin{enumerate}[label=(\roman*)]
-\item Eigenvalue $\lambda_0 = 0$ on $\mathrm{span}\{\bone\}$ (multiplicity 1).
+\item Eigenvalue $\lambda_1 = -1/(Jc^2)$ on $\mathrm{span}\{\bone\}$ (multiplicity 1).
 \item Eigenvalue $\lambda_\perp = -(1-\rho)/(Jc^2)$ on $\bone^\perp$ (multiplicity $J-1$).
-\item The spectral decomposition: $\mathbf{H} = \lambda_\perp (\mathbf{I} - J^{-1}\bone\bone^\top)$.
+\item The spectral decomposition: $\mathbf{H} = \lambda_\perp \mathbf{I} + (\lambda_1 - \lambda_\perp) J^{-1}\bone\bone^\top = -(1-\rho)/(Jc^2) \cdot \mathbf{I} - \rho/(J^2 c^2) \cdot \bone\bone^\top$.
 \end{enumerate}
+Under a budget constraint $\sum x_j = C$, the direction $\bone$ is constrained out, and only the $(J-1)$-dimensional eigenvalue $\lambda_\perp$ governs the curvature of production on the feasible set.
 \end{lemma}
 
 \begin{proof}
@@ -2546,12 +1533,12 @@ For the second derivatives:
 \[
 \frac{\partial^2 \log F}{\partial x_j \partial x_k} = \frac{1}{F}\frac{\partial^2 F}{\partial x_j \partial x_k} - \frac{1}{F^2}\frac{\partial F}{\partial x_j}\frac{\partial F}{\partial x_k}
 \]
-At symmetry: $\partial^2 F/\partial x_j^2|_{\mathrm{sym}} = (\rho-1)c^{\rho-2}/(Jc^\rho) = (\rho-1)/(Jc^2)$ and $\partial^2 F/\partial x_j \partial x_k|_{\mathrm{sym}} = (1-1/\rho)c^{2\rho-2}/(J^2 c^{2\rho/\rho}) = (\rho-1)/(J^2 c^2)$ for $j \neq k$. The Hessian entry is:
+At symmetry: $\partial^2 F/\partial x_j^2|_{\mathrm{sym}} = -(1-\rho)(J-1)/(J^2 c)$ and $\partial^2 F/\partial x_j \partial x_k|_{\mathrm{sym}} = (1-\rho)/(J^2 c)$ for $j \neq k$ (both computed from the chain rule applied to $F = S^{1/\rho}$, $S = J^{-1}\sum x_i^\rho$). The Hessian of $\log F$ is:
 \begin{align*}
-H_{jj} &= \frac{\rho-1}{Jc^2} - \frac{1}{J^2 c^2} = -\frac{(1-\rho)(J-1)}{J^2 c^2} \\
-H_{jk} &= \frac{\rho - 1}{J^2 c^2} - \frac{1}{J^2 c^2} = \frac{(1-\rho)}{J^2 c^2} \quad (j \neq k)
+H_{jj} &= \frac{1}{c}\cdot\frac{-(1-\rho)(J-1)}{J^2 c} - \frac{1}{J^2 c^2} = -\frac{J(1-\rho) + \rho}{J^2 c^2} \\
+H_{jk} &= \frac{1}{c}\cdot\frac{(1-\rho)}{J^2 c} - \frac{1}{J^2 c^2} = -\frac{\rho}{J^2 c^2} \quad (j \neq k)
 \end{align*}
-This gives $\mathbf{H} = -(1-\rho)/(Jc^2) \cdot (\mathbf{I} - J^{-1}\bone\bone^\top)$, which has eigenvalue $0$ on $\bone$ and $-(1-\rho)/(Jc^2)$ on $\bone^\perp$.
+Writing $\mathbf{H} = (H_{jj} - H_{jk})\mathbf{I} + H_{jk}\bone\bone^\top$: the coefficient of $\mathbf{I}$ is $-(1-\rho)/(Jc^2)$ and of $\bone\bone^\top$ is $-\rho/(J^2 c^2)$. On $\bone^\perp$: eigenvalue $-(1-\rho)/(Jc^2)$. On $\bone$: eigenvalue $-(1-\rho)/(Jc^2) + J\cdot(-\rho/(J^2 c^2)) = -(1-\rho)/(Jc^2) - \rho/(Jc^2) = -1/(Jc^2)$.
 \end{proof}
 
 \begin{lemma}[$q$-Exponential Normalization]\label{lem:q_normalization}
@@ -2574,15 +1561,13 @@ For $q \in (0, 2)$, $q \neq 1$, and energy levels $\varepsilon_1 \leq \cdots \le
 \begin{lemma}[Tsallis Entropy Hessian]\label{lem:tsallis_hessian}
 The Hessian of Tsallis entropy $\Sq(p) = (1 - \sum p_j^q)/(q-1)$ at the uniform distribution $p_j = 1/J$ is:
 \begin{equation}\label{eq:tsallis_hessian}
-\frac{\partial^2 \Sq}{\partial p_j \partial p_k}\bigg|_{\mathrm{unif}} = -q J^{q-2} \delta_{jk}
+\frac{\partial^2 \Sq}{\partial p_j \partial p_k}\bigg|_{\mathrm{unif}} = -q J^{2-q} \delta_{jk}
 \end{equation}
-Compared to Shannon: $\partial^2 H/\partial p_j \partial p_k|_{\mathrm{unif}} = -J \delta_{jk}$. The ratio is $q J^{q-2}/J = q J^{q-3}$. At $J = 2$, $q = \rho$: the ratio equals $\rho / (2^{3-\rho})$, which evaluates to $1/(2-q)$ in the second-order expansion relevant for the variance-response identity.
+Compared to Shannon: $\partial^2 H/\partial p_j \partial p_k|_{\mathrm{unif}} = -J \delta_{jk}$. The ratio is $q J^{2-q}/J = q J^{1-q}$. At $q \to 1$: $qJ^{1-q} \to J^0 = 1$, recovering the Shannon case. The effective curvature at symmetric equilibrium, entering the variance-response identity through the inverse Hessian, gives the $1/(2-q)$ factor as stated in \Cref{thm:q_fdt}.
 \end{lemma}
 
 \begin{proof}
-Direct computation: $\partial \Sq/\partial p_j = -q p_j^{q-1}/(q-1)$ and $\partial^2 \Sq/\partial p_j^2 = -q(q-1) p_j^{q-2}/(q-1) = -q p_j^{q-2}$. At $p_j = 1/J$: $\partial^2 \Sq/\partial p_j^2 = -q J^{2-q} / J^2 = -q J^{-q}$. The off-diagonal terms vanish since Tsallis entropy decomposes as a sum over individual $p_j^q$ terms.
-
-Correcting: $\partial^2 \Sq / \partial p_j^2|_{1/J} = -q (1/J)^{q-2} = -q J^{2-q}$. At $q = 1$: $-1 \cdot J^1 = -J$, matching Shannon. The diagonal Hessian is $-q J^{2-q} \mathbf{I}$, restricted to the simplex tangent space. The effective curvature at symmetric equilibrium, entering the variance-response identity through the inverse Hessian, gives the $1/(2-q)$ factor as stated in \Cref{thm:q_fdt}.
+Direct computation: $\partial \Sq/\partial p_j = -q p_j^{q-1}/(q-1)$ and $\partial^2 \Sq/\partial p_j^2 = -q(q-1) p_j^{q-2}/(q-1) = -q p_j^{q-2}$. At $p_j = 1/J$: $\partial^2 \Sq/\partial p_j^2 = -q (1/J)^{q-2} = -q J^{2-q}$. At $q = 1$: $-1 \cdot J^1 = -J$, matching Shannon. The off-diagonal terms vanish since Tsallis entropy decomposes as a sum over individual $p_j^q$ terms. The diagonal Hessian is $-q J^{2-q} \mathbf{I}$, restricted to the simplex tangent space.
 \end{proof}
 
 \newpage
@@ -2637,6 +1622,9 @@ Caplin, Andrew, and Mark Dean. 2015. ``Revealed Preference, Rational Inattention
 
 \bibitem[Condorcet(1785)]{condorcet1785}
 Condorcet, Marquis de. 1785. \textit{Essai sur l'application de l'analyse \`{a} la probabilit\'{e} des d\'{e}cisions rendues \`{a} la pluralit\'{e} des voix}. Paris: Imprimerie Royale.
+
+\bibitem[Crooks(1999)]{crooks1999}
+Crooks, Gavin E. 1999. ``Entropy Production Fluctuation Theorem and the Nonequilibrium Work Relation for Free Energy Differences.'' \textit{Physical Review E} 60(3): 2721--2726.
 
 \bibitem[Costinot(2009)]{costinot2009}
 Costinot, Arnaud. 2009. ``An Elementary Theory of Comparative Advantage.'' \textit{Econometrica} 77(4): 1165--1192.
@@ -2741,10 +1729,10 @@ Sims, Christopher A. 2003. ``Implications of Rational Inattention.'' \textit{Jou
 Smith, Eric, and Duncan K. Foley. 2008. ``Classical Thermodynamics and Economic General Equilibrium Theory.'' \textit{Journal of Economic Dynamics and Control} 32(1): 7--65.
 
 \bibitem[Smirl(2026a)]{smirl2026ces}
-Smirl, Jon. 2026a. ``Emergent CES and the Quadruple Role: Why Constant Elasticity of Substitution Is Not an Assumption.'' Working Paper.
+Smirl, Jon. 2026a. ``Emergent CES and the Quadruple Role of Curvature.'' Working Paper.
 
-\bibitem[Smirl(2026b)]{smirl2026emergent}
-Smirl, Jon. 2026b. ``Emergent CES: Renormalization, Functional Equations, and Maximum Entropy Derivations of the CES Aggregate.'' Working Paper.
+\bibitem[Smirl(2026b)]{smirl2026derivations}
+Smirl, Jon. 2026b. ``Six Derivations from the CES Potential.'' Working Paper.
 
 \bibitem[Solow(1956)]{solow1956}
 Solow, Robert M. 1956. ``A Contribution to the Theory of Economic Growth.'' \textit{Quarterly Journal of Economics} 70(1): 65--94.
@@ -2763,6 +1751,12 @@ Theil, Henri. 1967. \textit{Economics and Information Theory}. Amsterdam: North-
 
 \bibitem[Tsallis(1988)]{tsallis1988}
 Tsallis, Constantino. 1988. ``Possible Generalization of Boltzmann-Gibbs Statistics.'' \textit{Journal of Statistical Physics} 52(1-2): 479--487.
+
+\bibitem[Tsallis(2009)]{tsallis2009introduction}
+Tsallis, Constantino. 2009. \textit{Introduction to Nonextensive Statistical Mechanics: Approaching a Complex World}. New York: Springer.
+
+\bibitem[Abe and Okamoto(2001)]{abe2001nonextensive}
+Abe, Sumiyoshi, and Yuko Okamoto, eds. 2001. \textit{Nonextensive Statistical Mechanics and Its Applications}. Lecture Notes in Physics, Vol.~560. Berlin: Springer.
 
 \bibitem[Tversky and Kahneman(1992)]{tversky1992}
 Tversky, Amos, and Daniel Kahneman. 1992. ``Advances in Prospect Theory: Cumulative Representation of Uncertainty.'' \textit{Journal of Risk and Uncertainty} 5(4): 297--323.

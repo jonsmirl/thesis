@@ -1356,6 +1356,42 @@ This resolves a long-standing puzzle: why CES fits aggregate data well despite b
 
 All bounds become equalities in limit cases: (a)~gap vanishes for proportional inputs; (b)~diversity signal vanishes as $K \to 0$ or $r \to 1$; (c)~penalty vanishes as $K \to 0$ or $k/J \to 0$. For $\rho < 0$, the curvature increases away from the symmetric point, so local bounds are conservative.
 
+\subsection{Application Domains}\label{ssec:applications}
+
+The CES aggregate appears in several literatures where the quadruple role
+is economically relevant:
+
+\emph{International trade.}  The \citet{dixit1977} formulation uses CES to aggregate differentiated varieties.
+Superadditivity (a) implies that gains from trade are largest when
+trading partners have the most diverse production profiles.  The
+curvature parameter $K$ quantifies these gains: with $J$ varieties and complementarity $\rho < 1$, the Dixit-Stiglitz welfare gain from variety scales as $J^{1/\sigma - 1}$, which is monotone in $K$.
+
+\emph{Directed technical change.}  \citet{jones2005} shows that
+the elasticity of substitution determines the direction of technical
+change.  Part (b) implies that CES economies with lower $\sigma$ (higher
+$K$) are more robust to correlated technology shocks---the aggregate is
+less sensitive to common-factor variation.  The emergence theorem provides a missing foundation for Jones's analysis: the CES form is not assumed but forced, so the relevant question is not ``CES or translog?''\ but ``what determines $\rho$?''
+
+\emph{Market power.}  Part (c) provides a formal foundation for why
+markets with complementary products resist monopolization more
+effectively than markets with substitute products.  The penalty for
+manipulation grows monotonically with $K$.  In a Cournot oligopoly with CES demand, the deadweight loss triangle scales as $K^{-1}$: more complementary markets (higher $K$) sustain less market power in equilibrium.
+
+\emph{Index construction.}  The Fisher, T\"ornqvist, and CES price
+indices all embed CES-type aggregation.  Part (b) implies that CES
+indices with lower $\sigma$ are more informationally efficient---they
+better represent the underlying distribution even when prices are
+correlated.  The emergence theorem implies that superlative index number formulas converge to CES form under aggregation, providing a theoretical justification for CES-based deflators in national accounts.
+
+\emph{Platform economics.}  Part (d) provides a production-theoretic
+foundation for network effects.  The empirical scaling literature
+distinguishes Sarnoff (linear), Metcalfe (quadratic), and Reed
+(exponential) networks but lacks a unified parameter.  The CES
+exponent $1/\rho$ fills this gap: a platform's network scaling regime
+is determined by the complementarity among its participants, which is
+the same parameter that controls all three static properties
+(a)--(c).
+
 \subsection{What This Paper Does Not Cover}
 
 This paper proves the emergence of CES and the static properties of a single CES aggregate. It does not address:

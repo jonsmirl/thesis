@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.2.17)  21 FEB 2026 19:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.2.17)  21 FEB 2026 20:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**CES_Potential.tex
-(./CES_Potential.tex
+**Six_Derivations.tex
+(./Six_Derivations.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -433,8 +433,8 @@ File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count303
 \l__pdf_internal_box=\box59
 )
-(./CES_Potential.aux)
-\openout1 = `CES_Potential.aux'.
+(./Six_Derivations.aux)
+\openout1 = `Six_Derivations.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 60.
 LaTeX Font Info:    ... okay on input line 60.
@@ -530,9 +530,9 @@ Package color Info: Driver file: pdftex.def on input line 149.
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx))
 Package hyperref Info: Link coloring ON on input line 60.
 
-(./CES_Potential.out) (./CES_Potential.out)
+(./Six_Derivations.out) (./Six_Derivations.out)
 \@outlinefile=\write3
-\openout3 = `CES_Potential.out'.
+\openout3 = `Six_Derivations.out'.
 
 LaTeX Font Info:    Trying to load font information for U+msa on input line 63.
 
@@ -553,236 +553,158 @@ LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 6
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 ) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] (./CES_Potential.toc [
-3])
-\tf@toc=\write4
-\openout4 = `CES_Potential.toc'.
-
- [4] [5] [6]
-Overfull \hbox (0.40588pt too wide) in paragraph at lines 119--120
-\T1/cmr/m/n/12 predictions---management--technology com-ple-men-tar-ity, within
--industry pro-duc-tiv-ity dis-
- []
-
-[7] [8] [9]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 183.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\rho' on input line 183.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 183.
-
-[10]
-Overfull \hbox (12.50403pt too wide) in paragraph at lines 220--221
-[]\T1/cmr/bx/it/12 Consistent ag-gre-ga-tion (Kolmogorov--
- []
-
-[11]
-Overfull \hbox (20.17168pt too wide) in paragraph at lines 264--265
-\T1/cmr/m/n/12 For a dis-crete prob-a-bil-ity dis-tri-bu-tion $\OML/cmm/m/it/12
- p \OT1/cmr/m/n/12 = (\OML/cmm/m/it/12 p[]; [] ; p[]\OT1/cmr/m/n/12 )$\T1/cmr/m
-/n/12 , Shan-non en-tropy $\OML/cmm/m/it/12 H\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 
-p\OT1/cmr/m/n/12 ) = \OMS/cmsy/m/n/12 ^^@ [] \OML/cmm/m/it/12 p[] [] p[]$
- []
-
-[12] [13] [14]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 332.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 332.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 332.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 332.
-
-
-Overfull \hbox (6.01945pt too wide) in paragraph at lines 341--343
-\T1/cmr/m/it/12 with $[][] \OMS/cmsy/m/n/12 ! []$ \T1/cmr/m/it/12 and $[][] \OM
-S/cmsy/m/n/12 ! []$ \T1/cmr/m/it/12 as $\OML/cmm/m/it/12 q \OMS/cmsy/m/n/12 ! \
-OT1/cmr/m/n/12 1$\T1/cmr/m/it/12 . They sat-isfy $[][]\OT1/cmr/m/n/12 ([][](\OM
-L/cmm/m/it/12 x\OT1/cmr/m/n/12 )) = \OML/cmm/m/it/12 x$ \T1/cmr/m/it/12 and $[]
-[]\OT1/cmr/m/n/12 ([][](\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 )) =
- []
-
-[15]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 349.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 349.
-
-[16] [17] [18] [19] [20] [21] [22]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 582.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 582.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 587.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 587.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 608.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 608.
-
-[23]
-LaTeX Font Info:    Trying to load font information for U+euf on input line 624
-.
- (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/ueuf.fd
-File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./Six_Derivations.toc [2]
 )
+\tf@toc=\write4
+\openout4 = `Six_Derivations.toc'.
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 633.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 633.
-
-[24]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 667.
+ [3] [4] [5]
+[6]
+Overfull \hbox (26.49126pt too wide) in paragraph at lines 145--146
+ []\T1/cmr/bx/n/12 Closest an-tecedents.[] [][]\T1/cmr/m/n/12 Costinot[][] ([][
+]2009[][]) showed that a sin-gle log-supermodularity condition---
+ []
 
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 667.
-
-[25]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 689.
+Overfull \hbox (14.10573pt too wide) in paragraph at lines 145--146
+\T1/cmr/m/n/12 mathematically equiv-a-lent to CES com-ple-men-tar-ity $\OML/cmm
+/m/it/12 ^^Z < \OT1/cmr/m/n/12 1$\T1/cmr/m/n/12 ---unifies Ri-car-dian and Heck
+scher-
+ []
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 689.
-
-[26]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 725.
+(hyperref)                removing `math shift' on input line 164.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 725.
-
-[27]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 746.
+(hyperref)                removing `\rho' on input line 164.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 746.
+(hyperref)                removing `math shift' on input line 164.
+
+[7] [8]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 211.
 
 
-Overfull \hbox (15.52434pt too wide) in paragraph at lines 769--789
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\rho' on input line 211.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 211.
+
+[9]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 251.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\rho' on input line 251.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 251.
+
+[10] [11] [12] [13]
+Overfull \hbox (3.1026pt too wide) in paragraph at lines 375--376
+\T1/cmr/m/it/12 agents self-select. The auc-tion for-mat is nat-u-ral be-cause 
+agents are interchangeable---
+ []
+
+[14]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 395.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\rho' on input line 395.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 395.
+
+
+Overfull \hbox (0.74849pt too wide) in paragraph at lines 398--400
+[]\T1/cmr/bx/n/12 Proposition 4.4 \T1/cmr/m/n/12 (Price of In-cen-tive Com-pat-
+i-bil-ity)\T1/cmr/bx/n/12 . []\T1/cmr/m/it/12 The wel-fare ra-tio $[]\OT1/cmr/m
+/n/12 (\OML/cmm/m/it/12 ^^Z\OT1/cmr/m/n/12 ) = (\OML/cmm/m/it/12 W[] \OMS/cmsy/
+m/n/12 ^^@
+ []
+
+[15] [16]
+Overfull \hbox (1.8683pt too wide) in paragraph at lines 461--462
+[]\T1/cmr/bx/it/12 Ordinal IIA \T1/cmr/m/it/12 (ap-prox-i-mately): sen-si-tiv-i
+ty to car-di-nal re-parameterization is bounded
+ []
+
+[17]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 515.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\rho' on input line 515.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 515.
+
+[18] [19]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 572.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\rho' on input line 572.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 572.
+
+[20] [21] [22] [23]
+Overfull \hbox (1.52151pt too wide) in paragraph at lines 700--701
+[]\T1/cmr/m/n/12 Adding an al-ter-na-tive changes the in-clu-sive value by $\OT
+1/cmr/m/n/12 ^^A\OML/cmm/m/it/12 IV \OT1/cmr/m/n/12 = [](1 + [](\OML/cmm/m/it/1
+2 u[]=T\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 =Z\OT1/cmr/m/n/12 )$\T1/cmr/m/n/12 ,
+ []
+
+
+Overfull \hbox (11.16653pt too wide) in paragraph at lines 722--724
+[]\T1/cmr/m/it/12 Step 1: Choice stochas-tic-ity. \T1/cmr/m/n/12 From [], $\OML
+/cmm/m/it/12 P\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 j\OT1/cmr/m/n/12 ) = [](\OML/cm
+m/m/it/12 u[]=T\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 =Z$ \T1/cmr/m/n/12 where $\OML
+/cmm/m/it/12 Z \OT1/cmr/m/n/12 = [][] [](\OML/cmm/m/it/12 u[]=T\OT1/cmr/m/n/12 
+)$\T1/cmr/m/n/12 .
+ []
+
+[24] [25] [26] [27]
+Overfull \hbox (6.81657pt too wide) in paragraph at lines 819--839
  [][] 
  []
 
-[28] [29] [30] [31]
-Overfull \hbox (0.28143pt too wide) in paragraph at lines 887--888
-\T1/cmr/m/it/12 grates chem-istry, bi-ol-ogy, clin-i-cal trial de-sign, reg-u-l
-a-tory af-fairs, and mul-ti-ple specialties---
- []
+[28]
 
-[32]
-Underfull \hbox (badness 10000) in paragraph at lines 924--924
-[]|\T1/cmr/m/n/12 Aerospace, pharma
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 929--929
-[]|\T1/cmr/m/n/12 Developing-country as-
- []
-
-[33] [34] [35] [36] [37] [38] [39] [40] [41] [42]
-Underfull \hbox (badness 10000) in paragraph at lines 1228--1228
-[]|\T1/cmr/m/n/10.95 Industrial pro-
- []
-
-
-Underfull \hbox (badness 1097) in paragraph at lines 1231--1231
-[]|$\OT1/cmr/m/n/10.95 1\OML/cmm/m/it/10.95 =\OT1/cmr/m/n/10.95 (2 \OMS/cmsy/m/
-n/10.95 ^^@ \OML/cmm/m/it/10.95 q\OT1/cmr/m/n/10.95 )$ \T1/cmr/m/n/10.95 cor-re
-c-tion; com-pact
- []
-
-
-Underfull \hbox (badness 4168) in paragraph at lines 1232--1233
-[]|\T1/cmr/m/n/10.95 See com-pan-ion pa-per ([][]Smirl[][],
- []
-
-[43]
-Overfull \hbox (7.89915pt too wide) in paragraph at lines 1252--1253
-\T1/cmr/m/n/12 fric-tion pre-vents the first-best al-lo-ca-tion. This loss is q
-uadratic in $\OML/cmm/m/it/12 K$\T1/cmr/m/n/12 ---complementary
- []
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 869.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1257.
+(hyperref)                removing `\rho' on input line 869.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\rho' on input line 1257.
+(hyperref)                removing `math shift' on input line 869.
 
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1257.
-
-[44] [45] [46]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1307.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\rho' on input line 1307.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1307.
-
-[47] [48]
-Overfull \hbox (2.0355pt too wide) in paragraph at lines 1342--1343
-\T1/cmr/m/n/12 quires es-ti-mat-ing $\OML/cmm/m/it/12 ^^Z$ \T1/cmr/m/n/12 from 
-pro-duc-tion data and test-ing it out-of-sample in information-
- []
-
-[49] [50] [51] [52]
-Overfull \hbox (7.57869pt too wide) in paragraph at lines 1424--1425
-\T1/cmr/m/n/12 exponential over ex-po-nen-tial). Four ad-di-tional predictions-
---management--technology
- []
-
-[53] [54] [55] [56]
-Overfull \hbox (0.72995pt too wide) in paragraph at lines 1475--1476
+[29] [30] [31]
+Overfull \hbox (0.72995pt too wide) in paragraph at lines 939--940
 []\T1/cmr/bx/n/12 Lemma A.1 \T1/cmr/m/n/12 (CES Hes-sian Eigen-struc-ture)\T1/c
 mr/bx/n/12 . []\T1/cmr/m/it/12 Let $\OML/cmm/m/it/12 F\OT1/cmr/m/n/12 (\OT1/cmr
 /bx/n/12 x\OT1/cmr/m/n/12 ) = (\OML/cmm/m/it/12 J[] [] x[]\OT1/cmr/m/n/12 )[]$ 
@@ -790,65 +712,59 @@ mr/bx/n/12 . []\T1/cmr/m/it/12 Let $\OML/cmm/m/it/12 F\OT1/cmr/m/n/12 (\OT1/cmr
 \OMS/cmsy/m/n/12 ^^@1\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 1] \OMS/cmsy/m/n/12 n
  []
 
-[57] [58] [59] [60] [61] [62] [63] (./CES_Potential.aux)
+[32] [33] [34] [35] [36] (./Six_Derivations.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
-Package rerunfilecheck Info: File `CES_Potential.out' has not changed.
-(rerunfilecheck)             Checksum: 5497BEE88B6957227A7601FBDC932008;13352.
+Package rerunfilecheck Info: File `Six_Derivations.out' has not changed.
+(rerunfilecheck)             Checksum: 53BD0D0E878E29F2F99125D7F77E72FB;8488.
  ) 
 Here is how much of TeX's memory you used:
- 15006 strings out of 476182
- 241924 string characters out of 5795595
- 1940975 words of memory out of 5000000
- 36367 multiletter control sequences out of 15000+600000
- 591118 words of font info for 126 fonts, out of 8000000 for 9000
+ 14508 strings out of 476182
+ 234055 string characters out of 5795595
+ 1941975 words of memory out of 5000000
+ 36088 multiletter control sequences out of 15000+600000
+ 587389 words of font info for 112 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,17n,79p,2224b,705s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </home/jonsmirl/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.
-600pk> </home/jonsmirl/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti0
-800.600pk> </home/jonsmirl/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/e
-cbi1200.600pk> </home/jonsmirl/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/
-ec/ecbx1440.600pk> </home/jonsmirl/.texlive2023/texmf-var/fonts/pk/ljfour/jknap
-pen/ec/ecti1200.600pk> </home/jonsmirl/.texlive2023/texmf-var/fonts/pk/ljfour/j
-knappen/ec/ecrm0700.600pk> </home/jonsmirl/.texlive2023/texmf-var/fonts/pk/ljfo
-ur/jknappen/ec/ecrm0800.600pk> </home/jonsmirl/.texlive2023/texmf-var/fonts/pk/
-ljfour/jknappen/ec/ecbx1728.600pk> </home/jonsmirl/.texlive2023/texmf-var/fonts
-/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/jonsmirl/.texlive2023/texmf-var/f
+ 75i,17n,79p,1642b,707s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </home/jonsmirl/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0800.
+600pk> </home/jonsmirl/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbi1
+200.600pk> </home/jonsmirl/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/t
+crm1200.600pk> </home/jonsmirl/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/
+ec/ecti1200.600pk> </home/jonsmirl/.texlive2023/texmf-var/fonts/pk/ljfour/jknap
+pen/ec/ecbx1440.600pk> </home/jonsmirl/.texlive2023/texmf-var/fonts/pk/ljfour/j
+knappen/ec/ecbx1728.600pk> </home/jonsmirl/.texlive2023/texmf-var/fonts/pk/ljfo
+ur/jknappen/ec/ectt1000.600pk> </home/jonsmirl/.texlive2023/texmf-var/fonts/pk/
+ljfour/jknappen/ec/ecrm1000.600pk> </home/jonsmirl/.texlive2023/texmf-var/fonts
+/pk/ljfour/jknappen/ec/tcrm0700.600pk> </home/jonsmirl/.texlive2023/texmf-var/f
 onts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/jonsmirl/.texlive2023/texmf-v
-ar/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> </home/jonsmirl/.texlive2023/tex
-mf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/jonsmirl/.texlive2023
-/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm0700.600pk> </home/jonsmirl/.texlive
-2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1095.600pk> </home/jonsmirl/.tex
-live2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> </home/jonsmirl/
-.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk> </home/jonsm
-irl/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk> </home/j
-onsmirl/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440.600pk> </ho
-me/jonsmirl/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cmextra/cmmib8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
-12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/euler/eufm10.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/symbols/msbm10.pfb>
-Output written on CES_Potential.pdf (63 pages, 648746 bytes).
+ar/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/jonsmirl/.texlive2023/tex
+mf-var/fonts/pk/ljfour/jknappen/ec/ecti1095.600pk> </home/jonsmirl/.texlive2023
+/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> </home/jonsmirl/.texlive
+2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk> </home/jonsmirl/.tex
+live2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk> </home/jonsmirl/
+.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440.600pk> </home/jonsm
+irl/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on Six_Derivations.pdf (36 pages, 497169 bytes).
 PDF statistics:
- 2107 PDF objects out of 2487 (max. 8388607)
- 1348 compressed objects within 14 object streams
- 419 named destinations out of 1000 (max. 500000)
- 497 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1465 PDF objects out of 1728 (max. 8388607)
+ 807 compressed objects within 9 object streams
+ 212 named destinations out of 1000 (max. 500000)
+ 345 words of extra memory for PDF output out of 10000 (max. 10000000)
 

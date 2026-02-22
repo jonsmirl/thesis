@@ -254,7 +254,7 @@ The geometric mean $\sqrt{2.46 \times 5.56} = 3.70$~yr matches the Kitchin perio
 Across seven manufacturing subsectors, $\Neff$ is negatively correlated with the Oberfield--Raval substitution elasticity: Kendall $\tau = -0.535$ ($p = 0.13$), Spearman $r = -0.612$ ($p = 0.14$).  Computer/Electronics ($\hat\sigma = 0.40$) has $\Neff = 7$; all sectors with $\hat\sigma \geq 0.55$ have $\Neff = 5$.  Lower substitution elasticity (higher CES curvature) supports more timescale layers, as predicted by the endogenous $\Neff$ theorem \citep{smirl2026ces}.
 \end{result}
 
-\Cref{tab:sector_neff} reports the sector-level results.  The sign is negative as predicted, with a clear structural pattern: Computer/Electronics---the sector with the most complementary inputs ($\hat\sigma = 0.40$, reflecting highly specialized semiconductor, communications, and instrument subsectors)---has two additional timescale layers.  All sectors with $\hat\sigma \geq 0.55$ share an identical five-mode core.  This threshold structure is consistent with Theorem~3.3 of Paper~5, which predicts that $\Neff$ increases discontinuously as $\hat\sigma$ falls below critical values.
+\Cref{tab:sector_neff} reports the sector-level results.  The sign is negative as predicted, with a clear structural pattern: Computer/Electronics---the sector with the most complementary inputs ($\hat\sigma = 0.40$, reflecting highly specialized semiconductor, communications, and instrument subsectors)---has two additional timescale layers.  All sectors with $\hat\sigma \geq 0.55$ share an identical five-mode core.  This threshold structure is consistent with Theorem~3.3 of Paper~7, which predicts that $\Neff$ increases discontinuously as $\hat\sigma$ falls below critical values.
 
 \begin{table}[H]
 \centering
@@ -366,7 +366,7 @@ Three notable properties of the detector deserve emphasis.  First, temperature, 
 
 \subsection{Endogenous Hierarchy Depth}\label{sec:emd:endogenous}
 
-Theorem~3.3 of Paper~5 predicts that $\Neff$ is endogenous: sectors with more complementary inputs (lower $\hat\sigma$, higher CES curvature $K$) support more timescale layers, because complementary inputs create richer interaction dynamics across timescales.  Three testable implications provide additional evidence beyond the static cross-sector correlation reported in \Cref{res:sector}:
+Theorem~3.3 of Paper~7 predicts that $\Neff$ is endogenous: sectors with more complementary inputs (lower $\hat\sigma$, higher CES curvature $K$) support more timescale layers, because complementary inputs create richer interaction dynamics across timescales.  Three testable implications provide additional evidence beyond the static cross-sector correlation reported in \Cref{res:sector}:
 
 \paragraph{(a) Innovation vs.\ maturation.}
 Sectors mid-innovation should show increasing $\Neff(t)$; mature sectors should be flat or declining.  Applying EEMD in rolling 20-year windows to individual sector IP series yields Kendall trend statistics: Computer/Electronics (NAICS~334) shows $\tau = 0.26$ ($p = 0.018$); Food (NAICS~311) shows $\tau = 0.15$ ($p = 0.16$); historical steel ingots (1899--1939, maturation phase) shows $\tau = -0.27$ ($p = 0.002$).  The directions are consistent: innovating sectors gain timescale layers, maturing sectors lose them.
@@ -406,7 +406,7 @@ by nonlinear least squares at six NAICS aggregation nodes, using monthly FRED IP
 For inference, three channels are reported: (i) asymptotic standard errors from the NLS covariance matrix; (ii) moving-block bootstrap ($B = 1{,}000$, block length 12~months) to provide confidence intervals robust to the strong serial correlation in monthly IP data; and (iii) profile likelihood over a 200-point $\rho$ grid, where the concentrated log-likelihood $\ell(\rho) = -T/2 \cdot (\log(2\pi\hat\sigma^2(\rho)) + 1)$ is maximized over all other parameters at each fixed $\rho$.  The profile likelihood CI is defined by $\ell(\rho) > \ell(\hat{\rho}) - \chi^2_1(0.95)/2$.
 
 \paragraph{Method 2: Variance filter inversion.}
-The CES aggregation structure implies a relationship between idiosyncratic and aggregate variance: $\Var(\text{idio})/\Var(\text{agg}) = 1/(2-\rho)^2$ when agents are symmetric.  Inverting this ratio from the data yields $\hat\rho$ without estimating the full production function.  Bootstrap provides confidence intervals.
+Under the CES aggregation structure, the ratio of idiosyncratic to aggregate variance depends on $\rho$ through the curvature of the aggregation map.  We use the approximation $\Var(\text{idio})/\Var(\text{agg}) \approx 1/(2-\rho)^2$ when agents are symmetric, and invert this ratio from the data.  Bootstrap provides confidence intervals.  \emph{Caveat:} This formula is a second-order approximation that assumes the aggregate inherits curvature-dependent variance filtering from the CES structure.  At first order (log-linear approximation), the CES aggregate responds to inputs with equal share weights regardless of $\rho$, so the variance ratio depends primarily on the relative magnitude of common versus idiosyncratic shocks and on $J$, not on $\rho$.  The VarFilter estimates should therefore be treated as an auxiliary diagnostic rather than as a structural CES estimator; we retain them for completeness but give primary weight to NLS and equicorrelation methods.
 
 \paragraph{Method 3: Equicorrelation inversion.}
 Under CES aggregation with equicorrelated inputs, the common-factor $R^2$ satisfies $R^2_{\text{common}} = 1/J + (J-1)/J \cdot 1/(2-\rho)^2$.  We extract the common factor by principal components and invert to obtain $\hat\rho$.  An equicorrelation test (Bartlett's statistic) checks whether the equicorrelation assumption holds.
@@ -672,7 +672,7 @@ The systematic upward shift is itself informative: it confirms that the NLS esti
 
 \subsection{Theory}\label{sec:damping:theory}
 
-The damping cancellation theorem (Paper~5, Proposition~6.1) states that increasing regulatory friction $\sigma_n$ at one layer of the hierarchy speeds local convergence but lowers equilibrium output---and the two effects exactly cancel.  The tree coefficients $c_n$ satisfy $c_n \sigma_n = P_{\text{cycle}} / k_{n,n-1}$, independent of $\sigma_n$.  Consequently:
+The damping cancellation theorem (Paper~7, Proposition~6.1) states that increasing regulatory friction $\sigma_n$ at one layer of the hierarchy speeds local convergence but lowers equilibrium output---and the two effects exactly cancel.  The tree coefficients $c_n$ satisfy $c_n \sigma_n = P_{\text{cycle}} / k_{n,n-1}$, independent of $\sigma_n$.  Consequently:
 
 \begin{enumerate}[nosep]
 \item Regulatory tightening at one layer has \emph{transient} but not \emph{persistent} effect on aggregate financial development.
@@ -788,7 +788,7 @@ An earlier version of this test using only 16 compiled countries showed apparent
 
 \subsection{Theory}\label{sec:dispersion:theory}
 
-Section~8.3 of Paper~5 predicts that within-level diversity modes decay at rate $\sigma(2-\rho)/\varepsilon$, faster than the aggregate mode at rate $\sigma/\varepsilon$.  As $\rho$ rises toward the transition threshold, the spectral gap between diversity and aggregate modes narrows, causing cross-sectional dispersion to widen \emph{before} aggregate statistics move.  The lead time is proportional to $1/(2-\rho)$.
+Section~8.3 of Paper~7 predicts that within-level diversity modes decay at rate $\sigma(2-\rho)/\varepsilon$, faster than the aggregate mode at rate $\sigma/\varepsilon$.  As $\rho$ rises toward the transition threshold, the spectral gap between diversity and aggregate modes narrows, causing cross-sectional dispersion to widen \emph{before} aggregate statistics move.  The lead time is proportional to $1/(2-\rho)$.
 
 \subsection{Data}\label{sec:dispersion:data}
 
@@ -979,7 +979,7 @@ Nondurable Goods & $0.990$ & $1.140$ & $0.267$ & 0.872 \\
 
 The paired $t$-test between NLS and VarFilter yields $p = 0.03$, confirming statistically significant cross-method differences.  This is expected: each method responds to different aspects of the CES structure.  NLS estimates the production function shape directly (curvature of isoquants).  VarFilter estimates variance propagation (how the CES aggregate filters idiosyncratic noise).  Equicorrelation estimates the common-factor structure (how much of the cross-sectional variation is shared vs.\ idiosyncratic).
 
-The VarFilter method frequently produces $\hat\rho > 1$ (outside the CES domain), indicating that the symmetric variance formula $\Var(\text{idio})/\Var(\text{agg}) = 1/(2-\rho)^2$ breaks down when subsector shares are highly unequal---as they are for Computer/Electronics (where semiconductors dominate) and Total IP (where Manufacturing dominates).  The corrected VarFilter estimates (adjusting for observed share weights) bring the estimates closer to the NLS values, but the correction requires knowing the true weights, which is part of what we are trying to estimate.
+The VarFilter method frequently produces $\hat\rho > 1$ (outside the CES domain).  This reflects a fundamental limitation: the variance filter formula $\Var(\text{idio})/\Var(\text{agg}) = 1/(2-\rho)^2$ is a second-order approximation, and at first order the variance ratio depends on the relative magnitudes of common and idiosyncratic shocks and on $J$, not on $\rho$.  The formula's $\rho$-dependence enters only through higher-order terms that are small relative to the dominant first-order effect.  When subsector shares are highly unequal (Computer/Electronics, Total IP), the approximation breaks down entirely.  We retain the VarFilter column for transparency but emphasize that these estimates are unreliable as structural $\rho$ estimators; the NLS and equicorrelation methods should be preferred.
 
 The equicorrelation test (Bartlett's statistic) fails for all nodes with $J > 2$ (all $p < 0.001$), confirming that equal-correlation is an approximation.  The failures identify where heterogeneous correlation structures (e.g., Motor Vehicles and Aerospace being more correlated with each other than either is with Furniture) dominate.
 
@@ -990,13 +990,13 @@ Despite these individual-method limitations, the overidentification test---which
 The confirmed mathematical mechanism---CES curvature propagating through a timescale hierarchy---provides quantitative inputs for the companion papers' forward-looking predictions:
 
 \begin{itemize}[nosep]
-\item The adopted $\rho$ values (\Cref{tab:adopted_rho}) calibrate the learning-curve model of Paper~1 (determining the 3--4$\times$ overinvestment result), the diversity premium of Paper~2 (determining critical mass $N^*$), the model-collapse threshold of Paper~3, and the monetary policy degradation sequence of Paper~4.
+\item The adopted $\rho$ values (\Cref{tab:adopted_rho}) calibrate the learning-curve model of Paper~5 (determining the 3--4$\times$ overinvestment result), the diversity premium of Paper~5 (determining critical mass $N^*$), the model-collapse threshold of Paper~5, and the monetary policy degradation sequence of Paper~6.
 
 \item The soft hierarchy ($\rstar \approx 2$) implies that cross-level amplification is stronger than pure singular perturbation would predict: the reproduction number $R_0$ can exceed 1 even when individual-level $R_0$'s are sub-threshold, because non-adjacent coupling provides additional activation pathways.
 
-\item The damping cancellation result implies that regulatory interventions at the fastest level (stablecoin regulation, Paper~4) will not persistently affect mesh welfare convergence, while reforms at slower levels (capability-layer reforms reducing $\sigma_3$, or hardware-layer reforms increasing learning-curve speed $\beta_1$) will.  This is the upstream reform principle of Paper~5.
+\item The damping cancellation result implies that regulatory interventions at the fastest level (stablecoin regulation, Paper~6) will not persistently affect mesh welfare convergence, while reforms at slower levels (capability-layer reforms reducing $\sigma_3$, or hardware-layer reforms increasing learning-curve speed $\beta_1$) will.  This is the upstream reform principle of Paper~7.
 
-\item The dispersion lead time of 3 quarters at the semiconductor level provides a quantitative anchor: when cross-segment semiconductor dispersion widens, the aggregate transition signal follows within 9 months.  This lead time could serve as an early warning indicator for the hardware crossing predicted by Paper~1.
+\item The dispersion lead time of 3 quarters at the semiconductor level provides a quantitative anchor: when cross-segment semiconductor dispersion widens, the aggregate transition signal follows within 9 months.  This lead time could serve as an early warning indicator for the hardware crossing predicted by Paper~5.
 \end{itemize}
 
 \subsection{Limitations}\label{sec:discussion:limitations}
@@ -1030,7 +1030,7 @@ Several extensions would strengthen the evidence:
 
 \item \textbf{Cross-country $\Neff$.}  Applying EEMD to industrial production indices from multiple countries (OECD iStats provides harmonized monthly IP for 40+ countries) would test whether $\Neff$ and $\rstar$ are universal or country-specific.  The theory predicts universality of $\rstar$ (it reflects the production structure) but variation in $\Neff$ (it depends on the sectoral composition and hence $\hat\sigma$).
 
-\item \textbf{Real-time crossing detection.}  As the hardware crossing predicted by Paper~1 approaches (estimated 2028), the dispersion indicator can be monitored in real time.  Widening cross-segment semiconductor dispersion, followed by aggregate regime shift, would constitute a prospective confirmation of the theory's most specific prediction.
+\item \textbf{Real-time crossing detection.}  As the hardware crossing predicted by Paper~5 approaches (estimated 2028), the dispersion indicator can be monitored in real time.  Widening cross-segment semiconductor dispersion, followed by aggregate regime shift, would constitute a prospective confirmation of the theory's most specific prediction.
 
 \item \textbf{Time-varying $\rho$ estimation.}  State-space methods (extended Kalman filter on the CES production function) could estimate $\rho(t)$ as a slowly varying parameter, testing whether its dynamics match the Level~1 timescale predicted by the hierarchy.
 \end{enumerate}
@@ -1040,17 +1040,15 @@ Several extensions would strengthen the evidence:
 The five tests connect to the companion papers as follows:
 
 \begin{itemize}[nosep]
-\item \textbf{Paper~1 (Endogenous Decentralization):} The adopted $\rho$ at Level~1 ($\sigma \in [0.5, 0.7]$) calibrates the learning-curve model's curvature parameter, determining the 3--4$\times$ overinvestment result and the hardware crossing date.
+\item \textbf{Paper~5 (AI Transition), Level~1:} The adopted $\rho$ at Level~1 ($\sigma \in [0.5, 0.7]$) calibrates the learning-curve model's curvature parameter, determining the 3--4$\times$ overinvestment result and the hardware crossing date.
 
-\item \textbf{Paper~2 (Mesh Equilibrium):} The Level~2 $\rho$ ($\sigma \in [0.1, 0.5]$) determines the CES diversity premium and the critical mass $N^*$ for the first-order regime shift.
+\item \textbf{Paper~5 (AI Transition), Level~2:} The Level~2 $\rho$ ($\sigma \in [0.1, 0.5]$) determines the CES diversity premium and the critical mass $N^*$ for the first-order regime shift.
 
-\item \textbf{Paper~3 (Autocatalytic Mesh):} The Level~3 $\rho$ controls the effective external data fraction $\alpha_{\text{eff}}$ that prevents model collapse.
+\item \textbf{Paper~5 (AI Transition), Level~3:} The Level~3 $\rho$ controls the effective external data fraction $\alpha_{\text{eff}}$ that prevents model collapse.
 
-\item \textbf{Paper~4 (Settlement Feedback):} The Level~4 $\rho$ ($\sigma \in [2.0, 5.0]$) calibrates the settlement demand dynamics and the monetary policy degradation sequence.
+\item \textbf{Paper~6 (Settlement Feedback):} The Level~4 $\rho$ ($\sigma \in [2.0, 5.0]$) calibrates the settlement demand dynamics and the monetary policy degradation sequence.
 
-\item \textbf{Paper~5 (Complementary Heterogeneity):} The damping cancellation and dispersion indicator tests directly test Proposition~6.1 and Section~8.3 of Paper~5.
-
-\item \textbf{Paper~6 (Unified Theory):} The EMD timescale discovery confirms the $\Neff$ and $\rstar$ calibrations used throughout the unified framework.
+\item \textbf{Paper~7 (Hierarchical Architecture):} The damping cancellation and dispersion indicator tests directly test Proposition~6.1 and Section~8.3 of Paper~7.  The EMD timescale discovery confirms the $\Neff$ and $\rstar$ calibrations used throughout the unified framework.
 \end{itemize}
 
 

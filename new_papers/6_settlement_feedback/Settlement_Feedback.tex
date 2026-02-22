@@ -357,6 +357,13 @@ The daily-frequency importance ratio is a blunt instrument: it measures whether 
 
 The combined picture is that FG communication is being \emph{restructured}, not degraded. The statement's informational content is migrating to the press conference (consistent with Swanson 2023, who finds Fed Chair speeches now move markets more than FOMC statements) and to inter-meeting communication. But the market's yield sensitivity per unit of policy surprise is unchanged---the FG friction ($\tau_H$, human information processing delay) is intact. This is precisely the model's prediction at $\phi \approx 0$: the friction that requires AI-speed language processing has not yet been touched by pre-mesh technology. When $\phi$ increases, the prediction is not that FOMC days become less important (which would be confounded by communication reform) but that the \emph{surprise-normalized sensitivity} declines---the specific metric that currently shows no trend.
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{../../figures/settlement_feedback/usmpd_absorption.pdf}
+\caption{\textbf{USMPD high-frequency decomposition.} (a)~Statement concentration ratio (30-minute yield change as fraction of daily move) over rolling 3-year windows, showing declining concentration ($\tau = -0.172$, $p < 0.001$). (b)~Surprise-normalized 10-year yield response per unit of monetary policy surprise, showing no trend ($\tau = +0.015$, $p = 0.717$). (c)~Cross-maturity ratio $|\Delta\text{UST2Y}|/|\Delta\text{UST10Y}|$, stable. (d)~Absolute 30-minute response magnitude, declining but explained by less news per statement rather than FG degradation. Data: SF Fed USMPD (Acosta et al.\ 2025), FRED DGS2/DGS10.}
+\label{fig:usmpd}
+\end{figure}
+
 \subsubsection{Test B: QE Multiplier Decay}
 
 Each QE episode should compress yields less per unit of balance sheet expansion if the portfolio balance friction is progressively diminished. The multiplier is:
@@ -417,6 +424,13 @@ The correct interpretation is therefore:
 \end{enumerate}
 
 This pattern---QE already degrading, FG not yet degrading, FR not yet degrading---is consistent with a model in which the three frictions have different technological requirements, and pre-mesh financial technology addresses arbitrage speed but not language processing or institutional barriers.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{../../figures/settlement_feedback/mp_degradation.pdf}
+\caption{\textbf{Composite monetary policy degradation.} (a)~FOMC importance ratio over rolling 3-year windows for DGS2 and DGS10. (b)~QE multiplier (bp per \$100B WALCL expansion) declining monotonically across four episodes: QE1 (40.8), QE2 (9.7), QE3 (3.4), COVID-QE (2.7). (c)~Financial repression: rolling 60-month correlation between real 10-year yield and personal savings rate, showing the FR mechanism remains intact. (d)~Normalized $[0,1]$ degradation indices: the ordering QE (0.93) $>$ FR (0.57) $>$ FG (0.31) reflects pre-mesh technology that addresses arbitrage speed but not language processing or institutional barriers.}
+\label{fig:mp_degradation}
+\end{figure}
 
 
 % -------------------------------------------------------------------
@@ -880,7 +894,7 @@ Several candidate frameworks were evaluated and rejected for specific technical 
 % -------------------------------------------------------------------
 \section{Falsifiable Predictions}
 
-The model generates six predictions extending the prediction sets of the companion papers. Each specifies timing, observable metrics, and conditions under which the prediction would be falsified.
+The model generates seven predictions extending the prediction sets of the companion papers. Each specifies timing, observable metrics, and conditions under which the prediction would be falsified.
 
 \textbf{Prediction 1: Market efficiency increase with mesh participation.} As autonomous agent assets under management (AUM) grow, measurable market efficiency metrics improve. Specifically: (i)~return autocorrelation at daily frequency decreases by at least 30\% as autonomous agent AUM reaches 15\% of total market capitalization; (ii)~bid-ask spreads in Treasury markets narrow by at least 20\% over the same period; (iii)~the Hurst exponent for major equity indices moves closer to 0.5 (random walk). \emph{Timing:} 2028--2033. \emph{Evidence against:} market efficiency metrics failing to improve or worsening as autonomous agent AUM grows, sustained over a period where AUM exceeds 10\% of market capitalization.
 
@@ -893,6 +907,8 @@ The model generates six predictions extending the prediction sets of the compani
 \textbf{Prediction 5: Settlement constraint relaxation timing.} Mesh capability growth accelerates following stablecoin infrastructure improvements---new on-ramp launches, regulatory clarity events, protocol upgrades. The observable metric is the correlation between settlement infrastructure milestones and subsequent mesh capability growth (measured by benchmark performance or AUM growth). The model predicts a statistically significant positive correlation (at the 5\% level) between settlement infrastructure events and mesh growth in the subsequent 6 months, consistent with the settlement layer being a binding constraint on mesh growth (Smirl 2026d, Section~8). \emph{Timing:} 2028--2035. \emph{Evidence against:} no significant correlation between settlement infrastructure improvements and mesh growth, or mesh growth showing no sensitivity to settlement infrastructure quality.
 
 \textbf{Prediction 6: Fiscal crisis speed acceleration.} Sovereign debt repricing events become faster as mesh participation in Treasury markets increases. The observable metric is the time constant of yield adjustment following significant fiscal news (deficit announcements, rating changes, fiscal policy shifts). The model predicts the time constant decreases from the current $\sim$2--6 weeks to $\sim$1--3 trading days as autonomous agent participation reaches 25\% of Treasury market volume. \emph{Timing:} 2030--2035. \emph{Evidence against:} sovereign repricing speed remaining constant or slowing despite increased autonomous agent participation.
+
+\textbf{Prediction 7: CBDC self-undermining.} Among countries that launch retail CBDCs, the displacement ratio $\theta_{\text{displace}}/\theta_{\text{restrict}}$ (offshore settlement gained per unit of onshore settlement suppressed) exceeds 0.5 within 3 years of launch. The observable metric is the growth rate of unsurveilled digital settlement volume (stablecoins, privacy protocols, foreign CBDCs) in the launching country relative to a synthetic control of comparable non-CBDC countries. The India natural experiment (Section~6.3) provides the calibration: $\theta_{\text{displace}}/\theta_{\text{restrict}} \approx 0.84$ for cryptocurrency restrictions. The CBDC prediction is weaker (0.5 vs.\ 0.84) because the CBDC provides a partial substitute for private stablecoins, absorbing some demand that would otherwise go offshore. The key testable implication is that CBDC launch \emph{increases} total digital settlement volume (onshore plus offshore) rather than merely displacing private stablecoins with a government alternative. \emph{Timing:} Observable within 3 years of any G20 retail CBDC launch. \emph{Evidence against:} total digital settlement volume (CBDC + stablecoins + unsurveilled) growing more slowly after CBDC launch than before, or the displacement ratio falling below 0.3.
 
 
 % -------------------------------------------------------------------
